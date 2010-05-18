@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.3">
+  <compounddef id="media_8h" kind="file">
+    <compoundname>media.h</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="media_8h_1a769cab1fb67e28ee26663e632190fb2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void media</definition>
+        <argsstring>(char *path)</argsstring>
+        <name>media</name>
+        <param>
+          <type>char *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bilalh/Programming/C/media/media.h" line="1" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="14" bodyend="31"/>
+        <references refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" compoundref="media_8c" startline="12">DIRENT</references>
+        <references refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" compoundref="media_8c" startline="34" endline="47">match</references>
+      </memberdef>
+      <memberdef kind="function" id="media_8h_1a613aaf9cf7b0a71ac4f620e013bc75fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int match</definition>
+        <argsstring>(const char *string, char *pattern)</argsstring>
+        <name>match</name>
+        <param>
+          <type>const char *</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>pattern</declname>
+        </param>
+        <briefdescription>
+<para>1 on match, 0 on any error s </para>        </briefdescription>
+        <detaileddescription>
+<para>Match string against the extended regular expression in pattern, treating errors as no match.</para><para>Return 1 for match, 0 for no match. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bilalh/Programming/C/media/media.h" line="9" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="34" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a769cab1fb67e28ee26663e632190fb2f" kindref="member">media</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*path);</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kindref="member" tooltip="1 on match, 0 on any error s">match</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pattern);</highlight></codeline>
+    </programlisting>
+    <location file="/Users/bilalh/Programming/C/media/media.h"/>
+  </compounddef>
+</doxygen>

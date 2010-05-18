@@ -1,0 +1,90 @@
+\hypertarget{media_8c}{
+\section{media.c File Reference}
+\label{media_8c}\index{media.c@{media.c}}
+}
+{\ttfamily \#include $<$Block.h$>$}\par
+{\ttfamily \#include $<$dirent.h$>$}\par
+{\ttfamily \#include $<$regex.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$strings.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include \char`\"{}Media.h\char`\"{}}\par
+Include dependency graph for media.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{media_8c__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=59pt]{media_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{media_8c_a605917f1cfa78dfcfae65ce2383e4aa4}{DIRENT}(value)~($\ast$(struct dirent $\ast$$\ast$) value)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{media_8c_a769cab1fb67e28ee26663e632190fb2f}{media} (char $\ast$path)
+\item 
+int \hyperlink{media_8c_a613aaf9cf7b0a71ac4f620e013bc75fc}{match} (const char $\ast$string, char $\ast$pattern)
+\begin{DoxyCompactList}\small\item\em 1 on match, 0 on any error s \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{media_8c_a605917f1cfa78dfcfae65ce2383e4aa4}{
+\index{media.c@{media.c}!DIRENT@{DIRENT}}
+\index{DIRENT@{DIRENT}!media.c@{media.c}}
+\subsubsection[{DIRENT}]{\setlength{\rightskip}{0pt plus 5cm}\#define DIRENT(value)~($\ast$(struct dirent $\ast$$\ast$) value)}}
+\label{media_8c_a605917f1cfa78dfcfae65ce2383e4aa4}
+
+
+Definition at line 12 of file media.c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{media_8c_a613aaf9cf7b0a71ac4f620e013bc75fc}{
+\index{media.c@{media.c}!match@{match}}
+\index{match@{match}!media.c@{media.c}}
+\subsubsection[{match}]{\setlength{\rightskip}{0pt plus 5cm}int match (const char $\ast$ {\em string}, \/  char $\ast$ {\em pattern})}}
+\label{media_8c_a613aaf9cf7b0a71ac4f620e013bc75fc}
+
+
+1 on match, 0 on any error s 
+
+Match string against the extended regular expression in pattern, treating errors as no match.
+
+Return 1 for match, 0 for no match. 
+
+Definition at line 34 of file media.c.
+
+\hypertarget{media_8c_a769cab1fb67e28ee26663e632190fb2f}{
+\index{media.c@{media.c}!media@{media}}
+\index{media@{media}!media.c@{media.c}}
+\subsubsection[{media}]{\setlength{\rightskip}{0pt plus 5cm}void media (char $\ast$ {\em path})}}
+\label{media_8c_a769cab1fb67e28ee26663e632190fb2f}
+
+
+Definition at line 14 of file media.c.
+
+
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=89pt]{media_8c_a769cab1fb67e28ee26663e632190fb2f_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,34 @@
+.TH "media.h" 3 "18 May 2010" "Version 0.01" "Media" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+media.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmedia\fP (char *path)"
+.br
+.ti -1c
+.RI "int \fBmatch\fP (const char *string, char *pattern)"
+.br
+.RI "\fI1 on match, 0 on any error s \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int match (const char * string, char * pattern)"
+.PP
+1 on match, 0 on any error s Match string against the extended regular expression in pattern, treating errors as no match.
+.PP
+Return 1 for match, 0 for no match. 
+.PP
+Definition at line 34 of file media.c.
+.SS "void media (char * path)"
+.PP
+Definition at line 14 of file media.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Media from the source code.

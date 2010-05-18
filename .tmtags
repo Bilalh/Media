@@ -1,0 +1,137 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	makefile	/^CC = gcc -std=c99 -fblocks$/;"	macro	line:1
+CFLAGS	makefile	/^CFLAGS = -g -Wall$/;"	macro	line:2
+DIRENT	media.c	/^#define DIRENT(/;"	macro	line:12
+File Documentation	doc/latex/refman.tex	/^\\input{files}$/;"	chapter	line:55
+File Index	doc/latex/refman.tex	/^\\hypersetup{pageanchor=true}$/;"	chapter	line:53
+File List	doc/latex/files.tex	/^\\section{File List}$/;"	section	line:0
+Function Documentation	doc/latex/media_8h.tex	/^\\begin{DoxyCompactList}\\small\\item\\em 1 on match, 0 on any error s \\item\\end{DoxyCompactList}\\end{DoxyCompactItemize}$/;"	subsubsection	line:11
+Functions	doc/latex/media_8h.tex	/^}$/;"	subsubsection	line:4
+PATH	main.c	/^#define PATH /;"	macro	line:4
+PATTEN	media.c	/^#define PATTEN /;"	macro	line:13
+SearchBox	doc/html/search/search.js	/^function SearchBox(name, resultsPath, inFrame, label)$/;"	class	line:82
+SearchBox.Activate	doc/html/search/search.js	/^  this.Activate = function(isActive)$/;"	method	line:399
+SearchBox.CloseResultsWindow	doc/html/search/search.js	/^  this.CloseResultsWindow = function()$/;"	method	line:315
+SearchBox.CloseSelectionWindow	doc/html/search/search.js	/^  this.CloseSelectionWindow = function()$/;"	method	line:322
+SearchBox.DOMPopupSearchResults	doc/html/search/search.js	/^  this.DOMPopupSearchResults = function()$/;"	method	line:111
+SearchBox.DOMPopupSearchResultsWindow	doc/html/search/search.js	/^  this.DOMPopupSearchResultsWindow = function()$/;"	method	line:114
+SearchBox.DOMSearchBox	doc/html/search/search.js	/^  this.DOMSearchBox = function()$/;"	method	line:120
+SearchBox.DOMSearchClose	doc/html/search/search.js	/^  this.DOMSearchClose = function()$/;"	method	line:117
+SearchBox.DOMSearchField	doc/html/search/search.js	/^  this.DOMSearchField = function()$/;"	method	line:102
+SearchBox.DOMSearchSelect	doc/html/search/search.js	/^  this.DOMSearchSelect = function()$/;"	method	line:105
+SearchBox.DOMSearchSelectWindow	doc/html/search/search.js	/^  this.DOMSearchSelectWindow = function()$/;"	method	line:108
+SearchBox.OnSearchFieldChange	doc/html/search/search.js	/^  this.OnSearchFieldChange = function(evt)$/;"	method	line:177
+SearchBox.OnSearchFieldFocus	doc/html/search/search.js	/^  this.OnSearchFieldFocus = function(isActive)$/;"	method	line:126
+SearchBox.OnSearchSelectHide	doc/html/search/search.js	/^  this.OnSearchSelectHide = function()$/;"	method	line:170
+SearchBox.OnSearchSelectKey	doc/html/search/search.js	/^  this.OnSearchSelectKey = function(evt)$/;"	method	line:290
+SearchBox.OnSearchSelectShow	doc/html/search/search.js	/^  this.OnSearchSelectShow = function()$/;"	method	line:131
+SearchBox.OnSelectItem	doc/html/search/search.js	/^  this.OnSelectItem = function(id)$/;"	method	line:279
+SearchBox.Search	doc/html/search/search.js	/^  this.Search = function()$/;"	method	line:328
+SearchBox.SelectItemCount	doc/html/search/search.js	/^  this.SelectItemCount = function(id)$/;"	method	line:239
+SearchBox.SelectItemSet	doc/html/search/search.js	/^  this.SelectItemSet = function(id)$/;"	method	line:254
+SearchResults	doc/html/search/search.js	/^function SearchResults(name)$/;"	class	line:429
+SearchResults.FindChildElement	doc/html/search/search.js	/^    this.FindChildElement = function(id)$/;"	method	line:437
+SearchResults.Nav	doc/html/search/search.js	/^    this.Nav = function(evt,itemIndex) $/;"	method	line:612
+SearchResults.NavChild	doc/html/search/search.js	/^    this.NavChild = function(evt,itemIndex,childIndex)$/;"	method	line:690
+SearchResults.NavNext	doc/html/search/search.js	/^    this.NavNext = function(index)$/;"	method	line:547
+SearchResults.NavPrev	doc/html/search/search.js	/^    this.NavPrev = function(index)$/;"	method	line:568
+SearchResults.ProcessKeys	doc/html/search/search.js	/^    this.ProcessKeys = function(e)$/;"	method	line:589
+SearchResults.Search	doc/html/search/search.js	/^    this.Search = function(search)$/;"	method	line:494
+SearchResults.Toggle	doc/html/search/search.js	/^    this.Toggle = function(id)$/;"	method	line:473
+convertToId	doc/html/search/search.js	/^function convertToId(search)$/;"	function	line:24
+getXPos	doc/html/search/search.js	/^function getXPos(item)$/;"	function	line:47
+getYPos	doc/html/search/search.js	/^function getYPos(item)$/;"	function	line:61
+indexSectionNames.0	doc/html/search/search.js	/^{$/;"	property	line:17
+indexSectionNames.1	doc/html/search/search.js	/^  0: "all",$/;"	property	line:18
+indexSectionNames.2	doc/html/search/search.js	/^  1: "files",$/;"	property	line:19
+indexSectionNames.3	doc/html/search/search.js	/^  2: "functions",$/;"	property	line:20
+indexSectionsWithContent.0	doc/html/search/search.js	/^{$/;"	property	line:9
+indexSectionsWithContent.1	doc/html/search/search.js	/^  0: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000100100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:10
+indexSectionsWithContent.2	doc/html/search/search.js	/^  1: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:11
+indexSectionsWithContent.3	doc/html/search/search.js	/^  2: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:12
+l00001	doc/html/main_8c_source.html	/^<h1>main.c<\/h1><a href="main_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:24
+l00001	doc/html/media_8c_source.html	/^<h1>media.c<\/h1><a href="media_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;Block.h&gt;<\/span>$/;"	anchor	line:24
+l00001	doc/html/media_8h_source.html	/^<h1>media.h<\/h1><a href="media_8h.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#a769cab1fb67e28ee26663e632190fb2f">media<\/a>(<span class="keywordtype">char<\/span> *path);$/;"	anchor	line:24
+l00002	doc/html/main_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:25
+l00002	doc/html/media_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;dirent.h&gt;<\/span>$/;"	anchor	line:25
+l00002	doc/html/media_8h_source.html	/^<a name="l00002"><\/a>00002 $/;"	anchor	line:25
+l00003	doc/html/main_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &quot;<a class="code" href="media_8h.html">media.h<\/a>&quot;<\/span>$/;"	anchor	line:26
+l00003	doc/html/media_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;regex.h&gt;<\/span>$/;"	anchor	line:26
+l00004	doc/html/main_8c_source.html	/^<a name="l00004"><\/a><a class="code" href="main_8c.html#ab0139008fdda107456f13f837872b410">00004<\/a> <span class="preprocessor">#define PATH &quot;\/Users\/bilalh\/Movies\/.Movie\/mov\/&quot;<\/span>$/;"	anchor	line:27
+l00004	doc/html/media_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="preprocessor">#include &lt;stdarg.h&gt;<\/span>$/;"	anchor	line:27
+l00005	doc/html/main_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="preprocessor"><\/span>$/;"	anchor	line:28
+l00005	doc/html/media_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:28
+l00006	doc/html/main_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="keyword">static<\/span> <span class="keywordtype">char<\/span> *s = <a class="code" href="main_8c.html#ab0139008fdda107456f13f837872b410">PATH<\/a>;$/;"	anchor	line:29
+l00006	doc/html/media_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:29
+l00007	doc/html/main_8c_source.html	/^<a name="l00007"><\/a>00007 $/;"	anchor	line:30
+l00007	doc/html/media_8c_source.html	/^<a name="l00007"><\/a>00007 <span class="preprocessor">#include &lt;strings.h&gt;<\/span>$/;"	anchor	line:30
+l00008	doc/html/main_8c_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:31
+l00008	doc/html/media_8c_source.html	/^<a name="l00008"><\/a>00008 <span class="preprocessor">#include &lt;sys\/types.h&gt;<\/span>$/;"	anchor	line:31
+l00009	doc/html/main_8c_source.html	/^<a name="l00009"><\/a><a class="code" href="main_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">00009<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span> <span class="keyword">const<\/span> *argv[]) {$/;"	anchor	line:32
+l00009	doc/html/media_8c_source.html	/^<a name="l00009"><\/a>00009 <span class="preprocessor">#include &lt;unistd.h&gt;<\/span>$/;"	anchor	line:32
+l00009	doc/html/media_8h_source.html	/^<a name="l00009"><\/a>00009 <span class="keywordtype">int<\/span> <a class="code" href="media_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="1 on match, 0 on any error s">match<\/a>(<span class="keyword">const<\/span> <span class="keywordtype">char<\/span> *<span class="keywordtype">string<\/span>, <span class="keywordtype">char<\/span> *pattern);$/;"	anchor	line:26
+l00010	doc/html/main_8c_source.html	/^<a name="l00010"><\/a>00010     argc = 4;$/;"	anchor	line:33
+l00010	doc/html/media_8c_source.html	/^<a name="l00010"><\/a>00010 <span class="preprocessor">#include &quot;<a class="code" href="media_8h.html">Media.h<\/a>&quot;<\/span>$/;"	anchor	line:33
+l00011	doc/html/main_8c_source.html	/^<a name="l00011"><\/a>00011     <span class="keywordflow">if<\/span> (argc &lt; 3) {$/;"	anchor	line:34
+l00011	doc/html/media_8c_source.html	/^<a name="l00011"><\/a>00011 $/;"	anchor	line:34
+l00012	doc/html/main_8c_source.html	/^<a name="l00012"><\/a>00012         puts(<span class="stringliteral">&quot;Media dir regex&quot;<\/span>);$/;"	anchor	line:35
+l00012	doc/html/media_8c_source.html	/^<a name="l00012"><\/a><a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">00012<\/a> <span class="preprocessor">#define DIRENT(value) (*(struct dirent **) value)<\/span>$/;"	anchor	line:35
+l00013	doc/html/main_8c_source.html	/^<a name="l00013"><\/a>00013         exit(0);$/;"	anchor	line:36
+l00013	doc/html/media_8c_source.html	/^<a name="l00013"><\/a>00013 <span class="preprocessor"><\/span>$/;"	anchor	line:36
+l00014	doc/html/main_8c_source.html	/^<a name="l00014"><\/a>00014     }$/;"	anchor	line:37
+l00014	doc/html/media_8c_source.html	/^<a name="l00014"><\/a><a class="code" href="media_8h.html#a769cab1fb67e28ee26663e632190fb2f">00014<\/a> <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#a769cab1fb67e28ee26663e632190fb2f">media<\/a>(<span class="keywordtype">char<\/span> *path) {$/;"	anchor	line:37
+l00015	doc/html/main_8c_source.html	/^<a name="l00015"><\/a>00015 $/;"	anchor	line:38
+l00015	doc/html/media_8c_source.html	/^<a name="l00015"><\/a>00015     <span class="keyword">struct <\/span>dirent **files;$/;"	anchor	line:38
+l00016	doc/html/main_8c_source.html	/^<a name="l00016"><\/a>00016     <a class="code" href="media_8c.html#a769cab1fb67e28ee26663e632190fb2f">media<\/a>(s );$/;"	anchor	line:39
+l00016	doc/html/media_8c_source.html	/^<a name="l00016"><\/a>00016 $/;"	anchor	line:39
+l00017	doc/html/main_8c_source.html	/^<a name="l00017"><\/a>00017 $/;"	anchor	line:40
+l00017	doc/html/media_8c_source.html	/^<a name="l00017"><\/a>00017     <span class="comment">\/\/ gets dir listing ignoring case and hidden files<\/span>$/;"	anchor	line:40
+l00018	doc/html/main_8c_source.html	/^<a name="l00018"><\/a>00018     <span class="keywordflow">return<\/span> 0;$/;"	anchor	line:41
+l00018	doc/html/media_8c_source.html	/^<a name="l00018"><\/a>00018     <span class="keywordtype">int<\/span> file_num = scandir_b( path, &amp;files,$/;"	anchor	line:41
+l00019	doc/html/main_8c_source.html	/^<a name="l00019"><\/a>00019 }$/;"	anchor	line:42
+l00019	doc/html/media_8c_source.html	/^<a name="l00019"><\/a>00019         ^ (<span class="keyword">struct<\/span> dirent * s) { <span class="keywordflow">return<\/span> (s-&gt;d_name[0] != <span class="charliteral">&#39;.&#39;<\/span>); },$/;"	anchor	line:42
+l00020	doc/html/media_8c_source.html	/^<a name="l00020"><\/a>00020         ^ (<span class="keyword">const<\/span> <span class="keywordtype">void<\/span> * a, <span class="keyword">const<\/span> <span class="keywordtype">void<\/span> * b) {$/;"	anchor	line:43
+l00021	doc/html/media_8c_source.html	/^<a name="l00021"><\/a>00021             <span class="keywordflow">return<\/span> strcasecmp( <a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">DIRENT<\/a>(a)-&gt;d_name, <a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">DIRENT<\/a>(b)-&gt;d_name);$/;"	anchor	line:44
+l00022	doc/html/media_8c_source.html	/^<a name="l00022"><\/a>00022         }$/;"	anchor	line:45
+l00023	doc/html/media_8c_source.html	/^<a name="l00023"><\/a>00023     );$/;"	anchor	line:46
+l00024	doc/html/media_8c_source.html	/^<a name="l00024"><\/a>00024 $/;"	anchor	line:47
+l00025	doc/html/media_8c_source.html	/^<a name="l00025"><\/a>00025     <span class="keywordflow">for<\/span>(<span class="keywordtype">int<\/span> i = 0; i &lt; file_num; i++) {$/;"	anchor	line:48
+l00026	doc/html/media_8c_source.html	/^<a name="l00026"><\/a>00026         printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, files[i]-&gt;d_name);$/;"	anchor	line:49
+l00027	doc/html/media_8c_source.html	/^<a name="l00027"><\/a>00027     }$/;"	anchor	line:50
+l00028	doc/html/media_8c_source.html	/^<a name="l00028"><\/a>00028     $/;"	anchor	line:51
+l00029	doc/html/media_8c_source.html	/^<a name="l00029"><\/a>00029     printf(<span class="stringliteral">&quot;%i\\n&quot;<\/span>, <a class="code" href="media_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="1 on match, 0 on any error s">match<\/a>(files[0]-&gt;d_name,<span class="stringliteral">&quot;.&quot;<\/span>);$/;"	anchor	line:52
+l00030	doc/html/media_8c_source.html	/^<a name="l00030"><\/a>00030     $/;"	anchor	line:53
+l00031	doc/html/media_8c_source.html	/^<a name="l00031"><\/a>00031 }$/;"	anchor	line:54
+l00032	doc/html/media_8c_source.html	/^<a name="l00032"><\/a>00032 $/;"	anchor	line:55
+l00034	doc/html/media_8c_source.html	/^<a name="l00034"><\/a><a class="code" href="media_8h.html#a613aaf9cf7b0a71ac4f620e013bc75fc">00034<\/a> <span class="keywordtype">int<\/span> <a class="code" href="media_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="1 on match, 0 on any error s">match<\/a>(<span class="keyword">const<\/span> <span class="keywordtype">char<\/span> *<span class="keywordtype">string<\/span>, <span class="keywordtype">char<\/span> *pattern) {$/;"	anchor	line:56
+l00035	doc/html/media_8c_source.html	/^<a name="l00035"><\/a>00035     <span class="keywordtype">int<\/span>    status;$/;"	anchor	line:57
+l00036	doc/html/media_8c_source.html	/^<a name="l00036"><\/a>00036     regex_t    re;$/;"	anchor	line:58
+l00037	doc/html/media_8c_source.html	/^<a name="l00037"><\/a>00037 $/;"	anchor	line:59
+l00038	doc/html/media_8c_source.html	/^<a name="l00038"><\/a>00038     <span class="keywordflow">if<\/span> (regcomp(&amp;re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {$/;"	anchor	line:60
+l00039	doc/html/media_8c_source.html	/^<a name="l00039"><\/a>00039         <span class="keywordflow">return<\/span>(0);      $/;"	anchor	line:61
+l00040	doc/html/media_8c_source.html	/^<a name="l00040"><\/a>00040     }$/;"	anchor	line:62
+l00041	doc/html/media_8c_source.html	/^<a name="l00041"><\/a>00041     status = regexec(&amp;re, <span class="keywordtype">string<\/span>, (<span class="keywordtype">size_t<\/span>) 0, NULL, 0);$/;"	anchor	line:63
+l00042	doc/html/media_8c_source.html	/^<a name="l00042"><\/a>00042     regfree(&amp;re);$/;"	anchor	line:64
+l00043	doc/html/media_8c_source.html	/^<a name="l00043"><\/a>00043     <span class="keywordflow">if<\/span> (status != 0) {$/;"	anchor	line:65
+l00044	doc/html/media_8c_source.html	/^<a name="l00044"><\/a>00044         <span class="keywordflow">return<\/span>(0);      $/;"	anchor	line:66
+l00045	doc/html/media_8c_source.html	/^<a name="l00045"><\/a>00045     }$/;"	anchor	line:67
+l00046	doc/html/media_8c_source.html	/^<a name="l00046"><\/a>00046     <span class="keywordflow">return<\/span>(1);$/;"	anchor	line:68
+l00047	doc/html/media_8c_source.html	/^<a name="l00047"><\/a>00047 }$/;"	anchor	line:69
+latex_count	doc/latex/Makefile	/^	latex_count=5 ; \\$/;"	macro	line:9
+main	main.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:9
+main c File Reference	doc/latex/main_8c.tex	/^\\hypertarget{main_8c}{$/;"	section	line:1
+main h File Reference	doc/latex/main_8h.tex	/^\\hypertarget{main_8h}{$/;"	section	line:1
+match	doc/latex/media_8h.tex	/^\\index{match@{match}!media.h@{media.h}}$/;"	subsubsection	line:17
+match	media.c	/^int match(const char *string, char *pattern) {$/;"	function	line:35
+media	doc/latex/media_8h.tex	/^\\index{media@{media}!media.h@{media.h}}$/;"	subsubsection	line:32
+media	media.c	/^void media(char *path) {$/;"	function	line:14
+media c File Reference	doc/latex/media_8c.tex	/^\\hypertarget{media_8c}{$/;"	section	line:1
+media h File Reference	doc/latex/media_8h.tex	/^\\hypertarget{media_8h}{$/;"	section	line:1
+s	main.c	/^static char *s = PATH;$/;"	variable	line:6
+toggleFolder	doc/html/tree.html	/^    function toggleFolder(id, imageNode) $/;"	function	line:15
+usage	doc/html/installdox	/^sub usage {$/;"	subroutine	line:111
