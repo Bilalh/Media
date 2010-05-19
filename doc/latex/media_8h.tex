@@ -2,11 +2,26 @@
 \section{media.h File Reference}
 \label{media_8h}\index{media.h@{media.h}}
 }
+{\ttfamily \#include \char`\"{}optionParser.h\char`\"{}}\par
+Include dependency graph for media.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=66pt]{media_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_media_args}{MediaArgs}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{media_8h_a769cab1fb67e28ee26663e632190fb2f}{media} (char $\ast$path)
+void \hyperlink{media_8h_a73bf776057e0e17a2d7166c40b1470ae}{media} (char $\ast$path, char $\ast$$\ast$args, int length)
 \item 
+void \hyperlink{media_8h_acac9068358d6c2a4153dcdab67a9ea42}{mplayer} (char $\ast$$\ast$filenames, int total\_\-length, char $\ast$prefix\_\-args, char $\ast$postfix\_\-args, char $\ast$filepath)
+\begin{DoxyCompactList}\small\item\em Filenames should end with \char`\"{}\char`\"{}, total length the length of all the strings filepath, to the directory to call mplayer from. \item\end{DoxyCompactList}\item 
 int \hyperlink{media_8h_a613aaf9cf7b0a71ac4f620e013bc75fc}{match} (const char $\ast$string, char $\ast$pattern)
 \begin{DoxyCompactList}\small\item\em 1 on match, 0 on any error s \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -25,16 +40,16 @@ Match string against the extended regular expression in pattern, treating errors
 
 Return 1 for match, 0 for no match. 
 
-Definition at line 34 of file media.c.
+Definition at line 81 of file media.c.
 
-\hypertarget{media_8h_a769cab1fb67e28ee26663e632190fb2f}{
+\hypertarget{media_8h_a73bf776057e0e17a2d7166c40b1470ae}{
 \index{media.h@{media.h}!media@{media}}
 \index{media@{media}!media.h@{media.h}}
-\subsubsection[{media}]{\setlength{\rightskip}{0pt plus 5cm}void media (char $\ast$ {\em path})}}
-\label{media_8h_a769cab1fb67e28ee26663e632190fb2f}
+\subsubsection[{media}]{\setlength{\rightskip}{0pt plus 5cm}void media (char $\ast$ {\em path}, \/  char $\ast$$\ast$ {\em args}, \/  int {\em length})}}
+\label{media_8h_a73bf776057e0e17a2d7166c40b1470ae}
 
 
-Definition at line 14 of file media.c.
+Definition at line 17 of file media.c.
 
 
 
@@ -42,8 +57,21 @@ Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=89pt]{media_8h_a769cab1fb67e28ee26663e632190fb2f_cgraph}
+\includegraphics[width=93pt]{media_8h_a73bf776057e0e17a2d7166c40b1470ae_cgraph}
 \end{center}
 \end{figure}
 
+
+\hypertarget{media_8h_acac9068358d6c2a4153dcdab67a9ea42}{
+\index{media.h@{media.h}!mplayer@{mplayer}}
+\index{mplayer@{mplayer}!media.h@{media.h}}
+\subsubsection[{mplayer}]{\setlength{\rightskip}{0pt plus 5cm}void mplayer (char $\ast$$\ast$ {\em filenames}, \/  int {\em total\_\-length}, \/  char $\ast$ {\em prefix\_\-args}, \/  char $\ast$ {\em postfix\_\-args}, \/  char $\ast$ {\em filepath})}}
+\label{media_8h_acac9068358d6c2a4153dcdab67a9ea42}
+
+
+Filenames should end with \char`\"{}\char`\"{}, total length the length of all the strings filepath, to the directory to call mplayer from. 
+
+Plays the file using mplayer. 
+
+Definition at line 43 of file media.c.
 

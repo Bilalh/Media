@@ -5,18 +5,18 @@
 {\ttfamily \#include $<$Block.h$>$}\par
 {\ttfamily \#include $<$dirent.h$>$}\par
 {\ttfamily \#include $<$regex.h$>$}\par
-{\ttfamily \#include $<$stdarg.h$>$}\par
 {\ttfamily \#include $<$stdio.h$>$}\par
 {\ttfamily \#include $<$stdlib.h$>$}\par
 {\ttfamily \#include $<$strings.h$>$}\par
 {\ttfamily \#include $<$sys/types.h$>$}\par
 {\ttfamily \#include $<$unistd.h$>$}\par
 {\ttfamily \#include \char`\"{}Media.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}optionParser.h\char`\"{}}\par
 Include dependency graph for media.c:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=347pt]{media_8c__incl}
+\includegraphics[width=363pt]{media_8c__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file:\nopagebreak
@@ -30,17 +30,32 @@ This graph shows which files directly or indirectly include this file:\nopagebre
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{media_8c_a605917f1cfa78dfcfae65ce2383e4aa4}{DIRENT}(value)~($\ast$(struct dirent $\ast$$\ast$) value)
+\item 
+\#define \hyperlink{media_8c_a708e40467feb1c2109c63cdf12d88c29}{VIDEO}~\char`\"{}.$\ast$$\backslash$$\backslash$.mkv$|$mp4$|$mov$|$ogm$|$avi$|$divx$|$rm$|$rmvb$|$flv$|$part$|$wmv\$\char`\"{}
+\item 
+\#define \hyperlink{media_8c_a73ed4be5c2afc6b3c6d872c67f06b27b}{AUDIO}~\char`\"{}.$\ast$$\backslash$$\backslash$.mp3$|$m4a$|$flac$|$ogg$|$m4b$|$aiff$|$ac3$|$aac$|$wav$|$wmv$|$ape\$\char`\"{}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{media_8c_a769cab1fb67e28ee26663e632190fb2f}{media} (char $\ast$path)
+void \hyperlink{media_8c_ae5296014e6378856d846436cccfbf040}{media} (char $\ast$path, char $\ast$$\ast$args, int argc)
 \item 
+void \hyperlink{media_8c_acac9068358d6c2a4153dcdab67a9ea42}{mplayer} (char $\ast$$\ast$filenames, int total\_\-length, char $\ast$prefix\_\-args, char $\ast$postfix\_\-args, char $\ast$filepath)
+\begin{DoxyCompactList}\small\item\em Filenames should end with \char`\"{}\char`\"{}, total length the length of all the strings filepath, to the directory to call mplayer from. \item\end{DoxyCompactList}\item 
 int \hyperlink{media_8c_a613aaf9cf7b0a71ac4f620e013bc75fc}{match} (const char $\ast$string, char $\ast$pattern)
 \begin{DoxyCompactList}\small\item\em 1 on match, 0 on any error s \item\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Define Documentation}
+\hypertarget{media_8c_a73ed4be5c2afc6b3c6d872c67f06b27b}{
+\index{media.c@{media.c}!AUDIO@{AUDIO}}
+\index{AUDIO@{AUDIO}!media.c@{media.c}}
+\subsubsection[{AUDIO}]{\setlength{\rightskip}{0pt plus 5cm}\#define AUDIO~\char`\"{}.$\ast$$\backslash$$\backslash$.mp3$|$m4a$|$flac$|$ogg$|$m4b$|$aiff$|$ac3$|$aac$|$wav$|$wmv$|$ape\$\char`\"{}}}
+\label{media_8c_a73ed4be5c2afc6b3c6d872c67f06b27b}
+
+
+Definition at line 14 of file media.c.
+
 \hypertarget{media_8c_a605917f1cfa78dfcfae65ce2383e4aa4}{
 \index{media.c@{media.c}!DIRENT@{DIRENT}}
 \index{DIRENT@{DIRENT}!media.c@{media.c}}
@@ -49,6 +64,15 @@ int \hyperlink{media_8c_a613aaf9cf7b0a71ac4f620e013bc75fc}{match} (const char $\
 
 
 Definition at line 12 of file media.c.
+
+\hypertarget{media_8c_a708e40467feb1c2109c63cdf12d88c29}{
+\index{media.c@{media.c}!VIDEO@{VIDEO}}
+\index{VIDEO@{VIDEO}!media.c@{media.c}}
+\subsubsection[{VIDEO}]{\setlength{\rightskip}{0pt plus 5cm}\#define VIDEO~\char`\"{}.$\ast$$\backslash$$\backslash$.mkv$|$mp4$|$mov$|$ogm$|$avi$|$divx$|$rm$|$rmvb$|$flv$|$part$|$wmv\$\char`\"{}}}
+\label{media_8c_a708e40467feb1c2109c63cdf12d88c29}
+
+
+Definition at line 13 of file media.c.
 
 
 
@@ -66,16 +90,16 @@ Match string against the extended regular expression in pattern, treating errors
 
 Return 1 for match, 0 for no match. 
 
-Definition at line 34 of file media.c.
+Definition at line 81 of file media.c.
 
-\hypertarget{media_8c_a769cab1fb67e28ee26663e632190fb2f}{
+\hypertarget{media_8c_ae5296014e6378856d846436cccfbf040}{
 \index{media.c@{media.c}!media@{media}}
 \index{media@{media}!media.c@{media.c}}
-\subsubsection[{media}]{\setlength{\rightskip}{0pt plus 5cm}void media (char $\ast$ {\em path})}}
-\label{media_8c_a769cab1fb67e28ee26663e632190fb2f}
+\subsubsection[{media}]{\setlength{\rightskip}{0pt plus 5cm}void media (char $\ast$ {\em path}, \/  char $\ast$$\ast$ {\em args}, \/  int {\em argc})}}
+\label{media_8c_ae5296014e6378856d846436cccfbf040}
 
 
-Definition at line 14 of file media.c.
+Definition at line 17 of file media.c.
 
 
 
@@ -83,8 +107,21 @@ Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=89pt]{media_8c_a769cab1fb67e28ee26663e632190fb2f_cgraph}
+\includegraphics[width=93pt]{media_8c_ae5296014e6378856d846436cccfbf040_cgraph}
 \end{center}
 \end{figure}
 
+
+\hypertarget{media_8c_acac9068358d6c2a4153dcdab67a9ea42}{
+\index{media.c@{media.c}!mplayer@{mplayer}}
+\index{mplayer@{mplayer}!media.c@{media.c}}
+\subsubsection[{mplayer}]{\setlength{\rightskip}{0pt plus 5cm}void mplayer (char $\ast$$\ast$ {\em filenames}, \/  int {\em total\_\-length}, \/  char $\ast$ {\em prefix\_\-args}, \/  char $\ast$ {\em postfix\_\-args}, \/  char $\ast$ {\em filepath})}}
+\label{media_8c_acac9068358d6c2a4153dcdab67a9ea42}
+
+
+Filenames should end with \char`\"{}\char`\"{}, total length the length of all the strings filepath, to the directory to call mplayer from. 
+
+Plays the file using mplayer. 
+
+Definition at line 43 of file media.c.
 

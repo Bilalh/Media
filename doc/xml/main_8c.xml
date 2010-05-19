@@ -7,28 +7,28 @@
     <includes refid="main_8c" local="yes">media.h</includes>
     <includedby refid="main_8c" local="yes">main.c</includedby>
     <incdepgraph>
-      <node id="21">
+      <node id="39">
         <label>stdlib.h</label>
       </node>
-      <node id="19">
+      <node id="37">
         <label>main.c</label>
         <link refid="main.c"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="38">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="22">
+      <node id="40">
         <label>main.c</label>
         <link refid="main.c"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -45,34 +45,18 @@
         <location file="/Users/bilalh/Programming/C/media/main.c" line="4" bodyfile="/Users/bilalh/Programming/C/media/main.c" bodystart="4" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="main_8c_1ab51cd24d34f6509eafb5e059f4c7d10e" prot="public" static="yes" mutable="no">
-        <type>char *</type>
-        <definition>char* s</definition>
-        <argsstring></argsstring>
-        <name>s</name>
-        <initializer> PATH</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/Users/bilalh/Programming/C/media/main.c" line="6" bodyfile="/Users/bilalh/Programming/C/media/main.c" bodystart="6" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="main_8c_1abf9e6b7e6f15df4b525a2e7705ba3089" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="main_8c_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int main</definition>
-        <argsstring>(int argc, char const *argv[])</argsstring>
+        <argsstring>(int argc, char *argv[])</argsstring>
         <name>main</name>
         <param>
           <type>int</type>
           <declname>argc</declname>
         </param>
         <param>
-          <type>char const *</type>
+          <type>char *</type>
           <declname>argv</declname>
           <array>[]</array>
         </param>
@@ -82,8 +66,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bilalh/Programming/C/media/main.c" line="9" bodyfile="/Users/bilalh/Programming/C/media/main.c" bodystart="9" bodyend="19"/>
-        <references refid="media_8c_1a769cab1fb67e28ee26663e632190fb2f" compoundref="media_8c" startline="14" endline="31">media</references>
+        <location file="/Users/bilalh/Programming/C/media/main.c" line="6" bodyfile="/Users/bilalh/Programming/C/media/main.c" bodystart="6" bodyend="14"/>
+        <references refid="media_8c_1ae5296014e6378856d846436cccfbf040" compoundref="media_8c" startline="17" endline="39">media</references>
+        <references refid="main_8c_1ab0139008fdda107456f13f837872b410" compoundref="main_8c" startline="4">PATH</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -96,20 +81,15 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="media_8h" kindref="compound">media.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4" refid="main_8c_1ab0139008fdda107456f13f837872b410" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PATH<sp/>&quot;/Users/bilalh/Movies/.Movie/mov/&quot;</highlight></codeline>
 <codeline lineno="5"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*s<sp/>=<sp/><ref refid="main_8c_1ab0139008fdda107456f13f837872b410" kindref="member">PATH</ref>;</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9" refid="main_8c_1abf9e6b7e6f15df4b525a2e7705ba3089" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1abf9e6b7e6f15df4b525a2e7705ba3089" kindref="member">main</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*argv[])<sp/>{</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>argc<sp/>=<sp/>4;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(argc<sp/>&lt;<sp/>3)<sp/>{</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>puts(</highlight><highlight class="stringliteral">&quot;Media<sp/>dir<sp/>regex&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(0);</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="media_8c_1a769cab1fb67e28ee26663e632190fb2f" kindref="member">media</ref>(s<sp/>);</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="6" refid="main_8c_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(argc<sp/>&lt;<sp/>3)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/>puts(</highlight><highlight class="stringliteral">&quot;Media<sp/>dir<sp/>regex&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/>exit(0);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><ref refid="media_8c_1ae5296014e6378856d846436cccfbf040" kindref="member">media</ref>(<ref refid="main_8c_1ab0139008fdda107456f13f837872b410" kindref="member">PATH</ref>,&amp;argv[2],argc-2);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/bilalh/Programming/C/media/main.c"/>
   </compounddef>

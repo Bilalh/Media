@@ -1,19 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.6.3">
+  <compound refid="struct_media_args" kind="struct"><name>MediaArgs</name>
+    <member refid="struct_media_args_1aa4c2a5552e9bc49b1816ff532f558c74" kind="variable"><name>a</name></member>
+  </compound>
   <compound refid="main_8c" kind="file"><name>main.c</name>
     <member refid="main_8c_1ab0139008fdda107456f13f837872b410" kind="define"><name>PATH</name></member>
-    <member refid="main_8c_1ab51cd24d34f6509eafb5e059f4c7d10e" kind="variable"><name>s</name></member>
-    <member refid="main_8c_1abf9e6b7e6f15df4b525a2e7705ba3089" kind="function"><name>main</name></member>
+    <member refid="main_8c_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
   </compound>
   <compound refid="main_8h" kind="file"><name>main.h</name>
   </compound>
   <compound refid="media_8c" kind="file"><name>media.c</name>
     <member refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" kind="define"><name>DIRENT</name></member>
-    <member refid="media_8c_1a769cab1fb67e28ee26663e632190fb2f" kind="function"><name>media</name></member>
+    <member refid="media_8c_1a708e40467feb1c2109c63cdf12d88c29" kind="define"><name>VIDEO</name></member>
+    <member refid="media_8c_1a73ed4be5c2afc6b3c6d872c67f06b27b" kind="define"><name>AUDIO</name></member>
+    <member refid="media_8c_1ae5296014e6378856d846436cccfbf040" kind="function"><name>media</name></member>
+    <member refid="media_8c_1acac9068358d6c2a4153dcdab67a9ea42" kind="function"><name>mplayer</name></member>
     <member refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kind="function"><name>match</name></member>
   </compound>
   <compound refid="media_8h" kind="file"><name>media.h</name>
-    <member refid="media_8h_1a769cab1fb67e28ee26663e632190fb2f" kind="function"><name>media</name></member>
+    <member refid="media_8h_1a73bf776057e0e17a2d7166c40b1470ae" kind="function"><name>media</name></member>
+    <member refid="media_8h_1acac9068358d6c2a4153dcdab67a9ea42" kind="function"><name>mplayer</name></member>
     <member refid="media_8h_1a613aaf9cf7b0a71ac4f620e013bc75fc" kind="function"><name>match</name></member>
+  </compound>
+  <compound refid="option_parser_012_8c" kind="file"><name>optionParser 2.c</name>
+    <member refid="option_parser_012_8c_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="option_parser_8c" kind="file"><name>optionParser.c</name>
+    <member refid="option_parser_8c_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="option_parser_8h" kind="file"><name>optionParser.h</name>
+  </compound>
+  <compound refid="test_8c" kind="file"><name>test.c</name>
+    <member refid="test_8c_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="dir_f60f80dd5091e7d11bcc616ec20daf87" kind="dir"><name>temp/</name>
   </compound>
 </doxygenindex>

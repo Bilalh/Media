@@ -1,4 +1,4 @@
-.TH "media.h" 3 "18 May 2010" "Version 0.01" "Media" \" -*- nroff -*-
+.TH "media.h" 3 "19 May 2010" "Version 0.01" "Media" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,12 +6,26 @@ media.h \-
 .SH SYNOPSIS
 .br
 .PP
+\fC#include 'optionParser.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBMediaArgs\fP"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBmedia\fP (char *path)"
+.RI "void \fBmedia\fP (char *path, char **args, int length)"
 .br
+.ti -1c
+.RI "void \fBmplayer\fP (char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath)"
+.br
+.RI "\fIFilenames should end with '', total length the length of all the strings filepath, to the directory to call mplayer from. \fP"
 .ti -1c
 .RI "int \fBmatch\fP (const char *string, char *pattern)"
 .br
@@ -25,10 +39,15 @@ media.h \-
 .PP
 Return 1 for match, 0 for no match. 
 .PP
-Definition at line 34 of file media.c.
-.SS "void media (char * path)"
+Definition at line 81 of file media.c.
+.SS "void media (char * path, char ** args, int length)"
 .PP
-Definition at line 14 of file media.c.
+Definition at line 17 of file media.c.
+.SS "void mplayer (char ** filenames, int total_length, char * prefix_args, char * postfix_args, char * filepath)"
+.PP
+Filenames should end with '', total length the length of all the strings filepath, to the directory to call mplayer from. Plays the file using mplayer. 
+.PP
+Definition at line 43 of file media.c.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Media from the source code.

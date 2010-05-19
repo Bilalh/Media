@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Doxyfile</string>
+	<string>optionParser.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,44 +21,29 @@
 	<integer>162</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Doxyfile</key>
+		<key>optionParser.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>1566</integer>
+				<integer>55</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1531</integer>
-		</dict>
-		<key>media.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>28</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
+			<integer>34</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>media.c</string>
-		<string>Doxyfile</string>
+		<string>optionParser.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -70,6 +55,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{581, 81}, {822, 786}}</string>
+	<string>{{638, 142}, {605, 634}}</string>
 </dict>
 </plist>

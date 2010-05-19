@@ -5,72 +5,73 @@
     <includes local="no">Block.h</includes>
     <includes local="no">dirent.h</includes>
     <includes local="no">regex.h</includes>
-    <includes local="no">stdarg.h</includes>
     <includes local="no">stdio.h</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">strings.h</includes>
     <includes local="no">sys/types.h</includes>
     <includes local="no">unistd.h</includes>
     <includes refid="media_8c" local="yes">Media.h</includes>
+    <includes refid="option_parser_8h" local="yes">optionParser.h</includes>
     <includedby refid="media_8c" local="yes">media.c</includedby>
     <incdepgraph>
-      <node id="29">
-        <label>stdarg.h</label>
-      </node>
-      <node id="31">
+      <node id="48">
         <label>stdlib.h</label>
       </node>
-      <node id="25">
+      <node id="43">
         <label>media.c</label>
         <link refid="media.c"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="50">
         <label>sys/types.h</label>
       </node>
-      <node id="34">
+      <node id="51">
         <label>unistd.h</label>
       </node>
-      <node id="26">
+      <node id="44">
         <label>Block.h</label>
       </node>
-      <node id="32">
+      <node id="49">
         <label>strings.h</label>
       </node>
-      <node id="28">
+      <node id="52">
+        <label>optionParser.h</label>
+        <link refid="option_parser_8h"/>
+      </node>
+      <node id="46">
         <label>regex.h</label>
       </node>
-      <node id="30">
+      <node id="47">
         <label>stdio.h</label>
       </node>
-      <node id="27">
+      <node id="45">
         <label>dirent.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="35">
+      <node id="53">
         <label>media.c</label>
         <link refid="media.c"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -87,16 +88,46 @@
         </inbodydescription>
         <location file="/Users/bilalh/Programming/C/media/media.c" line="12" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="12" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="define" id="media_8c_1a708e40467feb1c2109c63cdf12d88c29" prot="public" static="no">
+        <name>VIDEO</name>
+        <initializer>&quot;.*\\.mkv|mp4|mov|ogm|avi|divx|rm|rmvb|flv|part|wmv$&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bilalh/Programming/C/media/media.c" line="13" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="media_8c_1a73ed4be5c2afc6b3c6d872c67f06b27b" prot="public" static="no">
+        <name>AUDIO</name>
+        <initializer>&quot;.*\\.mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape$&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bilalh/Programming/C/media/media.c" line="14" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="media_8c_1a769cab1fb67e28ee26663e632190fb2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="media_8c_1ae5296014e6378856d846436cccfbf040" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void media</definition>
-        <argsstring>(char *path)</argsstring>
+        <argsstring>(char *path, char **args, int argc)</argsstring>
         <name>media</name>
         <param>
           <type>char *</type>
           <declname>path</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -104,9 +135,44 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bilalh/Programming/C/media/media.c" line="14" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="14" bodyend="31"/>
+        <location file="/Users/bilalh/Programming/C/media/media.c" line="17" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="17" bodyend="39"/>
         <references refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" compoundref="media_8c" startline="12">DIRENT</references>
-        <references refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" compoundref="media_8c" startline="34" endline="47">match</references>
+        <references refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" compoundref="media_8c" startline="81" endline="93">match</references>
+        <references refid="media_8c_1acac9068358d6c2a4153dcdab67a9ea42" compoundref="media_8c" startline="43" endline="78">mplayer</references>
+        <references refid="media_8c_1a708e40467feb1c2109c63cdf12d88c29" compoundref="media_8c" startline="13">VIDEO</references>
+      </memberdef>
+      <memberdef kind="function" id="media_8c_1acac9068358d6c2a4153dcdab67a9ea42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mplayer</definition>
+        <argsstring>(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath)</argsstring>
+        <name>mplayer</name>
+        <param>
+          <type>char **</type>
+          <declname>filenames</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>total_length</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>prefix_args</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>postfix_args</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>filepath</declname>
+        </param>
+        <briefdescription>
+<para>Filenames should end with &quot;&quot;, total length the length of all the strings filepath, to the directory to call mplayer from. </para>        </briefdescription>
+        <detaileddescription>
+<para>Plays the file using mplayer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/bilalh/Programming/C/media/media.c" line="44" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="43" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -127,7 +193,7 @@
 <para>Match string against the extended regular expression in pattern, treating errors as no match.</para><para>Return 1 for match, 0 for no match. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/bilalh/Programming/C/media/media.c" line="34" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="34" bodyend="47"/>
+        <location file="/Users/bilalh/Programming/C/media/media.c" line="81" bodyfile="/Users/bilalh/Programming/C/media/media.c" bodystart="81" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -138,49 +204,93 @@
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;Block.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;dirent.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;regex.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdarg.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;strings.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;strings.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="media_8h" kindref="compound">Media.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12" refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DIRENT(value)<sp/>(*(struct<sp/>dirent<sp/>**)<sp/>value)</highlight></codeline>
-<codeline lineno="13"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14" refid="media_8h_1a769cab1fb67e28ee26663e632190fb2f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a769cab1fb67e28ee26663e632190fb2f" kindref="member">media</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*path)<sp/>{</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">dirent<sp/>**files;</highlight></codeline>
+<codeline lineno="13" refid="media_8c_1a708e40467feb1c2109c63cdf12d88c29" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>VIDEO<sp/>&quot;.*\\.mkv|mp4|mov|ogm|avi|divx|rm|rmvb|flv|part|wmv$&quot;</highlight></codeline>
+<codeline lineno="14" refid="media_8c_1a73ed4be5c2afc6b3c6d872c67f06b27b" refkind="member"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>AUDIO<sp/><sp/>&quot;.*\\.mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape$&quot;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>gets<sp/>dir<sp/>listing<sp/>ignoring<sp/>case<sp/>and<sp/>hidden<sp/>files</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>file_num<sp/>=<sp/>scandir_b(<sp/>path,<sp/>&amp;files,</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>^<sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>dirent<sp/>*<sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(s-&gt;d_name[0]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">);<sp/>},</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>^<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>b)<sp/>{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>strcasecmp(<sp/><ref refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" kindref="member">DIRENT</ref>(a)-&gt;d_name,<sp/><ref refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" kindref="member">DIRENT</ref>(b)-&gt;d_name);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>file_num;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>files[i]-&gt;d_name);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%i\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kindref="member" tooltip="1 on match, 0 on any error s">match</ref>(files[0]-&gt;d_name,</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34" refid="media_8h_1a613aaf9cf7b0a71ac4f620e013bc75fc" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kindref="member" tooltip="1 on match, 0 on any error s">match</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pattern)<sp/>{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>status;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>regex_t<sp/><sp/><sp/><sp/>re;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(regcomp(&amp;re,<sp/>pattern,<sp/>REG_EXTENDED<sp/>|<sp/>REG_ICASE<sp/>|<sp/>REG_NOSUB)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(0);<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>regexec(&amp;re,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)<sp/>0,<sp/>NULL,<sp/>0);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>regfree(&amp;re);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(0);<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(1);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17" refid="media_8h_1a73bf776057e0e17a2d7166c40b1470ae" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="media_8c_1ae5296014e6378856d846436cccfbf040" kindref="member">media</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*path,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**args,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">dirent<sp/>**files;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>gets<sp/>dir<sp/>listing<sp/>ignoring<sp/>case<sp/>and<sp/>matching<sp/>the<sp/>patten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>file_num<sp/>=<sp/>scandir_b(<sp/>path,<sp/>&amp;files,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>^<sp/>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>dirent<sp/>*<sp/>s)<sp/>{<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kindref="member" tooltip="1 on match, 0 on any error s">match</ref>(s-&gt;d_name<sp/>,<ref refid="media_8c_1a708e40467feb1c2109c63cdf12d88c29" kindref="member">VIDEO</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>},</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>^<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>strcasecmp(<sp/><ref refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" kindref="member">DIRENT</ref>(a)-&gt;d_name,<sp/><ref refid="media_8c_1a605917f1cfa78dfcfae65ce2383e4aa4" kindref="member">DIRENT</ref>(b)-&gt;d_name);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sa[file_num+1];</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>total_length<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=0<sp/>;<sp/>i&lt;file_num-1;++i){<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>sa[i]<sp/>=<sp/>files[i]-&gt;d_name;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>total_length<sp/>+=<sp/>strlen(sa[i]);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/>sa[file_num-1]<sp/>=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><ref refid="media_8c_1acac9068358d6c2a4153dcdab67a9ea42" kindref="member" tooltip="Filenames should end with &amp;quot;&amp;quot;, total length the length of all the strings...">mplayer</ref>(sa,total_length,</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,path);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="media_8h_1acac9068358d6c2a4153dcdab67a9ea42" refkind="member"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="media_8c_1acac9068358d6c2a4153dcdab67a9ea42" kindref="member" tooltip="Filenames should end with &amp;quot;&amp;quot;, total length the length of all the strings...">mplayer</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**filenames,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>total_length,<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*prefix_args,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*postfix_args,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filepath)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/><sp/><sp/>=<sp/>strlen(filepath)<sp/>+<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>3<sp/>for<sp/>cd<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*rid<sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&amp;&gt;<sp/>/dev/null&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>discards<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rid_len<sp/>=<sp/>strlen(rid);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>m_args[total_length<sp/>+<sp/><sp/></highlight><highlight class="comment">//<sp/>8<sp/>for<sp/>mplayer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>strlen(prefix_args)<sp/>+<sp/>strlen(postfix_args)<sp/>+<sp/>index<sp/>+<sp/>rid_len+<sp/>8];</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/>strcpy(m_args,<sp/></highlight><highlight class="stringliteral">&quot;cd<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/>strcpy(&amp;m_args[3],<sp/>filepath);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/>m_args[index++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;;&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/>m_args[index++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/>strcpy(&amp;m_args[index],<sp/></highlight><highlight class="stringliteral">&quot;mplayer<sp/>&quot;</highlight><highlight class="normal">);<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/>index<sp/>+=<sp/>8;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>append<sp/>filenames</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(**filenames<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>*filenames);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>m_args[index++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;&quot;&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>strcpy(&amp;m_args[index],<sp/>*filenames);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>index<sp/>+=<sp/>strlen(*filenames);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>m_args[index++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;&quot;&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>m_args[index++]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>++filenames;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/>strcpy(&amp;m_args[index],<sp/>rid);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/>index<sp/>+=rid_len;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/>m_args[index]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>m_args);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/>system(m_args);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="media_8h_1a613aaf9cf7b0a71ac4f620e013bc75fc" refkind="member"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="media_8c_1a613aaf9cf7b0a71ac4f620e013bc75fc" kindref="member" tooltip="1 on match, 0 on any error s">match</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pattern)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>status;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/>regex_t<sp/><sp/><sp/><sp/>re;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(regcomp(&amp;re,<sp/>pattern,<sp/>REG_EXTENDED<sp/>|<sp/>REG_ICASE<sp/>|<sp/>REG_NOSUB)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(0);<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/>status<sp/>=<sp/>regexec(&amp;re,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)<sp/>0,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/>regfree(&amp;re);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(status<sp/>!=0);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/Users/bilalh/Programming/C/media/media.c"/>
   </compounddef>

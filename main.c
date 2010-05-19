@@ -3,17 +3,11 @@
 #include "media.h"
 #define PATH "/Users/bilalh/Movies/.Movie/mov/"
 
-static char *s = PATH;
-
-
-int main (int argc, char const *argv[]) {
-	argc = 4;
+int main (int argc, char *argv[]) {
 	if (argc < 3) {
 		puts("Media dir regex");
 		exit(0);
 	}
-
-	media(s );
-
+	media(PATH,&argv[2],argc-2);
 	return 0;
 }
