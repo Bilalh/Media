@@ -1,13 +1,13 @@
 #include <Block.h>
 #include <dirent.h>
-#include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "Media.h"
+#include "media.h"
+#include "string_util.h"
 
 #define DIRENT(value) (*(struct dirent **) value)
 #define VIDEO ".*\\.mkv|mp4|mov|ogm|avi|divx|rm|rmvb|flv|part|wmv$"
@@ -76,18 +76,3 @@ void mplayer(char **filenames, int total_length,
 	printf("%s\n", m_args);
 	system(m_args);
 }                                            
-
-/// \brief non zero on match, 0 on any error
-int match(const char *string, char *pattern) {
-	int    status;
-	regex_t    re;
-
-	if (regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
-		return(0);      
-	}
-	status = regexec(&re, string, (size_t) 0, NULL, 0);
-	regfree(&re);
-	
-	return !(status !=0);
-	
-}
