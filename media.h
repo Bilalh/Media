@@ -11,7 +11,7 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
  * Match string against the extended regular expression in
  * pattern, treating errors as no match.
  *
- * Return 1 for match, 0 for no match.
+ * non zero on match, 0 on any error
 **/
 int match(const char *string, char *pattern);
 
@@ -25,8 +25,8 @@ typedef enum {
 } Poutput;
 
 typedef enum {
-	P_MPLAYER, P_NICEPLAYER,  P_VLC;
-} Player
+	P_MPLAYER, P_NICEPLAYER,  P_VLC
+} Player;
 
 typedef enum {
 	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3

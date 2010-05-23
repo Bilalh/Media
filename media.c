@@ -77,7 +77,7 @@ void mplayer(char **filenames, int total_length,
 	system(m_args);
 }                                            
 
-/// \brief 1 on match, 0 on any error s
+/// \brief non zero on match, 0 on any error
 int match(const char *string, char *pattern) {
 	int    status;
 	regex_t    re;
