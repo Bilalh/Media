@@ -29,7 +29,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	// counters for s and r
 	int is = 0, ir = 0;
 	while(is < len) {
-		// checks if sub is a sub string og s 
+		// checks if sub is a sub string og s
 		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
 			strncpy(&r[ir], rep , rep_len);
 			ir += rep_len;
@@ -38,7 +38,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 			r[ir++] = s[is++];
 		}
 	}
-	
+
 	r[ir] = '\0';
 	return r;
 }
@@ -52,27 +52,37 @@ char *spilt_args(char **arr, int length, char *separator ) {
 		sd_arr[i] = spilt_func(arr[i]);
 		total += sd_arr[i]->total;
 	}
-	
+
 	int sep_len   = strlen(separator); // 1 for \0
-	size_t memory =  (sizeof(char)*total) + (sep_len *(length-1)) +2;
+	size_t memory =  (sizeof(char) * total) + (sep_len * (length - 1)) + 2;
 	char *final_str = malloc(memory);
 	int index = 0;
-	
+
 	// builds final string
 	for(int i = 0;  i < length; ++i) {
 		for(int j = 0; j < sd_arr[i]->length; ++j) {
 			strncpy(&final_str[index], sd_arr[i]->args[j], sd_arr[i]->lengths[j]);
 			index += sd_arr[i]->lengths[j];
 		}
-		if (i != length -1){
+		if (i != length - 1) {
 			strncpy(&final_str[index], separator, sep_len);
 			index += sep_len;
 		}
 	}
-	//CHECK might sem fault on returned string 
+
+	//CHECK might sem fault on returned string with printf?
 	final_str[index] = '\0';
-	printf("%s\n", final_str);
 	return final_str;
+}
+
+static char *test_hash(char *s) {
+	printf("%s\n", s);
+	if (strcmp(s, "fma" ) == 0) {
+		return strdup("full metal");
+	} else {
+		return strdup("t2");
+	}
+
 }
 
 SpiltData *spilt_func(char *s) {
@@ -86,15 +96,21 @@ SpiltData *spilt_func(char *s) {
 		while(*s != '|' && *s != '\0' ) {
 			++s;
 		}
-
-		res[i] = str_replace(start,  s - start , "fma", "full metal");
+		
+		int length = s - start;
+		
+		char in[length+1];
+		strncpy(in, start, length);
+		in[length] = '\0';
+		
+		res[i] = str_replace(start,  length , in, test_hash(in) );
 		res_len[i] = strlen(res[i]);
 		total += res_len[i];
-		
+
 		if (*s == '|') ++s;
 		start = s;
 		++i;
-		
+
 	}
 
 	SpiltData *sd = malloc(sizeof(SpiltData));
@@ -105,29 +121,30 @@ SpiltData *spilt_func(char *s) {
 	return sd;
 }
 
-char *str_spilt_replace(char *s){
+
+char *str_spilt_replace(char *s) {
 	char *start   = s;
-	char **res    = malloc(sizeof(size_t)*5);
-	char *res_len = malloc(sizeof(int)*5);
-	
+	char **res    = malloc(sizeof(size_t) * 5);
+	char *res_len = malloc(sizeof(int) * 5);
+
 	int i_res = 0, total = 0;
-	
-	while(*s != '\0'){
-		
-		while (*s != '|' && *s != '\0' ){
+
+	while(*s != '\0') {
+
+		while (*s != '|' && *s != '\0' ) {
 			++s;
 		}
-		
-		res[i_res] = str_replace(start, s-start, "char*ub", "char*p");
-		printf("%s\n",res[i_res] );
+
+		res[i_res] = str_replace(start, s - start, "char*ub", "char*p");
+		printf("%s\n", res[i_res] );
 		res_len[i_res] = strlen(res[i_res]);
 		total += res_len[i_res];
 		++i_res;
 		if (*s == '|') ++s;
-		
+
 		start = s;
 	}
-	
+
 	return NULL;
 }
 

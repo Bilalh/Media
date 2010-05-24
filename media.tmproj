@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>string_util.c</string>
+	<string>hashmap/hashmap.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,47 +18,62 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>85</integer>
+	<integer>159</integer>
 	<key>metaData</key>
 	<dict>
-		<key>media.c</key>
+		<key>hashmap/hashmap.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>38</integer>
+				<integer>42</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>14</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>12</integer>
+			<integer>131</integer>
 		</dict>
 		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>87</integer>
+				<integer>106</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>79</integer>
+			<integer>67</integer>
+		</dict>
+		<key>temp.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>media.c</string>
+		<string>temp.c</string>
 		<string>string_util.c</string>
+		<string>hashmap/hashmap.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -78,6 +93,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{427, 98}, {710, 737}}</string>
+	<string>{{455, 96}, {940, 782}}</string>
 </dict>
 </plist>

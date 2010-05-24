@@ -13,4 +13,4 @@ tempc: media.o string_util.o temp.o
 	${CC} ${CFLAGS} -c $*.c
 
 clean:
-	rm -f *.o *.out media  test testc *~
+	rm -f *.o *.out media  test tempc *~
