@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>media.c</string>
+	<string>string_util.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>151</integer>
+	<integer>85</integer>
 	<key>metaData</key>
 	<dict>
 		<key>media.c</key>
@@ -26,39 +26,39 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>79</integer>
+				<integer>38</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>14</integer>
 			<key>firstVisibleLine</key>
-			<integer>56</integer>
+			<integer>12</integer>
 		</dict>
-		<key>media.h</key>
+		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>13</integer>
+				<integer>87</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>79</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>media.c</string>
-		<string>media.h</string>
+		<string>string_util.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -67,7 +67,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>temp</key>
+				<key>hashmap</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -78,6 +78,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{528, 131}, {912, 747}}</string>
+	<string>{{427, 98}, {710, 737}}</string>
 </dict>
 </plist>

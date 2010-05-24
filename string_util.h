@@ -7,7 +7,17 @@
 **/
 int match(const char *string, char *pattern);
 
-
 char *str_replace(char *s, size_t len,  char *sub, char *rep);
 
-char *strrep1(char *s, char *sub, char *rep);
+char *str_spilt_replace(char *s);
+
+char *spilt_args(char **arr, int length, char *separator );
+
+typedef struct {
+	char **args;
+	int  length;
+	int  *lengths;
+	int  total;
+} SpiltData;
+
+SpiltData *spilt_func(char *s);

@@ -6,12 +6,18 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:14
 CC	makefile	/^CC = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS = -g -Wall -I.\/tests$/;"	macro	line:2
+CFLAGS	makefile	/^CFLAGS = -g -Wall -I.$/;"	macro	line:2
 DIRENT	media.c	/^#define DIRENT(/;"	macro	line:12
 F_M3U	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_PLIST	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_PLS	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_XSPF	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
+HASHMAP_H	hashmap/hashmap.h	/^#define HASHMAP_H$/;"	macro	line:20
+HMAP_DESTRUCTORS	hashmap/hashmap.h	/^#define HMAP_DESTRUCTORS	/;"	macro	line:27
+HMAP_GROWTH_RATE	hashmap/hashmap.h	/^#define HMAP_GROWTH_RATE /;"	macro	line:23
+HMAP_MAKE_HASHFN	hashmap/hashmap.h	/^#define HMAP_MAKE_HASHFN	/;"	macro	line:25
+HMAP_PRESET_SIZE	hashmap/hashmap.h	/^#define HMAP_PRESET_SIZE /;"	macro	line:22
+HMAP_THREAD_SAFE	hashmap/hashmap.h	/^#define HMAP_THREAD_SAFE /;"	macro	line:26
 MediaArgs	media.h	/^} MediaArgs;$/;"	typedef	line:62
 PATH	main.c	/^#define PATH /;"	macro	line:4
 PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:16
@@ -25,6 +31,7 @@ Pformat	media.h	/^} Pformat;$/;"	typedef	line:13
 Player	media.h	/^} Player;$/;"	typedef	line:21
 Poutput	media.h	/^} Poutput;$/;"	typedef	line:17
 S_DONE	media.h	/^	S_DONE$/;"	enumerator	line:28
+SpiltData	temp.c	/^} SpiltData;$/;"	typedef	line:12
 Status	media.h	/^} Status;$/;"	typedef	line:29
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
 T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
@@ -32,16 +39,42 @@ T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	e
 T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
 Types	media.h	/^} Types;$/;"	typedef	line:25
 VIDEO	media.c	/^#define VIDEO /;"	macro	line:13
+__hmap_add	hashmap/hashmap.c	/^bool __hmap_add(hashmap* hmap, key in, val out) {$/;"	function	line:101
+__hmap_get	hashmap/hashmap.c	/^val __hmap_get(hashmap* hmap, key in) {$/;"	function	line:142
+__oa_hmap_add	hashmap/hashmap.c	/^static void __oa_hmap_add(key_val_pair* map, uint32_t size,$/;"	function	line:87
 afloat	media.h	/^	bool   afloat;$/;"	member	line:55
+args	temp.c	/^	char **args;$/;"	member	line:8
+capacity	hashmap/hashmap.c	/^	uint32_t capacity;$/;"	member	line:29
+del_fn	hashmap/hashmap.c	/^	void (*del_fn)(val);$/;"	member	line:33
+eq_fn	hashmap/hashmap.c	/^	bool (*eq_fn)(key, key);$/;"	member	line:31
 exclude	media.h	/^	bool  exclude;$/;"	member	line:34
 excludes	media.h	/^	char *excludes;$/;"	member	line:35
+free_hmap	hashmap/hashmap.c	/^void free_hmap(hashmap* hmap) {$/;"	function	line:63
+hash_fn	hashmap/hashmap.c	/^	uint32_t (*hash_fn)(key);$/;"	member	line:30
 hash_location	media.h	/^	char   *hash_location;$/;"	member	line:48
+hashmap	hashmap/hashmap.c	/^struct hashmap {$/;"	struct	line:26
+hashmap	hashmap/hashmap.h	/^typedef struct hashmap hashmap;$/;"	typedef	line:50
+hmap_add	hashmap/hashmap.h	/^#define hmap_add(/;"	macro	line:66
+hmap_get	hashmap/hashmap.h	/^#define hmap_get(/;"	macro	line:71
+int_del_fn	hashmap/hashmap.c	/^void int_del_fn(val q) {};$/;"	function	line:190
+int_eq_fn	hashmap/hashmap.c	/^bool int_eq_fn(key a, key b) {$/;"	function	line:186
+int_hash_fn	hashmap/hashmap.c	/^uint32_t int_hash_fn(key in) {$/;"	function	line:172
+k	hashmap/hashmap.c	/^	key k;$/;"	member	line:22
+key	hashmap/hashmap.h	/^typedef void* key;$/;"	typedef	line:46
+key_val_pair	hashmap/hashmap.c	/^struct key_val_pair {$/;"	struct	line:21
+key_val_pair	hashmap/hashmap.h	/^typedef struct key_val_pair key_val_pair;$/;"	typedef	line:49
+length	temp.c	/^	int  length;$/;"	member	line:9
+lengths	temp.c	/^	int  *lengths;$/;"	member	line:10
+lock	hashmap/hashmap.c	/^	sem_t lock;$/;"	member	line:36
 main	main.c	/^int main (int argc, char *argv[]) {$/;"	function	line:6
 main	optionParser 2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	optionParser.c	/^int main (int argc, char **argv) {$/;"	function	line:4
+main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:64
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
+map	hashmap/hashmap.c	/^	key_val_pair* map;$/;"	member	line:27
 match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:8
 media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:17
+mk_hmap	hashmap/hashmap.c	/^hashmap* mk_hmap(uint32_t (*hash_fn)(key),$/;"	function	line:41
 mplayer	media.c	/^void mplayer(char **filenames, int total_length, $/;"	function	line:43
 newest_only	media.h	/^	bool  newest_only;$/;"	member	line:36
 pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:41
@@ -53,11 +86,19 @@ player	media.h	/^	Player  player;$/;"	member	line:51
 postfix_args	media.h	/^	char   *postfix_args;$/;"	member	line:57
 prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:56
 repeat	media.h	/^	bool repeat;$/;"	member	line:60
+size	hashmap/hashmap.c	/^	uint32_t size;$/;"	member	line:28
+spilt_args	temp.c	/^char *spilt_args(char **arr, int length) {$/;"	function	line:44
+spilt_func	temp.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:14
 status	media.h	/^	Status  status;$/;"	member	line:50
-str_replace	string_util.c	/^char *str_replace(char *s,size_t len,  char *sub, char *rep) {$/;"	function	line:22
-str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s){$/;"	function	line:44
-strrep2	string_util.c	/^char *strrep2(char *s, char *sub, char *rep) {$/;"	function	line:56
+str_del_fn	hashmap/hashmap.c	/^void str_del_fn(val q) {$/;"	function	line:211
+str_eq_fn	hashmap/hashmap.c	/^bool str_eq_fn(key a, key b) {$/;"	function	line:207
+str_hash_fn	hashmap/hashmap.c	/^uint32_t str_hash_fn(key in) {$/;"	function	line:193
+str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:22
+str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:45
 sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:37
+total	temp.c	/^	int  total;$/;"	member	line:11
 types	media.h	/^	Types types;$/;"	member	line:38
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:49
+v	hashmap/hashmap.c	/^	val v;$/;"	member	line:23
+val	hashmap/hashmap.h	/^typedef void* val;$/;"	typedef	line:47
 write_history	media.h	/^	bool    write_history;$/;"	member	line:52

@@ -6,9 +6,11 @@ media: main.c media.o string_util.o
 test:  string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} -o $@ $^
 
+tempc: media.o string_util.o temp.o
+	${CC} ${CFLAGS} -o $@ $^
 
 .o:
 	${CC} ${CFLAGS} -c $*.c
 
 clean:
-	rm -f *.o *.out media  test *~
+	rm -f *.o *.out media  test testc *~
