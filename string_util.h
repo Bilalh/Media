@@ -11,7 +11,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep);
 
 char *str_spilt_replace(char *s);
 
-char *spilt_args(char **arr, int length, char *separator );
+char *spilt_args(char **arr, int length, char *separator, char *ending );
 
 typedef struct {
 	char **args;

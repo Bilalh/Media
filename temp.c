@@ -7,11 +7,8 @@
 
 
 int main (int argc, char  *argv[]) {
-	char *s_arr[] = {"fma|bbb", "q", "c"};
+	int i = match("Kidou Senshi Gundam I Gekijouban part 1.mkv", argv[1]);
+	printf("%i\n", i);
 	
-	int length = sizeof(s_arr) / sizeof(size_t);
-	char *result = spilt_args(s_arr, length,".*");
-	
-	printf("%s\n", result);
 	return 0;
 }

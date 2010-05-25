@@ -10,31 +10,38 @@
 #include "string_util.h"
 
 #define DIRENT(value) (*(struct dirent **) value)
-#define VIDEO ".*\\.mkv|mp4|mov|ogm|avi|divx|rm|rmvb|flv|part|wmv$"
-#define AUDIO  ".*\\.mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape$"				
-                              
+// #define VIDEO  ".*\\.(mkv|mp4|avi)$"
+#define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
+#define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
+  
 
 void media(char *path, char **args,int argc) {
 	struct dirent **files;
 	
+	char *regex = spilt_args(args, argc, ".*",VIDEO);
+	printf("%s\n", regex);
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
 		^ (struct dirent * s) { 
-			return match(s->d_name ,VIDEO);
+			return match(s->d_name ,regex);
 		},
 		^ (const void * a, const void * b) {
 			return strcasecmp( DIRENT(a)->d_name, DIRENT(b)->d_name);
 		}
 	);
+	printf("%i\n", file_num);
+	if (file_num == 0){
+		printf("%s\n", "NO file found");
+		exit(EXIT_FAILURE);
+	}
 	
-
 	char *sa[file_num+1];
 	int total_length = 0;
-	for(int i =0 ; i<file_num-1;++i){ 
+	for(int i =0 ; i<file_num;++i){ 
 		sa[i] = files[i]->d_name;
 		total_length += strlen(sa[i]);
 	}
-	sa[file_num-1] ="";
+	sa[file_num] ="";
 	mplayer(sa,total_length,"","",path);
 }
 
@@ -73,6 +80,6 @@ void mplayer(char **filenames, int total_length,
 	index +=rid_len;
 	
 	m_args[index] = '\0';
-	printf("%s\n", m_args);
+	// printf("%s\n", m_args);
 	system(m_args);
 }                                            

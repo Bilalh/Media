@@ -16,7 +16,6 @@ int match(const char *string, char *pattern) {
 	}
 	status = regexec(&re, string, (size_t) 0, NULL, 0);
 	regfree(&re);
-
 	return !(status != 0);
 
 }
@@ -44,7 +43,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 }
 
 
-char *spilt_args(char **arr, int length, char *separator ) {
+char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
 	// expand each element
@@ -53,8 +52,10 @@ char *spilt_args(char **arr, int length, char *separator ) {
 		total += sd_arr[i]->total;
 	}
 
-	int sep_len   = strlen(separator); // 1 for \0
-	size_t memory =  (sizeof(char) * total) + (sep_len * (length - 1)) + 2;
+	int sep_len   = strlen(separator);
+	int end_len   = strlen(ending);
+	size_t memory = // 1 for \0
+		(sizeof(char) * total) + (sep_len * (length - 1)) + end_len+ 1;
 	char *final_str = malloc(memory);
 	int index = 0;
 
@@ -67,6 +68,9 @@ char *spilt_args(char **arr, int length, char *separator ) {
 		if (i != length - 1) {
 			strncpy(&final_str[index], separator, sep_len);
 			index += sep_len;
+		}else{
+			strncpy(&final_str[index], ending, end_len);
+			index += end_len;
 		}
 	}
 
@@ -76,11 +80,10 @@ char *spilt_args(char **arr, int length, char *separator ) {
 }
 
 static char *test_hash(char *s) {
-	printf("%s\n", s);
 	if (strcmp(s, "fma" ) == 0) {
 		return strdup("full metal");
 	} else {
-		return strdup("t2");
+		return strdup(s);
 	}
 
 }
@@ -96,16 +99,16 @@ SpiltData *spilt_func(char *s) {
 		while(*s != '|' && *s != '\0' ) {
 			++s;
 		}
-		
+
 		int length = s - start;
-		
+
 		char in[length+1];
 		strncpy(in, start, length);
 		in[length] = '\0';
-		
-		res[i] = str_replace(start,  length , in, test_hash(in) );
+
+		res[i]     = str_replace(start,  length , in, test_hash(in) );
 		res_len[i] = strlen(res[i]);
-		total += res_len[i];
+		total     += res_len[i];
 
 		if (*s == '|') ++s;
 		start = s;
@@ -136,7 +139,6 @@ char *str_spilt_replace(char *s) {
 		}
 
 		res[i_res] = str_replace(start, s - start, "char*ub", "char*p");
-		printf("%s\n", res[i_res] );
 		res_len[i_res] = strlen(res[i_res]);
 		total += res_len[i_res];
 		++i_res;
