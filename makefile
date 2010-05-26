@@ -1,5 +1,5 @@
 CC = gcc -std=c99 -fblocks
-CFLAGS = -g -Wall -I ./hash -I .
+CFLAGS = -g -Wall -I . -I ./hash
 media: main.c media.o string_util.o
 	${CC} ${CFlAGS} -o $@ $^
 
@@ -13,7 +13,7 @@ hashtable.o: hash/hashtable.c
 	gcc -g -Wall -O -c hash/hashtable.c -o hashtable.o	
 
 
-tempc: hashtable.o temp.o
+tempc:  temp.o hashtable_itr.o hashtable.o
 	${CC} ${CFLAGS} -o $@ $^
 
 .o:

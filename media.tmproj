@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>makefile</string>
+	<string>hash/hashtable.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,42 +18,42 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>159</integer>
+	<integer>218</integer>
 	<key>metaData</key>
 	<dict>
-		<key>hash/tester.c</key>
+		<key>hash/hashtable.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>15</integer>
 		</dict>
-		<key>makefile</key>
+		<key>temp.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>105</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>67</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>hash/tester.c</string>
-		<string>makefile</string>
+		<string>temp.c</string>
+		<string>hash/hashtable.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -78,6 +78,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{531, 89}, {886, 787}}</string>
+	<string>{{519, 89}, {886, 787}}</string>
 </dict>
 </plist>

@@ -3,9 +3,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "hashtable.h"
-#include "hashtable_itr.h"
-
-
 char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
@@ -47,7 +44,7 @@ int equal_keys(void *k1, void *k2) {
 	struct key *ka = (struct key *)k1;
 	struct key *kb = (struct key *)k2;
 	
-	return (strcmp(ka->str, kb->str) ==0);
+	return (strcmp( (char*) ka->str,(char*) kb->str) ==0);
 }
 
 int main (int argc, char  *argv[]) {
@@ -57,13 +54,13 @@ int main (int argc, char  *argv[]) {
 	int length = sizeof(strings) / sizeof(size_t);
 
 	struct hashtable *h;
-	h = create_hashtable(16, str_hash, equal_keys);
+	h = create_hashtable(16, key_hash, equal_keys);
 
 	char *str_last;
 	for (int i = 0 ; i < length; ++i) {
 		char **ans = ep_num(strings[i]);
 		char *s = malloc(sizeof(char) * 1024);
-		struct key k;
+		struct key *k = malloc(sizeof(struct key));
 		
 		long l = 1;
 		if (ans[0] != NULL) {
@@ -76,16 +73,20 @@ int main (int argc, char  *argv[]) {
 			strcpy(s, strings[i]);
 		}
 		str_last = s;
-		k.str  = (unsigned char*)s;
-		k.full = strings[i];
+
 		printf("num: %li\n", l);
 		printf("str: %s\n", s);
 
+		k->str  = (unsigned char*)s;
+		k->full = strings[i];
 
-		int *m = malloc(sizeof(int));
-		*m  = l;
-		printf("m: %i\n", *m);
-		hashtable_insert(h,&k,m);
+		int *result = hashtable_search(h,k);
+		if (result == NULL || l > *result ){
+			free(result);
+			int *m = malloc(sizeof(int));
+			*m  = l;
+			hashtable_insert(h,k,m);
+		}
 		free(ans);
 		puts("");
 	}
@@ -101,6 +102,4 @@ int main (int argc, char  *argv[]) {
 		printf("final: %i\n", *last);
 	}
 
-
-	return 0;
 }
