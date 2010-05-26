@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include "string_util.h"
 
-/// \brief non zero on match, 0 on any error
+/// \brief Non zero on match, 0 on any error
 int match(const char *string, char *pattern) {
 	int    status;
 	regex_t    re;
@@ -20,6 +20,7 @@ int match(const char *string, char *pattern) {
 
 }
 
+/// \brief Replaces the substring sub with rep in the first len charaters of s. 
 char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);

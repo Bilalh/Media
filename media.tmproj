@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>hashmap/hashmap.c</string>
+	<string>media.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,42 +21,56 @@
 	<integer>159</integer>
 	<key>metaData</key>
 	<dict>
-		<key>hashmap/hashmap.c</key>
+		<key>media.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>16</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>131</integer>
+			<integer>3</integer>
+		</dict>
+		<key>media.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>106</integer>
+				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>67</integer>
+			<integer>0</integer>
 		</dict>
-		<key>temp.c</key>
+		<key>string_util.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -66,9 +80,10 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>temp.c</string>
+		<string>string_util.h</string>
 		<string>string_util.c</string>
-		<string>hashmap/hashmap.c</string>
+		<string>media.h</string>
+		<string>media.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -93,6 +108,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{455, 96}, {940, 782}}</string>
+	<string>{{531, 89}, {886, 787}}</string>
 </dict>
 </plist>

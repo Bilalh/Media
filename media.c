@@ -29,9 +29,9 @@ void media(char *path, char **args,int argc) {
 			return strcasecmp( DIRENT(a)->d_name, DIRENT(b)->d_name);
 		}
 	);
-	printf("%i\n", file_num);
+	
 	if (file_num == 0){
-		printf("%s\n", "NO file found");
+		printf("%s\n", "NO files found");
 		exit(EXIT_FAILURE);
 	}
 	
@@ -41,7 +41,9 @@ void media(char *path, char **args,int argc) {
 		sa[i] = files[i]->d_name;
 		total_length += strlen(sa[i]);
 	}
-	sa[file_num] ="";
+	
+	
+	
 	mplayer(sa,total_length,"","",path);
 }
 
@@ -50,10 +52,10 @@ void media(char *path, char **args,int argc) {
 void mplayer(char **filenames, int total_length, 
 		char *prefix_args, char *postfix_args, char *filepath) {
 
-	int index   = strlen(filepath) + 3; // 3 for cd 
-	char *rid   = " &> /dev/null"; // discards output
+	int index   = strlen(filepath) + 3; // 3 for cd .
+	char *rid   = " &> /dev/null";      // discards output.
 	int rid_len = strlen(rid);
-	char m_args[total_length +  // 8 for mplayer
+	char m_args[total_length +           // 8 for mplayer .
 		strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ 8];
 	
 	strcpy(m_args, "cd ");
@@ -81,5 +83,5 @@ void mplayer(char **filenames, int total_length,
 	
 	m_args[index] = '\0';
 	// printf("%s\n", m_args);
-	system(m_args);
+	// system(m_args);
 }                                            

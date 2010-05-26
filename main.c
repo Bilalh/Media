@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "media.h"
 #include "string_util.h"
-#define PATH "/Users/bilalh/Movies/.Movie/mov/"
-// #define PATH "/Users/bilalh/Movies/.Movie/divx/"
+// #define PATH "/Users/bilalh/Movies/.Movie/mov/"
+#define PATH "/Users/bilalh/Movies/.Movie/divx/"
 // #define PATH "/Users/bilalh/Movies/.Movie/OpeningP/"
 
 

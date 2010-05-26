@@ -4,22 +4,60 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AUDIO	media.c	/^#define AUDIO /;"	macro	line:14
+AUDIO	media.c	/^#define AUDIO /;"	macro	line:15
 CC	makefile	/^CC = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS = -g -Wall -I.$/;"	macro	line:2
+CFLAGS	makefile	/^CFLAGS = -g -Wall -I .\/hashmap -I .$/;"	macro	line:2
 DIRENT	media.c	/^#define DIRENT(/;"	macro	line:12
+Data Fields	doc/latex/struct_media_args.tex	/^{\\ttfamily \\#include $<$media.h$>$}$/;"	subsubsection	line:7
+Data Fields	doc/latex/struct_spilt_data.tex	/^{\\ttfamily \\#include $<$string\\_\\-util.h$>$}$/;"	subsubsection	line:7
+Data Fields	doc/latex/structhashmap.tex	/^\\end{figure}$/;"	subsubsection	line:13
+Data Fields	doc/latex/structkey__val__pair.tex	/^}$/;"	subsubsection	line:4
+Data Structure Documentation	doc/latex/refman.tex	/^\\input{files}$/;"	chapter	line:57
+Data Structure Index	doc/latex/refman.tex	/^\\hypersetup{pageanchor=true}$/;"	chapter	line:53
+Data Structures	doc/latex/annotated.tex	/^\\section{Data Structures}$/;"	section	line:0
+Data Structures	doc/latex/media_8h.tex	/^\\end{figure}$/;"	subsubsection	line:11
+Data Structures	doc/latex/string__util_8h.tex	/^\\end{figure}$/;"	subsubsection	line:11
+Define Documentation	doc/latex/hashmap_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:60
+Defines	doc/latex/hashmap_8h.tex	/^\\end{figure}$/;"	subsubsection	line:21
+Detailed Description	doc/latex/struct_media_args.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:49
+Detailed Description	doc/latex/struct_spilt_data.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:19
+Detailed Description	doc/latex/structhashmap.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:30
+Detailed Description	doc/latex/structkey__val__pair.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:11
+Enumerations	doc/latex/media_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:16
 F_M3U	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_PLIST	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_PLS	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
 F_XSPF	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:12
+Field Documentation	doc/latex/struct_media_args.tex	/^Definition at line 30 of file media.h.$/;"	subsubsection	line:55
+Field Documentation	doc/latex/struct_spilt_data.tex	/^Definition at line 14 of file string\\_\\-util.h.$/;"	subsubsection	line:25
+Field Documentation	doc/latex/structhashmap.tex	/^Definition at line 26 of file hashmap.c.$/;"	subsubsection	line:36
+Field Documentation	doc/latex/structkey__val__pair.tex	/^Definition at line 21 of file hashmap.c.$/;"	subsubsection	line:17
+File Documentation	doc/latex/refman.tex	/^\\include{struct_spilt_data}$/;"	chapter	line:62
+File Index	doc/latex/refman.tex	/^\\input{annotated}$/;"	chapter	line:55
+File List	doc/latex/files.tex	/^\\section{File List}$/;"	section	line:0
+Function Documentation	doc/latex/hashmap_8h.tex	/^Definition at line 47 of file hashmap.h.$/;"	subsubsection	line:164
+Function Documentation	doc/latex/option_parser_012_8c.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:19
+Function Documentation	doc/latex/option_parser_8c.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:19
+Function Documentation	doc/latex/string__util_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:29
+Functions	doc/latex/hashmap_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:49
+Functions	doc/latex/media_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:45
+Functions	doc/latex/option_parser_012_8c.tex	/^\\end{figure}$/;"	subsubsection	line:14
+Functions	doc/latex/option_parser_8c.tex	/^\\end{figure}$/;"	subsubsection	line:14
+Functions	doc/latex/string__util_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:16
 HASHMAP_H	hashmap/hashmap.h	/^#define HASHMAP_H$/;"	macro	line:20
+HMAP _ DESTRUCTORS	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-DESTRUCTORS@{HMAP\\_\\-DESTRUCTORS}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:75
+HMAP _ GROWTH _ RATE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-GROWTH\\_\\-RATE@{HMAP\\_\\-GROWTH\\_\\-RATE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:93
+HMAP _ MAKE _ HASHFN	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-MAKE\\_\\-HASHFN@{HMAP\\_\\-MAKE\\_\\-HASHFN}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:102
+HMAP _ PRESET _ SIZE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-PRESET\\_\\-SIZE@{HMAP\\_\\-PRESET\\_\\-SIZE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:111
+HMAP _ THREAD _ SAFE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-THREAD\\_\\-SAFE@{HMAP\\_\\-THREAD\\_\\-SAFE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:120
 HMAP_DESTRUCTORS	hashmap/hashmap.h	/^#define HMAP_DESTRUCTORS	/;"	macro	line:27
 HMAP_GROWTH_RATE	hashmap/hashmap.h	/^#define HMAP_GROWTH_RATE /;"	macro	line:23
 HMAP_MAKE_HASHFN	hashmap/hashmap.h	/^#define HMAP_MAKE_HASHFN	/;"	macro	line:25
 HMAP_PRESET_SIZE	hashmap/hashmap.h	/^#define HMAP_PRESET_SIZE /;"	macro	line:22
 HMAP_THREAD_SAFE	hashmap/hashmap.h	/^#define HMAP_THREAD_SAFE /;"	macro	line:26
 MediaArgs	media.h	/^} MediaArgs;$/;"	typedef	line:62
-PATH	main.c	/^#define PATH /;"	macro	line:5
+MediaArgs Struct Reference	doc/latex/struct_media_args.tex	/^\\hypertarget{struct_media_args}{$/;"	section	line:1
+PATH	main.c	/^#define PATH /;"	macro	line:6
 PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:16
 PL_NONE	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:16
 PL_PLAYLIST	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:16
@@ -31,75 +69,989 @@ Pformat	media.h	/^} Pformat;$/;"	typedef	line:13
 Player	media.h	/^} Player;$/;"	typedef	line:21
 Poutput	media.h	/^} Poutput;$/;"	typedef	line:17
 S_DONE	media.h	/^	S_DONE$/;"	enumerator	line:28
-SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:21
+SearchBox	doc/html/search/search.js	/^function SearchBox(name, resultsPath, inFrame, label)$/;"	class	line:92
+SearchBox.Activate	doc/html/search/search.js	/^  this.Activate = function(isActive)$/;"	method	line:409
+SearchBox.CloseResultsWindow	doc/html/search/search.js	/^  this.CloseResultsWindow = function()$/;"	method	line:325
+SearchBox.CloseSelectionWindow	doc/html/search/search.js	/^  this.CloseSelectionWindow = function()$/;"	method	line:332
+SearchBox.DOMPopupSearchResults	doc/html/search/search.js	/^  this.DOMPopupSearchResults = function()$/;"	method	line:121
+SearchBox.DOMPopupSearchResultsWindow	doc/html/search/search.js	/^  this.DOMPopupSearchResultsWindow = function()$/;"	method	line:124
+SearchBox.DOMSearchBox	doc/html/search/search.js	/^  this.DOMSearchBox = function()$/;"	method	line:130
+SearchBox.DOMSearchClose	doc/html/search/search.js	/^  this.DOMSearchClose = function()$/;"	method	line:127
+SearchBox.DOMSearchField	doc/html/search/search.js	/^  this.DOMSearchField = function()$/;"	method	line:112
+SearchBox.DOMSearchSelect	doc/html/search/search.js	/^  this.DOMSearchSelect = function()$/;"	method	line:115
+SearchBox.DOMSearchSelectWindow	doc/html/search/search.js	/^  this.DOMSearchSelectWindow = function()$/;"	method	line:118
+SearchBox.OnSearchFieldChange	doc/html/search/search.js	/^  this.OnSearchFieldChange = function(evt)$/;"	method	line:187
+SearchBox.OnSearchFieldFocus	doc/html/search/search.js	/^  this.OnSearchFieldFocus = function(isActive)$/;"	method	line:136
+SearchBox.OnSearchSelectHide	doc/html/search/search.js	/^  this.OnSearchSelectHide = function()$/;"	method	line:180
+SearchBox.OnSearchSelectKey	doc/html/search/search.js	/^  this.OnSearchSelectKey = function(evt)$/;"	method	line:300
+SearchBox.OnSearchSelectShow	doc/html/search/search.js	/^  this.OnSearchSelectShow = function()$/;"	method	line:141
+SearchBox.OnSelectItem	doc/html/search/search.js	/^  this.OnSelectItem = function(id)$/;"	method	line:289
+SearchBox.Search	doc/html/search/search.js	/^  this.Search = function()$/;"	method	line:338
+SearchBox.SelectItemCount	doc/html/search/search.js	/^  this.SelectItemCount = function(id)$/;"	method	line:249
+SearchBox.SelectItemSet	doc/html/search/search.js	/^  this.SelectItemSet = function(id)$/;"	method	line:264
+SearchResults	doc/html/search/search.js	/^function SearchResults(name)$/;"	class	line:439
+SearchResults.FindChildElement	doc/html/search/search.js	/^    this.FindChildElement = function(id)$/;"	method	line:447
+SearchResults.Nav	doc/html/search/search.js	/^    this.Nav = function(evt,itemIndex) $/;"	method	line:622
+SearchResults.NavChild	doc/html/search/search.js	/^    this.NavChild = function(evt,itemIndex,childIndex)$/;"	method	line:700
+SearchResults.NavNext	doc/html/search/search.js	/^    this.NavNext = function(index)$/;"	method	line:557
+SearchResults.NavPrev	doc/html/search/search.js	/^    this.NavPrev = function(index)$/;"	method	line:578
+SearchResults.ProcessKeys	doc/html/search/search.js	/^    this.ProcessKeys = function(e)$/;"	method	line:599
+SearchResults.Search	doc/html/search/search.js	/^    this.Search = function(search)$/;"	method	line:504
+SearchResults.Toggle	doc/html/search/search.js	/^    this.Toggle = function(id)$/;"	method	line:483
+SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:19
+SpiltData Struct Reference	doc/latex/struct_spilt_data.tex	/^\\hypertarget{struct_spilt_data}{$/;"	section	line:1
 Status	media.h	/^} Status;$/;"	typedef	line:29
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
 T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
 T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
 T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:24
+Typedef Documentation	doc/latex/hashmap_8h.tex	/^Definition at line 26 of file hashmap.h.$/;"	subsubsection	line:125
+Typedefs	doc/latex/hashmap_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:38
 Types	media.h	/^} Types;$/;"	typedef	line:25
-VIDEO	media.c	/^#define VIDEO /;"	macro	line:13
+VIDEO	media.c	/^#define VIDEO /;"	macro	line:14
+_ _ hmap _ add	doc/latex/hashmap_8h.tex	/^\\index{\\_\\-\\_\\-hmap\\_\\-add@{\\_\\-\\_\\-hmap\\_\\-add}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:171
+_ _ hmap _ get	doc/latex/hashmap_8h.tex	/^\\index{\\_\\-\\_\\-hmap\\_\\-get@{\\_\\-\\_\\-hmap\\_\\-get}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:180
 __hmap_add	hashmap/hashmap.c	/^bool __hmap_add(hashmap* hmap, key in, val out) {$/;"	function	line:101
 __hmap_get	hashmap/hashmap.c	/^val __hmap_get(hashmap* hmap, key in) {$/;"	function	line:142
 __oa_hmap_add	hashmap/hashmap.c	/^static void __oa_hmap_add(key_val_pair* map, uint32_t size,$/;"	function	line:87
+_details	doc/html/struct_media_args.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:51
+_details	doc/html/struct_spilt_data.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:36
+_details	doc/html/structhashmap.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:44
+_details	doc/html/structkey__val__pair.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:32
+afloat	doc/latex/struct_media_args.tex	/^\\index{afloat@{afloat}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:62
 afloat	media.h	/^	bool   afloat;$/;"	member	line:55
-args	string_util.h	/^	char **args;$/;"	member	line:17
+args	doc/latex/struct_spilt_data.tex	/^\\index{args@{args}!SpiltData@{SpiltData}}$/;"	subsubsection	line:32
+args	string_util.h	/^	char **args;$/;"	member	line:15
+capacity	doc/latex/structhashmap.tex	/^\\index{capacity@{capacity}!hashmap@{hashmap}}$/;"	subsubsection	line:43
 capacity	hashmap/hashmap.c	/^	uint32_t capacity;$/;"	member	line:29
+convertToId	doc/html/search/search.js	/^function convertToId(search)$/;"	function	line:34
+del _ fn	doc/latex/structhashmap.tex	/^\\index{del\\_\\-fn@{del\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:52
 del_fn	hashmap/hashmap.c	/^	void (*del_fn)(val);$/;"	member	line:33
+eq _ fn	doc/latex/structhashmap.tex	/^\\index{eq\\_\\-fn@{eq\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:61
 eq_fn	hashmap/hashmap.c	/^	bool (*eq_fn)(key, key);$/;"	member	line:31
+exclude	doc/latex/struct_media_args.tex	/^\\index{exclude@{exclude}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:71
 exclude	media.h	/^	bool  exclude;$/;"	member	line:34
+excludes	doc/latex/struct_media_args.tex	/^\\index{excludes@{excludes}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:80
 excludes	media.h	/^	char *excludes;$/;"	member	line:35
+free _ hmap	doc/latex/hashmap_8h.tex	/^\\index{free\\_\\-hmap@{free\\_\\-hmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:189
 free_hmap	hashmap/hashmap.c	/^void free_hmap(hashmap* hmap) {$/;"	function	line:63
+getXPos	doc/html/search/search.js	/^function getXPos(item)$/;"	function	line:57
+getYPos	doc/html/search/search.js	/^function getYPos(item)$/;"	function	line:71
+hash _ fn	doc/latex/structhashmap.tex	/^\\index{hash\\_\\-fn@{hash\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:70
+hash _ location	doc/latex/struct_media_args.tex	/^\\index{hash\\_\\-location@{hash\\_\\-location}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:89
 hash_fn	hashmap/hashmap.c	/^	uint32_t (*hash_fn)(key);$/;"	member	line:30
 hash_location	media.h	/^	char   *hash_location;$/;"	member	line:48
+hashmap	doc/latex/hashmap_8h.tex	/^\\index{hashmap@{hashmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:132
 hashmap	hashmap/hashmap.c	/^struct hashmap {$/;"	struct	line:26
 hashmap	hashmap/hashmap.h	/^typedef struct hashmap hashmap;$/;"	typedef	line:50
+hashmap Struct Reference	doc/latex/structhashmap.tex	/^\\hypertarget{structhashmap}{$/;"	section	line:1
+hashmap hashmap c File Reference	doc/latex/hashmap_8c.tex	/^\\hypertarget{hashmap_8c}{$/;"	section	line:1
+hashmap hashmap h File Reference	doc/latex/hashmap_8h.tex	/^\\hypertarget{hashmap_8h}{$/;"	section	line:1
+hmap _ add	doc/latex/hashmap_8h.tex	/^\\index{hmap\\_\\-add@{hmap\\_\\-add}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:66
+hmap _ get	doc/latex/hashmap_8h.tex	/^\\index{hmap\\_\\-get@{hmap\\_\\-get}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:84
 hmap_add	hashmap/hashmap.h	/^#define hmap_add(/;"	macro	line:66
 hmap_get	hashmap/hashmap.h	/^#define hmap_get(/;"	macro	line:71
+indexSectionNames.0	doc/html/search/search.js	/^{$/;"	property	line:22
+indexSectionNames.1	doc/html/search/search.js	/^  0: "all",$/;"	property	line:23
+indexSectionNames.2	doc/html/search/search.js	/^  1: "classes",$/;"	property	line:24
+indexSectionNames.3	doc/html/search/search.js	/^  2: "files",$/;"	property	line:25
+indexSectionNames.4	doc/html/search/search.js	/^  3: "functions",$/;"	property	line:26
+indexSectionNames.5	doc/html/search/search.js	/^  4: "variables",$/;"	property	line:27
+indexSectionNames.6	doc/html/search/search.js	/^  5: "typedefs",$/;"	property	line:28
+indexSectionNames.7	doc/html/search/search.js	/^  6: "enums",$/;"	property	line:29
+indexSectionNames.8	doc/html/search/search.js	/^  7: "enumvalues",$/;"	property	line:30
+indexSectionsWithContent.0	doc/html/search/search.js	/^{$/;"	property	line:9
+indexSectionsWithContent.1	doc/html/search/search.js	/^  0: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101111011011111101111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:10
+indexSectionsWithContent.2	doc/html/search/search.js	/^  1: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010010100000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:11
+indexSectionsWithContent.3	doc/html/search/search.js	/^  2: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000101000110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:12
+indexSectionsWithContent.4	doc/html/search/search.js	/^  3: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000001001000100000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:13
+indexSectionsWithContent.5	doc/html/search/search.js	/^  4: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101110010011110101111110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:14
+indexSectionsWithContent.6	doc/html/search/search.js	/^  5: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010010000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:15
+indexSectionsWithContent.7	doc/html/search/search.js	/^  6: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:16
+indexSectionsWithContent.8	doc/html/search/search.js	/^  7: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000100110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:17
 int_del_fn	hashmap/hashmap.c	/^void int_del_fn(val q) {};$/;"	function	line:190
 int_eq_fn	hashmap/hashmap.c	/^bool int_eq_fn(key a, key b) {$/;"	function	line:186
 int_hash_fn	hashmap/hashmap.c	/^uint32_t int_hash_fn(key in) {$/;"	function	line:172
+k	doc/latex/structkey__val__pair.tex	/^\\index{k@{k}!key_val_pair@{key\\_\\-val\\_\\-pair}}$/;"	subsubsection	line:24
 k	hashmap/hashmap.c	/^	key k;$/;"	member	line:22
+key	doc/latex/hashmap_8h.tex	/^\\index{key@{key}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:141
 key	hashmap/hashmap.h	/^typedef void* key;$/;"	typedef	line:46
+key _ val _ pair	doc/latex/hashmap_8h.tex	/^\\index{key\\_\\-val\\_\\-pair@{key\\_\\-val\\_\\-pair}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:150
+key _ val _ pair Struct Reference	doc/latex/structkey__val__pair.tex	/^\\hypertarget{structkey__val__pair}{$/;"	section	line:1
 key_val_pair	hashmap/hashmap.c	/^struct key_val_pair {$/;"	struct	line:21
 key_val_pair	hashmap/hashmap.h	/^typedef struct key_val_pair key_val_pair;$/;"	typedef	line:49
-length	string_util.h	/^	int  length;$/;"	member	line:18
-lengths	string_util.h	/^	int  *lengths;$/;"	member	line:19
+l00001	doc/html/hashmap_8c_source.html	/^<h1>hashmap\/hashmap.c<\/h1><a href="hashmap_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="comment">\/*<\/span>$/;"	anchor	line:25
+l00001	doc/html/hashmap_8h_source.html	/^<h1>hashmap\/hashmap.h<\/h1><a href="hashmap_8h.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="comment">\/*<\/span>$/;"	anchor	line:25
+l00001	doc/html/main_8c_source.html	/^<h1>main.c<\/h1><a href="main_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:25
+l00001	doc/html/media_8c_source.html	/^<h1>media.c<\/h1><a href="media_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;Block.h&gt;<\/span>$/;"	anchor	line:25
+l00001	doc/html/media_8h_source.html	/^<h1>media.h<\/h1><a href="media_8h.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 $/;"	anchor	line:25
+l00001	doc/html/option_parser_012_8c_source.html	/^<h1>optionParser 2.c<\/h1><a href="option_parser_012_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>    $/;"	anchor	line:25
+l00001	doc/html/option_parser_8c_source.html	/^<h1>optionParser.c<\/h1><a href="option_parser_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>    $/;"	anchor	line:25
+l00001	doc/html/string__util_8c_source.html	/^<h1>string_util.c<\/h1><a href="string__util_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:25
+l00001	doc/html/string__util_8h_source.html	/^<h1>string_util.h<\/h1><a href="string__util_8h.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 $/;"	anchor	line:25
+l00001	doc/html/string__util__test_8c_source.html	/^<h1>tests\/string_util_test.c<\/h1><a href="string__util__test_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;string.h&gt;<\/span>$/;"	anchor	line:25
+l00001	doc/html/temp_8c_source.html	/^<h1>temp.c<\/h1><a href="temp_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;string.h&gt;<\/span>$/;"	anchor	line:25
+l00002	doc/html/hashmap_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="comment"> * hashmap.c<\/span>$/;"	anchor	line:26
+l00002	doc/html/hashmap_8h_source.html	/^<a name="l00002"><\/a>00002 <span class="comment"> * hashmap.h <\/span>$/;"	anchor	line:26
+l00002	doc/html/main_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:26
+l00002	doc/html/media_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;dirent.h&gt;<\/span>$/;"	anchor	line:26
+l00002	doc/html/media_8h_source.html	/^<a name="l00002"><\/a>00002 <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#ae5296014e6378856d846436cccfbf040">media<\/a>(<span class="keywordtype">char<\/span> *path,<span class="keywordtype">char<\/span> **args, <span class="keywordtype">int<\/span> length);$/;"	anchor	line:26
+l00002	doc/html/option_parser_012_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>   $/;"	anchor	line:26
+l00002	doc/html/option_parser_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>   $/;"	anchor	line:26
+l00002	doc/html/string__util_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;string.h&gt;<\/span>$/;"	anchor	line:26
+l00002	doc/html/string__util__test_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:26
+l00002	doc/html/temp_8c_source.html	/^<a name="l00002"><\/a>00002 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:26
+l00003	doc/html/hashmap_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="comment"> * Copyright (c) 2009 Vedant Kumar &lt;vminch@gmail.com&gt;<\/span>$/;"	anchor	line:27
+l00003	doc/html/hashmap_8h_source.html	/^<a name="l00003"><\/a>00003 <span class="comment"> * Copyright (c) 2009 Vedant Kumar &lt;vminch@gmail.com&gt;<\/span>$/;"	anchor	line:27
+l00003	doc/html/main_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &quot;<a class="code" href="media_8h.html">media.h<\/a>&quot;<\/span>$/;"	anchor	line:27
+l00003	doc/html/media_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:27
+l00003	doc/html/media_8h_source.html	/^<a name="l00003"><\/a>00003 $/;"	anchor	line:27
+l00003	doc/html/option_parser_012_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;getopt.h&gt;<\/span>   $/;"	anchor	line:27
+l00003	doc/html/option_parser_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;getopt.h&gt;<\/span>   $/;"	anchor	line:27
+l00003	doc/html/string__util_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;regex.h&gt;<\/span>$/;"	anchor	line:27
+l00003	doc/html/string__util__test_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;stdarg.h&gt;<\/span>$/;"	anchor	line:27
+l00003	doc/html/temp_8c_source.html	/^<a name="l00003"><\/a>00003 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:27
+l00004	doc/html/hashmap_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="comment"> *   - with thanks to nvteighen and tinivole of ubuntuforums.org<\/span>$/;"	anchor	line:28
+l00004	doc/html/hashmap_8h_source.html	/^<a name="l00004"><\/a>00004 <span class="comment"> *   - with thanks to nvteighen and tinivole of ubuntuforums.org<\/span>$/;"	anchor	line:28
+l00004	doc/html/main_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="preprocessor">#include &quot;<a class="code" href="string__util_8h.html">string_util.h<\/a>&quot;<\/span>$/;"	anchor	line:28
+l00004	doc/html/media_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:28
+l00004	doc/html/option_parser_012_8c_source.html	/^<a name="l00004"><\/a><a class="code" href="option_parser_012_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">00004<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span> **argv) {$/;"	anchor	line:28
+l00004	doc/html/option_parser_8c_source.html	/^<a name="l00004"><\/a><a class="code" href="option_parser_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">00004<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span> **argv) {$/;"	anchor	line:28
+l00004	doc/html/string__util_8c_source.html	/^<a name="l00004"><\/a>00004 $/;"	anchor	line:28
+l00004	doc/html/string__util__test_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="preprocessor">#include &quot;<a class="code" href="string__util_8h.html">string_util.h<\/a>&quot;<\/span>$/;"	anchor	line:28
+l00004	doc/html/temp_8c_source.html	/^<a name="l00004"><\/a>00004 <span class="preprocessor">#include &quot;<a class="code" href="string__util_8h.html">string_util.h<\/a>&quot;<\/span>$/;"	anchor	line:28
+l00005	doc/html/hashmap_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="comment"> *<\/span>$/;"	anchor	line:29
+l00005	doc/html/hashmap_8h_source.html	/^<a name="l00005"><\/a>00005 <span class="comment"> * <\/span>$/;"	anchor	line:29
+l00005	doc/html/main_8c_source.html	/^<a name="l00005"><\/a><a class="code" href="main_8c.html#ab0139008fdda107456f13f837872b410">00005<\/a> <span class="preprocessor">#define PATH &quot;\/Users\/bilalh\/Movies\/.Movie\/mov\/&quot;<\/span>$/;"	anchor	line:29
+l00005	doc/html/media_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="preprocessor">#include &lt;strings.h&gt;<\/span>$/;"	anchor	line:29
+l00005	doc/html/option_parser_012_8c_source.html	/^<a name="l00005"><\/a>00005     <span class="keywordtype">int<\/span> c;$/;"	anchor	line:29
+l00005	doc/html/option_parser_8c_source.html	/^<a name="l00005"><\/a>00005     <span class="keywordtype">int<\/span> c;$/;"	anchor	line:29
+l00005	doc/html/string__util_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:29
+l00005	doc/html/string__util__test_8c_source.html	/^<a name="l00005"><\/a><a class="code" href="string__util__test_8c.html#abf9e6b7e6f15df4b525a2e7705ba3089">00005<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span> <span class="keyword">const<\/span> *argv[]) {$/;"	anchor	line:29
+l00005	doc/html/temp_8c_source.html	/^<a name="l00005"><\/a>00005 <span class="preprocessor">#include &quot;<a class="code" href="media_8h.html">media.h<\/a>&quot;<\/span>$/;"	anchor	line:29
+l00006	doc/html/hashmap_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="comment"> * Permission to use, copy, modify, and\/or distribute this software for any<\/span>$/;"	anchor	line:30
+l00006	doc/html/hashmap_8h_source.html	/^<a name="l00006"><\/a>00006 <span class="comment"> * Permission to use, copy, modify, and\/or distribute this software for any<\/span>$/;"	anchor	line:30
+l00006	doc/html/main_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="preprocessor"><\/span><span class="comment">\/\/ #define PATH &quot;\/Users\/bilalh\/Movies\/.Movie\/divx\/&quot;<\/span>$/;"	anchor	line:30
+l00006	doc/html/media_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="preprocessor">#include &lt;sys\/types.h&gt;<\/span>$/;"	anchor	line:30
+l00006	doc/html/option_parser_012_8c_source.html	/^<a name="l00006"><\/a>00006     <span class="keywordtype">int<\/span> digit_optind = 0;$/;"	anchor	line:30
+l00006	doc/html/option_parser_8c_source.html	/^<a name="l00006"><\/a>00006     <span class="keywordtype">int<\/span> digit_optind = 0;$/;"	anchor	line:30
+l00006	doc/html/string__util_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="preprocessor">#include &lt;stdarg.h&gt;<\/span>$/;"	anchor	line:30
+l00006	doc/html/string__util_8h_source.html	/^<a name="l00006"><\/a>00006 <span class="keywordtype">int<\/span> <a class="code" href="string__util_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="Non zero on match, 0 on any error.">match<\/a>(<span class="keyword">const<\/span> <span class="keywordtype">char<\/span> *<span class="keywordtype">string<\/span>, <span class="keywordtype">char<\/span> *pattern);$/;"	anchor	line:26
+l00006	doc/html/string__util__test_8c_source.html	/^<a name="l00006"><\/a>00006  <span class="keywordtype">char<\/span> *s = <span class="stringliteral">&quot;fma|kga&quot;<\/span>;$/;"	anchor	line:30
+l00006	doc/html/temp_8c_source.html	/^<a name="l00006"><\/a>00006 <span class="preprocessor">#include &quot;<a class="code" href="hashmap_8h.html">hashmap.h<\/a>&quot;<\/span>$/;"	anchor	line:30
+l00007	doc/html/hashmap_8c_source.html	/^<a name="l00007"><\/a>00007 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above<\/span>$/;"	anchor	line:31
+l00007	doc/html/hashmap_8h_source.html	/^<a name="l00007"><\/a>00007 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above<\/span>$/;"	anchor	line:31
+l00007	doc/html/main_8c_source.html	/^<a name="l00007"><\/a>00007 <span class="comment">\/\/ #define PATH &quot;\/Users\/bilalh\/Movies\/.Movie\/OpeningP\/&quot;<\/span>$/;"	anchor	line:31
+l00007	doc/html/media_8c_source.html	/^<a name="l00007"><\/a>00007 <span class="preprocessor">#include &lt;unistd.h&gt;<\/span>$/;"	anchor	line:31
+l00007	doc/html/media_8h_source.html	/^<a name="l00007"><\/a>00007 <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#acac9068358d6c2a4153dcdab67a9ea42" title="Filenames should end with &amp;quot;&amp;quot;, total length the length of all the strings...">mplayer<\/a>(<span class="keywordtype">char<\/span> **filenames, <span class="keywordtype">int<\/span> total_length, <span class="keywordtype">char<\/span> *prefix_args, <span class="keywordtype">char<\/span> *postfix_args, <span class="keywordtype">char<\/span> *filepath);$/;"	anchor	line:28
+l00007	doc/html/option_parser_012_8c_source.html	/^<a name="l00007"><\/a>00007     <span class="keywordtype">int<\/span> aopt = 0, bopt = 0;$/;"	anchor	line:31
+l00007	doc/html/option_parser_8c_source.html	/^<a name="l00007"><\/a>00007     <span class="keywordtype">int<\/span> aopt = 0, bopt = 0;$/;"	anchor	line:31
+l00007	doc/html/string__util_8c_source.html	/^<a name="l00007"><\/a>00007 <span class="preprocessor">#include &quot;<a class="code" href="string__util_8h.html">string_util.h<\/a>&quot;<\/span>$/;"	anchor	line:31
+l00007	doc/html/string__util_8h_source.html	/^<a name="l00007"><\/a>00007 $/;"	anchor	line:27
+l00007	doc/html/string__util__test_8c_source.html	/^<a name="l00007"><\/a>00007  <span class="keywordtype">char<\/span> *r = <a class="code" href="string__util_8c.html#a4336e41c9f809c940ad6b6b8b441b705" title="Replaces the substring sub with rep in the first len charaters of s.">str_replace<\/a>(s,strlen(s), <span class="stringliteral">&quot;fma&quot;<\/span>, <span class="stringliteral">&quot;Fullmetal Alchemist&quot;<\/span>);$/;"	anchor	line:31
+l00007	doc/html/temp_8c_source.html	/^<a name="l00007"><\/a>00007 $/;"	anchor	line:31
+l00008	doc/html/hashmap_8c_source.html	/^<a name="l00008"><\/a>00008 <span class="comment"> * copyright notice and this permission notice appear in all copies.<\/span>$/;"	anchor	line:32
+l00008	doc/html/hashmap_8h_source.html	/^<a name="l00008"><\/a>00008 <span class="comment"> * copyright notice and this permission notice appear in all copies.<\/span>$/;"	anchor	line:32
+l00008	doc/html/main_8c_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:32
+l00008	doc/html/media_8c_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:32
+l00008	doc/html/media_8h_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:29
+l00008	doc/html/option_parser_012_8c_source.html	/^<a name="l00008"><\/a>00008     <span class="keywordtype">char<\/span> *copt = 0, *dopt = 0;$/;"	anchor	line:32
+l00008	doc/html/option_parser_8c_source.html	/^<a name="l00008"><\/a>00008     <span class="keywordtype">char<\/span> *copt = 0, *dopt = 0;$/;"	anchor	line:32
+l00008	doc/html/string__util_8c_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:32
+l00008	doc/html/string__util_8h_source.html	/^<a name="l00008"><\/a>00008 <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a4336e41c9f809c940ad6b6b8b441b705" title="Replaces the substring sub with rep in the first len charaters of s.">str_replace<\/a>(<span class="keywordtype">char<\/span> *s, <span class="keywordtype">size_t<\/span> len,  <span class="keywordtype">char<\/span> *sub, <span class="keywordtype">char<\/span> *rep);$/;"	anchor	line:28
+l00008	doc/html/string__util__test_8c_source.html	/^<a name="l00008"><\/a>00008  printf(<span class="stringliteral">&quot;s %lu r %lu \\n&quot;<\/span>, strlen(s) , strlen(r));$/;"	anchor	line:32
+l00008	doc/html/temp_8c_source.html	/^<a name="l00008"><\/a>00008 $/;"	anchor	line:32
+l00009	doc/html/hashmap_8c_source.html	/^<a name="l00009"><\/a>00009 <span class="comment"> *<\/span>$/;"	anchor	line:33
+l00009	doc/html/hashmap_8h_source.html	/^<a name="l00009"><\/a>00009 <span class="comment"> * <\/span>$/;"	anchor	line:33
+l00009	doc/html/main_8c_source.html	/^<a name="l00009"><\/a>00009 $/;"	anchor	line:33
+l00009	doc/html/media_8c_source.html	/^<a name="l00009"><\/a>00009 <span class="preprocessor">#include &quot;<a class="code" href="media_8h.html">media.h<\/a>&quot;<\/span>$/;"	anchor	line:33
+l00009	doc/html/media_8h_source.html	/^<a name="l00009"><\/a>00009 $/;"	anchor	line:30
+l00009	doc/html/option_parser_012_8c_source.html	/^<a name="l00009"><\/a>00009     <span class="keyword">static<\/span> <span class="keyword">struct <\/span>option long_options[] = {$/;"	anchor	line:33
+l00009	doc/html/option_parser_8c_source.html	/^<a name="l00009"><\/a>00009     <span class="keyword">static<\/span> <span class="keyword">struct <\/span>option long_options[] = {$/;"	anchor	line:33
+l00009	doc/html/string__util_8h_source.html	/^<a name="l00009"><\/a>00009 $/;"	anchor	line:29
+l00009	doc/html/string__util__test_8c_source.html	/^<a name="l00009"><\/a>00009  printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, s);$/;"	anchor	line:33
+l00009	doc/html/temp_8c_source.html	/^<a name="l00009"><\/a><a class="code" href="temp_8c.html#a0ddf1224851353fc92bfbff6f499fa97">00009<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span>  *argv[]) {$/;"	anchor	line:33
+l00010	doc/html/hashmap_8c_source.html	/^<a name="l00010"><\/a>00010 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES<\/span>$/;"	anchor	line:34
+l00010	doc/html/hashmap_8h_source.html	/^<a name="l00010"><\/a>00010 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES<\/span>$/;"	anchor	line:34
+l00010	doc/html/main_8c_source.html	/^<a name="l00010"><\/a><a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">00010<\/a> <span class="keywordtype">int<\/span> <a class="code" href="main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main<\/a> (<span class="keywordtype">int<\/span> argc, <span class="keywordtype">char<\/span> **argv) {$/;"	anchor	line:34
+l00010	doc/html/media_8c_source.html	/^<a name="l00010"><\/a>00010 <span class="preprocessor">#include &quot;<a class="code" href="string__util_8h.html">string_util.h<\/a>&quot;<\/span>$/;"	anchor	line:34
+l00010	doc/html/media_8h_source.html	/^<a name="l00010"><\/a><a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549ab">00010<\/a> <span class="keyword">typedef<\/span> <span class="keyword">enum<\/span> {$/;"	anchor	line:31
+l00010	doc/html/option_parser_012_8c_source.html	/^<a name="l00010"><\/a>00010         {<span class="stringliteral">&quot;add&quot;<\/span>, 1, 0, 0},$/;"	anchor	line:34
+l00010	doc/html/option_parser_8c_source.html	/^<a name="l00010"><\/a>00010         {<span class="stringliteral">&quot;add&quot;<\/span>, 1, 0, 0},$/;"	anchor	line:34
+l00010	doc/html/string__util_8c_source.html	/^<a name="l00010"><\/a><a class="code" href="string__util_8h.html#a613aaf9cf7b0a71ac4f620e013bc75fc">00010<\/a> <span class="keywordtype">int<\/span> <a class="code" href="string__util_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="Non zero on match, 0 on any error.">match<\/a>(<span class="keyword">const<\/span> <span class="keywordtype">char<\/span> *<span class="keywordtype">string<\/span>, <span class="keywordtype">char<\/span> *pattern) {$/;"	anchor	line:33
+l00010	doc/html/string__util_8h_source.html	/^<a name="l00010"><\/a>00010 <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a75e9d9a208ec8d0cc8f2c71d81584df7">str_spilt_replace<\/a>(<span class="keywordtype">char<\/span> *s);$/;"	anchor	line:30
+l00010	doc/html/string__util__test_8c_source.html	/^<a name="l00010"><\/a>00010  printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, r);$/;"	anchor	line:34
+l00010	doc/html/temp_8c_source.html	/^<a name="l00010"><\/a>00010  <span class="keywordtype">int<\/span> i = <a class="code" href="string__util_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="Non zero on match, 0 on any error.">match<\/a>(<span class="stringliteral">&quot;Kidou Senshi Gundam I Gekijouban part 1.mkv&quot;<\/span>, argv[1]);$/;"	anchor	line:34
+l00011	doc/html/hashmap_8c_source.html	/^<a name="l00011"><\/a>00011 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF<\/span>$/;"	anchor	line:35
+l00011	doc/html/hashmap_8h_source.html	/^<a name="l00011"><\/a>00011 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF<\/span>$/;"	anchor	line:35
+l00011	doc/html/main_8c_source.html	/^<a name="l00011"><\/a>00011  <span class="keywordflow">if<\/span> (argc &lt; 3) {$/;"	anchor	line:35
+l00011	doc/html/media_8c_source.html	/^<a name="l00011"><\/a>00011 $/;"	anchor	line:35
+l00011	doc/html/media_8h_source.html	/^<a name="l00011"><\/a><a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549aba3f75364e8062db3cb738444f252646e0">00011<\/a>  <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549aba50dcaed6d7249b183b04b5daf75026b2">F_M3U<\/a>, <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549aba6cb97341a9142973a6f660c6d90d503e">F_PLIST<\/a>, <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549aba4a06affeb4183531aa2a25835dc741fb">F_PLS<\/a>, <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549aba3f75364e8062db3cb738444f252646e0">F_XSPF<\/a>$/;"	anchor	line:32
+l00011	doc/html/option_parser_012_8c_source.html	/^<a name="l00011"><\/a>00011         {<span class="stringliteral">&quot;append&quot;<\/span>, 0, 0, 0},$/;"	anchor	line:35
+l00011	doc/html/option_parser_8c_source.html	/^<a name="l00011"><\/a>00011         {<span class="stringliteral">&quot;append&quot;<\/span>, 0, 0, 0},$/;"	anchor	line:35
+l00011	doc/html/string__util_8c_source.html	/^<a name="l00011"><\/a>00011  <span class="keywordtype">int<\/span>    status;$/;"	anchor	line:34
+l00011	doc/html/string__util_8h_source.html	/^<a name="l00011"><\/a>00011 $/;"	anchor	line:31
+l00011	doc/html/string__util__test_8c_source.html	/^<a name="l00011"><\/a>00011  $/;"	anchor	line:35
+l00011	doc/html/temp_8c_source.html	/^<a name="l00011"><\/a>00011  printf(<span class="stringliteral">&quot;%i\\n&quot;<\/span>, i);$/;"	anchor	line:35
+l00012	doc/html/hashmap_8c_source.html	/^<a name="l00012"><\/a>00012 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR<\/span>$/;"	anchor	line:36
+l00012	doc/html/hashmap_8h_source.html	/^<a name="l00012"><\/a>00012 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR<\/span>$/;"	anchor	line:36
+l00012	doc/html/main_8c_source.html	/^<a name="l00012"><\/a>00012   puts(<span class="stringliteral">&quot;Media dir regex&quot;<\/span>);$/;"	anchor	line:36
+l00012	doc/html/media_8c_source.html	/^<a name="l00012"><\/a><a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">00012<\/a> <span class="preprocessor">#define DIRENT(value) (*(struct dirent **) value)<\/span>$/;"	anchor	line:36
+l00012	doc/html/media_8h_source.html	/^<a name="l00012"><\/a>00012 } <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549ab">Pformat<\/a>;$/;"	anchor	line:33
+l00012	doc/html/option_parser_012_8c_source.html	/^<a name="l00012"><\/a>00012         {<span class="stringliteral">&quot;delete&quot;<\/span>,  required_argument, 0, <span class="charliteral">&#39;d&#39;<\/span>},        $/;"	anchor	line:36
+l00012	doc/html/option_parser_8c_source.html	/^<a name="l00012"><\/a>00012         {<span class="stringliteral">&quot;delete&quot;<\/span>,  required_argument, 0, <span class="charliteral">&#39;d&#39;<\/span>},        $/;"	anchor	line:36
+l00012	doc/html/string__util_8c_source.html	/^<a name="l00012"><\/a>00012  regex_t    re;$/;"	anchor	line:35
+l00012	doc/html/string__util_8h_source.html	/^<a name="l00012"><\/a>00012 <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a05ec2c9cfc4ba35c80569b17c226e910">spilt_args<\/a>(<span class="keywordtype">char<\/span> **arr, <span class="keywordtype">int<\/span> length, <span class="keywordtype">char<\/span> *separator, <span class="keywordtype">char<\/span> *ending );$/;"	anchor	line:32
+l00012	doc/html/string__util__test_8c_source.html	/^<a name="l00012"><\/a>00012  <span class="keywordflow">return<\/span> 0;$/;"	anchor	line:36
+l00012	doc/html/temp_8c_source.html	/^<a name="l00012"><\/a>00012  $/;"	anchor	line:36
+l00013	doc/html/hashmap_8c_source.html	/^<a name="l00013"><\/a>00013 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES<\/span>$/;"	anchor	line:37
+l00013	doc/html/hashmap_8h_source.html	/^<a name="l00013"><\/a>00013 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES<\/span>$/;"	anchor	line:37
+l00013	doc/html/main_8c_source.html	/^<a name="l00013"><\/a>00013   exit(0);$/;"	anchor	line:37
+l00013	doc/html/media_8c_source.html	/^<a name="l00013"><\/a>00013 <span class="preprocessor"><\/span><span class="comment">\/\/ #define VIDEO  &quot;.*\\\\.(mkv|mp4|avi)$&quot;<\/span>$/;"	anchor	line:37
+l00013	doc/html/media_8h_source.html	/^<a name="l00013"><\/a>00013 $/;"	anchor	line:34
+l00013	doc/html/option_parser_012_8c_source.html	/^<a name="l00013"><\/a>00013   {<span class="stringliteral">&quot;verbose&quot;<\/span>, 0, 0, 0},$/;"	anchor	line:37
+l00013	doc/html/option_parser_8c_source.html	/^<a name="l00013"><\/a>00013   {<span class="stringliteral">&quot;verbose&quot;<\/span>, 0, 0, 0},$/;"	anchor	line:37
+l00013	doc/html/string__util_8c_source.html	/^<a name="l00013"><\/a>00013 $/;"	anchor	line:36
+l00013	doc/html/string__util_8h_source.html	/^<a name="l00013"><\/a>00013 $/;"	anchor	line:33
+l00013	doc/html/string__util__test_8c_source.html	/^<a name="l00013"><\/a>00013 }$/;"	anchor	line:37
+l00013	doc/html/temp_8c_source.html	/^<a name="l00013"><\/a>00013  <span class="keywordflow">return<\/span> 0;$/;"	anchor	line:37
+l00014	doc/html/hashmap_8c_source.html	/^<a name="l00014"><\/a>00014 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN<\/span>$/;"	anchor	line:38
+l00014	doc/html/hashmap_8h_source.html	/^<a name="l00014"><\/a>00014 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN<\/span>$/;"	anchor	line:38
+l00014	doc/html/main_8c_source.html	/^<a name="l00014"><\/a>00014  }$/;"	anchor	line:38
+l00014	doc/html/media_8c_source.html	/^<a name="l00014"><\/a><a class="code" href="media_8c.html#a708e40467feb1c2109c63cdf12d88c29">00014<\/a> <span class="preprocessor">#define VIDEO  &quot;.*\\\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$&quot;<\/span>$/;"	anchor	line:38
+l00014	doc/html/media_8h_source.html	/^<a name="l00014"><\/a><a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eea">00014<\/a> <span class="keyword">typedef<\/span> <span class="keyword">enum<\/span> {$/;"	anchor	line:35
+l00014	doc/html/option_parser_012_8c_source.html	/^<a name="l00014"><\/a>00014         {<span class="stringliteral">&quot;create&quot;<\/span>, 1, 0, <span class="charliteral">&#39;c&#39;<\/span>},$/;"	anchor	line:38
+l00014	doc/html/option_parser_8c_source.html	/^<a name="l00014"><\/a>00014         {<span class="stringliteral">&quot;create&quot;<\/span>, 1, 0, <span class="charliteral">&#39;c&#39;<\/span>},$/;"	anchor	line:38
+l00014	doc/html/string__util_8c_source.html	/^<a name="l00014"><\/a>00014  <span class="keywordflow">if<\/span> (regcomp(&amp;re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {$/;"	anchor	line:37
+l00014	doc/html/string__util_8h_source.html	/^<a name="l00014"><\/a><a class="code" href="struct_spilt_data.html">00014<\/a> <span class="keyword">typedef<\/span> <span class="keyword">struct <\/span>{$/;"	anchor	line:34
+l00014	doc/html/temp_8c_source.html	/^<a name="l00014"><\/a>00014 }$/;"	anchor	line:38
+l00015	doc/html/hashmap_8c_source.html	/^<a name="l00015"><\/a>00015 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF<\/span>$/;"	anchor	line:39
+l00015	doc/html/hashmap_8h_source.html	/^<a name="l00015"><\/a>00015 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF<\/span>$/;"	anchor	line:39
+l00015	doc/html/main_8c_source.html	/^<a name="l00015"><\/a>00015  <a class="code" href="media_8c.html#ae5296014e6378856d846436cccfbf040">media<\/a>(<a class="code" href="main_8c.html#ab0139008fdda107456f13f837872b410">PATH<\/a>,&amp;argv[2],argc-2);$/;"	anchor	line:39
+l00015	doc/html/media_8c_source.html	/^<a name="l00015"><\/a><a class="code" href="media_8c.html#a73ed4be5c2afc6b3c6d872c67f06b27b">00015<\/a> <span class="preprocessor"><\/span><span class="preprocessor">#define AUDIO  &quot;.*\\\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$&quot;<\/span>$/;"	anchor	line:39
+l00015	doc/html/media_8h_source.html	/^<a name="l00015"><\/a><a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eeaa313d13430578bb76e6017321e48cd095">00015<\/a>  <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eeaa8f8368df28c91ba1e51b3977a7ea8ac8">PL_NONE<\/a> = 0x0, <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eeaa313d13430578bb76e6017321e48cd095">PL_STDOUT<\/a> = 0x1, <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eeaa659ecb04341e91b0f85c6f17cc4d47ec">PL_PLAYLIST<\/a> = 0x2, <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eeaaa14cdf0afa8dfbbcde0b331c9cd174cd">PL_BOTH<\/a> = 0x3$/;"	anchor	line:36
+l00015	doc/html/option_parser_012_8c_source.html	/^<a name="l00015"><\/a>00015         {<span class="stringliteral">&quot;file&quot;<\/span>, 1, 0, 0},$/;"	anchor	line:39
+l00015	doc/html/option_parser_8c_source.html	/^<a name="l00015"><\/a>00015         {<span class="stringliteral">&quot;file&quot;<\/span>, 1, 0, 0},$/;"	anchor	line:39
+l00015	doc/html/string__util_8c_source.html	/^<a name="l00015"><\/a>00015   <span class="keywordflow">return<\/span>(0);$/;"	anchor	line:38
+l00015	doc/html/string__util_8h_source.html	/^<a name="l00015"><\/a><a class="code" href="struct_spilt_data.html#aa24f72e6a4d6a997528142211b375496">00015<\/a>  <span class="keywordtype">char<\/span> **args;$/;"	anchor	line:35
+l00016	doc/html/hashmap_8c_source.html	/^<a name="l00016"><\/a>00016 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.<\/span>$/;"	anchor	line:40
+l00016	doc/html/hashmap_8h_source.html	/^<a name="l00016"><\/a>00016 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.<\/span>$/;"	anchor	line:40
+l00016	doc/html/main_8c_source.html	/^<a name="l00016"><\/a>00016  <span class="keywordflow">return<\/span> 0;$/;"	anchor	line:40
+l00016	doc/html/media_8c_source.html	/^<a name="l00016"><\/a>00016 <span class="preprocessor"><\/span>  $/;"	anchor	line:40
+l00016	doc/html/media_8h_source.html	/^<a name="l00016"><\/a>00016 } <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eea">Poutput<\/a>;$/;"	anchor	line:37
+l00016	doc/html/option_parser_012_8c_source.html	/^<a name="l00016"><\/a>00016         {NULL, 0, NULL, 0}$/;"	anchor	line:40
+l00016	doc/html/option_parser_8c_source.html	/^<a name="l00016"><\/a>00016         {NULL, 0, NULL, 0}$/;"	anchor	line:40
+l00016	doc/html/string__util_8c_source.html	/^<a name="l00016"><\/a>00016  }$/;"	anchor	line:39
+l00016	doc/html/string__util_8h_source.html	/^<a name="l00016"><\/a><a class="code" href="struct_spilt_data.html#a9f59b34b1f25fe00023291b678246bcc">00016<\/a>  <span class="keywordtype">int<\/span>  length;$/;"	anchor	line:36
+l00017	doc/html/hashmap_8c_source.html	/^<a name="l00017"><\/a>00017 <span class="comment"> *\/<\/span>$/;"	anchor	line:41
+l00017	doc/html/hashmap_8h_source.html	/^<a name="l00017"><\/a>00017 <span class="comment"> *\/<\/span>$/;"	anchor	line:41
+l00017	doc/html/main_8c_source.html	/^<a name="l00017"><\/a>00017 }$/;"	anchor	line:41
+l00017	doc/html/media_8c_source.html	/^<a name="l00017"><\/a>00017 $/;"	anchor	line:41
+l00017	doc/html/media_8h_source.html	/^<a name="l00017"><\/a>00017 $/;"	anchor	line:38
+l00017	doc/html/option_parser_012_8c_source.html	/^<a name="l00017"><\/a>00017     };$/;"	anchor	line:41
+l00017	doc/html/option_parser_8c_source.html	/^<a name="l00017"><\/a>00017     };$/;"	anchor	line:41
+l00017	doc/html/string__util_8c_source.html	/^<a name="l00017"><\/a>00017  status = regexec(&amp;re, <span class="keywordtype">string<\/span>, (<span class="keywordtype">size_t<\/span>) 0, NULL, 0);$/;"	anchor	line:40
+l00017	doc/html/string__util_8h_source.html	/^<a name="l00017"><\/a><a class="code" href="struct_spilt_data.html#a5d60d4025e037d09ff777deccb085f0b">00017<\/a>  <span class="keywordtype">int<\/span>  *lengths;$/;"	anchor	line:37
+l00018	doc/html/hashmap_8c_source.html	/^<a name="l00018"><\/a>00018 $/;"	anchor	line:42
+l00018	doc/html/hashmap_8h_source.html	/^<a name="l00018"><\/a>00018 $/;"	anchor	line:42
+l00018	doc/html/media_8c_source.html	/^<a name="l00018"><\/a><a class="code" href="media_8h.html#a73bf776057e0e17a2d7166c40b1470ae">00018<\/a> <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#ae5296014e6378856d846436cccfbf040">media<\/a>(<span class="keywordtype">char<\/span> *path, <span class="keywordtype">char<\/span> **args,<span class="keywordtype">int<\/span> argc) {$/;"	anchor	line:42
+l00018	doc/html/media_8h_source.html	/^<a name="l00018"><\/a><a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9">00018<\/a> <span class="keyword">typedef<\/span> <span class="keyword">enum<\/span> {$/;"	anchor	line:39
+l00018	doc/html/option_parser_012_8c_source.html	/^<a name="l00018"><\/a>00018     <span class="keywordtype">int<\/span> option_index = 0;$/;"	anchor	line:42
+l00018	doc/html/option_parser_8c_source.html	/^<a name="l00018"><\/a>00018     <span class="keywordtype">int<\/span> option_index = 0;$/;"	anchor	line:42
+l00018	doc/html/string__util_8c_source.html	/^<a name="l00018"><\/a>00018  regfree(&amp;re);$/;"	anchor	line:41
+l00018	doc/html/string__util_8h_source.html	/^<a name="l00018"><\/a><a class="code" href="struct_spilt_data.html#ac7af894858cf396a219d632f40afdc8d">00018<\/a>  <span class="keywordtype">int<\/span>  total;$/;"	anchor	line:38
+l00019	doc/html/hashmap_8c_source.html	/^<a name="l00019"><\/a>00019 <span class="preprocessor">#include &quot;<a class="code" href="hashmap_8h.html">hashmap.h<\/a>&quot;<\/span>$/;"	anchor	line:43
+l00019	doc/html/hashmap_8h_source.html	/^<a name="l00019"><\/a>00019 <span class="preprocessor">#ifndef HASHMAP_H<\/span>$/;"	anchor	line:43
+l00019	doc/html/media_8c_source.html	/^<a name="l00019"><\/a>00019  <span class="keyword">struct <\/span>dirent **files;$/;"	anchor	line:43
+l00019	doc/html/media_8h_source.html	/^<a name="l00019"><\/a><a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9aed947b18b778550818a2574c453159e3">00019<\/a>  <a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9aaa7711aca1a3f717205fd72ae8042867">P_MPLAYER<\/a>, <a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9aafe88a9ecee9823208d5412e85ee2e36">P_NICEPLAYER<\/a>,  <a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9aed947b18b778550818a2574c453159e3">P_VLC<\/a>$/;"	anchor	line:40
+l00019	doc/html/option_parser_012_8c_source.html	/^<a name="l00019"><\/a>00019     <span class="keywordflow">while<\/span> ((c = getopt_long(argc, argv, <span class="stringliteral">&quot;abc:d:012&quot;<\/span>,$/;"	anchor	line:43
+l00019	doc/html/option_parser_8c_source.html	/^<a name="l00019"><\/a>00019     <span class="keywordflow">while<\/span> ((c = getopt_long(argc, argv, <span class="stringliteral">&quot;abc:d:012&quot;<\/span>,$/;"	anchor	line:43
+l00019	doc/html/string__util_8c_source.html	/^<a name="l00019"><\/a>00019  <span class="keywordflow">return<\/span> !(status != 0);$/;"	anchor	line:42
+l00019	doc/html/string__util_8h_source.html	/^<a name="l00019"><\/a>00019 } <a class="code" href="struct_spilt_data.html">SpiltData<\/a>;$/;"	anchor	line:39
+l00020	doc/html/hashmap_8c_source.html	/^<a name="l00020"><\/a>00020 $/;"	anchor	line:44
+l00020	doc/html/hashmap_8h_source.html	/^<a name="l00020"><\/a>00020 <span class="preprocessor"><\/span><span class="preprocessor">#define HASHMAP_H<\/span>$/;"	anchor	line:44
+l00020	doc/html/media_8c_source.html	/^<a name="l00020"><\/a>00020  $/;"	anchor	line:44
+l00020	doc/html/media_8h_source.html	/^<a name="l00020"><\/a>00020 } <a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9">Player<\/a>;$/;"	anchor	line:41
+l00020	doc/html/option_parser_012_8c_source.html	/^<a name="l00020"><\/a>00020                  long_options, &amp;option_index)) != -1) {$/;"	anchor	line:44
+l00020	doc/html/option_parser_8c_source.html	/^<a name="l00020"><\/a>00020                  long_options, &amp;option_index)) != -1) {$/;"	anchor	line:44
+l00020	doc/html/string__util_8c_source.html	/^<a name="l00020"><\/a>00020 $/;"	anchor	line:43
+l00020	doc/html/string__util_8h_source.html	/^<a name="l00020"><\/a>00020 $/;"	anchor	line:40
+l00021	doc/html/hashmap_8c_source.html	/^<a name="l00021"><\/a><a class="code" href="structkey__val__pair.html#a5ff482413af7d6536eb80c1030311977">00021<\/a> <span class="keyword">struct <\/span><a class="code" href="structkey__val__pair.html">key_val_pair<\/a> {$/;"	anchor	line:45
+l00021	doc/html/hashmap_8h_source.html	/^<a name="l00021"><\/a>00021 <span class="preprocessor"><\/span>$/;"	anchor	line:45
+l00021	doc/html/media_8c_source.html	/^<a name="l00021"><\/a>00021  <span class="keywordtype">char<\/span> *regex = <a class="code" href="string__util_8c.html#a05ec2c9cfc4ba35c80569b17c226e910">spilt_args<\/a>(args, argc, <span class="stringliteral">&quot;.*&quot;<\/span>,<a class="code" href="media_8c.html#a708e40467feb1c2109c63cdf12d88c29">VIDEO<\/a>);$/;"	anchor	line:45
+l00021	doc/html/media_8h_source.html	/^<a name="l00021"><\/a>00021 $/;"	anchor	line:42
+l00021	doc/html/option_parser_012_8c_source.html	/^<a name="l00021"><\/a>00021         <span class="keywordtype">int<\/span> this_option_optind = optind ? optind : 1;$/;"	anchor	line:45
+l00021	doc/html/option_parser_8c_source.html	/^<a name="l00021"><\/a>00021         <span class="keywordtype">int<\/span> this_option_optind = optind ? optind : 1;$/;"	anchor	line:45
+l00021	doc/html/string__util_8c_source.html	/^<a name="l00021"><\/a>00021 }$/;"	anchor	line:44
+l00021	doc/html/string__util_8h_source.html	/^<a name="l00021"><\/a>00021 <a class="code" href="struct_spilt_data.html">SpiltData<\/a> *<a class="code" href="string__util_8c.html#ae7d953cc2740234d7fed7cc149821128">spilt_func<\/a>(<span class="keywordtype">char<\/span> *s);$/;"	anchor	line:41
+l00022	doc/html/hashmap_8c_source.html	/^<a name="l00022"><\/a><a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">00022<\/a>  <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> <a class="code" href="structkey__val__pair.html#a5ff482413af7d6536eb80c1030311977">k<\/a>;$/;"	anchor	line:46
+l00022	doc/html/hashmap_8h_source.html	/^<a name="l00022"><\/a><a class="code" href="hashmap_8h.html#a0608f8d9f2838590042d124738d76c0e">00022<\/a> <span class="preprocessor">#define HMAP_PRESET_SIZE  2 &lt;&lt; 6 \/\/ use a power of 2 for faster array access<\/span>$/;"	anchor	line:46
+l00022	doc/html/media_8c_source.html	/^<a name="l00022"><\/a>00022  printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, regex);$/;"	anchor	line:46
+l00022	doc/html/media_8h_source.html	/^<a name="l00022"><\/a><a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32">00022<\/a> <span class="keyword">typedef<\/span> <span class="keyword">enum<\/span> {$/;"	anchor	line:43
+l00022	doc/html/option_parser_012_8c_source.html	/^<a name="l00022"><\/a>00022         <span class="keywordflow">switch<\/span> (c) {$/;"	anchor	line:46
+l00022	doc/html/option_parser_8c_source.html	/^<a name="l00022"><\/a>00022         <span class="keywordflow">switch<\/span> (c) {$/;"	anchor	line:46
+l00022	doc/html/string__util_8c_source.html	/^<a name="l00022"><\/a>00022 $/;"	anchor	line:45
+l00023	doc/html/hashmap_8c_source.html	/^<a name="l00023"><\/a>00023  <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> <a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a>;$/;"	anchor	line:47
+l00023	doc/html/hashmap_8h_source.html	/^<a name="l00023"><\/a><a class="code" href="hashmap_8h.html#a27b8a322823216f8fe5f4987bfb03b40">00023<\/a> <span class="preprocessor"><\/span><span class="preprocessor">#define HMAP_GROWTH_RATE  2<\/span>$/;"	anchor	line:47
+l00023	doc/html/media_8c_source.html	/^<a name="l00023"><\/a>00023  <span class="comment">\/\/ gets dir listing ignoring case and matching the patten<\/span>$/;"	anchor	line:47
+l00023	doc/html/media_8h_source.html	/^<a name="l00023"><\/a><a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32a1546b2b7c3065fbd190d5ceab7fff2ce">00023<\/a>  <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32a0068efa79fe6ee9e0f9060a1758739ea">T_NONE<\/a> = 0x0, <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32a1546b2b7c3065fbd190d5ceab7fff2ce">T_VIDEO<\/a> = 0x1, <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32a3aecbeb9b6670eeae199a40cc4511a9e">T_AUDIO<\/a> = 0x2, <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32a5374fc29efb83f265ed31cd37df12000">T_BOTH<\/a> = 0x3$/;"	anchor	line:44
+l00023	doc/html/option_parser_012_8c_source.html	/^<a name="l00023"><\/a>00023         <span class="keywordflow">case<\/span> 0:$/;"	anchor	line:47
+l00023	doc/html/option_parser_8c_source.html	/^<a name="l00023"><\/a>00023         <span class="keywordflow">case<\/span> 0:$/;"	anchor	line:47
+l00024	doc/html/hashmap_8c_source.html	/^<a name="l00024"><\/a>00024 };$/;"	anchor	line:48
+l00024	doc/html/hashmap_8h_source.html	/^<a name="l00024"><\/a>00024 <span class="preprocessor"><\/span>$/;"	anchor	line:48
+l00024	doc/html/media_8c_source.html	/^<a name="l00024"><\/a>00024  <span class="keywordtype">int<\/span> file_num = scandir_b( path, &amp;files,$/;"	anchor	line:48
+l00024	doc/html/media_8h_source.html	/^<a name="l00024"><\/a>00024 } <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32">Types<\/a>;$/;"	anchor	line:45
+l00024	doc/html/option_parser_012_8c_source.html	/^<a name="l00024"><\/a>00024             printf (<span class="stringliteral">&quot;option %s&quot;<\/span>, long_options[option_index].name);$/;"	anchor	line:48
+l00024	doc/html/option_parser_8c_source.html	/^<a name="l00024"><\/a>00024             printf (<span class="stringliteral">&quot;option %s&quot;<\/span>, long_options[option_index].name);$/;"	anchor	line:48
+l00024	doc/html/string__util_8c_source.html	/^<a name="l00024"><\/a><a class="code" href="string__util_8h.html#a4336e41c9f809c940ad6b6b8b441b705">00024<\/a> <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a4336e41c9f809c940ad6b6b8b441b705" title="Replaces the substring sub with rep in the first len charaters of s.">str_replace<\/a>(<span class="keywordtype">char<\/span> *s, <span class="keywordtype">size_t<\/span> len,  <span class="keywordtype">char<\/span> *sub, <span class="keywordtype">char<\/span> *rep) {$/;"	anchor	line:46
+l00025	doc/html/hashmap_8c_source.html	/^<a name="l00025"><\/a>00025 $/;"	anchor	line:49
+l00025	doc/html/hashmap_8h_source.html	/^<a name="l00025"><\/a><a class="code" href="hashmap_8h.html#a6e2899d08eed0523d773802dbaca5751">00025<\/a> <span class="preprocessor">#define HMAP_MAKE_HASHFN \/\/ build a few hash functions <\/span>$/;"	anchor	line:49
+l00025	doc/html/media_8c_source.html	/^<a name="l00025"><\/a>00025   ^ (<span class="keyword">struct<\/span> dirent * s) { $/;"	anchor	line:49
+l00025	doc/html/media_8h_source.html	/^<a name="l00025"><\/a>00025 $/;"	anchor	line:46
+l00025	doc/html/option_parser_012_8c_source.html	/^<a name="l00025"><\/a>00025             <span class="keywordflow">if<\/span> (optarg)$/;"	anchor	line:49
+l00025	doc/html/option_parser_8c_source.html	/^<a name="l00025"><\/a>00025             <span class="keywordflow">if<\/span> (optarg)$/;"	anchor	line:49
+l00025	doc/html/string__util_8c_source.html	/^<a name="l00025"><\/a>00025  <span class="keywordtype">int<\/span> rep_len = strlen(rep);$/;"	anchor	line:47
+l00026	doc/html/hashmap_8c_source.html	/^<a name="l00026"><\/a><a class="code" href="structhashmap.html">00026<\/a> <span class="keyword">struct <\/span><a class="code" href="structhashmap.html">hashmap<\/a> {$/;"	anchor	line:50
+l00026	doc/html/hashmap_8h_source.html	/^<a name="l00026"><\/a><a class="code" href="hashmap_8h.html#a5a6ad35cb8e0f95f0d1df86e1051b2e0">00026<\/a> <span class="preprocessor"><\/span><span class="preprocessor">#define HMAP_THREAD_SAFE  \/\/ add &quot;-lrt&quot; to your GCC compile flags<\/span>$/;"	anchor	line:50
+l00026	doc/html/media_8c_source.html	/^<a name="l00026"><\/a>00026    <span class="keywordflow">return<\/span> <a class="code" href="string__util_8c.html#a613aaf9cf7b0a71ac4f620e013bc75fc" title="Non zero on match, 0 on any error.">match<\/a>(s-&gt;d_name ,regex);$/;"	anchor	line:50
+l00026	doc/html/media_8h_source.html	/^<a name="l00026"><\/a><a class="code" href="media_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">00026<\/a> <span class="keyword">typedef<\/span> <span class="keyword">enum<\/span> {$/;"	anchor	line:47
+l00026	doc/html/option_parser_012_8c_source.html	/^<a name="l00026"><\/a>00026                 printf (<span class="stringliteral">&quot; with arg %s&quot;<\/span>, optarg);$/;"	anchor	line:50
+l00026	doc/html/option_parser_8c_source.html	/^<a name="l00026"><\/a>00026                 printf (<span class="stringliteral">&quot; with arg %s&quot;<\/span>, optarg);$/;"	anchor	line:50
+l00026	doc/html/string__util_8c_source.html	/^<a name="l00026"><\/a>00026  <span class="keywordtype">int<\/span> sub_len = strlen(sub);$/;"	anchor	line:48
+l00027	doc/html/hashmap_8c_source.html	/^<a name="l00027"><\/a><a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">00027<\/a>  <a class="code" href="structkey__val__pair.html">key_val_pair<\/a>* <a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>;$/;"	anchor	line:51
+l00027	doc/html/hashmap_8h_source.html	/^<a name="l00027"><\/a><a class="code" href="hashmap_8h.html#ab3efd615de2f565df4e179d28ea443c8">00027<\/a> <span class="preprocessor"><\/span><span class="preprocessor">#define HMAP_DESTRUCTORS \/\/ require destructors for value clean-up<\/span>$/;"	anchor	line:51
+l00027	doc/html/media_8c_source.html	/^<a name="l00027"><\/a>00027   },$/;"	anchor	line:51
+l00027	doc/html/media_8h_source.html	/^<a name="l00027"><\/a><a class="code" href="media_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba9f07884eddeff6b53d64dd0e49b1e69b">00027<\/a>  <a class="code" href="media_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70ba9f07884eddeff6b53d64dd0e49b1e69b">S_DONE<\/a>$/;"	anchor	line:48
+l00027	doc/html/option_parser_012_8c_source.html	/^<a name="l00027"><\/a>00027             printf (<span class="stringliteral">&quot;\\n&quot;<\/span>);$/;"	anchor	line:51
+l00027	doc/html/option_parser_8c_source.html	/^<a name="l00027"><\/a>00027             printf (<span class="stringliteral">&quot;\\n&quot;<\/span>);$/;"	anchor	line:51
+l00027	doc/html/string__util_8c_source.html	/^<a name="l00027"><\/a>00027  <span class="keywordtype">char<\/span> *r     = malloc(len * 2 + rep_len * 2 + 100 );$/;"	anchor	line:49
+l00028	doc/html/hashmap_8c_source.html	/^<a name="l00028"><\/a><a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">00028<\/a>  uint32_t <a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">size<\/a>;$/;"	anchor	line:52
+l00028	doc/html/hashmap_8h_source.html	/^<a name="l00028"><\/a>00028 <span class="preprocessor"><\/span>$/;"	anchor	line:52
+l00028	doc/html/media_8c_source.html	/^<a name="l00028"><\/a>00028   ^ (<span class="keyword">const<\/span> <span class="keywordtype">void<\/span> * a, <span class="keyword">const<\/span> <span class="keywordtype">void<\/span> * b) {$/;"	anchor	line:52
+l00028	doc/html/media_8h_source.html	/^<a name="l00028"><\/a>00028 } <a class="code" href="media_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status<\/a>;$/;"	anchor	line:49
+l00028	doc/html/option_parser_012_8c_source.html	/^<a name="l00028"><\/a>00028             <span class="keywordflow">break<\/span>;$/;"	anchor	line:52
+l00028	doc/html/option_parser_8c_source.html	/^<a name="l00028"><\/a>00028             <span class="keywordflow">break<\/span>;$/;"	anchor	line:52
+l00028	doc/html/string__util_8c_source.html	/^<a name="l00028"><\/a>00028 $/;"	anchor	line:50
+l00029	doc/html/hashmap_8c_source.html	/^<a name="l00029"><\/a><a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">00029<\/a>  uint32_t <a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>;$/;"	anchor	line:53
+l00029	doc/html/hashmap_8h_source.html	/^<a name="l00029"><\/a>00029 <span class="preprocessor">#ifdef HMAP_MAKE_HASHFN<\/span>$/;"	anchor	line:53
+l00029	doc/html/media_8c_source.html	/^<a name="l00029"><\/a>00029    <span class="keywordflow">return<\/span> strcasecmp( <a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">DIRENT<\/a>(a)-&gt;d_name, <a class="code" href="media_8c.html#a605917f1cfa78dfcfae65ce2383e4aa4">DIRENT<\/a>(b)-&gt;d_name);$/;"	anchor	line:53
+l00029	doc/html/media_8h_source.html	/^<a name="l00029"><\/a>00029 $/;"	anchor	line:50
+l00029	doc/html/option_parser_012_8c_source.html	/^<a name="l00029"><\/a>00029         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;0&#39;<\/span>:$/;"	anchor	line:53
+l00029	doc/html/option_parser_8c_source.html	/^<a name="l00029"><\/a>00029         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;0&#39;<\/span>:$/;"	anchor	line:53
+l00029	doc/html/string__util_8c_source.html	/^<a name="l00029"><\/a>00029  <span class="comment">\/\/ counters for s and r<\/span>$/;"	anchor	line:51
+l00030	doc/html/hashmap_8c_source.html	/^<a name="l00030"><\/a><a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">00030<\/a>  uint32_t (*<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a>)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:54
+l00030	doc/html/hashmap_8h_source.html	/^<a name="l00030"><\/a>00030 <span class="preprocessor"><\/span><span class="preprocessor"> #include &lt;string.h&gt;<\/span>$/;"	anchor	line:54
+l00030	doc/html/media_8c_source.html	/^<a name="l00030"><\/a>00030   }$/;"	anchor	line:54
+l00030	doc/html/media_8h_source.html	/^<a name="l00030"><\/a><a class="code" href="struct_media_args.html">00030<\/a> <span class="keyword">typedef<\/span> <span class="keyword">struct <\/span>{$/;"	anchor	line:51
+l00030	doc/html/option_parser_012_8c_source.html	/^<a name="l00030"><\/a>00030         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;1&#39;<\/span>:$/;"	anchor	line:54
+l00030	doc/html/option_parser_8c_source.html	/^<a name="l00030"><\/a>00030         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;1&#39;<\/span>:$/;"	anchor	line:54
+l00030	doc/html/string__util_8c_source.html	/^<a name="l00030"><\/a>00030  <span class="keywordtype">int<\/span> is = 0, ir = 0;$/;"	anchor	line:52
+l00031	doc/html/hashmap_8c_source.html	/^<a name="l00031"><\/a><a class="code" href="structhashmap.html#a466986e42387e252f20aa75ce2740e89">00031<\/a>  bool (*<a class="code" href="structhashmap.html#a466986e42387e252f20aa75ce2740e89">eq_fn<\/a>)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:55
+l00031	doc/html/hashmap_8h_source.html	/^<a name="l00031"><\/a>00031 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:55
+l00031	doc/html/media_8c_source.html	/^<a name="l00031"><\/a>00031  );$/;"	anchor	line:55
+l00031	doc/html/media_8h_source.html	/^<a name="l00031"><\/a>00031  $/;"	anchor	line:52
+l00031	doc/html/option_parser_012_8c_source.html	/^<a name="l00031"><\/a>00031         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;2&#39;<\/span>:$/;"	anchor	line:55
+l00031	doc/html/option_parser_8c_source.html	/^<a name="l00031"><\/a>00031         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;2&#39;<\/span>:$/;"	anchor	line:55
+l00031	doc/html/string__util_8c_source.html	/^<a name="l00031"><\/a>00031  <span class="keywordflow">while<\/span>(is &lt; len) {$/;"	anchor	line:53
+l00032	doc/html/hashmap_8c_source.html	/^<a name="l00032"><\/a>00032 <span class="preprocessor">#ifdef HMAP_DESTRUCTORS<\/span>$/;"	anchor	line:56
+l00032	doc/html/hashmap_8h_source.html	/^<a name="l00032"><\/a>00032 <span class="preprocessor"><\/span>$/;"	anchor	line:56
+l00032	doc/html/media_8c_source.html	/^<a name="l00032"><\/a>00032  $/;"	anchor	line:56
+l00032	doc/html/media_8h_source.html	/^<a name="l00032"><\/a>00032  <span class="comment">\/\/ Selection  <\/span>$/;"	anchor	line:53
+l00032	doc/html/option_parser_012_8c_source.html	/^<a name="l00032"><\/a>00032             <span class="keywordflow">if<\/span> (digit_optind != 0 &amp;&amp; digit_optind != this_option_optind)$/;"	anchor	line:56
+l00032	doc/html/option_parser_8c_source.html	/^<a name="l00032"><\/a>00032             <span class="keywordflow">if<\/span> (digit_optind != 0 &amp;&amp; digit_optind != this_option_optind)$/;"	anchor	line:56
+l00032	doc/html/string__util_8c_source.html	/^<a name="l00032"><\/a>00032   <span class="comment">\/\/ checks if sub is a sub string og s<\/span>$/;"	anchor	line:54
+l00033	doc/html/hashmap_8c_source.html	/^<a name="l00033"><\/a><a class="code" href="structhashmap.html#a01758051b8df41c8623f9e63d87fd11e">00033<\/a> <span class="preprocessor"><\/span> void (*<a class="code" href="structhashmap.html#a01758051b8df41c8623f9e63d87fd11e">del_fn<\/a>)(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>);$/;"	anchor	line:57
+l00033	doc/html/hashmap_8h_source.html	/^<a name="l00033"><\/a>00033 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:57
+l00033	doc/html/media_8c_source.html	/^<a name="l00033"><\/a>00033  <span class="keywordflow">if<\/span> (file_num == 0){$/;"	anchor	line:57
+l00033	doc/html/media_8h_source.html	/^<a name="l00033"><\/a><a class="code" href="struct_media_args.html#a6a2ba0dc8da092e09dae484374810da1">00033<\/a>  <span class="keywordtype">bool<\/span>  exclude;$/;"	anchor	line:54
+l00033	doc/html/option_parser_012_8c_source.html	/^<a name="l00033"><\/a>00033               printf (<span class="stringliteral">&quot;digits occur in two different argv-elements.\\n&quot;<\/span>);$/;"	anchor	line:57
+l00033	doc/html/option_parser_8c_source.html	/^<a name="l00033"><\/a>00033               printf (<span class="stringliteral">&quot;digits occur in two different argv-elements.\\n&quot;<\/span>);$/;"	anchor	line:57
+l00033	doc/html/string__util_8c_source.html	/^<a name="l00033"><\/a>00033   <span class="keywordflow">if<\/span> (s[is] == *sub &amp;&amp; strncmp(&amp;s[is], sub, sub_len) == 0 ) {$/;"	anchor	line:55
+l00034	doc/html/hashmap_8c_source.html	/^<a name="l00034"><\/a>00034 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:58
+l00034	doc/html/hashmap_8h_source.html	/^<a name="l00034"><\/a>00034 <span class="preprocessor"><\/span><span class="preprocessor"> #include &lt;semaphore.h&gt;<\/span>$/;"	anchor	line:58
+l00034	doc/html/media_8c_source.html	/^<a name="l00034"><\/a>00034   printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, <span class="stringliteral">&quot;NO files found&quot;<\/span>);$/;"	anchor	line:58
+l00034	doc/html/media_8h_source.html	/^<a name="l00034"><\/a><a class="code" href="struct_media_args.html#a9b99b75206d9383a88430e715c6a3394">00034<\/a>  <span class="keywordtype">char<\/span> *excludes;$/;"	anchor	line:55
+l00034	doc/html/option_parser_012_8c_source.html	/^<a name="l00034"><\/a>00034             digit_optind = this_option_optind;$/;"	anchor	line:58
+l00034	doc/html/option_parser_8c_source.html	/^<a name="l00034"><\/a>00034             digit_optind = this_option_optind;$/;"	anchor	line:58
+l00034	doc/html/string__util_8c_source.html	/^<a name="l00034"><\/a>00034    strncpy(&amp;r[ir], rep , rep_len);$/;"	anchor	line:56
+l00035	doc/html/hashmap_8c_source.html	/^<a name="l00035"><\/a>00035 <span class="preprocessor"><\/span><span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:59
+l00035	doc/html/hashmap_8h_source.html	/^<a name="l00035"><\/a>00035 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:59
+l00035	doc/html/media_8c_source.html	/^<a name="l00035"><\/a>00035   exit(EXIT_FAILURE);$/;"	anchor	line:59
+l00035	doc/html/media_8h_source.html	/^<a name="l00035"><\/a><a class="code" href="struct_media_args.html#aae999600403f46bfc2198041e6323dd6">00035<\/a>  <span class="keywordtype">bool<\/span>  newest_only;$/;"	anchor	line:56
+l00035	doc/html/option_parser_012_8c_source.html	/^<a name="l00035"><\/a>00035             printf (<span class="stringliteral">&quot;option %c\\n&quot;<\/span>, c);$/;"	anchor	line:59
+l00035	doc/html/option_parser_8c_source.html	/^<a name="l00035"><\/a>00035             printf (<span class="stringliteral">&quot;option %c\\n&quot;<\/span>, c);$/;"	anchor	line:59
+l00035	doc/html/string__util_8c_source.html	/^<a name="l00035"><\/a>00035    ir += rep_len;$/;"	anchor	line:57
+l00036	doc/html/hashmap_8c_source.html	/^<a name="l00036"><\/a><a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">00036<\/a> <span class="preprocessor"><\/span> sem_t <a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>;$/;"	anchor	line:60
+l00036	doc/html/hashmap_8h_source.html	/^<a name="l00036"><\/a>00036 <span class="preprocessor"><\/span>$/;"	anchor	line:60
+l00036	doc/html/media_8c_source.html	/^<a name="l00036"><\/a>00036  }$/;"	anchor	line:60
+l00036	doc/html/media_8h_source.html	/^<a name="l00036"><\/a><a class="code" href="struct_media_args.html#ac07beb661bd4dae6c351eaa15fe084f9">00036<\/a>  <span class="keywordtype">bool<\/span>  sub_dirs;$/;"	anchor	line:57
+l00036	doc/html/option_parser_012_8c_source.html	/^<a name="l00036"><\/a>00036             <span class="keywordflow">break<\/span>;$/;"	anchor	line:60
+l00036	doc/html/option_parser_8c_source.html	/^<a name="l00036"><\/a>00036             <span class="keywordflow">break<\/span>;$/;"	anchor	line:60
+l00036	doc/html/string__util_8c_source.html	/^<a name="l00036"><\/a>00036    is += sub_len;$/;"	anchor	line:58
+l00037	doc/html/hashmap_8c_source.html	/^<a name="l00037"><\/a>00037 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:61
+l00037	doc/html/hashmap_8h_source.html	/^<a name="l00037"><\/a>00037 <span class="preprocessor">#include &lt;stdint.h&gt;<\/span>$/;"	anchor	line:61
+l00037	doc/html/media_8c_source.html	/^<a name="l00037"><\/a>00037  $/;"	anchor	line:61
+l00037	doc/html/media_8h_source.html	/^<a name="l00037"><\/a><a class="code" href="struct_media_args.html#ad41462ead98d9a0536a73e9c90f22b5f">00037<\/a>  <a class="code" href="media_8h.html#a8aaeba5aed18516d10d61fe3139c9d32">Types<\/a> types;$/;"	anchor	line:58
+l00037	doc/html/option_parser_012_8c_source.html	/^<a name="l00037"><\/a>00037         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;a&#39;<\/span>:$/;"	anchor	line:61
+l00037	doc/html/option_parser_8c_source.html	/^<a name="l00037"><\/a>00037         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;a&#39;<\/span>:$/;"	anchor	line:61
+l00037	doc/html/string__util_8c_source.html	/^<a name="l00037"><\/a>00037   } <span class="keywordflow">else<\/span> { <span class="comment">\/\/ move<\/span>$/;"	anchor	line:59
+l00038	doc/html/hashmap_8c_source.html	/^<a name="l00038"><\/a>00038 <span class="preprocessor"><\/span>};$/;"	anchor	line:62
+l00038	doc/html/hashmap_8h_source.html	/^<a name="l00038"><\/a>00038 <span class="preprocessor">#include &lt;stdlib.h&gt;<\/span>$/;"	anchor	line:62
+l00038	doc/html/media_8c_source.html	/^<a name="l00038"><\/a>00038  <span class="keywordtype">char<\/span> *sa[file_num+1];$/;"	anchor	line:62
+l00038	doc/html/media_8h_source.html	/^<a name="l00038"><\/a>00038  $/;"	anchor	line:59
+l00038	doc/html/option_parser_012_8c_source.html	/^<a name="l00038"><\/a>00038             printf (<span class="stringliteral">&quot;option a\\n&quot;<\/span>);$/;"	anchor	line:62
+l00038	doc/html/option_parser_8c_source.html	/^<a name="l00038"><\/a>00038             printf (<span class="stringliteral">&quot;option a\\n&quot;<\/span>);$/;"	anchor	line:62
+l00038	doc/html/string__util_8c_source.html	/^<a name="l00038"><\/a>00038    r[ir++] = s[is++];$/;"	anchor	line:60
+l00039	doc/html/hashmap_8c_source.html	/^<a name="l00039"><\/a>00039 $/;"	anchor	line:63
+l00039	doc/html/hashmap_8h_source.html	/^<a name="l00039"><\/a>00039 <span class="preprocessor">#include &lt;stdbool.h&gt;<\/span>$/;"	anchor	line:63
+l00039	doc/html/media_8c_source.html	/^<a name="l00039"><\/a>00039  <span class="keywordtype">int<\/span> total_length = 0;$/;"	anchor	line:63
+l00039	doc/html/media_8h_source.html	/^<a name="l00039"><\/a>00039  <span class="comment">\/\/ Playlist (pl)<\/span>$/;"	anchor	line:60
+l00039	doc/html/option_parser_012_8c_source.html	/^<a name="l00039"><\/a>00039             aopt = 1;$/;"	anchor	line:63
+l00039	doc/html/option_parser_8c_source.html	/^<a name="l00039"><\/a>00039             aopt = 1;$/;"	anchor	line:63
+l00039	doc/html/string__util_8c_source.html	/^<a name="l00039"><\/a>00039   }$/;"	anchor	line:61
+l00040	doc/html/hashmap_8c_source.html	/^<a name="l00040"><\/a>00040 <span class="comment">\/\/ hashmaps need a hash function, an equality function, and a destructor<\/span>$/;"	anchor	line:64
+l00040	doc/html/hashmap_8h_source.html	/^<a name="l00040"><\/a>00040 $/;"	anchor	line:64
+l00040	doc/html/media_8c_source.html	/^<a name="l00040"><\/a>00040  <span class="keywordflow">for<\/span>(<span class="keywordtype">int<\/span> i =0 ; i&lt;file_num;++i){ $/;"	anchor	line:64
+l00040	doc/html/media_8h_source.html	/^<a name="l00040"><\/a><a class="code" href="struct_media_args.html#af8e5984f794601478482962c49dbd1af">00040<\/a>  <span class="keywordtype">char<\/span>    *pl_dir;$/;"	anchor	line:61
+l00040	doc/html/option_parser_012_8c_source.html	/^<a name="l00040"><\/a>00040             <span class="keywordflow">break<\/span>;$/;"	anchor	line:64
+l00040	doc/html/option_parser_8c_source.html	/^<a name="l00040"><\/a>00040             <span class="keywordflow">break<\/span>;$/;"	anchor	line:64
+l00040	doc/html/string__util_8c_source.html	/^<a name="l00040"><\/a>00040  }$/;"	anchor	line:62
+l00041	doc/html/hashmap_8c_source.html	/^<a name="l00041"><\/a><a class="code" href="hashmap_8c.html#a662d39470b184fbc464242b31f1fae7b">00041<\/a> <a class="code" href="structhashmap.html">hashmap<\/a>* <a class="code" href="hashmap_8c.html#a662d39470b184fbc464242b31f1fae7b">mk_hmap<\/a>(uint32_t (*hash_fn)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>),$/;"	anchor	line:65
+l00041	doc/html/hashmap_8h_source.html	/^<a name="l00041"><\/a>00041 <span class="comment">\/\/ it may be a good idea to redefine key and val if the size of either is less<\/span>$/;"	anchor	line:65
+l00041	doc/html/media_8c_source.html	/^<a name="l00041"><\/a>00041   sa[i] = files[i]-&gt;d_name;$/;"	anchor	line:65
+l00041	doc/html/media_8h_source.html	/^<a name="l00041"><\/a><a class="code" href="struct_media_args.html#aca383bd7f098def4941a77308244665d">00041<\/a>  <span class="keywordtype">char<\/span>    *pl_name;$/;"	anchor	line:62
+l00041	doc/html/option_parser_012_8c_source.html	/^<a name="l00041"><\/a>00041         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;b&#39;<\/span>:$/;"	anchor	line:65
+l00041	doc/html/option_parser_8c_source.html	/^<a name="l00041"><\/a>00041         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;b&#39;<\/span>:$/;"	anchor	line:65
+l00041	doc/html/string__util_8c_source.html	/^<a name="l00041"><\/a>00041 $/;"	anchor	line:63
+l00042	doc/html/hashmap_8c_source.html	/^<a name="l00042"><\/a>00042      <span class="keywordtype">bool<\/span> (*eq_fn)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>)$/;"	anchor	line:66
+l00042	doc/html/hashmap_8h_source.html	/^<a name="l00042"><\/a>00042 <span class="comment">\/\/ than sizeof(void*). keep in mind that the default hash functions assume that<\/span>$/;"	anchor	line:66
+l00042	doc/html/media_8c_source.html	/^<a name="l00042"><\/a>00042   total_length += strlen(sa[i]);$/;"	anchor	line:66
+l00042	doc/html/media_8h_source.html	/^<a name="l00042"><\/a><a class="code" href="struct_media_args.html#a8380979fa3ac325cb79c4a245cd0b3b2">00042<\/a>  <a class="code" href="media_8h.html#a95eece1782f16ecea023ab18dbf549ab">Pformat<\/a>  pl_format;$/;"	anchor	line:63
+l00042	doc/html/option_parser_012_8c_source.html	/^<a name="l00042"><\/a>00042             printf (<span class="stringliteral">&quot;option b\\n&quot;<\/span>);$/;"	anchor	line:66
+l00042	doc/html/option_parser_8c_source.html	/^<a name="l00042"><\/a>00042             printf (<span class="stringliteral">&quot;option b\\n&quot;<\/span>);$/;"	anchor	line:66
+l00042	doc/html/string__util_8c_source.html	/^<a name="l00042"><\/a>00042  r[ir] = <span class="charliteral">&#39;\\0&#39;<\/span>;$/;"	anchor	line:64
+l00043	doc/html/hashmap_8c_source.html	/^<a name="l00043"><\/a>00043 #ifdef <a class="code" href="hashmap_8h.html#ab3efd615de2f565df4e179d28ea443c8">HMAP_DESTRUCTORS<\/a>$/;"	anchor	line:67
+l00043	doc/html/hashmap_8h_source.html	/^<a name="l00043"><\/a>00043 <span class="comment">\/\/ key and val are void pointers, and will not work properly if they are changed<\/span>$/;"	anchor	line:67
+l00043	doc/html/media_8c_source.html	/^<a name="l00043"><\/a>00043  }$/;"	anchor	line:67
+l00043	doc/html/media_8h_source.html	/^<a name="l00043"><\/a><a class="code" href="struct_media_args.html#adc5bac6ac11bfff7910d2b3dc2959105">00043<\/a>  <a class="code" href="media_8h.html#a4b3cb4cdc09fba829cc5cd868e2e6eea">Poutput<\/a>  pl_output;$/;"	anchor	line:64
+l00043	doc/html/option_parser_012_8c_source.html	/^<a name="l00043"><\/a>00043             bopt = 1;$/;"	anchor	line:67
+l00043	doc/html/option_parser_8c_source.html	/^<a name="l00043"><\/a>00043             bopt = 1;$/;"	anchor	line:67
+l00043	doc/html/string__util_8c_source.html	/^<a name="l00043"><\/a>00043  <span class="keywordflow">return<\/span> r;$/;"	anchor	line:65
+l00044	doc/html/hashmap_8c_source.html	/^<a name="l00044"><\/a>00044      , <span class="keywordtype">void<\/span> (*del_fn)(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>)$/;"	anchor	line:68
+l00044	doc/html/hashmap_8h_source.html	/^<a name="l00044"><\/a>00044 <span class="comment">\/\/ to other (non-pointer) types.<\/span>$/;"	anchor	line:68
+l00044	doc/html/media_8c_source.html	/^<a name="l00044"><\/a>00044  $/;"	anchor	line:68
+l00044	doc/html/media_8h_source.html	/^<a name="l00044"><\/a><a class="code" href="struct_media_args.html#a8fa91db2287d5877c7af8fa795bccb88">00044<\/a>  <span class="keywordtype">bool<\/span>     pl_rand;$/;"	anchor	line:65
+l00044	doc/html/option_parser_012_8c_source.html	/^<a name="l00044"><\/a>00044             <span class="keywordflow">break<\/span>;$/;"	anchor	line:68
+l00044	doc/html/option_parser_8c_source.html	/^<a name="l00044"><\/a>00044             <span class="keywordflow">break<\/span>;$/;"	anchor	line:68
+l00044	doc/html/string__util_8c_source.html	/^<a name="l00044"><\/a>00044 }$/;"	anchor	line:66
+l00045	doc/html/hashmap_8c_source.html	/^<a name="l00045"><\/a>00045 #endif$/;"	anchor	line:69
+l00045	doc/html/hashmap_8h_source.html	/^<a name="l00045"><\/a>00045  $/;"	anchor	line:69
+l00045	doc/html/media_8c_source.html	/^<a name="l00045"><\/a>00045  sa[file_num] =<span class="stringliteral">&quot;&quot;<\/span>;$/;"	anchor	line:69
+l00045	doc/html/media_8h_source.html	/^<a name="l00045"><\/a>00045  $/;"	anchor	line:66
+l00045	doc/html/option_parser_012_8c_source.html	/^<a name="l00045"><\/a>00045         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;c&#39;<\/span>:$/;"	anchor	line:69
+l00045	doc/html/option_parser_8c_source.html	/^<a name="l00045"><\/a>00045         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;c&#39;<\/span>:$/;"	anchor	line:69
+l00045	doc/html/string__util_8c_source.html	/^<a name="l00045"><\/a>00045 $/;"	anchor	line:67
+l00046	doc/html/hashmap_8c_source.html	/^<a name="l00046"><\/a>00046     ) {$/;"	anchor	line:70
+l00046	doc/html/hashmap_8h_source.html	/^<a name="l00046"><\/a><a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">00046<\/a> <span class="keyword">typedef<\/span> <span class="keywordtype">void<\/span>* <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>;$/;"	anchor	line:70
+l00046	doc/html/media_8c_source.html	/^<a name="l00046"><\/a>00046  <a class="code" href="media_8c.html#acac9068358d6c2a4153dcdab67a9ea42" title="Filenames should end with &amp;quot;&amp;quot;, total length the length of all the strings...">mplayer<\/a>(sa,total_length,<span class="stringliteral">&quot;&quot;<\/span>,<span class="stringliteral">&quot;&quot;<\/span>,path);$/;"	anchor	line:70
+l00046	doc/html/media_8h_source.html	/^<a name="l00046"><\/a>00046  <span class="comment">\/\/ Pefs<\/span>$/;"	anchor	line:67
+l00046	doc/html/option_parser_012_8c_source.html	/^<a name="l00046"><\/a>00046             printf (<span class="stringliteral">&quot;option c with value &#39;%s&#39;\\n&quot;<\/span>, optarg);$/;"	anchor	line:70
+l00046	doc/html/option_parser_8c_source.html	/^<a name="l00046"><\/a>00046             printf (<span class="stringliteral">&quot;option c with value &#39;%s&#39;\\n&quot;<\/span>, optarg);$/;"	anchor	line:70
+l00046	doc/html/string__util_8c_source.html	/^<a name="l00046"><\/a>00046 $/;"	anchor	line:68
+l00047	doc/html/hashmap_8c_source.html	/^<a name="l00047"><\/a>00047 $/;"	anchor	line:71
+l00047	doc/html/hashmap_8h_source.html	/^<a name="l00047"><\/a><a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">00047<\/a> <span class="keyword">typedef<\/span> <span class="keywordtype">void<\/span>* <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>;$/;"	anchor	line:71
+l00047	doc/html/media_8c_source.html	/^<a name="l00047"><\/a>00047 }$/;"	anchor	line:71
+l00047	doc/html/media_8h_source.html	/^<a name="l00047"><\/a><a class="code" href="struct_media_args.html#a0a65a9d49316d5da5c04d8a2cbeeb1f7">00047<\/a>  <span class="keywordtype">char<\/span>   *hash_location;$/;"	anchor	line:68
+l00047	doc/html/option_parser_012_8c_source.html	/^<a name="l00047"><\/a>00047             copt = optarg;$/;"	anchor	line:71
+l00047	doc/html/option_parser_8c_source.html	/^<a name="l00047"><\/a>00047             copt = optarg;$/;"	anchor	line:71
+l00047	doc/html/string__util_8c_source.html	/^<a name="l00047"><\/a><a class="code" href="string__util_8h.html#a05ec2c9cfc4ba35c80569b17c226e910">00047<\/a> <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a05ec2c9cfc4ba35c80569b17c226e910">spilt_args<\/a>(<span class="keywordtype">char<\/span> **arr, <span class="keywordtype">int<\/span> length, <span class="keywordtype">char<\/span> *separator, <span class="keywordtype">char<\/span> *ending ) {$/;"	anchor	line:69
+l00048	doc/html/hashmap_8c_source.html	/^<a name="l00048"><\/a>00048  <a class="code" href="structhashmap.html">hashmap<\/a>* hmap = (<a class="code" href="structhashmap.html">hashmap<\/a>*) malloc(<span class="keyword">sizeof<\/span>(<a class="code" href="structhashmap.html">hashmap<\/a>));$/;"	anchor	line:72
+l00048	doc/html/hashmap_8h_source.html	/^<a name="l00048"><\/a>00048 $/;"	anchor	line:72
+l00048	doc/html/media_8c_source.html	/^<a name="l00048"><\/a>00048 $/;"	anchor	line:72
+l00048	doc/html/media_8h_source.html	/^<a name="l00048"><\/a><a class="code" href="struct_media_args.html#a9bac7ccb18ede20cb29788c0526ec47a">00048<\/a>  <span class="keywordtype">bool<\/span>    use_hash;$/;"	anchor	line:69
+l00048	doc/html/option_parser_012_8c_source.html	/^<a name="l00048"><\/a>00048             <span class="keywordflow">break<\/span>;$/;"	anchor	line:72
+l00048	doc/html/option_parser_8c_source.html	/^<a name="l00048"><\/a>00048             <span class="keywordflow">break<\/span>;$/;"	anchor	line:72
+l00048	doc/html/string__util_8c_source.html	/^<a name="l00048"><\/a>00048  <a class="code" href="struct_spilt_data.html">SpiltData<\/a> *sd_arr[length];$/;"	anchor	line:70
+l00049	doc/html/hashmap_8c_source.html	/^<a name="l00049"><\/a>00049  hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a> = (<a class="code" href="structkey__val__pair.html">key_val_pair<\/a>*) malloc(<span class="keyword">sizeof<\/span>(<a class="code" href="structkey__val__pair.html">key_val_pair<\/a>) * <a class="code" href="hashmap_8h.html#a0608f8d9f2838590042d124738d76c0e">HMAP_PRESET_SIZE<\/a>);$/;"	anchor	line:73
+l00049	doc/html/hashmap_8h_source.html	/^<a name="l00049"><\/a><a class="code" href="hashmap_8h.html#a0e37f3457ef251834b162f7411f461b1">00049<\/a> <span class="keyword">typedef<\/span> <span class="keyword">struct <\/span><a class="code" href="structkey__val__pair.html">key_val_pair<\/a> <a class="code" href="structkey__val__pair.html">key_val_pair<\/a>;$/;"	anchor	line:73
+l00049	doc/html/media_8h_source.html	/^<a name="l00049"><\/a><a class="code" href="struct_media_args.html#ae29aa2d4ae440022daaed1107eb306b3">00049<\/a>  <a class="code" href="media_8h.html#a67a0db04d321a74b7e7fcfd3f1a3f70b">Status<\/a>  status;$/;"	anchor	line:70
+l00049	doc/html/option_parser_012_8c_source.html	/^<a name="l00049"><\/a>00049         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;d&#39;<\/span>:$/;"	anchor	line:73
+l00049	doc/html/option_parser_8c_source.html	/^<a name="l00049"><\/a>00049         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;d&#39;<\/span>:$/;"	anchor	line:73
+l00049	doc/html/string__util_8c_source.html	/^<a name="l00049"><\/a>00049  <span class="keywordtype">int<\/span> total = 0; <span class="comment">\/\/ memory needed for final string<\/span>$/;"	anchor	line:71
+l00050	doc/html/hashmap_8c_source.html	/^<a name="l00050"><\/a>00050  hmap-&gt;<a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">size<\/a> = 0;$/;"	anchor	line:74
+l00050	doc/html/hashmap_8h_source.html	/^<a name="l00050"><\/a><a class="code" href="hashmap_8h.html#a9c843bc0a22c6d4cb420fc2613870ef3">00050<\/a> <span class="keyword">typedef<\/span> <span class="keyword">struct <\/span><a class="code" href="structhashmap.html">hashmap<\/a> <a class="code" href="structhashmap.html">hashmap<\/a>;$/;"	anchor	line:74
+l00050	doc/html/media_8h_source.html	/^<a name="l00050"><\/a><a class="code" href="struct_media_args.html#af61d6983a9396a11078805087518af88">00050<\/a>  <a class="code" href="media_8h.html#a9c8780378078e51e7c9041cbac392db9">Player<\/a>  player;$/;"	anchor	line:71
+l00050	doc/html/option_parser_012_8c_source.html	/^<a name="l00050"><\/a>00050             printf (<span class="stringliteral">&quot;option d with value &#39;%s&#39;\\n&quot;<\/span>, optarg);$/;"	anchor	line:74
+l00050	doc/html/option_parser_8c_source.html	/^<a name="l00050"><\/a>00050             printf (<span class="stringliteral">&quot;option d with value &#39;%s&#39;\\n&quot;<\/span>, optarg);$/;"	anchor	line:74
+l00050	doc/html/string__util_8c_source.html	/^<a name="l00050"><\/a>00050  <span class="comment">\/\/ expand each element<\/span>$/;"	anchor	line:72
+l00051	doc/html/hashmap_8c_source.html	/^<a name="l00051"><\/a>00051  hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a> = <a class="code" href="hashmap_8h.html#a0608f8d9f2838590042d124738d76c0e">HMAP_PRESET_SIZE<\/a>;$/;"	anchor	line:75
+l00051	doc/html/hashmap_8h_source.html	/^<a name="l00051"><\/a>00051 $/;"	anchor	line:75
+l00051	doc/html/media_8c_source.html	/^<a name="l00051"><\/a><a class="code" href="media_8h.html#acac9068358d6c2a4153dcdab67a9ea42">00051<\/a> <span class="keywordtype">void<\/span> <a class="code" href="media_8c.html#acac9068358d6c2a4153dcdab67a9ea42" title="Filenames should end with &amp;quot;&amp;quot;, total length the length of all the strings...">mplayer<\/a>(<span class="keywordtype">char<\/span> **filenames, <span class="keywordtype">int<\/span> total_length, $/;"	anchor	line:73
+l00051	doc/html/media_8h_source.html	/^<a name="l00051"><\/a><a class="code" href="struct_media_args.html#a7000134e8219d852f0def2cc6ee7ada4">00051<\/a>  <span class="keywordtype">bool<\/span>    write_history;$/;"	anchor	line:72
+l00051	doc/html/option_parser_012_8c_source.html	/^<a name="l00051"><\/a>00051             dopt = optarg;$/;"	anchor	line:75
+l00051	doc/html/option_parser_8c_source.html	/^<a name="l00051"><\/a>00051             dopt = optarg;$/;"	anchor	line:75
+l00051	doc/html/string__util_8c_source.html	/^<a name="l00051"><\/a>00051  <span class="keywordflow">for<\/span> (<span class="keywordtype">int<\/span> i = 0; i &lt; length; ++i) {$/;"	anchor	line:73
+l00052	doc/html/hashmap_8c_source.html	/^<a name="l00052"><\/a>00052  hmap-&gt;<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a> = hash_fn;$/;"	anchor	line:76
+l00052	doc/html/hashmap_8h_source.html	/^<a name="l00052"><\/a>00052 <span class="comment">\/\/ create a hashmap<\/span>$/;"	anchor	line:76
+l00052	doc/html/media_8c_source.html	/^<a name="l00052"><\/a>00052   <span class="keywordtype">char<\/span> *prefix_args, <span class="keywordtype">char<\/span> *postfix_args, <span class="keywordtype">char<\/span> *filepath) {$/;"	anchor	line:74
+l00052	doc/html/media_8h_source.html	/^<a name="l00052"><\/a>00052  $/;"	anchor	line:73
+l00052	doc/html/option_parser_012_8c_source.html	/^<a name="l00052"><\/a>00052             <span class="keywordflow">break<\/span>;$/;"	anchor	line:76
+l00052	doc/html/option_parser_8c_source.html	/^<a name="l00052"><\/a>00052             <span class="keywordflow">break<\/span>;$/;"	anchor	line:76
+l00052	doc/html/string__util_8c_source.html	/^<a name="l00052"><\/a>00052   sd_arr[i] = <a class="code" href="string__util_8c.html#ae7d953cc2740234d7fed7cc149821128">spilt_func<\/a>(arr[i]);$/;"	anchor	line:74
+l00053	doc/html/hashmap_8c_source.html	/^<a name="l00053"><\/a>00053  hmap-&gt;<a class="code" href="structhashmap.html#a466986e42387e252f20aa75ce2740e89">eq_fn<\/a> = eq_fn;$/;"	anchor	line:77
+l00053	doc/html/hashmap_8h_source.html	/^<a name="l00053"><\/a>00053 <a class="code" href="structhashmap.html">hashmap<\/a>* <a class="code" href="hashmap_8c.html#a662d39470b184fbc464242b31f1fae7b">mk_hmap<\/a>(uint32_t (*<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a>)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>),$/;"	anchor	line:77
+l00053	doc/html/media_8c_source.html	/^<a name="l00053"><\/a>00053 $/;"	anchor	line:75
+l00053	doc/html/media_8h_source.html	/^<a name="l00053"><\/a>00053  <span class="comment">\/\/ Players<\/span>$/;"	anchor	line:74
+l00053	doc/html/option_parser_012_8c_source.html	/^<a name="l00053"><\/a>00053         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;?&#39;<\/span>:$/;"	anchor	line:77
+l00053	doc/html/option_parser_8c_source.html	/^<a name="l00053"><\/a>00053         <span class="keywordflow">case<\/span> <span class="charliteral">&#39;?&#39;<\/span>:$/;"	anchor	line:77
+l00053	doc/html/string__util_8c_source.html	/^<a name="l00053"><\/a>00053   total += sd_arr[i]-&gt;<a class="code" href="struct_spilt_data.html#ac7af894858cf396a219d632f40afdc8d">total<\/a>;$/;"	anchor	line:75
+l00054	doc/html/hashmap_8c_source.html	/^<a name="l00054"><\/a>00054 <span class="preprocessor">#ifdef HMAP_DESTRUCTORS<\/span>$/;"	anchor	line:78
+l00054	doc/html/hashmap_8h_source.html	/^<a name="l00054"><\/a>00054                  <span class="keywordtype">bool<\/span> (*<a class="code" href="structhashmap.html#a466986e42387e252f20aa75ce2740e89">eq_fn<\/a>)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>)$/;"	anchor	line:78
+l00054	doc/html/media_8c_source.html	/^<a name="l00054"><\/a>00054  <span class="keywordtype">int<\/span> index   = strlen(filepath) + 3; <span class="comment">\/\/ 3 for cd .<\/span>$/;"	anchor	line:76
+l00054	doc/html/media_8h_source.html	/^<a name="l00054"><\/a><a class="code" href="struct_media_args.html#a082a1e32e2ec9884d94f57ecf8911fac">00054<\/a>  <span class="keywordtype">bool<\/span>   afloat;$/;"	anchor	line:75
+l00054	doc/html/option_parser_012_8c_source.html	/^<a name="l00054"><\/a>00054             <span class="keywordflow">break<\/span>;$/;"	anchor	line:78
+l00054	doc/html/option_parser_8c_source.html	/^<a name="l00054"><\/a>00054             <span class="keywordflow">break<\/span>;$/;"	anchor	line:78
+l00054	doc/html/string__util_8c_source.html	/^<a name="l00054"><\/a>00054  }$/;"	anchor	line:76
+l00055	doc/html/hashmap_8c_source.html	/^<a name="l00055"><\/a>00055 <span class="preprocessor"><\/span> hmap-&gt;<a class="code" href="structhashmap.html#a01758051b8df41c8623f9e63d87fd11e">del_fn<\/a> = del_fn;$/;"	anchor	line:79
+l00055	doc/html/hashmap_8h_source.html	/^<a name="l00055"><\/a>00055 #ifdef <a class="code" href="hashmap_8h.html#ab3efd615de2f565df4e179d28ea443c8">HMAP_DESTRUCTORS<\/a>$/;"	anchor	line:79
+l00055	doc/html/media_8c_source.html	/^<a name="l00055"><\/a>00055  <span class="keywordtype">char<\/span> *rid   = <span class="stringliteral">&quot; &amp;&gt; \/dev\/null&quot;<\/span>;      <span class="comment">\/\/ discards output.<\/span>$/;"	anchor	line:77
+l00055	doc/html/media_8h_source.html	/^<a name="l00055"><\/a><a class="code" href="struct_media_args.html#a5863c9ad3e9d21cb2c48c7f9a701bb99">00055<\/a>  <span class="keywordtype">char<\/span>   *prefix_args;$/;"	anchor	line:76
+l00055	doc/html/option_parser_012_8c_source.html	/^<a name="l00055"><\/a>00055         <span class="keywordflow">default<\/span>:$/;"	anchor	line:79
+l00055	doc/html/option_parser_8c_source.html	/^<a name="l00055"><\/a>00055         <span class="keywordflow">default<\/span>:$/;"	anchor	line:79
+l00055	doc/html/string__util_8c_source.html	/^<a name="l00055"><\/a>00055 $/;"	anchor	line:77
+l00056	doc/html/hashmap_8c_source.html	/^<a name="l00056"><\/a>00056 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:80
+l00056	doc/html/hashmap_8h_source.html	/^<a name="l00056"><\/a>00056                  , <span class="keywordtype">void<\/span> (*<a class="code" href="structhashmap.html#a01758051b8df41c8623f9e63d87fd11e">del_fn<\/a>)(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>)$/;"	anchor	line:80
+l00056	doc/html/media_8c_source.html	/^<a name="l00056"><\/a>00056  <span class="keywordtype">int<\/span> rid_len = strlen(rid);$/;"	anchor	line:78
+l00056	doc/html/media_8h_source.html	/^<a name="l00056"><\/a><a class="code" href="struct_media_args.html#a185ac0a72c55b38b291dce6b0e162a8f">00056<\/a>  <span class="keywordtype">char<\/span>   *postfix_args;$/;"	anchor	line:77
+l00056	doc/html/option_parser_012_8c_source.html	/^<a name="l00056"><\/a>00056             printf (<span class="stringliteral">&quot;?? getopt returned character code 0%o ??\\n&quot;<\/span>, c);$/;"	anchor	line:80
+l00056	doc/html/option_parser_8c_source.html	/^<a name="l00056"><\/a>00056             printf (<span class="stringliteral">&quot;?? getopt returned character code 0%o ??\\n&quot;<\/span>, c);$/;"	anchor	line:80
+l00056	doc/html/string__util_8c_source.html	/^<a name="l00056"><\/a>00056  <span class="keywordtype">int<\/span> sep_len   = strlen(separator);$/;"	anchor	line:78
+l00057	doc/html/hashmap_8c_source.html	/^<a name="l00057"><\/a>00057 <span class="preprocessor"><\/span><span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:81
+l00057	doc/html/hashmap_8h_source.html	/^<a name="l00057"><\/a>00057 #endif$/;"	anchor	line:81
+l00057	doc/html/media_8c_source.html	/^<a name="l00057"><\/a>00057  <span class="keywordtype">char<\/span> m_args[total_length +           <span class="comment">\/\/ 8 for mplayer .<\/span>$/;"	anchor	line:79
+l00057	doc/html/media_8h_source.html	/^<a name="l00057"><\/a>00057  $/;"	anchor	line:78
+l00057	doc/html/option_parser_012_8c_source.html	/^<a name="l00057"><\/a>00057         }$/;"	anchor	line:81
+l00057	doc/html/option_parser_8c_source.html	/^<a name="l00057"><\/a>00057         }$/;"	anchor	line:81
+l00057	doc/html/string__util_8c_source.html	/^<a name="l00057"><\/a>00057  <span class="keywordtype">int<\/span> end_len   = strlen(ending);$/;"	anchor	line:79
+l00058	doc/html/hashmap_8c_source.html	/^<a name="l00058"><\/a>00058 <span class="preprocessor"><\/span> sem_init(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>, 0, 1);$/;"	anchor	line:82
+l00058	doc/html/hashmap_8h_source.html	/^<a name="l00058"><\/a>00058     );$/;"	anchor	line:82
+l00058	doc/html/media_8c_source.html	/^<a name="l00058"><\/a>00058   strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ 8];$/;"	anchor	line:80
+l00058	doc/html/media_8h_source.html	/^<a name="l00058"><\/a>00058  <span class="comment">\/\/Nice Player<\/span>$/;"	anchor	line:79
+l00058	doc/html/option_parser_012_8c_source.html	/^<a name="l00058"><\/a>00058     }$/;"	anchor	line:82
+l00058	doc/html/option_parser_8c_source.html	/^<a name="l00058"><\/a>00058     }$/;"	anchor	line:82
+l00058	doc/html/string__util_8c_source.html	/^<a name="l00058"><\/a>00058  <span class="keywordtype">size_t<\/span> memory = <span class="comment">\/\/ 1 for \\0<\/span>$/;"	anchor	line:80
+l00059	doc/html/hashmap_8c_source.html	/^<a name="l00059"><\/a>00059 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:83
+l00059	doc/html/hashmap_8h_source.html	/^<a name="l00059"><\/a>00059 $/;"	anchor	line:83
+l00059	doc/html/media_8c_source.html	/^<a name="l00059"><\/a>00059  $/;"	anchor	line:81
+l00059	doc/html/media_8h_source.html	/^<a name="l00059"><\/a><a class="code" href="struct_media_args.html#a98c61ed9410ab805baab005fe7713d9b">00059<\/a>  <span class="keywordtype">bool<\/span> repeat;$/;"	anchor	line:80
+l00059	doc/html/option_parser_012_8c_source.html	/^<a name="l00059"><\/a>00059     <span class="keywordflow">if<\/span> (optind &lt; argc) {$/;"	anchor	line:83
+l00059	doc/html/option_parser_8c_source.html	/^<a name="l00059"><\/a>00059     <span class="keywordflow">if<\/span> (optind &lt; argc) {$/;"	anchor	line:83
+l00059	doc/html/string__util_8c_source.html	/^<a name="l00059"><\/a>00059   (<span class="keyword">sizeof<\/span>(char) * total) + (sep_len * (length - 1)) + end_len+ 1;$/;"	anchor	line:81
+l00060	doc/html/hashmap_8c_source.html	/^<a name="l00060"><\/a>00060 <span class="preprocessor"><\/span> <span class="keywordflow">return<\/span> hmap;$/;"	anchor	line:84
+l00060	doc/html/hashmap_8h_source.html	/^<a name="l00060"><\/a>00060 <span class="comment">\/\/ delete the hashmap (and if destructors are enabled, destroy all values)<\/span>$/;"	anchor	line:84
+l00060	doc/html/media_8c_source.html	/^<a name="l00060"><\/a>00060  strcpy(m_args, <span class="stringliteral">&quot;cd &quot;<\/span>);$/;"	anchor	line:82
+l00060	doc/html/media_8h_source.html	/^<a name="l00060"><\/a>00060  $/;"	anchor	line:81
+l00060	doc/html/option_parser_012_8c_source.html	/^<a name="l00060"><\/a>00060         printf (<span class="stringliteral">&quot;non-option ARGV-elements: &quot;<\/span>);$/;"	anchor	line:84
+l00060	doc/html/option_parser_8c_source.html	/^<a name="l00060"><\/a>00060         printf (<span class="stringliteral">&quot;non-option ARGV-elements: &quot;<\/span>);$/;"	anchor	line:84
+l00060	doc/html/string__util_8c_source.html	/^<a name="l00060"><\/a>00060  <span class="keywordtype">char<\/span> *final_str = malloc(memory);$/;"	anchor	line:82
+l00061	doc/html/hashmap_8c_source.html	/^<a name="l00061"><\/a>00061 }$/;"	anchor	line:85
+l00061	doc/html/hashmap_8h_source.html	/^<a name="l00061"><\/a>00061 <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a913eb1b0aee32fa689b3a1ef08220a40">free_hmap<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>*);$/;"	anchor	line:85
+l00061	doc/html/media_8c_source.html	/^<a name="l00061"><\/a>00061  strcpy(&amp;m_args[3], filepath);$/;"	anchor	line:83
+l00061	doc/html/media_8h_source.html	/^<a name="l00061"><\/a>00061 } <a class="code" href="struct_media_args.html">MediaArgs<\/a>;$/;"	anchor	line:82
+l00061	doc/html/option_parser_012_8c_source.html	/^<a name="l00061"><\/a>00061         <span class="keywordflow">while<\/span> (optind &lt; argc)$/;"	anchor	line:85
+l00061	doc/html/option_parser_8c_source.html	/^<a name="l00061"><\/a>00061         <span class="keywordflow">while<\/span> (optind &lt; argc)$/;"	anchor	line:85
+l00061	doc/html/string__util_8c_source.html	/^<a name="l00061"><\/a>00061  <span class="keywordtype">int<\/span> index = 0;$/;"	anchor	line:83
+l00062	doc/html/hashmap_8c_source.html	/^<a name="l00062"><\/a>00062 $/;"	anchor	line:86
+l00062	doc/html/hashmap_8h_source.html	/^<a name="l00062"><\/a>00062 $/;"	anchor	line:86
+l00062	doc/html/media_8c_source.html	/^<a name="l00062"><\/a>00062  m_args[index++] = <span class="charliteral">&#39;;&#39;<\/span>;$/;"	anchor	line:84
+l00062	doc/html/option_parser_012_8c_source.html	/^<a name="l00062"><\/a>00062             printf (<span class="stringliteral">&quot;%s &quot;<\/span>, argv[optind++]);$/;"	anchor	line:86
+l00062	doc/html/option_parser_8c_source.html	/^<a name="l00062"><\/a>00062             printf (<span class="stringliteral">&quot;%s &quot;<\/span>, argv[optind++]);$/;"	anchor	line:86
+l00062	doc/html/string__util_8c_source.html	/^<a name="l00062"><\/a>00062 $/;"	anchor	line:84
+l00063	doc/html/hashmap_8c_source.html	/^<a name="l00063"><\/a><a class="code" href="hashmap_8h.html#ae419c38bcec6005ef583ef3786d4a690">00063<\/a> <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a913eb1b0aee32fa689b3a1ef08220a40">free_hmap<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>* hmap) {$/;"	anchor	line:87
+l00063	doc/html/hashmap_8h_source.html	/^<a name="l00063"><\/a>00063 <span class="comment">\/\/ add a value (with a given key) to the hashmap<\/span>$/;"	anchor	line:87
+l00063	doc/html/media_8c_source.html	/^<a name="l00063"><\/a>00063  m_args[index++] = <span class="charliteral">&#39; &#39;<\/span>;$/;"	anchor	line:85
+l00063	doc/html/option_parser_012_8c_source.html	/^<a name="l00063"><\/a>00063         printf (<span class="stringliteral">&quot;\\n&quot;<\/span>);$/;"	anchor	line:87
+l00063	doc/html/option_parser_8c_source.html	/^<a name="l00063"><\/a>00063         printf (<span class="stringliteral">&quot;\\n&quot;<\/span>);$/;"	anchor	line:87
+l00063	doc/html/string__util_8c_source.html	/^<a name="l00063"><\/a>00063  <span class="comment">\/\/ builds final string<\/span>$/;"	anchor	line:85
+l00064	doc/html/hashmap_8c_source.html	/^<a name="l00064"><\/a>00064 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:88
+l00064	doc/html/hashmap_8h_source.html	/^<a name="l00064"><\/a>00064 <span class="comment">\/\/ returns true on success and false on failure<\/span>$/;"	anchor	line:88
+l00064	doc/html/media_8c_source.html	/^<a name="l00064"><\/a>00064  strcpy(&amp;m_args[index], <span class="stringliteral">&quot;mplayer &quot;<\/span>); $/;"	anchor	line:86
+l00064	doc/html/option_parser_012_8c_source.html	/^<a name="l00064"><\/a>00064     }$/;"	anchor	line:88
+l00064	doc/html/option_parser_8c_source.html	/^<a name="l00064"><\/a>00064     }$/;"	anchor	line:88
+l00064	doc/html/string__util_8c_source.html	/^<a name="l00064"><\/a>00064  <span class="keywordflow">for<\/span>(<span class="keywordtype">int<\/span> i = 0;  i &lt; length; ++i) {$/;"	anchor	line:86
+l00065	doc/html/hashmap_8c_source.html	/^<a name="l00065"><\/a>00065 <span class="preprocessor"><\/span> sem_wait(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:89
+l00065	doc/html/hashmap_8h_source.html	/^<a name="l00065"><\/a>00065 <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#af2a4df07568c4aeea5e83538be696c8e">__hmap_add<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>* hmap, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in, <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> out);$/;"	anchor	line:89
+l00065	doc/html/media_8c_source.html	/^<a name="l00065"><\/a>00065  index += 8;$/;"	anchor	line:87
+l00065	doc/html/option_parser_012_8c_source.html	/^<a name="l00065"><\/a>00065     exit (0);$/;"	anchor	line:89
+l00065	doc/html/option_parser_8c_source.html	/^<a name="l00065"><\/a>00065     exit (0);$/;"	anchor	line:89
+l00065	doc/html/string__util_8c_source.html	/^<a name="l00065"><\/a>00065   <span class="keywordflow">for<\/span>(<span class="keywordtype">int<\/span> j = 0; j &lt; sd_arr[i]-&gt;<a class="code" href="struct_spilt_data.html#a9f59b34b1f25fe00023291b678246bcc">length<\/a>; ++j) {$/;"	anchor	line:87
+l00066	doc/html/hashmap_8c_source.html	/^<a name="l00066"><\/a>00066 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:90
+l00066	doc/html/hashmap_8h_source.html	/^<a name="l00066"><\/a><a class="code" href="hashmap_8h.html#a702dfee087e53102519a5ac4a03f6acf">00066<\/a> <span class="preprocessor">#define hmap_add(hmap, in, out) __hmap_add(hmap, (key) in, (val) out)<\/span>$/;"	anchor	line:90
+l00066	doc/html/media_8c_source.html	/^<a name="l00066"><\/a>00066  $/;"	anchor	line:88
+l00066	doc/html/option_parser_012_8c_source.html	/^<a name="l00066"><\/a>00066 }$/;"	anchor	line:90
+l00066	doc/html/option_parser_8c_source.html	/^<a name="l00066"><\/a>00066 }$/;"	anchor	line:90
+l00066	doc/html/string__util_8c_source.html	/^<a name="l00066"><\/a>00066    strncpy(&amp;final_str[index], sd_arr[i]-&gt;args[j], sd_arr[i]-&gt;lengths[j]);$/;"	anchor	line:88
+l00067	doc/html/hashmap_8c_source.html	/^<a name="l00067"><\/a>00067 <span class="preprocessor"><\/span>$/;"	anchor	line:91
+l00067	doc/html/hashmap_8h_source.html	/^<a name="l00067"><\/a>00067 <span class="preprocessor"><\/span>$/;"	anchor	line:91
+l00067	doc/html/media_8c_source.html	/^<a name="l00067"><\/a>00067  <span class="comment">\/\/ append filenames<\/span>$/;"	anchor	line:89
+l00067	doc/html/string__util_8c_source.html	/^<a name="l00067"><\/a>00067    index += sd_arr[i]-&gt;<a class="code" href="struct_spilt_data.html#a5d60d4025e037d09ff777deccb085f0b">lengths<\/a>[j];$/;"	anchor	line:89
+l00068	doc/html/hashmap_8c_source.html	/^<a name="l00068"><\/a>00068 <span class="preprocessor">#ifdef HMAP_DESTRUCTORS<\/span>$/;"	anchor	line:92
+l00068	doc/html/hashmap_8h_source.html	/^<a name="l00068"><\/a>00068 <span class="comment">\/\/ retrieve a value using a given key from the hashmap<\/span>$/;"	anchor	line:92
+l00068	doc/html/media_8c_source.html	/^<a name="l00068"><\/a>00068  <span class="keywordflow">while<\/span> (**filenames != <span class="charliteral">&#39;\\0&#39;<\/span>){$/;"	anchor	line:90
+l00068	doc/html/string__util_8c_source.html	/^<a name="l00068"><\/a>00068   }$/;"	anchor	line:90
+l00069	doc/html/hashmap_8c_source.html	/^<a name="l00069"><\/a>00069 <span class="preprocessor"><\/span> <span class="keyword">static<\/span> uint32_t it;$/;"	anchor	line:93
+l00069	doc/html/hashmap_8h_source.html	/^<a name="l00069"><\/a>00069 <span class="comment">\/\/ returns your value if successful and NULL if not<\/span>$/;"	anchor	line:93
+l00069	doc/html/media_8c_source.html	/^<a name="l00069"><\/a>00069   printf(<span class="stringliteral">&quot;%s\\n&quot;<\/span>, *filenames);$/;"	anchor	line:91
+l00069	doc/html/string__util_8c_source.html	/^<a name="l00069"><\/a>00069   <span class="keywordflow">if<\/span> (i != length - 1) {$/;"	anchor	line:91
+l00070	doc/html/hashmap_8c_source.html	/^<a name="l00070"><\/a>00070  <span class="keywordflow">for<\/span> (it = 0; it &lt; hmap-&gt;<a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">size<\/a>; ++it) {$/;"	anchor	line:94
+l00070	doc/html/hashmap_8h_source.html	/^<a name="l00070"><\/a>00070 <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> <a class="code" href="hashmap_8c.html#aa270cc74cb1c42aa23bd29110f37ce2c">__hmap_get<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>* hmap, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in);$/;"	anchor	line:94
+l00070	doc/html/media_8c_source.html	/^<a name="l00070"><\/a>00070   m_args[index++] = <span class="charliteral">&#39;&quot;&#39;<\/span>;$/;"	anchor	line:92
+l00070	doc/html/string__util_8c_source.html	/^<a name="l00070"><\/a>00070    strncpy(&amp;final_str[index], separator, sep_len);$/;"	anchor	line:92
+l00071	doc/html/hashmap_8c_source.html	/^<a name="l00071"><\/a>00071   <span class="keywordflow">if<\/span> (hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[it].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a> != NULL) {$/;"	anchor	line:95
+l00071	doc/html/hashmap_8h_source.html	/^<a name="l00071"><\/a><a class="code" href="hashmap_8h.html#a83c30c48339a464c12c7ef8ca5b2b475">00071<\/a> <span class="preprocessor">#define hmap_get(hmap, obj) __hmap_get(hmap, (key) obj)<\/span>$/;"	anchor	line:95
+l00071	doc/html/media_8c_source.html	/^<a name="l00071"><\/a>00071   $/;"	anchor	line:93
+l00071	doc/html/string__util_8c_source.html	/^<a name="l00071"><\/a>00071    index += sep_len;$/;"	anchor	line:93
+l00072	doc/html/hashmap_8c_source.html	/^<a name="l00072"><\/a>00072    hmap-&gt;<a class="code" href="structhashmap.html#a01758051b8df41c8623f9e63d87fd11e">del_fn<\/a>(hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[it].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a>);$/;"	anchor	line:96
+l00072	doc/html/hashmap_8h_source.html	/^<a name="l00072"><\/a>00072 <span class="preprocessor"><\/span>$/;"	anchor	line:96
+l00072	doc/html/media_8c_source.html	/^<a name="l00072"><\/a>00072   strcpy(&amp;m_args[index], *filenames);$/;"	anchor	line:94
+l00072	doc/html/string__util_8c_source.html	/^<a name="l00072"><\/a>00072   }<span class="keywordflow">else<\/span>{$/;"	anchor	line:94
+l00073	doc/html/hashmap_8c_source.html	/^<a name="l00073"><\/a>00073   }$/;"	anchor	line:97
+l00073	doc/html/hashmap_8h_source.html	/^<a name="l00073"><\/a>00073 <span class="preprocessor">#ifdef HMAP_MAKE_HASHFN<\/span>$/;"	anchor	line:97
+l00073	doc/html/media_8c_source.html	/^<a name="l00073"><\/a>00073   index += strlen(*filenames);$/;"	anchor	line:95
+l00073	doc/html/string__util_8c_source.html	/^<a name="l00073"><\/a>00073    strncpy(&amp;final_str[index], ending, end_len);$/;"	anchor	line:95
+l00074	doc/html/hashmap_8c_source.html	/^<a name="l00074"><\/a>00074  }$/;"	anchor	line:98
+l00074	doc/html/hashmap_8h_source.html	/^<a name="l00074"><\/a>00074 <span class="preprocessor"><\/span><span class="comment">\/\/ integer-as-key hash functions<\/span>$/;"	anchor	line:98
+l00074	doc/html/media_8c_source.html	/^<a name="l00074"><\/a>00074   $/;"	anchor	line:96
+l00074	doc/html/string__util_8c_source.html	/^<a name="l00074"><\/a>00074    index += end_len;$/;"	anchor	line:96
+l00075	doc/html/hashmap_8c_source.html	/^<a name="l00075"><\/a>00075 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:99
+l00075	doc/html/hashmap_8h_source.html	/^<a name="l00075"><\/a>00075 uint32_t <a class="code" href="hashmap_8c.html#a5ca80f440a6b42b176ccc133b7161470">int_hash_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:99
+l00075	doc/html/media_8c_source.html	/^<a name="l00075"><\/a>00075   m_args[index++] = <span class="charliteral">&#39;&quot;&#39;<\/span>;$/;"	anchor	line:97
+l00075	doc/html/string__util_8c_source.html	/^<a name="l00075"><\/a>00075   }$/;"	anchor	line:97
+l00076	doc/html/hashmap_8c_source.html	/^<a name="l00076"><\/a>00076 <span class="preprocessor"><\/span>$/;"	anchor	line:100
+l00076	doc/html/hashmap_8h_source.html	/^<a name="l00076"><\/a>00076 <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#a97891e40a78da1da47804f0fb7221639">int_eq_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:100
+l00076	doc/html/media_8c_source.html	/^<a name="l00076"><\/a>00076   m_args[index++] = <span class="charliteral">&#39; &#39;<\/span>;$/;"	anchor	line:98
+l00076	doc/html/string__util_8c_source.html	/^<a name="l00076"><\/a>00076  }$/;"	anchor	line:98
+l00077	doc/html/hashmap_8c_source.html	/^<a name="l00077"><\/a>00077  free(hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>);$/;"	anchor	line:101
+l00077	doc/html/hashmap_8h_source.html	/^<a name="l00077"><\/a>00077 <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a7efd93ec0da67619e08d5dbd62b19deb">int_del_fn<\/a>(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>);$/;"	anchor	line:101
+l00077	doc/html/media_8c_source.html	/^<a name="l00077"><\/a>00077   ++filenames;$/;"	anchor	line:99
+l00077	doc/html/string__util_8c_source.html	/^<a name="l00077"><\/a>00077 $/;"	anchor	line:99
+l00078	doc/html/hashmap_8c_source.html	/^<a name="l00078"><\/a>00078 $/;"	anchor	line:102
+l00078	doc/html/hashmap_8h_source.html	/^<a name="l00078"><\/a>00078 $/;"	anchor	line:102
+l00078	doc/html/media_8c_source.html	/^<a name="l00078"><\/a>00078  }$/;"	anchor	line:100
+l00078	doc/html/string__util_8c_source.html	/^<a name="l00078"><\/a>00078  <span class="comment">\/\/CHECK might sem fault on returned string with printf?<\/span>$/;"	anchor	line:100
+l00079	doc/html/hashmap_8c_source.html	/^<a name="l00079"><\/a>00079 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:103
+l00079	doc/html/hashmap_8h_source.html	/^<a name="l00079"><\/a>00079 <span class="comment">\/\/ char*-as-key hash functions<\/span>$/;"	anchor	line:103
+l00079	doc/html/media_8c_source.html	/^<a name="l00079"><\/a>00079  $/;"	anchor	line:101
+l00079	doc/html/string__util_8c_source.html	/^<a name="l00079"><\/a>00079  final_str[index] = <span class="charliteral">&#39;\\0&#39;<\/span>;$/;"	anchor	line:101
+l00080	doc/html/hashmap_8c_source.html	/^<a name="l00080"><\/a>00080 <span class="preprocessor"><\/span> sem_post(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:104
+l00080	doc/html/hashmap_8h_source.html	/^<a name="l00080"><\/a>00080 uint32_t <a class="code" href="hashmap_8c.html#a8c1828b87e2e161ef28551966d46dcf4">str_hash_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:104
+l00080	doc/html/media_8c_source.html	/^<a name="l00080"><\/a>00080  strcpy(&amp;m_args[index], rid);$/;"	anchor	line:102
+l00080	doc/html/string__util_8c_source.html	/^<a name="l00080"><\/a>00080  <span class="keywordflow">return<\/span> final_str;$/;"	anchor	line:102
+l00081	doc/html/hashmap_8c_source.html	/^<a name="l00081"><\/a>00081 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:105
+l00081	doc/html/hashmap_8h_source.html	/^<a name="l00081"><\/a>00081 <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#a6bea8fb14018f25c3cbbbc90c289bf59">str_eq_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>);$/;"	anchor	line:105
+l00081	doc/html/media_8c_source.html	/^<a name="l00081"><\/a>00081  index +=rid_len;$/;"	anchor	line:103
+l00081	doc/html/string__util_8c_source.html	/^<a name="l00081"><\/a>00081 }$/;"	anchor	line:103
+l00082	doc/html/hashmap_8c_source.html	/^<a name="l00082"><\/a>00082 <span class="preprocessor"><\/span>$/;"	anchor	line:106
+l00082	doc/html/hashmap_8h_source.html	/^<a name="l00082"><\/a>00082 <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a89c364cccaecdc39a879e81e106a9718">str_del_fn<\/a>(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a>);$/;"	anchor	line:106
+l00082	doc/html/media_8c_source.html	/^<a name="l00082"><\/a>00082  $/;"	anchor	line:104
+l00082	doc/html/string__util_8c_source.html	/^<a name="l00082"><\/a>00082 $/;"	anchor	line:104
+l00083	doc/html/hashmap_8c_source.html	/^<a name="l00083"><\/a>00083  free(hmap);$/;"	anchor	line:107
+l00083	doc/html/hashmap_8h_source.html	/^<a name="l00083"><\/a>00083 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:107
+l00083	doc/html/media_8c_source.html	/^<a name="l00083"><\/a>00083  m_args[index] = <span class="charliteral">&#39;\\0&#39;<\/span>;$/;"	anchor	line:105
+l00083	doc/html/string__util_8c_source.html	/^<a name="l00083"><\/a>00083 <span class="keyword">static<\/span> <span class="keywordtype">char<\/span> *test_hash(<span class="keywordtype">char<\/span> *s) {$/;"	anchor	line:105
+l00084	doc/html/hashmap_8c_source.html	/^<a name="l00084"><\/a>00084 }$/;"	anchor	line:108
+l00084	doc/html/hashmap_8h_source.html	/^<a name="l00084"><\/a>00084 <span class="preprocessor"><\/span>$/;"	anchor	line:108
+l00084	doc/html/media_8c_source.html	/^<a name="l00084"><\/a>00084  <span class="comment">\/\/ printf(&quot;%s\\n&quot;, m_args);<\/span>$/;"	anchor	line:106
+l00084	doc/html/string__util_8c_source.html	/^<a name="l00084"><\/a>00084  <span class="keywordflow">if<\/span> (strcmp(s, <span class="stringliteral">&quot;fma&quot;<\/span> ) == 0) {$/;"	anchor	line:106
+l00085	doc/html/hashmap_8c_source.html	/^<a name="l00085"><\/a>00085 $/;"	anchor	line:109
+l00085	doc/html/hashmap_8h_source.html	/^<a name="l00085"><\/a>00085 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:109
+l00085	doc/html/media_8c_source.html	/^<a name="l00085"><\/a>00085  system(m_args);$/;"	anchor	line:107
+l00085	doc/html/string__util_8c_source.html	/^<a name="l00085"><\/a>00085   <span class="keywordflow">return<\/span> strdup(<span class="stringliteral">&quot;full metal&quot;<\/span>);$/;"	anchor	line:107
+l00086	doc/html/hashmap_8c_source.html	/^<a name="l00086"><\/a>00086 <span class="comment">\/\/ open addressed hashmap insertion function<\/span>$/;"	anchor	line:110
+l00086	doc/html/media_8c_source.html	/^<a name="l00086"><\/a>00086 }                                            $/;"	anchor	line:108
+l00086	doc/html/string__util_8c_source.html	/^<a name="l00086"><\/a>00086  } <span class="keywordflow">else<\/span> {$/;"	anchor	line:108
+l00087	doc/html/hashmap_8c_source.html	/^<a name="l00087"><\/a>00087 <span class="keyword">static<\/span> <span class="keywordtype">void<\/span> __oa_hmap_add(<a class="code" href="structkey__val__pair.html">key_val_pair<\/a>* map, uint32_t size,$/;"	anchor	line:111
+l00087	doc/html/string__util_8c_source.html	/^<a name="l00087"><\/a>00087   <span class="keywordflow">return<\/span> strdup(s);$/;"	anchor	line:109
+l00088	doc/html/hashmap_8c_source.html	/^<a name="l00088"><\/a>00088         uint32_t (*hash_fn)(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a>),$/;"	anchor	line:112
+l00088	doc/html/string__util_8c_source.html	/^<a name="l00088"><\/a>00088  }$/;"	anchor	line:110
+l00089	doc/html/hashmap_8c_source.html	/^<a name="l00089"><\/a>00089         <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in, <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> out) {$/;"	anchor	line:113
+l00089	doc/html/string__util_8c_source.html	/^<a name="l00089"><\/a>00089 $/;"	anchor	line:111
+l00090	doc/html/hashmap_8c_source.html	/^<a name="l00090"><\/a>00090  <span class="keyword">static<\/span> uint32_t hash;$/;"	anchor	line:114
+l00090	doc/html/string__util_8c_source.html	/^<a name="l00090"><\/a>00090 }$/;"	anchor	line:112
+l00091	doc/html/hashmap_8c_source.html	/^<a name="l00091"><\/a>00091  hash = hash_fn(in) % size;$/;"	anchor	line:115
+l00091	doc/html/string__util_8c_source.html	/^<a name="l00091"><\/a>00091 $/;"	anchor	line:113
+l00092	doc/html/hashmap_8c_source.html	/^<a name="l00092"><\/a>00092 $/;"	anchor	line:116
+l00092	doc/html/string__util_8c_source.html	/^<a name="l00092"><\/a><a class="code" href="string__util_8h.html#ae7d953cc2740234d7fed7cc149821128">00092<\/a> <a class="code" href="struct_spilt_data.html">SpiltData<\/a> *<a class="code" href="string__util_8c.html#ae7d953cc2740234d7fed7cc149821128">spilt_func<\/a>(<span class="keywordtype">char<\/span> *s) {$/;"	anchor	line:114
+l00093	doc/html/hashmap_8c_source.html	/^<a name="l00093"><\/a>00093  <span class="keywordflow">while<\/span> (map[hash].v != NULL) {$/;"	anchor	line:117
+l00093	doc/html/string__util_8c_source.html	/^<a name="l00093"><\/a>00093  <span class="keywordtype">char<\/span> *start   = s;$/;"	anchor	line:115
+l00094	doc/html/hashmap_8c_source.html	/^<a name="l00094"><\/a>00094   hash = (hash + 1) % size;$/;"	anchor	line:118
+l00094	doc/html/string__util_8c_source.html	/^<a name="l00094"><\/a>00094  <span class="keywordtype">char<\/span> **res    = malloc(<span class="keyword">sizeof<\/span>(<span class="keywordtype">size_t<\/span>) * 5);$/;"	anchor	line:116
+l00095	doc/html/hashmap_8c_source.html	/^<a name="l00095"><\/a>00095  }$/;"	anchor	line:119
+l00095	doc/html/string__util_8c_source.html	/^<a name="l00095"><\/a>00095  <span class="keywordtype">int<\/span>  *res_len = malloc(<span class="keyword">sizeof<\/span>(<span class="keywordtype">int<\/span>) * 5);$/;"	anchor	line:117
+l00096	doc/html/hashmap_8c_source.html	/^<a name="l00096"><\/a>00096 $/;"	anchor	line:120
+l00096	doc/html/string__util_8c_source.html	/^<a name="l00096"><\/a>00096  <span class="keywordtype">int<\/span> total = 0;$/;"	anchor	line:118
+l00097	doc/html/hashmap_8c_source.html	/^<a name="l00097"><\/a>00097  map[hash].<a class="code" href="structkey__val__pair.html#a5ff482413af7d6536eb80c1030311977">k<\/a> = in;$/;"	anchor	line:121
+l00097	doc/html/string__util_8c_source.html	/^<a name="l00097"><\/a>00097  <span class="keywordtype">int<\/span> i     = 0;$/;"	anchor	line:119
+l00098	doc/html/hashmap_8c_source.html	/^<a name="l00098"><\/a>00098  map[hash].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a> = out;$/;"	anchor	line:122
+l00098	doc/html/string__util_8c_source.html	/^<a name="l00098"><\/a>00098 $/;"	anchor	line:120
+l00099	doc/html/hashmap_8c_source.html	/^<a name="l00099"><\/a>00099 }$/;"	anchor	line:123
+l00099	doc/html/string__util_8c_source.html	/^<a name="l00099"><\/a>00099  <span class="keywordflow">while<\/span>(*s != <span class="charliteral">&#39;\\0&#39;<\/span> ) {$/;"	anchor	line:121
+l00100	doc/html/hashmap_8c_source.html	/^<a name="l00100"><\/a>00100 $/;"	anchor	line:124
+l00100	doc/html/string__util_8c_source.html	/^<a name="l00100"><\/a>00100   <span class="keywordflow">while<\/span>(*s != <span class="charliteral">&#39;|&#39;<\/span> &amp;&amp; *s != <span class="charliteral">&#39;\\0&#39;<\/span> ) {$/;"	anchor	line:122
+l00101	doc/html/hashmap_8c_source.html	/^<a name="l00101"><\/a><a class="code" href="hashmap_8h.html#af2a4df07568c4aeea5e83538be696c8e">00101<\/a> <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#af2a4df07568c4aeea5e83538be696c8e">__hmap_add<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>* hmap, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in, <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> out) {$/;"	anchor	line:125
+l00101	doc/html/string__util_8c_source.html	/^<a name="l00101"><\/a>00101    ++s;$/;"	anchor	line:123
+l00102	doc/html/hashmap_8c_source.html	/^<a name="l00102"><\/a>00102 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:126
+l00102	doc/html/string__util_8c_source.html	/^<a name="l00102"><\/a>00102   }$/;"	anchor	line:124
+l00103	doc/html/hashmap_8c_source.html	/^<a name="l00103"><\/a>00103 <span class="preprocessor"><\/span> sem_wait(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:127
+l00103	doc/html/string__util_8c_source.html	/^<a name="l00103"><\/a>00103 $/;"	anchor	line:125
+l00104	doc/html/hashmap_8c_source.html	/^<a name="l00104"><\/a>00104 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:128
+l00104	doc/html/string__util_8c_source.html	/^<a name="l00104"><\/a>00104   <span class="keywordtype">int<\/span> length = s - start;$/;"	anchor	line:126
+l00105	doc/html/hashmap_8c_source.html	/^<a name="l00105"><\/a>00105 <span class="preprocessor"><\/span>$/;"	anchor	line:129
+l00105	doc/html/string__util_8c_source.html	/^<a name="l00105"><\/a>00105 $/;"	anchor	line:127
+l00106	doc/html/hashmap_8c_source.html	/^<a name="l00106"><\/a>00106  <span class="comment">\/\/ performace degrades after a certain load<\/span>$/;"	anchor	line:130
+l00106	doc/html/string__util_8c_source.html	/^<a name="l00106"><\/a>00106   <span class="keywordtype">char<\/span> in[length+1];$/;"	anchor	line:128
+l00107	doc/html/hashmap_8c_source.html	/^<a name="l00107"><\/a>00107  <span class="keywordflow">if<\/span> (((<span class="keywordtype">float<\/span>) hmap-&gt;<a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">size<\/a>) \/ hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a> &gt; 0.70) {$/;"	anchor	line:131
+l00107	doc/html/string__util_8c_source.html	/^<a name="l00107"><\/a>00107   strncpy(in, start, length);$/;"	anchor	line:129
+l00108	doc/html/hashmap_8c_source.html	/^<a name="l00108"><\/a>00108   <a class="code" href="structkey__val__pair.html">key_val_pair<\/a>* temp = (<a class="code" href="structkey__val__pair.html">key_val_pair<\/a>*) malloc(hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a> * <a class="code" href="hashmap_8h.html#a27b8a322823216f8fe5f4987bfb03b40">HMAP_GROWTH_RATE<\/a>);$/;"	anchor	line:132
+l00108	doc/html/string__util_8c_source.html	/^<a name="l00108"><\/a>00108   in[length] = <span class="charliteral">&#39;\\0&#39;<\/span>;$/;"	anchor	line:130
+l00109	doc/html/hashmap_8c_source.html	/^<a name="l00109"><\/a>00109   <span class="keywordflow">if<\/span> (temp != NULL) {$/;"	anchor	line:133
+l00109	doc/html/string__util_8c_source.html	/^<a name="l00109"><\/a>00109 $/;"	anchor	line:131
+l00110	doc/html/hashmap_8c_source.html	/^<a name="l00110"><\/a>00110    hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a> *= <a class="code" href="hashmap_8h.html#a27b8a322823216f8fe5f4987bfb03b40">HMAP_GROWTH_RATE<\/a>;$/;"	anchor	line:134
+l00110	doc/html/string__util_8c_source.html	/^<a name="l00110"><\/a>00110   res[i]     = <a class="code" href="string__util_8c.html#a4336e41c9f809c940ad6b6b8b441b705" title="Replaces the substring sub with rep in the first len charaters of s.">str_replace<\/a>(start,  length , in, test_hash(in) );$/;"	anchor	line:132
+l00111	doc/html/hashmap_8c_source.html	/^<a name="l00111"><\/a>00111   } <span class="keywordflow">else<\/span> {$/;"	anchor	line:135
+l00111	doc/html/string__util_8c_source.html	/^<a name="l00111"><\/a>00111   res_len[i] = strlen(res[i]);$/;"	anchor	line:133
+l00112	doc/html/hashmap_8c_source.html	/^<a name="l00112"><\/a>00112 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:136
+l00112	doc/html/string__util_8c_source.html	/^<a name="l00112"><\/a>00112   total     += res_len[i];$/;"	anchor	line:134
+l00113	doc/html/hashmap_8c_source.html	/^<a name="l00113"><\/a>00113 <span class="preprocessor"><\/span>   sem_post(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:137
+l00113	doc/html/string__util_8c_source.html	/^<a name="l00113"><\/a>00113 $/;"	anchor	line:135
+l00114	doc/html/hashmap_8c_source.html	/^<a name="l00114"><\/a>00114 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:138
+l00114	doc/html/string__util_8c_source.html	/^<a name="l00114"><\/a>00114   <span class="keywordflow">if<\/span> (*s == <span class="charliteral">&#39;|&#39;<\/span>) ++s;$/;"	anchor	line:136
+l00115	doc/html/hashmap_8c_source.html	/^<a name="l00115"><\/a>00115 <span class="preprocessor"><\/span>   <span class="comment">\/\/ we&#39;re out of memory<\/span>$/;"	anchor	line:139
+l00115	doc/html/string__util_8c_source.html	/^<a name="l00115"><\/a>00115   start = s;$/;"	anchor	line:137
+l00116	doc/html/hashmap_8c_source.html	/^<a name="l00116"><\/a>00116    <span class="keywordflow">return<\/span> <span class="keyword">false<\/span>;$/;"	anchor	line:140
+l00116	doc/html/string__util_8c_source.html	/^<a name="l00116"><\/a>00116   ++i;$/;"	anchor	line:138
+l00117	doc/html/hashmap_8c_source.html	/^<a name="l00117"><\/a>00117   }$/;"	anchor	line:141
+l00117	doc/html/string__util_8c_source.html	/^<a name="l00117"><\/a>00117 $/;"	anchor	line:139
+l00118	doc/html/hashmap_8c_source.html	/^<a name="l00118"><\/a>00118 $/;"	anchor	line:142
+l00118	doc/html/string__util_8c_source.html	/^<a name="l00118"><\/a>00118  }$/;"	anchor	line:140
+l00119	doc/html/hashmap_8c_source.html	/^<a name="l00119"><\/a>00119   <span class="comment">\/\/ re-posn all elements<\/span>$/;"	anchor	line:143
+l00119	doc/html/string__util_8c_source.html	/^<a name="l00119"><\/a>00119 $/;"	anchor	line:141
+l00120	doc/html/hashmap_8c_source.html	/^<a name="l00120"><\/a>00120   <span class="keyword">static<\/span> uint32_t it;$/;"	anchor	line:144
+l00120	doc/html/string__util_8c_source.html	/^<a name="l00120"><\/a>00120  <a class="code" href="struct_spilt_data.html">SpiltData<\/a> *sd = malloc(<span class="keyword">sizeof<\/span>(<a class="code" href="struct_spilt_data.html">SpiltData<\/a>));$/;"	anchor	line:142
+l00121	doc/html/hashmap_8c_source.html	/^<a name="l00121"><\/a>00121   <span class="keywordflow">for<\/span> (it = 0; it &lt; hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>; ++it) {$/;"	anchor	line:145
+l00121	doc/html/string__util_8c_source.html	/^<a name="l00121"><\/a>00121  sd-&gt;<a class="code" href="struct_spilt_data.html#aa24f72e6a4d6a997528142211b375496">args<\/a>      = res;$/;"	anchor	line:143
+l00122	doc/html/hashmap_8c_source.html	/^<a name="l00122"><\/a>00122    <span class="keywordflow">if<\/span> (hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[it].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a> != NULL) {$/;"	anchor	line:146
+l00122	doc/html/string__util_8c_source.html	/^<a name="l00122"><\/a>00122  sd-&gt;<a class="code" href="struct_spilt_data.html#a9f59b34b1f25fe00023291b678246bcc">length<\/a>    = i;$/;"	anchor	line:144
+l00123	doc/html/hashmap_8c_source.html	/^<a name="l00123"><\/a>00123     __oa_hmap_add(temp, hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>, hmap-&gt;<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a>, in, out);$/;"	anchor	line:147
+l00123	doc/html/string__util_8c_source.html	/^<a name="l00123"><\/a>00123  sd-&gt;<a class="code" href="struct_spilt_data.html#a5d60d4025e037d09ff777deccb085f0b">lengths<\/a>   = res_len;$/;"	anchor	line:145
+l00124	doc/html/hashmap_8c_source.html	/^<a name="l00124"><\/a>00124    }$/;"	anchor	line:148
+l00124	doc/html/string__util_8c_source.html	/^<a name="l00124"><\/a>00124  sd-&gt;<a class="code" href="struct_spilt_data.html#ac7af894858cf396a219d632f40afdc8d">total<\/a>     = total;$/;"	anchor	line:146
+l00125	doc/html/hashmap_8c_source.html	/^<a name="l00125"><\/a>00125   }$/;"	anchor	line:149
+l00125	doc/html/string__util_8c_source.html	/^<a name="l00125"><\/a>00125  <span class="keywordflow">return<\/span> sd;$/;"	anchor	line:147
+l00126	doc/html/hashmap_8c_source.html	/^<a name="l00126"><\/a>00126 $/;"	anchor	line:150
+l00126	doc/html/string__util_8c_source.html	/^<a name="l00126"><\/a>00126 }$/;"	anchor	line:148
+l00127	doc/html/hashmap_8c_source.html	/^<a name="l00127"><\/a>00127   <span class="comment">\/\/ swap out the old map with the new one<\/span>$/;"	anchor	line:151
+l00127	doc/html/string__util_8c_source.html	/^<a name="l00127"><\/a>00127 $/;"	anchor	line:149
+l00128	doc/html/hashmap_8c_source.html	/^<a name="l00128"><\/a>00128   free(hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>);$/;"	anchor	line:152
+l00128	doc/html/string__util_8c_source.html	/^<a name="l00128"><\/a>00128 $/;"	anchor	line:150
+l00129	doc/html/hashmap_8c_source.html	/^<a name="l00129"><\/a>00129   hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a> = temp;$/;"	anchor	line:153
+l00129	doc/html/string__util_8c_source.html	/^<a name="l00129"><\/a><a class="code" href="string__util_8h.html#a75e9d9a208ec8d0cc8f2c71d81584df7">00129<\/a> <span class="keywordtype">char<\/span> *<a class="code" href="string__util_8c.html#a75e9d9a208ec8d0cc8f2c71d81584df7">str_spilt_replace<\/a>(<span class="keywordtype">char<\/span> *s) {$/;"	anchor	line:151
+l00130	doc/html/hashmap_8c_source.html	/^<a name="l00130"><\/a>00130  }$/;"	anchor	line:154
+l00130	doc/html/string__util_8c_source.html	/^<a name="l00130"><\/a>00130  <span class="keywordtype">char<\/span> *start   = s;$/;"	anchor	line:152
+l00131	doc/html/hashmap_8c_source.html	/^<a name="l00131"><\/a>00131 $/;"	anchor	line:155
+l00131	doc/html/string__util_8c_source.html	/^<a name="l00131"><\/a>00131  <span class="keywordtype">char<\/span> **res    = malloc(<span class="keyword">sizeof<\/span>(<span class="keywordtype">size_t<\/span>) * 5);$/;"	anchor	line:153
+l00132	doc/html/hashmap_8c_source.html	/^<a name="l00132"><\/a>00132  __oa_hmap_add(hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>, hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>, hmap-&gt;<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a>, in, out);$/;"	anchor	line:156
+l00132	doc/html/string__util_8c_source.html	/^<a name="l00132"><\/a>00132  <span class="keywordtype">char<\/span> *res_len = malloc(<span class="keyword">sizeof<\/span>(<span class="keywordtype">int<\/span>) * 5);$/;"	anchor	line:154
+l00133	doc/html/hashmap_8c_source.html	/^<a name="l00133"><\/a>00133  hmap-&gt;<a class="code" href="structhashmap.html#ab2c6b258f02add8fdf4cfc7c371dd772">size<\/a> += 1;$/;"	anchor	line:157
+l00133	doc/html/string__util_8c_source.html	/^<a name="l00133"><\/a>00133 $/;"	anchor	line:155
+l00134	doc/html/hashmap_8c_source.html	/^<a name="l00134"><\/a>00134 $/;"	anchor	line:158
+l00134	doc/html/string__util_8c_source.html	/^<a name="l00134"><\/a>00134  <span class="keywordtype">int<\/span> i_res = 0, total = 0;$/;"	anchor	line:156
+l00135	doc/html/hashmap_8c_source.html	/^<a name="l00135"><\/a>00135 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:159
+l00135	doc/html/string__util_8c_source.html	/^<a name="l00135"><\/a>00135 $/;"	anchor	line:157
+l00136	doc/html/hashmap_8c_source.html	/^<a name="l00136"><\/a>00136 <span class="preprocessor"><\/span> sem_post(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:160
+l00136	doc/html/string__util_8c_source.html	/^<a name="l00136"><\/a>00136  <span class="keywordflow">while<\/span>(*s != <span class="charliteral">&#39;\\0&#39;<\/span>) {$/;"	anchor	line:158
+l00137	doc/html/hashmap_8c_source.html	/^<a name="l00137"><\/a>00137 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:161
+l00137	doc/html/string__util_8c_source.html	/^<a name="l00137"><\/a>00137 $/;"	anchor	line:159
+l00138	doc/html/hashmap_8c_source.html	/^<a name="l00138"><\/a>00138 <span class="preprocessor"><\/span>$/;"	anchor	line:162
+l00138	doc/html/string__util_8c_source.html	/^<a name="l00138"><\/a>00138   <span class="keywordflow">while<\/span> (*s != <span class="charliteral">&#39;|&#39;<\/span> &amp;&amp; *s != <span class="charliteral">&#39;\\0&#39;<\/span> ) {$/;"	anchor	line:160
+l00139	doc/html/hashmap_8c_source.html	/^<a name="l00139"><\/a>00139  <span class="keywordflow">return<\/span> <span class="keyword">true<\/span>;$/;"	anchor	line:163
+l00139	doc/html/string__util_8c_source.html	/^<a name="l00139"><\/a>00139    ++s;$/;"	anchor	line:161
+l00140	doc/html/hashmap_8c_source.html	/^<a name="l00140"><\/a>00140 }$/;"	anchor	line:164
+l00140	doc/html/string__util_8c_source.html	/^<a name="l00140"><\/a>00140   }$/;"	anchor	line:162
+l00141	doc/html/hashmap_8c_source.html	/^<a name="l00141"><\/a>00141 $/;"	anchor	line:165
+l00141	doc/html/string__util_8c_source.html	/^<a name="l00141"><\/a>00141 $/;"	anchor	line:163
+l00142	doc/html/hashmap_8c_source.html	/^<a name="l00142"><\/a><a class="code" href="hashmap_8h.html#aa270cc74cb1c42aa23bd29110f37ce2c">00142<\/a> <a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> <a class="code" href="hashmap_8c.html#aa270cc74cb1c42aa23bd29110f37ce2c">__hmap_get<\/a>(<a class="code" href="structhashmap.html">hashmap<\/a>* hmap, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in) {$/;"	anchor	line:166
+l00142	doc/html/string__util_8c_source.html	/^<a name="l00142"><\/a>00142   res[i_res] = <a class="code" href="string__util_8c.html#a4336e41c9f809c940ad6b6b8b441b705" title="Replaces the substring sub with rep in the first len charaters of s.">str_replace<\/a>(start, s - start, <span class="stringliteral">&quot;char*ub&quot;<\/span>, <span class="stringliteral">&quot;char*p&quot;<\/span>);$/;"	anchor	line:164
+l00143	doc/html/hashmap_8c_source.html	/^<a name="l00143"><\/a>00143 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:167
+l00143	doc/html/string__util_8c_source.html	/^<a name="l00143"><\/a>00143   res_len[i_res] = strlen(res[i_res]);$/;"	anchor	line:165
+l00144	doc/html/hashmap_8c_source.html	/^<a name="l00144"><\/a>00144 <span class="preprocessor"><\/span> sem_wait(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:168
+l00144	doc/html/string__util_8c_source.html	/^<a name="l00144"><\/a>00144   total += res_len[i_res];$/;"	anchor	line:166
+l00145	doc/html/hashmap_8c_source.html	/^<a name="l00145"><\/a>00145 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:169
+l00145	doc/html/string__util_8c_source.html	/^<a name="l00145"><\/a>00145   ++i_res;$/;"	anchor	line:167
+l00146	doc/html/hashmap_8c_source.html	/^<a name="l00146"><\/a>00146 <span class="preprocessor"><\/span>$/;"	anchor	line:170
+l00146	doc/html/string__util_8c_source.html	/^<a name="l00146"><\/a>00146   <span class="keywordflow">if<\/span> (*s == <span class="charliteral">&#39;|&#39;<\/span>) ++s;$/;"	anchor	line:168
+l00147	doc/html/hashmap_8c_source.html	/^<a name="l00147"><\/a>00147  <span class="keyword">static<\/span> uint32_t hash;$/;"	anchor	line:171
+l00147	doc/html/string__util_8c_source.html	/^<a name="l00147"><\/a>00147 $/;"	anchor	line:169
+l00148	doc/html/hashmap_8c_source.html	/^<a name="l00148"><\/a>00148  hash = hmap-&gt;<a class="code" href="structhashmap.html#ac05bdfce775c8caf358766e7becda91a">hash_fn<\/a>(in) % hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>;$/;"	anchor	line:172
+l00148	doc/html/string__util_8c_source.html	/^<a name="l00148"><\/a>00148   start = s;$/;"	anchor	line:170
+l00149	doc/html/hashmap_8c_source.html	/^<a name="l00149"><\/a>00149 $/;"	anchor	line:173
+l00149	doc/html/string__util_8c_source.html	/^<a name="l00149"><\/a>00149  }$/;"	anchor	line:171
+l00150	doc/html/hashmap_8c_source.html	/^<a name="l00150"><\/a>00150  <span class="keywordflow">while<\/span> (hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[hash].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a> != NULL) {$/;"	anchor	line:174
+l00150	doc/html/string__util_8c_source.html	/^<a name="l00150"><\/a>00150 $/;"	anchor	line:172
+l00151	doc/html/hashmap_8c_source.html	/^<a name="l00151"><\/a>00151   <span class="keywordflow">if<\/span> (hmap-&gt;<a class="code" href="structhashmap.html#a466986e42387e252f20aa75ce2740e89">eq_fn<\/a>(in, hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[hash].<a class="code" href="structkey__val__pair.html#a5ff482413af7d6536eb80c1030311977">k<\/a>)) {$/;"	anchor	line:175
+l00151	doc/html/string__util_8c_source.html	/^<a name="l00151"><\/a>00151  <span class="keywordflow">return<\/span> NULL;$/;"	anchor	line:173
+l00152	doc/html/hashmap_8c_source.html	/^<a name="l00152"><\/a>00152 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:176
+l00152	doc/html/string__util_8c_source.html	/^<a name="l00152"><\/a>00152 }$/;"	anchor	line:174
+l00153	doc/html/hashmap_8c_source.html	/^<a name="l00153"><\/a>00153 <span class="preprocessor"><\/span>   sem_post(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:177
+l00153	doc/html/string__util_8c_source.html	/^<a name="l00153"><\/a>00153 $/;"	anchor	line:175
+l00154	doc/html/hashmap_8c_source.html	/^<a name="l00154"><\/a>00154 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:178
+l00155	doc/html/hashmap_8c_source.html	/^<a name="l00155"><\/a>00155 <span class="preprocessor"><\/span>$/;"	anchor	line:179
+l00156	doc/html/hashmap_8c_source.html	/^<a name="l00156"><\/a>00156    <span class="keywordflow">return<\/span> hmap-&gt;<a class="code" href="structhashmap.html#a420b48015329b37256ce557d62b6f087">map<\/a>[hash].<a class="code" href="structkey__val__pair.html#ae015479e6e030f25f992d315f95896a9">v<\/a>;$/;"	anchor	line:180
+l00157	doc/html/hashmap_8c_source.html	/^<a name="l00157"><\/a>00157   }$/;"	anchor	line:181
+l00158	doc/html/hashmap_8c_source.html	/^<a name="l00158"><\/a>00158 $/;"	anchor	line:182
+l00159	doc/html/hashmap_8c_source.html	/^<a name="l00159"><\/a>00159   hash = (hash + 1) % hmap-&gt;<a class="code" href="structhashmap.html#a391c992c66c3e5540265a85ec2b9216a">capacity<\/a>;$/;"	anchor	line:183
+l00160	doc/html/hashmap_8c_source.html	/^<a name="l00160"><\/a>00160  }$/;"	anchor	line:184
+l00161	doc/html/hashmap_8c_source.html	/^<a name="l00161"><\/a>00161 $/;"	anchor	line:185
+l00162	doc/html/hashmap_8c_source.html	/^<a name="l00162"><\/a>00162 $/;"	anchor	line:186
+l00163	doc/html/hashmap_8c_source.html	/^<a name="l00163"><\/a>00163 <span class="preprocessor">#ifdef HMAP_THREAD_SAFE<\/span>$/;"	anchor	line:187
+l00164	doc/html/hashmap_8c_source.html	/^<a name="l00164"><\/a>00164 <span class="preprocessor"><\/span> sem_post(&amp;hmap-&gt;<a class="code" href="structhashmap.html#ac301e000199ad937f060277b0736d4e1">lock<\/a>);$/;"	anchor	line:188
+l00165	doc/html/hashmap_8c_source.html	/^<a name="l00165"><\/a>00165 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:189
+l00166	doc/html/hashmap_8c_source.html	/^<a name="l00166"><\/a>00166 <span class="preprocessor"><\/span>$/;"	anchor	line:190
+l00167	doc/html/hashmap_8c_source.html	/^<a name="l00167"><\/a>00167  <span class="keywordflow">return<\/span> NULL;$/;"	anchor	line:191
+l00168	doc/html/hashmap_8c_source.html	/^<a name="l00168"><\/a>00168 }$/;"	anchor	line:192
+l00169	doc/html/hashmap_8c_source.html	/^<a name="l00169"><\/a>00169 $/;"	anchor	line:193
+l00170	doc/html/hashmap_8c_source.html	/^<a name="l00170"><\/a>00170 <span class="preprocessor">#ifdef HMAP_MAKE_HASHFN<\/span>$/;"	anchor	line:194
+l00171	doc/html/hashmap_8c_source.html	/^<a name="l00171"><\/a>00171 <span class="preprocessor"><\/span><span class="comment">\/\/ Robert Jenkins&#39; 32 bit integer hash function<\/span>$/;"	anchor	line:195
+l00172	doc/html/hashmap_8c_source.html	/^<a name="l00172"><\/a><a class="code" href="hashmap_8c.html#a5ca80f440a6b42b176ccc133b7161470">00172<\/a> uint32_t <a class="code" href="hashmap_8c.html#a5ca80f440a6b42b176ccc133b7161470">int_hash_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in) {$/;"	anchor	line:196
+l00173	doc/html/hashmap_8c_source.html	/^<a name="l00173"><\/a>00173  <span class="keyword">static<\/span> uint32_t a;$/;"	anchor	line:197
+l00174	doc/html/hashmap_8c_source.html	/^<a name="l00174"><\/a>00174  a = *((uint32_t*) in);$/;"	anchor	line:198
+l00175	doc/html/hashmap_8c_source.html	/^<a name="l00175"><\/a>00175 $/;"	anchor	line:199
+l00176	doc/html/hashmap_8c_source.html	/^<a name="l00176"><\/a>00176  a = (a + 0x7ed55d16) + (a &lt;&lt; 12);$/;"	anchor	line:200
+l00177	doc/html/hashmap_8c_source.html	/^<a name="l00177"><\/a>00177  a = (a ^ 0xc761c23c) ^ (a &gt;&gt; 19);$/;"	anchor	line:201
+l00178	doc/html/hashmap_8c_source.html	/^<a name="l00178"><\/a>00178  a = (a + 0x165667b1) + (a &lt;&lt; 5);$/;"	anchor	line:202
+l00179	doc/html/hashmap_8c_source.html	/^<a name="l00179"><\/a>00179  a = (a + 0xd3a2646c) ^ (a &lt;&lt; 9);$/;"	anchor	line:203
+l00180	doc/html/hashmap_8c_source.html	/^<a name="l00180"><\/a>00180  a = (a + 0xfd7046c5) + (a &lt;&lt; 3);$/;"	anchor	line:204
+l00181	doc/html/hashmap_8c_source.html	/^<a name="l00181"><\/a>00181  a = (a ^ 0xb55a4f09) ^ (a &gt;&gt; 16);$/;"	anchor	line:205
+l00182	doc/html/hashmap_8c_source.html	/^<a name="l00182"><\/a>00182 $/;"	anchor	line:206
+l00183	doc/html/hashmap_8c_source.html	/^<a name="l00183"><\/a>00183  <span class="keywordflow">return<\/span> a;$/;"	anchor	line:207
+l00184	doc/html/hashmap_8c_source.html	/^<a name="l00184"><\/a>00184 }$/;"	anchor	line:208
+l00185	doc/html/hashmap_8c_source.html	/^<a name="l00185"><\/a>00185 $/;"	anchor	line:209
+l00186	doc/html/hashmap_8c_source.html	/^<a name="l00186"><\/a><a class="code" href="hashmap_8c.html#a97891e40a78da1da47804f0fb7221639">00186<\/a> <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#a97891e40a78da1da47804f0fb7221639">int_eq_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> a, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> b) {$/;"	anchor	line:210
+l00187	doc/html/hashmap_8c_source.html	/^<a name="l00187"><\/a>00187  <span class="keywordflow">return<\/span> *((<span class="keywordtype">int<\/span>*) a) == *((<span class="keywordtype">int<\/span>*) b) ? <span class="keyword">true<\/span> : <span class="keyword">false<\/span>;$/;"	anchor	line:211
+l00188	doc/html/hashmap_8c_source.html	/^<a name="l00188"><\/a>00188 }$/;"	anchor	line:212
+l00189	doc/html/hashmap_8c_source.html	/^<a name="l00189"><\/a>00189 $/;"	anchor	line:213
+l00190	doc/html/hashmap_8c_source.html	/^<a name="l00190"><\/a><a class="code" href="hashmap_8c.html#a7efd93ec0da67619e08d5dbd62b19deb">00190<\/a> <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a7efd93ec0da67619e08d5dbd62b19deb">int_del_fn<\/a>(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> q) {};$/;"	anchor	line:214
+l00191	doc/html/hashmap_8c_source.html	/^<a name="l00191"><\/a>00191 $/;"	anchor	line:215
+l00192	doc/html/hashmap_8c_source.html	/^<a name="l00192"><\/a>00192 <span class="comment">\/\/ Dan Bernstein&#39;s string hash function (djb2)<\/span>$/;"	anchor	line:216
+l00193	doc/html/hashmap_8c_source.html	/^<a name="l00193"><\/a><a class="code" href="hashmap_8c.html#a8c1828b87e2e161ef28551966d46dcf4">00193<\/a> uint32_t <a class="code" href="hashmap_8c.html#a8c1828b87e2e161ef28551966d46dcf4">str_hash_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> in) {$/;"	anchor	line:217
+l00194	doc/html/hashmap_8c_source.html	/^<a name="l00194"><\/a>00194  <span class="keyword">static<\/span> uint32_t hash;$/;"	anchor	line:218
+l00195	doc/html/hashmap_8c_source.html	/^<a name="l00195"><\/a>00195  <span class="keyword">static<\/span> <span class="keywordtype">unsigned<\/span> <span class="keywordtype">char<\/span> c;$/;"	anchor	line:219
+l00196	doc/html/hashmap_8c_source.html	/^<a name="l00196"><\/a>00196 $/;"	anchor	line:220
+l00197	doc/html/hashmap_8c_source.html	/^<a name="l00197"><\/a>00197  hash = 5381;$/;"	anchor	line:221
+l00198	doc/html/hashmap_8c_source.html	/^<a name="l00198"><\/a>00198 $/;"	anchor	line:222
+l00199	doc/html/hashmap_8c_source.html	/^<a name="l00199"><\/a>00199  <span class="keywordflow">while<\/span> (c != <span class="charliteral">&#39;\\0&#39;<\/span>) {$/;"	anchor	line:223
+l00200	doc/html/hashmap_8c_source.html	/^<a name="l00200"><\/a>00200   c = *(<span class="keywordtype">unsigned<\/span> <span class="keywordtype">char<\/span>*) in++;$/;"	anchor	line:224
+l00201	doc/html/hashmap_8c_source.html	/^<a name="l00201"><\/a>00201   hash = ((hash &lt;&lt; 5) + hash) + c;$/;"	anchor	line:225
+l00202	doc/html/hashmap_8c_source.html	/^<a name="l00202"><\/a>00202  }$/;"	anchor	line:226
+l00203	doc/html/hashmap_8c_source.html	/^<a name="l00203"><\/a>00203 $/;"	anchor	line:227
+l00204	doc/html/hashmap_8c_source.html	/^<a name="l00204"><\/a>00204  <span class="keywordflow">return<\/span> hash;$/;"	anchor	line:228
+l00205	doc/html/hashmap_8c_source.html	/^<a name="l00205"><\/a>00205 }$/;"	anchor	line:229
+l00206	doc/html/hashmap_8c_source.html	/^<a name="l00206"><\/a>00206 $/;"	anchor	line:230
+l00207	doc/html/hashmap_8c_source.html	/^<a name="l00207"><\/a><a class="code" href="hashmap_8c.html#a6bea8fb14018f25c3cbbbc90c289bf59">00207<\/a> <span class="keywordtype">bool<\/span> <a class="code" href="hashmap_8c.html#a6bea8fb14018f25c3cbbbc90c289bf59">str_eq_fn<\/a>(<a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> a, <a class="code" href="hashmap_8h.html#a12e57cd2caee2f40cae9848baec87197">key<\/a> b) {$/;"	anchor	line:231
+l00208	doc/html/hashmap_8c_source.html	/^<a name="l00208"><\/a>00208  <span class="keywordflow">return<\/span> (strcmp((<span class="keywordtype">char<\/span>*) a, (<span class="keywordtype">char<\/span>*) b) == 0) ? <span class="keyword">true<\/span> : <span class="keyword">false<\/span>;$/;"	anchor	line:232
+l00209	doc/html/hashmap_8c_source.html	/^<a name="l00209"><\/a>00209 }$/;"	anchor	line:233
+l00210	doc/html/hashmap_8c_source.html	/^<a name="l00210"><\/a>00210 $/;"	anchor	line:234
+l00211	doc/html/hashmap_8c_source.html	/^<a name="l00211"><\/a><a class="code" href="hashmap_8c.html#a89c364cccaecdc39a879e81e106a9718">00211<\/a> <span class="keywordtype">void<\/span> <a class="code" href="hashmap_8c.html#a89c364cccaecdc39a879e81e106a9718">str_del_fn<\/a>(<a class="code" href="hashmap_8h.html#a3767b27203cb0fc2ac0f30b966c5e92f">val<\/a> q) {$/;"	anchor	line:235
+l00212	doc/html/hashmap_8c_source.html	/^<a name="l00212"><\/a>00212  free(q);$/;"	anchor	line:236
+l00213	doc/html/hashmap_8c_source.html	/^<a name="l00213"><\/a>00213 };$/;"	anchor	line:237
+l00214	doc/html/hashmap_8c_source.html	/^<a name="l00214"><\/a>00214 $/;"	anchor	line:238
+l00215	doc/html/hashmap_8c_source.html	/^<a name="l00215"><\/a>00215 <span class="preprocessor">#endif<\/span>$/;"	anchor	line:239
+latex_count	doc/latex/Makefile	/^	latex_count=5 ; \\$/;"	macro	line:9
+length	doc/latex/struct_spilt_data.tex	/^\\index{length@{length}!SpiltData@{SpiltData}}$/;"	subsubsection	line:41
+length	string_util.h	/^	int  length;$/;"	member	line:16
+lengths	doc/latex/struct_spilt_data.tex	/^\\index{lengths@{lengths}!SpiltData@{SpiltData}}$/;"	subsubsection	line:50
+lengths	string_util.h	/^	int  *lengths;$/;"	member	line:17
+letter_H	doc/html/classes.html	/^<tr><td><a name="letter_H"><\/a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&nbsp;&nbsp;H&nbsp;&nbsp;<\/div><\/td><\/tr><\/table>$/;"	anchor	line:29
+letter_K	doc/html/classes.html	/^<\/td><td><a name="letter_K"><\/a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&nbsp;&nbsp;K&nbsp;&nbsp;<\/div><\/td><\/tr><\/table>$/;"	anchor	line:30
+letter_M	doc/html/classes.html	/^<\/td><td><a name="letter_M"><\/a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&nbsp;&nbsp;M&nbsp;&nbsp;<\/div><\/td><\/tr><\/table>$/;"	anchor	line:31
+letter_S	doc/html/classes.html	/^<\/td><td><a name="letter_S"><\/a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&nbsp;&nbsp;S&nbsp;&nbsp;<\/div><\/td><\/tr><\/table>$/;"	anchor	line:32
+lock	doc/latex/structhashmap.tex	/^\\index{lock@{lock}!hashmap@{hashmap}}$/;"	subsubsection	line:79
 lock	hashmap/hashmap.c	/^	sem_t lock;$/;"	member	line:36
-main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:7
+main	doc/latex/option_parser_012_8c.tex	/^\\index{main@{main}!optionParser 2.c@{optionParser 2.c}}$/;"	subsubsection	line:25
+main	doc/latex/option_parser_8c.tex	/^\\index{main@{main}!optionParser.c@{optionParser.c}}$/;"	subsubsection	line:25
+main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
 main	optionParser 2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	optionParser.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:9
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
+main c File Reference	doc/latex/main_8c.tex	/^\\hypertarget{main_8c}{$/;"	section	line:1
+main h File Reference	doc/latex/main_8h.tex	/^\\hypertarget{main_8h}{$/;"	section	line:1
+map	doc/latex/structhashmap.tex	/^\\index{map@{map}!hashmap@{hashmap}}$/;"	subsubsection	line:88
 map	hashmap/hashmap.c	/^	key_val_pair* map;$/;"	member	line:27
+match	doc/latex/string__util_8h.tex	/^\\index{match@{match}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:35
 match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:10
-media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:17
+media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:18
+media c File Reference	doc/latex/media_8c.tex	/^\\hypertarget{media_8c}{$/;"	section	line:1
+media h File Reference	doc/latex/media_8h.tex	/^\\hypertarget{media_8h}{$/;"	section	line:1
+mk _ hmap	doc/latex/hashmap_8h.tex	/^\\index{mk\\_\\-hmap@{mk\\_\\-hmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:198
 mk_hmap	hashmap/hashmap.c	/^hashmap* mk_hmap(uint32_t (*hash_fn)(key),$/;"	function	line:41
-mplayer	media.c	/^void mplayer(char **filenames, int total_length, $/;"	function	line:46
+mplayer	media.c	/^void mplayer(char **filenames, int total_length, $/;"	function	line:52
+newest _ only	doc/latex/struct_media_args.tex	/^\\index{newest\\_\\-only@{newest\\_\\-only}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:98
 newest_only	media.h	/^	bool  newest_only;$/;"	member	line:36
+optionParser 2 c File Reference	doc/latex/option_parser_012_8c.tex	/^\\hypertarget{option_parser_012_8c}{$/;"	section	line:1
+optionParser c File Reference	doc/latex/option_parser_8c.tex	/^\\hypertarget{option_parser_8c}{$/;"	section	line:1
+optionParser h File Reference	doc/latex/option_parser_8h.tex	/^\\hypertarget{option_parser_8h}{$/;"	section	line:1
+pl _ dir	doc/latex/struct_media_args.tex	/^\\index{pl\\_\\-dir@{pl\\_\\-dir}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:107
+pl _ format	doc/latex/struct_media_args.tex	/^\\index{pl\\_\\-format@{pl\\_\\-format}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:116
+pl _ name	doc/latex/struct_media_args.tex	/^\\index{pl\\_\\-name@{pl\\_\\-name}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:125
+pl _ output	doc/latex/struct_media_args.tex	/^\\index{pl\\_\\-output@{pl\\_\\-output}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:134
+pl _ rand	doc/latex/struct_media_args.tex	/^\\index{pl\\_\\-rand@{pl\\_\\-rand}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:143
 pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:41
 pl_format	media.h	/^	Pformat  pl_format;$/;"	member	line:43
 pl_name	media.h	/^	char    *pl_name;$/;"	member	line:42
 pl_output	media.h	/^	Poutput  pl_output;$/;"	member	line:44
 pl_rand	media.h	/^	bool     pl_rand;$/;"	member	line:45
+player	doc/latex/struct_media_args.tex	/^\\index{player@{player}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:152
 player	media.h	/^	Player  player;$/;"	member	line:51
+postfix _ args	doc/latex/struct_media_args.tex	/^\\index{postfix\\_\\-args@{postfix\\_\\-args}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:161
 postfix_args	media.h	/^	char   *postfix_args;$/;"	member	line:57
+prefix _ args	doc/latex/struct_media_args.tex	/^\\index{prefix\\_\\-args@{prefix\\_\\-args}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:170
 prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:56
+repeat	doc/latex/struct_media_args.tex	/^\\index{repeat@{repeat}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:179
 repeat	media.h	/^	bool repeat;$/;"	member	line:60
+size	doc/latex/structhashmap.tex	/^\\index{size@{size}!hashmap@{hashmap}}$/;"	subsubsection	line:97
 size	hashmap/hashmap.c	/^	uint32_t size;$/;"	member	line:28
-spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator ) {$/;"	function	line:47
-spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:87
+spilt _ args	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-args@{spilt\\_\\-args}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:48
+spilt _ func	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-func@{spilt\\_\\-func}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:68
+spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:47
+spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:92
+status	doc/latex/struct_media_args.tex	/^\\index{status@{status}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:188
 status	media.h	/^	Status  status;$/;"	member	line:50
+str _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-replace@{str\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:88
+str _ spilt _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-spilt\\_\\-replace@{str\\_\\-spilt\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:101
 str_del_fn	hashmap/hashmap.c	/^void str_del_fn(val q) {$/;"	function	line:211
 str_eq_fn	hashmap/hashmap.c	/^bool str_eq_fn(key a, key b) {$/;"	function	line:207
 str_hash_fn	hashmap/hashmap.c	/^uint32_t str_hash_fn(key in) {$/;"	function	line:193
 str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:24
-str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:124
+str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:129
+string _ util c File Reference	doc/latex/string__util_8c.tex	/^\\hypertarget{string__util_8c}{$/;"	section	line:1
+string _ util h File Reference	doc/latex/string__util_8h.tex	/^\\hypertarget{string__util_8h}{$/;"	section	line:1
+sub _ dirs	doc/latex/struct_media_args.tex	/^\\index{sub\\_\\-dirs@{sub\\_\\-dirs}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:197
 sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:37
-test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:78
-total	string_util.h	/^	int  total;$/;"	member	line:20
+temp c File Reference	doc/latex/temp_8c.tex	/^\\hypertarget{temp_8c}{$/;"	section	line:1
+test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:83
+tests string _ util _ test c File Reference	doc/latex/string__util__test_8c.tex	/^\\hypertarget{string__util__test_8c}{$/;"	section	line:1
+toggleFolder	doc/html/tree.html	/^    function toggleFolder(id, imageNode) $/;"	function	line:15
+total	doc/latex/struct_spilt_data.tex	/^\\index{total@{total}!SpiltData@{SpiltData}}$/;"	subsubsection	line:59
+total	string_util.h	/^	int  total;$/;"	member	line:18
+types	doc/latex/struct_media_args.tex	/^\\index{types@{types}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:206
 types	media.h	/^	Types types;$/;"	member	line:38
+usage	doc/html/installdox	/^sub usage {$/;"	subroutine	line:111
+use _ hash	doc/latex/struct_media_args.tex	/^\\index{use\\_\\-hash@{use\\_\\-hash}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:215
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:49
+v	doc/latex/structkey__val__pair.tex	/^\\index{v@{v}!key_val_pair@{key\\_\\-val\\_\\-pair}}$/;"	subsubsection	line:33
 v	hashmap/hashmap.c	/^	val v;$/;"	member	line:23
+val	doc/latex/hashmap_8h.tex	/^\\index{val@{val}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:159
 val	hashmap/hashmap.h	/^typedef void* val;$/;"	typedef	line:47
+write _ history	doc/latex/struct_media_args.tex	/^\\index{write\\_\\-history@{write\\_\\-history}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:224
 write_history	media.h	/^	bool    write_history;$/;"	member	line:52

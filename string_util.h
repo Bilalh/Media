@@ -1,9 +1,7 @@
-#include <sys/types.h>
 /**
  * Match string against the extended regular expression in
  * pattern, treating errors as no match.
  *
- * non zero on match, 0 on any error
 **/
 int match(const char *string, char *pattern);
 
