@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>media.c</string>
+	<string>makefile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,56 +21,28 @@
 	<integer>159</integer>
 	<key>metaData</key>
 	<dict>
-		<key>media.c</key>
+		<key>hash/tester.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>3</integer>
-		</dict>
-		<key>media.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>5</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>string_util.c</key>
+		<key>makefile</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>52</integer>
 				<key>line</key>
-				<integer>22</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>string_util.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -80,10 +52,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>string_util.h</string>
-		<string>string_util.c</string>
-		<string>media.h</string>
-		<string>media.c</string>
+		<string>hash/tester.c</string>
+		<string>makefile</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
@@ -97,7 +67,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>hashmap</key>
+				<key>hash</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>

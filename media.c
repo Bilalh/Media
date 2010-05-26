@@ -41,8 +41,7 @@ void media(char *path, char **args,int argc) {
 		sa[i] = files[i]->d_name;
 		total_length += strlen(sa[i]);
 	}
-	
-	
+	sa[file_num] ="";
 	
 	mplayer(sa,total_length,"","",path);
 }
@@ -83,5 +82,5 @@ void mplayer(char **filenames, int total_length,
 	
 	m_args[index] = '\0';
 	// printf("%s\n", m_args);
-	// system(m_args);
+	system(m_args);
 }                                            
