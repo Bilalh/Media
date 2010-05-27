@@ -6,9 +6,9 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:15
 CC	makefile	/^CC = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS = -g -Wall -I .\/hash -I .$/;"	macro	line:2
+CFLAGS	makefile	/^CFLAGS = -g -Wall -I . -I .\/hash$/;"	macro	line:2
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
-DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:71
+DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
 DEFINE_HASHTABLE_REMOVE	hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/;"	macro	line:137
 DEFINE_HASHTABLE_SEARCH	hash/hashtable.h	/^#define DEFINE_HASHTABLE_SEARCH(/;"	macro	line:119
 DIRENT	media.c	/^#define DIRENT(/;"	macro	line:12
@@ -48,17 +48,11 @@ Functions	doc/latex/media_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	l
 Functions	doc/latex/option_parser_012_8c.tex	/^\\end{figure}$/;"	subsubsection	line:14
 Functions	doc/latex/option_parser_8c.tex	/^\\end{figure}$/;"	subsubsection	line:14
 Functions	doc/latex/string__util_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:16
-HASHMAP_H	hashmap/hashmap.h	/^#define HASHMAP_H$/;"	macro	line:20
 HMAP _ DESTRUCTORS	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-DESTRUCTORS@{HMAP\\_\\-DESTRUCTORS}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:75
 HMAP _ GROWTH _ RATE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-GROWTH\\_\\-RATE@{HMAP\\_\\-GROWTH\\_\\-RATE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:93
 HMAP _ MAKE _ HASHFN	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-MAKE\\_\\-HASHFN@{HMAP\\_\\-MAKE\\_\\-HASHFN}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:102
 HMAP _ PRESET _ SIZE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-PRESET\\_\\-SIZE@{HMAP\\_\\-PRESET\\_\\-SIZE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:111
 HMAP _ THREAD _ SAFE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-THREAD\\_\\-SAFE@{HMAP\\_\\-THREAD\\_\\-SAFE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:120
-HMAP_DESTRUCTORS	hashmap/hashmap.h	/^#define HMAP_DESTRUCTORS	/;"	macro	line:27
-HMAP_GROWTH_RATE	hashmap/hashmap.h	/^#define HMAP_GROWTH_RATE /;"	macro	line:23
-HMAP_MAKE_HASHFN	hashmap/hashmap.h	/^#define HMAP_MAKE_HASHFN	/;"	macro	line:25
-HMAP_PRESET_SIZE	hashmap/hashmap.h	/^#define HMAP_PRESET_SIZE /;"	macro	line:22
-HMAP_THREAD_SAFE	hashmap/hashmap.h	/^#define HMAP_THREAD_SAFE /;"	macro	line:26
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
 MediaArgs	media.h	/^} MediaArgs;$/;"	typedef	line:62
 MediaArgs Struct Reference	doc/latex/struct_media_args.tex	/^\\hypertarget{struct_media_args}{$/;"	section	line:1
@@ -120,9 +114,6 @@ __HASHTABLE_CWC22_H__	hash/hashtable.h	/^#define __HASHTABLE_CWC22_H__$/;"	macro
 __HASHTABLE_CWC22_UTILITY_H__	hash/hashtable_utility.h	/^#define __HASHTABLE_CWC22_UTILITY_H__$/;"	macro	line:4
 __HASHTABLE_ITR_CWC22__	hash/hashtable_itr.h	/^#define __HASHTABLE_ITR_CWC22__$/;"	macro	line:4
 __HASHTABLE_PRIVATE_CWC22_H__	hash/hashtable_private.h	/^#define __HASHTABLE_PRIVATE_CWC22_H__$/;"	macro	line:4
-__hmap_add	hashmap/hashmap.c	/^bool __hmap_add(hashmap* hmap, key in, val out) {$/;"	function	line:101
-__hmap_get	hashmap/hashmap.c	/^val __hmap_get(hashmap* hmap, key in) {$/;"	function	line:142
-__oa_hmap_add	hashmap/hashmap.c	/^static void __oa_hmap_add(key_val_pair* map, uint32_t size,$/;"	function	line:87
 _details	doc/html/struct_media_args.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:51
 _details	doc/html/struct_spilt_data.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:36
 _details	doc/html/structhashmap.html	/^<hr\/><a name="_details"><\/a><h2>Detailed Description<\/h2>$/;"	anchor	line:44
@@ -132,29 +123,24 @@ afloat	media.h	/^	bool   afloat;$/;"	member	line:55
 args	doc/latex/struct_spilt_data.tex	/^\\index{args@{args}!SpiltData@{SpiltData}}$/;"	subsubsection	line:32
 args	string_util.h	/^	char **args;$/;"	member	line:15
 capacity	doc/latex/structhashmap.tex	/^\\index{capacity@{capacity}!hashmap@{hashmap}}$/;"	subsubsection	line:43
-capacity	hashmap/hashmap.c	/^	uint32_t capacity;$/;"	member	line:29
 convertToId	doc/html/search/search.js	/^function convertToId(search)$/;"	function	line:34
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
 del _ fn	doc/latex/structhashmap.tex	/^\\index{del\\_\\-fn@{del\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:52
-del_fn	hashmap/hashmap.c	/^	void (*del_fn)(val);$/;"	member	line:33
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 entry	hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
-ep_num	old.c	/^char** ep_num(char *s) {$/;"	function	line:9
-ep_num	temp.c	/^char** ep_num(char *s) {$/;"	function	line:10
+ep_num	temp.c	/^char** ep_num(char *s) {$/;"	function	line:8
 eq _ fn	doc/latex/structhashmap.tex	/^\\index{eq\\_\\-fn@{eq\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:61
-eq_fn	hashmap/hashmap.c	/^	bool (*eq_fn)(key, key);$/;"	member	line:31
 eqfn	hash/hashtable_private.h	/^    int (*eqfn) (void *k1, void *k2);$/;"	member	line:23
-equal_keys	temp.c	/^int equal_keys(void *k1, void *k2) {$/;"	function	line:47
+equal_keys	temp.c	/^int equal_keys(void *k1, void *k2) {$/;"	function	line:45
 equalkeys	hash/tester.c	/^equalkeys(void *k1, void *k2)$/;"	function	line:41
 exclude	doc/latex/struct_media_args.tex	/^\\index{exclude@{exclude}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:71
 exclude	media.h	/^	bool  exclude;$/;"	member	line:34
 excludes	doc/latex/struct_media_args.tex	/^\\index{excludes@{excludes}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:80
 excludes	media.h	/^	char *excludes;$/;"	member	line:35
 free _ hmap	doc/latex/hashmap_8h.tex	/^\\index{free\\_\\-hmap@{free\\_\\-hmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:189
-free_hmap	hashmap/hashmap.c	/^void free_hmap(hashmap* hmap) {$/;"	function	line:63
 freekey	hash/hashtable_private.h	/^#define freekey(/;"	macro	line:46
-full	temp.c	/^	char *full;$/;"	member	line:29
+full	temp.c	/^	char *full;$/;"	member	line:27
 getXPos	doc/html/search/search.js	/^function getXPos(item)$/;"	function	line:57
 getYPos	doc/html/search/search.js	/^function getYPos(item)$/;"	function	line:71
 h	hash/hashtable_itr.h	/^    struct hashtable *h;$/;"	member	line:13
@@ -162,13 +148,10 @@ h	hash/hashtable_private.h	/^    unsigned int h;$/;"	member	line:12
 hash	hash/hashtable.c	/^hash(struct hashtable *h, void *k)$/;"	function	line:57
 hash _ fn	doc/latex/structhashmap.tex	/^\\index{hash\\_\\-fn@{hash\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:70
 hash _ location	doc/latex/struct_media_args.tex	/^\\index{hash\\_\\-location@{hash\\_\\-location}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:89
-hash_fn	hashmap/hashmap.c	/^	uint32_t (*hash_fn)(key);$/;"	member	line:30
 hash_location	media.h	/^	char   *hash_location;$/;"	member	line:48
 hashfn	hash/hashtable_private.h	/^    unsigned int (*hashfn) (void *k);$/;"	member	line:22
 hashfromkey	hash/tester.c	/^hashfromkey(void *ky)$/;"	function	line:33
 hashmap	doc/latex/hashmap_8h.tex	/^\\index{hashmap@{hashmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:132
-hashmap	hashmap/hashmap.c	/^struct hashmap {$/;"	struct	line:26
-hashmap	hashmap/hashmap.h	/^typedef struct hashmap hashmap;$/;"	typedef	line:50
 hashmap Struct Reference	doc/latex/structhashmap.tex	/^\\hypertarget{structhashmap}{$/;"	section	line:1
 hashmap hashmap c File Reference	doc/latex/hashmap_8c.tex	/^\\hypertarget{hashmap_8c}{$/;"	section	line:1
 hashmap hashmap h File Reference	doc/latex/hashmap_8h.tex	/^\\hypertarget{hashmap_8h}{$/;"	section	line:1
@@ -181,18 +164,14 @@ hashtable_insert	hash/hashtable.c	/^hashtable_insert(struct hashtable *h, void *
 hashtable_iterator	hash/hashtable_itr.c	/^hashtable_iterator(struct hashtable *h)$/;"	function	line:12
 hashtable_iterator_advance	hash/hashtable_itr.c	/^hashtable_iterator_advance(struct hashtable_itr *itr)$/;"	function	line:54
 hashtable_iterator_key	hash/hashtable_itr.c	/^hashtable_iterator_key(struct hashtable_itr *i)$/;"	function	line:42
-hashtable_iterator_key	hash/hashtable_itr.h	/^hashtable_iterator_key(struct hashtable_itr *i)$/;"	function	line:32
 hashtable_iterator_remove	hash/hashtable_itr.c	/^hashtable_iterator_remove(struct hashtable_itr *itr)$/;"	function	line:99
 hashtable_iterator_search	hash/hashtable_itr.c	/^hashtable_iterator_search(struct hashtable_itr *itr,$/;"	function	line:128
 hashtable_iterator_value	hash/hashtable_itr.c	/^hashtable_iterator_value(struct hashtable_itr *i)$/;"	function	line:46
-hashtable_iterator_value	hash/hashtable_itr.h	/^hashtable_iterator_value(struct hashtable_itr *i)$/;"	function	line:41
 hashtable_itr	hash/hashtable_itr.h	/^struct hashtable_itr$/;"	struct	line:11
 hashtable_remove	hash/hashtable.c	/^hashtable_remove(struct hashtable *h, void *k)$/;"	function	line:181
 hashtable_search	hash/hashtable.c	/^hashtable_search(struct hashtable *h, void *k)$/;"	function	line:163
 hmap _ add	doc/latex/hashmap_8h.tex	/^\\index{hmap\\_\\-add@{hmap\\_\\-add}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:66
 hmap _ get	doc/latex/hashmap_8h.tex	/^\\index{hmap\\_\\-get@{hmap\\_\\-get}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:84
-hmap_add	hashmap/hashmap.h	/^#define hmap_add(/;"	macro	line:66
-hmap_get	hashmap/hashmap.h	/^#define hmap_get(/;"	macro	line:71
 id	hash/tester.c	/^    char *id;$/;"	member	line:22
 index	hash/hashtable_itr.h	/^    unsigned int index;$/;"	member	line:16
 indexFor	hash/hashtable_private.h	/^indexFor(unsigned int tablelength, unsigned int hashvalue) {$/;"	function	line:33
@@ -214,21 +193,14 @@ indexSectionsWithContent.5	doc/html/search/search.js	/^  4: "0000000000000000000
 indexSectionsWithContent.6	doc/html/search/search.js	/^  5: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010010000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:15
 indexSectionsWithContent.7	doc/html/search/search.js	/^  6: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:16
 indexSectionsWithContent.8	doc/html/search/search.js	/^  7: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000100110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",$/;"	property	line:17
-int_del_fn	hashmap/hashmap.c	/^void int_del_fn(val q) {};$/;"	function	line:190
-int_eq_fn	hashmap/hashmap.c	/^bool int_eq_fn(key a, key b) {$/;"	function	line:186
-int_hash_fn	hashmap/hashmap.c	/^uint32_t int_hash_fn(key in) {$/;"	function	line:172
 k	doc/latex/structkey__val__pair.tex	/^\\index{k@{k}!key_val_pair@{key\\_\\-val\\_\\-pair}}$/;"	subsubsection	line:24
 k	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
-k	hashmap/hashmap.c	/^	key k;$/;"	member	line:22
 key	doc/latex/hashmap_8h.tex	/^\\index{key@{key}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:141
 key	hash/tester.c	/^struct key$/;"	struct	line:15
-key	hashmap/hashmap.h	/^typedef void* key;$/;"	typedef	line:46
-key	temp.c	/^struct key {$/;"	struct	line:27
+key	temp.c	/^struct key {$/;"	struct	line:25
 key _ val _ pair	doc/latex/hashmap_8h.tex	/^\\index{key\\_\\-val\\_\\-pair@{key\\_\\-val\\_\\-pair}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:150
 key _ val _ pair Struct Reference	doc/latex/structkey__val__pair.tex	/^\\hypertarget{structkey__val__pair}{$/;"	section	line:1
-key_hash	temp.c	/^unsigned int key_hash(void *ky) {$/;"	function	line:42
-key_val_pair	hashmap/hashmap.c	/^struct key_val_pair {$/;"	struct	line:21
-key_val_pair	hashmap/hashmap.h	/^typedef struct key_val_pair key_val_pair;$/;"	typedef	line:49
+key_hash	temp.c	/^unsigned int key_hash(void *ky) {$/;"	function	line:40
 l00001	doc/html/hashmap_8c_source.html	/^<h1>hashmap\/hashmap.c<\/h1><a href="hashmap_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="comment">\/*<\/span>$/;"	anchor	line:25
 l00001	doc/html/hashmap_8h_source.html	/^<h1>hashmap\/hashmap.h<\/h1><a href="hashmap_8h.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="comment">\/*<\/span>$/;"	anchor	line:25
 l00001	doc/html/main_8c_source.html	/^<h1>main.c<\/h1><a href="main_8c.html">Go to the documentation of this file.<\/a><div class="fragment"><pre class="fragment"><a name="l00001"><\/a>00001 <span class="preprocessor">#include &lt;stdio.h&gt;<\/span>$/;"	anchor	line:25
@@ -1026,20 +998,17 @@ letter_M	doc/html/classes.html	/^<\/td><td><a name="letter_M"><\/a><table border
 letter_S	doc/html/classes.html	/^<\/td><td><a name="letter_S"><\/a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&nbsp;&nbsp;S&nbsp;&nbsp;<\/div><\/td><\/tr><\/table>$/;"	anchor	line:32
 loadlimit	hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 lock	doc/latex/structhashmap.tex	/^\\index{lock@{lock}!hashmap@{hashmap}}$/;"	subsubsection	line:79
-lock	hashmap/hashmap.c	/^	sem_t lock;$/;"	member	line:36
 main	doc/latex/option_parser_012_8c.tex	/^\\index{main@{main}!optionParser 2.c@{optionParser 2.c}}$/;"	subsubsection	line:25
 main	doc/latex/option_parser_8c.tex	/^\\index{main@{main}!optionParser.c@{optionParser.c}}$/;"	subsubsection	line:25
 main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
-main	old.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:26
 main	optionParser 2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	optionParser.c	/^int main (int argc, char **argv) {$/;"	function	line:4
-main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:51
+main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:52
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
 main c File Reference	doc/latex/main_8c.tex	/^\\hypertarget{main_8c}{$/;"	section	line:1
 main h File Reference	doc/latex/main_8h.tex	/^\\hypertarget{main_8h}{$/;"	section	line:1
 map	doc/latex/structhashmap.tex	/^\\index{map@{map}!hashmap@{hashmap}}$/;"	subsubsection	line:88
-map	hashmap/hashmap.c	/^	key_val_pair* map;$/;"	member	line:27
 match	doc/latex/string__util_8h.tex	/^\\index{match@{match}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:35
 match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:10
 max_load_factor	hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
@@ -1047,7 +1016,6 @@ media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line
 media c File Reference	doc/latex/media_8c.tex	/^\\hypertarget{media_8c}{$/;"	section	line:1
 media h File Reference	doc/latex/media_8h.tex	/^\\hypertarget{media_8h}{$/;"	section	line:1
 mk _ hmap	doc/latex/hashmap_8h.tex	/^\\index{mk\\_\\-hmap@{mk\\_\\-hmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:198
-mk_hmap	hashmap/hashmap.c	/^hashmap* mk_hmap(uint32_t (*hash_fn)(key),$/;"	function	line:41
 mplayer	media.c	/^void mplayer(char **filenames, int total_length, $/;"	function	line:51
 newest _ only	doc/latex/struct_media_args.tex	/^\\index{newest\\_\\-only@{newest\\_\\-only}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:98
 newest_only	media.h	/^	bool  newest_only;$/;"	member	line:36
@@ -1080,20 +1048,16 @@ primes	hash/hashtable.c	/^static const unsigned int primes[] = {$/;"	variable	li
 repeat	doc/latex/struct_media_args.tex	/^\\index{repeat@{repeat}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:179
 repeat	media.h	/^	bool repeat;$/;"	member	line:60
 size	doc/latex/structhashmap.tex	/^\\index{size@{size}!hashmap@{hashmap}}$/;"	subsubsection	line:97
-size	hashmap/hashmap.c	/^	uint32_t size;$/;"	member	line:28
 spilt _ args	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-args@{spilt\\_\\-args}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:48
 spilt _ func	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-func@{spilt\\_\\-func}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:68
 spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:47
 spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:92
 status	doc/latex/struct_media_args.tex	/^\\index{status@{status}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:188
 status	media.h	/^	Status  status;$/;"	member	line:50
-str	temp.c	/^	unsigned char *str;$/;"	member	line:28
+str	temp.c	/^	unsigned char *str;$/;"	member	line:26
 str _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-replace@{str\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:88
 str _ spilt _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-spilt\\_\\-replace@{str\\_\\-spilt\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:101
-str_del_fn	hashmap/hashmap.c	/^void str_del_fn(val q) {$/;"	function	line:211
-str_eq_fn	hashmap/hashmap.c	/^bool str_eq_fn(key a, key b) {$/;"	function	line:207
-str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:32
-str_hash_fn	hashmap/hashmap.c	/^uint32_t str_hash_fn(key in) {$/;"	function	line:193
+str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:30
 str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:24
 str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:129
 string _ util c File Reference	doc/latex/string__util_8c.tex	/^\\hypertarget{string__util_8c}{$/;"	section	line:1
@@ -1119,9 +1083,7 @@ use _ hash	doc/latex/struct_media_args.tex	/^\\index{use\\_\\-hash@{use\\_\\-has
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:49
 v	doc/latex/structkey__val__pair.tex	/^\\index{v@{v}!key_val_pair@{key\\_\\-val\\_\\-pair}}$/;"	subsubsection	line:33
 v	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
-v	hashmap/hashmap.c	/^	val v;$/;"	member	line:23
 val	doc/latex/hashmap_8h.tex	/^\\index{val@{val}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:159
-val	hashmap/hashmap.h	/^typedef void* val;$/;"	typedef	line:47
 value	hash/tester.c	/^struct value$/;"	struct	line:20
 write _ history	doc/latex/struct_media_args.tex	/^\\index{write\\_\\-history@{write\\_\\-history}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:224
 write_history	media.h	/^	bool    write_history;$/;"	member	line:52

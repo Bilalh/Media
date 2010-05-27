@@ -10,7 +10,7 @@ test:  string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} -o $@ $^
 
 
-tempc:  temp.o hash/hashtable_itr.o hash/hashtable.o
+tempc:  temp.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable_utility.o
 	${CC} ${CFLAGS} -o $@ $^
 
 .o:

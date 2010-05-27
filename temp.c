@@ -44,13 +44,13 @@ unsigned int key_hash(void *ky) {
 int equal_keys(void *k1, void *k2) {
 	struct key *ka = (struct key *)k1;
 	struct key *kb = (struct key *)k2;
-	
-	return (strcmp( (char*) ka->str,(char*) kb->str) ==0);
+
+	return (strcmp( (char*) ka->str, (char*) kb->str) == 0);
 }
 
 int main (int argc, char  *argv[]) {
 	char *strings[] = {
-		"index - 01", "index - 06", "index - 03"
+		"index - 01", "index - 02", "index - 06", "index - 04"
 	};
 	int length = sizeof(strings) / sizeof(size_t);
 
@@ -62,7 +62,7 @@ int main (int argc, char  *argv[]) {
 		char **ans = ep_num(strings[i]);
 		char *s = malloc(sizeof(char) * 1024);
 		struct key *k = malloc(sizeof(struct key));
-		
+
 		long l = 1;
 		if (ans[0] != NULL) {
 			l = strtol(ans[0] + 1, NULL, 10);
@@ -81,26 +81,37 @@ int main (int argc, char  *argv[]) {
 		k->str  = (unsigned char*)s;
 		k->full = strings[i];
 
-		int *result = hashtable_search(h,k);
-		if (result == NULL || l > *result ){
+		int *result = hashtable_search(h, k);
+		if (result == NULL || l > *result ) {
 			free(result);
 			int *m = malloc(sizeof(int));
 			*m  = l;
-			hashtable_insert(h,k,m);
+			if (result == NULL){
+				hashtable_insert(h, k, m);
+			}else{
+				hashtable_remove(h, k);
+				hashtable_insert(h, k, m);
+			}
 		}
 		free(ans);
 		puts("");
 	}
 
 
-	printf("%s\n", str_last);
-	struct key kk;
-	kk.str =(unsigned char*) str_last;
-	int *last = hashtable_search(h,  &kk);
-	if (last == NULL){
-		printf("%s\n", "NULL");
-	}else{
-		printf("final: %i\n", *last);
+	struct hashtable_itr *itr;
+	struct key *kk;
+	int *v, i = 0;
+	itr = hashtable_iterator(h);
+	if (hashtable_count(h) > 0) {
+		do {
+			kk = hashtable_iterator_key(itr);
+			v = hashtable_iterator_value(itr);
+			i++;
+			printf("%i: %i %s \n",i, *v, kk->full );
+		} while (hashtable_iterator_advance(itr));
 	}
+
+
+	hashtable_destroy(h, true);
 
 }
