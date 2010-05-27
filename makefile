@@ -3,14 +3,11 @@ CFLAGS = -g -Wall -I . -I ./hash
 media: main.c media.o string_util.o
 	${CC} ${CFlAGS} -o $@ $^
 
+rif: rif.o hashtable.o hashtable_itr.o
+	gcc -g -Wall -O -lm -o rif hashtable.o hashtable_itr.o rif.o
+
 test:  string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} -o $@ $^
-
-hashtable_itr.o: hash/hashtable_itr.c
-	gcc -g -Wall -O -c hash/hashtable_itr.c -o hashtable_itr.o
-
-hashtable.o: hash/hashtable.c
-	gcc -g -Wall -O -c hash/hashtable.c -o hashtable.o	
 
 
 tempc:  temp.o hashtable_itr.o hashtable.o

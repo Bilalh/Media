@@ -1,8 +1,9 @@
+#include "hashtable.h"
+#include "hashtable_itr.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "hashtable.h"
 char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
