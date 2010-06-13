@@ -6,6 +6,24 @@
 #include <stdarg.h>
 #include "string_util.h"
 
+char** ep_num(char *s) {
+	char *start  = s;
+	char **ans = calloc(2, sizeof(size_t));
+	int index = 0;
+
+	while (*s != '\0' ) s++;
+
+	while (*s != *start) {
+		//TODO remove 'Z'
+		if (*s == '-' || *s == ' ' || *s == '_' ) {
+			ans[index]  = s;
+			if (index == 0) index++;
+		};
+		s--;
+	}
+	return ans;
+}
+
 /// \brief Non zero on match, 0 on any error
 int match(const char *string, char *pattern) {
 	int    status;
@@ -20,30 +38,7 @@ int match(const char *string, char *pattern) {
 
 }
 
-/// \brief Replaces the substring sub with rep in the first len charaters of s. 
-char *str_replace(char *s, size_t len,  char *sub, char *rep) {
-	int rep_len = strlen(rep);
-	int sub_len = strlen(sub);
-	char *r     = malloc(len * 2 + rep_len * 2 + 100 );
-
-	// counters for s and r
-	int is = 0, ir = 0;
-	while(is < len) {
-		// checks if sub is a sub string og s
-		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
-			strncpy(&r[ir], rep , rep_len);
-			ir += rep_len;
-			is += sub_len;
-		} else { // move
-			r[ir++] = s[is++];
-		}
-	}
-
-	r[ir] = '\0';
-	return r;
-}
-
-
+/// \brief Concatenates the array with separator and adds the ending to the end
 char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
@@ -78,6 +73,29 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	//CHECK might sem fault on returned string with printf?
 	final_str[index] = '\0';
 	return final_str;
+}
+
+/// \brief Replaces the substring sub with rep in the first len charaters of s. 
+char *str_replace(char *s, size_t len,  char *sub, char *rep) {
+	int rep_len = strlen(rep);
+	int sub_len = strlen(sub);
+	char *r     = malloc(len * 2 + rep_len * 2 + 100 );
+
+	// counters for s and r
+	int is = 0, ir = 0;
+	while(is < len) {
+		// checks if sub is a sub string og s
+		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
+			strncpy(&r[ir], rep , rep_len);
+			ir += rep_len;
+			is += sub_len;
+		} else { // move
+			r[ir++] = s[is++];
+		}
+	}
+
+	r[ir] = '\0';
+	return r;
 }
 
 static char *test_hash(char *s) {
@@ -125,7 +143,7 @@ SpiltData *spilt_func(char *s) {
 	return sd;
 }
 
-
+// not used
 char *str_spilt_replace(char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);

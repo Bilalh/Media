@@ -1,0 +1,19 @@
+SELECT * FROM History
+	WHERE datetime(date) > datetime('now','-10 day'); 
+
+
+SELECT * FROM History
+	WHERE strftime('%s',date) > strftime('%s', 'now','-10 day'); 
+
+SELECT strftime('%s',date), strftime('%s', 'now','-10 day'),date,datetime('now','-10 day','localtime') FROM History
+	WHERE strftime('%s',date) > strftime('%s', 'now','-10 day','localtime');
+	
+UPDATE SeriesInfo 
+	SET id=223
+Where Title='test'
+	
+Select SeriesInfo.Id, SeriesInfo.Title
+	From History Join SeriesInfo
+	WHERE strftime('%s',History.date) > strftime('%s', 'now','-11 day','localtime')
+		and SeriesInfo.Title = History.series 
+		and not(SeriesInfo.Skip or SeriesInfo.Updated or  SeriesInfo.Finished))

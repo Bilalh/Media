@@ -1,7 +1,9 @@
+#include <stddef.h>
+char** ep_num(char *s);
+
 /**
  * Match string against the extended regular expression in
  * pattern, treating errors as no match.
- *
 **/
 int match(const char *string, char *pattern);
 

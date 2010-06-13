@@ -20,6 +20,7 @@ void media(char *path, char **args,int argc) {
 	
 	char *regex = spilt_args(args, argc, ".*",VIDEO);
 	printf("%s\n", regex);
+	
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
 		^ (struct dirent * s) { 
@@ -43,7 +44,7 @@ void media(char *path, char **args,int argc) {
 	}
 	sa[file_num] ="";
 	
-	mplayer(sa,total_length,"","",path);
+	mplayer(sa,total_length,"-aspect 16:10","",path);
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings
@@ -64,6 +65,10 @@ void mplayer(char **filenames, int total_length,
 	strcpy(&m_args[index], "mplayer "); 
 	index += 8;
 	
+	strcpy(&m_args[index], prefix_args);
+	index += strlen(prefix_args);
+	m_args[index++] = ' ';
+	
 	// append filenames
 	while (**filenames != '\0'){
 		printf("%s\n", *filenames);
@@ -81,6 +86,6 @@ void mplayer(char **filenames, int total_length,
 	index +=rid_len;
 	
 	m_args[index] = '\0';
-	// printf("%s\n", m_args);
+	printf("%s\n", m_args);
 	system(m_args);
 }                                            

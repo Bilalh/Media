@@ -1,25 +1,10 @@
 #include "hashtable.h"
 #include "hashtable_itr.h"
+#include "string_util.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-char** ep_num(char *s) {
-	char *start  = s;
-	char **ans = calloc(2, sizeof(size_t));
-	int index = 0;
-
-	while (*s != '\0' ) s++;
-
-	while (*s != *start) {
-		if (*s == '-' || *s == 'Z' || *s == '_' ) {
-			ans[index]  = s;
-			if (index == 0) index++;
-		};
-		s--;
-	}
-	return ans;
-}
 
 struct key {
 	unsigned char *str;
@@ -50,7 +35,7 @@ int equal_keys(void *k1, void *k2) {
 
 int main (int argc, char  *argv[]) {
 	char *strings[] = {
-		"index - 01", "index - 02", "index - 06", "index - 04"
+		"index - 01.mkv", "index - 02.mkv", "index - 06.mkv", "index - 04.mkv"
 	};
 	int length = sizeof(strings) / sizeof(size_t);
 
@@ -66,6 +51,7 @@ int main (int argc, char  *argv[]) {
 		long l = 1;
 		if (ans[0] != NULL) {
 			l = strtol(ans[0] + 1, NULL, 10);
+			
 			if (l == 0 ) l++;
 
 			int index = ans[1] != NULL ? 1 : 0;
