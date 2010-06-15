@@ -8,6 +8,7 @@
 
 #include "media.h"
 #include "string_util.h"
+#include "history.h"
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
@@ -44,7 +45,8 @@ void media(char *path, char **args,int argc) {
 	}
 	sa[file_num] ="";
 	
-	mplayer(sa,total_length,"-aspect 16:10","",path);
+    // mplayer(sa,total_length,"-aspect 16:10","",path);
+    updateHistory(sa);
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings

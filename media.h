@@ -1,3 +1,5 @@
+#ifndef MEDIAHEAD
+#define MEDIAHEAD
 #include <stdbool.h>
 
 void media(char *path,char **args, int length);
@@ -60,3 +62,4 @@ typedef struct {
 	bool repeat;
 	
 } MediaArgs;
+#endif

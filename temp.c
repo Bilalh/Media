@@ -29,13 +29,13 @@ unsigned int key_hash(void *ky) {
 int equal_keys(void *k1, void *k2) {
 	struct key *ka = (struct key *)k1;
 	struct key *kb = (struct key *)k2;
-
 	return (strcmp( (char*) ka->str, (char*) kb->str) == 0);
 }
 
 int main (int argc, char  *argv[]) {
 	char *strings[] = {
-		"index - 01.mkv", "index - 02.mkv", "index - 06.mkv", "index - 04.mkv"
+		"To index ~ 01.mkv", "To index_-_02.mkv", "To index 06.mkv", 
+		"To index    4.mkv", "To index - 12"
 	};
 	int length = sizeof(strings) / sizeof(size_t);
 
@@ -62,7 +62,7 @@ int main (int argc, char  *argv[]) {
 		str_last = s;
 
 		printf("num: %li\n", l);
-		printf("str: %s\n", s);
+		printf("str: %s. org: %s\n", s, strings[i]);
 
 		k->str  = (unsigned char*)s;
 		k->full = strings[i];

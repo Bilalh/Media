@@ -1,6 +1,6 @@
 CC = gcc -std=c99 -fblocks
 CFLAGS = -g -Wall -I . -I ./hash
-media: main.c media.o string_util.o
+media: main.c media.o string_util.o history.o
 	${CC} ${CFlAGS} -o $@ $^
 
 str: string_util.o

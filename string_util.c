@@ -4,8 +4,10 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <ctype.h>
 #include "string_util.h"
 
+/// \brief return the char before the number and the last char before after the text
 char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
@@ -14,11 +16,17 @@ char** ep_num(char *s) {
 	while (*s != '\0' ) s++;
 
 	while (*s != *start) {
-		//TODO remove 'Z'
-		if (*s == '-' || *s == ' ' || *s == '_' ) {
+		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
 			ans[index]  = s;
-			if (index == 0) index++;
-		};
+            index++;
+		}else if(index == 1 && !(*s ==' ' || ispunct(*s) ) ){
+            if( *(s+1) == ' ' || ispunct(*(s+1)) ) {
+                printf("s :%c: \tc2 :%c: \n", *s, *(s+1));
+                // so that  (ans[index] - s) give number of char in the name
+                ans[index] = s+1; 
+                break;
+            }
+		}
 		s--;
 	}
 	return ans;

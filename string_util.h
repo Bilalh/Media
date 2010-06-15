@@ -1,3 +1,5 @@
+#ifndef STRING_UTILHEAD
+#define STRING_UTILHEAD
 #include <stddef.h>
 char** ep_num(char *s);
 
@@ -21,3 +23,5 @@ typedef struct {
 } SpiltData;
 
 SpiltData *spilt_func(char *s);
+
+#endif

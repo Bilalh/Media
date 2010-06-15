@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>text</string>
+	<string>string_util.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,32 +18,47 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>168</integer>
+	<integer>150</integer>
 	<key>metaData</key>
 	<dict>
-		<key>text</key>
+		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>73</integer>
+				<integer>84</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>temp.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>42</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>30</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>text</string>
+		<string>string_util.c</string>
+		<string>temp.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -55,6 +70,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{129, 60}, {854, 756}}</string>
+	<string>{{585, 240}, {816, 561}}</string>
 </dict>
 </plist>
