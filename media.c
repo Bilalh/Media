@@ -1,4 +1,6 @@
-#include <Block.h>
+// #include <Block.h>
+// #include <dispatch/dispatch.h>
+
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,9 +8,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "media.h"
-#include "string_util.h"
 #include "history.h"
+#include "media.h"
+#include "playlist.h"
+#include "string_util.h"
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
@@ -20,7 +23,7 @@ void media(char *path, char **args,int argc) {
 	struct dirent **files;
 	
 	char *regex = spilt_args(args, argc, ".*",VIDEO);
-	printf("%s\n", regex);
+	printf("regex: %s\n", regex);
 	
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
@@ -45,14 +48,15 @@ void media(char *path, char **args,int argc) {
 	}
 	sa[file_num] ="";
 	
+	Pformat types = F_M3U;
     // mplayer(sa,total_length,"-aspect 16:10","",path);
-    updateHistory(sa);
+    // updateHistory(sa);
+	make_playlist("zzplaylist",path,sa,types);
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.  
-void mplayer(char **filenames, int total_length, 
-		char *prefix_args, char *postfix_args, char *filepath) {
+void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
 
 	int index   = strlen(filepath) + 3; // 3 for cd .
 	char *rid   = " &> /dev/null";      // discards output.

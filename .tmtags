@@ -4,14 +4,15 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AUDIO	media.c	/^#define AUDIO /;"	macro	line:16
+AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
 CC	makefile	/^CC = gcc -std=c99 -fblocks$/;"	macro	line:1
 CFLAGS	makefile	/^CFLAGS = -g -Wall -I . -I .\/hash$/;"	macro	line:2
+DATABASE	history.c	/^#define DATABASE /;"	macro	line:7
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
 DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
 DEFINE_HASHTABLE_REMOVE	hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/;"	macro	line:137
 DEFINE_HASHTABLE_SEARCH	hash/hashtable.h	/^#define DEFINE_HASHTABLE_SEARCH(/;"	macro	line:119
-DIRENT	media.c	/^#define DIRENT(/;"	macro	line:13
+DIRENT	media.c	/^#define DIRENT(/;"	macro	line:16
 Data Fields	doc/latex/struct_media_args.tex	/^{\\ttfamily \\#include $<$media.h$>$}$/;"	subsubsection	line:7
 Data Fields	doc/latex/struct_spilt_data.tex	/^{\\ttfamily \\#include $<$string\\_\\-util.h$>$}$/;"	subsubsection	line:7
 Data Fields	doc/latex/structhashmap.tex	/^\\end{figure}$/;"	subsubsection	line:13
@@ -28,10 +29,10 @@ Detailed Description	doc/latex/struct_spilt_data.tex	/^\\end{DoxyCompactItemize}
 Detailed Description	doc/latex/structhashmap.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:30
 Detailed Description	doc/latex/structkey__val__pair.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:11
 Enumerations	doc/latex/media_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:16
-F_M3U	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:14
-F_PLIST	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:14
-F_PLS	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:14
-F_XSPF	media.h	/^	F_M3U, F_PLIST, F_PLS, F_XSPF$/;"	enumerator	line:14
+F_M3U	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
+F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
+F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
+F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
 Field Documentation	doc/latex/struct_media_args.tex	/^Definition at line 30 of file media.h.$/;"	subsubsection	line:55
 Field Documentation	doc/latex/struct_spilt_data.tex	/^Definition at line 14 of file string\\_\\-util.h.$/;"	subsubsection	line:25
 Field Documentation	doc/latex/structhashmap.tex	/^Definition at line 26 of file hashmap.c.$/;"	subsubsection	line:36
@@ -56,11 +57,13 @@ HMAP _ PRESET _ SIZE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-PRESET\\_\\-SI
 HMAP _ THREAD _ SAFE	doc/latex/hashmap_8h.tex	/^\\index{HMAP\\_\\-THREAD\\_\\-SAFE@{HMAP\\_\\-THREAD\\_\\-SAFE}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:120
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
+MAKE_TIME_STR	history.c	/^#define MAKE_TIME_STR(/;"	macro	line:8
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MediaArgs	media.h	/^} MediaArgs;$/;"	typedef	line:64
 MediaArgs Struct Reference	doc/latex/struct_media_args.tex	/^\\hypertarget{struct_media_args}{$/;"	section	line:1
 OPTION_PHEAD	option_Parser.h	/^#define OPTION_PHEAD$/;"	macro	line:2
 PATH	main.c	/^#define PATH /;"	macro	line:6
+PLAYLISTHEAD	playlist.h	/^#define PLAYLISTHEAD$/;"	macro	line:2
 PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:18
 PL_NONE	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:18
 PL_PLAYLIST	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:18
@@ -112,7 +115,7 @@ T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	
 Typedef Documentation	doc/latex/hashmap_8h.tex	/^Definition at line 26 of file hashmap.h.$/;"	subsubsection	line:125
 Typedefs	doc/latex/hashmap_8h.tex	/^\\end{DoxyCompactItemize}$/;"	subsubsection	line:38
 Types	media.h	/^} Types;$/;"	typedef	line:27
-VIDEO	media.c	/^#define VIDEO /;"	macro	line:15
+VIDEO	media.c	/^#define VIDEO /;"	macro	line:18
 _ _ hmap _ add	doc/latex/hashmap_8h.tex	/^\\index{\\_\\-\\_\\-hmap\\_\\-add@{\\_\\-\\_\\-hmap\\_\\-add}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:171
 _ _ hmap _ get	doc/latex/hashmap_8h.tex	/^\\index{\\_\\-\\_\\-hmap\\_\\-get@{\\_\\-\\_\\-hmap\\_\\-get}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:180
 __HASHTABLE_CWC22_H__	hash/hashtable.h	/^#define __HASHTABLE_CWC22_H__$/;"	macro	line:4
@@ -127,15 +130,15 @@ afloat	doc/latex/struct_media_args.tex	/^\\index{afloat@{afloat}!MediaArgs@{Medi
 afloat	media.h	/^	bool   afloat;$/;"	member	line:57
 args	doc/latex/struct_spilt_data.tex	/^\\index{args@{args}!SpiltData@{SpiltData}}$/;"	subsubsection	line:32
 args	string_util.h	/^	char **args;$/;"	member	line:19
-callback	sql.c	/^static int callback(void *NotUsed, int argc, char **argv, char **azColName){$/;"	function	line:6
 capacity	doc/latex/structhashmap.tex	/^\\index{capacity@{capacity}!hashmap@{hashmap}}$/;"	subsubsection	line:43
 convertToId	doc/html/search/search.js	/^function convertToId(search)$/;"	function	line:34
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
+currentTime	history.c	/^struct tm* currentTime(){$/;"	function	line:68
 del _ fn	doc/latex/structhashmap.tex	/^\\index{del\\_\\-fn@{del\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:52
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 entry	hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
-ep_num	string_util.c	/^char** ep_num(char *s) {$/;"	function	line:10
+ep_num	string_util.c	/^char** ep_num(char *s) {$/;"	function	line:11
 eq _ fn	doc/latex/structhashmap.tex	/^\\index{eq\\_\\-fn@{eq\\_\\-fn}!hashmap@{hashmap}}$/;"	subsubsection	line:61
 eqfn	hash/hashtable_private.h	/^    int (*eqfn) (void *k1, void *k2);$/;"	member	line:23
 equal_keys	temp.c	/^int equal_keys(void *k1, void *k2) {$/;"	function	line:29
@@ -1010,20 +1013,20 @@ main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
 main	option_Parser 2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	option_Parser.c	/^int main (int argc, char **argv) {$/;"	function	line:4
-main	sql.c	/^int main(int argc, char **argv){$/;"	function	line:15
-main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:36
+main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
 main c File Reference	doc/latex/main_8c.tex	/^\\hypertarget{main_8c}{$/;"	section	line:1
 main h File Reference	doc/latex/main_8h.tex	/^\\hypertarget{main_8h}{$/;"	section	line:1
+make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat playlist_types) {$/;"	function	line:7
 map	doc/latex/structhashmap.tex	/^\\index{map@{map}!hashmap@{hashmap}}$/;"	subsubsection	line:88
 match	doc/latex/string__util_8h.tex	/^\\index{match@{match}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:35
-match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:29
+match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:36
 max_load_factor	hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
-media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:19
+media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:22
 media c File Reference	doc/latex/media_8c.tex	/^\\hypertarget{media_8c}{$/;"	section	line:1
 media h File Reference	doc/latex/media_8h.tex	/^\\hypertarget{media_8h}{$/;"	section	line:1
 mk _ hmap	doc/latex/hashmap_8h.tex	/^\\index{mk\\_\\-hmap@{mk\\_\\-hmap}!hashmap.h@{hashmap.h}}$/;"	subsubsection	line:198
-mplayer	media.c	/^void mplayer(char **filenames, int total_length, $/;"	function	line:54
+mplayer	media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:59
 newest _ only	doc/latex/struct_media_args.tex	/^\\index{newest\\_\\-only@{newest\\_\\-only}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:98
 newest_only	media.h	/^	bool  newest_only;$/;"	member	line:38
 next	hash/hashtable_private.h	/^    struct entry *next;$/;"	member	line:13
@@ -1057,16 +1060,16 @@ repeat	media.h	/^	bool repeat;$/;"	member	line:62
 size	doc/latex/structhashmap.tex	/^\\index{size@{size}!hashmap@{hashmap}}$/;"	subsubsection	line:97
 spilt _ args	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-args@{spilt\\_\\-args}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:48
 spilt _ func	doc/latex/string__util_8h.tex	/^\\index{spilt\\_\\-func@{spilt\\_\\-func}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:68
-spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:43
-spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:111
+spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:50
+spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:118
 status	doc/latex/struct_media_args.tex	/^\\index{status@{status}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:188
 status	media.h	/^	Status  status;$/;"	member	line:52
 str	temp.c	/^	unsigned char *str;$/;"	member	line:10
 str _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-replace@{str\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:88
 str _ spilt _ replace	doc/latex/string__util_8h.tex	/^\\index{str\\_\\-spilt\\_\\-replace@{str\\_\\-spilt\\_\\-replace}!string_util.h@{string\\_\\-util.h}}$/;"	subsubsection	line:101
 str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:14
-str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:80
-str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:148
+str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:87
+str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:155
 string _ util c File Reference	doc/latex/string__util_8c.tex	/^\\hypertarget{string__util_8c}{$/;"	section	line:1
 string _ util h File Reference	doc/latex/string__util_8h.tex	/^\\hypertarget{string__util_8h}{$/;"	section	line:1
 sub _ dirs	doc/latex/struct_media_args.tex	/^\\index{sub\\_\\-dirs@{sub\\_\\-dirs}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:197
@@ -1074,7 +1077,7 @@ sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:39
 table	hash/hashtable_private.h	/^    struct entry **table;$/;"	member	line:18
 tablelength	hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	member	line:17
 temp c File Reference	doc/latex/temp_8c.tex	/^\\hypertarget{temp_8c}{$/;"	section	line:1
-test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:102
+test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:109
 tests string _ util _ test c File Reference	doc/latex/string__util__test_8c.tex	/^\\hypertarget{string__util__test_8c}{$/;"	section	line:1
 toggleFolder	doc/html/tree.html	/^    function toggleFolder(id, imageNode) $/;"	function	line:15
 total	doc/latex/struct_spilt_data.tex	/^\\index{total@{total}!SpiltData@{SpiltData}}$/;"	subsubsection	line:59
@@ -1085,7 +1088,7 @@ types	doc/latex/struct_media_args.tex	/^\\index{types@{types}!MediaArgs@{MediaAr
 types	media.h	/^	Types types;$/;"	member	line:40
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
-updateHistory	history.c	/^bool updateHistory(char **filenames){$/;"	function	line:4
+updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:10
 usage	doc/html/installdox	/^sub usage {$/;"	subroutine	line:111
 use _ hash	doc/latex/struct_media_args.tex	/^\\index{use\\_\\-hash@{use\\_\\-hash}!MediaArgs@{MediaArgs}}$/;"	subsubsection	line:215
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:51
