@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>string_util.c</string>
+	<string>sql.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>media </string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -21,14 +23,42 @@
 	<integer>150</integer>
 	<key>metaData</key>
 	<dict>
+		<key>media.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>20</integer>
+				<key>line</key>
+				<integer>48</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>54</integer>
+		</dict>
+		<key>sql.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>84</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -40,25 +70,27 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>42</integer>
+				<integer>37</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>30</integer>
+			<integer>23</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>media.c</string>
 		<string>string_util.c</string>
 		<string>temp.c</string>
+		<string>sql.c</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -70,6 +102,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{585, 240}, {816, 561}}</string>
+	<string>{{580, 316}, {816, 561}}</string>
 </dict>
 </plist>
