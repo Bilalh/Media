@@ -103,7 +103,6 @@ bool make_plist(char *filepath, char **names) {
 	new_text_node(t1, "key","Volume", dict2);
 	new_text_node(t1, "integer","1", dict2);
 	
-	
 	// dict children - MajorVersion
 	new_text_node(t1, "key","MajorVersion", dict);
 	new_text_node(t1, "integer","0", dict);
