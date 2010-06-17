@@ -19,7 +19,7 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
   
 
-void media(char *path, char **args,int argc) {
+void media(char *path, char **args,int argc, MediaArgs *opts) {
 	struct dirent **files;
 	
 	char *regex = spilt_args(args, argc, ".*",VIDEO);
@@ -51,7 +51,7 @@ void media(char *path, char **args,int argc) {
 	Pformat types = F_PLIST;
     // mplayer(sa,total_length,"-aspect 16:10","",path);
     // updateHistory(sa);
-	make_playlist("zzplaylist",path,sa,types);
+	// make_playlist("zzplaylist",path,sa,types);
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings
@@ -74,6 +74,9 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	strcpy(&m_args[index], prefix_args);
 	index += strlen(prefix_args);
 	m_args[index++] = ' ';
+	// sprintf(m_args, "cd %s; mplayer %s ", filepath,prefix_args);
+	// index += 1 + 1 + 8 +strlen(prefix_args)+1;
+	
 	
 	// append filenames
 	while (**filenames != '\0'){

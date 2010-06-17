@@ -2,7 +2,7 @@ CC     = gcc -std=c99 -fblocks
 CFLAGS = -g -Wall  ${INCLUDES}
 INCLUDES = -I./hash -I/usr/include/libxml2
 LIBS   = -lsqlite3 -lxml2
-media: main.c media.o string_util.o history.o playlist.o
+media: main.c media.o string_util.o history.o playlist.o option_parser.o
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
 

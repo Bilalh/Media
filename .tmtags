@@ -6,8 +6,8 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
 CC	makefile	/^CC     = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS = -g -Wall -I . -I .\/hash$/;"	macro	line:2
-DATABASE	history.c	/^#define DATABASE /;"	macro	line:7
+CFLAGS	makefile	/^CFLAGS = -g -Wall  ${INCLUDES}$/;"	macro	line:2
+DATABASE	history.c	/^#define DATABASE /;"	macro	line:8
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
 DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
 DEFINE_HASHTABLE_REMOVE	hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/;"	macro	line:137
@@ -18,10 +18,11 @@ F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	
 F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
 F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:14
 HISTORYHEAD	history.h	/^#define HISTORYHEAD /;"	macro	line:2
+INCLUDES	makefile	/^INCLUDES = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	line:3
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
-LIBS	makefile	/^LIBS   = -l sqlite3$/;"	macro	line:3
+LIBS	makefile	/^LIBS   = -lsqlite3 -lxml2$/;"	macro	line:4
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
-MAKE_TIME_STR	history.c	/^#define MAKE_TIME_STR(/;"	macro	line:8
+MAKE_TIME_STR	history.c	/^#define MAKE_TIME_STR(/;"	macro	line:9
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MediaArgs	media.h	/^} MediaArgs;$/;"	typedef	line:64
 OPTION_PHEAD	option_Parser.h	/^#define OPTION_PHEAD$/;"	macro	line:2
@@ -47,6 +48,7 @@ T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	e
 T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:26
 Types	media.h	/^} Types;$/;"	typedef	line:27
 VIDEO	media.c	/^#define VIDEO /;"	macro	line:18
+XC	playlist.c	/^#define XC /;"	macro	line:8
 __HASHTABLE_CWC22_H__	hash/hashtable.h	/^#define __HASHTABLE_CWC22_H__$/;"	macro	line:4
 __HASHTABLE_CWC22_UTILITY_H__	hash/hashtable_utility.h	/^#define __HASHTABLE_CWC22_UTILITY_H__$/;"	macro	line:4
 __HASHTABLE_ITR_CWC22__	hash/hashtable_itr.h	/^#define __HASHTABLE_ITR_CWC22__$/;"	macro	line:4
@@ -54,7 +56,7 @@ __HASHTABLE_PRIVATE_CWC22_H__	hash/hashtable_private.h	/^#define __HASHTABLE_PRI
 afloat	media.h	/^	bool   afloat;$/;"	member	line:57
 args	string_util.h	/^	char **args;$/;"	member	line:19
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
-currentTime	history.c	/^struct tm* currentTime(){$/;"	function	line:68
+currentTime	history.c	/^struct tm* currentTime(){$/;"	function	line:69
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 entry	hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
@@ -103,12 +105,17 @@ main	option_Parser 2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	option_Parser.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
-make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:28
-make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:7
+make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:54
+make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:18
+make_plist	playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:67
+make_pls	playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:119
+make_xspf	playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:124
 match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:36
 max_load_factor	hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
 media	media.c	/^void media(char *path, char **args,int argc) {$/;"	function	line:22
 mplayer	media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:59
+new_node	playlist.c	/^#define new_node(/;"	macro	line:10
+new_text_node	playlist.c	/^#define new_text_node(/;"	macro	line:14
 newest_only	media.h	/^	bool  newest_only;$/;"	member	line:38
 next	hash/hashtable_private.h	/^    struct entry *next;$/;"	member	line:13
 one_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
@@ -143,7 +150,7 @@ two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port
 types	media.h	/^	Types types;$/;"	member	line:40
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
-updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:10
+updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:11
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:51
 v	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
 value	hash/tester.c	/^struct value$/;"	struct	line:20

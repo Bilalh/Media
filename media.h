@@ -2,11 +2,10 @@
 #define MEDIAHEAD
 #include <stdbool.h>
 
-void media(char *path,char **args, int length);
+typedef struct _MediaArgs MediaArgs;
 
-/**
- *  Plays the file using mplayer.
-**/
+void media(char *path, char **args,int argc, MediaArgs *opts);
+
 void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath);
 
 // struct and enum
@@ -30,7 +29,7 @@ typedef enum {
 	S_DONE
 } Status;
 
-typedef struct {
+struct  _MediaArgs{
 	
 	// Selection  
 	bool  exclude;
@@ -61,5 +60,6 @@ typedef struct {
 	//Nice Player
 	bool repeat;
 	
-} MediaArgs;
+};
+
 #endif
