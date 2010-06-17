@@ -48,7 +48,7 @@ void media(char *path, char **args,int argc) {
 	}
 	sa[file_num] ="";
 	
-	Pformat types = F_M3U;
+	Pformat types = F_PLIST;
     // mplayer(sa,total_length,"-aspect 16:10","",path);
     // updateHistory(sa);
 	make_playlist("zzplaylist",path,sa,types);

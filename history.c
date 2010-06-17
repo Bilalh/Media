@@ -4,6 +4,7 @@
 #include <sqlite3.h>
 #include "history.h"
 #include "string_util.h"
+#include <libxml/tree.h>
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 #define MAKE_TIME_STR(str,stucttmPtr) strftime(str, 20, "%F %H:%M:%S", stucttmPtr);
 
