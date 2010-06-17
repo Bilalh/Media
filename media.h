@@ -18,7 +18,7 @@ typedef enum {
 } Poutput;
 
 typedef enum {
-	P_MPLAYER, P_NICEPLAYER,  P_VLC
+	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC
 } Player;
 
 typedef enum {
@@ -26,8 +26,12 @@ typedef enum {
 } Types;
 
 typedef enum {
-	S_DONE
+	S_NONE, S_SKIP, S_UPDATED
 } Status;
+
+typedef enum{
+	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL
+} NiceRepeat;
 
 struct  _MediaArgs{
 	
@@ -45,20 +49,20 @@ struct  _MediaArgs{
 	Poutput  pl_output;
 	bool     pl_rand;
 	
-	// Pefs
+	// Prefs
 	char   *hash_location;
 	bool    use_hash;
 	Status  status;
-	Player  player;
 	bool    write_history;
 	
 	// Players
+	Player  player;
 	bool   afloat;
 	char   *prefix_args;
 	char   *postfix_args;
 	
 	//Nice Player
-	bool repeat;
+	NiceRepeat nice_repeat;
 	
 };
 

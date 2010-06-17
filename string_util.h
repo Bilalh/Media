@@ -1,6 +1,8 @@
 #ifndef STRING_UTILHEAD
 #define STRING_UTILHEAD
 #include <stddef.h>
+
+
 char** ep_num(char *s);
 
 /**
