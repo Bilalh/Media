@@ -17,7 +17,6 @@
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
 #define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
-  
 
 void media(char *path, char **args,int argc, MediaArgs *opts) {
 	struct dirent **files;
@@ -48,7 +47,7 @@ void media(char *path, char **args,int argc, MediaArgs *opts) {
 	}
 	sa[file_num] ="";
 	
-	Pformat types = F_PLIST;
+	Pformat types = F_M3U;
     // mplayer(sa,total_length,"-aspect 16:10","",path);
     // updateHistory(sa);
 	// make_playlist("zzplaylist",path,sa,types);
@@ -76,7 +75,6 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	m_args[index++] = ' ';
 	// sprintf(m_args, "cd %s; mplayer %s ", filepath,prefix_args);
 	// index += 1 + 1 + 8 +strlen(prefix_args)+1;
-	
 	
 	// append filenames
 	while (**filenames != '\0'){

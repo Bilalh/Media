@@ -7,7 +7,6 @@
 // #define PATH "/Users/bilalh/Movies/.Movie/OpeningP"
 // #define PATH "/Users/bilalh/Movies/.Movie/mov"
 
-
 int main (int argc, char **argv) {
 	if (argc < 3) {
 		puts("Media dir regex");

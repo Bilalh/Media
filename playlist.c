@@ -15,6 +15,8 @@
  node = xmlNewTextChild(parent,NULL,XC name, XC value); \
  node = xmlAddChild(parent,node);
 
+#define PLAYLIST_INT_LENGTH 10
+
 bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {
 
 	const int extra  =  2 + 6; // 2 for \0 and / 6 for a 5 char exe
@@ -40,7 +42,7 @@ bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {
 	if (formats & F_PLS) {
 		snprintf(fullpath, sizeof(fullpath), "%s/%s.pls", dir, filename );
 		printf("%s\n", fullpath);
-		result &= make_plist(fullpath, names);
+		result &= make_pls(fullpath, names);
 	}
 	if (formats & F_XSPF) {
 		snprintf(fullpath, sizeof(fullpath), "%s/%s.xspf", dir, filename );
@@ -54,7 +56,7 @@ bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {
 bool make_m3u(char *filepath, char **names) {
 	FILE *out = fopen(filepath, "w");
 
-	while(**names != '\0') {
+	while(**names) {
 		fprintf(out, "%s\n", *names);
 		names++;
 	}
@@ -63,10 +65,11 @@ bool make_m3u(char *filepath, char **names) {
 	return true;
 }
 
-//TODO string names
+//TODO string path names
+//TODO apple top
 bool make_plist(char *filepath, char **names) {
 	xmlDocPtr doc;
-	xmlNodePtr root, rr, cur,dict, dict2, array,t1;
+	xmlNodePtr root, rr, cur,dict, dict2, array,temp;
 	xmlAttrPtr attr;
 
 	// makes document
@@ -81,34 +84,34 @@ bool make_plist(char *filepath, char **names) {
 	root = cur;
 
 	new_node(dict, "dict", root);
-	new_text_node(t1, "key","Contents", dict);
+	new_text_node(temp, "key","Contents", dict);
 	
 	new_node(dict2, "dict", dict);
-	new_text_node(t1, "key","Playlist", dict2);
+	new_text_node(temp, "key","Playlist", dict2);
 	
 	// <array> 
 	new_node(array, "array", dict2);
 	while (**names){
-		new_text_node(t1, "string",*names, array);
+		new_text_node(temp, "string",*names, array);
 		names++;
 	}
 	
 	// dict2 children - Random
-	new_text_node(t1, "key","Random", dict2);
-	new_node(t1, "false", dict2);
+	new_text_node(temp, "key","Random", dict2);
+	new_node(temp, "false", dict2);
 	// Repeat
-	new_text_node(t1, "key","Repeat", dict2);
-	new_text_node(t1, "integer","1", dict2);
+	new_text_node(temp, "key","Repeat", dict2);
+	new_text_node(temp, "integer","1", dict2);
 	// Volume
-	new_text_node(t1, "key","Volume", dict2);
-	new_text_node(t1, "integer","1", dict2);
+	new_text_node(temp, "key","Volume", dict2);
+	new_text_node(temp, "integer","1", dict2);
 	
 	// dict children - MajorVersion
-	new_text_node(t1, "key","MajorVersion", dict);
-	new_text_node(t1, "integer","0", dict);
+	new_text_node(temp, "key","MajorVersion", dict);
+	new_text_node(temp, "integer","0", dict);
 	// MinorVersion
-	new_text_node(t1, "key","MinorVersion", dict);
-	new_text_node(t1, "integer","1", dict);
+	new_text_node(temp, "key","MinorVersion", dict);
+	new_text_node(temp, "integer","1", dict);
 	
 	// writes to file
 	puts("");
@@ -116,12 +119,55 @@ bool make_plist(char *filepath, char **names) {
 	return false;
 }
 
+//TODO string path names
 bool make_pls(char *filepath, char **names) {
-	fprintf(stderr, "%s\n", "pls not impermented");
+	FILE *out = fopen(filepath, "w");
+	fprintf(out, "%s\n", "[playlist]");
+	int i = 1;
+	while(**names) {
+		fprintf(out, "File%i=%s\nTitle%i=%s\n", 
+			i,*names,i,*names
+		);
+		names++;
+	}
+
+	fclose(out);
 	return false;
 }
 
+//TODO string path names
 bool make_xspf(char *filepath, char **names) {
-	fprintf(stderr, "%s\n", "xspf not impermented");
+	xmlDocPtr doc;
+	xmlNodePtr root, rr, trackList,track, temp;
+	xmlAttrPtr attr;
+
+	// makes document
+	doc  = xmlNewDoc ((xmlChar*) "1.0");
+	root = xmlNewNode(NULL, XC"temp");
+	rr   = xmlDocSetRootElement(doc, root);
+
+	// makes root node
+	temp = xmlNewTextChild (root, NULL, XC"playlist", NULL);
+	attr = xmlNewProp(temp, XC"version", XC "1");
+	attr = xmlNewProp(temp, XC"xmlns", XC "http://xspf.org/ns/0/");
+	xmlReplaceNode(root, temp);
+	root = temp;
+	// tracklist
+	new_node(trackList, "trackList", root);
+	
+	int i = 1;
+	while (**names){
+		new_node(track, "track", trackList);
+		new_text_node(temp, "location",*names, track);
+		new_text_node(temp, "title",*names, track);
+		char num[PLAYLIST_INT_LENGTH];
+		sprintf(num, "%i", i);
+		new_text_node(temp, "trackNum",num, track);
+		names++; i++;
+	}
+	
+	// writes to file
+	puts("");
+	xmlSaveFormatFile( "-", doc, 1);
 	return false;
 }
