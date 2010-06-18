@@ -26,4 +26,6 @@ typedef struct {
 
 SpiltData *spilt_func(char *s);
 
+char *str_lower(char *s,int length);
+
 #endif

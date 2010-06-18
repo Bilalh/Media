@@ -1,10 +1,14 @@
-CC     = gcc -std=c99 -fblocks
-CFLAGS = -g -Wall  ${INCLUDES}
+CC       = gcc -std=c99 -fblocks
+CFLAGS   = -g -Wall  ${INCLUDES}
 INCLUDES = -I./hash -I/usr/include/libxml2
-LIBS   = -lsqlite3 -lxml2
-media: main.c media.o string_util.o history.o playlist.o option_parser.o
+LIBS     = -lsqlite3 -lxml2 -lcurl
+OBJ      = media ml test tempc
+
+media: main.o media.o string_util.o history.o playlist.o option_parser.o
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
+ml: ml.o string_util.o
+	${CC} ${LIBS} ${CFALGS} -o $@ $^
 
 test: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
@@ -16,4 +20,4 @@ tempc: temp.o string_util.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable
 	${CC} ${CFLAGS} -c $<
 
 clean:
-	rm -f *.o *.out media  test tempc *~
+	rm -f *.o *.out ${OBJ} *~

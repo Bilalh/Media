@@ -5,64 +5,68 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
-CC	makefile	/^CC     = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS = -g -Wall  ${INCLUDES}$/;"	macro	line:2
+CC	makefile	/^CC       = gcc -std=c99 -fblocks$/;"	macro	line:1
+CFLAGS	makefile	/^CFLAGS   = -g -Wall  ${INCLUDES}$/;"	macro	line:2
 DATABASE	history.c	/^#define DATABASE /;"	macro	line:8
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
 DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
 DEFINE_HASHTABLE_REMOVE	hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/;"	macro	line:137
 DEFINE_HASHTABLE_SEARCH	hash/hashtable.h	/^#define DEFINE_HASHTABLE_SEARCH(/;"	macro	line:119
 DIRENT	media.c	/^#define DIRENT(/;"	macro	line:16
-F_M3U	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:13
-F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:13
-F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:13
-F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:13
+F_M3U	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
+F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
+F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
+F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 HISTORYHEAD	history.h	/^#define HISTORYHEAD /;"	macro	line:2
 INCLUDES	makefile	/^INCLUDES = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	line:3
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
-LIBS	makefile	/^LIBS   = -lsqlite3 -lxml2$/;"	macro	line:4
+LIBS	makefile	/^LIBS     = -lsqlite3 -lxml2 -lcurl$/;"	macro	line:4
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
 MAKE_TIME_STR	history.c	/^#define MAKE_TIME_STR(/;"	macro	line:9
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
+MLLLHEAD	ml.h	/^#define MLLLHEAD$/;"	macro	line:2
+ML_API	ml.h	/^#define ML_API /;"	macro	line:8
 MediaArgs	media.h	/^typedef struct _MediaArgs MediaArgs;$/;"	typedef	line:5
-N_NO_REPEAT	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:33
-N_REPEAT_ALL	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:33
-N_REPEAT_ONE	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:33
-NiceRepeat	media.h	/^} NiceRepeat;$/;"	typedef	line:34
+N_NO_REPEAT	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:37
+N_REPEAT_ALL	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:37
+N_REPEAT_ONE	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:37
+NiceRepeat	media.h	/^} NiceRepeat;$/;"	typedef	line:38
+OBJ	makefile	/^OBJ      = media ml test tempc$/;"	macro	line:5
 OPTIONPHEAD	option_parser.h	/^#define OPTIONPHEAD$/;"	macro	line:2
 PATH	main.c	/^#define PATH /;"	macro	line:6
 PLAYLISTHEAD	playlist.h	/^#define PLAYLISTHEAD$/;"	macro	line:2
-PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:17
-PL_NONE	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:17
-PL_PLAYLIST	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:17
-PL_STDOUT	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:17
-P_MPLAYER	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:21
-P_NICEPLAYER	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:21
-P_NONE	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:21
-P_VLC	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:21
-Pformat	media.h	/^} Pformat;$/;"	typedef	line:14
-Player	media.h	/^} Player;$/;"	typedef	line:22
-Poutput	media.h	/^} Poutput;$/;"	typedef	line:18
+PLAYLIST_INT_LENGTH	playlist.c	/^#define PLAYLIST_INT_LENGTH /;"	macro	line:10
+PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:21
+PL_NONE	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:21
+PL_PLAYLIST	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:21
+PL_STDOUT	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:21
+P_MPLAYER	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
+P_NICEPLAYER	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
+P_NONE	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
+P_VLC	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
+Pformat	media.h	/^} Pformat;$/;"	typedef	line:18
+Player	media.h	/^} Player;$/;"	typedef	line:26
+Poutput	media.h	/^} Poutput;$/;"	typedef	line:22
 STRING_UTILHEAD	string_util.h	/^#define STRING_UTILHEAD$/;"	macro	line:2
-S_NONE	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:29
-S_SKIP	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:29
-S_UPDATED	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:29
+S_NONE	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
+S_SKIP	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
+S_UPDATED	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:25
-Status	media.h	/^} Status;$/;"	typedef	line:30
-T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:25
-T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:25
-T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:25
-T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:25
-Types	media.h	/^} Types;$/;"	typedef	line:26
+Status	media.h	/^} Status;$/;"	typedef	line:34
+String	ml.c	/^} String;$/;"	typedef	line:18
+T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
+T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
+T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
+T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
+Types	media.h	/^} Types;$/;"	typedef	line:30
 VIDEO	media.c	/^#define VIDEO /;"	macro	line:18
-XC	playlist.c	/^#define XC /;"	macro	line:8
-XSPF_INT_LENGTH	playlist.c	/^#define XSPF_INT_LENGTH /;"	macro	line:18
-_MediaArgs	media.h	/^struct  _MediaArgs{$/;"	struct	line:36
+_MediaArgs	media.h	/^struct  _MediaArgs{$/;"	struct	line:40
 __HASHTABLE_CWC22_H__	hash/hashtable.h	/^#define __HASHTABLE_CWC22_H__$/;"	macro	line:4
 __HASHTABLE_CWC22_UTILITY_H__	hash/hashtable_utility.h	/^#define __HASHTABLE_CWC22_UTILITY_H__$/;"	macro	line:4
 __HASHTABLE_ITR_CWC22__	hash/hashtable_itr.h	/^#define __HASHTABLE_ITR_CWC22__$/;"	macro	line:4
 __HASHTABLE_PRIVATE_CWC22_H__	hash/hashtable_private.h	/^#define __HASHTABLE_PRIVATE_CWC22_H__$/;"	macro	line:4
-afloat	media.h	/^	bool   afloat;$/;"	member	line:60
+_str	ml.c	/^typedef struct _str {$/;"	struct	line:15
+afloat	media.h	/^	bool   afloat;$/;"	member	line:64
 args	string_util.h	/^	char **args;$/;"	member	line:21
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
 currentTime	history.c	/^struct tm* currentTime(){$/;"	function	line:69
@@ -73,14 +77,16 @@ ep_num	string_util.c	/^char** ep_num(char *s) {$/;"	function	line:11
 eqfn	hash/hashtable_private.h	/^    int (*eqfn) (void *k1, void *k2);$/;"	member	line:23
 equal_keys	temp.c	/^int equal_keys(void *k1, void *k2) {$/;"	function	line:29
 equalkeys	hash/tester.c	/^equalkeys(void *k1, void *k2)$/;"	function	line:41
-exclude	media.h	/^	bool  exclude;$/;"	member	line:39
-excludes	media.h	/^	char *excludes;$/;"	member	line:40
+exclude	media.h	/^	bool  exclude;$/;"	member	line:43
+excludes	media.h	/^	char *excludes;$/;"	member	line:44
 freekey	hash/hashtable_private.h	/^#define freekey(/;"	macro	line:46
 full	temp.c	/^	char *full;$/;"	member	line:11
+getId	ml.c	/^int getId(char *xml,char *name) {$/;"	function	line:49
+get_search_xml	ml.c	/^char *get_search_xml(char *name) {$/;"	function	line:24
 h	hash/hashtable_itr.h	/^    struct hashtable *h;$/;"	member	line:13
 h	hash/hashtable_private.h	/^    unsigned int h;$/;"	member	line:12
 hash	hash/hashtable.c	/^hash(struct hashtable *h, void *k)$/;"	function	line:57
-hash_location	media.h	/^	char   *hash_location;$/;"	member	line:53
+hash_location	media.h	/^	char   *hash_location;$/;"	member	line:57
 hashfn	hash/hashtable_private.h	/^    unsigned int (*hashfn) (void *k);$/;"	member	line:22
 hashfromkey	hash/tester.c	/^hashfromkey(void *ky)$/;"	function	line:33
 hashtable	hash/hashtable_private.h	/^struct hashtable {$/;"	struct	line:16
@@ -101,66 +107,73 @@ hashtable_search	hash/hashtable.c	/^hashtable_search(struct hashtable *h, void *
 id	hash/tester.c	/^    char *id;$/;"	member	line:22
 index	hash/hashtable_itr.h	/^    unsigned int index;$/;"	member	line:16
 indexFor	hash/hashtable_private.h	/^indexFor(unsigned int tablelength, unsigned int hashvalue) {$/;"	function	line:33
+init_string	ml.c	/^void init_string(String *s) {$/;"	function	line:156
 k	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
 key	hash/tester.c	/^struct key$/;"	struct	line:15
 key	temp.c	/^struct key {$/;"	struct	line:9
 key_hash	temp.c	/^unsigned int key_hash(void *ky) {$/;"	function	line:24
+len	ml.c	/^	size_t len;$/;"	member	line:17
 length	string_util.h	/^	int  length;$/;"	member	line:22
 lengths	string_util.h	/^	int  *lengths;$/;"	member	line:23
 loadlimit	hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
+main	ml.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:162
 main	option_parser2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
-make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:56
-make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:20
-make_plist	playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:70
-make_pls	playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:122
-make_xspf	playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:128
+make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:48
+make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:12
+make_plist	playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:62
+make_pls	playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:115
+make_xspf	playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:132
 match	string_util.c	/^int match(const char *string, char *pattern) {$/;"	function	line:36
 max_load_factor	hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
-media	media.c	/^void media(char *path, char **args,int argc, MediaArgs *opts) {$/;"	function	line:21
-mplayer	media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:58
+media	media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:21
+mplayer	media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:70
 new_media_args	option_parser.c	/^MediaArgs *new_media_args() {$/;"	function	line:7
-new_node	playlist.c	/^#define new_node(/;"	macro	line:10
-new_text_node	playlist.c	/^#define new_text_node(/;"	macro	line:14
-newest_only	media.h	/^	bool  newest_only;$/;"	member	line:41
+newest_only	media.h	/^	bool  newest_only;$/;"	member	line:45
 next	hash/hashtable_private.h	/^    struct entry *next;$/;"	member	line:13
-nice_repeat	media.h	/^	NiceRepeat nice_repeat;$/;"	member	line:65
+nice_repeat	media.h	/^	NiceRepeat nice_repeat;$/;"	member	line:69
+niceplayer	media.c	/^void niceplayer(char *playlist) {$/;"	function	line:107
 one_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 one_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 parent	hash/hashtable_itr.h	/^    struct entry *parent;$/;"	member	line:15
-pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:46
-pl_format	media.h	/^	Pformat  pl_format;$/;"	member	line:48
-pl_name	media.h	/^	char    *pl_name;$/;"	member	line:47
-pl_output	media.h	/^	Poutput  pl_output;$/;"	member	line:49
-pl_rand	media.h	/^	bool     pl_rand;$/;"	member	line:50
-player	media.h	/^	Player  player;$/;"	member	line:59
-postfix_args	media.h	/^	char   *postfix_args;$/;"	member	line:62
-prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:61
+pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:50
+pl_format	media.h	/^	Pformat  pl_format;$/;"	member	line:52
+pl_name	media.h	/^	char    *pl_name;$/;"	member	line:51
+pl_output	media.h	/^	Poutput  pl_output;$/;"	member	line:53
+pl_rand	media.h	/^	bool     pl_rand;$/;"	member	line:54
+player	media.h	/^	Player  player;$/;"	member	line:63
+postfix_args	media.h	/^	char   *postfix_args;$/;"	member	line:66
+prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:65
 prime_table_length	hash/hashtable.c	/^const unsigned int prime_table_length = sizeof(primes)\/sizeof(primes[0]);$/;"	variable	line:24
 primeindex	hash/hashtable_private.h	/^    unsigned int primeindex;$/;"	member	line:21
 primes	hash/hashtable.c	/^static const unsigned int primes[] = {$/;"	variable	line:15
+print_xpath_nodes	ml.c	/^void print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {$/;"	function	line:102
+ptr	ml.c	/^	char *ptr;$/;"	member	line:16
 spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:50
 spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:118
-status	media.h	/^	Status  status;$/;"	member	line:55
+status	media.h	/^	Status  status;$/;"	member	line:59
 str	temp.c	/^	unsigned char *str;$/;"	member	line:10
 str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:14
+str_lower	string_util.c	/^char *str_lower(char *s,int length){$/;"	function	line:180
 str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:87
 str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:155
-sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:42
+sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:46
 table	hash/hashtable_private.h	/^    struct entry **table;$/;"	member	line:18
 tablelength	hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	member	line:17
 test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:109
 total	string_util.h	/^	int  total;$/;"	member	line:24
 two_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
-types	media.h	/^	Types types;$/;"	member	line:43
+types	media.h	/^	Types types;$/;"	member	line:47
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
 updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:11
-use_hash	media.h	/^	bool    use_hash;$/;"	member	line:54
+use_hash	media.h	/^	bool    use_hash;$/;"	member	line:58
 v	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
 value	hash/tester.c	/^struct value$/;"	struct	line:20
-write_history	media.h	/^	bool    write_history;$/;"	member	line:56
+vlc	media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:111
+write_history	media.h	/^	bool    write_history;$/;"	member	line:60
+writefunc	ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String *s) {$/;"	function	line:143

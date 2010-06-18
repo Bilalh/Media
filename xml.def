@@ -1,0 +1,9 @@
+#define XC (xmlChar*)
+
+#define new_node(node,name,parent) \
+ node = xmlNewNode(NULL,XC name); \
+ node = xmlAddChild(parent,node);
+
+#define new_text_node(node,name,value,parent) \
+ node = xmlNewTextChild(parent,NULL,XC name, XC value); \
+ node = xmlAddChild(parent,node);

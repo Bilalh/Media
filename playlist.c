@@ -2,18 +2,10 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include "playlist.h"
 #include <libxml/encoding.h>
 
-#define XC (xmlChar*)
-
-#define new_node(node,name,parent) \
- node = xmlNewNode(NULL,XC name); \
- node = xmlAddChild(parent,node);
-
-#define new_text_node(node,name,value,parent) \
- node = xmlNewTextChild(parent,NULL,XC name, XC value); \
- node = xmlAddChild(parent,node);
+#include "playlist.h"
+#include "xml.def"
 
 #define PLAYLIST_INT_LENGTH 10
 
@@ -134,6 +126,7 @@ bool make_pls(char *filepath, char **names) {
 	fclose(out);
 	return false;
 }
+//TODO xmlCleanupParser?
 
 //TODO string path names
 bool make_xspf(char *filepath, char **names) {

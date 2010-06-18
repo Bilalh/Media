@@ -18,14 +18,14 @@ char** ep_num(char *s) {
 	while (*s != *start) {
 		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
 			ans[index]  = s;
-            index++;
-		}else if(index == 1 && !(*s ==' ' || ispunct(*s) ) ){
-            if( *(s+1) == ' ' || ispunct(*(s+1)) ) {
-                printf("s :%c: \tc2 :%c: \n", *s, *(s+1));
-                // so that  (ans[index] - s) give number of char in the name
-                ans[index] = s+1; 
-                break;
-            }
+			index++;
+		} else if(index == 1 && !(*s == ' ' || ispunct(*s) ) ) {
+			if( *(s + 1) == ' ' || ispunct(*(s + 1)) ) {
+				printf("s :%c: \tc2 :%c: \n", *s, *(s + 1));
+				// so that  (ans[index] - s) give number of char in the name
+				ans[index] = s + 1;
+				break;
+			}
 		}
 		s--;
 	}
@@ -59,7 +59,7 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	int sep_len   = strlen(separator);
 	int end_len   = strlen(ending);
 	size_t memory = // 1 for \0
-		(sizeof(char) * total) + (sep_len * (length - 1)) + end_len+ 1;
+		(sizeof(char) * total) + (sep_len * (length - 1)) + end_len + 1;
 	char *final_str = malloc(memory);
 	int index = 0;
 
@@ -72,7 +72,7 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 		if (i != length - 1) {
 			strncpy(&final_str[index], separator, sep_len);
 			index += sep_len;
-		}else{
+		} else {
 			strncpy(&final_str[index], ending, end_len);
 			index += end_len;
 		}
@@ -83,7 +83,7 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	return final_str;
 }
 
-/// \brief Replaces the substring sub with rep in the first len charaters of s. 
+/// \brief Replaces the substring sub with rep in the first len charaters of s.
 char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
@@ -177,3 +177,10 @@ char *str_spilt_replace(char *s) {
 	return NULL;
 }
 
+char *str_lower(char *s, int length) {
+	char *re = malloc(sizeof(char) * length);
+	char *r  = re;
+	while(( *r++ = tolower(*s++) )) ;
+	*r = '\0';
+	return re;
+}
