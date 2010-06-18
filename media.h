@@ -8,6 +8,10 @@ void media(char *path, char **args,int argc, MediaArgs *opts);
 
 void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath);
 
+void niceplayer(char *playlist);
+
+void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath);
+
 // struct and enum
 typedef enum {
 	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8

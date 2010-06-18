@@ -16,11 +16,12 @@ MediaArgs *new_media_args() {
 	ma->types       = T_VIDEO;
 
 	// Playlist
-	ma->pl_dir    = ma->pl_name = NULL;
-	ma->pl_format = PL_STDOUT;
-	ma->pl_output = PL_NONE;
-	ma->pl_rand   = false;
-
+	ma->pl_dir        = ma->pl_name = NULL;
+	ma->pl_format     = PL_STDOUT;
+	ma->pl_output     = PL_NONE;
+	ma->pl_rand       = false;
+	ma->write_history = false;
+	
 	// Prefs
 	ma->hash_location = NULL;
 	ma->use_hash      = false;
