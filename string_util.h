@@ -1,5 +1,5 @@
-#ifndef STRING_UTILHEAD
-#define STRING_UTILHEAD
+#ifndef STRINGUTILHEAD
+#define STRINGUTILHEAD
 #include <stddef.h>
 
 

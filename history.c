@@ -6,8 +6,6 @@
 #include "string_util.h"
 #include <libxml/tree.h>
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
-#define MAKE_TIME_STR(str,stucttmPtr) strftime(str, 20, "%F %H:%M:%S", stucttmPtr);
-
 bool updateHistory(char **filenames) {
 
 	sqlite3 *db;
@@ -64,11 +62,4 @@ bool updateHistory(char **filenames) {
 	sqlite3_finalize(statement);
 	sqlite3_close(db);
 	return true;
-}
-
-struct tm* currentTime(){
-	time_t tt; 
-	time(&tt);
-	struct tm *timeinfo = gmtime(&tt); 
-	return timeinfo;
 }

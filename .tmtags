@@ -5,8 +5,8 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
-CC	makefile	/^CC       = gcc -std=c99 -fblocks$/;"	macro	line:1
-CFLAGS	makefile	/^CFLAGS   = -g -Wall  ${INCLUDES}$/;"	macro	line:2
+CC	makefile	/^CC        = gcc -std=c99 -fblocks$/;"	macro	line:1
+CFLAGS	makefile	/^CFLAGS    = -g -Wall  ${INCLUDES}$/;"	macro	line:2
 DATABASE	history.c	/^#define DATABASE /;"	macro	line:8
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
 DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
@@ -18,12 +18,13 @@ F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	
 F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 HISTORYHEAD	history.h	/^#define HISTORYHEAD /;"	macro	line:2
-INCLUDES	makefile	/^INCLUDES = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	line:3
+INCLUDES	makefile	/^INCLUDES  = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	line:3
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
-LIBS	makefile	/^LIBS     = -lsqlite3 -lxml2 -lcurl$/;"	macro	line:4
+LIBS	makefile	/^LIBS      = -lsqlite3 -lxml2 -lcurl$/;"	macro	line:4
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
-MAKE_TIME_STR	history.c	/^#define MAKE_TIME_STR(/;"	macro	line:9
+MAKE_TIME_STR	time_util.h	/^#define MAKE_TIME_STR(/;"	macro	line:4
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
+MEDIA_OBJ	makefile	/^MEDIA_OBJ = main.o media.o string_util.o history.o playlist.o option_parser.o time_util.o$/;"	macro	line:6
 MLLLHEAD	ml.h	/^#define MLLLHEAD$/;"	macro	line:2
 ML_API	ml.h	/^#define ML_API /;"	macro	line:8
 MediaArgs	media.h	/^typedef struct _MediaArgs MediaArgs;$/;"	typedef	line:5
@@ -31,7 +32,7 @@ N_NO_REPEAT	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	li
 N_REPEAT_ALL	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:37
 N_REPEAT_ONE	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:37
 NiceRepeat	media.h	/^} NiceRepeat;$/;"	typedef	line:38
-OBJ	makefile	/^OBJ      = media ml test tempc$/;"	macro	line:5
+OBJ	makefile	/^OBJ       = media ml test tempc time$/;"	macro	line:5
 OPTIONPHEAD	option_parser.h	/^#define OPTIONPHEAD$/;"	macro	line:2
 PATH	main.c	/^#define PATH /;"	macro	line:6
 PLAYLISTHEAD	playlist.h	/^#define PLAYLISTHEAD$/;"	macro	line:2
@@ -47,13 +48,14 @@ P_VLC	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
 Pformat	media.h	/^} Pformat;$/;"	typedef	line:18
 Player	media.h	/^} Player;$/;"	typedef	line:26
 Poutput	media.h	/^} Poutput;$/;"	typedef	line:22
-STRING_UTILHEAD	string_util.h	/^#define STRING_UTILHEAD$/;"	macro	line:2
+STRINGUTILHEAD	string_util.h	/^#define STRINGUTILHEAD$/;"	macro	line:2
 S_NONE	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 S_SKIP	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 S_UPDATED	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:25
 Status	media.h	/^} Status;$/;"	typedef	line:34
 String	ml.c	/^} String;$/;"	typedef	line:18
+TIMEUTILHEAD	time_util.h	/^#define TIMEUTILHEAD$/;"	macro	line:2
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
 T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
 T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
@@ -69,7 +71,8 @@ _str	ml.c	/^typedef struct _str {$/;"	struct	line:15
 afloat	media.h	/^	bool   afloat;$/;"	member	line:64
 args	string_util.h	/^	char **args;$/;"	member	line:21
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
-currentTime	history.c	/^struct tm* currentTime(){$/;"	function	line:69
+currentTime	time_util.c	/^struct tm* currentTime() {$/;"	function	line:5
+day_diff	time_util.c	/^signed int day_diff(int day, int other_day){$/;"	function	line:12
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 entry	hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
@@ -81,7 +84,7 @@ exclude	media.h	/^	bool  exclude;$/;"	member	line:43
 excludes	media.h	/^	char *excludes;$/;"	member	line:44
 freekey	hash/hashtable_private.h	/^#define freekey(/;"	macro	line:46
 full	temp.c	/^	char *full;$/;"	member	line:11
-getId	ml.c	/^int getId(char *xml,char *name) {$/;"	function	line:49
+getId	ml.c	/^long getId(char *xml, char *name) {$/;"	function	line:49
 get_search_xml	ml.c	/^char *get_search_xml(char *name) {$/;"	function	line:24
 h	hash/hashtable_itr.h	/^    struct hashtable *h;$/;"	member	line:13
 h	hash/hashtable_private.h	/^    unsigned int h;$/;"	member	line:12
@@ -107,7 +110,7 @@ hashtable_search	hash/hashtable.c	/^hashtable_search(struct hashtable *h, void *
 id	hash/tester.c	/^    char *id;$/;"	member	line:22
 index	hash/hashtable_itr.h	/^    unsigned int index;$/;"	member	line:16
 indexFor	hash/hashtable_private.h	/^indexFor(unsigned int tablelength, unsigned int hashvalue) {$/;"	function	line:33
-init_string	ml.c	/^void init_string(String *s) {$/;"	function	line:156
+init_string	ml.c	/^void init_string(String *s) {$/;"	function	line:112
 k	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
 key	hash/tester.c	/^struct key$/;"	struct	line:15
 key	temp.c	/^struct key {$/;"	struct	line:9
@@ -118,10 +121,11 @@ lengths	string_util.h	/^	int  *lengths;$/;"	member	line:23
 loadlimit	hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
-main	ml.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:162
+main	ml.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:118
 main	option_parser2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
+main	time_util.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:32
 make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:48
 make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:12
 make_plist	playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:62
@@ -150,14 +154,13 @@ prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:65
 prime_table_length	hash/hashtable.c	/^const unsigned int prime_table_length = sizeof(primes)\/sizeof(primes[0]);$/;"	variable	line:24
 primeindex	hash/hashtable_private.h	/^    unsigned int primeindex;$/;"	member	line:21
 primes	hash/hashtable.c	/^static const unsigned int primes[] = {$/;"	variable	line:15
-print_xpath_nodes	ml.c	/^void print_xpath_nodes(xmlNodeSetPtr nodes, FILE* output) {$/;"	function	line:102
 ptr	ml.c	/^	char *ptr;$/;"	member	line:16
 spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:50
 spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:118
 status	media.h	/^	Status  status;$/;"	member	line:59
 str	temp.c	/^	unsigned char *str;$/;"	member	line:10
 str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:14
-str_lower	string_util.c	/^char *str_lower(char *s,int length){$/;"	function	line:180
+str_lower	string_util.c	/^char *str_lower(char *s, int length) {$/;"	function	line:180
 str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:87
 str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:155
 sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:46
@@ -170,10 +173,10 @@ two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port
 types	media.h	/^	Types types;$/;"	member	line:47
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
-updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:11
+updateHistory	history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:9
 use_hash	media.h	/^	bool    use_hash;$/;"	member	line:58
 v	hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
 value	hash/tester.c	/^struct value$/;"	struct	line:20
 vlc	media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:111
 write_history	media.h	/^	bool    write_history;$/;"	member	line:60
-writefunc	ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String *s) {$/;"	function	line:143
+writefunc	ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String *s) {$/;"	function	line:99
