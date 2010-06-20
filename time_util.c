@@ -3,15 +3,8 @@
 #include <ctype.h>
 #include <string.h>
 #include "time_util.h"
+
 void test_day_diff();
-
-
-#define PARSE_ERROR(test,string,structtmPtr) \
-	if (test){ \
-		fprintf(stderr, "invalid type %s\n",string); \
-		return structtmPtr;\
-	}
-
 #define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
 
 struct tm* currentTime() {
@@ -53,43 +46,99 @@ int day_future(int day, int other_day) {
 struct tm *parse_time(char **str, int length) {
 	printf("\n%s\n", "start");
 	struct tm* tm = currentTime();
-
 	if (isdigit(**str)) {
-		printf("%s\n", "type A - n time ago/after ");
-		long num = strtol(str[0], NULL, 10);
-		PARSE_ERROR(length < 3 || num == 0, "A", tm)
+		type_a(str, length, tm);
+		str    += 3;
+		length -= 3;
+	}
 
-		T_Spec spec; T_Pos pos;
-		for (spec = 0 ; spec < 3; spec++) {
-			char *temp = strcasestr(time_spec[spec], str[1]);
-			if (temp != NULL && strlen(temp) > 3) break;
-		}
-		printf("spec: %s\n", time_spec[spec] );
+	if (length >= 2 && strcasecmp(*str, "at") == 0) {
+		type_b(str, length, tm);
+		str    += 2;
+		length -= 2;
+	}
 
-		if (strcasecmp(str[2], "ago") == 0)       pos = T_BEFORE;
-		else if(strcasecmp(str[2], "after") == 0) pos = T_AFTER;
-		else PARSE_ERR("A - t-pos");
-		printf("pos: %i\n", pos);
-		
-		switch(spec){
-			case T_DAYS:
-				tm->tm_mday += num *pos;
-				break;
-			case T_HOURS:
-				tm->tm_hour += num *pos;
-				break;
-			case T_MINS:
-				tm->tm_min += num *pos;
-				break;
-			case T_SECS:
-				tm->tm_sec += num *pos;
-				break;
+	return tm;
+}
+
+// n (day/hour/minute) ago/after
+void type_a(char **str, int length, struct tm* tm ) {
+	printf("%s\n", "type A - n time ago/after ");
+	long num = strtol(str[0], NULL, 10);
+	if (length < 3 || num == 0 || *str[1] == '\0') {
+		PARSE_ERR("a");
+		return;
+	}
+
+	T_Spec spec = -1; T_Pos pos;
+	const char **arr = NULL;
+	#define TIME_SPEC_TEST(arr,str,spec_v) \
+		arr = time_spec[spec_v]; \
+		while(**arr != '\0'){ \
+			if(strcasecmp(str, *arr) == 0) spec = spec_v; \
+			arr++; \
 		}
 		
+	switch(*str[1]){
+		case 'D':
+		case 'd': TIME_SPEC_TEST(arr, str[1], 0);
+		break;    
+		
+		case 'H':
+		case 'h': TIME_SPEC_TEST(arr, str[1], 1);
+		break;
+		
+		case 'M': 
+		case 'm': TIME_SPEC_TEST(arr, str[1], 2);
+		break;
+		
+		case 'S':
+		case 's': TIME_SPEC_TEST(arr, str[1], 3);
+		break;
 	}
 	
-	mktime(tm);
-	return tm;
+	if (arr == NULL || spec == -1 ) {PARSE_ERR("a-spec"); return;}
+	printf("spec: %i\n", spec);
+
+	if (strcasecmp(str[2], "ago") == 0)       pos = T_BEFORE;
+	else if(strcasecmp(str[2], "after") == 0) pos = T_AFTER;
+	else { PARSE_ERR("A - t-pos"); return; }
+	printf("pos: %i num: %li \n", pos, num);
+
+	switch(spec) {
+	case T_DAYS:
+		tm->tm_mday += num * pos;
+		break;
+	case T_HOURS:
+		tm->tm_hour += num * pos;
+		break;
+	case T_MINS:
+		tm->tm_min += num * pos;
+		break;
+	case T_SECS:
+		tm->tm_sec += num * pos;
+		break;
+	}
+	timegm(tm);
+}
+
+// at hh:mm
+void type_b(char **str, int length, struct tm* tm ) {
+	printf("%s\n", "type B - at nn:nn ");
+	char temp[5];
+	long hours, minutes, len = strlen(str[1]);
+
+	if(len < 3 || len > 5) return;
+	char *sep = strrchr(str[1], ':');
+	if (sep == NULL) return;
+
+	hours = atol(str[1]);
+	strncpy(temp, (sep + 1),  (len - (sep - str[1]) - 1) );
+	minutes = atol(temp);
+
+	tm->tm_hour = hours;
+	tm->tm_min  = minutes;
+
 }
 
 int main (int argc, char *argv[]) {

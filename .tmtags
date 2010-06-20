@@ -22,7 +22,7 @@ INCLUDES	makefile	/^INCLUDES  = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	li
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
 LIBS	makefile	/^LIBS      = -lsqlite3 -lxml2 -lcurl$/;"	macro	line:4
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
-MAKE_TIME_STR	time_util.h	/^#define MAKE_TIME_STR(/;"	macro	line:5
+MAKE_TIME_STR	time_util.h	/^#define MAKE_TIME_STR(/;"	macro	line:4
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MEDIA_OBJ	makefile	/^MEDIA_OBJ = main.o media.o string_util.o history.o playlist.o option_parser.o time_util.o$/;"	macro	line:6
 MLLLHEAD	ml.h	/^#define MLLLHEAD$/;"	macro	line:2
@@ -58,17 +58,17 @@ SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:25
 Status	media.h	/^} Status;$/;"	typedef	line:34
 String	ml.c	/^} String;$/;"	typedef	line:18
 TIMEUTILHEAD	time_util.h	/^#define TIMEUTILHEAD$/;"	macro	line:2
-T_AFTER	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:15
+T_AFTER	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:20
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_BEFORE	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:15
+T_BEFORE	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:20
 T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_DAYS	time_util.h	/^typedef enum {T_DAYS,T_HOURS T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:14
-T_HOURS	time_util.h	/^typedef enum {T_DAYS,T_HOURS T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:14
-T_MINS	time_util.h	/^typedef enum {T_DAYS,T_HOURS T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:14
+T_DAYS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:19
+T_HOURS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:19
+T_MINS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:19
 T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_Pos	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	typedef	line:15
-T_SECS	time_util.h	/^typedef enum {T_DAYS,T_HOURS T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:14
-T_Spec	time_util.h	/^typedef enum {T_DAYS,T_HOURS T_MINS, T_SECS} T_Spec;$/;"	typedef	line:14
+T_Pos	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	typedef	line:20
+T_SECS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:19
+T_Spec	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	typedef	line:19
 T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
 Types	media.h	/^} Types;$/;"	typedef	line:30
 VIDEO	media.c	/^#define VIDEO /;"	macro	line:18
@@ -137,7 +137,7 @@ main	ml.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:118
 main	option_parser2.c	/^int main (int argc, char **argv) {$/;"	function	line:4
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
-main	time_util.c	/^int main (int argc, char *argv[]) {$/;"	function	line:89
+main	time_util.c	/^int main (int argc, char *argv[]) {$/;"	function	line:97
 make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:48
 make_playlist	playlist.c	/^bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {$/;"	function	line:12
 make_plist	playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:62
@@ -179,12 +179,13 @@ str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	functio
 sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:46
 table	hash/hashtable_private.h	/^    struct entry **table;$/;"	member	line:18
 tablelength	hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	member	line:17
-test_day_diff	time_util.c	/^void test_day_diff() {$/;"	function	line:105
+test_day_diff	time_util.c	/^void test_day_diff() {$/;"	function	line:113
 test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:109
-time_spec	time_util.h	/^const char* time_spec[] = {"days", "hours" "minutes", "seconds"};$/;"	variable	line:13
+time_spec	time_util.h	/^const char* time_spec[] = {"days", "hours", "minutes", "seconds"};$/;"	variable	line:18
 total	string_util.h	/^	int  total;$/;"	member	line:24
 two_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
+type_a	time_util.c	/^void type_a(char **str, int length, struct tm* tm ) {$/;"	function	line:61
 types	media.h	/^	Types types;$/;"	member	line:47
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
