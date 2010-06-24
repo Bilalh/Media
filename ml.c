@@ -115,9 +115,9 @@ void init_string(String *s) {
 	s->ptr[0] = '\0';
 }
 
-int main (int argc, char const *argv[]) {
-	char *xml = get_search_xml("Azumanga Daioh");
-	long id = getId(xml, "Azumanga Daioh");
-	printf("id = %li\n", id);
-	return 0;
-}
+// int main (int argc, char const *argv[]) {
+// 	char *xml = get_search_xml("Azumanga Daioh");
+// 	long id = getId(xml, "Azumanga Daioh");
+// 	printf("id = %li\n", id);
+// 	return 0;
+// }

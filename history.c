@@ -51,6 +51,7 @@ bool updateHistory(char **filenames) {
 			printf("r:%i Ok:%i done:%i \n", result,SQLITE_OK,SQLITE_DONE );
 			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) 
 				fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
+				
 			printf("reset: %i\n\n", sqlite3_reset(statement));
 			timeinfo->tm_min+=30;
 			timegm(timeinfo);

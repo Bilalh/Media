@@ -2,10 +2,16 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include "string_util.h"
 #include "time_util.h"
 
 void test_day_diff();
 #define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
+
+const char* time_spec[][5] = {
+	{"day", "days",""}, {"hour", "hours",""},
+	{"min", "mins", "minute", "minutes",""}, {"sec", "secs","second","second",""}
+};
 
 struct tm* currentTime() {
 	time_t tt;
@@ -46,17 +52,44 @@ int day_future(int day, int other_day) {
 struct tm *parse_time(char **str, int length) {
 	printf("\n%s\n", "start");
 	struct tm* tm = currentTime();
-	if (isdigit(**str)) {
+
+	if (length >= 1) {
+
+		if( match(*str, "[0-9]{1,2} [a-zA-Z]{3}") > 0) {
+			strptime(*str, "%d %b", tm);
+			str++;
+			length--;
+		} else if( match(*str, "[0-9]{1,2}(th|st|nd)") > 0) {
+			strptime(*str, "%dth", tm);
+			str++;
+			length--;
+		} else if( match(*str, DATE_REGEX) > 0) {
+			strptime(*str, "%F", tm);
+			str++;
+			length--;
+		} else if ( match(*str, DATE_TIME_REGEX) > 0) {
+			strptime(*str, "%F %H:%M:%S", tm);
+			return tm;
+			//TODO bug
+		} else if ( match(*str, DATE_TIME_UK_REGEX) > 0) {
+			strptime(*str, "%d/%m/%y %H:%M:%S", tm);
+		}
+	}
+
+	if (length >= 3 && isdigit(**str)) {
 		type_a(str, length, tm);
 		str    += 3;
 		length -= 3;
 	}
 
-	if (length >= 2 && strcasecmp(*str, "at") == 0) {
-		type_b(str, length, tm);
-		str    += 2;
-		length -= 2;
+	if (length >= 2) {
+		if (strcasecmp(*str, "at") == 0) {
+			type_b(str, length, tm);
+			str    += 2;
+			length -= 2;
+		}
 	}
+
 
 	return tm;
 }
@@ -65,38 +98,38 @@ struct tm *parse_time(char **str, int length) {
 void type_a(char **str, int length, struct tm* tm ) {
 	printf("%s\n", "type A - n time ago/after ");
 	long num = strtol(str[0], NULL, 10);
-	if (length < 3 || num == 0 || *str[1] == '\0') {
+	if (num == 0 || *str[1] == '\0') {
 		PARSE_ERR("a");
 		return;
 	}
 
 	T_Spec spec = -1; T_Pos pos;
 	const char **arr = NULL;
-	#define TIME_SPEC_TEST(arr,str,spec_v) \
+#define TIME_SPEC_TEST(arr,str,spec_v) \
 		arr = time_spec[spec_v]; \
 		while(**arr != '\0'){ \
 			if(strcasecmp(str, *arr) == 0) spec = spec_v; \
 			arr++; \
 		}
-		
-	switch(*str[1]){
-		case 'D':
-		case 'd': TIME_SPEC_TEST(arr, str[1], 0);
-		break;    
-		
-		case 'H':
-		case 'h': TIME_SPEC_TEST(arr, str[1], 1);
+
+	switch(*str[1]) {
+	case 'D':
+	case 'd': TIME_SPEC_TEST(arr, str[1], 0);
 		break;
-		
-		case 'M': 
-		case 'm': TIME_SPEC_TEST(arr, str[1], 2);
+
+	case 'H':
+	case 'h': TIME_SPEC_TEST(arr, str[1], 1);
 		break;
-		
-		case 'S':
-		case 's': TIME_SPEC_TEST(arr, str[1], 3);
+
+	case 'M':
+	case 'm': TIME_SPEC_TEST(arr, str[1], 2);
+		break;
+
+	case 'S':
+	case 's': TIME_SPEC_TEST(arr, str[1], 3);
 		break;
 	}
-	
+
 	if (arr == NULL || spec == -1 ) {PARSE_ERR("a-spec"); return;}
 	printf("spec: %i\n", spec);
 
@@ -141,21 +174,21 @@ void type_b(char **str, int length, struct tm* tm ) {
 
 }
 
-int main (int argc, char *argv[]) {
-	struct tm* timeinfo = currentTime();
-	struct tm* newinfo = argc > 1 ? parse_time(&argv[1], argc - 1) : timeinfo;
-
-	char now[20], after[20];
-	MAKE_TIME_STR(now, timeinfo);
-	MAKE_TIME_STR(after, newinfo);
-
-	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-	printf("\n\n%s %s\n%s %s\n",
-		   now,   str_days[timeinfo->tm_wday],
-		   after, str_days[newinfo->tm_wday]);
-
-	return 0;
-}
+// int main (int argc, char *argv[]) {
+// 	struct tm* timeinfo = currentTime();
+// 	struct tm* newinfo = argc > 1 ? parse_time(&argv[1], argc - 1) : timeinfo;
+// 
+// 	char now[20], after[20];
+// 	MAKE_TIME_STR(now, timeinfo);
+// 	MAKE_TIME_STR(after, newinfo);
+// 
+// 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
+// 	printf("\n\n%s %s\n%s %s\n",
+// 		   now,   str_days[timeinfo->tm_wday],
+// 		   after, str_days[newinfo->tm_wday]);
+// 
+// 	return 0;
+// }
 
 void test_day_diff() {
 	struct tm* timeinfo = currentTime();

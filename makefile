@@ -11,7 +11,10 @@ media: ${MEDIA_OBJ}
 ml: ml.o string_util.o
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
-time: time_util.o
+opt: option_parser.o media.o string_util.o history.o time_util.o playlist.o
+	${CC} ${LIBS} ${CFLAGS} -o $@ $^
+
+time: time_util.o string_util.o
 	${CC} ${CFlAGS} -o $@ $^
 
 test: string_util.o tests/string_util_test.o
