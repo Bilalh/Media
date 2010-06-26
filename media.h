@@ -12,7 +12,7 @@ void niceplayer(char *playlist);
 
 void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath);
 
-// struct and enum
+// enums
 typedef enum {
 	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8
 } Pformat;
@@ -36,6 +36,12 @@ typedef enum {
 typedef enum{
 	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL
 } NiceRepeat;
+
+typedef struct {
+	char *str;
+	int length;
+	int index;
+} String;
 
 struct  _MediaArgs{
 	
@@ -61,13 +67,9 @@ struct  _MediaArgs{
 	
 	// Players
 	Player  player;
-	bool   afloat;
-	char   *prefix_args;
-	// int    prefix_index;
-	// int    prefix_length;
-	char   *postfix_args;
-	// int    postfix_index;
-	// int    postfix_length;
+	bool    afloat;
+	String  prefix_args;
+	String  postfix_args;
 		
 	//Nice Player
 	NiceRepeat nice_repeat;

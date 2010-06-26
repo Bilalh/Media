@@ -56,13 +56,13 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	if (ma->pl_output & PL_PLAYLIST) make_playlist("zzplaylist",path,sa,types);
 	switch (ma->player){
 		case P_MPLAYER: 
-			mplayer(sa, total_length, ma->prefix_args, ma->postfix_args, path);
+			mplayer(sa, total_length, "ma->prefix_args", "ma->postfix_args", path);
 			break;
 		case P_NICEPLAYER:
 			niceplayer("");
 			break;
 		case P_VLC:
-			vlc(sa, total_length, ma->prefix_args, ma->postfix_args, path);
+			vlc(sa, total_length, "ma->prefix_args", "ma->postfix_args", path);
 			break;
 		case P_NONE: break;
 	}
