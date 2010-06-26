@@ -63,8 +63,12 @@ struct  _MediaArgs{
 	Player  player;
 	bool   afloat;
 	char   *prefix_args;
+	// int    prefix_index;
+	// int    prefix_length;
 	char   *postfix_args;
-	
+	// int    postfix_index;
+	// int    postfix_length;
+		
 	//Nice Player
 	NiceRepeat nice_repeat;
 	

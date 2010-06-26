@@ -20,21 +20,62 @@ MediaArgs *new_media_args() {
 	ma->pl_format     = PL_STDOUT;
 	ma->pl_output     = PL_NONE;
 	ma->pl_rand       = false;
-	ma->write_history = false;
 	
 	// Prefs
 	ma->hash_location = NULL;
 	ma->use_hash      = false;
 	ma->status        = S_NONE;
+	ma->write_history = false;
 
 	// Player
 	ma->player = P_NONE;
 	ma->afloat = false;
 	ma->prefix_args = ma->postfix_args = NULL;
+	// ma->prefix_index = ma->prefix_length = ma->postfix_index = ma->postfix_length = 0;
 	ma->nice_repeat=false;
 	
 
 	return ma;
+}
+
+void print_media_args(MediaArgs *ma){
+	#define truth(boolean) (boolean ? "true" : "false" )
+	#define nullcheck(str) (str == NULL ? "NULL" : str )
+	#define print_args(title,value) printf("%20s: %s\n",  title, value);
+	#define print_hex(title,value) printf("%20s: 0x%x\n",  title, value);
+	
+	printf("Selection\n");
+	print_args("exclude"  ,   truth(ma->exclude));
+	print_args("excludes" ,   nullcheck(ma->excludes));
+	print_args("newest_only", truth(ma->newest_only));
+	print_args("sub_dirs",    truth(ma->sub_dirs));
+	print_hex("types",        ma->types);
+	
+	
+	printf("Playlist\n");
+	print_args("pl_rand",     truth(ma->pl_rand));
+	print_args("pl_dir",      nullcheck(ma->pl_dir));
+	print_args("pl_name",     truth(ma->pl_name));
+	print_hex("pl_format",    ma->pl_format);
+	print_hex("pl_output",    ma->pl_output);
+	print_args("pl_rand",     truth(ma->pl_rand));
+	
+	printf("Prefs\n");
+	print_args("hash_location", truth(ma->hash_location));
+	print_args("use_hash",      truth(ma->use_hash));
+	print_hex("types",          ma->types);
+	print_args("write_history", truth(ma->write_history));
+	
+	printf("Player\n");
+	print_hex("player",        ma->player);
+	print_args("afloat",       truth(ma->afloat));
+	print_args("prefix_args",  nullcheck(ma->prefix_args));
+	print_args("postfix_args", nullcheck(ma->postfix_args));
+	print_args("nice_repeat",  truth(ma->nice_repeat));
+	
+	#undef truth
+	#undef nullcheck
+	#undef print_args
 }
 
 int main (int argc, char **argv) {
@@ -102,5 +143,6 @@ int main (int argc, char **argv) {
             printf ("%s ", argv[optind++]);
         printf ("\n");
     }
+	print_media_args(ma);
     exit (0);
 }

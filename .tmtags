@@ -138,7 +138,7 @@ lengths	string_util.h	/^	int  *lengths;$/;"	member	line:23
 loadlimit	hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
-main	option_parser.c	/^int main (int argc, char **argv) {$/;"	function	line:40
+main	option_parser.c	/^int main (int argc, char **argv) {$/;"	function	line:47
 main	option_parser2.c	/^int main (int argc, char **argv) {$/;"	function	line:5
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
@@ -171,6 +171,7 @@ prefix_args	media.h	/^	char   *prefix_args;$/;"	member	line:65
 prime_table_length	hash/hashtable.c	/^const unsigned int prime_table_length = sizeof(primes)\/sizeof(primes[0]);$/;"	variable	line:24
 primeindex	hash/hashtable_private.h	/^    unsigned int primeindex;$/;"	member	line:21
 primes	hash/hashtable.c	/^static const unsigned int primes[] = {$/;"	variable	line:15
+print_media_args	option_parser.c	/^void *print_media_args(MediaArgs *ma){$/;"	function	line:40
 ptr	ml.c	/^	char *ptr;$/;"	member	line:16
 spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:50
 spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:118
@@ -187,6 +188,8 @@ test_day_diff	time_util.c	/^void test_day_diff() {$/;"	function	line:193
 test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:109
 time_spec	time_util.c	/^const char* time_spec[][5] = {$/;"	variable	line:11
 total	string_util.h	/^	int  total;$/;"	member	line:24
+truth	option_parser.c	/^	#define truth(/;"	macro	line:41
+truth	option_parser.c	/^	#undef truth$/;"	macro	line:44
 two_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 type_a	time_util.c	/^void type_a(char **str, int length, struct tm* tm ) {$/;"	function	line:98
