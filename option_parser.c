@@ -9,78 +9,13 @@
 
 const static struct option Long_options[] = {
 	{"fs",      no_argument,           0, 'f'},
+	{"fs2",     no_argument,           0, 'f'},
 	{"mplayer", no_argument,           0, 'm'},
 	{"",        no_argument,           0, 'a'},
+	{"help",    no_argument,           0, 'h'},
 	{0, 0, 0, 0}
 };
 
- 
-void print_help(){
-	 
-	// structs to print nice
-	#define csElement const static Element
-	csElement filetype[] ={
-		
-	};
-	csElement filepath[] ={
-		
-	};
-	csElement mplayer[] = { 
-		{&Long_options[0], "", "plays file(s) in fullscreen"}, //--fs
-		{&Long_options[2], "TEST", "TEST"} //--fs
-	};
-	csElement playlist[] ={
-		
-	};
-	csElement player[] ={
-		{&Long_options[1], "", "plays file(s) using mplayer"} //--mplayer
-	};
-	csElement output[] ={
-		
-	};
-	csElement other[] ={
-		
-	};
-	
-	const static HelpLink help[] = {
-		{ "Filetype", sizeof(filetype) / sizeof(Element), &filetype[0] },
-		{ "Filepath", sizeof(filepath) / sizeof(Element), &filepath[0] },
-		{ "Mplayer",  sizeof(mplayer)  / sizeof(Element), &mplayer[0]  },
-		{ "Playlist", sizeof(playlist) / sizeof(Element), &playlist[0] },
-		{ "Player",   sizeof(player)   / sizeof(Element), &player[0]   },
-		{ "Output",   sizeof(output)   / sizeof(Element), &output[0]   },
-		{ "Other",    sizeof(other)    / sizeof(Element), &other[0]    },
-	};
-	
-	size_t length = sizeof(help) / sizeof(HelpLink);
-	const char *s_exp = "\t%-3s %-15s %s\n";
-	
-	for(int i = 0; i < length; ++i){
-		printf("\n%s\n", help[i].grouping);
-		for(int j = 0; j < help[i].length; j++){
-			
-			const struct option *optr = help[i].links[j].opt;
-			// makes the space for the short arg
-			char short_opt[3] = ""; 
-			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
-			// makes the space for the long arg
-			char long_opt[3+strlen(optr->name)];
-			if (*optr->name != '\0') sprintf(long_opt, "--%s",optr->name);
-			else long_opt[0] = '\0';
-			
-			if (optr->has_arg == required_argument){
-				// joins long opt and arg to print nicely
-				char name_arg[strlen(help[i].links[j].arg) + strlen(optr->name) + 4];
-				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
-				printf(s_exp, short_opt, name_arg, help[i].links[j].help );
-			}else{
-				printf(s_exp, short_opt, long_opt, help[i].links[j].help );	
-			}
-			
-		}
-	}
-	#undef csElement
-}
  
 MediaArgs *new_media_args() {
 
@@ -169,10 +104,10 @@ MediaArgs *option_parser(int argc, char **argv) {
 	int c, digit_optind = 0, option_index =0;
 	MediaArgs *ma = new_media_args();
 
-	while ((c = getopt_long(argc, argv, ":fm?", Long_options, &option_index)) != -1) {
+	while ((c = getopt_long(argc, argv, "req:opt:hmf", Long_options, &option_index)) != -1) {
 		int this_option_optind = optind ? optind : 1;
 		switch (c) {
-		case '?':
+		case 'h':
 			print_help();
 			exit(0);
 			break;			
@@ -194,7 +129,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 		// filetype option
 		
 		// filepaths options
-		
+		 
 		// mplayer options
 		case 'f':
 			printf("%s\n", "fs");
@@ -213,10 +148,77 @@ MediaArgs *option_parser(int argc, char **argv) {
 		// other options 
 		
 		default:
-			printf ("?? getopt returned character code 0%o ??\n", c);
+			exit(1);
 		}
 	}
 	return ma;
+}
+
+void print_help(){
+	 
+	// structs to print nice
+	#define csElement const static Element
+	csElement filetype[] ={
+		
+	};
+	csElement filepath[] ={
+		
+	};
+	csElement mplayer[] = { 
+		{&Long_options[0], "", "plays file(s) in fullscreen"}, //--fs
+		{&Long_options[2], "TEST", "TEST"} //--fs
+	};
+	csElement playlist[] ={
+		
+	};
+	csElement player[] ={
+		{&Long_options[1], "", "plays file(s) using mplayer"} //--mplayer
+	};
+	csElement output[] ={
+		
+	};
+	csElement other[] ={
+		
+	};
+	
+	const static HelpLink help[] = {
+		{ "Filetype", sizeof(filetype) / sizeof(Element), &filetype[0] },
+		{ "Filepath", sizeof(filepath) / sizeof(Element), &filepath[0] },
+		{ "Mplayer",  sizeof(mplayer)  / sizeof(Element), &mplayer[0]  },
+		{ "Playlist", sizeof(playlist) / sizeof(Element), &playlist[0] },
+		{ "Player",   sizeof(player)   / sizeof(Element), &player[0]   },
+		{ "Output",   sizeof(output)   / sizeof(Element), &output[0]   },
+		{ "Other",    sizeof(other)    / sizeof(Element), &other[0]    },
+	};
+	
+	size_t length = sizeof(help) / sizeof(HelpLink);
+	const char *s_exp = "\t%-3s %-15s %s\n";
+	
+	for(int i = 0; i < length; ++i){
+		printf("\n%s\n", help[i].grouping);
+		for(int j = 0; j < help[i].length; j++){
+			
+			const struct option *optr = help[i].links[j].opt;
+			// makes the space for the short arg
+			char short_opt[3] = ""; 
+			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
+			// makes the space for the long arg
+			char long_opt[3+strlen(optr->name)];
+			if (*optr->name != '\0') sprintf(long_opt, "--%s",optr->name);
+			else long_opt[0] = '\0';
+			
+			if (optr->has_arg == required_argument){
+				// joins long opt and arg to print nicely
+				char name_arg[strlen(help[i].links[j].arg) + strlen(optr->name) + 4];
+				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
+				printf(s_exp, short_opt, name_arg, help[i].links[j].help );
+			}else{
+				printf(s_exp, short_opt, long_opt, help[i].links[j].help );	
+			}
+			
+		}
+	}
+	#undef csElement
 }
 
 int main (int argc, char **argv) {

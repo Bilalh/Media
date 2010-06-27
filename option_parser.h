@@ -6,6 +6,7 @@
 
 MediaArgs *new_media_args();
 MediaArgs *option_parser(int argc, char **argv);
+void print_help(); 
 
 typedef struct{
 	const struct option *opt;

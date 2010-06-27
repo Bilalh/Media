@@ -52,17 +52,17 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	sa[file_num] = "";
 
 	Pformat types = F_M3U;
-	if (ma->write_history) updateHistory(sa);
+	if (ma->write_history)           updateHistory(sa);
 	if (ma->pl_output & PL_PLAYLIST) make_playlist("zzplaylist",path,sa,types);
 	switch (ma->player){
 		case P_MPLAYER: 
-			mplayer(sa, total_length, "ma->prefix_args", "ma->postfix_args", path);
+			mplayer(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 			break;
 		case P_NICEPLAYER:
 			niceplayer("");
 			break;
 		case P_VLC:
-			vlc(sa, total_length, "ma->prefix_args", "ma->postfix_args", path);
+			vlc(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 			break;
 		case P_NONE: break;
 	}
@@ -82,7 +82,7 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ 8];
 
 	sprintf(m_args, "cd %s; mplayer %s ", filepath, prefix_args);
-	// 3 for cd 2 for ; 1 .
+	// 3 for cd 2 for ; 1 for  .
 	index += 3 + 2 + 8 + strlen(prefix_args) + 1;
 
 	// append filenames
@@ -108,10 +108,12 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	system(m_args);
 }
 
+//TODO niceplayer
 void niceplayer(char *playlist) {
 	
 }
 
+// TODO vlc
 void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
 	
 }

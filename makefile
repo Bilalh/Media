@@ -3,7 +3,7 @@ CFLAGS    = -g -Wall  ${INCLUDES}
 INCLUDES  = -I./hash -I/usr/include/libxml2
 LIBS      = -lsqlite3 -lxml2 -lcurl
 OBJ       = media ml test tempc time opt
-MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string_util.o  time_util.o
+MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o
 
 media: ${MEDIA_OBJ}
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
