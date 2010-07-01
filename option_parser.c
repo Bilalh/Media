@@ -3,35 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <Block.h>
 #include "option_parser.h"
 #include "string.h"
-typedef void (^voidBlock)();
-
-#define csElement const static Element
-csElement H_filetype[] ={
-	      
-};        
-csElement H_filepath[] ={
-	      
-};        
-csElement H_mplayer[] = { 
-	{{"fs", no_argument, 0, 'f'}, "", "plays file(s) in fullscreen"},
-	{{"top", no_argument, 0, 't'}, "", "Add profile t - afloat + 360p"}
-};
-csElement H_playlist[] ={
-	
-};
-csElement H_player[] ={
-	{{"mplayer", no_argument, 0, 'm'}, "", "plays file(s) using mplayer"}
-};
-csElement H_output[] ={
-		
-};
-csElement H_other[] ={
-	{{"help", no_argument, 0, 'h'}, "", "Shows the help"},
-	{{"print_opt", no_argument, 0, 'Z'}, "", "Shows the opt struct"}
-};
+#include "option_parser_private.h"
 
  
 MediaArgs *new_media_args() {
@@ -79,8 +53,10 @@ MediaArgs *option_parser(int argc, char **argv) {
 
 	int c, digit_optind = 0, option_index =0;
 	MediaArgs *ma = new_media_args();
+	// pointer to block contain the function for the chararcter.
+	const static VoidBlock *blocks[256]; 
 	
-	// array of lengths
+	// array of the lengths
 	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
 	int lens[] = {
 		sizeof(H_filetype) / e_len,
@@ -101,8 +77,9 @@ MediaArgs *option_parser(int argc, char **argv) {
 		 &H_other[0]   
 	};
 	
-	// calc total length
+	// calculate  total length
 	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
+	
 	struct option opts[t_len+1];
 	char letters[t_len*2+1]; // since opt with arg needs a : after it
 	// builds the options array.
@@ -110,65 +87,17 @@ MediaArgs *option_parser(int argc, char **argv) {
 		for(int j = 0; j < lens[i]; ++j){
 			opts[index++] = ele[i][j].opt;
 			letters[s_index++] = ele[i][j].opt.val;
+			blocks[ele[i][j].opt.val] = &ele[i][j].block;
 		}
 	}
+	
 	letters[s_index] = '\0';
-	voidBlock test = ^ (MediaArgs *ma ) {
-		printf("%s\n", "abc");
-	};
-	
-	
+	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		int this_option_optind = optind ? optind : 1;
-		switch (c) {
-		case 'h':
-			print_help();
-			exit(0);
-			break;			
-		case 0:
-			printf("%s\n", "jj");
-			printf ("option %s", opts[option_index].name);
-			if (optarg)
-				printf (" with arg %s", optarg);
-			printf ("\n");
-			break;
-		case '1':
-		case '2':
-			if (digit_optind != 0 && digit_optind != this_option_optind)
-				printf ("digits occur in two different argv-elements.\n");
-			digit_optind = this_option_optind;
-			printf ("option %c\n", c);
-			break;
-		 
-		// filetype option
-		
-		// filepaths options
-		 
-		// mplayer options
-		case 'f':
-			string_push(&ma->prefix_args,"-fs");
-			break;
-		case 't':
-			string_push(&ma->prefix_args, "-profile t");
-			break;
-			
-		// playlist options
-		
-		// player options
-		case 'm':
-			ma->player = P_MPLAYER;
-			break;
-			
-		// output options
-		
-		// other options 
-		case 'Z':
-			print_media_args(ma);
-			exit(0);
-		// default:
-		// 	exit(0);
-		}
+		(*blocks[c])(ma); // calls the related block
 	}
+	
 	return ma;
 }
 
