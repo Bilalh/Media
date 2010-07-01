@@ -51,7 +51,7 @@ MediaArgs *new_media_args() {
 
 MediaArgs *option_parser(int argc, char **argv) {
 
-	int c, digit_optind = 0, option_index =0;
+	int c, option_index = 0;
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
 	const static VoidBlock *blocks[256]; 
@@ -94,7 +94,8 @@ MediaArgs *option_parser(int argc, char **argv) {
 	letters[s_index] = '\0';
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
-		int this_option_optind = optind ? optind : 1;
+		// int this_option_optind = optind ? optind : 1;
+		if (c == '?') exit(1);
 		(*blocks[c])(ma); // calls the related block
 	}
 	
