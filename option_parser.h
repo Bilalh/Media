@@ -7,9 +7,10 @@
 MediaArgs *new_media_args();
 MediaArgs *option_parser(int argc, char **argv);
 void print_help(); 
+void print_media_args(MediaArgs *ma);
 
 typedef struct{
-	const struct option *opt;
+	const struct option opt;
 	const char *arg;
 	const char *help;
 } Element;

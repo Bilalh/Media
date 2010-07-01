@@ -3,17 +3,34 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Block.h>
 #include "option_parser.h"
 #include "string.h"
+typedef void (^voidBlock)();
 
-
-const static struct option Long_options[] = {
-	{"fs",      no_argument,           0, 'f'},
-	{"fs2",     no_argument,           0, 'f'},
-	{"mplayer", no_argument,           0, 'm'},
-	{"",        no_argument,           0, 'a'},
-	{"help",    no_argument,           0, 'h'},
-	{0, 0, 0, 0}
+#define csElement const static Element
+csElement H_filetype[] ={
+	      
+};        
+csElement H_filepath[] ={
+	      
+};        
+csElement H_mplayer[] = { 
+	{{"fs", no_argument, 0, 'f'}, "", "plays file(s) in fullscreen"},
+	{{"top", no_argument, 0, 't'}, "", "Add profile t - afloat + 360p"}
+};
+csElement H_playlist[] ={
+	
+};
+csElement H_player[] ={
+	{{"mplayer", no_argument, 0, 'm'}, "", "plays file(s) using mplayer"}
+};
+csElement H_output[] ={
+		
+};
+csElement H_other[] ={
+	{{"help", no_argument, 0, 'h'}, "", "Shows the help"},
+	{{"print_opt", no_argument, 0, 'Z'}, "", "Shows the opt struct"}
 };
 
  
@@ -58,8 +75,144 @@ MediaArgs *new_media_args() {
 	return ma;
 }
 
+MediaArgs *option_parser(int argc, char **argv) {
+
+	int c, digit_optind = 0, option_index =0;
+	MediaArgs *ma = new_media_args();
+	
+	// array of lengths
+	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
+	int lens[] = {
+		sizeof(H_filetype) / e_len,
+		sizeof(H_filepath) / e_len,
+		sizeof(H_mplayer)  / e_len,
+		sizeof(H_playlist) / e_len,
+		sizeof(H_player)   / e_len,
+		sizeof(H_output)   / e_len,
+		sizeof(H_other)    / e_len
+	};
+	const static Element *ele[] = {
+		 &H_filetype[0],
+		 &H_filepath[0],
+		 &H_mplayer[0] ,
+		 &H_playlist[0],
+		 &H_player[0]  ,
+		 &H_output[0]  ,
+		 &H_other[0]   
+	};
+	
+	// calc total length
+	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
+	struct option opts[t_len+1];
+	char letters[t_len*2+1]; // since opt with arg needs a : after it
+	// builds the options array.
+	for(int i = 0; i < sizeof(ele) / sizeof(size_t); ++i) {
+		for(int j = 0; j < lens[i]; ++j){
+			opts[index++] = ele[i][j].opt;
+			letters[s_index++] = ele[i][j].opt.val;
+		}
+	}
+	letters[s_index] = '\0';
+	voidBlock test = ^ (MediaArgs *ma ) {
+		printf("%s\n", "abc");
+	};
+	
+	
+	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
+		int this_option_optind = optind ? optind : 1;
+		switch (c) {
+		case 'h':
+			print_help();
+			exit(0);
+			break;			
+		case 0:
+			printf("%s\n", "jj");
+			printf ("option %s", opts[option_index].name);
+			if (optarg)
+				printf (" with arg %s", optarg);
+			printf ("\n");
+			break;
+		case '1':
+		case '2':
+			if (digit_optind != 0 && digit_optind != this_option_optind)
+				printf ("digits occur in two different argv-elements.\n");
+			digit_optind = this_option_optind;
+			printf ("option %c\n", c);
+			break;
+		 
+		// filetype option
+		
+		// filepaths options
+		 
+		// mplayer options
+		case 'f':
+			string_push(&ma->prefix_args,"-fs");
+			break;
+		case 't':
+			string_push(&ma->prefix_args, "-profile t");
+			break;
+			
+		// playlist options
+		
+		// player options
+		case 'm':
+			ma->player = P_MPLAYER;
+			break;
+			
+		// output options
+		
+		// other options 
+		case 'Z':
+			print_media_args(ma);
+			exit(0);
+		// default:
+		// 	exit(0);
+		}
+	}
+	return ma;
+}
+
+void print_help(){
+	const static HelpLink help[] = {
+		{ "Filetype", sizeof(H_filetype) / sizeof(Element), &H_filetype[0] },
+		{ "Filepath", sizeof(H_filepath) / sizeof(Element), &H_filepath[0] },
+		{ "Mplayer",  sizeof(H_mplayer)  / sizeof(Element), &H_mplayer[0]  },
+		{ "Playlist", sizeof(H_playlist) / sizeof(Element), &H_playlist[0] },
+		{ "Player",   sizeof(H_player)   / sizeof(Element), &H_player[0]   },
+		{ "Output",   sizeof(H_output)   / sizeof(Element), &H_output[0]   },
+		{ "Other",    sizeof(H_other)    / sizeof(Element), &H_other[0]    },
+	};
+	
+	size_t length = sizeof(help) / sizeof(HelpLink);
+	const char *s_exp = "\t%-3s %-15s %s\n";
+	
+	for(int i = 0; i < length; ++i){
+		printf("\n%s\n", help[i].grouping);
+		for(int j = 0; j < help[i].length; j++){
+			
+			const struct option *optr = &help[i].links[j].opt;
+			// makes the space for the short arg
+			char short_opt[3] = ""; 
+			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
+			// makes the space for the long arg
+			char long_opt[3+strlen(optr->name)];
+			if (*optr->name != '\0') sprintf(long_opt, "--%s",optr->name);
+			else long_opt[0] = '\0';
+			
+			if (optr->has_arg == required_argument){
+				// joins long opt and arg to print nicely
+				char name_arg[strlen(help[i].links[j].arg) + strlen(optr->name) + 4];
+				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
+				printf(s_exp, short_opt, name_arg, help[i].links[j].help );
+			}else{
+				printf(s_exp, short_opt, long_opt, help[i].links[j].help );	
+			}
+			
+		}
+	}
+}
+
 void print_media_args(MediaArgs *ma) {
-	return;
 #define truth(boolean) (boolean ? "true" : "false" )
 #define nullcheck(str) (str == NULL ? "NULL" : str )
 #define strcheck(s)    (s.str != NULL ? s.str : "NULL" )
@@ -99,131 +252,9 @@ void print_media_args(MediaArgs *ma) {
 #undef print_args
 }
 
-MediaArgs *option_parser(int argc, char **argv) {
-
-	int c, digit_optind = 0, option_index =0;
-	MediaArgs *ma = new_media_args();
-
-	while ((c = getopt_long(argc, argv, "req:opt:hmf", Long_options, &option_index)) != -1) {
-		int this_option_optind = optind ? optind : 1;
-		switch (c) {
-		case 'h':
-			print_help();
-			exit(0);
-			break;			
-		case 0:
-			printf("%s\n", "jj");
-			printf ("option %s", Long_options[option_index].name);
-			if (optarg)
-				printf (" with arg %s", optarg);
-			printf ("\n");
-			break;
-		case '1':
-		case '2':
-			if (digit_optind != 0 && digit_optind != this_option_optind)
-				printf ("digits occur in two different argv-elements.\n");
-			digit_optind = this_option_optind;
-			printf ("option %c\n", c);
-			break;
-		 
-		// filetype option
-		
-		// filepaths options
-		 
-		// mplayer options
-		case 'f':
-			printf("%s\n", "fs");
-			string_push(&ma->prefix_args,"-fs");
-			break;
-			
-		// playlist options
-		
-		// player options
-		case 'm':
-			printf("%s\n", "mp");
-			ma->player = P_MPLAYER;
-			break;
-		// output options
-		
-		// other options 
-		
-		default:
-			exit(1);
-		}
-	}
-	return ma;
-}
-
-void print_help(){
-	 
-	// structs to print nice
-	#define csElement const static Element
-	csElement filetype[] ={
-		
-	};
-	csElement filepath[] ={
-		
-	};
-	csElement mplayer[] = { 
-		{&Long_options[0], "", "plays file(s) in fullscreen"}, //--fs
-		{&Long_options[2], "TEST", "TEST"} //--fs
-	};
-	csElement playlist[] ={
-		
-	};
-	csElement player[] ={
-		{&Long_options[1], "", "plays file(s) using mplayer"} //--mplayer
-	};
-	csElement output[] ={
-		
-	};
-	csElement other[] ={
-		
-	};
-	
-	const static HelpLink help[] = {
-		{ "Filetype", sizeof(filetype) / sizeof(Element), &filetype[0] },
-		{ "Filepath", sizeof(filepath) / sizeof(Element), &filepath[0] },
-		{ "Mplayer",  sizeof(mplayer)  / sizeof(Element), &mplayer[0]  },
-		{ "Playlist", sizeof(playlist) / sizeof(Element), &playlist[0] },
-		{ "Player",   sizeof(player)   / sizeof(Element), &player[0]   },
-		{ "Output",   sizeof(output)   / sizeof(Element), &output[0]   },
-		{ "Other",    sizeof(other)    / sizeof(Element), &other[0]    },
-	};
-	
-	size_t length = sizeof(help) / sizeof(HelpLink);
-	const char *s_exp = "\t%-3s %-15s %s\n";
-	
-	for(int i = 0; i < length; ++i){
-		printf("\n%s\n", help[i].grouping);
-		for(int j = 0; j < help[i].length; j++){
-			
-			const struct option *optr = help[i].links[j].opt;
-			// makes the space for the short arg
-			char short_opt[3] = ""; 
-			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
-			// makes the space for the long arg
-			char long_opt[3+strlen(optr->name)];
-			if (*optr->name != '\0') sprintf(long_opt, "--%s",optr->name);
-			else long_opt[0] = '\0';
-			
-			if (optr->has_arg == required_argument){
-				// joins long opt and arg to print nicely
-				char name_arg[strlen(help[i].links[j].arg) + strlen(optr->name) + 4];
-				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
-				printf(s_exp, short_opt, name_arg, help[i].links[j].help );
-			}else{
-				printf(s_exp, short_opt, long_opt, help[i].links[j].help );	
-			}
-			
-		}
-	}
-	#undef csElement
-}
-
 int main (int argc, char **argv) {
 
-	MediaArgs *ma = option_parser(argc, argv);
+	option_parser(argc, argv);
 	
 	if (optind < argc) {
 		printf ("non-option ARGV-elements: ");
@@ -232,6 +263,5 @@ int main (int argc, char **argv) {
 		printf ("\n");
 	}
 	
-	print_media_args(ma);
 	return 0;
 }

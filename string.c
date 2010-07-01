@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "string.h"
 
+// assumes the s->str is assigned by malloc
 void string_push(String *s, char *str) {
 	int str_len = strlen(str);
 
