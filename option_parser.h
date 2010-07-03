@@ -17,6 +17,7 @@ typedef struct{
 	const char *arg;
 	const char *help;
 	VoidBlock block;
+	const bool neg;
 } Element;
 
 typedef struct {

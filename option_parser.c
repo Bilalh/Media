@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <sys/ioctl.h>
 #include "option_parser.h"
 #include "string.h"
 #include "option_parser_private.h"
@@ -54,7 +54,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	int c, option_index = 0;
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
-	const static VoidBlock *blocks[256]; 
+	const static VoidBlock *blocks[257]; 
 	
 	// array of the lengths
 	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
@@ -80,14 +80,23 @@ MediaArgs *option_parser(int argc, char **argv) {
 	// calculate  total length
 	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
 	
-	struct option opts[t_len+1];
+	struct option opts[t_len+1 * 2];
 	char letters[t_len*2+1]; // since opt with arg needs a : after it
 	// builds the options array.
 	for(int i = 0; i < sizeof(ele) / sizeof(size_t); ++i) {
 		for(int j = 0; j < lens[i]; ++j){
 			opts[index++] = ele[i][j].opt;
+			if (ele[i][j].neg == true){
+				struct option o2 = ele[i][j].opt;
+				o2.val +=128;
+				char *c2 = malloc(strlen(o2.name +1 +3));
+				sprintf(c2,"no-%s",o2.name);
+				o2.name = c2;
+			}
+			
 			letters[s_index++] = ele[i][j].opt.val;
 			blocks[ele[i][j].opt.val] = &ele[i][j].block;
+			blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
 		}
 	}
 	
@@ -96,7 +105,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
 		if (c == '?') exit(1);
-		(*blocks[c])(ma); // calls the related block
+		(*blocks[c])(ma, c); // calls the related block
 	}
 	
 	return ma;
@@ -114,7 +123,8 @@ void print_help(){
 	};
 	
 	size_t length = sizeof(help) / sizeof(HelpLink);
-	const char *s_exp = "\t%-3s %-15s %s\n";
+	const char *s_exp = "\t%-3s %-15s ";
+	const char *h_exp = "\t%-3s %-15s %-s\n";
 	
 	for(int i = 0; i < length; ++i){
 		printf("\n%s\n", help[i].grouping);
@@ -125,17 +135,59 @@ void print_help(){
 			char short_opt[3] = ""; 
 			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
 			// makes the space for the long arg
-			char long_opt[3+strlen(optr->name)];
-			if (*optr->name != '\0') sprintf(long_opt, "--%s",optr->name);
-			else long_opt[0] = '\0';
+			char long_opt[3 + 5 + strlen(optr->name)];
+			
+			if (*optr->name != '\0'){
+				if (help[i].links[j].neg == true) 
+					 sprintf(long_opt, "--[no-]%s",optr->name);
+				else sprintf(long_opt, "--%s",optr->name);
+			}else long_opt[0] = '\0';
+			
+			struct ttysize ts;
+		    ioctl(0, TIOCGSIZE, &ts);
+		    
+			
+			const char *ho = help[i].links[j].help; 
+			int h_len = strlen(ho), h_num = ts.ts_cols - 28, h_cur = h_num;
+			if (h_num < 5) h_num = 5;
+			char hh[h_num + 2]; 
+			
+			// puts short words like 'the', 'or' and 'then' on the next like.
+			bool changed = false;
+			for(int i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
+				if (ho[i] == ' '){
+					h_cur = i;
+					changed = true;
+					break;
+				}
+			}
+			
+			strncpy(hh, help[i].links[j].help, h_cur );
+			// if the the word is spilt a =- is used.
+			if (changed == true){
+				hh[h_cur] = '\0';
+			}else{
+				hh[h_cur-1]  = '-';
+				hh[h_cur] = '\0';
+				h_cur--;
+			}
 			
 			if (optr->has_arg == required_argument){
 				// joins long opt and arg to print nicely
-				char name_arg[strlen(help[i].links[j].arg) + strlen(optr->name) + 4];
+				char name_arg[strlen(help[i].links[j].arg) + strlen(long_opt) + 4];
 				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
-				printf(s_exp, short_opt, name_arg, help[i].links[j].help );
+				printf(s_exp, short_opt, name_arg);
 			}else{
-				printf(s_exp, short_opt, long_opt, help[i].links[j].help );	
+				printf(s_exp, short_opt, long_opt);	
+			}
+			
+			//TODO spaces on multiple  lines
+			printf("%s\n",hh );
+			while(h_len - h_cur > 0){
+				strncpy(hh, &ho[h_cur], h_num);
+				hh[h_num] = '\0';
+				printf(h_exp, "", "",hh);
+				h_cur += h_num;
 			}
 			
 		}
@@ -179,7 +231,9 @@ void print_media_args(MediaArgs *ma) {
 
 #undef truth
 #undef nullcheck
+#undef strcheck
 #undef print_args
+#undef print_hex
 }
 
 int main (int argc, char **argv) {
