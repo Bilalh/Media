@@ -54,7 +54,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	int c, option_index = 0;
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
-	const static VoidBlock *blocks[257]; 
+	const static VoidBlock *blocks[MAX_OPT_BLOCKS]; 
 	
 	// array of the lengths
 	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
@@ -86,17 +86,19 @@ MediaArgs *option_parser(int argc, char **argv) {
 	for(int i = 0; i < sizeof(ele) / sizeof(size_t); ++i) {
 		for(int j = 0; j < lens[i]; ++j){
 			opts[index++] = ele[i][j].opt;
+			
 			if (ele[i][j].neg == true){
 				struct option o2 = ele[i][j].opt;
 				o2.val +=128;
 				char *c2 = malloc(strlen(o2.name +1 +3));
 				sprintf(c2,"no-%s",o2.name);
 				o2.name = c2;
+				opts[index++] = o2;
 			}
 			
 			letters[s_index++] = ele[i][j].opt.val;
 			blocks[ele[i][j].opt.val] = &ele[i][j].block;
-			blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
+			if (ele[i][j].neg) blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
 		}
 	}
 	
@@ -133,7 +135,7 @@ void print_help(){
 			const struct option *optr = &help[i].links[j].opt;
 			// makes the space for the short arg
 			char short_opt[3] = ""; 
-			if (optr->val != NO_SHORT_OPT) sprintf(short_opt, "-%c",optr->val);
+			if (optr->val < 128) sprintf(short_opt, "-%c",optr->val);
 			// makes the space for the long arg
 			char long_opt[3 + 5 + strlen(optr->name)];
 			
