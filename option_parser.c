@@ -81,7 +81,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
 	
 	struct option opts[t_len+1 * 2];
-	char letters[t_len*2+1]; // since opt with arg needs a : after it
+	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
 	// builds the options array.
 	for(int i = 0; i < sizeof(ele) / sizeof(size_t); ++i) {
 		for(int j = 0; j < lens[i]; ++j){
@@ -97,17 +97,19 @@ MediaArgs *option_parser(int argc, char **argv) {
 			}
 			
 			letters[s_index++] = ele[i][j].opt.val;
+			if (ele[i][j].opt.has_arg == required_argument) letters[s_index++] = ':';
 			blocks[ele[i][j].opt.val] = &ele[i][j].block;
 			if (ele[i][j].neg) blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
 		}
 	}
 	
 	letters[s_index] = '\0';
+	
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
 		if (c == '?') exit(1);
-		(*blocks[c])(ma, c); // calls the related block
+		(*blocks[c])(ma, c,optarg); // calls the related block
 	}
 	
 	return ma;

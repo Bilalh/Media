@@ -26,5 +26,4 @@ typedef struct {
 	const Element *links;
 } HelpLink;
 
-
 #endif
