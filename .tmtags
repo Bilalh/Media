@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+ASCII	option_parser_private.h	/^#define ASCII /;"	macro	line:7
 AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
 CC	makefile	/^CC        = gcc -std=gnu99 -fblocks$/;"	macro	line:1
 CFLAGS	makefile	/^CFLAGS    = -g -Wall  ${INCLUDES}$/;"	macro	line:2
@@ -22,20 +23,21 @@ F_PLIST	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	
 F_PLS	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 F_XSPF	media.h	/^	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 HISTORYHEAD	history.h	/^#define HISTORYHEAD /;"	macro	line:2
-H_filepath	option_parser_private.h	/^const Element H_filepath[] ={$/;"	variable	line:11
-H_filetype	option_parser_private.h	/^const Element H_filetype[] ={$/;"	variable	line:8
-H_mplayer	option_parser_private.h	/^const Element H_mplayer[] = { $/;"	variable	line:54
-H_other	option_parser_private.h	/^const Element H_other[] ={$/;"	variable	line:119
-H_output	option_parser_private.h	/^const Element H_output[] ={$/;"	variable	line:115
-H_player	option_parser_private.h	/^const Element H_player[] ={$/;"	variable	line:18
-H_playlist	option_parser_private.h	/^const Element H_playlist[] ={$/;"	variable	line:15
+H_filepath	option_parser_private.h	/^const Element H_filepath[] ={$/;"	variable	line:13
+H_filetype	option_parser_private.h	/^const Element H_filetype[] ={$/;"	variable	line:10
+H_mplayer	option_parser_private.h	/^const Element H_mplayer[] = { $/;"	variable	line:58
+H_other	option_parser_private.h	/^const Element H_other[] ={$/;"	variable	line:123
+H_output	option_parser_private.h	/^const Element H_output[] ={$/;"	variable	line:119
+H_player	option_parser_private.h	/^const Element H_player[] ={$/;"	variable	line:20
+H_playlist	option_parser_private.h	/^const Element H_playlist[] ={$/;"	variable	line:17
 HelpLink	option_parser.h	/^} HelpLink;$/;"	typedef	line:27
 INCLUDES	makefile	/^INCLUDES  = -I.\/hash -I\/usr\/include\/libxml2$/;"	macro	line:3
 ITEM_COUNT	hash/tester.c	/^static const int ITEM_COUNT = 4000;$/;"	variable	line:9
 LIBS	makefile	/^LIBS      = -lsqlite3 -lxml2 -lcurl$/;"	macro	line:4
+LONG_OPT_START_VALUE	option_parser_private.h	/^#define LONG_OPT_START_VALUE /;"	macro	line:2
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
 MAKE_TIME_STR	time_util.h	/^#define MAKE_TIME_STR(/;"	macro	line:4
-MAX_OPT_BLOCKS	option_parser_private.h	/^#define MAX_OPT_BLOCKS /;"	macro	line:2
+MAX_OPT_BLOCKS	option_parser_private.h	/^#define MAX_OPT_BLOCKS /;"	macro	line:3
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MEDIA_OBJ	makefile	/^MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o$/;"	macro	line:6
 MLLLHEAD	ml.h	/^#define MLLLHEAD$/;"	macro	line:2
@@ -74,8 +76,8 @@ String	media.h	/^} String;$/;"	typedef	line:44
 String	ml.c	/^} String;$/;"	typedef	line:18
 TIMEUTILHEAD	time_util.h	/^#define TIMEUTILHEAD$/;"	macro	line:2
 TIME_SPEC_TEST	time_util.c	/^#define TIME_SPEC_TEST(/;"	macro	line:108
-TRUTH_ARG	option_parser_private.h	/^#define TRUTH_ARG(/;"	macro	line:5
-TRUTH_VALUE	option_parser_private.h	/^#define TRUTH_VALUE(/;"	macro	line:4
+TRUTH_ARG	option_parser_private.h	/^#define TRUTH_ARG(/;"	macro	line:6
+TRUTH_VALUE	option_parser_private.h	/^#define TRUTH_VALUE(/;"	macro	line:5
 T_AFTER	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:23
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
 T_BEFORE	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:23
@@ -141,6 +143,7 @@ hashtable_itr	hash/hashtable_itr.h	/^struct hashtable_itr$/;"	struct	line:11
 hashtable_remove	hash/hashtable.c	/^hashtable_remove(struct hashtable *h, void *k)$/;"	function	line:181
 hashtable_search	hash/hashtable.c	/^hashtable_search(struct hashtable *h, void *k)$/;"	function	line:163
 help	option_parser.h	/^	const char *help;$/;"	member	line:18
+help	option_parser_private.h	/^const HelpLink help[] = {$/;"	variable	line:153
 id	hash/tester.c	/^    char *id;$/;"	member	line:22
 index	hash/hashtable_itr.h	/^    unsigned int index;$/;"	member	line:16
 index	media.h	/^	int index;$/;"	member	line:43
@@ -159,7 +162,7 @@ links	option_parser.h	/^	const Element *links;$/;"	member	line:26
 loadlimit	hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 main	hash/tester.c	/^main(int argc, char **argv)$/;"	function	line:48
 main	main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
-main	option_parser.c	/^int main (int argc, char **argv) {$/;"	function	line:243
+main	option_parser.c	/^int main (int argc, char **argv) {$/;"	function	line:232
 main	temp.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:35
 main	tests/string_util_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
 make_m3u	playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:48
@@ -177,8 +180,8 @@ newest_only	media.h	/^	bool  newest_only;$/;"	member	line:51
 next	hash/hashtable_private.h	/^    struct entry *next;$/;"	member	line:13
 nice_repeat	media.h	/^	NiceRepeat nice_repeat;$/;"	member	line:75
 niceplayer	media.c	/^void niceplayer(char *playlist) {$/;"	function	line:112
-nullcheck	option_parser.c	/^#define nullcheck(/;"	macro	line:203
-nullcheck	option_parser.c	/^#undef nullcheck$/;"	macro	line:237
+nullcheck	option_parser.c	/^#define nullcheck(/;"	macro	line:192
+nullcheck	option_parser.c	/^#undef nullcheck$/;"	macro	line:226
 one_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 one_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 opt	option_parser.h	/^	const struct option opt;$/;"	member	line:16
@@ -196,12 +199,12 @@ prefix_args	media.h	/^	String  prefix_args;$/;"	member	line:71
 prime_table_length	hash/hashtable.c	/^const unsigned int prime_table_length = sizeof(primes)\/sizeof(primes[0]);$/;"	variable	line:24
 primeindex	hash/hashtable_private.h	/^    unsigned int primeindex;$/;"	member	line:21
 primes	hash/hashtable.c	/^static const unsigned int primes[] = {$/;"	variable	line:15
-print_args	option_parser.c	/^#define print_args(/;"	macro	line:205
-print_args	option_parser.c	/^#undef print_args$/;"	macro	line:239
-print_help	option_parser.c	/^void print_help(){$/;"	function	line:118
-print_hex	option_parser.c	/^#define print_hex(/;"	macro	line:206
-print_hex	option_parser.c	/^#undef print_hex$/;"	macro	line:240
-print_media_args	option_parser.c	/^void print_media_args(MediaArgs *ma) {$/;"	function	line:201
+print_args	option_parser.c	/^#define print_args(/;"	macro	line:194
+print_args	option_parser.c	/^#undef print_args$/;"	macro	line:228
+print_help	option_parser.c	/^void print_help(){$/;"	function	line:116
+print_hex	option_parser.c	/^#define print_hex(/;"	macro	line:195
+print_hex	option_parser.c	/^#undef print_hex$/;"	macro	line:229
+print_media_args	option_parser.c	/^void print_media_args(MediaArgs *ma) {$/;"	function	line:190
 ptr	ml.c	/^	char *ptr;$/;"	member	line:16
 spilt_args	string_util.c	/^char *spilt_args(char **arr, int length, char *separator, char *ending ) {$/;"	function	line:50
 spilt_func	string_util.c	/^SpiltData *spilt_func(char *s) {$/;"	function	line:118
@@ -212,8 +215,8 @@ str_hash	temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line
 str_lower	string_util.c	/^char *str_lower(char *s, int length) {$/;"	function	line:180
 str_replace	string_util.c	/^char *str_replace(char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:87
 str_spilt_replace	string_util.c	/^char *str_spilt_replace(char *s) {$/;"	function	line:155
-strcheck	option_parser.c	/^#define strcheck(/;"	macro	line:204
-strcheck	option_parser.c	/^#undef strcheck$/;"	macro	line:238
+strcheck	option_parser.c	/^#define strcheck(/;"	macro	line:193
+strcheck	option_parser.c	/^#undef strcheck$/;"	macro	line:227
 string_push	string.c	/^void string_push(String *s, char *str) {$/;"	function	line:8
 string_push_m	string.c	/^void string_push_m(String *s,int length, ...){$/;"	function	line:25
 sub_dirs	media.h	/^	bool  sub_dirs;$/;"	member	line:52
@@ -223,8 +226,8 @@ test_day_diff	time_util.c	/^void test_day_diff() {$/;"	function	line:193
 test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:109
 time_spec	time_util.c	/^const char* time_spec[][5] = {$/;"	variable	line:11
 total	string_util.h	/^	int  total;$/;"	member	line:24
-truth	option_parser.c	/^#define truth(/;"	macro	line:202
-truth	option_parser.c	/^#undef truth$/;"	macro	line:236
+truth	option_parser.c	/^#define truth(/;"	macro	line:191
+truth	option_parser.c	/^#undef truth$/;"	macro	line:225
 two_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 type_a	time_util.c	/^void type_a(char **str, int length, struct tm* tm ) {$/;"	function	line:98

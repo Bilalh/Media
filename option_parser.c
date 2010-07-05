@@ -58,7 +58,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	
 	// array of the lengths
 	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
-	int lens[] = {
+	const int lens[] = {
 		sizeof(H_filetype) / e_len,
 		sizeof(H_filepath) / e_len,
 		sizeof(H_mplayer)  / e_len,
@@ -76,7 +76,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 		 &H_output[0]  ,
 		 &H_other[0]   
 	};
-	
 	// calculate  total length
 	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
 	
@@ -96,7 +95,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 				opts[index++] = o2;
 			}
 			
-			letters[s_index++] = ele[i][j].opt.val;
+			if ( VAILD_ASCII(ele[i][j].opt.val) ) letters[s_index++] = ele[i][j].opt.val;
 			if (ele[i][j].opt.has_arg == required_argument) letters[s_index++] = ':';
 			blocks[ele[i][j].opt.val] = &ele[i][j].block;
 			if (ele[i][j].neg) blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
@@ -104,7 +103,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 	}
 	
 	letters[s_index] = '\0';
-	
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
@@ -116,15 +114,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 }
 
 void print_help(){
-	const static HelpLink help[] = {
-		{ "Filetype", sizeof(H_filetype) / sizeof(Element), &H_filetype[0] },
-		{ "Filepath", sizeof(H_filepath) / sizeof(Element), &H_filepath[0] },
-		{ "Mplayer",  sizeof(H_mplayer)  / sizeof(Element), &H_mplayer[0]  },
-		{ "Playlist", sizeof(H_playlist) / sizeof(Element), &H_playlist[0] },
-		{ "Player",   sizeof(H_player)   / sizeof(Element), &H_player[0]   },
-		{ "Output",   sizeof(H_output)   / sizeof(Element), &H_output[0]   },
-		{ "Other",    sizeof(H_other)    / sizeof(Element), &H_other[0]    },
-	};
 	
 	size_t length = sizeof(help) / sizeof(HelpLink);
 	const char *s_exp = "\t%-3s %-15s ";

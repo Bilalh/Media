@@ -1,9 +1,11 @@
 // uses val s > 256 & < MAX_OPT_BLOCKS for long only options
-#define MAX_OPT_BLOCKS 300
+#define LONG_OPT_START_VALUE 257
+#define MAX_OPT_BLOCKS LONG_OPT_START_VALUE + 50
 
 #define TRUTH_VALUE(ch)  ((ch < 128) ? true : false)
 #define TRUTH_ARG(ch,istrue, isfalse)  ((ch < 128) ? istrue : isfalse)
-
+#define ASCII 128
+#define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 const Element H_filetype[] ={
 	      
@@ -42,14 +44,16 @@ const Element H_player[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "none", .val = 257, .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "none", .val = 256, .has_arg = no_argument, .flag = 0}, 
 		.help  = "does not play the files.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_NONE;
 		}
-	}
+	}	
 };
+
+
 
 const Element H_mplayer[] = { 
 	
@@ -143,4 +147,15 @@ const Element H_other[] ={
 			print_media_args(ma);
 		}
 	}
+};
+
+
+const HelpLink help[] = {
+	{ "Filetype", sizeof(H_filetype) / sizeof(Element), &H_filetype[0] },
+	{ "Filepath", sizeof(H_filepath) / sizeof(Element), &H_filepath[0] },
+	{ "Mplayer",  sizeof(H_mplayer)  / sizeof(Element), &H_mplayer[0]  },
+	{ "Playlist", sizeof(H_playlist) / sizeof(Element), &H_playlist[0] },
+	{ "Player",   sizeof(H_player)   / sizeof(Element), &H_player[0]   },
+	{ "Output",   sizeof(H_output)   / sizeof(Element), &H_output[0]   },
+	{ "Other",    sizeof(H_other)    / sizeof(Element), &H_other[0]    },
 };
