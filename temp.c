@@ -34,8 +34,8 @@ int equal_keys(void *k1, void *k2) {
 
 int main (int argc, char  *argv[]) {
 	char *strings[] = {
-		"To index ~ 01.mkv", "To index_-_02.mkv", "To index 06.mkv", 
-		"To index    4.mkv", "To index - 12"
+		"To index ~ 01.mkv", "To index_-_2.divx", "To index 06.webm", 
+		"To index    12.mkv", "To index - 4.avi"
 	};
 	int length = sizeof(strings) / sizeof(size_t);
 
