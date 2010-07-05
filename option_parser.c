@@ -55,55 +55,42 @@ MediaArgs *option_parser(int argc, char **argv) {
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
 	const static VoidBlock *blocks[MAX_OPT_BLOCKS]; 
-	
-	// array of the lengths
-	int e_len = sizeof(Element), t_len = 0, index = 0, s_index = 0;
-	const int lens[] = {
-		sizeof(H_filetype) / e_len,
-		sizeof(H_filepath) / e_len,
-		sizeof(H_mplayer)  / e_len,
-		sizeof(H_playlist) / e_len,
-		sizeof(H_player)   / e_len,
-		sizeof(H_output)   / e_len,
-		sizeof(H_other)    / e_len
-	};
-	const static Element *ele[] = {
-		 &H_filetype[0],
-		 &H_filepath[0],
-		 &H_mplayer[0] ,
-		 &H_playlist[0],
-		 &H_player[0]  ,
-		 &H_output[0]  ,
-		 &H_other[0]   
-	};
+	// index counters
+	int t_len = 0, index = 0, s_index = 0;
 	// calculate  total length
-	for(int i = 0; i < sizeof(lens)/sizeof(int); ++i) t_len += lens[i];
+	for(int i = 0; i < HELP_L_LEN; ++i) t_len +=  HELP_LINK[i].length;
+	
+	#define ele(i) HELP_LINK[i].links
 	
 	struct option opts[t_len+1 * 2];
 	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
 	// builds the options array.
-	for(int i = 0; i < sizeof(ele) / sizeof(size_t); ++i) {
-		for(int j = 0; j < lens[i]; ++j){
-			opts[index++] = ele[i][j].opt;
-			
-			if (ele[i][j].neg == true){
-				struct option o2 = ele[i][j].opt;
-				o2.val +=128;
-				char *c2 = malloc(strlen(o2.name +1 +3));
-				sprintf(c2,"no-%s",o2.name);
-				o2.name = c2;
-				opts[index++] = o2;
+	for(int i = 0; i <HELP_L_LEN; ++i) {
+	    for(int j = 0; j < HELP_LINK[i].length; ++j){
+	    	opts[index++] = ele(i)[j].opt;
+	    	
+	    	if (ele(i)[j].neg == true){
+	    		struct option o2 = ele(i)[j].opt;
+	    		o2.val +=128;
+	    		char *c2 = malloc(strlen(o2.name +1 +3));
+	    		sprintf(c2,"no-%s",o2.name);
+	    		o2.name = c2;
+	    		opts[index++] = o2;
+	    	}
+	    	
+	    	if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
+				letters[s_index++] = ele(i)[j].opt.val;
+				if (ele(i)[j].opt.has_arg == required_argument) letters[s_index++] = ':';
 			}
-			
-			if ( VAILD_ASCII(ele[i][j].opt.val) ) letters[s_index++] = ele[i][j].opt.val;
-			if (ele[i][j].opt.has_arg == required_argument) letters[s_index++] = ':';
-			blocks[ele[i][j].opt.val] = &ele[i][j].block;
-			if (ele[i][j].neg) blocks[ele[i][j].opt.val+128] = &ele[i][j].block;
-		}
+	    	blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
+	    	if (ele(i)[j].neg) blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
+	    }
 	}
 	
 	letters[s_index] = '\0';
 	// parsers the options
+	printf("%s\n", letters);
+	
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
 		if (c == '?') exit(1);
@@ -111,19 +98,19 @@ MediaArgs *option_parser(int argc, char **argv) {
 	}
 	
 	return ma;
+	#undef ele
 }
 
 void print_help(){
-	
-	size_t length = sizeof(help) / sizeof(HelpLink);
+	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink);
 	const char *s_exp = "\t%-3s %-15s ";
 	const char *h_exp = "\t%-3s %-15s %-s\n";
 	
 	for(int i = 0; i < length; ++i){
-		printf("\n%s\n", help[i].grouping);
-		for(int j = 0; j < help[i].length; j++){
+		printf("\n%s\n", HELP_LINK[i].grouping);
+		for(int j = 0; j < HELP_LINK[i].length; j++){
 			
-			const struct option *optr = &help[i].links[j].opt;
+			const struct option *optr = &HELP_LINK[i].links[j].opt;
 			// makes the space for the short arg
 			char short_opt[3] = ""; 
 			if (optr->val < 128) sprintf(short_opt, "-%c",optr->val);
@@ -131,7 +118,7 @@ void print_help(){
 			char long_opt[3 + 5 + strlen(optr->name)];
 			
 			if (*optr->name != '\0'){
-				if (help[i].links[j].neg == true) 
+				if (HELP_LINK[i].links[j].neg == true) 
 					 sprintf(long_opt, "--[no-]%s",optr->name);
 				else sprintf(long_opt, "--%s",optr->name);
 			}else long_opt[0] = '\0';
@@ -140,7 +127,7 @@ void print_help(){
 		    ioctl(0, TIOCGSIZE, &ts);
 		    
 			
-			const char *ho = help[i].links[j].help; 
+			const char *ho = HELP_LINK[i].links[j].help; 
 			int h_len = strlen(ho), h_num = ts.ts_cols - 28, h_cur = h_num;
 			if (h_num < 5) h_num = 5;
 			char hh[h_num + 2]; 
@@ -155,7 +142,7 @@ void print_help(){
 				}
 			}
 			
-			strncpy(hh, help[i].links[j].help, h_cur );
+			strncpy(hh, HELP_LINK[i].links[j].help, h_cur );
 			// if the the word is spilt a =- is used.
 			if (changed == true){
 				hh[h_cur] = '\0';
@@ -167,8 +154,8 @@ void print_help(){
 			
 			if (optr->has_arg == required_argument){
 				// joins long opt and arg to print nicely
-				char name_arg[strlen(help[i].links[j].arg) + strlen(long_opt) + 4];
-				sprintf(name_arg, "%s [%s]", long_opt, help[i].links[j].arg );
+				char name_arg[strlen(HELP_LINK[i].links[j].arg) + strlen(long_opt) + 4];
+				sprintf(name_arg, "%s [%s]", long_opt, HELP_LINK[i].links[j].arg );
 				printf(s_exp, short_opt, name_arg);
 			}else{
 				printf(s_exp, short_opt, long_opt);	
