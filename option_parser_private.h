@@ -2,9 +2,9 @@
 #define LONG_OPT_START_VALUE 257
 #define MAX_OPT_BLOCKS LONG_OPT_START_VALUE + 50 + 128
 
-#define TRUTH_VALUE(ch)  ((ch < 128) ? true : false)
-#define TRUTH_ARG(ch,istrue, isfalse)  ((ch < 128) ? istrue : isfalse)
 #define ASCII 128
+#define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
+#define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
 #define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 
@@ -59,7 +59,7 @@ const Element H_player[] ={
 const Element H_mplayer[] = { 
 	
 	{  
-		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument, }, 
+		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument}, 
 		.help  = "Plays file(s) in fullscreen.",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -189,7 +189,6 @@ const Element H_mplayer_extra[] = {
 			double x;
 			res = sscanf(arg, "%8i%1s",&y,temp);
 			if (res != 1){
-				printf("Invalid Width \n");
 				exit(1);
 			}else{
 				x = y * 16.0/9.0;
@@ -198,6 +197,19 @@ const Element H_mplayer_extra[] = {
 			}
 		}
 	},
+	{  
+		.opt   = {.name =  "geometry", .val = 'G', .has_arg = required_argument}, 
+		.help  = "Palaces the player at (x,y)",
+		.arg   = "x:y", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			// TODO stricter geometry?
+			if (match(arg,"^([0-9][0-9]?|100)%?:([0-9][0-9]?|100)%?$") == 0){
+				printf("Invalid geometry \n");
+				exit(1);
+			}
+			string_push_m(&ma->prefix_args, 2,"-geometry", arg);
+		}
+	}
 };
 
 
