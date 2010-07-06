@@ -89,7 +89,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 	
 	letters[s_index] = '\0';
 	// parsers the options
-	printf("%s\n", letters);
 	
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
@@ -103,8 +102,8 @@ MediaArgs *option_parser(int argc, char **argv) {
 
 void print_help(){
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink);
-	const char *s_exp = "\t%-3s %-15s ";
-	const char *h_exp = "\t%-3s %-15s %-s\n";
+	const char *s_exp = "\t%-3s %-18s ";
+	const char *h_exp = "\t%-3s %-18s %-s\n";
 	
 	for(int i = 0; i < length; ++i){
 		printf("\n%s\n", HELP_LINK[i].grouping);
@@ -128,7 +127,7 @@ void print_help(){
 		    
 			
 			const char *ho = HELP_LINK[i].links[j].help; 
-			int h_len = strlen(ho), h_num = ts.ts_cols - 28, h_cur = h_num;
+			int h_len = strlen(ho), h_num = ts.ts_cols - 31, h_cur = h_num;
 			if (h_num < 5) h_num = 5;
 			char hh[h_num + 2]; 
 			
@@ -155,7 +154,7 @@ void print_help(){
 			if (optr->has_arg == required_argument){
 				// joins long opt and arg to print nicely
 				char name_arg[strlen(HELP_LINK[i].links[j].arg) + strlen(long_opt) + 4];
-				sprintf(name_arg, "%s [%s]", long_opt, HELP_LINK[i].links[j].arg );
+				sprintf(name_arg, "%-9s [%s]", long_opt, HELP_LINK[i].links[j].arg );
 				printf(s_exp, short_opt, name_arg);
 			}else{
 				printf(s_exp, short_opt, long_opt);	

@@ -21,7 +21,7 @@ const Element H_playlist[] ={
 const Element H_player[] ={
 	
 	{  
-		.opt   = {.name =  "mplayer", .val = 'm', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "mplayer", .val = 'm', .has_arg = no_argument}, 
 		.help  = "plays the files using mplayer.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -29,7 +29,7 @@ const Element H_player[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "niceplayer", .val = 'N', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "niceplayer", .val = 'N', .has_arg = no_argument}, 
 		.help  = "plays the files using niceplayer.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -37,7 +37,7 @@ const Element H_player[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "vlc", .val = 'V', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "vlc", .val = 'V', .has_arg = no_argument}, 
 		.help  = "plays the files using vlc.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -45,7 +45,7 @@ const Element H_player[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "none", .val = 256, .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "none", .val = 256, .has_arg = no_argument}, 
 		.help  = "does not play the files.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -59,7 +59,7 @@ const Element H_player[] ={
 const Element H_mplayer[] = { 
 	
 	{  
-		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument, .flag = 0, }, 
+		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument, }, 
 		.help  = "Plays file(s) in fullscreen.",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -67,7 +67,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument}, 
 		.help  = "Makes the window afloat",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -75,7 +75,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
 		.help  = "Adds profile t  - afloat, all spaces and 360p.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -84,7 +84,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
 		.help  = "Adds profile T  - ontop and 360p.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -93,7 +93,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument, .flag = 0}, 
+		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument}, 
 		.help  = "Sets the aspect ratio",
 		.arg   = "W:H", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -108,7 +108,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "fast", .val = 'F', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "fast", .val = 'F', .has_arg = no_argument}, 
 		.help  = "Plays the with op",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -124,7 +124,7 @@ const Element H_output[] ={
 const Element H_other[] ={
 	
 	{  
-		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument}, 
 		.help  = "Adds the files to the history, "
 		 	"which is stored in a sql database.",
 		.arg   = "", .neg = true, 
@@ -133,7 +133,7 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "help", .val = 'h', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "help", .val = 'h', .has_arg = no_argument}, 
 		.help  = "Displays the help.",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -141,18 +141,20 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "print_opt", .val = 'Z', .has_arg = no_argument, .flag = 0}, 
+		.opt   = {.name =  "print_opt", .val = 'Z', .has_arg = no_argument}, 
 		.help  = "Shows the opt struct",
 		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			print_media_args(ma);
 		}
 	}
+	
 };
 
 const Element H_mplayer_extra[] = { 
+	
 	{  
-		.opt   = {.name =  "profile", .val = 257, .has_arg = required_argument, .flag = 0}, 
+		.opt   = {.name =  "profile", .val = 257, .has_arg = required_argument}, 
 		.help  = "Adds profile ",
 		.arg   = "name", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -162,8 +164,42 @@ const Element H_mplayer_extra[] = {
 			}
 			string_push_m(&ma->prefix_args, 2,"-profile", arg);
 		}
-	}
+	},
+	{  
+		.opt   = {.name =  "width", .val = 'W', .has_arg = required_argument}, 
+		.help  = "Set the width",
+		.arg   = "width", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int a, res; char temp[1];
+			res = sscanf(arg, "%8i%1s",&a,temp);
+			if (res != 1){
+				printf("Invalid Width \n");
+				exit(1);
+			}else{
+				string_push_m(&ma->prefix_args, 2,"-xy", arg);
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "height", .val = 'H', .has_arg = required_argument}, 
+		.help  = "Set the height using 16:9",
+		.arg   = "height", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int y, res; char temp[20];
+			double x;
+			res = sscanf(arg, "%8i%1s",&y,temp);
+			if (res != 1){
+				printf("Invalid Width \n");
+				exit(1);
+			}else{
+				x = y * 16.0/9.0;
+				sprintf(temp, "%lf", x);
+				string_push_m(&ma->prefix_args, 2,"-xy", temp);
+			}
+		}
+	},
 };
+
 
 const HelpLink HELP_LINK[] = {
 	{ "Filetype",         sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
