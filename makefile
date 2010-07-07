@@ -1,5 +1,5 @@
 CC        = gcc -std=gnu99 -fblocks
-CFLAGS    = -g -Wall  ${INCLUDES}
+CFLAGS    = -g -Wall ${INCLUDES}
 INCLUDES  = -I./hash -I/usr/include/libxml2
 LIBS      = -lsqlite3 -lxml2 -lcurl
 OBJ       = media ml test tempc time opt

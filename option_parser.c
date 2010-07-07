@@ -7,6 +7,7 @@
 #include "string.h"
 #include "option_parser_private.h"
 
+static Element *Element_ptr[128];
  
 MediaArgs *new_media_args() {
 
@@ -80,11 +81,13 @@ MediaArgs *option_parser(int argc, char **argv) {
 	    	
 	    	if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
 				letters[s_index++] = ele(i)[j].opt.val;
+				Element_ptr[ele(i)[j].opt.val] = (Element*) &ele(i)[j];
 				if (ele(i)[j].opt.has_arg == required_argument) letters[s_index++] = ':';
 				if (ele(i)[j].opt.has_arg == optional_argument) {
 					letters[s_index++] = ':';
 					letters[s_index++] = ':';
 				}
+				
 			}
 	    	blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
 	    	if (ele(i)[j].neg) blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
@@ -105,6 +108,9 @@ MediaArgs *option_parser(int argc, char **argv) {
 }
 
 void print_help(char *arg){
+	// TODO for letter only
+	//printf("%s\n", Element_ptr['m']->opt.name);
+	
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
 	const char *s_exp = "\t%-3s %-18s ";
 	const char *h_exp = "\t%-3s %-18s %-s\n";
@@ -143,9 +149,9 @@ void print_help(char *arg){
 				else sprintf(long_opt, "--%s",optr->name);
 			}else long_opt[0] = '\0';
 			
-			struct ttysize ts;
-		    ioctl(0, TIOCGSIZE, &ts);
-		    
+			// gets the term size.
+			struct ttysize ts; 
+			ioctl(0, TIOCGSIZE, &ts);
 			
 			const char *ho = HELP_LINK[i].links[j].help; 
 			int h_len = strlen(ho), h_num = ts.ts_cols - 31, h_cur = h_num;
@@ -185,7 +191,7 @@ void print_help(char *arg){
 				printf(s_exp, short_opt, long_opt);	
 			}
 			
-			//TODO spaces on multiple  lines
+			//TODO spacing on multiple lines
 			printf("%s\n",hh );
 			while(h_len - h_cur > 0){
 				strncpy(hh, &ho[h_cur], h_num);
