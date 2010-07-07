@@ -1,3 +1,5 @@
+#include "string_util.h"
+
 // uses val s > 256 & < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
 #define MAX_OPT_BLOCKS LONG_OPT_START_VALUE + 50 + 128
@@ -133,11 +135,11 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "help", .val = 'h', .has_arg = no_argument}, 
+		.opt   = {.name =  "help", .val = 'h', .has_arg = optional_argument}, 
 		.help  = "Displays the help.",
-		.arg   = "", .neg = false,
+		.arg   = "part", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			print_help();
+			print_help(arg);
 		}
 	},
 	{  
@@ -196,7 +198,11 @@ const Element H_mplayer_extra[] = {
 				string_push_m(&ma->prefix_args, 2,"-xy", temp);
 			}
 		}
-	},
+	}
+
+};
+
+const Element H_mplayer_geom[] = { 
 	{  
 		.opt   = {.name =  "geometry", .val = 'G', .has_arg = required_argument}, 
 		.help  = "Palaces the player at (x,y)",
@@ -209,19 +215,39 @@ const Element H_mplayer_extra[] = {
 			}
 			string_push_m(&ma->prefix_args, 2,"-geometry", arg);
 		}
+	},
+	
+	#define M_GEO(_name,_val,_geo,_help) \
+	{  \
+		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument}, \
+		.help  = _help,\
+		.arg   = "", .neg = false,\
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {\
+			string_push(&ma->prefix_args, _geo);\
+		}\
 	}
+	M_GEO("tl",'1',"-geometry 0%:0%"   ,"Places the player at the top left"),
+	M_GEO("tr",'=',"-geometry 100%:0%" ,"Places the player at the top right"),
+	M_GEO("bl",'z',"-geometry 0%:93%"  ,"Places the player at the bottom right"),
+	M_GEO("br",'/',"-geometry 100%:93%","Places the player at the bottom left"),
+	M_GEO("lc",'5',"-geometry 0%:50%"  ,"Places the player at the left centre"),
+	M_GEO("rc",'8',"-geometry 100%:50%","Places the player at the right centre"),
+	M_GEO("tc",'7',"-geometry 50%:0%"  ,"Places the player at the top centre"),
+	M_GEO("bc",'6',"-geometry 50%:93%" ,"Places the player at the bottom centre")
+	#undef M_GEO
 };
 
 
 const HelpLink HELP_LINK[] = {
-	{ "Filetype",         sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
-	{ "Filepath",         sizeof(H_filepath)      / sizeof(Element), &H_filepath[0]      },
-	{ "Mplayer",          sizeof(H_mplayer)       / sizeof(Element), &H_mplayer[0]       },
-	{ "Playlist",         sizeof(H_playlist)      / sizeof(Element), &H_playlist[0]      },
-	{ "Player",           sizeof(H_player)        / sizeof(Element), &H_player[0]        },
-	{ "Output",           sizeof(H_output)        / sizeof(Element), &H_output[0]        },
-	{ "Other",            sizeof(H_other)         / sizeof(Element), &H_other[0]         },
-	{ "Mplayer extra",    sizeof(H_mplayer_extra) / sizeof(Element), &H_mplayer_extra[0] }
+	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
+	{ "Filepath",          sizeof(H_filepath)      / sizeof(Element), &H_filepath[0]      },
+	{ "Mplayer",           sizeof(H_mplayer)       / sizeof(Element), &H_mplayer[0]       },
+	{ "Playlist",          sizeof(H_playlist)      / sizeof(Element), &H_playlist[0]      },
+	{ "Player",            sizeof(H_player)        / sizeof(Element), &H_player[0]        },
+	{ "Output",            sizeof(H_output)        / sizeof(Element), &H_output[0]        },
+	{ "Other",             sizeof(H_other)         / sizeof(Element), &H_other[0]         },
+	{ "Mplayer extra",     sizeof(H_mplayer_extra) / sizeof(Element), &H_mplayer_extra[0] },
+	{ "Mplayer geometry",  sizeof(H_mplayer_geom)  / sizeof(Element), &H_mplayer_geom[0]  }
 };
 
 

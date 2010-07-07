@@ -81,6 +81,10 @@ MediaArgs *option_parser(int argc, char **argv) {
 	    	if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
 				letters[s_index++] = ele(i)[j].opt.val;
 				if (ele(i)[j].opt.has_arg == required_argument) letters[s_index++] = ':';
+				if (ele(i)[j].opt.has_arg == optional_argument) {
+					letters[s_index++] = ':';
+					letters[s_index++] = ':';
+				}
 			}
 	    	blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
 	    	if (ele(i)[j].neg) blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
@@ -100,13 +104,30 @@ MediaArgs *option_parser(int argc, char **argv) {
 	#undef ele
 }
 
-void print_help(){
-	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink);
+void print_help(char *arg){
+	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
 	const char *s_exp = "\t%-3s %-18s ";
 	const char *h_exp = "\t%-3s %-18s %-s\n";
 	
-	for(int i = 0; i < length; ++i){
-		printf("\n%s\n", HELP_LINK[i].grouping);
+	// print only the specified section by name or number.  
+	if (arg != NULL && *arg != '\0'){
+		int number = -1;
+		if ( sscanf(arg, "%i", &number ) == 1 && number < length && number >= 0 ){
+			start = number;
+			length = start + 1;
+		}else{
+			for (int i = 0; i < length;i++ ){
+				if (strncasecmp(arg, HELP_LINK[i].grouping, strlen(arg)) == 0 ){
+					start  = i; 
+					length = start + 1;
+					break;
+				}
+			}
+		}
+	}
+	
+	for(int i = start; i < length; ++i){
+		printf("\n%i. %s\n",i, HELP_LINK[i].grouping);
 		for(int j = 0; j < HELP_LINK[i].length; j++){
 			
 			const struct option *optr = &HELP_LINK[i].links[j].opt;
@@ -151,10 +172,14 @@ void print_help(){
 				h_cur--;
 			}
 			
-			if (optr->has_arg == required_argument){
+			if (optr->has_arg != no_argument){
 				// joins long opt and arg to print nicely
 				char name_arg[strlen(HELP_LINK[i].links[j].arg) + strlen(long_opt) + 4];
-				sprintf(name_arg, "%-9s [%s]", long_opt, HELP_LINK[i].links[j].arg );
+				char cS = '{', cE = '}';
+				if (optr->has_arg == optional_argument){
+					cS = '['; cE = ']';
+				}
+				sprintf(name_arg, "%-9s %c%s%c", long_opt,cS, HELP_LINK[i].links[j].arg,cE );
 				printf(s_exp, short_opt, name_arg);
 			}else{
 				printf(s_exp, short_opt, long_opt);	
