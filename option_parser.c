@@ -121,7 +121,8 @@ void print_help(char *arg){
 	if (arg != NULL && *arg != '\0'){
 		int number = -1;
 		if ( *arg++ == ',' ){
-			while (( *arg != '\0' && isalpha(*arg) )){
+			// FIXME invaild ascii chars
+			while (( *arg != '\0' && isascii(*arg) )){
 				sub_print_help(Element_ptr[(int)*arg++]);
 			}
 			return;

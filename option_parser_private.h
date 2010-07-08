@@ -237,7 +237,6 @@ const Element H_mplayer_geom[] = {
 	#undef M_GEO
 };
 
-
 const HelpLink HELP_LINK[] = {
 	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
 	{ "Filepath",          sizeof(H_filepath)      / sizeof(Element), &H_filepath[0]      },
