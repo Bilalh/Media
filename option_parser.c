@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +9,9 @@
 #include "option_parser_private.h"
 
 static Element *Element_ptr[128];
- 
+static void sub_print_help(const Element *ele);
+
+// creates a new MediaArgs with the default values. 
 MediaArgs *new_media_args() {
 
 	MediaArgs *ma = malloc(sizeof(MediaArgs));
@@ -50,6 +53,7 @@ MediaArgs *new_media_args() {
 	return ma;
 }
 
+// Parser the options and returns a MediaArgs struct
 MediaArgs *option_parser(int argc, char **argv) {
 
 	int c, option_index = 0;
@@ -107,18 +111,21 @@ MediaArgs *option_parser(int argc, char **argv) {
 	#undef ele
 }
 
+// prints the help, by section or letter if specifed
 void print_help(char *arg){
 	// TODO for letter only
-	//printf("%s\n", Element_ptr['m']->opt.name);
 	
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
-	const char *s_exp = "\t%-3s %-18s ";
-	const char *h_exp = "\t%-3s %-18s %-s\n";
 	
 	// print only the specified section by name or number.  
 	if (arg != NULL && *arg != '\0'){
 		int number = -1;
-		if ( sscanf(arg, "%i", &number ) == 1 && number < length && number >= 0 ){
+		if ( *arg++ == ',' ){
+			while (( *arg != '\0' && isalpha(*arg) )){
+				sub_print_help(Element_ptr[(int)*arg++]);
+			}
+			return;
+		}else if ( sscanf(arg, "%i", &number ) == 1 && number < length && number >= 0 ){
 			start = number;
 			length = start + 1;
 		}else{
@@ -135,75 +142,82 @@ void print_help(char *arg){
 	for(int i = start; i < length; ++i){
 		printf("\n%i. %s\n",i, HELP_LINK[i].grouping);
 		for(int j = 0; j < HELP_LINK[i].length; j++){
-			
-			const struct option *optr = &HELP_LINK[i].links[j].opt;
-			// makes the space for the short arg
-			char short_opt[3] = ""; 
-			if (optr->val < 128) sprintf(short_opt, "-%c",optr->val);
-			// makes the space for the long arg
-			char long_opt[3 + 5 + strlen(optr->name)];
-			
-			if (*optr->name != '\0'){
-				if (HELP_LINK[i].links[j].neg == true) 
-					 sprintf(long_opt, "--[no-]%s",optr->name);
-				else sprintf(long_opt, "--%s",optr->name);
-			}else long_opt[0] = '\0';
-			
-			// gets the term size.
-			struct ttysize ts; 
-			ioctl(0, TIOCGSIZE, &ts);
-			
-			const char *ho = HELP_LINK[i].links[j].help; 
-			int h_len = strlen(ho), h_num = ts.ts_cols - 31, h_cur = h_num;
-			if (h_num < 5) h_num = 5;
-			char hh[h_num + 2]; 
-			
-			// puts short words like 'the', 'or' and 'then' on the next like.
-			bool changed = false;
-			for(int i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
-				if (ho[i] == ' '){
-					h_cur = i;
-					changed = true;
-					break;
-				}
-			}
-			
-			strncpy(hh, HELP_LINK[i].links[j].help, h_cur );
-			// if the the word is spilt a =- is used.
-			if (changed == true){
-				hh[h_cur] = '\0';
-			}else{
-				hh[h_cur-1]  = '-';
-				hh[h_cur] = '\0';
-				h_cur--;
-			}
-			
-			if (optr->has_arg != no_argument){
-				// joins long opt and arg to print nicely
-				char name_arg[strlen(HELP_LINK[i].links[j].arg) + strlen(long_opt) + 4];
-				char cS = '{', cE = '}';
-				if (optr->has_arg == optional_argument){
-					cS = '['; cE = ']';
-				}
-				sprintf(name_arg, "%-9s %c%s%c", long_opt,cS, HELP_LINK[i].links[j].arg,cE );
-				printf(s_exp, short_opt, name_arg);
-			}else{
-				printf(s_exp, short_opt, long_opt);	
-			}
-			
-			//TODO spacing on multiple lines
-			printf("%s\n",hh );
-			while(h_len - h_cur > 0){
-				strncpy(hh, &ho[h_cur], h_num);
-				hh[h_num] = '\0';
-				printf(h_exp, "", "",hh);
-				h_cur += h_num;
-			}
-			
+			sub_print_help(&HELP_LINK[i].links[j]);
 		}
+	}
+
+}
+
+// prints the element
+static void sub_print_help(const Element *ele){
+	const char *s_exp = "\t%-3s %-18s ";
+	const char *h_exp = "\t%-3s %-18s %-s\n";
+	const struct option *optr = &ele->opt;
+	// makes the space for the short arg
+	char short_opt[3] = ""; 
+	if (optr->val < 128) sprintf(short_opt, "-%c",optr->val);
+	// makes the space for the long arg
+	char long_opt[3 + 5 + strlen(optr->name)];
+	
+	if (*optr->name != '\0'){
+		if (ele->neg == true) 
+			 sprintf(long_opt, "--[no-]%s",optr->name);
+		else sprintf(long_opt, "--%s",optr->name);
+	}else long_opt[0] = '\0';
+	
+	// gets the term size.
+	struct ttysize ts; 
+	ioctl(0, TIOCGSIZE, &ts);
+	
+	const char *ho = ele->help; 
+	int h_len = strlen(ho), h_num = ts.ts_cols - 31, h_cur = h_num;
+	if (h_num < 5) h_num = 5;
+	char hh[h_num + 2]; 
+	
+	// puts short words like 'the', 'or' and 'then' on the next like.
+	bool changed = false;
+	for(int i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
+		if (ho[i] == ' '){
+			h_cur = i;
+			changed = true;
+			break;
+		}
+	}
+	
+	strncpy(hh, ele->help, h_cur );
+	// if the the word is spilt a - is used.
+	if (changed == true){
+		hh[h_cur] = '\0';
+	}else{
+		hh[h_cur-1]  = '-';
+		hh[h_cur] = '\0';
+		h_cur--;
+	}
+	
+	if (optr->has_arg != no_argument){
+		// joins long opt and arg to print nicely
+		char name_arg[strlen(ele->arg) + strlen(long_opt) + 4];
+		char cS = '{', cE = '}';
+		if (optr->has_arg == optional_argument){
+			cS = '['; cE = ']';
+		}
+		sprintf(name_arg, "%-9s %c%s%c", long_opt,cS, ele->arg, cE );
+		printf(s_exp, short_opt, name_arg);
+	}else{
+		printf(s_exp, short_opt, long_opt);	
+	}
+	
+	//TODO spacing on multiple lines
+	printf("%s\n",hh );
+	while(h_len - h_cur > 0){
+		strncpy(hh, &ho[h_cur], h_num);
+		hh[h_num] = '\0';
+		printf(h_exp, "", "",hh);
+		h_cur += h_num;
 	}
 }
 
+// prints the media_args struct
 void print_media_args(MediaArgs *ma) {
 #define truth(boolean) (boolean ? "true" : "false" )
 #define nullcheck(str) (str == NULL ? "NULL" : str )
