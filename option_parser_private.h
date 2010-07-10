@@ -73,7 +73,7 @@ const Element H_mplayer[] = {
 	{  
 		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
 		.help  = "Adds profile t  - afloat and 360p.",
-		.arg   = "", .neg = true, //FIXME sem falut on neg true on neg option
+		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
 				string_push(&ma->prefix_args, "-profile t");
@@ -84,17 +84,18 @@ const Element H_mplayer[] = {
 			}
 		}
 	},
-	// {  
-	// 	.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
-	// 	.help  = "Adds profile T  - ontop and 360p.",
-	// 	.block = ^(MediaArgs *ma, int ch, char *arg ) {
-	// 		if (TRUTH_STATE(ch)){
-	// 			string_push(&ma->prefix_args, "-profile T");
-	// 		}else{
-	// 			string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
-	// 		}
-	// 	}
-	// },
+	{  
+		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
+		.help  = "Adds profile T  - ontop and 360p.",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-profile T");
+			}else{
+				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
+			}
+		}
+	},
 	{  
 		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument}, 
 		.help  = "Sets the aspect ratio",
@@ -114,7 +115,15 @@ const Element H_mplayer[] = {
 		.opt   = {.name =  "fast", .val = 'F', .has_arg = no_argument}, 
 		.help  = "Plays the with op",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push_m(&ma->prefix_args, 2, "-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
+			string_push_m(&ma->prefix_args, 2, 
+				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
+		}
+	},
+	{  
+		.opt   = {.name =  "loop0", .val = 'k', .has_arg = no_argument}, 
+		.help  = "Adds -loop 0 -- meaning loops forever",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "loop 0");
 		}
 	},
 };
@@ -186,6 +195,15 @@ const Element H_other[] ={
 		},
 	},
 	{  
+		.opt   = {.name =  "done", .val = 'D', .has_arg = no_argument}, 
+		.help  = "Set the status to done ",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			// FIXME add ma->done
+			// ma->done =  TRUTH_VALUE(ch) ;
+		},
+	},
+	{  
 		.opt   = {.name =  "help", .val = 'h', .has_arg = optional_argument}, 
 		.help  = "Displays the help.",
 		.arg   = "part", .neg = false,
@@ -248,8 +266,53 @@ const Element H_mplayer_extra[] = {
 				string_push_m(&ma->prefix_args, 2,"-xy", temp);
 			}
 		}
+	},
+	{  
+		.opt   = {.name =  "loop0", .val = 'l', .has_arg = required_argument}, 
+		.help  = "Adds -loop 0 -- meaning loops forever",
+		.arg   = "num", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int res, x; char temp[1];
+			res = sscanf(arg, "%8i%1s",&x,temp);
+			if (res != 1){
+				exit(1);
+			}else{
+				string_push_m(&ma->prefix_args, 2,  "loop", arg);
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "rnd", .val = 'R', .has_arg = no_argument}, 
+		.help  = "Uses mplayer random unction "
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "shuffle");
+			}else{
+				string_push(&ma->prefix_args, "noshuffle");
+			}
+		},
+	},
+	{  
+		.opt   = {.name =  "prefix", .val = 'E', .has_arg = required_argument}, 
+		.help  = "Set mplayer prefix options, can be used multiple times",
+		.arg   = "args", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (arg != NULL && *arg != '\0'){
+				string_push(&ma->prefix_args,arg);
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "postfix", .val = 'F', .has_arg = required_argument}, 
+		.help  = "Set mplayer postfix options, can be used multiple times",
+		.arg   = "args", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (arg != NULL && *arg != '\0'){
+				string_push(&ma->postfix_args,arg);
+			}
+		}
 	}
-
 };
 
 const Element H_mplayer_geom[] = { 

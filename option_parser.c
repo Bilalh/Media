@@ -109,7 +109,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 	
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
-		printf("%i\n",c );
 		// int this_option_optind = optind ? optind : 1;
 		if (c == '?') exit(1);
 		(*blocks[c])(ma, c,optarg); // calls the related block
@@ -121,7 +120,6 @@ MediaArgs *option_parser(int argc, char **argv) {
 
 // prints the help, b∂section or letter if specifed
 void print_help(char *arg){
-	// TODO for letter only
 	
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
 	
