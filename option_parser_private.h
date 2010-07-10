@@ -283,7 +283,7 @@ const Element H_mplayer_extra[] = {
 	},
 	{  
 		.opt   = {.name =  "rnd", .val = 'R', .has_arg = no_argument}, 
-		.help  = "Uses mplayer random unction "
+		.help  = "Uses mplayer random unction ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
