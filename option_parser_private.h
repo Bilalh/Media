@@ -1,5 +1,4 @@
 #include "string_util.h"
-
 // uses val s > 256 & < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
 #define MAX_OPT_BLOCKS LONG_OPT_START_VALUE + 50 + 128
@@ -7,6 +6,7 @@
 #define ASCII 128
 #define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
 #define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
+#define TRUTH_STATE(ch) (ch < ASCII)
 #define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 
@@ -20,12 +20,12 @@ const Element H_filepath[] ={
 const Element H_playlist[] ={
 	
 };
+
 const Element H_player[] ={
 	
 	{  
 		.opt   = {.name =  "mplayer", .val = 'm', .has_arg = no_argument}, 
 		.help  = "plays the files using mplayer.",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_MPLAYER;
 		}
@@ -33,7 +33,6 @@ const Element H_player[] ={
 	{  
 		.opt   = {.name =  "niceplayer", .val = 'N', .has_arg = no_argument}, 
 		.help  = "plays the files using niceplayer.",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_NICEPLAYER;
 		}
@@ -41,7 +40,6 @@ const Element H_player[] ={
 	{  
 		.opt   = {.name =  "vlc", .val = 'V', .has_arg = no_argument}, 
 		.help  = "plays the files using vlc.",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_VLC;
 		}
@@ -49,20 +47,17 @@ const Element H_player[] ={
 	{  
 		.opt   = {.name =  "none", .val = 256, .has_arg = no_argument}, 
 		.help  = "does not play the files.",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_NONE;
 		}
 	}
 };
 
-
-
 const Element H_mplayer[] = { 
 	
 	{  
 		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument}, 
-		.help  = "Plays file(s) in fullscreen.",
+		.help  = "Plays the file(s) in fullscreen.",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push(&ma->prefix_args, TRUTH_ARG(ch,"-fs", "-nofs") );
@@ -71,29 +66,35 @@ const Element H_mplayer[] = {
 	{  
 		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument}, 
 		.help  = "Makes the window afloat",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->afloat = true;
 		}
 	},
 	{  
 		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
-		.help  = "Adds profile t  - afloat, all spaces and 360p.",
-		.arg   = "", .neg = false,
+		.help  = "Adds profile t  - afloat and 360p.",
+		.arg   = "", .neg = true, //FIXME sem falut on neg true on neg option
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "-profile t");
-			ma->afloat = true;
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-profile t");
+				ma->afloat = true;
+			}else{
+				string_push(&ma->prefix_args, "-xy 1");
+				ma->afloat = false;
+			}
 		}
 	},
-	{  
-		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
-		.help  = "Adds profile T  - ontop and 360p.",
-		.arg   = "", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "-profile t");
-			ma->afloat = true;
-		}
-	},
+	// {  
+	// 	.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
+	// 	.help  = "Adds profile T  - ontop and 360p.",
+	// 	.block = ^(MediaArgs *ma, int ch, char *arg ) {
+	// 		if (TRUTH_STATE(ch)){
+	// 			string_push(&ma->prefix_args, "-profile T");
+	// 		}else{
+	// 			string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
+	// 		}
+	// 	}
+	// },
 	{  
 		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument}, 
 		.help  = "Sets the aspect ratio",
@@ -112,7 +113,6 @@ const Element H_mplayer[] = {
 	{  
 		.opt   = {.name =  "fast", .val = 'F', .has_arg = no_argument}, 
 		.help  = "Plays the with op",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2, "-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
 		}
@@ -120,7 +120,58 @@ const Element H_mplayer[] = {
 };
 
 const Element H_output[] ={
-		
+	
+	{  
+		.opt   = {.name =  "out", .val = 'o', .has_arg = no_argument}, 
+		.help  = "Outputs file list to stdout",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				ma->pl_output |= PL_STDOUT;
+			}else{
+				ma->pl_output &= ~PL_STDOUT;
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "nooutput", .val = 'O', .has_arg = no_argument}, 
+		.help  = "Does not write Any output",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output = PL_NONE;
+		}
+	},
+	{  
+		.opt   = {.name =  "m3u", .val = '3', .has_arg = no_argument}, 
+		.help  = "Output list as m3u",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output |= PL_PLAYLIST;
+			ma->pl_format    = F_M3U;
+		}
+	},
+	{  
+		.opt   = {.name =  "pls", .val = 'P', .has_arg = no_argument}, 
+		.help  = "Output list as pls",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output |= PL_PLAYLIST;
+			ma->pl_format = F_PLS;
+		}
+	},
+	{  
+		.opt   = {.name =  "xml", .val = 'x', .has_arg = no_argument}, 
+		.help  = "Output list as xml",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output |= PL_PLAYLIST;
+			ma->pl_format = F_PLIST;
+		}
+	},
+	{  
+		.opt   = {.name =  "xspf", .val = 'X', .has_arg = no_argument}, 
+		.help  = "Output list as xspf",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output |= PL_PLAYLIST;
+			ma->pl_format = F_XSPF;
+		}
+	}
 };
 
 const Element H_other[] ={
@@ -145,7 +196,6 @@ const Element H_other[] ={
 	{  
 		.opt   = {.name =  "print_opt", .val = 'Z', .has_arg = no_argument}, 
 		.help  = "Shows the opt struct",
-		.arg   = "", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			print_media_args(ma);
 		}

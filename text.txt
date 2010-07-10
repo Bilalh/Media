@@ -16,3 +16,5 @@ SELECT strftime('%s',date), strftime('%s', 'now','-10 day'),date,datetime('now',
 	
 Insert Into History(Series,Date,Number)
 	Values("TEST",datetime("2010-06-14 18:50:14","utc"),2)
+	
+	-DNDEBUG

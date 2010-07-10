@@ -67,7 +67,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	
 	#define ele(i) HELP_LINK[i].links
 	
-	struct option opts[t_len+1 * 2];
+	struct option opts[t_len *2 + 1 ];
 	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
 	// builds the options array.
 	for(int i = 0; i <HELP_L_LEN; ++i) {
@@ -94,14 +94,22 @@ MediaArgs *option_parser(int argc, char **argv) {
 				
 			}
 	    	blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
-	    	if (ele(i)[j].neg) blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
+	    	if (ele(i)[j].neg) {
+				blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
+			}
 	    }
 	}
-	
+
+	// last have to be all zeros
+	opts[index].name    = 0;
+	opts[index].val     = 0;
+	opts[index].has_arg = 0;
+	opts[index].flag    = 0;
 	letters[s_index] = '\0';
-	// parsers the options
 	
+	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
+		printf("%i\n",c );
 		// int this_option_optind = optind ? optind : 1;
 		if (c == '?') exit(1);
 		(*blocks[c])(ma, c,optarg); // calls the related block
@@ -111,7 +119,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	#undef ele
 }
 
-// prints the help, by section or letter if specifed
+// prints the help, b∂section or letter if specifed
 void print_help(char *arg){
 	// TODO for letter only
 	
@@ -120,10 +128,15 @@ void print_help(char *arg){
 	// print only the specified section by name or number.  
 	if (arg != NULL && *arg != '\0'){
 		int number = -1;
-		if ( *arg++ == ',' ){
-			// FIXME invaild ascii chars
+		if ( *arg == ',' ){
+			++arg;
 			while (( *arg != '\0' && isascii(*arg) )){
-				sub_print_help(Element_ptr[(int)*arg++]);
+				if (Element_ptr[(int)*arg] != NULL ){
+					sub_print_help(Element_ptr[(int)*arg]);
+				}else{
+					printf("\t-%c %31s\n",*arg,"NOT defined");
+				}
+				++arg;
 			}
 			return;
 		}else if ( sscanf(arg, "%i", &number ) == 1 && number < length && number >= 0 ){
