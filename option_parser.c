@@ -29,7 +29,7 @@ MediaArgs *new_media_args() {
 		
 		// Playlist
 		.pl_dir        = ma->pl_name = NULL,
-		.pl_format     = PL_STDOUT,
+		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_rand       = false,
 		
@@ -253,7 +253,6 @@ void print_media_args(MediaArgs *ma) {
 		printf("%17s[%i]: %s\n","", i, ma->excludes.str_arr[i] );
 	}
 	
-	return;
 	
 	print_args("newest_only", truth(ma->newest_only));
 	print_args("sub_dirs",    truth(ma->sub_dirs));

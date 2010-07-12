@@ -32,7 +32,27 @@ const Element H_filepath[] ={
 };        
 
 const Element H_playlist[] ={
-	
+	#define MAKE_PLAYLISTT(_name,_val,_ftype,_help){\
+		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument},\
+		.help  = _help,\
+		.arg   = "", .neg = true,\
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {\
+			if (TRUTH_STATE(ch)){\
+				ma->pl_output |= PL_PLAYLIST;\
+				ma->pl_format |= _ftype;\
+			}else{\
+				ma->pl_format &= ~_ftype;\
+				if (ma->pl_format == F_NONE){\
+					ma->pl_output &= ~PL_PLAYLIST;\
+				}\
+			}\
+		}\
+	}
+	MAKE_PLAYLISTT("m3u",'3',F_M3U,"Outputs file as a m3u playlist"),
+	MAKE_PLAYLISTT("plist",'x',F_PLIST,"Outputs file as a plist"),
+	MAKE_PLAYLISTT("pls",'P',F_PLS, "Outputs file as a pls playlist"),
+	MAKE_PLAYLISTT("xspf",'X',F_XSPF,"Outputs file as a xspf playlist")
+	#undef MAKE_PLAYLISTT
 };
 
 const Element H_player[] ={
@@ -161,38 +181,6 @@ const Element H_output[] ={
 		.help  = "Does not write Any output",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_output = PL_NONE;
-		}
-	},
-	{  
-		.opt   = {.name =  "m3u", .val = '3', .has_arg = no_argument}, 
-		.help  = "Output list as m3u",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_output |= PL_PLAYLIST;
-			ma->pl_format    = F_M3U;
-		}
-	},
-	{  
-		.opt   = {.name =  "pls", .val = 'P', .has_arg = no_argument}, 
-		.help  = "Output list as pls",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_output |= PL_PLAYLIST;
-			ma->pl_format = F_PLS;
-		}
-	},
-	{  
-		.opt   = {.name =  "xml", .val = 'x', .has_arg = no_argument}, 
-		.help  = "Output list as xml",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_output |= PL_PLAYLIST;
-			ma->pl_format = F_PLIST;
-		}
-	},
-	{  
-		.opt   = {.name =  "xspf", .val = 'X', .has_arg = no_argument}, 
-		.help  = "Output list as xspf",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_output |= PL_PLAYLIST;
-			ma->pl_format = F_XSPF;
 		}
 	}
 };
@@ -371,14 +359,14 @@ const Element H_mplayer_geom[] = {
 			string_push(&ma->prefix_args, _geo);\
 		}\
 	}
-	M_GEO("tl",'1',"-geometry 0%:0%"   ,"Places the player at the top left"),
-	M_GEO("tr",'=',"-geometry 100%:0%" ,"Places the player at the top right"),
-	M_GEO("bl",'z',"-geometry 0%:93%"  ,"Places the player at the bottom right"),
-	M_GEO("br",'/',"-geometry 100%:93%","Places the player at the bottom left"),
-	M_GEO("lc",'5',"-geometry 0%:50%"  ,"Places the player at the left centre"),
-	M_GEO("rc",'8',"-geometry 100%:50%","Places the player at the right centre"),
-	M_GEO("tc",'7',"-geometry 50%:0%"  ,"Places the player at the top centre"),
-	M_GEO("bc",'6',"-geometry 50%:93%" ,"Places the player at the bottom centre")
+	M_GEO("tl", '1', "-geometry 0%:0%"   ,"Places the player at the top left"),
+	M_GEO("tr", '=', "-geometry 100%:0%" ,"Places the player at the top right"),
+	M_GEO("bl", 'z', "-geometry 0%:93%"  ,"Places the player at the bottom right"),
+	M_GEO("br", '/', "-geometry 100%:93%","Places the player at the bottom left"),
+	M_GEO("lc", '5', "-geometry 0%:50%"  ,"Places the player at the left centre"),
+	M_GEO("rc", '8', "-geometry 100%:50%","Places the player at the right centre"),
+	M_GEO("tc", '7', "-geometry 50%:0%"  ,"Places the player at the top centre"),
+	M_GEO("bc", '6', "-geometry 50%:93%" ,"Places the player at the bottom centre")
 	#undef M_GEO
 };
 

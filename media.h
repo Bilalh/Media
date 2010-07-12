@@ -14,7 +14,7 @@ void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_ar
 
 // enums
 typedef enum {
-	F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8
+	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8
 } Pformat;
 
 typedef enum {
