@@ -43,14 +43,20 @@ typedef struct {
 	int index;
 } String;
 
+typedef struct {
+	bool exclude;
+	char **str_arr;
+	int  length;
+	int  index;
+} Excludes;
+
 struct  _MediaArgs{
 	
 	// Selection  
-	bool  exclude;
-	char *excludes;
-	bool  newest_only;
-	bool  sub_dirs;
-	Types types;
+	Excludes excludes;
+	bool     newest_only;
+	bool     sub_dirs;
+	Types    types;
 	
 	// Playlist (pl)
 	char    *pl_dir;

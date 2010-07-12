@@ -15,41 +15,47 @@ static void sub_print_help(const Element *ele);
 MediaArgs *new_media_args() {
 
 	MediaArgs *ma = malloc(sizeof(MediaArgs));
-
-	// Selection
-	ma->exclude     = false;
-	ma->excludes    = NULL;
-	ma->newest_only = false;
-	ma->sub_dirs    = false;
-	ma->types       = T_VIDEO;
-
-	// Playlist
-	ma->pl_dir        = ma->pl_name = NULL;
-	ma->pl_format     = PL_STDOUT;
-	ma->pl_output     = PL_NONE;
-	ma->pl_rand       = false;
-
-	// Prefs
-	ma->hash_location = NULL;
-	ma->use_hash      = false;
-	ma->status        = S_NONE;
-	ma->write_history = false;
-
-	// Player
-	ma->player = P_NONE;
-	ma->afloat = false;
+	// all unmentioned  set to NULL.
+	MediaArgs m = {
+		// Selection
+		.excludes.exclude = false,
+		.excludes.length  = 1,
+		.excludes.index   = 0,
+		.excludes.str_arr = malloc(sizeof(char*) * 1 ),
+		
+		.newest_only = false,
+		.sub_dirs    = false,
+		.types       = T_VIDEO,
+		
+		// Playlist
+		.pl_dir        = ma->pl_name = NULL,
+		.pl_format     = PL_STDOUT,
+		.pl_output     = PL_NONE,
+		.pl_rand       = false,
+		
+		// Prefs
+		.hash_location = NULL,
+		.use_hash      = false,
+		.status        = S_NONE,
+		.write_history = false,
+		
+		// Player
+		.player = P_NONE,
+		.afloat = false,
+		
+		.prefix_args.length = m.postfix_args.length = 16,
+		.prefix_args.index  = m.postfix_args.index  = 0,
+		
+		.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length),
+		.postfix_args.str   = malloc(sizeof(char) * m.postfix_args.length),
+		
+		.nice_repeat = false
+	};
 	
-	ma->prefix_args.length = ma->postfix_args.length = 1;
-	ma->prefix_args.index  = ma->postfix_args.index  = 0;
+	m.prefix_args.str[0]  = '\0',
+	m.postfix_args.str[0] = '\0',
 	
-	ma->prefix_args.str    = malloc(sizeof(char) * ma->prefix_args.length);
-	ma->postfix_args.str   = malloc(sizeof(char) * ma->postfix_args.length);
-	
-	ma->prefix_args.str[0] = ma->postfix_args.str[0] = '\0';
-	 
-	
-	ma->nice_repeat = false;
-	 
+	*ma = m;
 	return ma;
 }
 
@@ -236,10 +242,19 @@ void print_media_args(MediaArgs *ma) {
 #define strcheck(s)    (s.str != NULL ? s.str : "NULL" )
 #define print_args(title,value) printf("%20s: %s\n",  title, value);
 #define print_hex(title,value) printf("%20s: 0x%x\n",  title, value);
+#define print_int(title,value) printf("%20s: %i\n",  title, value);
 
 	printf("Selection\n");
-	print_args("exclude"  ,   truth(ma->exclude));
-	print_args("excludes" ,   nullcheck(ma->excludes));
+	print_args("exclude",      truth(ma->excludes.exclude));
+	print_int("exclude index",  ma->excludes.index);
+	print_int("exclude length", ma->excludes.length);
+	print_args("excludes arr",  "" );
+	for(int i = 0; i < ma->excludes.index; ++i){
+		printf("%17s[%i]: %s\n","", i, ma->excludes.str_arr[i] );
+	}
+	
+	return;
+	
 	print_args("newest_only", truth(ma->newest_only));
 	print_args("sub_dirs",    truth(ma->sub_dirs));
 	print_hex("types",        ma->types);

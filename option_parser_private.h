@@ -14,7 +14,21 @@ const Element H_filetype[] ={
 	      
 };        
 const Element H_filepath[] ={
-	      
+	
+	{  
+		.opt   = {.name =  "exclude", .val = 'e', .has_arg = required_argument}, 
+		.help  = "Sub directories to exclude",
+		.arg   = "dir", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			Excludes *e = &ma->excludes;
+			if ( (e->length - e->length ) < 1 ){
+				e->length  = e->length * 2 + 1;
+				e->str_arr = realloc(e->str_arr,  e->length );
+			}
+			e->str_arr[e->index++] = strdup(arg);
+		}
+	}
+	
 };        
 
 const Element H_playlist[] ={
@@ -204,6 +218,24 @@ const Element H_other[] ={
 		},
 	},
 	{  
+		.opt   = {.name =  "shortcuts", .val = 'S', .has_arg = no_argument}, 
+		.help  = "Uses shorts from the hash, on by default",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			// FIXME add ma->shortcuts
+			// ma->shortcuts =  TRUTH_VALUE(ch) ;
+		},
+	},
+	{  
+		.opt   = {.name =  "nicerandom", .val = 'M', .has_arg = no_argument}, 
+		.help  = "Uses shorts from the hash, on by default",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			// FIXME add ma->nicerandom
+			// ma->nicerandom =  TRUTH_VALUE(ch) ;
+		},
+	},
+	{  
 		.opt   = {.name =  "help", .val = 'h', .has_arg = optional_argument}, 
 		.help  = "Displays the help.",
 		.arg   = "part", .neg = false,
@@ -268,8 +300,8 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "loop0", .val = 'l', .has_arg = required_argument}, 
-		.help  = "Adds -loop 0 -- meaning loops forever",
+		.opt   = {.name =  "loop", .val = 'l', .has_arg = required_argument}, 
+		.help  = "Adds -loop -- meaning loops forever",
 		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			int res, x; char temp[1];
@@ -351,12 +383,12 @@ const Element H_mplayer_geom[] = {
 };
 
 const HelpLink HELP_LINK[] = {
-	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
 	{ "Filepath",          sizeof(H_filepath)      / sizeof(Element), &H_filepath[0]      },
 	{ "Mplayer",           sizeof(H_mplayer)       / sizeof(Element), &H_mplayer[0]       },
 	{ "Playlist",          sizeof(H_playlist)      / sizeof(Element), &H_playlist[0]      },
 	{ "Player",            sizeof(H_player)        / sizeof(Element), &H_player[0]        },
 	{ "Output",            sizeof(H_output)        / sizeof(Element), &H_output[0]        },
+	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
 	{ "Other",             sizeof(H_other)         / sizeof(Element), &H_other[0]         },
 	{ "Mplayer extra",     sizeof(H_mplayer_extra) / sizeof(Element), &H_mplayer_extra[0] },
 	{ "Mplayer geometry",  sizeof(H_mplayer_geom)  / sizeof(Element), &H_mplayer_geom[0]  }
