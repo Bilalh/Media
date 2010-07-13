@@ -11,8 +11,10 @@
 
 
 const Element H_filetype[] ={
-	      
-};        
+	
+	
+};
+
 const Element H_filepath[] ={
 	
 	{  
@@ -29,7 +31,7 @@ const Element H_filepath[] ={
 		}
 	}
 	
-};        
+};
 
 const Element H_playlist[] ={
 	#define MAKE_PLAYLISTT(_name,_val,_ftype,_help){\
@@ -51,8 +53,18 @@ const Element H_playlist[] ={
 	MAKE_PLAYLISTT("m3u",'3',F_M3U,"Outputs file as a m3u playlist"),
 	MAKE_PLAYLISTT("plist",'x',F_PLIST,"Outputs file as a plist"),
 	MAKE_PLAYLISTT("pls",'P',F_PLS, "Outputs file as a pls playlist"),
-	MAKE_PLAYLISTT("xspf",'X',F_XSPF,"Outputs file as a xspf playlist")
+	MAKE_PLAYLISTT("xspf",'X',F_XSPF,"Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
+	
+	{  
+		.opt   = {.name =  "shuffle", .val = 'Y', .has_arg = no_argument}, 
+		.help  = "shuffles the playlist",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_shuffle = TRUTH_VALUE(ch);
+		}
+	},
+	
 };
 
 const Element H_player[] ={
@@ -110,7 +122,7 @@ const Element H_mplayer[] = {
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
-				string_push(&ma->prefix_args, "-profile t");
+				string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
 				ma->afloat = true;
 			}else{
 				string_push(&ma->prefix_args, "-xy 1");
@@ -188,6 +200,13 @@ const Element H_output[] ={
 const Element H_other[] ={
 	
 	{  
+		.opt   = {.name =  "last", .val = 'l', .has_arg = no_argument}, 
+		.help  = "Choose the latest file of each series",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->newest_only = TRUTH_VALUE(ch);
+		}
+	},
+	{  
 		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument}, 
 		.help  = "Adds the files to the history, "
 		 	"which is stored in a sql database.",
@@ -207,7 +226,7 @@ const Element H_other[] ={
 	},
 	{  
 		.opt   = {.name =  "shortcuts", .val = 'S', .has_arg = no_argument}, 
-		.help  = "Uses shorts from the hash, on by default",
+		.help  = "Uses shortcuts from the hash, on by default",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			// FIXME add ma->shortcuts
@@ -216,11 +235,19 @@ const Element H_other[] ={
 	},
 	{  
 		.opt   = {.name =  "nicerandom", .val = 'M', .has_arg = no_argument}, 
-		.help  = "Uses shorts from the hash, on by default",
+		.help  = "Sets random in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			// FIXME add ma->nicerandom
 			// ma->nicerandom =  TRUTH_VALUE(ch) ;
+		},
+	},
+	{  
+		.opt   = {.name =  "nicereapeat", .val = 'y', .has_arg = no_argument}, 
+		.help  = "Sets repeat in niceplayer",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->nice_repeat =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  
@@ -288,7 +315,7 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "loop", .val = 'l', .has_arg = required_argument}, 
+		.opt   = {.name =  "loop", .val = 'L', .has_arg = required_argument}, 
 		.help  = "Adds -loop -- meaning loops forever",
 		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

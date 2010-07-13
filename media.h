@@ -63,7 +63,7 @@ struct  _MediaArgs{
 	char    *pl_name;
 	Pformat  pl_format;
 	Poutput  pl_output;
-	bool     pl_rand;
+	bool     pl_shuffle;
 	
 	// Prefs
 	char   *hash_location;
