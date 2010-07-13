@@ -28,7 +28,8 @@ MediaArgs *new_media_args() {
 		.types       = T_VIDEO,
 		
 		// Playlist
-		.pl_dir        = ma->pl_name = NULL,
+		// .pl_name       = "zzplaylist",
+		.pl_dir        = NULL,
 		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_shuffle    = false,
@@ -168,8 +169,8 @@ void print_help(char *arg){
 
 // prints the element
 static void sub_print_help(const Element *ele){
-	const char *s_exp = "\t%-3s %-18s ";
-	const char *h_exp = "\t%-3s %-18s %-s\n";
+	const char *s_exp = "\t%-3s %-20s ";
+	const char *h_exp = "\t%-3s %-20s %-s\n";
 	const struct option *optr = &ele->opt;
 	// makes the space for the short arg
 	char short_opt[3] = ""; 
@@ -188,7 +189,7 @@ static void sub_print_help(const Element *ele){
 	ioctl(0, TIOCGSIZE, &ts);
 	
 	const char *ho = ele->help; 
-	int h_len = strlen(ho), h_num = ts.ts_cols - 31, h_cur = h_num;
+	int h_len = strlen(ho), h_num = ts.ts_cols - 33, h_cur = h_num;
 	if (h_num < 5) h_num = 5;
 	char hh[h_num + 2]; 
 	
@@ -254,6 +255,7 @@ void print_media_args(MediaArgs *ma) {
 	}
 	
 	
+	print_args("root_dir", ma->root_dir)
 	print_args("newest_only", truth(ma->newest_only));
 	print_args("sub_dirs",    truth(ma->sub_dirs));
 	print_hex("types",        ma->types);

@@ -12,11 +12,25 @@
 
 const Element H_filetype[] ={
 	
-	
 };
 
 const Element H_filepath[] ={
 	
+	{  
+		.opt   = {.name =  "rootpath", .val = 'r', .has_arg = required_argument}, 
+		.help  = "Directory to start searching from",
+		.arg   = "dir", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->root_dir = strdup(arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "subdirectories", .val = 's', .has_arg = no_argument}, 
+		.help  = "Look in sub directories if true, default false",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->sub_dirs = TRUTH_VALUE(ch);
+		}
+	},
 	{  
 		.opt   = {.name =  "exclude", .val = 'e', .has_arg = required_argument}, 
 		.help  = "Sub directories to exclude",
@@ -29,8 +43,22 @@ const Element H_filepath[] ={
 			}
 			e->str_arr[e->index++] = strdup(arg);
 		}
-	}
-	
+	},
+	{  
+		.opt   = {.name =  "playlistpath", .val = 'p', .has_arg = required_argument}, 
+		.help  = "Directory to start searching from",
+		.arg   = "dir", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_dir = strdup(arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "hashlocation", .val = '258', .has_arg = no_argument}, 
+		.help  = "Filepath of the hash",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->hash_location = strdup(arg);
+		}
+	},
 };
 
 const Element H_playlist[] ={
@@ -55,15 +83,21 @@ const Element H_playlist[] ={
 	MAKE_PLAYLISTT("pls",'P',F_PLS, "Outputs file as a pls playlist"),
 	MAKE_PLAYLISTT("xspf",'X',F_XSPF,"Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
-	
+	{  
+		.opt   = {.name =  "filename", .val = 'n', .has_arg = required_argument}, 
+		.help  = "The filename of the playlist",
+		.arg   = "name", .neg = false, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_name = strdup(arg);
+		}
+	},
 	{  
 		.opt   = {.name =  "shuffle", .val = 'Y', .has_arg = no_argument}, 
 		.help  = "shuffles the playlist",
-		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_shuffle = TRUTH_VALUE(ch);
 		}
-	},
+	}
 	
 };
 
@@ -216,7 +250,7 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "done", .val = 'D', .has_arg = no_argument}, 
+		.opt   = {.name =  "done", .val = 'd', .has_arg = no_argument}, 
 		.help  = "Set the status to done ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

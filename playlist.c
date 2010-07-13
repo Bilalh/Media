@@ -126,7 +126,7 @@ bool make_pls(char *filepath, char **names) {
 	fclose(out);
 	return false;
 }
-//TODO xmlCleanupParser?
+//CHECK xmlCleanupParser?
 
 //TODO string path names
 bool make_xspf(char *filepath, char **names) {

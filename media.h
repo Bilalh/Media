@@ -56,7 +56,10 @@ struct  _MediaArgs{
 	Excludes excludes;
 	bool     newest_only;
 	bool     sub_dirs;
-	Types    types;
+	Types    types; //TODO types
+	
+	char     *root_dir;
+	
 	
 	// Playlist (pl)
 	char    *pl_dir;
@@ -68,7 +71,7 @@ struct  _MediaArgs{
 	// Prefs
 	char   *hash_location;
 	bool    use_hash;
-	Status  status;
+	Status  status; //TODO status
 	bool    write_history;
 	
 	// Players
