@@ -59,20 +59,25 @@ struct tm *parse_time(char **str, int length) {
 			strptime(*str, "%d %b", tm);
 			str++;
 			length--;
+			
 		} else if( match(*str, "[0-9]{1,2}(th|st|nd)") > 0) {
 			strptime(*str, "%dth", tm);
 			str++;
 			length--;
+			
+		} else if ( match(*str, DATE_TIME_REGEX) > 0) {
+			strptime(*str, "%F %H:%M:%S", tm);
+			return tm;
+			
 		} else if( match(*str, DATE_REGEX) > 0) {
 			strptime(*str, "%F", tm);
 			str++;
 			length--;
-		} else if ( match(*str, DATE_TIME_REGEX) > 0) {
-			strptime(*str, "%F %H:%M:%S", tm);
-			return tm;
-			//TODO bug
+			
+		//FIXME time bug
 		} else if ( match(*str, DATE_TIME_UK_REGEX) > 0) {
 			strptime(*str, "%d/%m/%y %H:%M:%S", tm);
+			return tm;
 		}
 	}
 
@@ -183,7 +188,7 @@ void type_b(char **str, int length, struct tm* tm ) {
 // 	MAKE_TIME_STR(after, newinfo);
 // 
 // 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-// 	printf("\n\n%s %s\n%s %s\n",
+// 	printf("\n\nnow  :%s %s UTC \nafter:%s %s UTC\n",
 // 		   now,   str_days[timeinfo->tm_wday],
 // 		   after, str_days[newinfo->tm_wday]);
 // 

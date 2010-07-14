@@ -53,7 +53,7 @@ const Element H_filepath[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "hashlocation", .val = '258', .has_arg = no_argument}, 
+		.opt   = {.name =  "hashlocation", .val = 258, .has_arg = no_argument}, 
 		.help  = "Filepath of the hash",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->hash_location = strdup(arg);
@@ -254,8 +254,7 @@ const Element H_other[] ={
 		.help  = "Set the status to done ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			// FIXME add ma->done
-			// ma->done =  TRUTH_VALUE(ch) ;
+			ma->updated =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  
@@ -263,8 +262,7 @@ const Element H_other[] ={
 		.help  = "Uses shortcuts from the hash, on by default",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			// FIXME add ma->shortcuts
-			// ma->shortcuts =  TRUTH_VALUE(ch) ;
+			ma->shortcuts =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  
@@ -272,8 +270,7 @@ const Element H_other[] ={
 		.help  = "Sets random in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			// FIXME add ma->nicerandom
-			// ma->nicerandom =  TRUTH_VALUE(ch) ;
+			ma->nice_random =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  

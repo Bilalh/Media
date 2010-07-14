@@ -73,6 +73,9 @@ struct  _MediaArgs{
 	bool    use_hash;
 	Status  status; //TODO status
 	bool    write_history;
+	bool	updated;
+	bool    shortcuts;
+	
 	
 	// Players
 	Player  player;
@@ -82,7 +85,7 @@ struct  _MediaArgs{
 		
 	//Nice Player
 	NiceRepeat nice_repeat;
-	
+	bool       nice_random;
 };
 
 #endif

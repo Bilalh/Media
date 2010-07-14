@@ -1,5 +1,4 @@
 #include <ctype.h>
-#include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,6 +38,8 @@ MediaArgs *new_media_args() {
 		.use_hash      = false,
 		.status        = S_NONE,
 		.write_history = false,
+		.updated       = false,
+		.shortcuts     = true,
 		
 		// Player
 		.player = P_NONE,
@@ -50,7 +51,8 @@ MediaArgs *new_media_args() {
 		.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length),
 		.postfix_args.str   = malloc(sizeof(char) * m.postfix_args.length),
 		
-		.nice_repeat = false
+		.nice_repeat = false,
+		.nice_random = false
 	};
 	
 	m.prefix_args.str[0]  = '\0',
@@ -255,31 +257,34 @@ void print_media_args(MediaArgs *ma) {
 	}
 	
 	
-	print_args("root_dir", ma->root_dir)
+	print_args("root_dir",    ma->root_dir)
 	print_args("newest_only", truth(ma->newest_only));
 	print_args("sub_dirs",    truth(ma->sub_dirs));
 	print_hex("types",        ma->types);
 
 	printf("Playlist\n");
-	print_args("pl_shuffle",     truth(ma->pl_shuffle));
-	print_args("pl_dir",      nullcheck(ma->pl_dir));
-	print_args("pl_name",     truth(ma->pl_name));
-	print_hex("pl_format",    ma->pl_format);
-	print_hex("pl_output",    ma->pl_output);
-	print_args("pl_shuffle",     truth(ma->pl_shuffle));
-
+	print_args("pl_shuffle", truth(ma->pl_shuffle));
+	print_args("pl_dir",     nullcheck(ma->pl_dir));
+	print_args("pl_name",    truth(ma->pl_name));
+	print_hex ("pl_format",  ma->pl_format);
+	print_hex ("pl_output",  ma->pl_output);
+	print_args("pl_shuffle", truth(ma->pl_shuffle));
+                              
 	printf("Prefs\n");
 	print_args("hash_location", truth(ma->hash_location));
 	print_args("use_hash",      truth(ma->use_hash));
-	print_hex("types",          ma->types);
+	print_hex ("types",         ma->types);
 	print_args("write_history", truth(ma->write_history));
+	print_args("updated",       truth(ma->updated));
+	print_args("shortcuts",     truth(ma->shortcuts));
 
 	printf("Player\n");
-	print_hex("player",        ma->player);
+	print_hex ("player",       ma->player);
 	print_args("afloat",       truth(ma->afloat));
 	print_args("prefix_args",  strcheck(ma->prefix_args));
 	print_args("postfix_args", strcheck(ma->postfix_args));
 	print_args("nice_repeat",  truth(ma->nice_repeat));
+	print_args("nice_random",  truth(ma->nice_random));
 
 #undef truth
 #undef nullcheck
