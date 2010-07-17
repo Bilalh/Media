@@ -2,7 +2,7 @@ CC        = gcc -std=gnu99 -fblocks
 CFLAGS    = -g -Wall ${INCLUDES}
 INCLUDES  = -I./hash -I/usr/include/libxml2
 LIBS      = -lsqlite3 -lxml2 -lcurl
-OBJ       = media ml test tempc time opt
+OBJ       = media ml test tempc time opt ttime tstring
 MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o
 
 media: ${MEDIA_OBJ}
@@ -17,10 +17,10 @@ opt: history.o media.o option_parser.o playlist.o string.o string_util.o time_ut
 time: time_util.o string_util.o
 	${CC} ${CFlAGS} -o $@ $^
 
-test: string_util.o tests/string_util_test.o
+tstring: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
 
-ttest: string_util.o time_util.o tests/time_test.o
+ttime: string_util.o time_util.o tests/time_test.o
 	${CC} ${CFLAGS} string_util.o time_util.o time_test.o -o $@
 
 tempc: temp.o string_util.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable_utility.o

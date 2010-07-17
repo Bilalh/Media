@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>playlist.c</string>
+	<string>tests/time_test.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,79 +13,61 @@
 			<string>media </string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>196</integer>
+	<integer>85</integer>
 	<key>metaData</key>
 	<dict>
-		<key>media.h</key>
+		<key>makefile</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>58</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>10</integer>
+			<integer>0</integer>
 		</dict>
-		<key>option_parser.c</key>
+		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>48</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>191</integer>
+				<integer>34</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>187</integer>
+			<integer>0</integer>
 		</dict>
-		<key>option_parser_private.h</key>
+		<key>tests/time_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>58</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>24</integer>
-		</dict>
-		<key>playlist.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>123</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>30</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>option_parser_private.h</string>
-		<string>media.h</string>
-		<string>playlist.c</string>
-		<string>option_parser.c</string>
+		<string>tests/time_test.c</string>
+		<string>makefile</string>
 	</array>
 	<key>shellVariables</key>
 	<array>

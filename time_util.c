@@ -50,7 +50,7 @@ int day_future(int day, int other_day) {
 }
 
 struct tm *parse_time(char **str, int length) {
-	printf("\n%s\n", "start");
+	//printf("\n%s\n", "start");
 	struct tm* tm = currentTime();
 
 	if (length >= 1) {
@@ -101,7 +101,7 @@ struct tm *parse_time(char **str, int length) {
 
 // n (day/hour/minute) ago/after
 void type_a(char **str, int length, struct tm* tm ) {
-	printf("%s\n", "type A - n time ago/after ");
+	//printf("%s\n", "type A - n time ago/after ");
 	long num = strtol(str[0], NULL, 10);
 	if (num == 0 || *str[1] == '\0') {
 		PARSE_ERR("a");
@@ -136,12 +136,12 @@ void type_a(char **str, int length, struct tm* tm ) {
 	}
 
 	if (arr == NULL || spec == -1 ) {PARSE_ERR("a-spec"); return;}
-	printf("spec: %i\n", spec);
+	//printf("spec: %i\n", spec);
 
 	if (strcasecmp(str[2], "ago") == 0)       pos = T_BEFORE;
 	else if(strcasecmp(str[2], "after") == 0) pos = T_AFTER;
 	else { PARSE_ERR("A - t-pos"); return; }
-	printf("pos: %i num: %li \n", pos, num);
+	//printf("pos: %i num: %li \n", pos, num);
 
 	switch(spec) {
 	case T_DAYS:
@@ -162,7 +162,7 @@ void type_a(char **str, int length, struct tm* tm ) {
 
 // at hh:mm
 void type_b(char **str, int length, struct tm* tm ) {
-	printf("%s\n", "type B - at nn:nn ");
+	//printf("%s\n", "type B - at nn:nn ");
 	char temp[5];
 	long hours, minutes, len = strlen(str[1]);
 
@@ -188,7 +188,7 @@ void type_b(char **str, int length, struct tm* tm ) {
 // 	MAKE_TIME_STR(after, newinfo);
 // 
 // 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-// 	printf("\n\nnow  :%s %s UTC \nafter:%s %s UTC\n",
+// 	//printf("\n\nnow  :%s %s UTC \nafter:%s %s UTC\n",
 // 		   now,   str_days[timeinfo->tm_wday],
 // 		   after, str_days[newinfo->tm_wday]);
 // 
@@ -206,10 +206,10 @@ void test_day_diff() {
 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
 
 	for (int day = 0 ; day < 7; day++) {
-		printf("	day %i %s\n", day, str_days[day]);
+		//printf("	day %i %s\n", day, str_days[day]);
 		for (int j = 0 ; j < 7; j++) {
 			int k = day_diff(day, j);
-			printf(" %i %s is %i\n", j, str_days[j], k );
+			//printf(" %i %s is %i\n", j, str_days[j], k );
 		}
 	}
 }
