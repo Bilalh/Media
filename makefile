@@ -20,8 +20,8 @@ time: time_util.o string_util.o
 tstring: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
 
-ttime: string_util.o time_util.o tests/time_test.o
-	${CC} ${CFLAGS} string_util.o time_util.o time_test.o -o $@
+ttime: string_util.o time_util.o tests/time_test.o tests/time_helper.o
+	${CC} ${CFLAGS} string_util.o time_util.o time_test.o time_helper.o -o $@
 
 tempc: temp.o string_util.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable_utility.o
 	${CC} ${CFLAGS} $? -o $@
