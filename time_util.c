@@ -50,51 +50,70 @@ int day_future(int day, int other_day) {
 }
 
 struct tm *parse_time(char **str, int length) {
-	//printf("\n%s\n", "start");
+	
+	
 	struct tm* tm = currentTime();
 
-	if (length >= 1) {
-
+	int times = 0;
+	int oldlength = length;
+	while (length > 0){
+		
+		// for(int i = 0; i < length; ++i){
+		// 	printf("	str[%i] %s\n",i, str[i]);
+		// }
+		
+		// time formats 
 		if( match(*str, "[0-9]{1,2} [a-zA-Z]{3}") > 0) {
 			strptime(*str, "%d %b", tm);
 			str++;
 			length--;
-			
+		
 		} else if( match(*str, "[0-9]{1,2}(th|st|nd)") > 0) {
 			strptime(*str, "%dth", tm);
 			str++;
 			length--;
-			
+		
 		} else if ( match(*str, DATE_TIME_REGEX) > 0) {
 			strptime(*str, "%F %H:%M:%S", tm);
 			return tm;
-			
+		
 		} else if( match(*str, DATE_REGEX) > 0) {
 			strptime(*str, "%F", tm);
 			str++;
 			length--;
-			
+		
 		//FIXME time bug
 		} else if ( match(*str, DATE_TIME_UK_REGEX) > 0) {
 			strptime(*str, "%d/%m/%y %H:%M:%S", tm);
 			return tm;
 		}
-	}
 
-	if (length >= 3 && isdigit(**str)) {
-		type_a(str, length, tm);
-		str    += 3;
-		length -= 3;
-	}
-
-	if (length >= 2) {
-		if (strcasecmp(*str, "at") == 0) {
-			type_b(str, length, tm);
-			str    += 2;
-			length -= 2;
+		// n (day/hour/minute) ago/after
+		if (length >= 3 && isdigit(**str)) {
+			type_a(str, length, tm);
+			str    += 3;
+			length -= 3;
 		}
-	}
 
+		// at hh:mm
+		if (length >= 2) {
+			if (strcasecmp(*str, "at") == 0) {
+				type_b(str, length, tm);
+				str    += 2;
+				length -= 2;
+			}
+		}
+		
+		if (length == oldlength) times++;
+		else oldlength = length;
+		
+		if (times >= 2){ // to stop 
+			str++;
+			length--;
+			times = 0;
+		}
+		
+	}
 
 	return tm;
 }
@@ -110,7 +129,7 @@ void type_a(char **str, int length, struct tm* tm ) {
 
 	T_Spec spec = -1; T_Pos pos;
 	const char **arr = NULL;
-#define TIME_SPEC_TEST(arr,str,spec_v) \
+	#define TIME_SPEC_TEST(arr,str,spec_v) \
 		arr = time_spec[spec_v]; \
 		while(**arr != '\0'){ \
 			if(strcasecmp(str, *arr) == 0) spec = spec_v; \
@@ -179,37 +198,4 @@ void type_b(char **str, int length, struct tm* tm ) {
 
 }
 
-// int main (int argc, char *argv[]) {
-// 	struct tm* timeinfo = currentTime();
-// 	struct tm* newinfo = argc > 1 ? parse_time(&argv[1], argc - 1) : timeinfo;
-// 
-// 	char now[20], after[20];
-// 	MAKE_TIME_STR(now, timeinfo);
-// 	MAKE_TIME_STR(after, newinfo);
-// 
-// 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-// 	//printf("\n\nnow  :%s %s UTC \nafter:%s %s UTC\n",
-// 		   now,   str_days[timeinfo->tm_wday],
-// 		   after, str_days[newinfo->tm_wday]);
-// 
-// 	return 0;
-// }
 
-void test_day_diff() {
-	struct tm* timeinfo = currentTime();
-	char now[20], after[20];
-	MAKE_TIME_STR(now, timeinfo);
-
-	timegm(timeinfo);
-	MAKE_TIME_STR(after, timeinfo);
-
-	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
-
-	for (int day = 0 ; day < 7; day++) {
-		//printf("	day %i %s\n", day, str_days[day]);
-		for (int j = 0 ; j < 7; j++) {
-			int k = day_diff(day, j);
-			//printf(" %i %s is %i\n", j, str_days[j], k );
-		}
-	}
-}

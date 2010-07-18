@@ -41,15 +41,30 @@ printTitle("Rel time Basic");
 	{
 		tm->tm_mday -= 413;
 	})
-	TimeFinished
+TimeFinished
 	
 printTitle("Rel time Medium");
-	TestTime("17 minutes, 3 hours ago",
+	TestTime("17 minutes ago 3 hours ago",
 	{
 		tm->tm_min  -= 17;
 		tm->tm_hour -= 3;
 		
 	})
+	TestTime("14 hours ago 13 minutes ago 8 days ago",
+	{
+		tm->tm_min  -= 13;
+		tm->tm_hour -= 14;
+		tm->tm_mday -= 8;
+
+	})
+	TestTime("3 days ago at 12:33",
+	{
+		tm->tm_min  = 33;
+		tm->tm_hour = 12;
+		tm->tm_mday -= 3;
+
+	})
+TimeFinished
 	
 printTitle("Rel time English");
 	TestTime("an hour ago",
@@ -65,5 +80,7 @@ printTitle("Rel time English");
 	{
 		tm->tm_min -= 5;
 	})
+TimeFinished	
+
 }
 

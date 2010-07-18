@@ -19,15 +19,27 @@ bool time_test_start(char *given, struct tm* tm ){
 	
 	// spilts the string with pointers to parts of the string
 	char *to_spilt = strdup(given), *sep = " ", *s_ptr, *word;
-	char **strs = malloc(sizeof(char*) * 7);
+	int slength = 7;
+	char **strs = malloc(sizeof(char*) * slength);
 	int i = 0;
 	
 	for(word = strtok_r(to_spilt, sep, &s_ptr); word != NULL; 
 			word = strtok_r(NULL, sep, &s_ptr)) {
 		strs[i++] = word;
+		if (i >= slength ){
+			slength = slength * 2 + 1;
+			void * temp = realloc(strs, sizeof(char*) * slength);
+			if (temp != NULL){
+				strs = temp;
+			}else{
+				fprintf(stderr, "realloc  failed in time test start");
+				exit(4);
+			}
+			
+		}
 	}
 	
-	struct tm *newt = parse_time(strs, 3);
+	struct tm *newt = parse_time(strs, i);
 	free(to_spilt);
 	bool error = false;
 	
@@ -45,7 +57,6 @@ bool time_test_start(char *given, struct tm* tm ){
 	VAILDATE_TM(tm->tm_year, newt->tm_year, "tm_year")	
 	VAILDATE_TM(tm->tm_wday, newt->tm_wday, "tm_wday")	
 	VAILDATE_TM(tm->tm_yday, newt->tm_yday, "tm_yday")	
-	VAILDATE_TM(tm->tm_min,  newt->tm_min,  "tm_min")	
 
 	if (error){
 		printf("\n    expected :%s %s UTC \n    actual   :%s %s UTC\n\n",
