@@ -51,6 +51,26 @@ int day_future(int day, int other_day) {
 
 struct tm *parse_time(char **str, int length) {
 	
+	int total =  1, index = 0;
+	for(int i = 0; i < length; ++i){
+		total += strlen(str[i]) +1 ; //for space
+	}
+	
+	char strl[total];
+	char *strptr[length];
+	for(int i = 0; i < length; ++i){
+		strptr[i] = &strl[index];
+		strncpy(&strl[index], str[i], strlen(str[i]));
+		index += strlen(str[i]);
+		strl[index++] = ' ';
+	}
+	if (index > 0) --index;
+	strl[index] = '\0';
+	
+	// printf(",%s,\n",strl );
+	// for(int i = 0; i < length; ++i){
+	// 	printf(",%s,\n",strptr[i] );
+	// }
 	
 	struct tm* tm = currentTime();
 

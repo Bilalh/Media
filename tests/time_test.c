@@ -20,6 +20,7 @@ printTitle("Rel time Basic");
 	{
 		tm->tm_min -= 37;
 	})
+		return;
 	TestTime("2 hours ago",
 	{
 		tm->tm_hour -= 2;
