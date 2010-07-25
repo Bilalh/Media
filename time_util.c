@@ -2,11 +2,49 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+
+#include <pcre.h>
+
 #include "string_util.h"
 #include "time_util.h"
 
 void test_day_diff();
+
+#define OVECCOUNT 9    /* should be a multiple of 3 */
 #define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
+
+// Makes pcre object r_name and the other vars
+// makes  res_name e_name eo_name
+#define MAKE_REGEX(name,regex,err_action)\
+	pcre *r_##name;\
+	const char *e_##name;\
+	int  eo_##name, ovector_##name[OVECCOUNT], res_##name = -1;\
+	\
+	r_##name = pcre_compile(\
+			 regex,        /* the pattern */\
+			 0,            /* default options */\
+			 &e_##name,     /* for error message */\
+			 &eo_##name,    /* for error offset */\
+			 NULL          /* use default character tables */\
+	);\
+	if (r_##name == NULL) {\
+		printf("%s\n", "error compiled");\
+		err_action\
+	}
+
+// checks if a string matches the a regex compiled by MAKE_REGEX
+#define MATCH_REGEX(name, str, length, offset)\
+	res_##name = pcre_exec(\
+			 r_##name,         /* the compiled pattern */\
+			 NULL,             /* no extra data*/\
+			 str,              /* the subject string */\
+			 length,           /* the length of the subject */\
+			 offset,           /* start at the offset in the subject */\
+			 0,                /* default options */\
+			 ovector_##name,   /* output vector for substring information */\
+			 OVECCOUNT         /* number of elements in the output vector */\
+	)
+
 
 const char* time_spec[][5] = {
 	{"day", "days",""}, {"hour", "hours",""},
@@ -50,27 +88,53 @@ int day_future(int day, int other_day) {
 }
 
 struct tm *parse_time(char **str, int length) {
-	
-	int total =  1, index = 0;
+
+	struct tm* tm = currentTime();
+    
+	int total =  1, str_index = 0, index =0;
 	for(int i = 0; i < length; ++i){
 		total += strlen(str[i]) +1 ; //for space
 	}
 	
-	char strl[total];
-	char *strptr[length];
+	// strl contains the whole string
+	// str arr is an array of pointer to the parts of the string
+	char strl[total], *strarr[length];
 	for(int i = 0; i < length; ++i){
-		strptr[i] = &strl[index];
-		strncpy(&strl[index], str[i], strlen(str[i]));
-		index += strlen(str[i]);
-		strl[index++] = ' ';
+		strarr[i] = &strl[str_index];
+		strncpy(&strl[str_index], str[i], strlen(str[i]));
+		str_index += strlen(str[i]);
+		strl[str_index++] = ' ';
 	}
-	if (index > 0) --index;
-	strl[index] = '\0';
+	if (str_index > 0) --str_index;
+	strl[str_index] = '\0';
 	
-	// printf(",%s,\n",strl );
-	// for(int i = 0; i < length; ++i){
-	// 	printf(",%s,\n",strptr[i] );
-	// }
+	#define REGEX_ERR return tm;
+	
+	MAKE_REGEX(mins, "\\d+ minutes ago", REGEX_ERR);
+	MATCH_REGEX(mins, strl, total-1, index);
+	
+	
+	if (res_mins < 0) {
+		printf("%s\n", "error in regex");
+	}else{
+		long num = strtol(&strl[index], &strl[index+1], 10);
+		printf("\nMatch succeeded\n");
+		// compares second letter 'g' of ago or  'f' of after
+		if (str[index+2][1] == 'g'){
+			tm->tm_min  -= num;
+		}else{
+			tm->tm_min  += num;
+		}
+		// since 'n days ago' is three parts
+		index += 3;
+	}
+	
+	pcre_free(r_mins);
+	timegm(tm); // corrects the time using gmtd
+	return tm;
+}
+
+struct tm *parse_time2(char **str, int length) {
 	
 	struct tm* tm = currentTime();
 

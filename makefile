@@ -1,7 +1,7 @@
 CC        = gcc -std=gnu99 -fblocks
 CFLAGS    = -g -Wall ${INCLUDES}
-INCLUDES  = -I./hash -I/usr/include/libxml2
-LIBS      = -lsqlite3 -lxml2 -lcurl
+INCLUDES  = -I./hash -I/usr/include/libxml2 -I/opt/local/include
+LIBS      = -lsqlite3 -lxml2 -lcurl -L/opt/local/lib -lpcre
 OBJ       = media ml test tempc time opt ttime tstring
 MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o
 
@@ -15,13 +15,13 @@ opt: history.o media.o option_parser.o playlist.o string.o string_util.o time_ut
 	${CC} ${LIBS} ${CFLAGS} -o $@ $^
 
 time: time_util.o string_util.o
-	${CC} ${CFlAGS} -o $@ $^
+	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
 tstring: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
 
 ttime: string_util.o time_util.o tests/time_test.o tests/time_helper.o
-	${CC} ${CFLAGS} string_util.o time_util.o time_test.o time_helper.o -o $@
+	${CC} ${LIBS} ${CFLAGS} string_util.o time_util.o time_test.o time_helper.o -o $@
 
 btest: tests/block_test.o
 	${CC} ${CFLAGS} block_test.o -o $@

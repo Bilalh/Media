@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
-#include <regex.h>
-
+//#include <regex.h>
+#include <pcre.h>
+#include <pcreposix.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <ctype.h>
@@ -32,12 +33,12 @@ char** ep_num(char *s) {
 	return ans;
 }
 
+// could always be 1
 /// \brief Non zero on match, 0 on any error
 int match(const char *string, char *pattern) {
 	int    status;
 	regex_t    re;
-
-	if (regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
+	if ( regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
 		return(0);
 	}
 	status = regexec(&re, string, (size_t) 0, NULL, 0);
