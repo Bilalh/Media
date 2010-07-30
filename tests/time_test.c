@@ -20,7 +20,6 @@ printTitle("Rel time Basic");
 	{
 		tm->tm_min -= 37;
 	})
-		return;
 	TestTime("2 hours ago",
 	{
 		tm->tm_hour -= 2;
@@ -42,8 +41,9 @@ printTitle("Rel time Basic");
 	{
 		tm->tm_mday -= 413;
 	})
-TimeFinished
-	
+TimeEndSection
+
+
 printTitle("Rel time Medium");
 	TestTime("17 minutes ago 3 hours ago",
 	{
@@ -58,6 +58,9 @@ printTitle("Rel time Medium");
 		tm->tm_mday -= 8;
 
 	})
+TimeEndSection
+
+printTitle("Rel time with at nn:nn");	
 	TestTime("3 days ago at 12:33",
 	{
 		tm->tm_min  = 33;
@@ -65,7 +68,9 @@ printTitle("Rel time Medium");
 		tm->tm_mday -= 3;
 
 	})
-TimeFinished
+TimeEndSection
+
+return;
 	
 printTitle("Rel time English");
 	TestTime("an hour ago",
@@ -81,7 +86,7 @@ printTitle("Rel time English");
 	{
 		tm->tm_min -= 5;
 	})
-TimeFinished	
+TimeEndSection	
 
 }
 

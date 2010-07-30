@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>string_util.c</string>
+	<string>tests/time_test.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,28 +13,16 @@
 			<string>media </string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>206</integer>
+	<integer>214</integer>
 	<key>metaData</key>
 	<dict>
-		<key>makefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>38</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>string_util.c</key>
 		<dict>
 			<key>caret</key>
@@ -47,43 +35,73 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>14</integer>
+			<integer>104</integer>
 		</dict>
 		<key>tests/time_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>65</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>42</integer>
 		</dict>
 		<key>time_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>77</integer>
+				<integer>147</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>54</integer>
+			<integer>110</integer>
+		</dict>
+		<key>time_util.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>45</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>47</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>tests/time_test.c</string>
 		<string>time_util.c</string>
+		<string>time_util.h</string>
 		<string>string_util.c</string>
-		<string>makefile</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -111,6 +129,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{241, 68}, {831, 810}}</string>
+	<string>{{649, 84}, {760, 794}}</string>
 </dict>
 </plist>

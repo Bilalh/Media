@@ -39,10 +39,11 @@
 		printTitle(now);\
 	}
 
-#define TimeFinished\
-	printf("\n\t****Total %i %s %i Passed %i %2.1f%%****\n",\
-		TIME_TEST_TOTAL, (TIME_TEST_FAILED == 0 ? "failed" : "FAILED"), \
-		TIME_TEST_FAILED, TIME_TEST_PASED,\
+#define TimeEndSection\
+	printf("\n\t****Total %i, %s %i %s %i %2.1f%%****\n",\
+		TIME_TEST_TOTAL, \
+		(TIME_TEST_FAILED == 0 ? "failed" : "FAILED"), TIME_TEST_FAILED,\
+		(TIME_TEST_PASED  == TIME_TEST_TOTAL ? "Passed" : "passed"), TIME_TEST_PASED,\
 		(float) TIME_TEST_PASED / (float) TIME_TEST_TOTAL * 100 );\
 		TIME_TEST_PASED = 0, TIME_TEST_FAILED = 0, TIME_TEST_TOTAL = 0;
 

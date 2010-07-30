@@ -10,8 +10,13 @@
 
 void test_day_diff();
 
-#define OVECCOUNT 9    /* should be a multiple of 3 */
+const char* time_spec[][5] = {
+	{"day", "days",""}, {"hour", "hours",""},
+	{"min", "mins", "minute", "minutes",""}, {"sec", "secs","second","second",""}
+};
+
 #define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
+#define OVECCOUNT 3    /* should be a multiple of 3 */
 
 // Makes pcre object r_name and the other vars
 // makes  res_name e_name eo_name
@@ -21,11 +26,11 @@ void test_day_diff();
 	int  eo_##name, ovector_##name[OVECCOUNT], res_##name = -1;\
 	\
 	r_##name = pcre_compile(\
-			 regex,        /* the pattern */\
-			 0,            /* default options */\
+			 regex,         /* the pattern */\
+			 0,             /* default options */\
 			 &e_##name,     /* for error message */\
 			 &eo_##name,    /* for error offset */\
-			 NULL          /* use default character tables */\
+			 NULL           /* use default character tables */\
 	);\
 	if (r_##name == NULL) {\
 		printf("%s\n", "error compiled");\
@@ -33,23 +38,19 @@ void test_day_diff();
 	}
 
 // checks if a string matches the a regex compiled by MAKE_REGEX
-#define MATCH_REGEX(name, str, length, offset)\
-	res_##name = pcre_exec(\
+#define MATCH_REGEX(name, str, length)\
+	(res_##name = pcre_exec(\
 			 r_##name,         /* the compiled pattern */\
 			 NULL,             /* no extra data*/\
 			 str,              /* the subject string */\
 			 length,           /* the length of the subject */\
-			 offset,           /* start at the offset in the subject */\
+			 0,                /* start at the offset in the subject */\
 			 0,                /* default options */\
 			 ovector_##name,   /* output vector for substring information */\
 			 OVECCOUNT         /* number of elements in the output vector */\
-	)
+	))
+#define FREE_REGEX(name) pcre_free(r_##name)
 
-
-const char* time_spec[][5] = {
-	{"day", "days",""}, {"hour", "hours",""},
-	{"min", "mins", "minute", "minutes",""}, {"sec", "secs","second","second",""}
-};
 
 struct tm* currentTime() {
 	time_t tt;
@@ -88,7 +89,7 @@ int day_future(int day, int other_day) {
 }
 
 struct tm *parse_time(char **str, int length) {
-
+	
 	struct tm* tm = currentTime();
     
 	int total =  1, str_index = 0, index =0;
@@ -108,29 +109,54 @@ struct tm *parse_time(char **str, int length) {
 	if (str_index > 0) --str_index;
 	strl[str_index] = '\0';
 	
+	
 	#define REGEX_ERR return tm;
 	
-	MAKE_REGEX(mins, "\\d+ minutes ago", REGEX_ERR);
-	MATCH_REGEX(mins, strl, total-1, index);
+	//n SPEC ago
+	MAKE_REGEX(ago_after, "^\\d+ (min(ute)?|hour|day)s? (ago|after)",REGEX_ERR);
+	// at hh:mm
+	MAKE_REGEX(at, "^at ([0-1][0-9]|2[0-3]):([0-5][0-9])",REGEX_ERR);
 	
-	
-	if (res_mins < 0) {
-		printf("%s\n", "error in regex");
-	}else{
-		long num = strtol(&strl[index], &strl[index+1], 10);
-		printf("\nMatch succeeded\n");
-		// compares second letter 'g' of ago or  'f' of after
-		if (str[index+2][1] == 'g'){
-			tm->tm_min  -= num;
+	int times = 0;
+	while (index < length){
+		printf("%i: '%s'\n",index, strarr[index] );
+		if (MATCH_REGEX(ago_after, strarr[index], strlen(strarr[index])) == 0) {
+			int multiplier = 1;
+			long num = strtol(strarr[index], NULL, 10);			
+			// compares second letter 'g' of ago or 'f' of after
+			if (strarr[index+2][1] == 'g') multiplier = -1;
+			
+			switch (*strarr[index+1]){
+				case 'm': tm->tm_min  += multiplier * num;
+				break;
+				case 'h': tm->tm_hour += multiplier * num;
+				break;
+				case 'd': tm->tm_mday += multiplier * num;
+				break;
+			}
+			
+			// since 'n WORD ago' is three parts
+			index += 3;
+		}else if (MATCH_REGEX(at, strarr[index], strlen(strarr[index])) == 0){
+			char s_hour[2]; // separates  the hour part
+			strncpy(s_hour,strarr[index+1],2);
+			tm->tm_hour  = strtol(s_hour, NULL, 10);
+			tm->tm_min   = strtol(&strarr[index+1][3], NULL, 10);
+			index++;
 		}else{
-			tm->tm_min  += num;
+			times++;
 		}
-		// since 'n days ago' is three parts
-		index += 3;
+		
+		// to stop  loop
+		if (times >= 2){ 
+			index++;
+			times = 0;
+		}
+		
 	}
 	
-	pcre_free(r_mins);
 	timegm(tm); // corrects the time using gmtd
+	FREE_REGEX(ago_after);
 	return tm;
 }
 
