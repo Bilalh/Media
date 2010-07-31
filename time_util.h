@@ -15,6 +15,11 @@ int day_last(int day, int other_day);
 int day_future(int day, int other_day);
 
 struct tm *parse_time(char **str, int length);
+
+// parse n (days|hours|minutes) and increments index by 2; 
+void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier);
+
+
 void type_a(char **str, int length, struct tm* tm );
 void type_b(char **str, int length, struct tm* tm );
 void type_c(char **str, int length, struct tm* tm );

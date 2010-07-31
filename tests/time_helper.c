@@ -13,7 +13,7 @@
 		TM_ERROR_MSG( type, exp, act);\
 	}
 
-#define printTest(title,after,day)  printf("%-20s %-19s, %-3s : ", title,after,day )
+#define printTest(title,after,day)  printf("%-31s %-19s, %-3s : ", title,after,day )
 
 bool time_test_start(char *given, struct tm* tm ){
 	

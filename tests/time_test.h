@@ -12,7 +12,7 @@
 #include "time_helper.h"
 
 
-#define SEP "---------------------------------------------------------"
+#define SEP "-------------------------------------------------------------------"
 #define printTitle(title) printf("\n%s\n%s\n%s\n",SEP,title,SEP)
 
 #define TestTime(str, tBLOCK)\

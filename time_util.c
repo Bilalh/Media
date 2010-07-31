@@ -16,10 +16,9 @@ const char* time_spec[][5] = {
 };
 
 #define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
-#define OVECCOUNT 3    /* should be a multiple of 3 */
+#define OVECCOUNT 21    /* should be a multiple of 3 */
 
-// Makes pcre object r_name and the other vars
-// makes  res_name e_name eo_name
+// Makes a pcre object for matching regexes
 #define MAKE_REGEX(name,regex,err_action)\
 	pcre *r_##name;\
 	const char *e_##name;\
@@ -49,7 +48,13 @@ const char* time_spec[][5] = {
 			 ovector_##name,   /* output vector for substring information */\
 			 OVECCOUNT         /* number of elements in the output vector */\
 	))
+	
+// Frees all resources of the regex
 #define FREE_REGEX(name) pcre_free(r_##name)
+
+// Get the nth capture (the index in the string that the it starts)
+#define REGEX_CAPURES(name,index) ovector_##name[index]
+#define REGEX_RESULT(name) res_##name
 
 
 struct tm* currentTime() {
@@ -98,7 +103,7 @@ struct tm *parse_time(char **str, int length) {
 	}
 	
 	// strl contains the whole string
-	// str arr is an array of pointer to the parts of the string
+	// strarr is an array of pointer to the parts of the string
 	char strl[total], *strarr[length];
 	for(int i = 0; i < length; ++i){
 		strarr[i] = &strl[str_index];
@@ -109,56 +114,92 @@ struct tm *parse_time(char **str, int length) {
 	if (str_index > 0) --str_index;
 	strl[str_index] = '\0';
 	
-	
-	#define REGEX_ERR return tm;
+	#define REGEX_ERR \
+		printf("%s\n", "error in pcre_compile");\
+		return tm;
 	
 	//n SPEC ago
 	MAKE_REGEX(ago_after, "^\\d+ (min(ute)?|hour|day)s? (ago|after)",REGEX_ERR);
 	// at hh:mm
-	MAKE_REGEX(at, "^at ([0-1][0-9]|2[0-3]):([0-5][0-9])",REGEX_ERR);
+	MAKE_REGEX(at, "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
+	// compound test
+	MAKE_REGEX(ago_after_m, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
+	
 	
 	int times = 0;
 	while (index < length){
-		printf("%i: '%s'\n",index, strarr[index] );
-		if (MATCH_REGEX(ago_after, strarr[index], strlen(strarr[index])) == 0) {
+		int index_len = strlen(strarr[index]);
+		if ( MATCH_REGEX(ago_after, strarr[index], index_len) >= 0) {
 			int multiplier = 1;
-			long num = strtol(strarr[index], NULL, 10);			
-			// compares second letter 'g' of ago or 'f' of after
+			// compares second letter 'g' of ago
 			if (strarr[index+2][1] == 'g') multiplier = -1;
 			
-			switch (*strarr[index+1]){
-				case 'm': tm->tm_min  += multiplier * num;
-				break;
-				case 'h': tm->tm_hour += multiplier * num;
-				break;
-				case 'd': tm->tm_mday += multiplier * num;
-				break;
-			}
-			
+			parse_time_spec(strarr,  tm, &index, multiplier);
 			// since 'n WORD ago' is three parts
-			index += 3;
-		}else if (MATCH_REGEX(at, strarr[index], strlen(strarr[index])) == 0){
-			char s_hour[2]; // separates  the hour part
-			strncpy(s_hour,strarr[index+1],2);
-			tm->tm_hour  = strtol(s_hour, NULL, 10);
-			tm->tm_min   = strtol(&strarr[index+1][3], NULL, 10);
+			index ++;
+			
+		}else if( *strarr[index] == 'a' && 
+				MATCH_REGEX(at, strarr[index], index_len) >= 0){
+			char s_hour[3]; 
+			
+			// separates  the hour part
+			int h_len = 2;
+			if (strarr[index+1][1] == ':') h_len--;
+			strncpy(s_hour,strarr[index+1],h_len);
+			s_hour[h_len] ='\0';
+			
+			tm->tm_hour = strtol(s_hour, NULL, 10);
+			tm->tm_min  = strtol(&strarr[index+1][h_len+1], NULL, 10);
+			index      += 2;
+			
+		}else if( MATCH_REGEX(ago_after_m, strarr[index], index_len) >= 0){
+			int multiplier = 1, i = index;
+			char second    = 'f';
+			// compares the second letter to see if it is 'g' of ago
+			if (strarr[index][REGEX_CAPURES(ago_after_m,3)+1] == 'g'){
+				multiplier = -1;
+				second     = 'g';
+			} 
+			//checks if we are at the end 
+			while ( strarr[i][1] != second ){
+				parse_time_spec(strarr,  tm, &index, multiplier);
+				i+=2;
+			}
+			// for the ago|after
 			index++;
+			
 		}else{
 			times++;
 		}
-		
-		// to stop  loop
+		 
+		// to stop loop if not matching 
 		if (times >= 2){ 
 			index++;
 			times = 0;
 		}
-		
 	}
 	
 	timegm(tm); // corrects the time using gmtd
 	FREE_REGEX(ago_after);
 	return tm;
+	
 }
+
+// parse n (days|hours|minutes) and increments index by 2; 
+void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){
+	long num = strtol(strarr[*index], NULL, 10);			
+	switch (*strarr[*index+1]){
+		case 'm': tm->tm_min  += multiplier * num;
+		break;
+		case 'h': tm->tm_hour += multiplier * num;
+		break;
+		case 'd': tm->tm_mday += multiplier * num;
+		break;
+	}
+	*index +=2;
+}
+
+//OLD CODE
 
 struct tm *parse_time2(char **str, int length) {
 	
