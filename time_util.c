@@ -154,7 +154,7 @@ struct tm *parse_time(char **str, int length) {
 			
 		}else if( MATCH_REGEX(ago_after_m, strarr[index], index_len) >= 0){
 			int multiplier = 1, i = index;
-			char second    = 'f';
+			char second    = 'f'; 
 			// compares the second letter to see if it is 'g' of ago
 			if (strarr[index][REGEX_CAPURES(ago_after_m,3)+1] == 'g'){
 				multiplier = -1;
