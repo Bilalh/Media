@@ -38,14 +38,18 @@ int day_diff(int day, int other_day) {
 	return res;
 }
 
+// calulates the last specifed 'other_day' from 'day'
 int day_last(int day, int other_day) {
-	if (day >= other_day) return -(day - other_day);
-	else                  return -(day + 7 - other_day);
+	if      (day == other_day) return -7;
+	else if (day  > other_day) return -(day - other_day);
+	else                       return -(day + 7 - other_day);
 }
 
+// calulates the next specifed 'other_day' from 'day'
 int day_future(int day, int other_day) {
-	if (other_day >= day) return (other_day - day);
-	else                  return (other_day + 7 - day);
+	if      (day == other_day) return +7;
+	else if (day  < other_day) return (other_day - day);
+	else                       return (other_day + 7 - day);
 }
 
 struct tm *parse_time(char **str, int length) {
@@ -78,7 +82,7 @@ struct tm *parse_time(char **str, int length) {
 	MAKE_REGEX(ago_after, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
 	MAKE_REGEX(date_time  , "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
 	MAKE_REGEX(date       , "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
-	MAKE_REGEX(n_month    , "^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnnprrtvy][a-zA-Z]*",REGEX_ERR);
+	MAKE_REGEX(n_month    , "^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnnprrtvy][a-zA-Z]*( \\d{4})?",REGEX_ERR);
 	
 	while (index < length){
 		int index_len = strlen(strarr[index]);
@@ -136,8 +140,13 @@ struct tm *parse_time(char **str, int length) {
 				char day[2];
 				int  day_len = (strarr[index+1] - strarr[index] - 3);
 				strncpy(day, strarr[index], day_len);
-				tm->tm_mday = strtol(day, NULL, 10);	
-				index += 2;
+				tm->tm_mday = strtol(day, NULL, 10);
+				
+				if (REGEX_RESULT(n_month) == 3){
+					strptime(strarr[index+2], " %Y", tm);
+				}
+					
+				index += REGEX_RESULT(n_month);
 				continue;
 			}
 			

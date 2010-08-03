@@ -1,5 +1,5 @@
 #include "time_test.h"
-
+#include "../time_util.h"
 // int tm_sec;     /* seconds (0 - 60) */
 // int tm_min;     /* minutes (0 - 59) */
 // int tm_hour;    /* hours   (0 - 23) */
@@ -24,11 +24,11 @@ printTitle("Relative time Basic");
 	{
 		tm->tm_hour += 2;
 	})
-	TestTime("1 days ago",
+	TestTime("1 day ago",
 	{
 		tm->tm_mday -= 1;
 	})
-	TestTime("1337 minutes after",
+	TestTime("1337 mins after",
 	{
 		tm->tm_min += 1337;
 	})
@@ -95,6 +95,10 @@ printTitle("Relative time with at nn:nn");
 		tm->tm_hour = 2;
 		tm->tm_mday += 9;
 	})	
+	TestTime("at 2:12", {
+		tm->tm_min  = 12;
+		tm->tm_hour = 2;
+	})
 TimeEndSection
 
 printTitle("Invalid inputs");
@@ -121,7 +125,7 @@ printTitle("Compound Relative time");
 		tm->tm_mday -= 32;
 
 	})
-	TestTime("142 hours   1 minutes after", {
+	TestTime("142 hours   1 minute after", {
 		tm->tm_min  += 1;
 		tm->tm_hour += 142;
 
@@ -193,7 +197,8 @@ printTitle("Months");
 		tm->tm_mday = 11;
 	
 	})
-	TestTime("12th May", {
+	TestTime("12th May 2010", {
+		tm->tm_year = 110;
 		tm->tm_mon  = 4;
 		tm->tm_mday = 12;
 	
@@ -208,36 +213,66 @@ printTitle("Months");
 		tm->tm_mday = 15;
 	
 	})
-	TestTime("22nd Aug", {
+	TestTime("16th July", {
+		tm->tm_mon  = 6;
+		tm->tm_mday = 16;
+	
+	})
+	TestTime("22nd Aug 2009", {
+		tm->tm_year = 109;
 		tm->tm_mon  = 7;
 		tm->tm_mday = 22;
 	
 	})
-	TestTime("31th Sep", {
+	TestTime("31th Sep 5 mins after", {
 		tm->tm_mon  = 8;
 		tm->tm_mday = 31;
+		tm->tm_min += 5;
 	
 	})
-	TestTime("7th Oct", {
+	TestTime("7th Oct 2 days ago", {
 		tm->tm_mon  = 9;
-		tm->tm_mday = 7;
+		tm->tm_mday = 5;
 	
 	})
-	TestTime("19th Nov", {
+	TestTime("19th Nov 1972", {
+		tm->tm_year = 72;
 		tm->tm_mon  = 10;
 		tm->tm_mday = 19;
 	
 	})
-	TestTime("1st Dec", {
+	TestTime("1st Dec 2002 at 5:32", {
+		tm->tm_year = 102;
 		tm->tm_mon  = 11;
 		tm->tm_mday = 1;
+		tm->tm_hour = 5;
+		tm->tm_min  = 32;
 	
+	})
+TimeEndSection
+
+printTitle("Days");
+	TestTime("near thursday", {
+		tm->tm_mday += day_diff(tm->tm_wday, THURSDAY);
+	})
+	TestTime("next tuesday", {
+		//FIXME 
+		tm->tm_mday += day_future(tm->tm_wday, TUESDAY);
+	})
+	TestTime("last monday", {
+		//FIXME
+		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
 	})
 TimeEndSection
 
 }
 
-
-
+// mon
+// tue
+// wed
+// thr
+// fri
+// sat
+// sun
 
 

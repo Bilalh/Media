@@ -88,7 +88,7 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
-	char *r     = malloc(len * 2 + rep_len * 2 + 100 );
+	char *r     = malloc(len * 2 + rep_len + 25 );
 
 	// counters for s and r
 	int is = 0, ir = 0;

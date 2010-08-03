@@ -17,4 +17,6 @@ struct tm *parse_time(char **str, int length);
 // parse n (days|hours|minutes) and increments index by 2; 
 void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier);
 
+enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};
+
 #endif

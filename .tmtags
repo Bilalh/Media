@@ -9,9 +9,7 @@ AUDIO	media.c	/^#define AUDIO /;"	macro	line:19
 CC	makefile	/^CC        = gcc -std=gnu99 -fblocks$/;"	macro	line:1
 CFLAGS	makefile	/^CFLAGS    = -g -Wall ${INCLUDES}$/;"	macro	line:2
 DATABASE	history.c	/^#define DATABASE /;"	macro	line:8
-DATE_REGEX	time_util.h	/^#define DATE_REGEX /;"	macro	line:8
-DATE_TIME_REGEX	time_util.h	/^#define DATE_TIME_REGEX /;"	macro	line:5
-DATE_TIME_UK_REGEX	time_util.h	/^#define DATE_TIME_UK_REGEX /;"	macro	line:6
+DATE_TIME_UK_REGEX	time_util.h	/^#define DATE_TIME_UK_REGEX /;"	macro	line:5
 DEFINE_HASHTABLE_INSERT	hash/hashtable.h	/^#define DEFINE_HASHTABLE_INSERT(/;"	macro	line:101
 DEFINE_HASHTABLE_ITERATOR_SEARCH	hash/hashtable_itr.h	/^#define DEFINE_HASHTABLE_ITERATOR_SEARCH(/;"	macro	line:65
 DEFINE_HASHTABLE_REMOVE	hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/;"	macro	line:137
@@ -20,7 +18,8 @@ DIRENT	media.c	/^#define DIRENT(/;"	macro	line:16
 Element	option_parser.h	/^} Element;$/;"	typedef	line:22
 Element_ptr	option_parser.c	/^static Element *Element_ptr[128];$/;"	variable	line:10
 Excludes	media.h	/^} Excludes;$/;"	typedef	line:51
-FREE_REGEX	time_util.c	/^#define FREE_REGEX(/;"	macro	line:53
+FREE_REGEX	time_regex.h	/^#define FREE_REGEX(/;"	macro	line:40
+FRIDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 F_M3U	media.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 F_NONE	media.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
 F_PLIST	media.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:17
@@ -46,14 +45,15 @@ LONG_OPT_START_VALUE	option_parser_private.h	/^#define LONG_OPT_START_VALUE /;"	
 MAINHEAD	main.h	/^#define MAINHEAD$/;"	macro	line:2
 MAKE_PLAYLISTT	option_parser_private.h	/^	#define MAKE_PLAYLISTT(/;"	macro	line:65
 MAKE_PLAYLISTT	option_parser_private.h	/^	#undef MAKE_PLAYLISTT$/;"	macro	line:85
-MAKE_REGEX	time_util.c	/^#define MAKE_REGEX(/;"	macro	line:22
+MAKE_REGEX	time_regex.h	/^#define MAKE_REGEX(/;"	macro	line:7
 MAKE_TIME_STR	time_util.h	/^#define MAKE_TIME_STR(/;"	macro	line:4
-MATCH_REGEX	time_util.c	/^#define MATCH_REGEX(/;"	macro	line:40
+MATCH_REGEX	time_regex.h	/^#define MATCH_REGEX(/;"	macro	line:27
 MAX_OPT_BLOCKS	option_parser_private.h	/^#define MAX_OPT_BLOCKS /;"	macro	line:4
 MEDIAHEAD	media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MEDIA_OBJ	makefile	/^MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o$/;"	macro	line:6
 MLLLHEAD	ml.h	/^#define MLLLHEAD$/;"	macro	line:2
 ML_API	ml.h	/^#define ML_API /;"	macro	line:8
+MONDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 M_GEO	option_parser_private.h	/^	#define M_GEO(/;"	macro	line:411
 M_GEO	option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:428
 MediaArgs	media.h	/^typedef struct _MediaArgs MediaArgs;$/;"	typedef	line:5
@@ -64,9 +64,9 @@ N_REPEAT_ONE	media.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	l
 NiceRepeat	media.h	/^} NiceRepeat;$/;"	typedef	line:38
 OBJ	makefile	/^OBJ       = media ml test tempc time opt ttime tstring$/;"	macro	line:5
 OPTIONPHEAD	option_parser.h	/^#define OPTIONPHEAD$/;"	macro	line:2
-OVECCOUNT	time_util.c	/^#define OVECCOUNT /;"	macro	line:19
-PARSE_ERR	time_util.c	/^#define PARSE_ERR(/;"	macro	line:18
+PARSE_ERR	time_util.c	/^#define PARSE_ERR(/;"	macro	line:13
 PATH	main.c	/^#define PATH /;"	macro	line:6
+PCRE_OVECCOUNT	time_regex.h	/^#define PCRE_OVECCOUNT /;"	macro	line:4
 PLAYLISTHEAD	playlist.h	/^#define PLAYLISTHEAD$/;"	macro	line:2
 PLAYLIST_INT_LENGTH	playlist.c	/^#define PLAYLIST_INT_LENGTH /;"	macro	line:10
 PL_BOTH	media.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:21
@@ -80,12 +80,14 @@ P_VLC	media.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:25
 Pformat	media.h	/^} Pformat;$/;"	typedef	line:18
 Player	media.h	/^} Player;$/;"	typedef	line:26
 Poutput	media.h	/^} Poutput;$/;"	typedef	line:22
-REGEX_CAPURES	time_util.c	/^#define REGEX_CAPURES(/;"	macro	line:56
-REGEX_ERR	time_util.c	/^	#define REGEX_ERR /;"	macro	line:117
-REGEX_RESULT	time_util.c	/^#define REGEX_RESULT(/;"	macro	line:57
+REGEX_CAPURES	time_regex.h	/^#define REGEX_CAPURES(/;"	macro	line:43
+REGEX_ERR	time_util.c	/^	#define REGEX_ERR /;"	macro	line:74
+REGEX_RESULT	time_regex.h	/^#define REGEX_RESULT(/;"	macro	line:44
+SATURDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 SEP	tests/time_test.h	/^#define SEP /;"	macro	line:15
 STRINGUTILHEAD	string_util.h	/^#define STRINGUTILHEAD$/;"	macro	line:2
 STRING_STURCT_HEAD	string.h	/^#define STRING_STURCT_HEAD$/;"	macro	line:2
+SUNDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 S_NONE	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 S_SKIP	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 S_UPDATED	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
@@ -93,25 +95,19 @@ SpiltData	string_util.h	/^} SpiltData;$/;"	typedef	line:25
 Status	media.h	/^} Status;$/;"	typedef	line:34
 String	media.h	/^} String;$/;"	typedef	line:44
 String	ml.c	/^} String;$/;"	typedef	line:18
+THURSDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 TIMET_HELPER_HEAD	tests/time_helper.h	/^#define TIMET_HELPER_HEAD$/;"	macro	line:2
 TIMEUTILHEAD	time_util.h	/^#define TIMEUTILHEAD$/;"	macro	line:2
-TIME_SPEC_TEST	time_util.c	/^	#define TIME_SPEC_TEST(/;"	macro	line:271
+TIME_REGEX_HEAD_MA	time_regex.h	/^#define TIME_REGEX_HEAD_MA$/;"	macro	line:2
 TIME_TEST_HEDER	tests/time_test.h	/^#define TIME_TEST_HEDER$/;"	macro	line:8
 TM_ERROR_MSG	tests/time_helper.c	/^#define TM_ERROR_MSG(/;"	macro	line:6
 TRUTH_ARG	option_parser_private.h	/^#define TRUTH_ARG(/;"	macro	line:8
 TRUTH_STATE	option_parser_private.h	/^#define TRUTH_STATE(/;"	macro	line:9
 TRUTH_VALUE	option_parser_private.h	/^#define TRUTH_VALUE(/;"	macro	line:7
-T_AFTER	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:23
+TUESDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 T_AUDIO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_BEFORE	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	enumerator	line:23
 T_BOTH	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_DAYS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:22
-T_HOURS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:22
-T_MINS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:22
 T_NONE	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
-T_Pos	time_util.h	/^typedef enum {T_AFTER = 1, T_BEFORE = -1} T_Pos;$/;"	typedef	line:23
-T_SECS	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	enumerator	line:22
-T_Spec	time_util.h	/^typedef enum {T_DAYS, T_HOURS, T_MINS, T_SECS} T_Spec;$/;"	typedef	line:22
 T_VIDEO	media.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:29
 TestTime	tests/time_test.h	/^#define TestTime(/;"	macro	line:18
 TimeEndSection	tests/time_test.h	/^#define TimeEndSection\\/;"	macro	line:42
@@ -120,6 +116,7 @@ Types	media.h	/^} Types;$/;"	typedef	line:30
 VAILDATE_TM	tests/time_helper.c	/^#define VAILDATE_TM(/;"	macro	line:7
 VAILD_ASCII	option_parser_private.h	/^#define VAILD_ASCII(/;"	macro	line:10
 VIDEO	media.c	/^#define VIDEO /;"	macro	line:18
+WEDNESDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 _MediaArgs	media.h	/^struct  _MediaArgs{$/;"	struct	line:53
 __HASHTABLE_CWC22_H__	hash/hashtable.h	/^#define __HASHTABLE_CWC22_H__$/;"	macro	line:4
 __HASHTABLE_CWC22_UTILITY_H__	hash/hashtable_utility.h	/^#define __HASHTABLE_CWC22_UTILITY_H__$/;"	macro	line:4
@@ -131,10 +128,10 @@ arg	option_parser.h	/^	const char *arg;$/;"	member	line:18
 args	string_util.h	/^	char **args;$/;"	member	line:21
 block	option_parser.h	/^	VoidBlock block;$/;"	member	line:20
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
-currentTime	time_util.c	/^struct tm* currentTime() {$/;"	function	line:60
-day_diff	time_util.c	/^int day_diff(int day, int other_day) {$/;"	function	line:70
-day_future	time_util.c	/^int day_future(int day, int other_day) {$/;"	function	line:91
-day_last	time_util.c	/^int day_last(int day, int other_day) {$/;"	function	line:86
+currentTime	time_util.c	/^struct tm* currentTime() {$/;"	function	line:15
+day_diff	time_util.c	/^int day_diff(int day, int other_day) {$/;"	function	line:25
+day_future	time_util.c	/^int day_future(int day, int other_day) {$/;"	function	line:48
+day_last	time_util.c	/^int day_last(int day, int other_day) {$/;"	function	line:42
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 ele	option_parser.c	/^	#define ele(/;"	macro	line:77
 ele	option_parser.c	/^	#undef ele$/;"	macro	line:127
@@ -221,8 +218,8 @@ one_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port
 opt	option_parser.h	/^	const struct option opt;$/;"	member	line:17
 option_parser	option_parser.c	/^MediaArgs *option_parser(int argc, char **argv) {$/;"	function	line:66
 parent	hash/hashtable_itr.h	/^    struct entry *parent;$/;"	member	line:15
-parse_time	time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:96
-parse_time2	time_util.c	/^struct tm *parse_time2(char **str, int length) {$/;"	function	line:192
+parse_time	time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:53
+parse_time_spec	time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:162
 pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:65
 pl_format	media.h	/^	Pformat  pl_format;$/;"	member	line:67
 pl_name	media.h	/^	char    *pl_name;$/;"	member	line:66
@@ -265,15 +262,12 @@ sub_print_help	option_parser.c	/^static void sub_print_help(const Element *ele){
 table	hash/hashtable_private.h	/^    struct entry **table;$/;"	member	line:18
 tablelength	hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	member	line:17
 test_hash	string_util.c	/^static char *test_hash(char *s) {$/;"	function	line:110
-time_spec	time_util.c	/^const char* time_spec[][5] = {$/;"	variable	line:13
 time_test_start	tests/time_helper.c	/^bool time_test_start(char *given, struct tm* tm ){$/;"	function	line:18
 total	string_util.h	/^	int  total;$/;"	member	line:24
 truth	option_parser.c	/^#define truth(/;"	macro	line:243
 truth	option_parser.c	/^#undef truth$/;"	macro	line:289
 two_ip	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 two_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
-type_a	time_util.c	/^void type_a(char **str, int length, struct tm* tm ) {$/;"	function	line:261
-type_b	time_util.c	/^void type_b(char **str, int length, struct tm* tm ) {$/;"	function	line:322
 types	media.h	/^	Types    types; \/\/TODO types$/;"	member	line:59
 uint16_t	hash/tester.c	/^typedef unsigned short uint16_t;$/;"	typedef	line:12
 uint32_t	hash/tester.c	/^typedef unsigned int uint32_t;$/;"	typedef	line:11
