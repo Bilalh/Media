@@ -13,7 +13,7 @@
 // long tm_gmtoff; /* offset from UTC in seconds */
 
 int main (void) {
-	TimeSetup
+TimeSetup
 	
 printTitle("Relative time Basic");
 	TestTime("37 minutes ago",
@@ -256,23 +256,12 @@ printTitle("Days");
 		tm->tm_mday += day_diff(tm->tm_wday, THURSDAY);
 	})
 	TestTime("next tuesday", {
-		//FIXME 
 		tm->tm_mday += day_future(tm->tm_wday, TUESDAY);
 	})
 	TestTime("last monday", {
-		//FIXME
 		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
 	})
 TimeEndSection
 
+TimeEnd
 }
-
-// mon
-// tue
-// wed
-// thr
-// fri
-// sat
-// sun
-
-

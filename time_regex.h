@@ -1,3 +1,4 @@
+
 #ifndef TIME_REGEX_HEAD_MA
 #define TIME_REGEX_HEAD_MA
 
@@ -6,8 +7,8 @@
 // Makes a pcre object for matching regexes
 #define MAKE_REGEX(name,regex,err_action)\
 	static const pcre *pcre_##name;\
-	static const char *pcre_error_##name;\
-	static int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
+	const char *pcre_error_##name;\
+	int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
 	int pcre_res_##name = -1;\
 	\
 	pcre_##name = pcre_compile(\

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>makefile</string>
+	<string>tests/time_test.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>media </string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -21,47 +23,19 @@
 	<integer>169</integer>
 	<key>metaData</key>
 	<dict>
-		<key>makefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>38</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>string_util.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>104</integer>
-		</dict>
 		<key>tests/time_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>235</integer>
+				<integer>253</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>204</integer>
+			<integer>43</integer>
 		</dict>
 		<key>time_util.c</key>
 		<dict>
@@ -70,18 +44,17 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>113</integer>
+				<integer>134</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>113</integer>
+			<integer>122</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>tests/time_test.c</string>
-		<string>makefile</string>
 		<string>time_util.c</string>
 	</array>
 	<key>shellVariables</key>
@@ -98,7 +71,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media </key>
@@ -110,6 +83,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{596, 79}, {827, 799}}</string>
+	<string>{{585, 79}, {827, 799}}</string>
 </dict>
 </plist>

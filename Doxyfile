@@ -449,7 +449,7 @@ SORT_GROUP_NAMES       = NO
 SORT_BY_SCOPE_NAME     = NO
 
 # The GENERATE_TODOLIST tag can be used to enable (YES) or 
-# disable (NO) the todo list. This list is created by putting \todo 
+# disable (NO) the todo list. This list is created by putting \tnodo 
 # commands in the documentation.
 
 GENERATE_TODOLIST      = YES

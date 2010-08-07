@@ -77,17 +77,31 @@ struct tm *parse_time(char **str, int length) {
 		printf("%s\n", "error in pcre_compile");\
 		return tm;
 
-	// at hh:mm
-	MAKE_REGEX(at, "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
+	MAKE_REGEX(at,   "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
+	MAKE_REGEX(date, "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
 	MAKE_REGEX(ago_after, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
-	MAKE_REGEX(date_time  , "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
-	MAKE_REGEX(date       , "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
-	MAKE_REGEX(n_month    , "^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnnprrtvy][a-zA-Z]*( \\d{4})?",REGEX_ERR);
-	
+	MAKE_REGEX(date_time, "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
+	MAKE_REGEX(week_day, "^(last|near|next) [a-zA-Z]{2}[deinrtu]([a-zA-Z]{3,6})?",REGEX_ERR);
+	MAKE_REGEX(n_month  , 
+			"^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnprtvy][a-zA-Z]{0,6}( \\d{4})?"
+		,REGEX_ERR);
+
+	#define STRARR_MATCH_REGEX(regex) (MATCH_REGEX(regex, strarr[index], index_len) >= 0)
+
 	while (index < length){
 		int index_len = strlen(strarr[index]);
-		if( *strarr[index] == 'a' &&
-				MATCH_REGEX(at, strarr[index], index_len) >= 0){
+		
+		/*printf("\n\t%s\n%10s %i  %10s %i  %10s %i\n%10s %i  %10s %i  %10s %i\n",  
+			strarr[index],
+			"at",        STRARR_MATCH_REGEX(at),
+			"date",      STRARR_MATCH_REGEX(date),
+			"ago_after", STRARR_MATCH_REGEX(ago_after), 
+			"date_time", STRARR_MATCH_REGEX(date_time), 
+			"week_day",  STRARR_MATCH_REGEX(week_day),
+			"n_month",   STRARR_MATCH_REGEX(n_month)
+		);    */
+		
+		if( *strarr[index] == 'a' && STRARR_MATCH_REGEX(at)){
 			char s_hour[3]; 
 			
 			// separates  the hour part
@@ -100,11 +114,45 @@ struct tm *parse_time(char **str, int length) {
 			tm->tm_min  = strtol(&strarr[index+1][h_len+1], NULL, 10);
 			index      += 2;
 			continue; 
+		}else if ( STRARR_MATCH_REGEX(week_day) ){
 			
-		// saves using regex if it does not start with a digit	
+			int day = MONDAY; 
+			int (*day_func)(int,int) = day_last;
+			
+			// finds the day
+			switch( strarr[index+1][2] ){
+				case 'e': day = TUESDAY; 
+				break;
+				case 'd': day = WEDNESDAY; 
+				break;
+				case 'u': day = THURSDAY; 
+				break;
+				case 'i': day = FRIDAY; 
+				break;
+				case 't': day = SATURDAY; 
+				break;
+				case 'n':   
+					if ( strarr[index+1][1] == 'u' ) 
+						day = SUNDAY; 
+				break;
+			}
+			
+			// choses the funtion to use 
+			switch( strarr[index][2] ){
+				case 'a': day_func = day_diff; // TODO day_near
+				break;             
+				case 'x': day_func = day_future;
+ 			}
+			tm->tm_mday += day_func(tm->tm_wday, day);
+			
+			index++;
+			continue;
+		        
+		// saves using regex if it does not start with a digit5	
 		}else if (isdigit(*strarr[index])){
+			
 			//n (day|hour|minute) ago 
-			if( MATCH_REGEX(ago_after, strarr[index], index_len) >= 0){
+			if( STRARR_MATCH_REGEX(ago_after) ){
 				int multiplier = 1, i = index;
 				char second    = 'f'; 
 				// compares the second letter to see if it is 'g' of ago
@@ -123,17 +171,16 @@ struct tm *parse_time(char **str, int length) {
 				index++;
 				continue;
 				
-			}else if( MATCH_REGEX(date_time, strarr[index], index_len) >= 0){
+			}else if( STRARR_MATCH_REGEX(date_time) ){
 				strptime(strarr[index], "%FT%H:%M:%S", tm);
 				index++;
 				continue;
 				
-			}else if( MATCH_REGEX(date, strarr[index], index_len) >= 0){
+			}else if( STRARR_MATCH_REGEX(date) ){
 				strptime(strarr[index], "%F", tm);
 				index++;
 				continue;
-
-			}else if( MATCH_REGEX(n_month, strarr[index], index_len) >= 0){
+			}else if( STRARR_MATCH_REGEX(n_month) ){
 				// parses the month
 				strptime(strarr[index+1], "%b", tm);
 				// parses the month's day
@@ -149,9 +196,8 @@ struct tm *parse_time(char **str, int length) {
 				index += REGEX_RESULT(n_month);
 				continue;
 			}
-			
 		}
-		 
+		
 		index++;
 	}
 	

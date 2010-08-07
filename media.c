@@ -19,7 +19,6 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 
 //TODO add hash replace
-//TODO option Pasrser
 //TODO sub dirs 
 
 void media(char *path, char **args, int argc, MediaArgs *ma) {

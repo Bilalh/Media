@@ -81,12 +81,13 @@ Pformat	media.h	/^} Pformat;$/;"	typedef	line:18
 Player	media.h	/^} Player;$/;"	typedef	line:26
 Poutput	media.h	/^} Poutput;$/;"	typedef	line:22
 REGEX_CAPURES	time_regex.h	/^#define REGEX_CAPURES(/;"	macro	line:43
-REGEX_ERR	time_util.c	/^	#define REGEX_ERR /;"	macro	line:74
+REGEX_ERR	time_util.c	/^	#define REGEX_ERR /;"	macro	line:76
 REGEX_RESULT	time_regex.h	/^#define REGEX_RESULT(/;"	macro	line:44
 SATURDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 SEP	tests/time_test.h	/^#define SEP /;"	macro	line:15
 STRINGUTILHEAD	string_util.h	/^#define STRINGUTILHEAD$/;"	macro	line:2
 STRING_STURCT_HEAD	string.h	/^#define STRING_STURCT_HEAD$/;"	macro	line:2
+STR_ARR_MATCH_REGEX	time_util.c	/^	#define STR_ARR_MATCH_REGEX(/;"	macro	line:90
 SUNDAY	time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 S_NONE	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
 S_SKIP	media.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:33
@@ -130,7 +131,7 @@ block	option_parser.h	/^	VoidBlock block;$/;"	member	line:20
 create_hashtable	hash/hashtable.c	/^create_hashtable(unsigned int minsize,$/;"	function	line:29
 currentTime	time_util.c	/^struct tm* currentTime() {$/;"	function	line:15
 day_diff	time_util.c	/^int day_diff(int day, int other_day) {$/;"	function	line:25
-day_future	time_util.c	/^int day_future(int day, int other_day) {$/;"	function	line:48
+day_future	time_util.c	/^int day_future(int day, int other_day) {$/;"	function	line:49
 day_last	time_util.c	/^int day_last(int day, int other_day) {$/;"	function	line:42
 e	hash/hashtable_itr.h	/^    struct entry *e;$/;"	member	line:14
 ele	option_parser.c	/^	#define ele(/;"	macro	line:77
@@ -218,8 +219,8 @@ one_port	hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port
 opt	option_parser.h	/^	const struct option opt;$/;"	member	line:17
 option_parser	option_parser.c	/^MediaArgs *option_parser(int argc, char **argv) {$/;"	function	line:66
 parent	hash/hashtable_itr.h	/^    struct entry *parent;$/;"	member	line:15
-parse_time	time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:53
-parse_time_spec	time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:162
+parse_time	time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:55
+parse_time_spec	time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:166
 pl_dir	media.h	/^	char    *pl_dir;$/;"	member	line:65
 pl_format	media.h	/^	Pformat  pl_format;$/;"	member	line:67
 pl_name	media.h	/^	char    *pl_name;$/;"	member	line:66
