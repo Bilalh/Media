@@ -17,24 +17,26 @@ opt: history.o media.o option_parser.o playlist.o string.o string_util.o time_ut
 time: time_util.o string_util.o
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
-tstring: string_util.o tests/string_util_test.o
+# makes all tests
+all_tests: test_time
+# get rid of the main method of each test
+run_all_test: DFLAGS += -DALL_TESTS
+run_all_test: all_tests
+
+test_string: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
 
-ttime: string_util.o time_util.o tests/time_test.o tests/time_helper.o
+test_time: string_util.o time_util.o tests/time_test.o tests/time_helper.o
 	${CC} ${LIBS} ${CFLAGS}  string_util.o time_util.o time_test.o time_helper.o -o $@
 
-btest: tests/block_test.o
+test_block: tests/block_test.o
 	${CC} ${CFLAGS} block_test.o -o $@
+
 
 tempc: temp.o string_util.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable_utility.o
 	${CC} ${CFLAGS} $? -o $@
 
-# get with of the main method of each test
-tall: DFLAGS += -DALL_TESTS
-tall: ttime
-
 %.o: %.c
-	echo ${DFLAGS}
 	${CC} ${CFLAGS} ${DFLAGS}  -c $<
 
 clean:

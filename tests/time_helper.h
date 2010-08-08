@@ -1,7 +1,6 @@
-#ifndef TIMET_HELPER_HEAD
-#define TIMET_HELPER_HEAD
+#ifndef TIME_HELPER_HEADER
+#define TIME_HELPER_HEADER
 
-#include "../time_util.h"
 #include "time_test.h"
 bool time_test_start(char *given, struct tm* tm );
 	

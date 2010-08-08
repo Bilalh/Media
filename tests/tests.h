@@ -8,6 +8,7 @@
 #include <Block.h>
 #include <dispatch/dispatch.h>
 
+// struct for returning results
 typedef struct{
 	int number_of_tests;
 	int passes;
@@ -30,7 +31,8 @@ typedef struct{
 	static int NAME##_TEST_PASED = 0, NAME##_TEST_FAILED = 0, NAME##_TEST_TOTAL = 0;\
 	int NAME##_TOTAL_TESTS_PASSED = 0,  NAME##_TOTAL_TESTS_FAILED = 0, NAME##_TOTAL_TESTS = 0;
 
-// Runs all test sections, or a specify section or the last one base on the num given
+// Runs all test sections if the number is <= -2 or > the number of tests -1
+// runs the last test if -1, otherwise runs the specify test
 #define TestRun \
 int test_size = sizeof(blocks)/sizeof(blocks[0]);\
 if (test_size > 0){\
@@ -44,14 +46,22 @@ if (test_size > 0){\
 	}\
 }
 
-#define MakeTestResult(NAME) NAME##_TOTAL_TESTS_FAILED
+// Makes the results objects
+#define TestResults test_result
+#define MakeTestResult(NAME) \
+TestResult test_result = {\
+	.number_of_tests = 1,\
+	.passes          = 1,\
+	.failures        = 0\
+}
+
+// prints the test results of the section
 #define PrintTestResults(NAME)\
 	printf("\n     *******TOTAL %i, %s %i %s %i %2.1f%%*******\n\n",\
 		NAME##_TOTAL_TESTS, \
 		(NAME##_TOTAL_TESTS_FAILED == 0 ? "failed" : "FAILED"), NAME##_TOTAL_TESTS_FAILED,\
 		(NAME##_TOTAL_TESTS_PASSED  == NAME##_TOTAL_TESTS ? "Passed" : "passed"), NAME##_TOTAL_TESTS_PASSED,\
 		(float) NAME##_TOTAL_TESTS_PASSED / (float) NAME##_TOTAL_TESTS * 100 );
-
 	
 // *****Helper Macros*****
 	
@@ -74,7 +84,6 @@ if (test_size > 0){\
 		NAME##_TOTAL_TESTS_FAILED += NAME##_TEST_FAILED;\
 		NAME##_TOTAL_TESTS        += NAME##_TEST_TOTAL;\
 		NAME##_TEST_PASED = 0, NAME##_TEST_FAILED = 0, NAME##_TEST_TOTAL = 0;
-	
 #define MakeMain(NAME)\
 	int main (int argc, char const *argv[]) {\
 		long num = -2;\
@@ -84,7 +93,7 @@ if (test_size > 0){\
 				num = res;\
 			}\
 		}\
-		return NAME##_test_main(num);\
+		return NAME##_test_main(num).failures;\
 	}	
 	
 #endif

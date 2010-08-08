@@ -2,7 +2,7 @@
 #define TIME_TEST_HEADER
 #include "tests.h"
 #include "time_helper.h"
-//include unit under test (relative path)
+//Unit Under Test (relative path)
 #include "../time_util.h"
 
 static int NUM_SECTION = 0; // for Section numbering
@@ -10,7 +10,8 @@ static int NUM_SECTION = 0; // for Section numbering
 #define TimeVar               MakeVar(TIME)
 #define TimeEndSection        EndSection(TIME)
 #define TimePrintTestResults  PrintTestResults(TIME)
-#define TimeResult            MakeTestResult(TIME)
+#define TimeMakeResult        MakeTestResult(TIME)
+#define TimeResults           TestResults
 
 // Setup that is done before the test is run
 #define TimeSetup\
@@ -22,7 +23,7 @@ static int NUM_SECTION = 0; // for Section numbering
 	}
 
 // funtions to run on test data
-#define TestTime(str, tBLOCK)\
+#define TimeTest(str, tBLOCK)\
 	{\
 		struct tm *tm = currentTime();\
 		tBLOCK\
