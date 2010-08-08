@@ -9,8 +9,6 @@
 #include "time_util.h"
 #include "time_regex.h"
 
-//Maros 
-#define PARSE_ERR(str) fprintf(stderr, "invalid type %s\n",str);
 
 struct tm* currentTime() {
 	time_t tt;

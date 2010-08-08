@@ -1,5 +1,5 @@
 #include "time_test.h"
-#include "../time_util.h"
+TimeVar
 // int tm_sec;     /* seconds (0 - 60) */
 // int tm_min;     /* minutes (0 - 59) */
 // int tm_hour;    /* hours   (0 - 23) */
@@ -12,42 +12,43 @@
 // char *tm_zone;  /* abbreviation of timezone name */
 // long tm_gmtoff; /* offset from UTC in seconds */
 
-int main (void) {
+int time_test_main(int test_no) {
 TimeSetup
-	
-printTitle("Relative time Basic");
-	TestTime("37 minutes ago",
-	{
-		tm->tm_min -= 37;
-	})
-	TestTime("2 hours after",
-	{
-		tm->tm_hour += 2;
-	})
-	TestTime("1 day ago",
-	{
-		tm->tm_mday -= 1;
-	})
-	TestTime("1337 mins after",
-	{
-		tm->tm_min += 1337;
-	})
-	TestTime("978 hours ago",
-	{
-		tm->tm_hour -= 978;
-	})
-	TestTime("413 days after",
-	{
-		tm->tm_mday += 413;
-	})
+
+void (^blocks[])() = {
+Section("Relative time Basic");  
+		TestTime("37 minutes ago",
+		{
+			tm->tm_min -= 37;
+		})
+		TestTime("2 hours after",
+		{
+			tm->tm_hour += 2;
+		})
+		TestTime("1 day ago",
+		{
+			tm->tm_mday -= 1;
+		})
+		TestTime("1337 mins after",
+		{
+			tm->tm_min += 1337;
+		})
+		TestTime("978 hours ago",
+		{
+			tm->tm_hour -= 978;
+		})
+		TestTime("413 days after",
+		{
+			tm->tm_mday += 413;
+		})
 TimeEndSection
 
-printTitle("Relative time Medium");
+Section("Relative time Medium");
 	TestTime("17 minutes ago 3 hours ago",
 	{
 		tm->tm_min  -= 17;
 		tm->tm_hour -= 3;
-		
+
 	})
 	TestTime("67 minutes ago 32 days ago", {
 		tm->tm_min  -= 67;
@@ -78,7 +79,7 @@ printTitle("Relative time Medium");
 	})
 TimeEndSection
 
-printTitle("Relative time with at nn:nn");	
+Section("Relative time with at nn:nn");	
 	TestTime("3 days ago at 12:33",
 	{
 		tm->tm_min  = 33;
@@ -101,7 +102,7 @@ printTitle("Relative time with at nn:nn");
 	})
 TimeEndSection
 
-printTitle("Invalid inputs");
+Section("Invalid inputs");
 	TestTime("37 mimuts ago" ,{})
 	TestTime("2 houss after"  ,{})
 	TestTime("1 dps ago"     ,{})
@@ -113,12 +114,12 @@ printTitle("Invalid inputs");
 
 TimeEndSection
 
-printTitle("Compound Relative time");	
+Section("Compound Relative time");	
 	TestTime("17 minutes 3 hours ago",
 	{
 		tm->tm_min  -= 17;
 		tm->tm_hour -= 3;
-	
+
 	})
 	TestTime("67 minutes 32 days ago", {
 		tm->tm_min  -= 67;
@@ -149,7 +150,7 @@ printTitle("Compound Relative time");
 	})
 TimeEndSection
 
-printTitle("Full Dates");	
+Section("Full Dates");	
 	TestTime("2008-12-30T05:21:45",
 	{
 		tm->tm_year = 108;
@@ -170,13 +171,13 @@ printTitle("Full Dates");
 		tm->tm_year = 105;
 		tm->tm_mon  = 8;
 		tm->tm_mday = 14;
-		
+
 		tm->tm_hour = 5;
 		tm->tm_min  = 33;
 	})	
 TimeEndSection
 
-printTitle("Months");
+Section("Months");
 	TestTime("11th Jan", {
 		tm->tm_mon  = 0;
 		tm->tm_mday = 11;
@@ -190,56 +191,51 @@ printTitle("Months");
 	TestTime("3rd Mar", {
 		tm->tm_mon  = 2;
 		tm->tm_mday = 3;
-	
+
 	})
 	TestTime("11th Apr", {
 		tm->tm_mon  = 3;
 		tm->tm_mday = 11;
-	
+
 	})
 	TestTime("12th May 2010", {
 		tm->tm_year = 110;
 		tm->tm_mon  = 4;
 		tm->tm_mday = 12;
-	
+
 	})
 	TestTime("13rd Jun", {
 		tm->tm_mon  = 5;
 		tm->tm_mday = 13;
-	
+
 	})
-	TestTime("15th Jul", {
+	TestTime("15th Jul 2009", {
+		tm->tm_year = 109;
 		tm->tm_mon  = 6;
 		tm->tm_mday = 15;
-	
+
 	})
-	TestTime("16th July", {
-		tm->tm_mon  = 6;
-		tm->tm_mday = 16;
-	
-	})
-	TestTime("22nd Aug 2009", {
-		tm->tm_year = 109;
+	TestTime("22nd August", {
 		tm->tm_mon  = 7;
 		tm->tm_mday = 22;
-	
+
 	})
 	TestTime("31th Sep 5 mins after", {
 		tm->tm_mon  = 8;
 		tm->tm_mday = 31;
 		tm->tm_min += 5;
-	
+
 	})
 	TestTime("7th Oct 2 days ago", {
 		tm->tm_mon  = 9;
 		tm->tm_mday = 5;
-	
+
 	})
 	TestTime("19th Nov 1972", {
 		tm->tm_year = 72;
 		tm->tm_mon  = 10;
 		tm->tm_mday = 19;
-	
+
 	})
 	TestTime("1st Dec 2002 at 5:32", {
 		tm->tm_year = 102;
@@ -247,11 +243,11 @@ printTitle("Months");
 		tm->tm_mday = 1;
 		tm->tm_hour = 5;
 		tm->tm_min  = 32;
-	
+
 	})
 TimeEndSection
 
-printTitle("Days");
+Section("Days");
 	TestTime("near thursday", {
 		tm->tm_mday += day_diff(tm->tm_wday, THURSDAY);
 	})
@@ -263,5 +259,25 @@ printTitle("Days");
 	})
 TimeEndSection
 
+};
+
+TestRun
 TimeEnd
+return TimeResult;
+}
+
+#include <inttypes.h>
+#include  <errno.h>
+#include <sys/types.h>
+#include <limits.h>
+#include <stdlib.h>
+int main (int argc, char const *argv[]) {
+	long num = -2;
+	if (argc == 2){
+		int res = strtol(argv[1], NULL, 10);
+		if (errno != EINVAL && res >= -1) {
+			num = res;
+		}
+	}
+	return time_test_main(num);
 }
