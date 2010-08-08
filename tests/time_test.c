@@ -15,8 +15,8 @@ TimeVar
 int time_test_main(int test_no) {
 TimeSetup
 
-void (^blocks[])() = {
-Section("Relative time Basic");  
+Sections {
+Section("Relative time Basic")    
 		TestTime("37 minutes ago",
 		{
 			tm->tm_min -= 37;
@@ -43,7 +43,7 @@ Section("Relative time Basic");
 		})
 TimeEndSection
 
-Section("Relative time Medium");
+Section("Relative time Medium")
 	TestTime("17 minutes ago 3 hours ago",
 	{
 		tm->tm_min  -= 17;
@@ -79,7 +79,7 @@ Section("Relative time Medium");
 	})
 TimeEndSection
 
-Section("Relative time with at nn:nn");	
+Section("Relative time with at nn:nn")
 	TestTime("3 days ago at 12:33",
 	{
 		tm->tm_min  = 33;
@@ -102,7 +102,7 @@ Section("Relative time with at nn:nn");
 	})
 TimeEndSection
 
-Section("Invalid inputs");
+Section("Invalid inputs")
 	TestTime("37 mimuts ago" ,{})
 	TestTime("2 houss after"  ,{})
 	TestTime("1 dps ago"     ,{})
@@ -114,7 +114,7 @@ Section("Invalid inputs");
 
 TimeEndSection
 
-Section("Compound Relative time");	
+Section("Compound Relative time")
 	TestTime("17 minutes 3 hours ago",
 	{
 		tm->tm_min  -= 17;
@@ -150,7 +150,7 @@ Section("Compound Relative time");
 	})
 TimeEndSection
 
-Section("Full Dates");	
+Section("Full Dates")
 	TestTime("2008-12-30T05:21:45",
 	{
 		tm->tm_year = 108;
@@ -177,7 +177,7 @@ Section("Full Dates");
 	})	
 TimeEndSection
 
-Section("Months");
+Section("Months")
 	TestTime("11th Jan", {
 		tm->tm_mon  = 0;
 		tm->tm_mday = 11;
@@ -247,7 +247,7 @@ Section("Months");
 	})
 TimeEndSection
 
-Section("Days");
+Section("Days")
 	TestTime("near thursday", {
 		tm->tm_mday += day_diff(tm->tm_wday, THURSDAY);
 	})
@@ -258,26 +258,13 @@ Section("Days");
 		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
 	})
 TimeEndSection
-
 };
 
 TestRun
-TimeEnd
+TimePrintTestResults
 return TimeResult;
 }
 
-#include <inttypes.h>
-#include  <errno.h>
-#include <sys/types.h>
-#include <limits.h>
-#include <stdlib.h>
-int main (int argc, char const *argv[]) {
-	long num = -2;
-	if (argc == 2){
-		int res = strtol(argv[1], NULL, 10);
-		if (errno != EINVAL && res >= -1) {
-			num = res;
-		}
-	}
-	return time_test_main(num);
-}
+#ifndef ALL_TESTS
+MakeMain(time)
+#endif

@@ -21,7 +21,7 @@ tstring: string_util.o tests/string_util_test.o
 	${CC} ${CFLAGS} $? -o $@
 
 ttime: string_util.o time_util.o tests/time_test.o tests/time_helper.o
-	${CC} ${LIBS} ${CFLAGS} string_util.o time_util.o time_test.o time_helper.o -o $@
+	${CC} ${LIBS} ${CFLAGS}  string_util.o time_util.o time_test.o time_helper.o -o $@
 
 btest: tests/block_test.o
 	${CC} ${CFLAGS} block_test.o -o $@
@@ -29,8 +29,13 @@ btest: tests/block_test.o
 tempc: temp.o string_util.o hash/hashtable_itr.o hash/hashtable.o hash/hashtable_utility.o
 	${CC} ${CFLAGS} $? -o $@
 
+# get with of the main method of each test
+tall: DFLAGS += -DALL_TESTS
+tall: ttime
+
 %.o: %.c
-	${CC} ${CFLAGS} -c $<
+	echo ${DFLAGS}
+	${CC} ${CFLAGS} ${DFLAGS}  -c $<
 
 clean:
 	rm -f *.o *.out ${OBJ} *~
