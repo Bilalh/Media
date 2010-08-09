@@ -2,14 +2,16 @@
 require "FileUtils"
 require "Facets"    
 
-NAME  = "string";
+(puts "needs name"; exit(0))  if ARGV.length == 0
+
+NAME  = ARGV[0] ;
 TNAME = NAME.titlecase;
 LNAME = NAME.lowercase
 UNAME = NAME.upcase
 
 
-header = %{
-#ifndef #{UNAME}_TEST_HEADER
+header = 
+%{#ifndef #{UNAME}_TEST_HEADER
 #define #{UNAME}_TEST_HEADER
 #include "tests.h"
 #include "#{LNAME}_helper.h"
@@ -39,8 +41,8 @@ static int NUM_SECTION = 0; // for Section numbering
 
 }
 
-cfile = %{
-#include "#{LNAME}_test.h"
+cfile = 
+%{#include "#{LNAME}_test.h"
 #{TNAME}Var
 TestResult #{LNAME}_test_main(int test_no) {
 #{TNAME}Setup
@@ -65,8 +67,8 @@ MakeMain(#{LNAME})
 #endif
 }
 
-helper_head = %{
-#ifndef #{UNAME}_HELPER_HEADER
+helper_head = 
+%{#ifndef #{UNAME}_HELPER_HEADER
 #define #{UNAME}_HELPER_HEADER
 
 #include "#{LNAME}_test.h"
@@ -75,10 +77,15 @@ helper_head = %{
 #endif
 }
 
-helper_c = %{
-#include "#{LNAME}_helper.h"
+helper_c = 
+%{#include "#{LNAME}_helper.h"
 
 
 }
 
-# File.create("aaa",header)
+
+File.create("#{LNAME}_test.h",header)
+File.create("#{LNAME}_test.c",cfile)
+File.create("#{LNAME}_helper.h",helper_head)
+File.create("#{LNAME}_helper.c",helper_c)
+
