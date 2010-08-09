@@ -48,12 +48,11 @@ TestResult #{LNAME}_test_main(int test_no) {
 #{TNAME}Setup
 
 Sections {
-Section("Section 1")
-	#{TNAME}Test("Result",
-	{
+Section("Section 1"){
+	#{TNAME}Test("Result", {
 		// put data to calculate result here  
 	})
-#{TNAME}EndSection
+}#{TNAME}EndSection
 };
 
 TestRun

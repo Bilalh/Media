@@ -16,36 +16,35 @@ TestResult time_test_main(int test_no) {
 TimeSetup
 
 Sections {
-Section("Relative time Basic")
-	TimeTest("37 minutes ago",
-	{
+Section("Relative time Basic"){
+	TimeTest("37 minutes ago", {
 		tm->tm_min -= 37;
-	})
-	TimeTest("2 hours after",
-	{
-		tm->tm_hour += 2;
-	})
-	TimeTest("1 day ago",
-	{
-		tm->tm_mday -= 1;
-	})
-	TimeTest("1337 mins after",
-	{
-		tm->tm_min += 1337;
-	})
-	TimeTest("978 hours ago",
-	{
-		tm->tm_hour -= 978;
-	})
-	TimeTest("413 days after",
-	{
-		tm->tm_mday += 413;
-	})
-TimeEndSection
 
-Section("Relative time Medium")
-	TimeTest("17 minutes ago 3 hours ago",
-	{
+	})
+	TimeTest("2 hours after", {
+		tm->tm_hour += 2;
+
+	})
+	TimeTest("1 day ago", {
+		tm->tm_mday -= 1;
+
+	})
+	TimeTest("1337 mins after", {
+		tm->tm_min += 1337;
+
+	})
+	TimeTest("978 hours ago", {
+		tm->tm_hour -= 978;
+
+	})
+	TimeTest("413 days after", {
+		tm->tm_mday += 413;
+
+	})
+}TimeEndSection
+
+Section("Relative time Medium"){
+	TimeTest("17 minutes ago 3 hours ago", {
 		tm->tm_min  -= 17;
 		tm->tm_hour -= 3;
 
@@ -77,14 +76,14 @@ Section("Relative time Medium")
 		tm->tm_mday -= 8;
 
 	})
-TimeEndSection
+}TimeEndSection
 
-Section("Relative time with at nn:nn")
-	TimeTest("3 days ago at 12:33",
-	{
+Section("Relative time with at nn:nn"){
+	TimeTest("3 days ago at 12:33", {
 		tm->tm_min  = 33;
 		tm->tm_hour = 12;
 		tm->tm_mday -= 3;
+
 	})
 	TimeTest("9 minutes ago at 23:12", {
 		tm->tm_min  = 12;
@@ -95,14 +94,16 @@ Section("Relative time with at nn:nn")
 		tm->tm_min  = 3;
 		tm->tm_hour = 2;
 		tm->tm_mday += 9;
+
 	})	
 	TimeTest("at 2:12", {
 		tm->tm_min  = 12;
 		tm->tm_hour = 2;
-	})
-TimeEndSection
 
-Section("Invalid inputs")
+	})
+}TimeEndSection
+
+Section("Invalid inputs"){
 	TimeTest("37 mimuts ago" ,{})
 	TimeTest("2 houss after"  ,{})
 	TimeTest("1 dps ago"     ,{})
@@ -110,13 +111,13 @@ Section("Invalid inputs")
 	TimeTest("five days ago" ,{})
 	TimeTest("5 days ago at five" ,{
 		tm->tm_mday -= 5;
+
 	})
 
-TimeEndSection
+}TimeEndSection
 
-Section("Compound Relative time")
-	TimeTest("17 minutes 3 hours ago",
-	{
+Section("Compound Relative time"){
+	TimeTest("17 minutes 3 hours ago", {
 		tm->tm_min  -= 17;
 		tm->tm_hour -= 3;
 
@@ -148,36 +149,36 @@ Section("Compound Relative time")
 		tm->tm_mday -= 8;
 
 	})
-TimeEndSection
+}TimeEndSection
 
-Section("Full Dates")
-	TimeTest("2008-12-30T05:21:45",
-	{
+Section("Full Dates"){
+	TimeTest("2008-12-30T05:21:45", {
 		tm->tm_year = 108;
 		tm->tm_mon  = 11;
 		tm->tm_mday = 30;
 		tm->tm_hour = 05;
 		tm->tm_min  = 21;
 		tm->tm_sec  = 45;
+
 	})
-	TimeTest("2007-04-14",
-	{
+	TimeTest("2007-04-14", {
 		tm->tm_year = 107;
 		tm->tm_mon  = 3;
 		tm->tm_mday = 14;
+
 	})	
-	TimeTest("2005-09-14 at 5:33",
-	{
+	TimeTest("2005-09-14 at 5:33", {
 		tm->tm_year = 105;
 		tm->tm_mon  = 8;
 		tm->tm_mday = 14;
 
 		tm->tm_hour = 5;
 		tm->tm_min  = 33;
-	})	
-TimeEndSection
 
-Section("Months")
+	})	
+}TimeEndSection
+
+Section("Months"){
 	TimeTest("11th Jan", {
 		tm->tm_mon  = 0;
 		tm->tm_mday = 11;
@@ -245,19 +246,23 @@ Section("Months")
 		tm->tm_min  = 32;
 
 	})
-TimeEndSection
+}TimeEndSection
 
-Section("Days")
+Section("Days"){
 	TimeTest("near thursday", {
 		tm->tm_mday += day_diff(tm->tm_wday, THURSDAY);
+
 	})
 	TimeTest("next tuesday", {
 		tm->tm_mday += day_future(tm->tm_wday, TUESDAY);
+
 	})
 	TimeTest("last monday", {
 		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
+
 	})
-TimeEndSection
+}TimeEndSection
+
 };
 
 TestRun
