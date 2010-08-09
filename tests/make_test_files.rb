@@ -71,7 +71,8 @@ helper_head =
 #define #{UNAME}_HELPER_HEADER
 
 #include "#{LNAME}_test.h"
-//bool #{LNAME}_test_start ( ARGS );
+
+bool #{LNAME}_test_start ( type expected, type actual );
 
 #endif
 }
@@ -79,6 +80,9 @@ helper_head =
 helper_c = 
 %{#include "#{LNAME}_helper.h"
 
+bool string_test_start ( type expected, type actual ){
+	
+}
 
 }
 

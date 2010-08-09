@@ -1,7 +1,7 @@
 #ifndef MEDIAHEAD
 #define MEDIAHEAD
 #include <stdbool.h>
-
+#include "string.h"
 typedef struct _MediaArgs MediaArgs;
 
 void media(char *path, char **args,int argc, MediaArgs *opts);
@@ -37,11 +37,7 @@ typedef enum{
 	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL
 } NiceRepeat;
 
-typedef struct {
-	char *str;
-	int length;
-	int index;
-} String;
+
 
 typedef struct {
 	bool exclude;
