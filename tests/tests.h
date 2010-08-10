@@ -8,6 +8,19 @@
 #include <Block.h>
 #include <dispatch/dispatch.h>
 
+#define FAIL false
+#define PASS true
+#define PRINT_FAIL puts(" : Wrong")
+#define PRINT_PASS puts(" : correct")
+
+#define LINE_LENGTH 57 // max line length in output 
+#define LINE_REC_1  31 // recommend first  arg length 
+#define LINE_REC_2  24 // recommend second arg length 
+#define ERROR_SEP "   " // sep for error
+
+#define PrintTest(title,data)  printf("%-*s %*s", LINE_REC_1, title, LINE_REC_2, data)
+
+
 // struct for returning results
 typedef struct{
 	int number_of_tests;

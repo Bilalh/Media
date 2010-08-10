@@ -13,7 +13,7 @@
 		TM_ERROR_MSG( type, exp, act);\
 	}
 
-#define printTest(title,after,day)  printf("%-31s %-19s, %-3s : ", title,after,day )
+#define printTimeTest(title,after,day)  printf("%-31s %-19s, %-3s : ", title,after,day )
 
 bool time_test_start(char *given, struct tm* tm ){
 	
@@ -48,7 +48,7 @@ bool time_test_start(char *given, struct tm* tm ){
 	MAKE_TIME_STR(after, newt);
 	char *str_days[7] = {"Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"};
 	
-	printTest(given,after,str_days[tm->tm_wday]);
+	printTimeTest(given,after,str_days[tm->tm_wday]);
 	
 	VAILDATE_TM(tm->tm_min,  newt->tm_min,  "tm_min")	
 	VAILDATE_TM(tm->tm_hour, newt->tm_hour, "tm_hour")	
@@ -69,3 +69,4 @@ bool time_test_start(char *given, struct tm* tm ){
 	return !error;
 }
 
+#undef printTimeTest

@@ -4,6 +4,15 @@
 #include <stdarg.h>
 #include "string.h"
 
+
+void new_string(String *s, int length ){
+	if (length <= 0) length = 1;
+	s->str    = malloc(sizeof(char) * length);
+	s->str[0] ='\0';
+	s->length = length;
+	s->index  = 0;
+}
+
 // assumes the s->str is assigned by malloc
 void string_push(String *s, char *str) {
 	int str_len = strlen(str);
@@ -21,7 +30,7 @@ void string_push(String *s, char *str) {
 	printf("'%s'\n", s->str);
 }
 
-
+// assumes the s->str is assigned by malloc
 void string_push_m(String *s,int length, ...){
 	// Sets up the variable argument list
 	va_list args; 

@@ -17,11 +17,18 @@ static int NUM_SECTION = 0; // for Section numbering
 #define StringSetup
 
 // funtions to run on test data
-#define StringTest(str, tBLOCK)\
+#define StringTest(name, tBLOCK)\
 	{\
-		\
+		int test_result;\
+		StringBefore\
 		tBLOCK\
-		\
+		StringAfter(name)\
+		if (test_result){\
+			STRING_TEST_PASED++;\
+		}else{\
+			STRING_TEST_FAILED++;\
+		}\
+		STRING_TEST_TOTAL++;\
 	}
 #endif
 
