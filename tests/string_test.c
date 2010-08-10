@@ -13,14 +13,15 @@ TestResult string_test_main(int test_no) {
 StringSetup
 
 Sections {
-Section("Section 1"){
+Section("Basic Features"){
 	StringTest("Empty String", {
 		new_string(&actual,1);
 		expected = "";
 	})
-	StringTest("Empty String2", {
+	StringTest("Simple push", {
 		new_string(&actual,1);
-		expected = "s";
+		string_push(&actual, "-fs");
+		expected = " -fs";
 	})
 }StringEndSection
 

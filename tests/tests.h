@@ -8,6 +8,7 @@
 #include <Block.h>
 #include <dispatch/dispatch.h>
 
+// common macros
 #define FAIL false
 #define PASS true
 #define PRINT_FAIL puts(" : Wrong")
