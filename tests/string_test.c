@@ -18,15 +18,54 @@ Section("Basic Features"){
 		new_string(&actual,1);
 		expected = "";
 	})
-	StringTest("Simple push", {
+	StringTest("Simple Add", {
 		new_string(&actual,1);
-		string_push(&actual, "-fs");
-		expected = " -fs";
+		string_add(&actual, "-fs",false);
+		expected = "-fs";
+	})
+	StringTest("Simple Push", {
+		new_string(&actual,5);
+		string_push(&actual, "dasdasdas");
+		expected = " dasdasdas";
+	})
+	StringTest("Simple append", {
+		new_string(&actual,3);
+		string_append(&actual, "zazaz azaza");
+		expected = "zazaz azaza";
+	})
+}StringEndSection
+
+Section("Simple Multiple adds/pushes"){
+	StringTest("Add multiple", {
+		new_string(&actual,-1);
+		string_add(&actual, "-fs",false);
+		string_add(&actual, "--fast",true);
+		expected = "-fs --fast";
+	})
+	StringTest("Add multiple", {
+		new_string(&actual,13);
+		string_add(&actual, "aab",true);
+		string_add(&actual, "bbc",true);
+		string_add(&actual, "ccd",true);
+		expected = " aab bbc ccd";
+	})
+	StringTest("Add multiple push append", {
+		new_string(&actual,7);
+		string_append(&actual, "dasxsafasf safsafa");
+		string_push(&actual, "fdsfdsfdsfdsfsd");
+		expected = "dasxsafasf safsafa fdsfdsfdsfdsfsd";
+	})
+}StringEndSection
+
+Section("Multiple adds/pushes _m"){
+	StringTest("Add multiple add_m", {
+		new_string(&actual,13);
+		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		expected = " aab bbc ccd";
 	})
 }StringEndSection
 
 };
-
 TestRun
 StringPrintTestResults
 StringMakeResult;

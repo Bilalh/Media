@@ -1,5 +1,4 @@
 // #define DEBUG
-
 #ifdef DEBUG
 #define dprintf(fmt, ...) \
 		printf("%s:%i%s", __FILE__, __LINE__,"   ");\
