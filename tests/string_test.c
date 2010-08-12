@@ -1,13 +1,17 @@
 #include "string_test.h"
 StringVar
 
+// Setup that is done onces before the tests are run
+#define StringSetup 
+
+// Setup that is done before each test
 #define StringBefore \
 	char *expected;\
 	String actual;
 
 // test_result must be a true value for true and false otherwise
 #define StringAfter(name) \
-	test_result=string_test_start (name, expected, &actual);
+	test_result = string_test_start (name, expected, &actual);
 
 TestResult string_test_main(int test_no) {
 StringSetup
