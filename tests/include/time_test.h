@@ -3,7 +3,7 @@
 #include "tests.h"
 #include "time_helper.h"
 //Unit Under Test (relative path)
-#include "../time_util.h"
+#include "time_util.h"
 
 static int NUM_SECTION = 0; // for Section numbering
 // Standard Macros 

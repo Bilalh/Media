@@ -103,7 +103,6 @@ TestResult test_result = {\
 		long num = -2;\
 		if (argc == 2){\
 			int res = strtol(argv[1], NULL, 10);\
-			// checks for vaild values if any 
 			if (errno != EINVAL && res >= -1) {\
 				num = res;\
 			}\

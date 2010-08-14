@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+
 #include <libxml/encoding.h>
 
 #include "playlist.h"

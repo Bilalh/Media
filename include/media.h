@@ -1,7 +1,7 @@
 #ifndef MEDIAHEAD
 #define MEDIAHEAD
 #include <stdbool.h>
-#include "string.h"
+#include "string_buffer.h"
 typedef struct _MediaArgs MediaArgs;
 
 void media(char *path, char **args,int argc, MediaArgs *opts);
@@ -74,10 +74,10 @@ struct  _MediaArgs{
 	
 	
 	// Players
-	Player  player;
-	bool    afloat;
-	String  prefix_args;
-	String  postfix_args;
+	Player   player;
+	bool     afloat;
+	String   prefix_args;
+	String   postfix_args;
 		
 	//Nice Player
 	NiceRepeat nice_repeat;

@@ -1,7 +1,7 @@
 #ifndef STRING_STURCT_HEAD
 #define STRING_STURCT_HEAD
 
-#include "stdbool.h"
+#include <stdbool.h>
 
 typedef struct {
 	char *str;
@@ -11,7 +11,7 @@ typedef struct {
 
 
 void new_string(String *s, int length );
-void string_add(String *s, char *str, bool add_space);
+void string_add(String *s, char *str, bool add_space_before);
 void string_add_m(String *s, bool add_space, int length, ...);
 
 // add the space before adding the string

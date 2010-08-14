@@ -1,11 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
-//#include <regex.h>
-#include <pcre.h>
-#include <pcreposix.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <ctype.h>
+
+//#include <regex.h>
+#include <pcre.h>
+#include <pcreposix.h>
+
 #include "string_util.h"
 
 /// \brief return the char before the number and the last char before after the text

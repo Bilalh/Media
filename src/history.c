@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include <sqlite3.h>
+#include <libxml/tree.h>
+
 #include "history.h"
 #include "string_util.h"
-#include <libxml/tree.h>
+
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 bool updateHistory(char **filenames) {
 

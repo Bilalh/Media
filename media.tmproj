@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tests/tests.h</string>
+	<string>build/Makefile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -11,79 +11,83 @@
 			<true/>
 			<key>name</key>
 			<string>media</string>
+			<key>regexFileFilter</key>
+			<string>!(/\.(?!htaccess)[^/]*|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>162</integer>
+	<integer>165</integer>
 	<key>metaData</key>
 	<dict>
-		<key>tests/string_helper.h</key>
+		<key>Readme</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>tests/string_test.c</key>
+		<key>build/Makefile</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>42</integer>
-		</dict>
-		<key>tests/string_test.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>17</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>tests/tests.h</key>
+		<key>src/String1.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>43</integer>
+				<integer>15</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>41</integer>
+			<integer>15</integer>
+		</dict>
+		<key>src/media.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>tests/string_test.c</string>
-		<string>tests/string_test.h</string>
-		<string>tests/tests.h</string>
-		<string>tests/string_helper.h</string>
+		<string>src/String1.c</string>
+		<string>src/media.c</string>
+		<string>build/Makefile</string>
+		<string>Readme</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -99,7 +103,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -108,7 +112,14 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>tests</key>
+				<key>build</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -119,6 +130,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{641, 74}, {802, 803}}</string>
+	<string>{{410, 75}, {802, 803}}</string>
 </dict>
 </plist>

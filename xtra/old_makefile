@@ -3,7 +3,7 @@ CFLAGS    = -g -Wall ${INCLUDES}
 INCLUDES  = -I./hash -I/usr/include/libxml2 -I/opt/local/include
 LIBS      = -lsqlite3 -lxml2 -lcurl -L/opt/local/lib -lpcre
 OBJ       = media ml test tempc opt
-MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o string.o string_util.o  time_util.o
+MEDIA_OBJ = history.o main.o media.o option_parser.o playlist.o String.o string_util.o  time_util.o
 
 media: ${MEDIA_OBJ}
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
@@ -11,7 +11,7 @@ media: ${MEDIA_OBJ}
 ml: ml.o string_util.o
 	${CC} ${LIBS} ${CFlAGS} -o $@ $^
 
-opt: history.o media.o option_parser.o playlist.o string.o string_util.o time_util.o 
+opt: history.o media.o option_parser.o playlist.o String.o string_util.o time_util.o 
 	${CC} ${LIBS} ${CFLAGS} -o $@ $^
 
 
@@ -24,7 +24,7 @@ run_all_test: all_tests
 test_time: string_util.o time_util.o  tests/time_test.o tests/time_helper.o
 	${CC} ${LIBS} ${CFLAGS}  $^ -o $@
 
-test_string: string.o tests/string_test.o tests/string_helper.o
+test_string: String.o tests/string_test.o tests/string_helper.o
 	${CC} ${LIBS} ${CFLAGS}  $^ -o $@
 
 

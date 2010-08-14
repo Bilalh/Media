@@ -1,5 +1,6 @@
 #include <string.h>
-#include "string_helper.h"
+
+#include "include/string_helper.h"
 
 #define StringPrintTest(title,data)  \
 	printf("%-*s '%-*s'", LINE_REC_1, title, LINE_REC_2-2, data)

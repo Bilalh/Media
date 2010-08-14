@@ -5,10 +5,10 @@
 #include <string.h>
 
 #include <pcre.h>
+
 #include "string_util.h"
 #include "time_util.h"
 #include "time_regex.h"
-
 
 struct tm* currentTime() {
 	time_t tt;
