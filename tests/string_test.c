@@ -11,7 +11,7 @@ StringVar
 
 // test_result must be a true value for true and false otherwise
 #define StringAfter(name) \
-	test_result = string_test_start (name, expected, &actual);
+	test_result = string_test_start (name, &actual, expected );
 
 TestResult string_test_main(int test_no) {
 StringSetup
@@ -70,6 +70,7 @@ Section("Multiple adds/pushes _m"){
 }StringEndSection
 
 };
+
 TestRun
 StringPrintTestResults
 StringMakeResult;

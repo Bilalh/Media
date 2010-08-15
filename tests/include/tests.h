@@ -98,6 +98,7 @@ TestResult test_result = {\
 		NAME##_TOTAL_TESTS_FAILED += NAME##_TEST_FAILED;\
 		NAME##_TOTAL_TESTS        += NAME##_TEST_TOTAL;\
 		NAME##_TEST_PASED = 0, NAME##_TEST_FAILED = 0, NAME##_TEST_TOTAL = 0;
+// Makes a main method unless a running all tests at once 
 #define MakeMain(NAME)\
 	int main (int argc, char const *argv[]) {\
 		long num = -2;\

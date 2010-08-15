@@ -12,7 +12,7 @@
 		printf("%s%-14s: %i \n" , ERROR_SEP, "act->length", S->length );
 		
 
-bool string_test_start (char *name, char *expected, String *actual ){
+bool string_test_start (char *name, String *actual, char *expected  ){
 	if (actual->length <0 || actual->index <0 ) {
 		StringPrintTest(name,"");
 		STRING_TEST_FAIL(actual,expected);
@@ -24,7 +24,8 @@ bool string_test_start (char *name, char *expected, String *actual ){
 		STRING_TEST_FAIL(actual,expected);
 	}
 	
-	StringPrintTest(name,  length < LINE_REC_2-2 ? actual->str : "" );
+	
+	StringPrintTest(name,  strlen(actual->str) < LINE_REC_2-2 ? actual->str : "" );
 	PRINT_PASS;
 	return PASS;
 }

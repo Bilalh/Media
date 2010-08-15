@@ -3,6 +3,7 @@
 
 #include "string_test.h"
 #include "string_buffer.h"
-bool string_test_start (char *name, char *expected, String *actual );
+
+bool string_test_start ( char *name, String *actual, char *expected );
 
 #endif

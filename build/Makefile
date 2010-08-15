@@ -10,12 +10,15 @@ objs        =
 # sets the include path 
 vpath %.c ../src 
 vpath %.h ../include/
+# Rules for tests
+include ../tests/tests.mk
 
 opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o time_util.o 
 	${compile} ${libs} ${flags} -o $@ $^
 
-# Rules for tests
-include ../tests/tests.mk 
+all_tests: ${ALL_TEST}
+	@echo "Built all tests"
+
 # Makes all files required by tests  
 test_%: ../tests/%_test.o ../tests/%_helper.o
 	${compile} ${libs} ${flags}  ${^F} -o $@
