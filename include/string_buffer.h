@@ -10,8 +10,31 @@ typedef struct {
 } String;
 
 
-void new_string(String *s, int length );
+/**
+ * @brief Creates new String Objec with index 0. 
+ * The char pointer is asigned by malloc
+ *
+ * @param s A pointer to a String
+ * @param length The starting length
+ */
+void new_string(String *s, int length);
+
+/**
+ * @brief Copies the char array into the String
+ *
+ * @param s The String object to copy to
+ * @param str The array to copy from
+ * @param add_space_before If true a space is added by before
+ */
 void string_add(String *s, char *str, bool add_space_before);
+/**
+ * @brief Copies the char array into the String
+ *
+ * @param s The String object to copy to
+ * @param add_space_before If true a space is added by before
+ * @param length the number of char array to copy 
+ * @param ... the char arrays
+ */
 void string_add_m(String *s, bool add_space, int length, ...);
 
 // add the space before adding the string

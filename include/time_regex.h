@@ -4,7 +4,13 @@
 
 #define PCRE_OVECCOUNT 18    /* should be a multiple of 3 */
 
-// Makes a pcre object for matching regexes
+/**
+ * @brief Makes a pcre object for matching regexes
+ *
+ * @param name The name 
+ * @param regex  The regex
+ * @param err_action The action to carry out on error
+ */
 #define MAKE_REGEX(name,regex,err_action)\
 	static const pcre *pcre_##name;\
 	const char *pcre_error_##name;\
@@ -24,7 +30,13 @@
 		err_action\
 	}
 
-// checks if a string matches the a regex compiled by MAKE_REGEX
+/**
+ * @brief Checks if a string matches the a regex compiled by MAKE_REGEX
+ *
+ * @param name the name of the pcre
+ * @param str the string to check
+ * @param length the length of the string
+ */
 #define MATCH_REGEX(name, str, length)\
 	(pcre_res_##name = pcre_exec(\
 			 pcre_##name,           /* the compiled pattern */\
@@ -37,11 +49,26 @@
 			 PCRE_OVECCOUNT         /* number of elements in the output vector */\
 	))
 	
-// Frees all resources of the regex
+/**
+ * @brief Frees all resources of pcre object
+ *
+ * @param name the name
+ */
 #define FREE_REGEX(name) pcre_free(pcre_##name)
 
-// Get the nth capture (the index in the string that the it starts)
+/**
+ * @brief Gets the nth capture (the index in the string that the it starts)
+ *
+ * @param name the name of pcre 
+ * @param index the index to get
+ */
 #define REGEX_CAPURES(name,index) pcre_ovector_##name[index]
+
+/**
+ * @brief Get the result of the last match on the pcre 
+ *
+ * @param name the name of the pcre
+ */
 #define REGEX_RESULT(name) pcre_res_##name
 
 #endif

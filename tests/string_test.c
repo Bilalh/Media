@@ -62,6 +62,21 @@ Section("Simple Multiple adds/pushes"){
 }StringEndSection
 
 Section("Multiple adds/pushes _m"){
+	StringTest("multiple add_m", {
+		new_string(&actual,13);
+		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		expected = " aab bbc ccd";
+	})
+	StringTest("multiple add_m", {
+		new_string(&actual,13);
+		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		expected = " aab bbc ccd";
+	})
+	StringTest("Add multiple add_m", {
+		new_string(&actual,13);
+		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		expected = " aab bbc ccd";
+	})
 	StringTest("Add multiple add_m", {
 		new_string(&actual,13);
 		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
