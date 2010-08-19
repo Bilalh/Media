@@ -8,6 +8,7 @@
 #include <Block.h>
 #include <dispatch/dispatch.h>
 
+
 // common macros
 #define FAIL false
 #define PASS true
@@ -30,7 +31,7 @@ typedef struct{
 } TestResult;
 
 // Sets up a test section
-#define Section(title) ^{ PrintTitleN(title)
+#define StartSection(title,num) ^{ PrintTitleN(title,num)
 #define EndSection(NAME) \
 	EndPrintReset(NAME)\
 	SectionEnd
@@ -83,9 +84,9 @@ TestResult test_result = {\
 // Printing Section titles
 #define SEP "-------------------------------------------------------------------"
 #define PrintTitle(title) printf("\n%s\n%s\n%s\n",SEP,title,SEP)
-#define PrintTitleN(title) \
-	printf("\n%s\n%i: %s\n%s\n", SEP,NUM_SECTION,title,SEP);\
-	NUM_SECTION++;	
+#define PrintTitleN(title,num) \
+	printf("\n%s\n%i: %s\n%s\n", SEP,num,title,SEP);\
+	num++;
 
 // print the section results and reset the counter.
 #define EndPrintReset(NAME)\

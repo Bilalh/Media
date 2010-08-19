@@ -5,8 +5,9 @@
 //Unit Under Test (relative path)
 #include "time_util.h"
 
-static int NUM_SECTION = 0; // for Section numbering
+static int TIME_NUM_SECTION = 0; // for Section numbering
 // Standard Macros 
+#define Section(title)        StartSection(title,TIME_NUM_SECTION) 
 #define TimeVar               MakeVar(TIME)
 #define TimeEndSection        EndSection(TIME)
 #define TimePrintTestResults  PrintTestResults(TIME)

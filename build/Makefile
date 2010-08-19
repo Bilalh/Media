@@ -12,7 +12,8 @@ vpath %.h ../include/
 # Rules for tests
 include ../tests/tests.mk
 
-all_tests: ${ALL_TEST}
+all_tests: ${ALL_TEST} ../tests/all_tests.o
+	${compile} ${libs} ${flags} $(filter %.o,${^F}) -o $@
 	@echo "Built all tests : ${ALL_TEST}"
 
 # Makes all files required by tests  
