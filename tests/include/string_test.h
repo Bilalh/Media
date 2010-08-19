@@ -26,6 +26,6 @@ static int NUM_SECTION = 0; // for Section numbering
 		}\
 		STRING_TEST_TOTAL++;\
 	}
+
+TestResult string_test_main(int test_no);
 #endif
-
-

@@ -47,8 +47,9 @@ static int NUM_SECTION = 0;
 		}\\
 		#{UNAME}_TEST_TOTAL++;\\
 	}
-#endif
 
+TestResult #{LNAME}_test_main(int test_no);
+#endif
 
 }
 
@@ -86,9 +87,6 @@ TestRun
 return #{TNAME}Results;
 }
 
-#ifndef ALL_TESTS
-MakeMain(#{LNAME})
-#endif
 }
 
 helper_head = 
@@ -120,7 +118,7 @@ bool #{TNAME}_test_start ( char *name, TYPE actual, TYPE expected ){
 	}
 	
 	#{TNAME}PrintTest(name,  
-		strlen(actual->str) < LINE_REC_2-2 ? actual->str : "" 
+		strlen(actual->str) < LINE_REC_2 ? actual->str : "" 
 	);
 
 	PRINT_PASS

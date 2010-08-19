@@ -1,6 +1,5 @@
 CC          = gcc
 CFLAGS      = -g -Wall
-
 compile     = ${CC} -std=gnu99 -fblocks
 flags       = ${CFLAGS} ${includes} -I../include -I../src
 includes    = -I/opt/local/include -I/usr/include/libxml2 
@@ -13,18 +12,23 @@ vpath %.h ../include/
 # Rules for tests
 include ../tests/tests.mk
 
-opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o time_util.o 
-	${compile} ${libs} ${flags} -o $@ $^
-
 all_tests: ${ALL_TEST}
-	@echo "Built all tests"
+	@echo "Built all tests : ${ALL_TEST}"
 
 # Makes all files required by tests  
-test_%: ../tests/%_test.o ../tests/%_helper.o
+test_%: ../tests/%_test.o ../tests/%_helper.o %_wrapper.o
 	${compile} ${libs} ${flags}  ${^F} -o $@
+
+# makes main method
+%_wrapper.c:
+	./make_wrapper.sh "$@" "../tests/include/"
 
 %.o: %.c
 	${compile} ${flags} ${DFLAGS}  -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* ${objs} *~
+	rm -f *.o *.out test_* *_wrapper.c *_wrapper.o  ${objs} *~
+
+
+opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o time_util.o 
+	${compile} ${libs} ${flags} -o $@ $^

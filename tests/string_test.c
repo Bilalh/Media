@@ -92,6 +92,3 @@ StringMakeResult;
 return StringResults;
 }
 
-#ifndef ALL_TESTS
-MakeMain(string)
-#endif

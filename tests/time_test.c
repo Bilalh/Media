@@ -270,7 +270,3 @@ TimePrintTestResults
 TimeMakeResult;
 return TimeResults;
 }
-
-#ifndef ALL_TESTS
-MakeMain(time)
-#endif

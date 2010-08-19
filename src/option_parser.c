@@ -294,16 +294,16 @@ void print_media_args(MediaArgs *ma) {
 #undef print_hex
 }
 
-int main (int argc, char **argv) {
-
-	option_parser(argc, argv);
-	
-	if (optind < argc) {
-		printf ("non-option ARGV-elements: ");
-		while (optind < argc)
-			printf ("%s ", argv[optind++]);
-		printf ("\n");
-	}
-	
-	return 0;
-}
+// int main (int argc, char **argv) {
+// 
+// 	option_parser(argc, argv);
+// 	
+// 	if (optind < argc) {
+// 		printf ("non-option ARGV-elements: ");
+// 		while (optind < argc)
+// 			printf ("%s ", argv[optind++]);
+// 		printf ("\n");
+// 	}
+// 	
+// 	return 0;
+// }

@@ -36,5 +36,5 @@ static int NUM_SECTION = 0; // for Section numbering
 		TIME_TEST_TOTAL++;\
 	}
 
+TestResult time_test_main(int test_no);
 #endif
-

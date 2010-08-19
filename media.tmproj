@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/time_util.h</string>
+	<string>tests/opt_helper.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -12,47 +12,17 @@
 			<key>name</key>
 			<string>media</string>
 			<key>regexFileFilter</key>
-			<string>!(/\.(?!htaccess)[^/]*|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
+			<string>!(/\.(?!htaccess)[^/]*|[ec]?tags|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>165</integer>
+	<integer>197</integer>
 	<key>metaData</key>
 	<dict>
-		<key>build/Makefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>include/time_util.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>src/media.c</key>
 		<dict>
 			<key>caret</key>
@@ -67,11 +37,54 @@
 			<key>firstVisibleLine</key>
 			<integer>1</integer>
 		</dict>
+		<key>tests/include/opt_helper.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tests/opt_helper.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tests/opt_test.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>build/Makefile</string>
-		<string>include/time_util.h</string>
+		<string>tests/opt_test.c</string>
+		<string>tests/opt_helper.c</string>
+		<string>tests/include/opt_helper.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -79,7 +92,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>value</key>
-			<string>temp|doc|tests|.tex|.html</string>
+			<string>temp|doc|tests|.tex|.html|.xml|tags|.txt|e?xtra</string>
 			<key>variable</key>
 			<string>TM_CTAGS_EXCLUDES</string>
 		</dict>
@@ -87,7 +100,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -96,6 +109,20 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>build</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>doc</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>include</key>
 				<dict>
 					<key>isExpanded</key>
@@ -114,6 +141,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{597, 75}, {802, 803}}</string>
+	<string>{{405, 63}, {990, 815}}</string>
 </dict>
 </plist>
