@@ -134,12 +134,12 @@ File.create("include/#{LNAME}_helper.h",helper_head)
 File.create("#{LNAME}_helper.c",helper_c)
 
 mk_arr = File.read_list("tests.mk")
-if (mk_arr.grep Regexp.new "test_#{LNAME}").size == 0 then
-	mk_arr[0] += " test_#{LNAME}"
-	mk_arr.push "test_#{LNAME}: "
+if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
+	mk_arr[0] += " #{LNAME}"
+	mk_arr.insert 3,  "test_#{LNAME}_req = "
 else
 	puts "Rules has already been added to make file"
 end
 
-mk_arr.sort!
+mk_arr[3..-6].sort!
 File.writelines("tests.mk",mk_arr)

@@ -1,7 +1,11 @@
-ALL_TEST = test_time test_string 
-#test_opt
-all_tests: string_test.o string_helper.o time_test.o time_helper.o 
-all_tests: string_buffer.o string_util.o time_util.o
-test_opt: 
-test_string: string_buffer.o
-test_time:   string_util.o time_util.o
+names = time string
+tests = $(addprefix test_, ${names})
+
+test_opt_req    = 
+test_string_req = string_buffer.o
+test_time_req   = string_util.o time_util.o
+
+# Makes the test_% : ${test_%_req}
+$(foreach name,${names},$(eval test_${name}:${test_${name}_req}))
+all_tests: $(foreach name,${names},${name}_test.o ${name}_helper.o )
+all_tests: $(foreach name,${names},${test_${name}_req})
