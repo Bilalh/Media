@@ -1,6 +1,57 @@
 #!/usr/bin/env ruby1.9
+# encoding: UTF-8
 require "FileUtils"
 require "Facets"    
+
+class Array
+# nicely align
+	def align()
+		def alternation(*s); s.map(&Regexp.method(:escape)).join("|") end
+
+		# All input is read here.
+		lines = self
+		is_selection = true
+		current_line = 0
+
+		# Magic happens here.
+		# assignment_operators: There's love for C, ruby, perl, python, javascript, java, even pascal. Hash/Dict assignment included too.
+		# troubleMakers: non-assignment operators that could match as assigment.
+		assignment_operators = %w( = -= += /= //= %= *= **= ^= |= &= ||= &&= <<= >>= >>>= .= x= := ::= => )
+		troubleMakers = %w( <= >= <=> == === != =~ )
+		troubleMakers_before = troubleMakers.map { |s| s[/^(.+)=/, 1] }.compact.uniq
+		troubleMakers_after = troubleMakers.map { |s| s[/=(.+)$/, 1] }.compact.uniq
+		rx_assignment_line = %r[
+		(^.*?) # capture 1 — everything before assignment
+		( \s* # capture 2 — assignment operator with surrounding spaces
+		(?<! #{alternation(*troubleMakers_before)} )
+		( (?: #{alternation(*assignment_operators)} ) # capture 3 — assignment operator
+		| :(?!\w|:) ) # special handling for the ':' assignment op (yaml, javascript, etc)
+		(?! #{alternation(*troubleMakers_after )} )
+		\s* )
+		]x
+
+		l0, lf = [0, lines.length.pred]
+		l0, lf = begin # try to look up assignment block since we're not in a selection
+		  ix0 = ixf = %w[ to_i succ pred ].map do |m|
+		  	 current_line.send(m) 
+		  end.find do |ix| 
+		  	lines[ix] =~ rx_assignment_line
+		  end.to_i # assignment must exist in either this line, next, or previous
+		  ix0 = ix0.pred while ix0 > l0 && lines[ix0.pred] =~ rx_assignment_line # extend scope to assignments immediately above
+		  ixf = ixf.succ while ix0 < lf && lines[ixf.succ] =~ rx_assignment_line # extend scope to assignments immediately below
+		  [ix0, ixf]
+		end unless is_selection
+
+		match_lines = lines[l0..lf].map { |s| [s.match(rx_assignment_line), s] }.select { |m, s| m }
+		len_leftside = match_lines.map { |m, s| m.begin(2) }.max
+		len_operator = match_lines.map { |m, s| m[3].length }.max
+
+		match_lines.each do |m, s|
+			 s.replace [m[1].ljust(len_leftside), m[3].rjust(len_operator), m.post_match].join(" ")
+		end
+		return lines
+	end
+end
 
 
 (puts "needs name"; exit(0))  if ARGV.length == 0
@@ -133,7 +184,7 @@ File.create("#{LNAME}_test.c",cfile)
 File.create("include/#{LNAME}_helper.h",helper_head)
 File.create("#{LNAME}_helper.c",helper_c)
 
-mk_arr = File.read_list("tests.mk")
+mk_arr = File.read("tests.mk").split("\n")
 if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
 	mk_arr[0] += " #{LNAME}"
 	mk_arr.insert 3,  "test_#{LNAME}_req = "
@@ -141,5 +192,5 @@ else
 	puts "Rules has already been added to make file"
 end
 
-mk_arr[3..-6].sort!
+mk_arr[3..-6] = mk_arr[3..-6].align.sort!
 File.writelines("tests.mk",mk_arr)
