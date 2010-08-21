@@ -90,7 +90,7 @@ static int #{UNAME}_NUM_SECTION = 0;
 #define #{TNAME}Test(name, tBLOCK)\\
 	{\\
 		bool test_result;\\
-		#{TNAME}before\\
+		#{TNAME}Before\\
 		tBLOCK\\
 		#{TNAME}After(name)\\
 		if (test_result){\\
@@ -181,7 +181,6 @@ bool #{TNAME}_test_start ( char *name, TYPE actual, TYPE expected ){
 
 }
 
-
 File.create("include/#{LNAME}_test.h",header)
 File.create("#{LNAME}_test.c",cfile)
 File.create("include/#{LNAME}_helper.h",helper_head)
@@ -190,10 +189,10 @@ File.create("#{LNAME}_helper.c",helper_c)
 mk_arr = File.read("tests.mk").split("\n")
 if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
 	mk_arr[0] += " #{LNAME}"
-	mk_arr.insert 3,  "test_#{LNAME}_req = "
+	mk_arr.insert 4,  "test_#{LNAME}_req = "
 
 
-mk_arr[3..-6] = mk_arr[3..-6].align.sort!
+mk_arr[4..-6] = mk_arr[4..-6].align.sort!
 File.writelines("tests.mk",mk_arr)
 
 test_def = File.read("include/all_tests.def").split("\n")
@@ -204,11 +203,5 @@ File.writelines "include/all_tests.def", test_def
 
 else
 	puts "Rules has already been added to make file" 
-
 end
-
-
-
-
-
 

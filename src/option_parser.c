@@ -5,8 +5,8 @@
 #include <sys/ioctl.h>
 
 #include "option_parser.h"
-#include "string.h"
 #include "option_parser_private.h"
+#include "string.h"
 
 static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
@@ -167,7 +167,7 @@ void print_help(char *arg){
 			sub_print_help(&HELP_LINK[i].links[j]);
 		}
 	}
-
+ 
 }
 
 // prints the element
@@ -236,7 +236,7 @@ static void sub_print_help(const Element *ele){
 		hh[h_num] = '\0';
 		printf(h_exp, "", "",hh);
 		h_cur += h_num;
-	}
+	} 
 }
 
 // prints the media_args struct

@@ -1,9 +1,9 @@
 #ifndef OPTIONPHEAD
 #define OPTIONPHEAD
-#include "media.h"
 #include <getopt.h>
 #include <stdbool.h>
 #include <Block.h>
+#include "media_args.h"
 
 #define NO_SHORT_OPT 0
 typedef void (^VoidBlock)();
