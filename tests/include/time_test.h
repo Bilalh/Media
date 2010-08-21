@@ -6,7 +6,9 @@
 #include "time_util.h"
 
 static int TIME_NUM_SECTION = 0; // for Section numbering
+
 // Standard Macros 
+#undef  Section
 #define Section(title)        StartSection(title,TIME_NUM_SECTION) 
 #define TimeVar               MakeVar(TIME)
 #define TimeEndSection        EndSection(TIME)
@@ -35,6 +37,7 @@ static int TIME_NUM_SECTION = 0; // for Section numbering
 			TIME_TEST_FAILED++;\
 		}\
 		TIME_TEST_TOTAL++;\
+		free(tm);\
 	}
 
 TestResult time_test_main(int test_no);

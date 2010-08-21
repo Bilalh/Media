@@ -128,7 +128,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	#undef ele
 }
 
-// prints the help, b∂section or letter if specifed
+// prints the help, section or letter if specifed
 void print_help(char *arg){
 	
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
@@ -293,17 +293,3 @@ void print_media_args(MediaArgs *ma) {
 #undef print_args
 #undef print_hex
 }
-
-// int main (int argc, char **argv) {
-// 
-// 	option_parser(argc, argv);
-// 	
-// 	if (optind < argc) {
-// 		printf ("non-option ARGV-elements: ");
-// 		while (optind < argc)
-// 			printf ("%s ", argv[optind++]);
-// 		printf ("\n");
-// 	}
-// 	
-// 	return 0;
-// }

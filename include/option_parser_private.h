@@ -142,7 +142,7 @@ const Element H_mplayer[] = {
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push(&ma->prefix_args, TRUTH_ARG(ch,"-fs", "-nofs") );
 		}
-	},
+ 	},
 	{  
 		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument}, 
 		.help  = "Makes the window afloat",

@@ -1,6 +1,11 @@
 #include "include/all_tests.h"
 
-int main (int argc, char const *argv[]) {
+/**
+ * @brief Runs all the test and shows results
+ *
+ * @return 
+ */
+int main (void) {
 	
 	TestResult (*tests[]) (int test_no) ={
 		ALL_TESTS

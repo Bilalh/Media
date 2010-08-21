@@ -72,9 +72,11 @@ header =
 #include "#{LNAME}_helper.h"
 
 // for Section numbering
-static int NUM_SECTION = 0; 
+static int #{UNAME}_NUM_SECTION = 0; 
 
 // Standard Macros 
+#undef  Section
+#define Section(title)            StartSection(title,#{UNAME}_NUM_SECTION)
 #define #{TNAME}Var               MakeVar(#{UNAME})
 #define #{TNAME}EndSection        EndSection(#{UNAME})
 #define #{TNAME}PrintTestResults  PrintTestResults(#{UNAME})
@@ -105,7 +107,7 @@ TestResult #{LNAME}_test_main(int test_no);
 }
 
 cfile = 
-%{#include "#{LNAME}_test.h"
+%{#include "include/#{LNAME}_test.h"
 #{TNAME}Var
 
 // Setup that is done once before the tests are run
@@ -147,13 +149,14 @@ helper_head =
 #include "#{LNAME}_test.h"
 // Include all files under test here
 
+
 bool #{LNAME}_test_start ( char *name, TYPE actual, TYPE expected );
 
 #endif
 }
 
 helper_c = 
-%{#include "#{LNAME}_helper.h"
+%{#include "include/#{LNAME}_helper.h"
 
 #define #{TNAME}PrintTest(title,data)  PrintTest(title,data)
 #define #{UNAME}_TEST_FAIL(actual,exp) PRINT_FAIL; #{UNAME}_SHOW_FAIL_DATA(actual,exp); return FAIL

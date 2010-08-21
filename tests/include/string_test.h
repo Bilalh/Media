@@ -3,9 +3,11 @@
 #include "tests.h"
 #include "string_helper.h"
 
-static int STRING_NUM_SECTION = 0; // for Section numbering
+// for Section numbering
+static int STRING_NUM_SECTION = 0; 
 
 // Standard Macros
+#undef  Section
 #define Section(title)          StartSection(title,STRING_NUM_SECTION) 
 #define StringVar               MakeVar(STRING)
 #define StringEndSection        EndSection(STRING)

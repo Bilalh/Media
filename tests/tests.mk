@@ -1,7 +1,7 @@
 names = string time
 tests = $(addprefix test_, ${names})
 
-test_opt_req    = 
+test_opt_req    = option_parser.o
 test_string_req = string_buffer.o
 test_time_req   = string_util.o time_util.o
 
