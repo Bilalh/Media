@@ -188,9 +188,24 @@ mk_arr = File.read("tests.mk").split("\n")
 if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
 	mk_arr[0] += " #{LNAME}"
 	mk_arr.insert 3,  "test_#{LNAME}_req = "
-else
-	puts "Rules has already been added to make file"
-end
+
 
 mk_arr[3..-6] = mk_arr[3..-6].align.sort!
 File.writelines("tests.mk",mk_arr)
+
+test_def = File.read("include/all_tests.def").split("\n")
+test_def.insert -3, "#{LNAME}_test_main,\\"
+
+test_def[3..-3] = test_def[3..-3].sort!
+File.writelines "include/all_tests.def", test_def
+
+else
+	puts "Rules has already been added to make file" 
+
+end
+
+
+
+
+
+

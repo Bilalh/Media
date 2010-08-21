@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 #include <Block.h>
 #include <dispatch/dispatch.h>
 
@@ -25,9 +26,10 @@
 
 // struct for returning results
 typedef struct{
-	int number_of_tests;
-	int passes;
-	int failures;
+	int  number_of_tests;
+	int  passes;
+	int  failures;
+	char *name;
 } TestResult;
 
 // Sets up a test section
@@ -65,14 +67,17 @@ if (test_size > 0){\
 #define TestResults test_result
 #define MakeTestResult(NAME) \
 TestResult test_result = {\
-	.number_of_tests = 1,\
-	.passes          = 1,\
-	.failures        = 0\
-}
+	.number_of_tests = NAME##_TOTAL_TESTS,\
+	.passes          = NAME##_TOTAL_TESTS_PASSED,\
+	.failures        = NAME##_TOTAL_TESTS_FAILED,\
+	.name            = strdup(__func__)\
+};\
+test_result.name[strlen(test_result.name)-5] = '\0';
+
 
 // prints the test results of the section
 #define PrintTestResults(NAME)\
-	printf("\n     *******TOTAL %i, %s %i %s %i %2.1f%%*******\n\n",\
+	printf("\n     *******TOTAL %2i, %s %2i %s %2i %2.1f%%*******\n\n",\
 		NAME##_TOTAL_TESTS, \
 		(NAME##_TOTAL_TESTS_FAILED == 0 ? "failed" : "FAILED"), NAME##_TOTAL_TESTS_FAILED,\
 		(NAME##_TOTAL_TESTS_PASSED  == NAME##_TOTAL_TESTS ? "Passed" : "passed"), NAME##_TOTAL_TESTS_PASSED,\
@@ -85,12 +90,12 @@ TestResult test_result = {\
 #define SEP "-------------------------------------------------------------------"
 #define PrintTitle(title) printf("\n%s\n%s\n%s\n",SEP,title,SEP)
 #define PrintTitleN(title,num) \
-	printf("\n%s\n%i: %s\n%s\n", SEP,num,title,SEP);\
+	printf("\n%s\n%2i: %s\n%s\n", SEP,num,title,SEP);\
 	num++;
 
 // print the section results and reset the counter.
 #define EndPrintReset(NAME)\
-	printf("\n\t****Total %i, %s %i %s %i %2.1f%%****\n",\
+	printf("\n\t****Total %2i, %s %2i %s %2i %2.1f%%****\n",\
 		NAME##_TEST_TOTAL, \
 		(NAME##_TEST_FAILED == 0 ? "failed" : "FAILED"), NAME##_TEST_FAILED,\
 		(NAME##_TEST_PASED  == NAME##_TEST_TOTAL ? "Passed" : "passed"), NAME##_TEST_PASED,\

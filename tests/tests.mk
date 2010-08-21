@@ -1,4 +1,4 @@
-names = time string
+names = string time
 tests = $(addprefix test_, ${names})
 
 test_opt_req    = 

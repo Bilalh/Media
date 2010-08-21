@@ -18,11 +18,9 @@ opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o 
 include ../tests/tests.mk
 
 all_tests: ${tests} ../tests/all_tests.o
-	echo "req ${req}"
 	${compile} ${libs} ${flags} $(filter %.o,${^F}) -o $@
-	@echo "Built all tests : ${ALL_TEST}"
+	@echo "Built all tests : ${tests}"
 
-# Makes all files required by tests  
 test_%: ../tests/%_test.o ../tests/%_helper.o %_wrapper.o 
 	${compile} ${libs} ${flags}  ${^F} -o $@
 

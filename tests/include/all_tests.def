@@ -1,0 +1,7 @@
+#ifndef ALL_TESTS_DEF
+#define ALL_TESTS_DEF
+#define ALL_TESTS \
+string_test_main,\
+time_test_main\
+
+#endif
