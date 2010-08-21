@@ -160,9 +160,9 @@ helper_c =
 
 #define #{TNAME}PrintTest(title,data)  PrintTest(title,data)
 #define #{UNAME}_TEST_FAIL(actual,exp) PRINT_FAIL; #{UNAME}_SHOW_FAIL_DATA(actual,exp); return FAIL
-#define #{UNAME}_SHOW_FAIL_DATA(actual,exp) \\
-		printf("%s%-14s: '%s'\\n", ERROR_SEP, "expected", exp );\\
-		printf("%s%-14s: '%s'\\n", ERROR_SEP, "act->str", actual->str);
+#define #{UNAME}_SHOW_FAIL_DATA(actual,exp) ;
+	//printf("%s%-14s: '%s'\\n", ERROR_SEP, "expected", exp );\\
+	//printf("%s%-14s: '%s'\\n", ERROR_SEP, "act->str", actual->str);
 
 bool #{TNAME}_test_start ( char *name, TYPE actual, TYPE expected ){
 	
@@ -175,7 +175,7 @@ bool #{TNAME}_test_start ( char *name, TYPE actual, TYPE expected ){
 		strlen(actual->str) < LINE_REC_2 ? actual->str : "" 
 	);
 
-	PRINT_PASS
+	PRINT_PASS;
 	return PASS;
 }
 
@@ -189,10 +189,9 @@ File.create("#{LNAME}_helper.c",helper_c)
 mk_arr = File.read("tests.mk").split("\n")
 if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
 	mk_arr[0] += " #{LNAME}"
-	mk_arr.insert 4,  "test_#{LNAME}_req = "
+	mk_arr.insert 3,  "#{LNAME}_req = "
 
-
-mk_arr[4..-6] = mk_arr[4..-6].align.sort!
+mk_arr[3..-6] = mk_arr[3..-6].align.sort!
 File.writelines("tests.mk",mk_arr)
 
 test_def = File.read("include/all_tests.def").split("\n")

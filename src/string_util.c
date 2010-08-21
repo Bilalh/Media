@@ -4,13 +4,11 @@
 #include <stdarg.h>
 #include <ctype.h>
 
-//#include <regex.h>
 #include <pcre.h>
 #include <pcreposix.h>
 
 #include "string_util.h"
 
-/// \brief return the char before the number and the last char before after the text
 char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
@@ -35,8 +33,6 @@ char** ep_num(char *s) {
 	return ans;
 }
 
-// could always be 1
-/// \brief Non zero on match, 0 on any error
 int match(const char *string, char *pattern) {
 	int    status;
 	regex_t    re;
@@ -49,7 +45,6 @@ int match(const char *string, char *pattern) {
 
 }
 
-/// \brief Concatenates the array with separator and adds the ending to the end
 char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
@@ -86,7 +81,6 @@ char *spilt_args(char **arr, int length, char *separator, char *ending ) {
 	return final_str;
 }
 
-/// \brief Replaces the substring sub with rep in the first len charaters of s.
 char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);

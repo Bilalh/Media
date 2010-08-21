@@ -1,4 +1,4 @@
-CC          = gcc
+CC          = clang
 CFLAGS      = -g -Wall
 compile     = ${CC} -std=gnu99 -fblocks
 flags       = ${CFLAGS} ${includes} -I../include -I../src

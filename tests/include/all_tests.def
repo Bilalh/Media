@@ -1,7 +1,9 @@
 #ifndef ALL_TESTS_DEF
 #define ALL_TESTS_DEF
 #define ALL_TESTS \
+opt_test_main,\
 string_test_main,\
+strutil_test_main,\
 time_test_main\
 
 #endif

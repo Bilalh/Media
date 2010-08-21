@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tests/opt_helper.c</string>
+	<string>tests/make_test_files.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,87 +20,17 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>180</integer>
+	<integer>174</integer>
 	<key>metaData</key>
 	<dict>
-		<key>include/option_parser.h</key>
+		<key>tests/make_test_files.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>144</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>138</integer>
-		</dict>
-		<key>src/media.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1</integer>
-		</dict>
-		<key>tests/include/opt_helper.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>tests/opt_helper.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>tests/opt_test.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>15</integer>
+				<integer>131</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -110,11 +40,7 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>tests/opt_helper.c</string>
-		<string>tests/opt_test.c</string>
-		<string>include/option_parser.h</string>
-		<string>include/option_parser_private.h</string>
-		<string>tests/include/opt_helper.h</string>
+		<string>tests/make_test_files.rb</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -139,13 +65,6 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>include</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
@@ -157,6 +76,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{581, 74}, {868, 804}}</string>
+	<string>{{611, 71}, {821, 806}}</string>
 </dict>
 </plist>
