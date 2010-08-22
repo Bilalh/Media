@@ -11,8 +11,7 @@ objs        = all_tests
 vpath %.c ../src 
 vpath %.h ../include/
 
-opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o time_util.o 
-	${compile} ${libs} ${flags} -o $@ $^
+all_tests:
 
 # Rules for tests
 include ../tests/tests.mk

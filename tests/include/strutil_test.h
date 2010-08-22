@@ -8,15 +8,14 @@ static int STRUTIL_NUM_SECTION = 0;
 
 // Standard Macros 
 #undef  Section
-#define Section(title)           StartSection(title,STRUTIL_NUM_SECTION)
-#define StrutilVar               MakeVar(STRUTIL)
-#define StrutilEndSection        EndSection(STRUTIL)
-#define StrutilPrintTestResults  PrintTestResults(STRUTIL)
-#define StrutilMakeResult        MakeTestResult(STRUTIL)
-#define StrutilResults           TestResults
-
-// Setup that is done before the test is run
-#define StrutilSetup
+#define Section(title)              StartSection(title,STRUTIL_NUM_SECTION)
+#define StrutilAdd(test_result)     TestEndAdd(STRUTIL,test_result)
+#define StrutilEndSection           EndSection(STRUTIL)
+#define StrutilMakeResult           MakeTestResult(STRUTIL)
+#define StrutilPrintTestResults     PrintTestResults(STRUTIL)
+#define StrutilResults              TestResults
+#define StrutilTestM(_name, tBLOCK) TestManual(Strutil, _name, tBLOCK)
+#define StrutilVar                  MakeVar(STRUTIL)
 
 // function to run on test data
 #define StrutilTest(_name, tBLOCK)\
@@ -28,28 +27,6 @@ static int STRUTIL_NUM_SECTION = 0;
 		StrutilAfter(_name)\
 		StrutilAdd(test_result)\
 	}
-
-#define StrutilTestM(_name, tBLOCK)\
-	{\
-		char *name = _name;\
-		bool test_result;\
-		StrutilPrintTest(_name,"");\
-		tBLOCK\
-		if ( test_result ){\
-			PRINT_PASS;\
-		}else{\
-			PRINT_FAIL;\
-		}\
-		StrutilAdd(test_result)\
-	}
-
-#define StrutilAdd(test_result) \
-	if (test_result){\
-		STRUTIL_TEST_PASED++;\
-	}else{\
-		STRUTIL_TEST_FAILED++;\
-	}\
-	STRUTIL_TEST_TOTAL++;
 
 TestResult strutil_test_main(int test_no);
 #endif

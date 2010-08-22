@@ -16,12 +16,26 @@
 #define PRINT_FAIL puts(" : Wrong")
 #define PRINT_PASS puts(" : correct")
 
-#define LINE_LENGTH 57 // max line length in output 
-#define LINE_REC_1  31 // recommend first  arg length 
-#define LINE_REC_2  24 // recommend second arg length 
+#define LINE_LENGTH 57  // max line length in output 
+#define LINE_REC_1  31  // recommend first  arg length 
+#define LINE_REC_2  24  // recommend second arg length 
 #define ERROR_SEP "   " // sep for error
 
-#define PrintTest(title,data)  printf("%-*s %*s", LINE_REC_1, title, LINE_REC_2, data)
+#define PrintTest(title,data)       PrintTestV(title,data,"s","s")
+#define PrintTesti(title,data)      PrintTestV(title,data,"s","i")
+#define PrintTestii(title,data)     PrintTestV(title,data,"i","i")
+#define PrintRes \
+	if (test_result){\
+		PRINT_PASS;\
+	}else{\
+		PRINT_FAIL;\
+	}
+
+
+// e.g first ="s"  means  "%-*s"
+
+#define PrintTestV(title,data,first,sec)  \
+	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
 
 // struct for returning results
@@ -74,7 +88,6 @@ TestResult test_result = {\
 };\
 test_result.name[strlen(test_result.name)-5] = '\0';
 
-
 // prints the test results of the section
 #define PrintTestResults(NAME)\
 	printf("\n     *******TOTAL %2i, %s %2i %s %2i %2.1f%%*******\n\n",\
@@ -83,8 +96,8 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 		(NAME##_TOTAL_TESTS_PASSED  == NAME##_TOTAL_TESTS ? "Passed" : "passed"), NAME##_TOTAL_TESTS_PASSED,\
 		(float) NAME##_TOTAL_TESTS_PASSED / (float) NAME##_TOTAL_TESTS * 100 );
 	
-// *****Helper Macros*****
 	
+// *****Helper Macros*****
 	
 // Printing Section titles
 #define SEP "-------------------------------------------------------------------"
@@ -92,6 +105,22 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 #define PrintTitleN(title,num) \
 	printf("\n%s\n%2i: %s\n%s\n", SEP,num,title,SEP);\
 	num++;
+
+#define TestEndAdd(NAME, test_result) \
+	if (test_result){\
+		NAME##_TEST_PASED++;\
+	}else{\
+		NAME##_TEST_FAILED++;\
+	}\
+	NAME##_TEST_TOTAL++;
+
+#define TestManual(NAME, _name, tBLOCK)\
+	{\
+		char *name = _name;\
+		bool test_result;\
+		tBLOCK\
+		NAME##Add(test_result)\
+	}
 
 // print the section results and reset the counter.
 #define EndPrintReset(NAME)\
@@ -104,6 +133,7 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 		NAME##_TOTAL_TESTS_FAILED += NAME##_TEST_FAILED;\
 		NAME##_TOTAL_TESTS        += NAME##_TEST_TOTAL;\
 		NAME##_TEST_PASED = 0, NAME##_TEST_FAILED = 0, NAME##_TEST_TOTAL = 0;
+
 // Makes a main method unless a running all tests at once 
 #define MakeMain(NAME)\
 	int main (int argc, char const *argv[]) {\

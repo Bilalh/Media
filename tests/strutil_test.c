@@ -12,8 +12,7 @@ StrutilVar
 // test_result must be a true value for true and false otherwise
 #define StrutilAfter(name) \
 	test_result = strutil_test_start (name, actual, expected);\
-
-	// free(actual);
+	free(actual);
 
 TestResult strutil_test_main(int test_no) {
 StrutilSetup
@@ -60,11 +59,14 @@ Section("str_replace"){
 		actual   = str_replace(actual, strlen(actual),"cpp", "c plus plus");
 		expected = "c plus plus|ruby";
 	})
-	StrutilTestM("aa",{
+}StrutilEndSection
+
+Section("ep_num"){
+	StrutilTestM("a - 1",{
 		test_result = false;
-		
+		PrintTesti(name,33);
+		PrintRes;
 	})
-	
 }StrutilEndSection
 
 };
