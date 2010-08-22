@@ -60,6 +60,11 @@ Section("str_replace"){
 		actual   = str_replace(actual, strlen(actual),"cpp", "c plus plus");
 		expected = "c plus plus|ruby";
 	})
+	StrutilTestM("aa",{
+		test_result = false;
+		
+	})
+	
 }StrutilEndSection
 
 };

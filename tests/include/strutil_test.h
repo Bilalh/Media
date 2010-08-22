@@ -26,13 +26,30 @@ static int STRUTIL_NUM_SECTION = 0;
 		StrutilBefore\
 		tBLOCK\
 		StrutilAfter(_name)\
-		if (test_result){\
-			STRUTIL_TEST_PASED++;\
-		}else{\
-			STRUTIL_TEST_FAILED++;\
-		}\
-		STRUTIL_TEST_TOTAL++;\
+		StrutilAdd(test_result)\
 	}
+
+#define StrutilTestM(_name, tBLOCK)\
+	{\
+		char *name = _name;\
+		bool test_result;\
+		StrutilPrintTest(_name,"");\
+		tBLOCK\
+		if ( test_result ){\
+			PRINT_PASS;\
+		}else{\
+			PRINT_FAIL;\
+		}\
+		StrutilAdd(test_result)\
+	}
+
+#define StrutilAdd(test_result) \
+	if (test_result){\
+		STRUTIL_TEST_PASED++;\
+	}else{\
+		STRUTIL_TEST_FAILED++;\
+	}\
+	STRUTIL_TEST_TOTAL++;
 
 TestResult strutil_test_main(int test_no);
 #endif

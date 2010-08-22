@@ -1,6 +1,5 @@
 #include "include/strutil_helper.h"
 
-#define StrutilPrintTest(title,data)  PrintTest(title,data)
 #define STRUTIL_TEST_FAIL(actual,exp) PRINT_FAIL; STRUTIL_SHOW_FAIL_DATA(actual,exp); return FAIL
 #define STRUTIL_SHOW_FAIL_DATA(actual,exp) \
 	printf("%s%-14s: '%s'\n", ERROR_SEP, "expected", exp );\

@@ -3,8 +3,8 @@
 
 #include "strutil_test.h"
 #include "string_util.h"
-// Include all files under test here
 
+#define StrutilPrintTest(title,data)  PrintTest(title,data)
 bool strutil_test_start ( char *name, char *actual, char *expected);
 
 #endif
