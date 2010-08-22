@@ -4,10 +4,13 @@
 
 
 /**
- * @brief return the char before the number and the last char before after the text
+ * @brief Gets the postion of 
  *
- * @param s - string with a number at the end.
- * @return The number at the end
+ * @param s - String with a number at the end.
+ * @return [0] - The index before the number starts
+ *         [1] - ans[index - NAME + 1] gives the length of the name part
+ *               where index = 0 unless [1] is not null
+ *         [0] == NULL - Number not found
  */
 char** ep_num(char *s);
 

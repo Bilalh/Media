@@ -1,17 +1,20 @@
 CC          = gcc
 CFLAGS      = -g -Wall
 compile     = ${CC} -std=gnu99 -fblocks
-flags       = ${CFLAGS} ${includes} -I../include -I../src
+flags       = ${CFLAGS} ${includes} -I../include -I../src -I ../lib/hash
 includes    = -I/opt/local/include -I/usr/include/libxml2 
 libs        = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
 objs        = all_tests
 
 
 # sets the include path 
-vpath %.c ../src 
+vpath %.c ../src ../lib/hash
 vpath %.h ../include/
 
 all_tests:
+
+tempc: temp.o string_util.o hashtable_itr.o hashtable.o hashtable_utility.o
+	${compile} ${libs} ${flags} $? -o $@
 
 # Rules for tests
 include ../tests/tests.mk

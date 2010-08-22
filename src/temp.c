@@ -50,19 +50,20 @@ int main (int argc, char  *argv[]) {
 		struct key *k = malloc(sizeof(struct key));
 
 		long l = 1;
+		int index;
 		if (ans[0] != NULL) {
 			l = strtol(ans[0] + 1, NULL, 10);
 			
 			if (l == 0 ) l++;
 
-			int index = ans[1] != NULL ? 1 : 0;
+			index = ans[1] != NULL ? 1 : 0;
 			strncpy(s, strings[i], ans[index] - strings[i]);
 		} else {
 			strcpy(s, strings[i]);
 		}
 		str_last = s;
 
-		printf("num: %li\n", l);
+		printf("num: %li, index: %i\n", l, index);
 		printf("str: %s. org: %s\n", s, strings[i]);
 
 		k->str  = (unsigned char*)s;

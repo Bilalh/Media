@@ -61,11 +61,33 @@ Section("str_replace"){
 	})
 }StrutilEndSection
 
+
 Section("ep_num"){
-	StrutilTestM("a - 1",{
-		test_result = false;
-		PrintTesti(name,33);
-		PrintRes;
+	StrutilTestM("Toindex - 4.avi",{
+		long expected = 4l;
+		long num;
+		char **ans = ep_num(name);
+		if (ans[0] != NULL) {
+			num = strtol(ans[0] + 1, NULL, 10);
+			if (num == 0 ) num++;
+
+			int index = ans[1] != NULL ? 1 : 0;
+			char s[ans[index] - name + 1]; // 1 for \0
+			strncpy(s, name, ans[index] - name);
+			s[ans[index] - name] = '\0';
+			
+			if (num == expected){
+				PrintTesti(name,num);
+				PRINT_PASS;
+			}
+		}
+		
+		if (! test_result){
+			PrintTest(name,"");
+			test_result = false;
+			PRINT_FAIL;
+		}
+		
 	})
 }StrutilEndSection
 

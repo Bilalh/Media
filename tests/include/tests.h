@@ -21,6 +21,7 @@
 #define LINE_REC_2  24  // recommend second arg length 
 #define ERROR_SEP "   " // sep for error
 
+
 #define PrintTest(title,data)       PrintTestV(title,data,"s","s")
 #define PrintTesti(title,data)      PrintTestV(title,data,"s","i")
 #define PrintTestii(title,data)     PrintTestV(title,data,"i","i")
@@ -31,14 +32,19 @@
 		PRINT_FAIL;\
 	}
 
-
-// e.g first ="s"  means  "%-*s"
-
+/**
+ * @brief Print the test name and extra data
+ *
+ * @param title The title 
+ * @param data  Extra data to print
+ * @param first printf type 
+ * @param second printf type 
+**/
 #define PrintTestV(title,data,first,sec)  \
 	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
 
-// struct for returning results
+//;// struct for returning results
 typedef struct{
 	int  number_of_tests;
 	int  passes;
@@ -106,6 +112,7 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 	printf("\n%s\n%2i: %s\n%s\n", SEP,num,title,SEP);\
 	num++;
 
+// Adds 1 to counters 
 #define TestEndAdd(NAME, test_result) \
 	if (test_result){\
 		NAME##_TEST_PASED++;\
@@ -114,13 +121,20 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 	}\
 	NAME##_TEST_TOTAL++;
 
+// makes name, test_result and adds to counters
 #define TestManual(NAME, _name, tBLOCK)\
+	MakeTest(NAME, _name, tBLOCK,,)
+
+#define MakeTest(NAME, _name, tBLOCK, BEFORE, AFTER)\
 	{\
+		BEFORE\
 		char *name = _name;\
-		bool test_result;\
+		bool test_result = true;\
 		tBLOCK\
+		AFTER\
 		NAME##Add(test_result)\
 	}
+
 
 // print the section results and reset the counter.
 #define EndPrintReset(NAME)\
@@ -134,7 +148,7 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 		NAME##_TOTAL_TESTS        += NAME##_TEST_TOTAL;\
 		NAME##_TEST_PASED = 0, NAME##_TEST_FAILED = 0, NAME##_TEST_TOTAL = 0;
 
-// Makes a main method unless a running all tests at once 
+// Makes a main method unless a running all tests at once allows -1 for last section
 #define MakeMain(NAME)\
 	int main (int argc, char const *argv[]) {\
 		long num = -2;\

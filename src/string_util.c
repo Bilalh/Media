@@ -7,6 +7,7 @@
 #include <pcre.h>
 #include <pcreposix.h>
 #include "string_util.h"
+#include "debug.h"
 
 static char *test_hash(char *s);
 
@@ -23,7 +24,7 @@ char** ep_num(char *s) {
 			index++;
 		} else if(index == 1 && !(*s == ' ' || ispunct(*s) ) ) {
 			if( *(s + 1) == ' ' || ispunct(*(s + 1)) ) {
-				printf("s :%c: \tc2 :%c: \n", *s, *(s + 1));
+				dprintf("s :%c: \tc2 :%c: \n", *s, *(s + 1));
 				// so that  (ans[index] - s) give number of char in the name
 				ans[index] = s + 1;
 				break;

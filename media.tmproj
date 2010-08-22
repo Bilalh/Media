@@ -20,42 +20,42 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>189</integer>
+	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
-		<key>tests/include/tests.h</key>
+		<key>src/temp.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>34</integer>
+				<integer>59</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7</integer>
+			<integer>37</integer>
 		</dict>
 		<key>tests/strutil_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>64</integer>
+				<integer>71</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>39</integer>
+			<integer>59</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>tests/strutil_test.c</string>
-		<string>tests/include/tests.h</string>
+		<string>src/temp.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -88,13 +88,6 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
@@ -107,20 +100,12 @@
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
-					<dict>
-						<key>include</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
+					<dict/>
 				</dict>
 			</dict>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{638, 74}, {802, 804}}</string>
+	<string>{{992, 183}, {834, 810}}</string>
 </dict>
 </plist>
