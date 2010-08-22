@@ -172,7 +172,7 @@ bool #{TNAME}_test_start ( char *name, TYPE actual, TYPE expected ){
 	}
 	
 	#{TNAME}PrintTest(name,  
-		strlen(actual->str) < LINE_REC_2 ? actual->str : "" 
+		strlen(actual->str) <= LINE_REC_2 ? actual->str : "" 
 	);
 
 	PRINT_PASS;

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tests/make_test_files.rb</string>
+	<string>src/string_util.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,27 +20,57 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>174</integer>
+	<integer>189</integer>
 	<key>metaData</key>
 	<dict>
-		<key>tests/make_test_files.rb</key>
+		<key>include/string_util.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>131</integer>
+				<integer>62</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>25</integer>
+		</dict>
+		<key>src/string_util.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>48</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+		</dict>
+		<key>tests/strutil_test.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>63</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>tests/make_test_files.rb</string>
+		<string>tests/strutil_test.c</string>
+		<string>src/string_util.c</string>
+		<string>include/string_util.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -56,7 +86,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -65,6 +95,20 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>build</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>src</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
@@ -76,6 +120,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{611, 71}, {821, 806}}</string>
+	<string>{{638, 74}, {802, 804}}</string>
 </dict>
 </plist>

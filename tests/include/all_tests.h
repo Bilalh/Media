@@ -3,6 +3,8 @@
 
 #include "string_test.h"
 #include "time_test.h"
+#include "opt_test.h"
+#include "strutil_test.h"
 #include "all_tests.def"
 
 typedef struct {

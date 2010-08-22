@@ -8,7 +8,7 @@ static int STRUTIL_NUM_SECTION = 0;
 
 // Standard Macros 
 #undef  Section
-#define Section(title)            StartSection(title,STRUTIL_NUM_SECTION)
+#define Section(title)           StartSection(title,STRUTIL_NUM_SECTION)
 #define StrutilVar               MakeVar(STRUTIL)
 #define StrutilEndSection        EndSection(STRUTIL)
 #define StrutilPrintTestResults  PrintTestResults(STRUTIL)
@@ -19,12 +19,13 @@ static int STRUTIL_NUM_SECTION = 0;
 #define StrutilSetup
 
 // function to run on test data
-#define StrutilTest(name, tBLOCK)\
+#define StrutilTest(_name, tBLOCK)\
 	{\
+		char *name = _name;\
 		bool test_result;\
 		StrutilBefore\
 		tBLOCK\
-		StrutilAfter(name)\
+		StrutilAfter(_name)\
 		if (test_result){\
 			STRUTIL_TEST_PASED++;\
 		}else{\

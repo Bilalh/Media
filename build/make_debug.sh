@@ -8,7 +8,7 @@ if [ -n "$2" ]; then
 		make clean
 	fi
 	
-	clear &&  echo "make $1" && make $1 && ./$1 $3
+	clear &&  echo "make $1" && make ${FLAGS} $1 && ./$1 $3
 else
 
 clear && echo "make $1" && make $1 -n | \

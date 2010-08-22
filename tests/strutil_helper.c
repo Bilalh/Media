@@ -6,17 +6,22 @@
 	printf("%s%-14s: '%s'\n", ERROR_SEP, "expected", exp );\
 	printf("%s%-14s: '%s'\n", ERROR_SEP, "actual", actual);
 
-bool strutil_test_start ( char *name, char *actual){
-	
-	if ( strcmp(name,actual) != 0 ){
+bool strutil_test_start ( char *name, char *actual, char *expected){
+
+	if (actual <0 || actual <0 ) {
 		StrutilPrintTest(name,"");
-		STRUTIL_TEST_FAIL(actual,name);
+		STRUTIL_TEST_FAIL(actual,expected);
+	}
+	
+	if ( strcmp(expected,actual) != 0 ){
+		StrutilPrintTest(name,"");
+		STRUTIL_TEST_FAIL(actual, expected);
 	}
 	
 	StrutilPrintTest(name,  
-		strlen(actual) < LINE_REC_2 ? actual : "" 
+		strlen(actual) <= LINE_REC_2 ? actual : "" 
 	);
-
+	
 	PRINT_PASS;
 	return PASS;
 }

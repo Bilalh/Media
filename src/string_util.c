@@ -6,8 +6,9 @@
 
 #include <pcre.h>
 #include <pcreposix.h>
-
 #include "string_util.h"
+
+static char *test_hash(char *s);
 
 char** ep_num(char *s) {
 	char *start  = s;
@@ -45,12 +46,12 @@ int match(const char *string, char *pattern) {
 
 }
 
-char *spilt_args(char **arr, int length, char *separator, char *ending ) {
+char *spilt_args(char **arr, size_t length, char *separator, char *ending ) {
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
 	// expand each element
 	for (int i = 0; i < length; ++i) {
-		sd_arr[i] = spilt_func(arr[i]);
+		sd_arr[i] = str_spilt_func(arr[i]);
 		total += sd_arr[i]->total;
 	}
 
@@ -103,16 +104,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep) {
 	return r;
 }
 
-static char *test_hash(char *s) {
-	if (strcmp(s, "fma" ) == 0) {
-		return strdup("full metal");
-	} else {
-		return strdup(s);
-	}
-
-}
-
-SpiltData *spilt_func(char *s) {
+SpiltData *str_spilt_func(char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	int  *res_len = malloc(sizeof(int) * 5);
@@ -145,7 +137,7 @@ SpiltData *spilt_func(char *s) {
 	sd->length    = i;
 	sd->lengths   = res_len;
 	sd->total     = total;
-	return sd;
+	return sd; 
 }
 
 // not used
@@ -174,10 +166,21 @@ char *str_spilt_replace(char *s) {
 	return NULL;
 }
 
-char *str_lower(char *s, int length) {
-	char *re = malloc(sizeof(char) * length);
+char *str_lower(char *s, size_t length) {
+	
+	char *re = malloc(sizeof(char) * length +1);
 	char *r  = re;
 	while(( *r++ = tolower(*s++) )) ;
 	*r = '\0';
+
 	return re;
+}
+
+static char *test_hash(char *s) {
+	if (strcmp(s, "fma" ) == 0) {
+		return strdup("full metal");
+	} else {
+		return strdup(s);
+	}
+
 }
