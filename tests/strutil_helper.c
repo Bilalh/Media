@@ -46,8 +46,8 @@ bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){
 		}else{
 			PRINT_NAME_FAIL(name);
 			eprintf("expected string: '%s'\n",  exp_str );
-			eprintf("expected number:  %li\n",   exp_int );
 			eprintf("  actual string: '%s'\n",  str );
+			eprintf("expected number:  %li\n",   exp_int );
 			eprintf("  actual number:  %li\n",   num );
 			
 		}

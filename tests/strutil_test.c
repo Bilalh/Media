@@ -21,6 +21,7 @@ StrutilVar
 		char  *exp_str;                             \
 		int    exp_int;                             \
 		,                                           \
+		test_result =                              \
 		ep_num_test(name, actual, exp_int, exp_str);\
 		free(actual);                               \
 	);
@@ -77,10 +78,40 @@ Section("ep_num"){
 	StrutilTestM("Toindex - 4.avi",{
 		test_result = ep_num_test(name, ep_num(name), 4, "Toindex");		
 	})
-	StrutilTestEp("AAAA - 1.mkv",{
+	StrutilTestEp("AAA - 1.mkv",{
 		actual  = ep_num(name);
 		exp_str = "AAAA";
 		exp_int = 1;
+	})
+	StrutilTestEp("aaa - 1.mkv",{
+		actual  = ep_num(name);
+		exp_str = "aaa";
+		exp_int = 1;
+	})
+	StrutilTestEp("dsdsd - 32.mkv",{
+		actual  = ep_num(name);
+		exp_str = "dsdsd";
+		exp_int = 32;
+	})
+	StrutilTestEp("Zs - 322.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Zs";
+		exp_int = 322;
+	})
+	StrutilTestEp("zs - 322.mkv",{
+		actual  = ep_num(name);
+		exp_str = "zs";
+		exp_int = 322;
+	})
+	StrutilTestEp("T - 32.mkv",{
+		actual  = ep_num(name);
+		exp_str = "T";
+		exp_int = 32;
+	})
+	StrutilTestEp("t - 22.mkv",{
+		actual  = ep_num(name);
+		exp_str = "t";
+		exp_int = 22;
 	})
 }StrutilEndSection
 
