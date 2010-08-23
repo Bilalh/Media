@@ -24,7 +24,9 @@
 
 #define PrintTest(title,data)       PrintTestV(title,data,"s","s")
 #define PrintTesti(title,data)      PrintTestV(title,data,"s","i")
+#define PrintTestl(title,data)      PrintTestV(title,data,"s","li")
 #define PrintTestii(title,data)     PrintTestV(title,data,"i","i")
+#define PrintTestll(title,data)     PrintTestV(title,data,"li","li")
 #define PrintRes \
 	if (test_result){\
 		PRINT_PASS;\
@@ -43,6 +45,8 @@
 #define PrintTestV(title,data,first,sec)  \
 	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
+#define eprintf(FMT, args...) printf("%s"FMT, ERROR_SEP,## args );
+#define PRINT_NAME_FAIL(title) PrintTest(title, ""); PRINT_FAIL
 
 //;// struct for returning results
 typedef struct{

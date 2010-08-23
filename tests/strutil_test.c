@@ -14,6 +14,17 @@ StrutilVar
 	test_result = strutil_test_start (name, actual, expected);\
 	free(actual);
 
+
+#define StrutilTestEp(_name, tBLOCK)                \
+	MakeTest(Strutil, _name, tBLOCK,                \
+		char **actual;                              \
+		char  *exp_str;                             \
+		int    exp_int;                             \
+		,                                           \
+		ep_num_test(name, actual, exp_int, exp_str);\
+		free(actual);                               \
+	);
+	
 TestResult strutil_test_main(int test_no) {
 StrutilSetup
 
@@ -64,30 +75,12 @@ Section("str_replace"){
 
 Section("ep_num"){
 	StrutilTestM("Toindex - 4.avi",{
-		long expected = 4l;
-		long num;
-		char **ans = ep_num(name);
-		if (ans[0] != NULL) {
-			num = strtol(ans[0] + 1, NULL, 10);
-			if (num == 0 ) num++;
-
-			int index = ans[1] != NULL ? 1 : 0;
-			char s[ans[index] - name + 1]; // 1 for \0
-			strncpy(s, name, ans[index] - name);
-			s[ans[index] - name] = '\0';
-			
-			if (num == expected){
-				PrintTesti(name,num);
-				PRINT_PASS;
-			}
-		}
-		
-		if (! test_result){
-			PrintTest(name,"");
-			test_result = false;
-			PRINT_FAIL;
-		}
-		
+		test_result = ep_num_test(name, ep_num(name), 4, "Toindex");		
+	})
+	StrutilTestEp("AAAA - 1.mkv",{
+		actual  = ep_num(name);
+		exp_str = "AAAA";
+		exp_int = 1;
 	})
 }StrutilEndSection
 
@@ -99,4 +92,3 @@ StrutilPrintTestResults
 StrutilMakeResult;
 return StrutilResults;
 }
-

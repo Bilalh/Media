@@ -5,6 +5,8 @@
 #include "string_util.h"
 
 #define StrutilPrintTest(title,data)  PrintTest(title,data)
+
 bool strutil_test_start ( char *name, char *actual, char *expected);
+bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str);
 
 #endif
