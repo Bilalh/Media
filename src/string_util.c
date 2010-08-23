@@ -22,7 +22,10 @@ char** ep_num(char *s) {
 		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
 			ans[index]  = s;
 			index++;
-		} else if(index == 1 && !(*s == ' ' || ispunct(*s) ) ) {
+			// quick fix 
+			ans[index] = s-2;
+		}
+		if(index == 1 && !(*s == ' ' || ispunct(*s) ) ) {
 			if( *(s + 1) == ' ' || ispunct(*(s + 1)) ) {
 				dprintf("s :%c: \tc2 :%c: \n", *s, *(s + 1));
 				// so that  (ans[index] - s) give number of char in the name

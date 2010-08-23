@@ -32,8 +32,7 @@ bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){
 		long num = strtol(actual[0] + 1, NULL, 10);
 		if (num == 0 ) num++;
 
-		int index = actual[1] != NULL ? 1 : 0;
-		
+		int index = (actual[1] != NULL ? 1 : 0);
 		char str[actual[index] - name + 1]; // 1 for \0
 		
 		strncpy(str, name, actual[index] - name);
@@ -47,8 +46,7 @@ bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){
 			PRINT_NAME_FAIL(name);
 			eprintf("expected string: '%s'\n",  exp_str );
 			eprintf("  actual string: '%s'\n",  str );
-			eprintf("expected number:  %li\n",   exp_int );
-			eprintf("  actual number:  %li\n",   num );
+			eprintf("   num expected:  %li        actual: %li\n",   exp_int,num );
 			
 		}
 	}else{

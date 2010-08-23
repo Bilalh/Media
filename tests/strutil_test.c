@@ -80,7 +80,7 @@ Section("ep_num"){
 	})
 	StrutilTestEp("AAA - 1.mkv",{
 		actual  = ep_num(name);
-		exp_str = "AAAA";
+		exp_str = "AAA";
 		exp_int = 1;
 	})
 	StrutilTestEp("aaa - 1.mkv",{
