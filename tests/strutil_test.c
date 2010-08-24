@@ -165,7 +165,7 @@ Section("ep_num"){
 	})
 	StrutilTestEp("XY",{
 		actual  = ep_num(name);
-		exp_str = "Y";
+		exp_str = "XY";
 		exp_int = 1;
 	})
 	StrutilTestEp("X     3",{

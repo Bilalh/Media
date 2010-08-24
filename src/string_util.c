@@ -15,17 +15,20 @@ char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
+	int num   = 0;
 	
-	int num =0;
+	// finds the end of the string
 	while (*s != '\0' ) {
 		if (num ==0 && isdigit(*s) ) num++;
 		s++;	
 	}
 	
+	// if there is no number (e.g movie)
+	// the whole string is the name.
 	if (num == 0 ){
 		dprintf("no number\n");
 		ans[0] = ans[1] = s;
-		char *temp = s -1;
+		char *temp = s - 1;
 		while ( temp != start ){
 			if ( *temp == '.'){
 				ans[1] = temp;
@@ -40,6 +43,7 @@ char** ep_num(char *s) {
 		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
 			ans[index]  = s;
 			index++;
+			// CHECK quick fix for - types
 			if( (s - start) >=2 ) ans[index] = s-2;
 		}
 

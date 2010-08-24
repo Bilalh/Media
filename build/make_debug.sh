@@ -18,6 +18,14 @@ if [[ "$1" == "-h" || "$2" == "-h"  ]]; then
 fi
 
 if [ -n "$2" ]; then
+	
+	if [  "${2::1}" == "a" ]; then
+		echo "make default"
+		make 
+		./all_tests $3
+		exit
+	fi
+	
 	if [  "${2::1}" == "c" ]; then
 		echo "make clean"
 		make clean
