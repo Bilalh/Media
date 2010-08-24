@@ -25,7 +25,7 @@ int main (void) {
 	}
 	
 	
-	printf("  **********         RESULTS: %6s %3i/%-3i       *********\n", 
+	printf(" **********        RESULTS: %6s %3i/%-3i       ********** \n", 
 		total == passed ? "Passed": "FAILED" ,
 		passed, total
 	);

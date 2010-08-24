@@ -17,8 +17,8 @@
 #define PRINT_PASS puts(" : correct")
 
 #define LINE_LENGTH 57  // max line length in output 
-#define LINE_REC_1  31  // recommend first  arg length 
-#define LINE_REC_2  24  // recommend second arg length 
+#define LINE_REC_1  40  // recommend first  arg length 
+#define LINE_REC_2  15 // recommend second arg length 
 #define ERROR_SEP "   " // sep for error
 
 
