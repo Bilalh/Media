@@ -15,24 +15,46 @@ char** ep_num(char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
-
-	while (*s != '\0' ) s++;
-
+	
+	int num =0;
+	while (*s != '\0' ) {
+		if (num ==0 && isdigit(*s) ) num++;
+		s++;	
+	}
+	
+	if (num == 0 ){
+		dprintf("no number\n");
+		ans[0] = ans[1] = s;
+		char *temp = s -1;
+		while ( temp != start ){
+			if ( *temp == '.'){
+				ans[1] = temp;
+				break;
+			}
+			temp--;
+		}
+		return ans;
+	}
+	
 	while (*s != *start) {
 		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
 			ans[index]  = s;
 			index++;
-			// quick fix 
-			ans[index] = s-2;
+			if( (s - start) >=2 ) ans[index] = s-2;
 		}
-		if(index == 1 && !(*s == ' ' || ispunct(*s) ) ) {
-			if( *(s + 1) == ' ' || ispunct(*(s + 1)) ) {
-				dprintf("s :%c: \tc2 :%c: \n", *s, *(s + 1));
+
+		dprintf("i1 s :%c: \tc2 :%c: \n", *s, *(s + 1));
+		if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
+			char t = *(s + 1);
+			dprintf("1i s :%c: \tc2 :%c: \n", *s, *(s + 1));
+			if( t == ' ' || t == '-' || t == '_' || t  == '~' ) {
+				dprintf("ii s :%c: \tc2 :%c: \n", *s, *(s + 1));
 				// so that  (ans[index] - s) give number of char in the name
 				ans[index] = s + 1;
 				break;
 			}
 		}
+
 		s--;
 	}
 	return ans;

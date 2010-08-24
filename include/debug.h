@@ -1,5 +1,4 @@
-// #define DEBUG
-
+#include <libgen.h>
 // written in wrong place for Doxygen to work
 #ifndef DEBUG
 /**
@@ -12,6 +11,6 @@
 #else
 
 #define dprintf(fmt, ...) \
-		printf("%s:%i%s", __FILE__, __LINE__,"   ");\
-		printf(fmt, __VA_ARGS__)
+		printf(" %s:%i%s", basename(__FILE__), __LINE__,"   ");\
+		printf(fmt,## __VA_ARGS__)
 #endif

@@ -143,6 +143,11 @@ Section("ep_num"){
 		exp_str = "hakanaku_mo-towa_no_kanashi";
 		exp_int = 1;
 	})
+	StrutilTestEp("K-ON!! - 122.flv",{
+		actual  = ep_num(name);
+		exp_str = "K-ON!!";
+		exp_int = 122;
+	})
 	StrutilTestEp("X - 1",{
 		actual  = ep_num(name);
 		exp_str = "X";
@@ -152,6 +157,11 @@ Section("ep_num"){
 		actual  = ep_num(name);
 		exp_str = "XY";
 		exp_int = 9;
+	})
+	StrutilTestEp("X 1",{
+		actual  = ep_num(name);
+		exp_str = "X";
+		exp_int = 1;
 	})
 	StrutilTestEp("XY",{
 		actual  = ep_num(name);
@@ -163,21 +173,20 @@ Section("ep_num"){
 		exp_str = "X";
 		exp_int = 3;
 	})
-	//FIXME bus error on X 1
-	// StrutilTestEp("X 1",{
-	// 	actual  = ep_num(name);
-	// 	exp_str = "X";
-	// 	exp_int = 1;
-	// })
-	StrutilTestEp("Ar to - Ut o ~Ha FRE~ - 22.mkv",{
+	StrutilTestEp("X",{
 		actual  = ep_num(name);
-		exp_str = "Ar to - Ut o ~Ha FRE~";
+		exp_str = "X";
+		exp_int = 1;
+	})
+	StrutilTestEp("Ar to- Ut o ~Ha FRELIA~ - 22.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Ar to- Ut o ~Ha FRELIA~";
 		exp_int = 22;
 	})
-	StrutilTestEp("K-ON!! - 122.flv",{
+	StrutilTestEp("Ar to- Ut o ~Ha FREI~ - 22.mkv",{
 		actual  = ep_num(name);
-		exp_str = "K-ON!!";
-		exp_int = 122;
+		exp_str = "Ar to- Ut o ~Ha FREI~";
+		exp_int = 22;
 	})
 	StrutilTestEp("Tales of Vesperia - The First Strike.mkv",{
 		actual  = ep_num(name);
