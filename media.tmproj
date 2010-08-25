@@ -25,54 +25,54 @@
 	<integer>220</integer>
 	<key>metaData</key>
 	<dict>
+		<key>include/debug.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/string_util.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>27</integer>
+				<integer>28</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
-		</dict>
-		<key>tests/strutil_helper.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>41</integer>
-				<key>line</key>
-				<integer>48</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>18</integer>
+			<integer>14</integer>
 		</dict>
 		<key>tests/strutil_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>31</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>95</integer>
+				<integer>143</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>84</integer>
+			<integer>128</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>tests/strutil_test.c</string>
-		<string>tests/strutil_helper.c</string>
 		<string>src/string_util.c</string>
+		<string>include/debug.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -96,7 +96,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -106,13 +106,6 @@
 			<key>subItems</key>
 			<dict>
 				<key>build</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>

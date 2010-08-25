@@ -1,4 +1,3 @@
-#define DEBUG
 
 #include <libgen.h>
 // written in wrong place for Doxygen to work

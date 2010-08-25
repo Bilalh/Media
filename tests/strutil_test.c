@@ -108,11 +108,6 @@ Section("ep_num"){
 		exp_str = "T";
 		exp_int = 32;
 	})
-	StrutilTestEp("Kaichou wa ~ 01.mkv",{
-		actual  = ep_num(name);
-		exp_str = "Kaichou wa";
-		exp_int = 1;
-	})
 	StrutilTestEp("Katanagatari_-_2.divx",{
 		actual  = ep_num(name);
 		exp_str = "Katanagatari";
@@ -153,6 +148,11 @@ Section("ep_num"){
 		exp_str = "X";
 		exp_int = 1;
 	})
+	StrutilTestEp("X - 0009",{
+		actual  = ep_num(name);
+		exp_str = "X";
+		exp_int = 9;
+	})
 	StrutilTestEp("XY - 9",{
 		actual  = ep_num(name);
 		exp_str = "XY";
@@ -167,15 +167,55 @@ Section("ep_num"){
 		actual  = ep_num(name);
 		exp_str = "XY";
 		exp_int = 1;
-	})
-	StrutilTestEp("X     3",{
-		actual  = ep_num(name);
-		exp_str = "X";
-		exp_int = 3;
-	})
+	})	
 	StrutilTestEp("X",{
 		actual  = ep_num(name);
 		exp_str = "X";
+		exp_int = 1;
+	})
+	StrutilTestEp("Kaichou wa-    01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Kaichou wa";
+		exp_int = 1;
+	})
+	StrutilTestEp("Kaichou wa-01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Kaichou wa";
+		exp_int = 1;
+	})
+	StrutilTestEp("Kaichou wa    ~13.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Kaichou wa";
+		exp_int = 13;
+	})
+	StrutilTestEp("Noien~~~01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Noien";
+		exp_int = 1;
+	})
+	StrutilTestEp("Fate Stay Night~~01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Fate Stay Night";
+		exp_int = 1;
+	})
+	StrutilTestEp("Terra e~_09.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Terra e";
+		exp_int = 9;
+	})
+	StrutilTestEp("Mai-Otome_~_01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Mai-Otome";
+		exp_int = 1;
+	})
+	StrutilTestEp("Sora no Woto~05.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Sora no Woto";
+		exp_int = 5;
+	})
+	StrutilTestEp("Senjou no Valkyria ~ 01.mkv",{
+		actual  = ep_num(name);
+		exp_str = "Senjou no Valkyria";
 		exp_int = 1;
 	})
 	StrutilTestEp("Ar to- Ut o ~Ha FRELIA~ - 22.mkv",{
@@ -198,6 +238,11 @@ Section("ep_num"){
 		exp_str = "To.Aru";
 		exp_int = 1;
 	})
+	// StrutilTestEp("X     3",{
+	// 	actual  = ep_num(name);
+	// 	exp_str = "X";
+	// 	exp_int = 3;
+	// })
 }StrutilEndSection
 
 };

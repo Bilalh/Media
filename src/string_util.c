@@ -16,19 +16,21 @@ char** ep_num(char *s) {
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
 	int num   = 0;
+	int dashes = 0;
 	
 	// finds the end of the string
 	while (*s != '\0' ) {
 		if (num ==0 && isdigit(*s) ) num++;
+		else if (*s == '-' ) dashes++;
 		s++;	
 	}
 	
-	// if there is no number (e.g movie)
-	// the whole string is the name.
+	// if there is no number (e.g movie) the whole string is the name.
 	if (num == 0 ){
 		dprintf("no number\n");
 		ans[0] = ans[1] = s;
 		char *temp = s - 1;
+		// TODO no ext on name only
 		while ( temp != start ){
 			if ( *temp == '.'){
 				ans[1] = temp;
@@ -40,21 +42,21 @@ char** ep_num(char *s) {
 	}
 	
 	while (*s != *start) {
-		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_' ) ) {
+		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_'  || *s  == '~' ) ) {
 			ans[index]  = s;
 			index++;
 			// CHECK quick fix for - types
 			if( (s - start) >=2 ) ans[index] = s-2;
 		}
-
-		dprintf("i1 s :%c: \tc2 :%c: \n", *s, *(s + 1));
+		
+		dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
 		if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
-			char t = *(s + 1);
-			dprintf("1i s :%c: \tc2 :%c: \n", *s, *(s + 1));
-			if( t == ' ' || t == '-' || t == '_' || t  == '~' ) {
-				dprintf("ii s :%c: \tc2 :%c: \n", *s, *(s + 1));
-				// so that  (ans[index] - s) give number of char in the name
-				ans[index] = s + 1;
+			char *t = (s + 1);
+			dprintf("1i  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
+			if( *t == ' ' || *t == '-' || *t == '_' || *t  == '~' ) {
+				dprintf("ii  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
+				if (*t == '~' && dashes > 0 ) t++;
+				ans[index] = t;
 				break;
 			}
 		}
