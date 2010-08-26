@@ -21,11 +21,26 @@ StrutilVar
 		char  *exp_str;                             \
 		int    exp_int;                             \
 		,                                           \
-		test_result =                              \
+		test_result =                               \
 		ep_num_test(name, actual, exp_int, exp_str);\
 		free(actual);                               \
 	);
-	
+
+#define StrutilTestSp(_name, tBLOCK)                \
+	MakeTest(Strutil, _name, tBLOCK,                \
+		char **actual;                              \
+		int    alen = 0;                            \
+		int    elen;                                \
+		,                                           \
+ 		elen = sizeof(e)/sizeof(e[0]);              \
+		actual = spilt_string(name, &alen);         \
+		spilt_words_test                            \
+			(name,actual,alen,e,elen);              \
+		free(actual);                               \
+	);
+
+
+
 TestResult strutil_test_main(int test_no) {
 StrutilSetup
 
@@ -72,7 +87,6 @@ Section("str_replace"){
 		expected = "c plus plus|ruby";
 	})
 }StrutilEndSection
-
 
 Section("ep_num"){
 	StrutilTestM("Toindex - 4.webm",{
@@ -238,11 +252,21 @@ Section("ep_num"){
 		exp_str = "To.Aru";
 		exp_int = 1;
 	})
+	// TODO X     3 ep_num
 	// StrutilTestEp("X     3",{
 	// 	actual  = ep_num(name);
 	// 	exp_str = "X";
 	// 	exp_int = 3;
 	// })
+}StrutilEndSection
+
+Section("spilt_string"){
+	StrutilTestSp("char*dasd asds dasd",
+		char *e[3];
+		e[0] = "char*dasd";
+		e[1] = "asds";
+		e[2] = "dasd";
+	)
 }StrutilEndSection
 
 };

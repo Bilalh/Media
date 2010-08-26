@@ -45,10 +45,16 @@
 #define PrintTestV(title,data,first,sec)  \
 	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
-#define eprintf(FMT, args...) printf("%s"FMT, ERROR_SEP,## args );
+#define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
 #define PRINT_NAME_FAIL(title) PrintTest(title, ""); PRINT_FAIL
+#define PRINT_NAME_PASS(title) PrintTest(title, ""); PRINT_PASS
 
-//;// struct for returning results
+
+#define STRING_FAIL(actual,expected)\
+	printf("%s%-14s: '%s'\n", ERROR_SEP, "expected", expected );\
+	printf("%s%-14s: '%s'\n", ERROR_SEP, "actual", actual);
+
+// struct for returning results
 typedef struct{
 	int  number_of_tests;
 	int  passes;

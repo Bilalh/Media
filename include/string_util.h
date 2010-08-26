@@ -4,9 +4,32 @@
 
 
 /**
+ * @brief Places the number in var
+ *
+ * @param ep_num_char char** returned by ep_num
+ * @param var name of The variable
+**/
+#define EP_GET_NUMBER(ep_num_char, var) \
+	long var = strtol(ep_num_char[0] + 1, NULL, 10);\
+	if (var == 0 ) var++;
+
+/**
+ * @brief Places the name in var
+ *
+ * @param ep_num_char char** returned by ep_num
+ * @param var Name of the variable
+ * @param orginal_string The string 
+**/
+#define EP_GET_NAME(ep_num_char, var, orginal_string)\
+	int _ep_num_index = (ep_num_char[1] != NULL ? 1 : 0);\
+	char var[ ep_num_char[_ep_num_index] - orginal_string + 1]; \
+	strncpy(var, orginal_string, ep_num_char[_ep_num_index] - orginal_string);\
+	str[ep_num_char[_ep_num_index] - orginal_string] = '\0';
+
+/**
  * @brief Gets the postion of 
  *
- * @param s - String with a number at the end.
+ * @param s - string with a number at the end.
  * @return [0] - The index before the number starts
  *         [1] - ans[index - NAME + 1] gives the length of the name part
  *               where index = 0 unless [1] is not null
@@ -23,6 +46,16 @@ char** ep_num(char *s);
  * @return Non zero on match (1?), 0 on any error
  */
 int match(const char *string, char *pattern);
+
+/**
+ * @brief Spilts a string into array of strings 
+ *
+ * @param str The string to split
+ * @param res_length a int pointer to hold the length. 
+ * (can be used to set the starting length)
+ * @return A array of strings
+**/
+char** spilt_string(char *str, int *res_length);
 
 /**
  * @brief Replaces the substring sub with rep in the first len charaters of s.
@@ -55,14 +88,27 @@ char *str_spilt_replace(char *s);
 char *spilt_args(char **arr, size_t length, char *separator, char *ending );
 
 typedef struct {
-	char **args;
+	char **args; ///< args
 	int  length;
 	int  *lengths;
 	int  total;
 } SpiltData;
 
+/**
+ * @brief 
+ *
+ * @param s 
+ * @return 
+**/
 SpiltData *str_spilt_func(char *s);
 
+/**
+ * @brief 
+ *
+ * @param s 
+ * @param length 
+ * @return 
+**/
 char *str_lower(char *s, size_t length);
 
 #endif

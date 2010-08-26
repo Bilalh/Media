@@ -11,7 +11,7 @@
 
 static char *test_hash(char *s);
 
-char** ep_num(char *s) {
+char** ep_num (char *s) {
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
@@ -66,7 +66,7 @@ char** ep_num(char *s) {
 	return ans;
 }
 
-int match(const char *string, char *pattern) {
+int match (const char *string, char *pattern) {
 	int    status;
 	regex_t    re;
 	if ( regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
@@ -78,7 +78,37 @@ int match(const char *string, char *pattern) {
 
 }
 
-char *spilt_args(char **arr, size_t length, char *separator, char *ending ) {
+char** spilt_string (char *str, int *res_length){
+	char *to_spilt = strdup(str), *sep = " ", *s_ptr, *word;
+	int slength = 7;
+	if ( *res_length > 1 ) slength = *res_length;	
+	char **strs = malloc(sizeof(char*) * slength);
+	int i = 0;
+	
+	for(word = strtok_r(to_spilt, sep, &s_ptr); word != NULL;
+			word = strtok_r(NULL, sep, &s_ptr)) {
+		strs[i++] = word;
+		if (i >= slength ) {
+			slength = slength * 2 + 1;
+			void * temp = realloc(strs, sizeof(char*) * slength);
+			if (temp != NULL) {
+				strs = temp;
+			} else {
+				fprintf(stderr, "realloc  failed in time spilt");
+				exit(6);
+			}
+		}
+
+	}
+	
+	free(to_spilt);
+	*res_length = i;
+	return strs;
+	
+}
+
+
+char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
 	// expand each element
@@ -114,29 +144,7 @@ char *spilt_args(char **arr, size_t length, char *separator, char *ending ) {
 	return final_str;
 }
 
-char *str_replace(char *s, size_t len,  char *sub, char *rep) {
-	int rep_len = strlen(rep);
-	int sub_len = strlen(sub);
-	char *r     = malloc(len * 2 + rep_len + 25 );
-
-	// counters for s and r
-	int is = 0, ir = 0;
-	while(is < len) {
-		// checks if sub is a sub string og s
-		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
-			strncpy(&r[ir], rep , rep_len);
-			ir += rep_len;
-			is += sub_len;
-		} else { // move
-			r[ir++] = s[is++];
-		}
-	}
-
-	r[ir] = '\0';
-	return r;
-}
-
-SpiltData *str_spilt_func(char *s) {
+SpiltData *str_spilt_func (char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	int  *res_len = malloc(sizeof(int) * 5);
@@ -172,8 +180,30 @@ SpiltData *str_spilt_func(char *s) {
 	return sd; 
 }
 
+char *str_replace (char *s, size_t len,  char *sub, char *rep) {
+	int rep_len = strlen(rep);
+	int sub_len = strlen(sub);
+	char *r     = malloc(len * 2 + rep_len + 25 );
+
+	// counters for s and r
+	int is = 0, ir = 0;
+	while(is < len) {
+		// checks if sub is a sub string og s
+		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
+			strncpy(&r[ir], rep , rep_len);
+			ir += rep_len;
+			is += sub_len;
+		} else { // move
+			r[ir++] = s[is++];
+		}
+	}
+
+	r[ir] = '\0';
+	return r;
+}
+
 // not used
-char *str_spilt_replace(char *s) {
+char *str_spilt_replace (char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	char *res_len = malloc(sizeof(int) * 5);
@@ -198,7 +228,7 @@ char *str_spilt_replace(char *s) {
 	return NULL;
 }
 
-char *str_lower(char *s, size_t length) {
+char *str_lower (char *s, size_t length) {
 	
 	char *re = malloc(sizeof(char) * length +1);
 	char *r  = re;
@@ -208,7 +238,7 @@ char *str_lower(char *s, size_t length) {
 	return re;
 }
 
-static char *test_hash(char *s) {
+static char *test_hash (char *s) {
 	if (strcmp(s, "fma" ) == 0) {
 		return strdup("full metal");
 	} else {

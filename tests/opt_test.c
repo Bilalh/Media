@@ -16,12 +16,12 @@ OptVar
 	free(expected);
 
 TestResult opt_test_main(int test_no) {
-OptSetup
-
+OptSetup	
+	
 Sections {
 Section("Basic Features"){
-	OptTest("Name", {
-		printf("%s\n", "ddd");
+	OptTest("-fs -as", {
+		
 	})
 }OptEndSection
 
