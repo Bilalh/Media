@@ -30,8 +30,7 @@ StrutilVar
 	MakeTest(Strutil, _name, tBLOCK,                \
 		char **actual;                              \
 		int    alen = 0;                            \
-		int    elen;                                \
-		int    i =0;                                \
+		int    elen = 0;                            \
 		,                                           \
  		elen = sizeof(e)/sizeof(e[0]);              \
 		actual = spilt_string(name, &alen);         \
@@ -262,7 +261,7 @@ Section("ep_num") {
 	// })
 } StrutilEndSection
 
-#define e(unstring) e[i++] = #unstring
+#define e(unstring) e[elen++] = #unstring
 
 Section("spilt_string") {
 	StrutilTestSp("char*dasd asds dasd", 

@@ -293,8 +293,3 @@ void print_media_args(MediaArgs *ma) {
 #undef print_args
 #undef print_hex
 }
-
-int main (int argc, char const *argv[]) {
-	option_parser(argc, argv);
-	return 0;
-}
