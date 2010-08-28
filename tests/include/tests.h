@@ -18,7 +18,7 @@
 
 #define LINE_LENGTH 57  // max line length in output 
 #define LINE_REC_1  40  // recommend first  arg length 
-#define LINE_REC_2  15 // recommend second arg length 
+#define LINE_REC_2  15  // recommend second arg length 
 #define ERROR_SEP "   " // sep for error
 
 
@@ -46,6 +46,8 @@
 	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
 #define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
+#define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
+#define esprintf(STRING, FMT, args...) sprintf(STRING, ERROR_SEP FMT,## args );
 #define PRINT_NAME_FAIL(title) PrintTest(title, ""); PRINT_FAIL
 #define PRINT_NAME_PASS(title) PrintTest(title, ""); PRINT_PASS
 

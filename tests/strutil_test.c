@@ -31,9 +31,11 @@ StrutilVar
 		char **actual;                              \
 		int    alen = 0;                            \
 		int    elen;                                \
+		int    i =0;                                \
 		,                                           \
  		elen = sizeof(e)/sizeof(e[0]);              \
 		actual = spilt_string(name, &alen);         \
+		test_result =                               \
 		spilt_words_test                            \
 			(name,actual,alen,e,elen);              \
 		free(actual);                               \
@@ -88,166 +90,166 @@ Section("str_replace"){
 	})
 }StrutilEndSection
 
-Section("ep_num"){
-	StrutilTestM("Toindex - 4.webm",{
-		test_result = ep_num_test(name, ep_num(name), 4, "Toindex");		
+Section("ep_num") {
+	StrutilTestM("Toindex - 4.webm", {
+		test_result = ep_num_test(name, ep_num(name), 4, "Toindex");
 	})
-	StrutilTestEp("AAA - 1.mkv",{
+	StrutilTestEp("AAA - 1.mkv", {
 		actual  = ep_num(name);
 		exp_str = "AAA";
 		exp_int = 1;
 	})
-	StrutilTestEp("aaa - 1.webm",{
+	StrutilTestEp("aaa - 1.webm", {
 		actual  = ep_num(name);
 		exp_str = "aaa";
 		exp_int = 1;
 	})
-	StrutilTestEp("dsdsd - 32.mp4",{
+	StrutilTestEp("dsdsd - 32.mp4", {
 		actual  = ep_num(name);
 		exp_str = "dsdsd";
 		exp_int = 32;
 	})
-	StrutilTestEp("Zs - 322.divx",{
+	StrutilTestEp("Zs - 322.divx", {
 		actual  = ep_num(name);
 		exp_str = "Zs";
 		exp_int = 322;
 	})
-	StrutilTestEp("zs - 322.wmv",{
+	StrutilTestEp("zs - 322.wmv", {
 		actual  = ep_num(name);
 		exp_str = "zs";
 		exp_int = 322;
 	})
-	StrutilTestEp("T - 32.part.mkv",{
+	StrutilTestEp("T - 32.part.mkv", {
 		actual  = ep_num(name);
 		exp_str = "T";
 		exp_int = 32;
 	})
-	StrutilTestEp("Katanagatari_-_2.divx",{
+	StrutilTestEp("Katanagatari_-_2.divx", {
 		actual  = ep_num(name);
 		exp_str = "Katanagatari";
 		exp_int = 2;
 	})
-	StrutilTestEp("To Aru Kagaku no Railgun 06.avi",{
+	StrutilTestEp("To Aru Kagaku no Railgun 06.avi", {
 		actual  = ep_num(name);
 		exp_str = "To Aru Kagaku no Railgun";
 		exp_int = 6;
 	})
-	StrutilTestEp("ToS Tethe'alla 4.mkv",{
+	StrutilTestEp("ToS Tethe'alla 4.mkv", {
 		actual  = ep_num(name);
 		exp_str = "ToS Tethe'alla";
 		exp_int = 4;
 	})
-	StrutilTestEp("Shangri-La - 2.part.mkv",{
+	StrutilTestEp("Shangri-La - 2.part.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Shangri-La";
 		exp_int = 2;
 	})
-	StrutilTestEp("At Ir 3 - schwarzweiß - 1.v",{
+	StrutilTestEp("At Ir 3 - schwarzweiß - 1.v", {
 		actual  = ep_num(name);
 		exp_str = "At Ir 3 - schwarzweiß";
 		exp_int = 1;
 	})
-	StrutilTestEp("hakanaku_mo-towa_no_kanashi 1",{
+	StrutilTestEp("hakanaku_mo-towa_no_kanashi 1", {
 		actual  = ep_num(name);
 		exp_str = "hakanaku_mo-towa_no_kanashi";
 		exp_int = 1;
 	})
-	StrutilTestEp("K-ON!! - 122.flv",{
+	StrutilTestEp("K-ON!! - 122.flv", {
 		actual  = ep_num(name);
 		exp_str = "K-ON!!";
 		exp_int = 122;
 	})
-	StrutilTestEp("X - 1",{
+	StrutilTestEp("X - 1", {
 		actual  = ep_num(name);
 		exp_str = "X";
 		exp_int = 1;
 	})
-	StrutilTestEp("X - 0009",{
+	StrutilTestEp("X - 0009", {
 		actual  = ep_num(name);
 		exp_str = "X";
 		exp_int = 9;
 	})
-	StrutilTestEp("XY - 9",{
+	StrutilTestEp("XY - 9", {
 		actual  = ep_num(name);
 		exp_str = "XY";
 		exp_int = 9;
 	})
-	StrutilTestEp("X 1",{
+	StrutilTestEp("X 1", {
 		actual  = ep_num(name);
 		exp_str = "X";
 		exp_int = 1;
 	})
-	StrutilTestEp("XY",{
+	StrutilTestEp("XY", {
 		actual  = ep_num(name);
 		exp_str = "XY";
 		exp_int = 1;
-	})	
-	StrutilTestEp("X",{
+	})
+	StrutilTestEp("X", {
 		actual  = ep_num(name);
 		exp_str = "X";
 		exp_int = 1;
 	})
-	StrutilTestEp("Kaichou wa-    01.mkv",{
+	StrutilTestEp("Kaichou wa-    01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Kaichou wa";
 		exp_int = 1;
 	})
-	StrutilTestEp("Kaichou wa-01.mkv",{
+	StrutilTestEp("Kaichou wa-01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Kaichou wa";
 		exp_int = 1;
 	})
-	StrutilTestEp("Kaichou wa    ~13.mkv",{
+	StrutilTestEp("Kaichou wa    ~13.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Kaichou wa";
 		exp_int = 13;
 	})
-	StrutilTestEp("Noien~~~01.mkv",{
+	StrutilTestEp("Noien~~~01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Noien";
 		exp_int = 1;
 	})
-	StrutilTestEp("Fate Stay Night~~01.mkv",{
+	StrutilTestEp("Fate Stay Night~~01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Fate Stay Night";
 		exp_int = 1;
 	})
-	StrutilTestEp("Terra e~_09.mkv",{
+	StrutilTestEp("Terra e~_09.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Terra e";
 		exp_int = 9;
 	})
-	StrutilTestEp("Mai-Otome_~_01.mkv",{
+	StrutilTestEp("Mai-Otome_~_01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Mai-Otome";
 		exp_int = 1;
 	})
-	StrutilTestEp("Sora no Woto~05.mkv",{
+	StrutilTestEp("Sora no Woto~05.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Sora no Woto";
 		exp_int = 5;
 	})
-	StrutilTestEp("Senjou no Valkyria ~ 01.mkv",{
+	StrutilTestEp("Senjou no Valkyria ~ 01.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Senjou no Valkyria";
 		exp_int = 1;
 	})
-	StrutilTestEp("Ar to- Ut o ~Ha FRELIA~ - 22.mkv",{
+	StrutilTestEp("Ar to- Ut o ~Ha FRELIA~ - 22.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Ar to- Ut o ~Ha FRELIA~";
 		exp_int = 22;
 	})
-	StrutilTestEp("Ar to- Ut o ~Ha FREI~ - 22.mkv",{
+	StrutilTestEp("Ar to- Ut o ~Ha FREI~ - 22.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Ar to- Ut o ~Ha FREI~";
 		exp_int = 22;
 	})
-	StrutilTestEp("Tales of Vesperia - The First Strike.mkv",{
+	StrutilTestEp("Tales of Vesperia - The First Strike.mkv", {
 		actual  = ep_num(name);
 		exp_str = "Tales of Vesperia - The First Strike";
 		exp_int = 1;
 	})
-	StrutilTestEp("To.Aru.mkv",{
+	StrutilTestEp("To.Aru.mkv", {
 		actual  = ep_num(name);
 		exp_str = "To.Aru";
 		exp_int = 1;
@@ -258,16 +260,43 @@ Section("ep_num"){
 	// 	exp_str = "X";
 	// 	exp_int = 3;
 	// })
-}StrutilEndSection
+} StrutilEndSection
 
-Section("spilt_string"){
-	StrutilTestSp("char*dasd asds dasd",
-		char *e[3];
+#define e(unstring) e[i++] = #unstring
+
+Section("spilt_string") {
+	StrutilTestSp("char*dasd asds dasd", 
+		char * e[3];
 		e[0] = "char*dasd";
 		e[1] = "asds";
 		e[2] = "dasd";
 	)
-}StrutilEndSection
+	StrutilTestSp("-fs -m --fast", 
+		char * e[3];
+		e[0] = "-fs";
+		e[1] = "-m";
+		e[2] = "--fast";
+	)
+	StrutilTestSp("--G 32:33 -1R", 
+		char * e[3];
+		e[0] = "--G";
+		e[1] = "32:33";
+		e[2] = "-1R";
+	)
+	StrutilTestSp("-mNV --rootpath / -e opt -fatA 16:9 --fast -k "
+				  "--no-m3u -x -ol -[ -no-done --profile t -W 22 -L4 -R "
+				  "-57 -F -nofs -Z", 
+		char * e[24];
+		e(-mNV)     ; e(--rootpath) ; e(/)          ;
+	    e(-e)       ; e(opt)        ; e(-fatA)      ; 
+		e(16:9)     ; e(--fast)     ; e(-k)         ; 
+		e(--no-m3u) ; e(-x)         ; e(-ol)        ; 
+		e(-[)       ; e(-no-done)   ; e(--profile)  ; 
+		e(t)        ; e(-W)         ; e(22)         ; 
+		e(-L4)      ; e(-R)         ; e(-57)        ; 
+		e(-F)       ; e(-nofs)      ; e(-Z)         ;
+	)
+} StrutilEndSection
 
 };
 

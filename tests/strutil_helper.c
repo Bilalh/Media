@@ -54,12 +54,13 @@ bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){
 }
 
 bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){
-	bool test_result;
+	int error;
 	
 	if ( alen != elen ) goto fail;
 	
 	for(int i = 0; i < alen; ++i){
 		if (strcmp(actual[i],expected[i]) != 0){
+			error = i;
 			goto fail;
 		}
 	}
@@ -84,13 +85,17 @@ bool spilt_words_test (char *name, char **actual, int alen, char **expected, int
 		err = "exp";
 		eptr = expected;
 	}
-		
+	
+	eprintf("missmatch @ %i\n",error );
+	
 	for(int j = 0; j < min; ++j){
-		eprintf("exp[%d]:'%s'\tact[%d]:'%s'\n",  j, expected[j], j, actual[j]);
+		char texp[strlen(expected[j])+2], tact[strlen(actual[j])+2];
+		sprintf(texp, "'%s'",expected[j] ); sprintf(tact, "'%s'",actual[j] );
+		eprintf("exp[%2d]:%-10s\tact[%2d]:%-10s\n",  j, texp, j, tact);
 	}
 	puts("");
 	for(int i = min; i < max; ++i){
-		eprintf("\t\t%s[%d]: '%s'\n",err, i,eptr[i]  );
+		eprintf("\t\t%s[%2d]: '%s'\n",err, i,eptr[i]  );
 	}
 	
 	return false;

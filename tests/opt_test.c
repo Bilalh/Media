@@ -17,7 +17,7 @@ OptVar
 
 TestResult opt_test_main(int test_no) {
 OptSetup	
-	
+exit(0);
 Sections {
 Section("Basic Features"){
 	OptTest("-fs -as", {

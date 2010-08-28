@@ -12,6 +12,9 @@ vpath %.h ../include/
 
 all_tests:
 
+opt: history.o media.o option_parser.o playlist.o string_buffer.o string_util.o time_util.o 
+	${compile} ${libs} ${flags} -o $@ $^
+
 tempc: temp.o string_util.o hashtable_itr.o hashtable.o hashtable_utility.o
 	${compile} ${libs} ${flags} $? -o $@
 
