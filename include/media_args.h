@@ -46,7 +46,6 @@ typedef struct {
 	
 	char     *root_dir;
 	
-	
 	// Playlist (pl)
 	char    *pl_dir;
 	char    *pl_name;

@@ -26,6 +26,7 @@ MediaArgs *new_media_args() {
 		.newest_only = false,
 		.sub_dirs    = false,
 		.types       = T_VIDEO,
+		.root_dir    = NULL,
 		
 		// Playlist
 		// .pl_name       = "zzplaylist",
@@ -80,20 +81,21 @@ MediaArgs *option_parser(int argc, char **argv) {
 	struct option opts[t_len *2 + 1 ];
 	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
 	// builds the options array.
-	for(int i = 0; i <HELP_L_LEN; ++i) {
-	    for(int j = 0; j < HELP_LINK[i].length; ++j){
-	    	opts[index++] = ele(i)[j].opt;
-	    	
-	    	if (ele(i)[j].neg == true){
-	    		struct option o2 = ele(i)[j].opt;
-	    		o2.val +=128;
-	    		char *c2 = malloc(strlen(o2.name +1 +3));
-	    		sprintf(c2,"no-%s",o2.name);
-	    		o2.name = c2;
-	    		opts[index++] = o2;
-	    	}
-	    	
-	    	if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
+	for(int i = 0; i < HELP_L_LEN; ++i) {
+		for(int j = 0; j < HELP_LINK[i].length; ++j) {
+			opts[index++] = ele(i)[j].opt;
+
+			if (ele(i)[j].neg == true) {
+				struct option o2 = ele(i)[j].opt;
+				o2.val += 128;
+				// 3 for 'no-' 1 for \0
+				char *c2 = malloc(strlen(o2.name + 3 + 1));
+				sprintf(c2, "no-%s", o2.name);
+				o2.name = c2;
+				opts[index++] = o2;
+			}
+
+			if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
 				letters[s_index++] = ele(i)[j].opt.val;
 				Element_ptr[ele(i)[j].opt.val] = (Element*) &ele(i)[j];
 				if (ele(i)[j].opt.has_arg == required_argument) letters[s_index++] = ':';
@@ -101,13 +103,13 @@ MediaArgs *option_parser(int argc, char **argv) {
 					letters[s_index++] = ':';
 					letters[s_index++] = ':';
 				}
-				
+
 			}
-	    	blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
-	    	if (ele(i)[j].neg) {
-				blocks[ele(i)[j].opt.val+128] = &ele(i)[j].block;
+			blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
+			if (ele(i)[j].neg) {
+				blocks[ele(i)[j].opt.val + 128] = &ele(i)[j].block;
 			}
-	    }
+		}
 	}
 
 	// last have to be all zeros
@@ -242,7 +244,7 @@ static void sub_print_help(const Element *ele){
 // prints the media_args struct
 void print_media_args(MediaArgs *ma) {
 #define truth(boolean) (boolean ? "true" : "false" )
-#define nullcheck(str) (str == NULL ? "NULL" : str )
+#define nullcheck(val) (val == NULL ? "NULL" : val )
 #define strcheck(s)    (s.str != NULL ? s.str : "NULL" )
 #define print_args(title,value) printf("%20s: %s\n",  title, value);
 #define print_hex(title,value) printf("%20s: 0x%x\n",  title, value);

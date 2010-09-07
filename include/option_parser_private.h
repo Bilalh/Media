@@ -409,14 +409,14 @@ const Element H_mplayer_geom[] = {
 		}
 	},
 	
-	#define M_GEO(_name,_val,_geo,_help) \
-	{  \
+	#define M_GEO(_name,_val,_geo,_help)                                \
+	{                                                                   \
 		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument}, \
-		.help  = _help,\
-		.arg   = "", .neg = false,\
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {\
-			string_push(&ma->prefix_args, _geo);\
-		}\
+		.help  = _help,                                                 \
+		.arg   = "", .neg = false,                                      \
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {                 \
+		string_push(&ma->prefix_args, _geo);                            \
+	}                                                                   \
 	}
 	M_GEO("tl", '1', "-geometry 0%:0%"   ,"Places the player at the top left"),
 	M_GEO("tr", '=', "-geometry 100%:0%" ,"Places the player at the top right"),

@@ -6,21 +6,19 @@ OptVar
 
 // Setup that is done before each test
 #define OptBefore \
-	MediaArgs *expected = new_media_args();\
-	MediaArgs *actual   = new_media_args();
+	MediaArgs *exp = new_media_args();
 
 // test_result must be a true value for true and false otherwise
 #define OptAfter(name) \
-	test_result = opt_test_start (name, expected, &actual);\
-	free(actual); \
-	free(expected);
+	test_result = opt_test_start (name, exp);\
+	free(exp);
 
 TestResult opt_test_main(int test_no) {
 OptSetup	
 Sections {
 Section("Basic Features"){
-	OptTest("-fs -as", {
-		
+	OptTest("--fs", {
+		string_push(&exp->prefix_args, "--fs");
 	})
 }OptEndSection
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tests/include/tests.h</string>
+	<string>tests/opt_helper.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,9 +20,23 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>161</integer>
+	<integer>205</integer>
 	<key>metaData</key>
 	<dict>
+		<key>include/option_parser_private.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>395</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>395</integer>
+		</dict>
 		<key>include/string_util.h</key>
 		<dict>
 			<key>caret</key>
@@ -53,6 +67,20 @@
 				<integer>57</integer>
 			</dict>
 		</dict>
+		<key>src/option_parser.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>295</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>tests/include/string_test.h</key>
 		<dict>
 			<key>caret</key>
@@ -67,54 +95,41 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>tests/include/tests.h</key>
+		<key>tests/opt_helper.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>23</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
+			<integer>0</integer>
 		</dict>
-		<key>tests/strutil_helper.c</key>
+		<key>tests/opt_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>90</integer>
+				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>40</integer>
-		</dict>
-		<key>tests/strutil_test.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>243</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>236</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>tests/strutil_helper.c</string>
-		<string>tests/strutil_test.c</string>
-		<string>tests/include/tests.h</string>
+		<string>tests/opt_helper.c</string>
+		<string>tests/opt_test.c</string>
+		<string>src/option_parser.c</string>
+		<string>include/option_parser_private.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -138,7 +153,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -147,7 +162,14 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>tests</key>
+				<key>doc</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>

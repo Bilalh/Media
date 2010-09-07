@@ -116,7 +116,10 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 	
 	
 // *****Helper Macros*****
-	
+
+#define TRUTH(boolean) (boolean ? "true" : "false" )
+#define NULLCHECK(val) (val == NULL ? "NULL" : val )
+
 // Printing Section titles
 #define SEP "-------------------------------------------------------------------"
 #define PrintTitle(title) printf("\n%s\n%s\n%s\n",SEP,title,SEP)

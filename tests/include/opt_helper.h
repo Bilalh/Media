@@ -4,9 +4,10 @@
 #include "opt_test.h"
 #include "option_parser.h"
 #include "string_util.h"
+#include "string_buffer.h"
 
 #define OptPrintTest(title,data)  PrintTest(title,data)
 
-bool opt_test_start ( char *name, MediaArgs *actual, MediaArgs *expected );
+bool opt_test_start ( char *name,  MediaArgs *expected );
 
 #endif

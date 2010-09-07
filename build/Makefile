@@ -4,7 +4,7 @@ compile     = ${CC} -std=gnu99 -fblocks
 flags       = ${CFLAGS} ${includes} -I../include -I../src -I ../lib/hash
 includes    = -I/opt/local/include -I/usr/include/libxml2 
 libs        = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
-objs        = all_tests
+objs        =  all_tests opt tempc
 
 # sets the include path 
 vpath %.c ../src ../lib/hash
