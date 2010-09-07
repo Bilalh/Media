@@ -1,7 +1,7 @@
 #ifndef STRINGUTILHEAD
 #define STRINGUTILHEAD
 #include <stddef.h>
-
+#include <stdbool.h>
 
 /**
  * @brief Places the number in var
@@ -58,6 +58,13 @@ int match(const char *string, char *pattern);
 char** spilt_string(char *str, int *res_length);
 
 /**
+ * @brief strcmp with null checking
+ *
+ * @return true if they are equal or both null otherwise false
+**/
+bool strcmp_null(const char *s1, const char *s2 );
+
+/**
  * @brief Replaces the substring sub with rep in the first len charaters of s.
  *
  * @param s
@@ -75,6 +82,7 @@ char *str_replace(char *s, size_t len,  char *sub, char *rep);
  * @return
  */
 char *str_spilt_replace(char *s);
+
 
 /**
  * @brief Concatenates the array with separator and adds

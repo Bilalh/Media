@@ -1,21 +1,18 @@
 #include "include/opt_helper.h"
 
 #define opt_intcmp(NAME)	if ( actual->NAME != expected->NAME ) goto fail;
-#define opt_strcmp(NAME)	opt_strcheck(actual->NAME, expected->NAME);
-#define opt_strcheck(t1,t2)\
-	if ( (t1 == NULL && t2 != NULL) || (t1 != NULL && t2 == NULL) ) goto fail;\
-	if ( t1 != NULL && t2 != NULL && strcmp( t1, t2 ) != 0 ) goto fail;
+#define opt_strcmp(NAME)	strcmp_null(actual->NAME, expected->NAME);
 
 #define opt_sbufcmp(NAME)\
-	opt_strcheck(actual->NAME.str, expected->NAME.str);\
+	strcmp_null(actual->NAME.str, expected->NAME.str);\
 	opt_intcmp(NAME.length);\
 	opt_intcmp(NAME.index);
-
 
 
 bool opt_test_start ( char *name, MediaArgs *expected ){
 	int length     = 0;
 	char **args    = spilt_string(name,&length);
+	
 	MediaArgs *actual = option_parser(length, args);
 
 	opt_intcmp(newest_only);
@@ -51,26 +48,74 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 
 fail:
 	PRINT_NAME_FAIL(name);	
-	#define print_args(title,value) printf("%20s: '%s'\n",  title, value);
-	#define print_hex(title,value) printf("%20s: 0x%x\n",  title, value);
-	#define print_int(title,value) printf("%20s: %i\n",  title, value);
-	#define print_2int(t1,v1,t2,v2) printf("%20s: %-3i %10s: %-3i \n",  t1, v1,t2,v2);
+	#define print_args(title,value) printf("%20s: '%s'\n",  title, NULLCHECK(value));
+	#define print_str(NAME) if ( ! strcmp_null(actual->NAME, expected->NAME))\
+		printf("%20s:\t act: '%s'\n%20s \t exp: '%s' \n",\
+			#NAME, NULLCHECK(actual->NAME),"", NULLCHECK(expected->NAME));
+	#define print_int(NAME)\
+		printf("%20s:\t act: %-6i exp: %-6i \n", #NAME, actual->NAME, expected->NAME);
+	#define print_hex(NAME)  if (actual->NAME != expected->NAME) \
+		printf("%20s:\t act: 0x%-4x exp: 0x%-4x \n", #NAME, actual->NAME, expected->NAME);
+	#define print_bool(NAME) if (actual->NAME != expected->NAME) \
+		printf("%20s:\t act: %-6s exp: %-6s \n",\
+			#NAME, TRUTH(actual->NAME), TRUTH(expected->NAME));
+	
+	String *strs[][3] = { 
+		{&actual->prefix_args,  &expected->prefix_args,   }, 
+		{&actual->postfix_args, &expected->postfix_args,  }
+	};
+	
+	char *names[] = {"prefix_args","postfix_args"};
+	
+	for(int i = 0; i < sizeof(strs)/ sizeof(strs[0]); ++i){
+		if (strs[i][0]->index  != strs[i][1]->index   || 
+			 strs[i][0]->length != strs[i][1]->length  ||
+			! strcmp_null(strs[i][0]->str, strs[i][1]->str ) 
+		){
+			printf(" %s %-15s: '%s'\n","act", names[i] ,strs[i][0]->str  );
+			printf(" %s %-15s: '%s'\n","exp", names[i] ,strs[i][1]->str  );
+			printf(" act %s len: %-3i %10s: %-3i \n", 
+				names[i], strs[i][0]->length,
+				"index", strs[i][0]->index 
+			);
+			printf(" exp %s len: %-3i %10s: %-3i \n", 
+				names[i], strs[i][1]->length,
+				"index", strs[i][1]->index 
+			);
+		}
+	}
 
-	print_args("act prefix_args",  NULLCHECK(actual->prefix_args.str));	
-	print_args("exp prefix_args",  NULLCHECK(expected->prefix_args.str));
-	print_2int("act prefix_args len", actual->prefix_args.length,
-               "index", actual->prefix_args.index 
-	)	
-	print_2int("exp prefix_args len", expected->prefix_args.length,
-               "index", expected->prefix_args.index 
-	)
+	puts("");
+	
+	print_hex(newest_only);
+	print_bool(sub_dirs);
+	print_bool(types);
+	print_str(root_dir);
+	
+	print_str(pl_dir);
+	print_bool(pl_name);
+	print_hex(pl_format);
+	print_hex(pl_output);
+	print_bool(pl_shuffle);
+	
+	print_str(hash_location);
+	print_bool(use_hash);
+	print_hex(status);
+	print_bool(write_history);
+	print_bool(updated);
+	print_bool(shortcuts);
+	
+	print_hex(player);
+	print_bool(afloat);
+	print_bool(nice_repeat);
+	print_bool(nice_random);
 	
 	#undef print_args
+	#undef print_str
 	#undef print_hex
 	#undef print_int
-	#undef print_2int
+	#undef print_bool
 	free(actual);
 	return FAIL;
 
 }
-

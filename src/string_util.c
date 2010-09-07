@@ -202,6 +202,12 @@ char *str_replace (char *s, size_t len,  char *sub, char *rep) {
 	return r;
 }
 
+bool strcmp_null(const char *s1, const char *s2 ){
+	if ( (s1 == NULL && s2 != NULL) || (s1 != NULL && s2 == NULL) ) return false;
+	if ( s1 != NULL && s2 != NULL && strcmp( s1, s2 ) != 0 ) return false;
+	return true;
+}
+
 // not used
 char *str_spilt_replace (char *s) {
 	char *start   = s;
@@ -246,3 +252,4 @@ static char *test_hash (char *s) {
 	}
 
 }
+

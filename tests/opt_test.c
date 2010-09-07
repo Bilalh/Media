@@ -17,8 +17,10 @@ TestResult opt_test_main(int test_no) {
 OptSetup	
 Sections {
 Section("Basic Features"){
-	OptTest("--fs", {
-		string_push(&exp->prefix_args, "--fs");
+	OptTest("", {
+		// string_push(&exp->prefix_args, " -fs");
+		exp->afloat=1;
+		string_push(&exp->postfix_args, " -fs");
 	})
 }OptEndSection
 

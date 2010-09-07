@@ -266,7 +266,6 @@ void print_media_args(MediaArgs *ma) {
 	print_hex("types",        ma->types);
 
 	printf("Playlist\n");
-	print_args("pl_shuffle", truth(ma->pl_shuffle));
 	print_args("pl_dir",     nullcheck(ma->pl_dir));
 	print_args("pl_name",    truth(ma->pl_name));
 	print_hex ("pl_format",  ma->pl_format);
@@ -274,7 +273,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("pl_shuffle", truth(ma->pl_shuffle));
                               
 	printf("Prefs\n");
-	print_args("hash_location", truth(ma->hash_location));
+	print_args("hash_location", nullcheck(ma->hash_location));
 	print_args("use_hash",      truth(ma->use_hash));
 	print_hex ("types",         ma->types);
 	print_args("write_history", truth(ma->write_history));
@@ -295,3 +294,4 @@ void print_media_args(MediaArgs *ma) {
 #undef print_args
 #undef print_hex
 }
+

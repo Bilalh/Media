@@ -20,7 +20,7 @@ static int OPT_NUM_SECTION = 0;
 // function to run on test data
 #define OptTest(_name, tBLOCK)\
 	{\
-		char *name = _name;\
+		char *name = "filename "_name;\
 		bool test_result;\
 		OptBefore\
 		tBLOCK\
