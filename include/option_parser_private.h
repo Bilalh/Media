@@ -204,7 +204,7 @@ const Element H_mplayer[] = {
 		.opt   = {.name =  "loop0", .val = 'k', .has_arg = no_argument}, 
 		.help  = "Adds -loop 0 -- meaning loops forever",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "loop 0");
+			string_push(&ma->prefix_args, "-loop 0");
 		}
 	},
 };

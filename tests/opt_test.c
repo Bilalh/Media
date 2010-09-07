@@ -2,8 +2,9 @@
 OptVar
 
 // Setup that is done once before the tests are run
-#define OptSetup 
+#define OptSetup\
 
+	
 // Setup that is done before each test
 #define OptBefore \
 	MediaArgs *exp = new_media_args();
@@ -17,11 +18,16 @@ TestResult opt_test_main(int test_no) {
 OptSetup	
 Sections {
 Section("Basic Features"){
-	OptTest("", {
-		// string_push(&exp->prefix_args, " -fs");
-		exp->afloat=1;
-		string_push(&exp->postfix_args, " -fs");
+	OptTest("-f", {
+		string_push(&exp->prefix_args, "-fs");
 	})
+	OptTest("-m",{
+		exp->player = P_MPLAYER;
+	})
+	OptTest("-k",{
+		string_push(&exp->prefix_args, "-loop 0");
+	})
+	
 }OptEndSection
 
 };

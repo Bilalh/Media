@@ -41,13 +41,18 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 	opt_intcmp(nice_repeat);
 	opt_intcmp(nice_random);
 
-
 	free(actual); 
 	PRINT_NAME_PASS(name);
 	return PASS;
 
 fail:
-	PRINT_NAME_FAIL(name);	
+	PRINT_NAME_FAIL(name);
+	printf(" args '%s'\n", name);
+	for(int i = 1; i < length; ++i){
+		printf(" arg[%i] '%s'\n", i, args[i]);
+	}
+	
+	
 	#define print_args(title,value) printf("%20s: '%s'\n",  title, NULLCHECK(value));
 	#define print_str(NAME) if ( ! strcmp_null(actual->NAME, expected->NAME))\
 		printf("%20s:\t act: '%s'\n%20s \t exp: '%s' \n",\
@@ -82,10 +87,9 @@ fail:
 				names[i], strs[i][1]->length,
 				"index", strs[i][1]->index 
 			);
+			puts("");
 		}
 	}
-
-	puts("");
 	
 	print_hex(newest_only);
 	print_bool(sub_dirs);

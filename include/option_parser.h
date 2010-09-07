@@ -9,6 +9,12 @@
 typedef void (^VoidBlock)();
 
 MediaArgs *new_media_args();
+
+/**
+ * @brief parses the options, can only be used once
+ *
+ * @return  A Media Args object with the opts
+**/
 MediaArgs *option_parser(int argc, char **argv);
 void print_help(); 
 void print_media_args(MediaArgs *ma);

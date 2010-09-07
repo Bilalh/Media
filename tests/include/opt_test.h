@@ -2,6 +2,7 @@
 #define OPT_TEST_HEADER
 #include "tests.h"
 #include "opt_helper.h"
+#include  <sys/types.h>
 
 // for Section numbering
 static int OPT_NUM_SECTION = 0; 
@@ -18,15 +19,23 @@ static int OPT_NUM_SECTION = 0;
 #define OptVar                  MakeVar(OPT)
 
 // function to run on test data
-#define OptTest(_name, tBLOCK)\
+// uses fork since getopt_long can only be used once per program
+#define OptTest(_name, tBLOCK){\
+	int stat_loc;\
+    pid_t pid = fork();\
+	if (pid == 0)\
 	{\
-		char *name = "filename "_name;\
+		char *name = "  "_name;\
 		bool test_result;\
 		OptBefore\
 		tBLOCK\
 		OptAfter(name)\
 		OptAdd(test_result)\
-	}
+		exit(0);\
+	}else{\
+		pid_t cpid = wait (&stat_loc);\
+	}\
+}
 
 TestResult opt_test_main(int test_no);
 #endif
