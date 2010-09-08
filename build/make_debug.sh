@@ -40,13 +40,16 @@ if [ -n "$2" ]; then
 	${CLEARNNN} echo "make $1" && make ${FLAGS} $1
 	
 	if [[ $? == 0 &&  "${2::1}" != "b" ]]; then
-		./$1 $3
+		res=$1
+		shift; shift;
+		./$res $*
 	fi
 	
 else
 
 ${CLEARNNN} && echo "make $1" && make $1 -n | \
 sed 's!gcc -std=gnu99 -fblocks!Gcc!g' | \
+sed 's!-I ../lib/hash!!g' | \
 sed 's!-g -Wall -I/opt/local/include -I/usr/include/libxml2  -I../include -I../src!Inc!g' \
 | sed 's!-lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl!Lib!g'
 

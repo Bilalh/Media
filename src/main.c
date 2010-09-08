@@ -14,6 +14,6 @@ int main (int argc, char **argv) {
 	}
 	
 	MediaArgs *opt = new_media_args();
-	media(PATH,&argv[2],argc-2,opt);
+	media(PATH, &argv[2], argc - 2, opt);
 	return 0;
 }

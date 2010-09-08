@@ -20,11 +20,13 @@
  * @param var Name of the variable
  * @param orginal_string The string 
 **/
-#define EP_GET_NAME(ep_num_char, var, orginal_string)\
-	int _ep_num_index = (ep_num_char[1] != NULL ? 1 : 0);\
-	char var[ ep_num_char[_ep_num_index] - orginal_string + 1]; \
-	strncpy(var, orginal_string, ep_num_char[_ep_num_index] - orginal_string);\
-	str[ep_num_char[_ep_num_index] - orginal_string] = '\0';
+#define EP_GET_NAME(ep_char, var, orginal_string)\
+	char var[ ep_char[EP_NUM_INDEX(ep_char)] - orginal_string + 1]; \
+	strncpy(var, orginal_string, ep_char[EP_NUM_INDEX(ep_char)] - orginal_string);\
+	var[ep_char[EP_NUM_INDEX(ep_char)] - orginal_string] = '\0';
+
+#define EP_NUM_INDEX(ep_num_char) (ep_num_char[1] != NULL ? 1 : 0)
+
 
 /**
  * @brief Gets the postion of 

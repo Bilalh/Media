@@ -33,14 +33,16 @@ bool updateHistory(char **filenames) {
 		printf("%s\n", *filenames);
 		char **ans = ep_num(*filenames);
 		if (ans[0] != NULL) {
-			long num = strtol(ans[0] + 1, NULL, 10);
-			if (num == 0 ) num++;
-
-			int index = ans[1] != NULL ? 1 : 0;
-			char s[ans[index] - *filenames + 1]; // 1 for \0
-			strncpy(s, *filenames, ans[index] - *filenames);
-			s[ans[index] - *filenames] = '\0';
-
+			// long num = strtol(ans[0] + 1, NULL, 10);
+			// if (num == 0 ) num++;
+			// 
+			// int index = ans[1] != NULL ? 1 : 0;
+			// char s[ans[index] - *filenames + 1]; // 1 for \0
+			// strncpy(s, *filenames, ans[index] - *filenames);
+			// s[ans[index] - *filenames] = '\0';
+			EP_GET_NUMBER(ans, num);
+			EP_GET_NAME(ans, s, *filenames)
+			
 			printf("title %s.\n", s);
 			printf("num   %li.\n", num);
 			MAKE_TIME_STR(now,timeinfo);
