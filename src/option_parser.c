@@ -98,7 +98,9 @@ MediaArgs *option_parser(int argc, char **argv) {
 			if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
 				letters[s_index++] = ele(i)[j].opt.val;
 				Element_ptr[ele(i)[j].opt.val] = (Element*) &ele(i)[j];
-				if (ele(i)[j].opt.has_arg == required_argument) letters[s_index++] = ':';
+				if (ele(i)[j].opt.has_arg == required_argument){
+					letters[s_index++] = ':';
+				}
 				if (ele(i)[j].opt.has_arg == optional_argument) {
 					letters[s_index++] = ':';
 					letters[s_index++] = ':';
@@ -122,6 +124,7 @@ MediaArgs *option_parser(int argc, char **argv) {
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
+		// printf("    %c %s\n", c, optarg);
 		if (c == '?') exit(1);
 		(*blocks[c])(ma, c,optarg); // calls the related block
 	}

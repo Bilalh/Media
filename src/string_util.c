@@ -78,7 +78,8 @@ int match (const char *string, char *pattern) {
 
 }
 
-char** spilt_string (char *str, int *res_length){
+
+char** spilt_string_malloc (char *str, int *res_length, bool malloces){
 	char *to_spilt = strdup(str), *sep = " ", *s_ptr, *word;
 	int slength = 7;
 	if ( *res_length > 1 ) slength = *res_length;	
@@ -87,7 +88,7 @@ char** spilt_string (char *str, int *res_length){
 	
 	for(word = strtok_r(to_spilt, sep, &s_ptr); word != NULL;
 			word = strtok_r(NULL, sep, &s_ptr)) {
-		strs[i++] = word;
+		strs[i++] = malloces ? strdup(word) : word;
 		if (i >= slength ) {
 			slength = slength * 2 + 1;
 			void * temp = realloc(strs, sizeof(char*) * slength);
@@ -105,6 +106,14 @@ char** spilt_string (char *str, int *res_length){
 	*res_length = i;
 	return strs;
 	
+}
+
+inline char** spilt_string_m (char *str, int *res_length){
+	return spilt_string_malloc(str,res_length,true);
+}
+
+inline char** spilt_string (char *str, int *res_length){
+	return spilt_string_malloc(str,res_length,false);
 }
 
 

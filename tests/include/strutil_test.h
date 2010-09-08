@@ -4,7 +4,7 @@
 #include "strutil_helper.h"
 
 // for Section numbering
-static int STRUTIL_NUM_SECTION = 0; 
+static int STRUTIL_NUM_SECTION = 1; 
 
 // Standard Macros 
 #undef  Section

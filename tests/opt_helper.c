@@ -1,19 +1,22 @@
 #include "include/opt_helper.h"
 
 #define opt_intcmp(NAME)	if ( actual->NAME != expected->NAME ) goto fail;
-#define opt_strcmp(NAME)	strcmp_null(actual->NAME, expected->NAME);
+#define opt_strcmp(NAME)	if ( ! strcmp_null(actual->NAME, expected->NAME) ) goto fail;
 
 #define opt_sbufcmp(NAME)\
 	strcmp_null(actual->NAME.str, expected->NAME.str);\
-	opt_intcmp(NAME.length);\
 	opt_intcmp(NAME.index);
 
 
 bool opt_test_start ( char *name, MediaArgs *expected ){
 	int length     = 0;
-	char **args    = spilt_string(name,&length);
-	
+	char **args    = spilt_string_m(name,&length);
 	MediaArgs *actual = option_parser(length, args);
+
+	for(int i = 0; i < length; ++i){
+		free(args[i]);
+	}
+	free(args);
 
 	opt_intcmp(newest_only);
 	opt_intcmp(sub_dirs);
@@ -42,16 +45,11 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 	opt_intcmp(nice_random);
 
 	free(actual); 
-	PRINT_NAME_PASS(name);
+	PRINT_NAME_PASS_a(name);
 	return PASS;
 
 fail:
-	PRINT_NAME_FAIL(name);
-	printf(" args '%s'\n", name);
-	for(int i = 1; i < length; ++i){
-		printf(" arg[%i] '%s'\n", i, args[i]);
-	}
-	
+	PRINT_NAME_FAIL_a(name);
 	
 	#define print_args(title,value) printf("%20s: '%s'\n",  title, NULLCHECK(value));
 	#define print_str(NAME) if ( ! strcmp_null(actual->NAME, expected->NAME))\
@@ -97,7 +95,7 @@ fail:
 	print_str(root_dir);
 	
 	print_str(pl_dir);
-	print_bool(pl_name);
+	print_str(pl_name);
 	print_hex(pl_format);
 	print_hex(pl_output);
 	print_bool(pl_shuffle);

@@ -47,15 +47,23 @@ char** ep_num(char *s);
  */
 int match(const char *string, char *pattern);
 
+
+
 /**
  * @brief Spilts a string into array of strings 
  *
  * @param str The string to split
  * @param res_length a int pointer to hold the length. 
  * (can be used to set the starting length)
+ * @param malloces - true uses malloc for spilt strings 
  * @return A array of strings
 **/
+char** spilt_string_malloc (char *str, int *res_length, bool malloces);
+
+// malloces false
 char** spilt_string(char *str, int *res_length);
+// malloces true
+char** spilt_string_m (char *str, int *res_length);
 
 /**
  * @brief strcmp with null checking

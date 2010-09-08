@@ -4,16 +4,17 @@
 #include "string_helper.h"
 
 // for Section numbering
-static int STRING_NUM_SECTION = 0; 
+static int STRING_NUM_SECTION = 1; 
 
 // Standard Macros
 #undef  Section
-#define Section(title)          StartSection(title,STRING_NUM_SECTION) 
-#define StringVar               MakeVar(STRING)
-#define StringEndSection        EndSection(STRING)
-#define StringPrintTestResults  PrintTestResults(STRING)
-#define StringMakeResult        MakeTestResult(STRING)
-#define StringResults           TestResults
+#define Section(title)           StartSection(title,STRING_NUM_SECTION) 
+#define StringAdd(test_result)   TestEndAdd(STRING,test_result)
+#define StringVar                MakeVar(STRING)
+#define StringEndSection         EndSection(STRING)
+#define StringPrintTestResults   PrintTestResults(STRING)
+#define StringMakeResult         MakeTestResult(STRING)
+#define StringResults            TestResults
 
 // funtions to run on test data
 #define StringTest(name, tBLOCK)\
@@ -22,12 +23,7 @@ static int STRING_NUM_SECTION = 0;
 		StringBefore\
 		tBLOCK\
 		StringAfter(name)\
-		if (test_result){\
-			STRING_TEST_PASED++;\
-		}else{\
-			STRING_TEST_FAILED++;\
-		}\
-		STRING_TEST_TOTAL++;\
+		StringAdd(test_result)\
 	}
 
 TestResult string_test_main(int test_no);

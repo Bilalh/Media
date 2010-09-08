@@ -79,10 +79,10 @@ const Element H_playlist[] ={
 			}\
 		}\
 	}
-	MAKE_PLAYLISTT("m3u",'3',F_M3U,"Outputs file as a m3u playlist"),
-	MAKE_PLAYLISTT("plist",'x',F_PLIST,"Outputs file as a plist"),
-	MAKE_PLAYLISTT("pls",'P',F_PLS, "Outputs file as a pls playlist"),
-	MAKE_PLAYLISTT("xspf",'X',F_XSPF,"Outputs file as a xspf playlist"),
+	MAKE_PLAYLISTT("m3u"   ,'3', F_M3U,   "Outputs file as a m3u playlist"),
+	MAKE_PLAYLISTT("plist" ,'x', F_PLIST, "Outputs file as a plist"),
+	MAKE_PLAYLISTT("pls"   ,'P', F_PLS,   "Outputs file as a pls playlist"),
+	MAKE_PLAYLISTT("xspf"  ,'X', F_XSPF,  "Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
 	{  
 		.opt   = {.name =  "filename", .val = 'n', .has_arg = required_argument}, 
@@ -184,17 +184,22 @@ const Element H_mplayer[] = {
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			int a, b, res;
 			res = sscanf(arg, "%8i:%8i",&a,&b);
+			// printf("    Abeg aspect %s\n", arg);
 			if (res != 2){
 				printf("Invalid aspect ratio\n");
 				exit(1);
 			}else{
-				string_push_m(&ma->prefix_args, 2,"-aspect", arg);
+				// printf("    Aend aspect %s\n",arg );
+				// string_push_m(&ma->prefix_args, 2,"-aspect", arg);
+				string_push(&ma->prefix_args,"-aspect");
+				string_push(&ma->prefix_args, arg);
+				// string_push(&ma->prefix_args,arg);
 			}
 		}
 	},
 	{  
-		.opt   = {.name =  "fast", .val = 'F', .has_arg = no_argument}, 
-		.help  = "Plays the with op",
+		.opt   = {.name =  "fast", .val = 'D', .has_arg = no_argument}, 
+		.help  = "Makes it fast",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2, 
 				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
@@ -356,7 +361,7 @@ const Element H_mplayer_extra[] = {
 			if (res != 1){
 				exit(1);
 			}else{
-				string_push_m(&ma->prefix_args, 2,  "loop", arg);
+				string_push_m(&ma->prefix_args, 2,  "-loop", arg);
 			}
 		}
 	},
@@ -366,9 +371,9 @@ const Element H_mplayer_extra[] = {
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
-				string_push(&ma->prefix_args, "shuffle");
+				string_push(&ma->prefix_args, "-shuffle");
 			}else{
-				string_push(&ma->prefix_args, "noshuffle");
+				string_push(&ma->prefix_args, "-noshuffle");
 			}
 		},
 	},

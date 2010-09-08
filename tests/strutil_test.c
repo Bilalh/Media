@@ -282,6 +282,22 @@ Section("spilt_string") {
 		e[1] = "32:33";
 		e[2] = "-1R";
 	)
+	StrutilTestSp("-A 16:9 --fast", 
+		char *e[3];
+		e(-A);  e(16:9);  e(--fast);
+	)
+	StrutilTestSp("--fast -A 16:9", 
+		char *e[3];
+		e(--fast);  e(-A);  e(16:9);
+	)
+	StrutilTestSp("  -A 16:9 --fast", 
+		char *e[4];
+		e( );  e(-A);  e(16:9);  e(--fast);
+	)
+	StrutilTestSp("  --fast -A 16:9", 
+		char *e[4];
+		e( );  e(--fast);  e(-A);  e(16:9);
+	)
 	StrutilTestSp("-mNV --rootpath / -e opt -fatA 16:9 --fast -k "
 				  "--no-m3u -x -ol -[ -no-done --profile t -W 22 -L4 -R "
 				  "-57 -F -nofs -Z", 

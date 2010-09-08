@@ -12,6 +12,8 @@ TimeVar
 // char *tm_zone;  /* abbreviation of timezone name */
 // long tm_gmtoff; /* offset from UTC in seconds */
 
+
+
 TestResult time_test_main(int test_no) {
 TimeSetup
 

@@ -1,4 +1,3 @@
-//FIXME problem only with dtd string.h name
 
 
 #include <string.h>

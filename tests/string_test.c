@@ -72,16 +72,17 @@ Section("Multiple adds/pushes _m"){
 		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
 		expected = " aab bbc ccd";
 	})
-	StringTest("Add multiple add_m", {
+	StringTest("multiple push_m", {
 		new_string(&actual,13);
-		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		string_push_m(&actual, 3, "aab", "bbc", "ccd");
 		expected = " aab bbc ccd";
 	})
-	StringTest("Add multiple add_m", {
+	StringTest("multiple push_m", {
 		new_string(&actual,13);
-		string_add_m(&actual, true, 3, "aab", "bbc", "ccd");
+		string_push_m(&actual, 3, "aab", "bbc", "ccd");
 		expected = " aab bbc ccd";
 	})
+	
 }StringEndSection
 
 };

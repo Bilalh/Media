@@ -45,11 +45,17 @@
 #define PrintTestV(title,data,first,sec)  \
 	printf("%-*"first"%*"sec, LINE_REC_1, title, LINE_REC_2, data)
 
+#define PrintTestA(title,type)  \
+printf("%-*"type, LINE_REC_1 +  LINE_REC_2, title)
+
 #define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
 #define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
 #define esprintf(STRING, FMT, args...) sprintf(STRING, ERROR_SEP FMT,## args );
 #define PRINT_NAME_FAIL(title) PrintTest(title, ""); PRINT_FAIL
 #define PRINT_NAME_PASS(title) PrintTest(title, ""); PRINT_PASS
+
+#define PRINT_NAME_FAIL_a(title) PrintTestA(title, "s"); PRINT_FAIL
+#define PRINT_NAME_PASS_a(title) PrintTestA(title, "s"); PRINT_PASS
 
 
 #define STRING_FAIL(actual,expected)\
@@ -66,7 +72,7 @@ typedef struct{
 
 // Sets up a test section
 #define StartSection(title,num) ^{ PrintTitleN(title,num)
-#define EndSection(NAME) \
+#define EndSection(NAME)\
 	EndPrintReset(NAME)\
 	SectionEnd
 #define SectionEnd \

@@ -5,7 +5,7 @@
 #include  <sys/types.h>
 
 // for Section numbering
-static int OPT_NUM_SECTION = 0; 
+static int OPT_NUM_SECTION = 1; 
 
 // Standard Macros 
 #undef  Section
@@ -34,7 +34,7 @@ static int OPT_NUM_SECTION = 0;
 		OptAfter(name)\
 		exit(test_result);\
 	}else{\
-		pid_t cpid = wait (&stat_loc);\
+		wait(&stat_loc);\
 		OptAdd(WEXITSTATUS(stat_loc))\
 	}\
 }

@@ -72,7 +72,7 @@ header =
 #include "#{LNAME}_helper.h"
 
 // for Section numbering
-static int #{UNAME}_NUM_SECTION = 0; 
+static int #{UNAME}_NUM_SECTION = 1; 
 
 // Standard Macros 
 #undef  Section
