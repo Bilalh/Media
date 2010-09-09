@@ -65,8 +65,11 @@ MediaArgs *new_media_args() {
 }
 
 // Parser the options and returns a MediaArgs struct
-MediaArgs *option_parser(int argc, char **argv) {
+MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 
+	int argc = *p_argc;
+	char **argv = *p_argv;
+	
 	int c, option_index = 0;
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
@@ -128,6 +131,9 @@ MediaArgs *option_parser(int argc, char **argv) {
 		if (c == '?') exit(1);
 		(*blocks[c])(ma, c,optarg); // calls the related block
 	}
+	
+	*p_argc -= optind;
+    *p_argv += optind;
 	
 	return ma;
 	#undef ele

@@ -13,7 +13,13 @@ int main (int argc, char **argv) {
 		exit(0);
 	}
 	
-	MediaArgs *opt = new_media_args();
-	media(PATH, &argv[2], argc - 2, opt);
+	// gets the path
+	char *path  = strdup(argv[1]);
+	argc--;
+	argv++;
+	
+	MediaArgs *opt = option_parser(&argc,&argv);
+	
+	media(PATH, argv, argc , opt);
 	return 0;
 }

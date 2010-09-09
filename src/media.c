@@ -25,7 +25,10 @@
 
 void media(char *path, char **args, int argc, MediaArgs *ma) {
 	struct dirent **files;
-
+	for(int i = 0; i < argc; ++i){
+		printf("%s\n", args[i]);
+	}
+	
 	char *regex = spilt_args(args, argc, ".*", VIDEO);
 	printf("regex: %s\n", regex);
 
@@ -33,7 +36,8 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	int file_num = scandir_b( path, &files,
 	^ (struct dirent * s) {
 		MAKE_REGEX(at, regex,);
-		return MATCH_REGEX(at, s->d_name, strlen(s->d_name));
+		int res =MATCH_REGEX(at, s->d_name, strlen(s->d_name));
+		return res > 0;
 	},
 	^ (const void * a, const void * b) {
 		return strcasecmp( DIRENT(a)->d_name, DIRENT(b)->d_name);
@@ -52,6 +56,11 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		total_length += strlen(sa[i]);
 	}
 	sa[file_num] = "";
+	if (ma->pl_output & PL_STDOUT){
+		for(int i = 0; i < file_num; ++i){
+			printf("[%i] %s\n",i, sa[i]);
+		}
+	}
 
 	Pformat types = F_M3U;
 	if (ma->write_history)           updateHistory(sa);

@@ -15,7 +15,7 @@ MediaArgs *new_media_args();
  *
  * @return  A Media Args object with the opts
 **/
-MediaArgs *option_parser(int argc, char **argv);
+MediaArgs *option_parser(int *p_argc, char ***p_argv);
 void print_help(); 
 void print_media_args(MediaArgs *ma);
 
