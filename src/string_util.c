@@ -66,6 +66,7 @@ char** ep_num (char *s) {
 	return ans;
 }
 
+// CHECK broken?
 int match (const char *string, char *pattern) {
 	int    status;
 	regex_t    re;

@@ -1,6 +1,7 @@
                            ### Variables ###
 CC             = gcc
 CFLAGS         = -g -Wall
+PERL           = perl
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../include -I../src -I ../lib/hash
 includes       = -I/opt/local/include -I/usr/include/libxml2 
@@ -26,6 +27,8 @@ $(foreach name,${objs},$(eval ${name}:${${name}_req}))
 ${objs}: 
 	${compile} ${libs} ${flags} ${^F} -o $@
 
+list_obj:
+	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
 
                            ### Tests ###
 all_tests: ${tests} ../tests/all_tests.o
@@ -35,10 +38,12 @@ all_tests: ${tests} ../tests/all_tests.o
 test_%: ../tests/%_test.o ../tests/%_helper.o %_wrapper.o
 	${compile} ${libs} ${flags}  ${^F} -o $@
 
+list_tests:
+	@${PERL} -e 'print join "\n", qw{${tests}}, ""'
+
 # makes main method
 %_wrapper.c:
 	./make_wrapper.sh "$@" "../tests/include/"
-
 
                            ### util ###
 %.o: %.c

@@ -5,19 +5,22 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <pcre.h>
 #include <Block.h>
 
 #include "history.h"
 #include "media.h"
 #include "playlist.h"
 #include "string_util.h"
+#include "time_regex.h"
+
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
 #define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 
-//TODO add hash replace
+//FIXME add hash replace
 //TODO sub dirs 
 
 void media(char *path, char **args, int argc, MediaArgs *ma) {
@@ -29,12 +32,13 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
 	^ (struct dirent * s) {
-		return match(s->d_name , regex);
+		MAKE_REGEX(at, regex,);
+		return MATCH_REGEX(at, s->d_name, strlen(s->d_name));
 	},
 	^ (const void * a, const void * b) {
 		return strcasecmp( DIRENT(a)->d_name, DIRENT(b)->d_name);
 	}
-							);
+	);
 
 	if (file_num == 0) {
 		printf("%s\n", "NO files found");
