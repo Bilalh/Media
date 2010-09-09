@@ -11,12 +11,17 @@
 bool opt_test_start ( char *name, MediaArgs *expected ){
 	int length     = 0;
 	char **args    = spilt_string_m(name,&length);
-	MediaArgs *actual = option_parser(length, args);
+	// saves pointers for freeing 
+	char **keeps   = args; int olength = length;
 
-	for(int i = 0; i < length; ++i){
-		free(args[i]);
+	MediaArgs *actual = option_parser(&length, &args);
+
+	for(int i = 0; i < olength; ++i){
+		free(keeps[i]);
 	}
-	free(args);
+	free(keeps);
+
+
 
 	opt_intcmp(newest_only);
 	opt_intcmp(sub_dirs);
@@ -111,13 +116,13 @@ fail:
 	print_bool(afloat);
 	print_bool(nice_repeat);
 	print_bool(nice_random);
+	free(actual);
 	
 	#undef print_args
 	#undef print_str
 	#undef print_hex
 	#undef print_int
 	#undef print_bool
-	free(actual);
 	return FAIL;
 
 }

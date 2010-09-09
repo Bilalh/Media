@@ -5,7 +5,7 @@
 #include  <sys/types.h>
 
 // for Section numbering
-static int OPT_NUM_SECTION = 1; 
+static int OPT_NUM_SECTION = 0; 
 
 // Standard Macros 
 #undef  Section
@@ -27,7 +27,7 @@ static int OPT_NUM_SECTION = 1;
     pid_t pid = fork();\
 	if (pid == 0)\
 	{\
-		char *name = "  "_name;\
+		char *name = "_ "_name;\
 		bool test_result;\
 		OptBefore\
 		tBLOCK\

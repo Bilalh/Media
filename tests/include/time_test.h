@@ -4,7 +4,7 @@
 #include "time_helper.h"
 #include "time_util.h"
 
-static int TIME_NUM_SECTION = 1; // for Section numbering
+static int TIME_NUM_SECTION = 0; // for Section numbering
 
 // Standard Macros 
 #undef  Section

@@ -67,13 +67,17 @@ MediaArgs *new_media_args() {
 // Parser the options and returns a MediaArgs struct
 MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 
-	int argc = *p_argc;
+	// uses these cause memeory error with malloc
+	// mmap error 12 can allocate region 
+	// int argc = *p_argc;
+	#define argc (*p_argc)
 	char **argv = *p_argv;
 	
 	int c, option_index = 0;
 	MediaArgs *ma = new_media_args();
 	// pointer to block contain the function for the chararcter.
 	const static VoidBlock *blocks[MAX_OPT_BLOCKS]; 
+	
 	// index counters
 	int t_len = 0, index = 0, s_index = 0;
 	// calculate  total length
@@ -83,6 +87,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	
 	struct option opts[t_len *2 + 1 ];
 	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
+	
 	// builds the options array.
 	for(int i = 0; i < HELP_L_LEN; ++i) {
 		for(int j = 0; j < HELP_LINK[i].length; ++j) {
@@ -116,14 +121,13 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 			}
 		}
 	}
-
 	// last have to be all zeros
 	opts[index].name    = 0;
 	opts[index].val     = 0;
 	opts[index].has_arg = 0;
 	opts[index].flag    = 0;
 	letters[s_index] = '\0';
-	
+
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
@@ -135,8 +139,9 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	*p_argc -= optind;
     *p_argv += optind;
 	
-	return ma;
+	#undef argc
 	#undef ele
+	return ma;
 }
 
 // prints the help, section or letter if specifed

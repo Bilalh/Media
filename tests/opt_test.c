@@ -27,7 +27,6 @@ Section("Basic Features"){
 	OptTest("-k",{
 		string_push(&exp->prefix_args, "-loop 0");
 	})
-	
 }OptEndSection
 
 
@@ -38,9 +37,9 @@ Section("Filepath"){
 }OptEndSection
 
 
-Section("Mplayer"){
-
-}OptEndSection
+// Section("Mplayer"){
+// 
+// }OptEndSection
 
 
 Section("other"){
