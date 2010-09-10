@@ -10,6 +10,7 @@
 #include "../include/debug.h"
 
 static char *test_hash(char *s);
+char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end);
 
 char** ep_num (char *s) {
 	char *start  = s;
@@ -141,29 +142,55 @@ char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {
 	return final_str;
 }
 
+//FIXME | bugss
 SpiltData *str_spilt_func (char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	int  *res_len = malloc(sizeof(int) * 5);
 	int total = 0;
 	int i     = 0;
-
+	Mapping *hash  = load_hash("zzhashb");
+	Mapping *h;
+	
+	bool pipe =0;
 	while(*s != '\0' ) {
+		pipe =0;
 		while(*s != '|' && *s != '\0' ) {
 			++s;
+			if (*s == '|') pipe = 1;
 		}
-
+		
 		int length = s - start;
-
-		char in[length+1];
-		strncpy(in, start, length);
-		in[length] = '\0';
-
-		res[i]     = str_replace(start,  length , in, test_hash(in) );
+		int add = 0;
+		
+		if (*start == '|' ) {
+			add = 1;
+		}
+		char in[length+1+add];
+		
+		if (*start == '|' ) {
+			in[0] = '|';
+		}
+		strncpy(&in[add], start, length);
+		in[length+add] = '\0';
+		dprintf("in %s\n", in);
+		
+		
+		HASH_FIND_STR( hash, in, h);
+		if (h == NULL){
+			res[i] =  str_replace_e(start,  length+add , in, in, pipe ? '|' : '\0'  );
+		}else{
+			res[i] = str_replace_e(start,  length+add , in, h->val,pipe ? '|' : '\0'  );
+		}
 		res_len[i] = strlen(res[i]);
+		dprintf("res[%d] %d %s\n",i, res_len[i], res[i] );
+		
 		total     += res_len[i];
 
-		if (*s == '|') ++s;
+		if (*s == '|') {
+			++s;
+		}else{
+		}
 		start = s;
 		++i;
 
@@ -177,11 +204,12 @@ SpiltData *str_spilt_func (char *s) {
 	return sd; 
 }
 
-char *str_replace (char *s, size_t len,  char *sub, char *rep) {
+char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
 	char *r     = malloc(len * 2 + rep_len + 25 );
-
+	//FIXME mallocing in str_replace
+	dprintf("s %s %d sub %s rep %s \n", s,len, sub, rep);
 	// counters for s and r
 	int is = 0, ir = 0;
 	while(is < len) {
@@ -194,9 +222,15 @@ char *str_replace (char *s, size_t len,  char *sub, char *rep) {
 			r[ir++] = s[is++];
 		}
 	}
-
+	
+	if (end != '\0') r[ir++] = end;
 	r[ir] = '\0';
+	dprintf("r %s\n", r);
 	return r;
+}
+
+inline char *str_replace (char *s, size_t len,  char *sub, char *rep){
+	return str_replace_e (s, len,  sub, rep, '\0'); 
 }
 
 Mapping *load_hash(const char *filename){

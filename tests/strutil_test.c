@@ -354,6 +354,7 @@ Section("Hash"){
 			free(h->val);
 			free(h); 
 		}
+		free(hash);
 		
 		if (test_result){
 			PRINT_NAME_PASS(name);

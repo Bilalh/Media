@@ -20,7 +20,6 @@
 #define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 
-//FIXME add hash replace
 //TODO sub dirs 
 
 void media(char *path, char **args, int argc, MediaArgs *ma) {

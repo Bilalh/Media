@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/hash.c</string>
+	<string>tests/strutil_test.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,73 +20,27 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>184</integer>
+	<integer>185</integer>
 	<key>metaData</key>
 	<dict>
-		<key>src/hash.c</key>
+		<key>tests/strutil_test.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>18</integer>
+				<integer>354</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/hashe.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>20</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>13</integer>
-			</dict>
-		</dict>
-		<key>src/main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>44</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/main.c</string>
-		<string>src/hash.c</string>
-		<string>src/hashe.c</string>
+		<string>tests/strutil_test.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -127,7 +81,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>src</key>
+				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -138,6 +92,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{560, 81}, {838, 797}}</string>
+	<string>{{558, 79}, {826, 799}}</string>
 </dict>
 </plist>

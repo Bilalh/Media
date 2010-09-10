@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include "uthash.h"
 
+#define DEBUG
+
 /**
  * @brief Places the number in var
  *

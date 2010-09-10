@@ -336,7 +336,7 @@ ele	src/option_parser.c	/^	#define ele(/;"	macro	line:86
 ele	src/option_parser.c	/^	#undef ele$/;"	macro	line:143
 entry	lib/hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	lib/hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
-ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:14
+ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:15
 ep_num_test	tests/strutil_helper.c	/^bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){$/;"	function	line:26
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:51
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:52
@@ -416,7 +416,7 @@ length	include/string_util.h	/^	int  length;$/;"	member	line:111
 lengths	include/string_util.h	/^	int  *lengths;$/;"	member	line:112
 libs	build/Makefile	/^libs           = -lsqlite3 -lxml2 -L\/opt\/local\/lib -lpcre -lcurl$/;"	macro	line:8
 links	include/option_parser.h	/^	const Element *links;$/;"	member	line:33
-load_hash	src/string_util.c	/^Mapping *load_hash(const char *filename){$/;"	function	line:202
+load_hash	src/string_util.c	/^Mapping *load_hash(const char *filename){$/;"	function	line:206
 loadlimit	lib/hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 log2_num_buckets	include/uthash.h	/^   unsigned num_buckets, log2_num_buckets;$/;"	member	line:918
 main	build/optm.c	/^int main(int argc,  char *argv[])$/;"	function	line:2
@@ -433,7 +433,7 @@ make_playlist	src/playlist.c	/^bool make_playlist(char *filename, char *dir,  ch
 make_plist	src/playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:63
 make_pls	src/playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:116
 make_xspf	src/playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:133
-match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:239
+match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:244
 max_load_factor	lib/hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
 media	src/media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:26
 media_req	build/Makefile	/^media_req = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}$/;"	macro	line:20
@@ -509,23 +509,23 @@ ptr	src/ml.c	/^	char *ptr;$/;"	member	line:17
 root_dir	include/media_args.h	/^	char     *root_dir;$/;"	member	line:47
 shortcuts	include/media_args.h	/^	bool    shortcuts;$/;"	member	line:62
 signature	include/uthash.h	/^   uint32_t signature; \/* used only to find hash tables in external analysis *\/$/;"	member	line:940
-spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {$/;"	function	line:108
-spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:103
-spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:99
-spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:70
+spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {$/;"	function	line:109
+spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:104
+spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:100
+spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:71
 spilt_words_test	tests/strutil_helper.c	/^bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){$/;"	function	line:56
 status	include/media_args.h	/^	Status  status; \/\/TODO status$/;"	member	line:59
 str	include/string_buffer.h	/^	char *str;$/;"	member	line:7
 str	src/temp.c	/^	unsigned char *str;$/;"	member	line:11
 str_arr	include/media_args.h	/^	char **str_arr;$/;"	member	line:34
 str_hash	src/temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:15
-str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:276
-str_replace	src/string_util.c	/^char *str_replace (char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:180
-str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s) {$/;"	function	line:144
-str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:251
+str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:281
+str_replace	src/string_util.c	/^char *str_replace (char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:184
+str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s) {$/;"	function	line:145
+str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:256
 strcheck	src/option_parser.c	/^#define strcheck(/;"	macro	line:262
 strcheck	src/option_parser.c	/^#undef strcheck$/;"	macro	line:307
-strcmp_null	src/string_util.c	/^bool strcmp_null(const char *s1, const char *s2 ){$/;"	function	line:229
+strcmp_null	src/string_util.c	/^bool strcmp_null(const char *s1, const char *s2 ){$/;"	function	line:234
 string_add	src/string_buffer.c	/^void string_add(String *s, char *str, bool add_space_before) {$/;"	function	line:21
 string_add_m	src/string_buffer.c	/^void string_add_m(String *s, bool add_space, int length, ...){$/;"	function	line:37
 string_append	include/string_buffer.h	/^#define string_append(/;"	macro	line:46
@@ -545,7 +545,7 @@ tablelength	lib/hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	mem
 tail	include/uthash.h	/^   struct UT_hash_handle *tail; \/* tail hh in app order, for fast append    *\/$/;"	member	line:920
 tbl	include/uthash.h	/^   struct UT_hash_table *tbl;$/;"	member	line:950
 tempc_req	build/Makefile	/^tempc_req = temp.o ${strutil_req} hashtable_itr.o hashtable.o hashtable_utility.o$/;"	macro	line:22
-test_hash	src/string_util.c	/^static char *test_hash (char *s) {$/;"	function	line:286
+test_hash	src/string_util.c	/^static char *test_hash (char *s) {$/;"	function	line:291
 tests	tests/tests.mk	/^tests  = $(addprefix test_, ${names})$/;"	macro	line:2
 time_req	tests/tests.mk	/^time_req         = string_util.o time_util.o$/;"	macro	line:7
 time_test_main	tests/time_test.c	/^TestResult time_test_main(int test_no) {$/;"	function	line:17
