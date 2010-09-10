@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "string_buffer.h"
-#include "debug.h"
+#include "../include/string_buffer.h"
+#include "../include/debug.h"
 
 void new_string(String *s, int length ){
 	if (length <= 0) length = 1;

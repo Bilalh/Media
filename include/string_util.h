@@ -2,6 +2,7 @@
 #define STRINGUTILHEAD
 #include <stddef.h>
 #include <stdbool.h>
+#include "uthash.h"
 
 /**
  * @brief Places the number in var
@@ -112,6 +113,7 @@ typedef struct {
 	int  total;
 } SpiltData;
 
+
 /**
  * @brief 
  *
@@ -119,6 +121,15 @@ typedef struct {
  * @return 
 **/
 SpiltData *str_spilt_func(char *s);
+
+typedef struct  {
+	char *key;
+	char *val;
+	UT_hash_handle hh;
+} Mapping;
+
+Mapping *load_hash(const char *filename);
+
 
 /**
  * @brief 

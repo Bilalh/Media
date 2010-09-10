@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "hashtable.h"
-#include "hashtable_itr.h"
-#include "string_util.h"
+#include "../include/hashtable.h"
+#include "../include/hashtable_itr.h"
+#include "../include/string_util.h"
 
 struct key {
 	unsigned char *str;

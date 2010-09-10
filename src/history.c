@@ -5,8 +5,8 @@
 #include <sqlite3.h>
 #include <libxml/tree.h>
 
-#include "history.h"
-#include "string_util.h"
+#include "../include/history.h"
+#include "../include/string_util.h"
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 bool updateHistory(char **filenames) {

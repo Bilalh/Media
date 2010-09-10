@@ -8,11 +8,11 @@
 #include <pcre.h>
 #include <Block.h>
 
-#include "history.h"
-#include "media.h"
-#include "playlist.h"
-#include "string_util.h"
-#include "time_regex.h"
+#include "../include/history.h"
+#include "../include/media.h"
+#include "../include/playlist.h"
+#include "../include/string_util.h"
+#include "../include/time_regex.h"
 
 
 #define DIRENT(value) (*(struct dirent **) value)

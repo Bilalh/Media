@@ -16,19 +16,21 @@ include ../tests/tests.mk
 
 
                            ### Objects ###
-objs      = media optt tempc
+objs      = media optt tempc hashe2
 media_req = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
 optt_req  = ${opt_req} optm.o
 tempc_req = temp.o ${strutil_req} hashtable_itr.o hashtable.o hashtable_utility.o
-
+hashe2_req = hashe2.o
+                           ### Objects rules ###
 # makes name : ${name_req}
 $(foreach name,${objs},$(eval ${name}:${${name}_req}))
 
 ${objs}: 
 	${compile} ${libs} ${flags} ${^F} -o $@
 
-list_obj:
+list_objs:
 	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
+
 
                            ### Tests ###
 all_tests: ${tests} ../tests/all_tests.o
@@ -44,6 +46,7 @@ list_tests:
 # makes main method
 %_wrapper.c:
 	./make_wrapper.sh "$@" "../tests/include/"
+
 
                            ### util ###
 %.o: %.c

@@ -314,6 +314,53 @@ Section("spilt_string") {
 } StrutilEndSection
 
 
+Section("Hash"){
+	char *vals[][2] = {
+		{"11e", "11 eyes"},
+		{"ai", "Atelier Iris"},
+		{"na2", "Mahou Shoujo Lyrical Nanoha A's"}
+	};
+	
+	StrutilTestM("Testing Hash",{
+		Mapping *hash = load_hash("zzhashtest");
+		Mapping *h;
+		
+		int count;
+		if ( (count = HASH_COUNT(hash)) != 3){
+			test_result = FAIL;
+			PRINT_NAME_FAIL(name);
+			eprintf(" Hash count exp:%d act:%d\n", 3,count);
+		}else{
+			int i = 0;
+			for(h = hash; h != NULL; h = h->hh.next, i++) {
+				if (strcmp(h->key,vals[i][0]) != 0 || strcmp(h->val,vals[i][1])  != 0){
+					test_result = FAIL;
+					PRINT_NAME_FAIL(name);
+					eprintf(" Hash key exp:'%s' act:'%s'\n", vals[i][0], h->key );
+					eprintf(" Hash val\n%s exp: '%s'\n%s act: '%s'\n",
+						ERROR_SEP,vals[i][1],ERROR_SEP, h->val 
+					);
+					
+					break;
+				}
+			}	
+		}
+
+		
+		while (hash){
+			h = hash;
+			HASH_DEL(hash,h);
+			free(h->key);
+			free(h->val);
+			free(h); 
+		}
+		
+		if (test_result){
+			PRINT_NAME_PASS(name);
+		} 
+	})
+}StrutilEndSection
+
 
 };
 

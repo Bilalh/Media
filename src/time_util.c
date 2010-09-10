@@ -6,9 +6,9 @@
 
 #include <pcre.h>
 
-#include "string_util.h"
-#include "time_util.h"
-#include "time_regex.h"
+#include "../include/string_util.h"
+#include "../include/time_util.h"
+#include "../include/time_regex.h"
 
 struct tm* currentTime() {
 	time_t tt;

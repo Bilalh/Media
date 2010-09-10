@@ -6,8 +6,8 @@
 
 #include <pcre.h>
 #include <pcreposix.h>
-#include "string_util.h"
-#include "debug.h"
+#include "../include/string_util.h"
+#include "../include/debug.h"
 
 static char *test_hash(char *s);
 
@@ -64,19 +64,6 @@ char** ep_num (char *s) {
 		s--;
 	}
 	return ans;
-}
-
-// CHECK broken?
-int match (const char *string, char *pattern) {
-	int    status;
-	regex_t    re;
-	if ( regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
-		return(0);
-	}
-	status = regexec(&re, string, (size_t) 0, NULL, 0);
-	regfree(&re);
-	return !(status != 0);
-
 }
 
 
@@ -212,13 +199,56 @@ char *str_replace (char *s, size_t len,  char *sub, char *rep) {
 	return r;
 }
 
+Mapping *load_hash(const char *filename){
+	Mapping *hash = NULL, *h;
+	FILE *hfile = fopen(filename, "r");
+
+	char lens[6];
+	int key_len, val_len;
+	
+	while (fgets(lens, 6, hfile) != NULL ){
+		key_len = lens[0] - 48;
+		val_len = strtol(&lens[2], NULL , 10);
+		// printf("kl:%i vl:%i\n", key_len,val_len);
+		
+		// +3 r - \t and \n
+		char key[key_len+1], val[val_len+3];
+		fgets(key, key_len+1, hfile);
+		fgets(val, val_len+3, hfile);
+		// gets rid of newline
+		val[val_len+1] ='\0'; 
+		
+		// printf("k:'%s' v:'%s'\n", key,&val[1]);
+		h = (Mapping*) malloc(sizeof(Mapping));
+		h->key = strdup(key);
+		h->val = strdup(&val[1]);
+		HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+	}
+	return hash;
+}
+
 bool strcmp_null(const char *s1, const char *s2 ){
 	if ( (s1 == NULL && s2 != NULL) || (s1 != NULL && s2 == NULL) ) return false;
 	if ( s1 != NULL && s2 != NULL && strcmp( s1, s2 ) != 0 ) return false;
 	return true;
 }
 
+
 // not used
+
+// CHECK broken?
+int match (const char *string, char *pattern) {
+	int    status;
+	regex_t    re;
+	if ( regcomp(&re, pattern, REG_EXTENDED | REG_ICASE | REG_NOSUB) != 0) {
+		return(0);
+	}
+	status = regexec(&re, string, (size_t) 0, NULL, 0);
+	regfree(&re);
+	return !(status != 0);
+
+}
+
 char *str_spilt_replace (char *s) {
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);

@@ -4,9 +4,9 @@
 #include <string.h>
 #include <sys/ioctl.h>
 
-#include "option_parser.h"
-#include "option_parser_private.h"
-#include "string.h"
+#include "../include/option_parser.h"
+#include "../include/option_parser_private.h"
+#include "../include/string.h"
 
 static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
