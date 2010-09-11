@@ -109,8 +109,7 @@ inline char** spilt_string (char *str, int *res_length){
 	return spilt_string_malloc(str,res_length,false);
 }
 
-char *spilt_args(char **arr, size_t length, char *separator, 
-				 char *beginning, char *ending, char* hash_file ) 
+char *spilt_args(char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) 
 {
 	assert(arr); assert(length >=0); assert(separator); 
 	assert(beginning); assert(ending); assert(hash_file);

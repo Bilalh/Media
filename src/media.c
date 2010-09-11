@@ -19,6 +19,9 @@
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
 #define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
+#define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
+
+
 
 //TODO sub dirs 
 
@@ -28,8 +31,20 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		printf("%s\n", args[i]);
 	}
 	
+	
+	char *types = "";
+	switch (ma->types){
+		case T_VIDEO: types = ")"VIDEO;
+			break;
+		case T_AUDIO: types = ")"AUDIO;
+			break;
+		case T_BOTH : types = ")"VID_AUD;
+			break;
+		case T_NONE : types = ")";
+			break;
+	}
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
-	char *regex = spilt_args(args, argc, ".*", "(", ")"VIDEO, hash_location);
+	char *regex = spilt_args(args, argc, ".*", "(", types, hash_location);
 	printf("regex: %s\n", regex);
 
 	// gets dir listing ignoring case and matching the patten
@@ -62,20 +77,34 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		}
 	}
 
+	
+
 	if (ma->write_history)           updateHistory(sa);
 	if (ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, sa, ma->pl_format);
-	switch (ma->player){
-		//TODO players
-		case P_MPLAYER: 
-			mplayer(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
-			break;
-		case P_NICEPLAYER:
-			niceplayer("");
-			break;
-		case P_VLC:
-			vlc(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
-			break;
-		case P_NONE: break;
+	
+	pid_t pid =  fork();
+	if ( pid != 0 ){
+		switch (ma->player){
+			//TODO players
+			case P_MPLAYER: 
+				mplayer(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+			
+				break;
+			case P_NICEPLAYER:
+				niceplayer("");
+				break;
+			case P_VLC:
+				vlc(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+				break;
+			case P_NONE: break;
+		}
+	}else{
+		if (ma->afloat){
+			sleep(1);
+			system("osascript -e 'tell application \"mplayer-pigoz.mpBinaries\" to activate' " 
+				   "-e 'tell application \"Afloat Scripting\" to set " 
+				   "topmost window kept afloat to true without badge shown'");
+		}
 	}
 	
 }
@@ -83,18 +112,25 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.
 void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
+	
+	// mplayer binary
+	const char* mplayer = "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\"";
+	const char *rid   = "&> /dev/null";      // discards output.
+	
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
 	
 	int index   = strlen(filepath);
-	char *rid   = " &> /dev/null";      // discards output.
 	int rid_len = strlen(rid);
+	int m_len    = strlen(mplayer);
+	
+	//CHECK 1 from (8 for mplayer)
 	char m_args[total_length + 
-	strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ 8];
+	strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ m_len+ 1];
 
-	sprintf(m_args, "cd %s; mplayer %s ", filepath, prefix_args);
+	sprintf(m_args, "cd %s; %s %s ", filepath, mplayer, prefix_args);
 	// 3 for cd 2 for ; 1 for  .
-	index += 3 + 2 + 8 + strlen(prefix_args) + 1;
+	index += 3 + 2 + (+ 1 + m_len) + strlen(prefix_args) + 1;
 
 	// append filenames
 	while (**filenames != '\0') {
@@ -123,7 +159,7 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 void niceplayer(char *playlist) {
 	
 }
-
+	
 // TODO vlc
 void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
 	

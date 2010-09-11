@@ -4,8 +4,8 @@
 #include "../include/media.h"
 #include "../include/option_parser.h"
 
-// #define PATH "/Users/bilalh/Movies/.Movie/divx"
-#define PATH "/Users/bilalh/Movies/.Movie/OpeningP"
+#define PATH "/Users/bilalh/Movies/.Movie/divx"
+// #define PATH "/Users/bilalh/Movies/.Movie/OpeningP"
 // #define PATH "/Users/bilalh/Movies/.Movie/mov"
 
 int main (int argc, char **argv) {

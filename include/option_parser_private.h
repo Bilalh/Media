@@ -2,17 +2,52 @@
 
 // uses val s > 256 & < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
-#define MAX_OPT_BLOCKS LONG_OPT_START_VALUE + 50 + 128
+#define LONG_OPT_END_VALUE LONG_OPT_START_VALUE + 51
+
+#define MAX_OPT_BLOCKS LONG_OPT_END_VALUE - 1 + 128
 
 #define ASCII 128
 #define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
 #define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
 #define TRUTH_STATE(ch) (ch < ASCII)
+#define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
+
 #define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 
 const Element H_filetype[] ={
-	
+
+{  
+	.opt   = {.name =  "video", .val = 258, .has_arg = no_argument}, 
+	.help  = "Displays videos as well.",
+	.arg   = "", .neg = true,
+	.block = ^(MediaArgs *ma, int ch, char *arg ) {
+		if ( TRUTH_STATE_l(ch) ){
+			ma->types |= T_VIDEO;
+		}else{
+			ma->types &= ~T_VIDEO;
+		}
+	}
+},	
+{  
+	.opt   = {.name =  "audio", .val = 259, .has_arg = no_argument}, 
+	.help  = "Displays audio as well.",
+	.arg   = "", .neg = true,
+	.block = ^(MediaArgs *ma, int ch, char *arg ) {
+		if ( TRUTH_STATE_l(ch) ){
+			ma->types |= T_AUDIO;
+		}else{
+			ma->types &= ~T_AUDIO;
+		}
+	}
+},
+{  
+	.opt   = {.name =  "all", .val = 260, .has_arg = no_argument}, 
+	.help  = "Display all files.",
+	.block = ^(MediaArgs *ma, int ch, char *arg ) {
+		ma->types = T_NONE;
+	}
+},
 };
 
 const Element H_filepath[] ={
@@ -47,7 +82,7 @@ const Element H_filepath[] ={
 	},
 	{  
 		.opt   = {.name =  "playlistpath", .val = 'p', .has_arg = required_argument}, 
-		.help  = "Directory to start searching from",
+		.help  = "Directory to write playlist in default .",
 		.arg   = "dir", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_dir = strdup(arg);
@@ -72,6 +107,7 @@ const Element H_filepath[] ={
 };
 
 const Element H_playlist[] ={
+
 	#define MAKE_PLAYLISTT(_name,_val,_ftype,_help){\
 		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument},\
 		.help  = _help,\

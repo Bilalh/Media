@@ -11,6 +11,7 @@
 
 #define PLAYLIST_INT_LENGTH 10
 
+//TODO paths in m3u
 bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) {
 	assert(filename); assert(names);
 	char *dir;

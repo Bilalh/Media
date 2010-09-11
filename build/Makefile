@@ -16,11 +16,13 @@ include ../tests/tests.mk
 
 
                            ### Objects ###
-objs      = media optt tempc hashe2
-media_req = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
-optt_req  = ${opt_req} optm.o
-tempc_req = temp.o ${strutil_req} hashtable_itr.o hashtable.o hashtable_utility.o
+objs       = media optt tempc hashe2 new
+media_req  = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
+optt_req   = ${opt_req} optm.o
+tempc_req  = temp.o ${strutil_req} hashtable_itr.o hashtable.o hashtable_utility.o
 hashe2_req = hashe2.o
+new_req    = ${strutil_req} new.o
+
                            ### Objects rules ###
 # makes name : ${name_req}
 $(foreach name,${objs},$(eval ${name}:${${name}_req}))

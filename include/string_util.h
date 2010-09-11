@@ -95,8 +95,7 @@ char *str_spilt_replace(char *s);
  * @param hashfile - file to load the hash from
  * @return
  */
-char *spilt_args(char **arr, size_t length, char *separator, 
-				 char *beginning, char *ending, char* hash_file );
+char *spilt_args(char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file );
 
 typedef struct {
 	char **args; ///< args

@@ -42,14 +42,14 @@ typedef struct {
 	Excludes excludes;
 	bool     newest_only;
 	bool     sub_dirs;
-	Types    types; 
+	Types    types;        // DONE
 	
 	char     *root_dir;
 	
 	// Playlist (pl)
 	char    *pl_dir;       // DONE
 	char    *pl_name;      // DONE
-	Pformat  pl_format;    // DONE
+	Pformat  pl_format;    // nDONE - use full paths
 	Poutput  pl_output;    // DONE
 	bool     pl_shuffle;
 	
@@ -63,7 +63,7 @@ typedef struct {
 	
 	// Players
 	Player   player;       // DONE
-	bool     afloat;
+	bool     afloat;       // DONE
 	String   prefix_args;  // DONE
 	String   postfix_args; // DONE
 		
