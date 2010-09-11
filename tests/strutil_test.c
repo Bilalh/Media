@@ -313,7 +313,6 @@ Section("spilt_string") {
 	)
 } StrutilEndSection
 
-
 Section("Hash"){
 	char *vals[][2] = {
 		{"11e", "11 eyes"},
@@ -360,6 +359,85 @@ Section("Hash"){
 			PRINT_NAME_PASS(name);
 		} 
 	})
+}StrutilEndSection
+
+
+Section("Spilt args"){
+	
+	struct spilt_test{
+		char *out;
+		int len;
+		char *sep;
+		char *start;
+		char *end;
+		char *hash;
+	};
+	
+
+	struct spilt_test tests[] =
+	{
+		{.out = "abc_def_ghiEND",
+		 .len = 3, .sep = "_", .start ="", .end = "END",.hash= "no_hashs"
+		},
+		{.out = "Atelier Iris 2_e",
+		 .len = 1, .sep = "_", .start ="", .end = "_e",.hash= TEST_DIR"hashes/h1"
+		},
+		{.out = "11 eyes|Atelier Iris.mkv",
+		 .len = 1, .sep = ",", .start ="", .end = ".mkv",.hash= TEST_DIR"hashes/h2"
+		},
+		{.out = "jMahou|Atelier,a|11 eyesa",
+		 .len = 1, .sep = "_", .start ="j", .end = "a",.hash= TEST_DIR"hashes/h3"
+		},
+		{.out = "|",
+		 .len = 1, .sep = "", .start ="", .end = "",.hash= TEST_DIR"hashes/none"
+		},
+		{.out = "|aa|",
+		 .len = 1, .sep = "", .start ="", .end = "",.hash= TEST_DIR"hashes/none"
+		},
+		{.out = "aaa_bbb|ccc",
+		 .len = 2, .sep = "_", .start ="", .end = "",.hash= TEST_DIR"hashes/h4"
+		},
+		{.out = "(aaa.*bb|cccc.*aaa|bb).mkv",
+		 .len = 3, .sep = ".*", .start ="(", .end = ").mkv",.hash= TEST_DIR"hashes/h5"
+		},
+		{.out = "(def|ghi|abd).mkv",
+		 .len = 1, .sep = "_", .start ="(", .end = ").mkv",.hash= TEST_DIR"hashes/h6"
+		}
+	};
+
+	char *inputs[][10] = {
+		{"abc", "def", "ghi"},
+		{"ai2"},
+		{"11e|ai"},
+		{"na2|ai|11e"},
+		{"|"},
+		{"|aa|"},
+		{"abc", "def|ghi"},
+		{"abc","def|ghi","abc|def"},
+		{"abc|def|ghi"}
+	};
+	
+	int total_length = sizeof(inputs)/sizeof(inputs[0]);
+	
+	for(int i = 0; i < total_length; ++i){
+		
+		StrutilTestM("test n",{
+			
+			char *res = spilt_args(inputs[i], tests[i].len, 
+								   tests[i].sep, tests[i].start, 
+								   tests[i].end, tests[i].hash);
+			if( strcmp(res, tests[i].out) != 0 ){
+				test_result = false;
+				PRINT_NAME_FAIL(tests[i].out);
+				eprintf("exp: '%s'\n", tests[i].out );
+				eprintf("act: '%s'\n", res );
+				eprintf("sep: '%s'  end:  '%s' file:  '%s'\n","_", "END", "no_hash" );
+			}
+			PRINT_IF_PASSED_a(tests[i].out);
+		})
+		
+	}
+	
 }StrutilEndSection
 
 

@@ -29,15 +29,15 @@ MediaArgs *new_media_args() {
 		.root_dir    = NULL,
 		
 		// Playlist
-		// .pl_name       = "zzplaylist",
+		.pl_name       = "zzplaylist",
 		.pl_dir        = NULL,
 		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_shuffle    = false,
 		
 		// Prefs
-		.hash_location = NULL,
-		.use_hash      = false,
+		.hash_location = "zzhash",
+		.use_hash      = true,
 		.status        = S_NONE,
 		.write_history = false,
 		.updated       = false,

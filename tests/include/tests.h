@@ -22,11 +22,11 @@
 #define ERROR_SEP "   " // sep for error
 
 
-#define PrintTest(title,data)       PrintTestV(title,data,"s","s")
-#define PrintTesti(title,data)      PrintTestV(title,data,"s","i")
-#define PrintTestl(title,data)      PrintTestV(title,data,"s","li")
-#define PrintTestii(title,data)     PrintTestV(title,data,"i","i")
-#define PrintTestll(title,data)     PrintTestV(title,data,"li","li")
+#define PrintTest(title,data)          PrintTestV(title,data,"s","s")
+#define PrintTesti(title,data)         PrintTestV(title,data,"s","i")
+#define PrintTestl(title,data)         PrintTestV(title,data,"s","li")
+#define PrintTestii(title,data)        PrintTestV(title,data,"i","i")
+#define PrintTestll(title,data)        PrintTestV(title,data,"li","li")
 #define PrintRes \
 	if (test_result){\
 		PRINT_PASS;\
@@ -51,11 +51,23 @@ printf("%-*"type, LINE_REC_1 +  LINE_REC_2, title)
 #define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
 #define eprintf(FMT, args...) printf(ERROR_SEP FMT,## args );
 #define esprintf(STRING, FMT, args...) sprintf(STRING, ERROR_SEP FMT,## args );
+
 #define PRINT_NAME_FAIL(title) PrintTest(title, ""); PRINT_FAIL
 #define PRINT_NAME_PASS(title) PrintTest(title, ""); PRINT_PASS
 
 #define PRINT_NAME_FAIL_a(title) PrintTestA(title, "s"); PRINT_FAIL
 #define PRINT_NAME_PASS_a(title) PrintTestA(title, "s"); PRINT_PASS
+
+#define PRINT_IF_PASSED(name) \
+	if(name,test_result) {\
+		PRINT_NAME_PASS(name);\
+	}
+
+#define PRINT_IF_PASSED_a(name) \
+	if(name,test_result){\
+		PRINT_NAME_PASS_a(name);\
+	}
+
 
 
 #define STRING_FAIL(actual,expected)\
@@ -181,5 +193,7 @@ test_result.name[strlen(test_result.name)-5] = '\0';
 		}\
 		return NAME##_test_main(num).failures;\
 	}	
+
+#define TEST_DIR "../tests/"
 	
 #endif

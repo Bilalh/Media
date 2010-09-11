@@ -24,14 +24,14 @@ DEFINE_HASHTABLE_REMOVE	lib/hash/hashtable.h	/^#define DEFINE_HASHTABLE_REMOVE(/
 DEFINE_HASHTABLE_SEARCH	lib/hash/hashtable.h	/^#define DEFINE_HASHTABLE_SEARCH(/;"	macro	line:119
 DIRENT	src/media.c	/^#define DIRENT(/;"	macro	line:18
 ELMT_FROM_HH	include/uthash.h	/^#define ELMT_FROM_HH(/;"	macro	line:80
-EP_GET_NAME	include/string_util.h	/^#define EP_GET_NAME(/;"	macro	line:24
-EP_GET_NUMBER	include/string_util.h	/^#define EP_GET_NUMBER(/;"	macro	line:13
-EP_NUM_INDEX	include/string_util.h	/^#define EP_NUM_INDEX(/;"	macro	line:29
+EP_GET_NAME	include/string_util.h	/^#define EP_GET_NAME(/;"	macro	line:36
+EP_GET_NUMBER	include/string_util.h	/^#define EP_GET_NUMBER(/;"	macro	line:25
+EP_NUM_INDEX	include/string_util.h	/^#define EP_NUM_INDEX(/;"	macro	line:41
 ERROR_SEP	tests/include/tests.h	/^#define ERROR_SEP /;"	macro	line:22
 Element	include/option_parser.h	/^} Element;$/;"	typedef	line:28
 Element_ptr	src/option_parser.c	/^static Element *Element_ptr[128];$/;"	variable	line:11
-EndPrintReset	tests/include/tests.h	/^#define EndPrintReset(/;"	macro	line:161
-EndSection	tests/include/tests.h	/^#define EndSection(/;"	macro	line:75
+EndPrintReset	tests/include/tests.h	/^#define EndPrintReset(/;"	macro	line:162
+EndSection	tests/include/tests.h	/^#define EndSection(/;"	macro	line:76
 Excludes	include/media_args.h	/^} Excludes;$/;"	typedef	line:37
 FAIL	tests/include/tests.h	/^#define FAIL /;"	macro	line:14
 FREE_REGEX	include/time_regex.h	/^#define FREE_REGEX(/;"	macro	line:57
@@ -132,17 +132,17 @@ ML_API	include/ml.h	/^#define ML_API /;"	macro	line:8
 MONDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:417
 M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:434
-MakeMain	tests/include/tests.h	/^#define MakeMain(/;"	macro	line:173
-MakeTest	tests/include/tests.h	/^#define MakeTest(/;"	macro	line:149
-MakeTestResult	tests/include/tests.h	/^#define MakeTestResult(/;"	macro	line:106
-MakeVar	tests/include/tests.h	/^#define MakeVar(/;"	macro	line:85
-Mapping	include/string_util.h	/^} Mapping;$/;"	typedef	line:129
+MakeMain	tests/include/tests.h	/^#define MakeMain(/;"	macro	line:174
+MakeTest	tests/include/tests.h	/^#define MakeTest(/;"	macro	line:150
+MakeTestResult	tests/include/tests.h	/^#define MakeTestResult(/;"	macro	line:107
+MakeVar	tests/include/tests.h	/^#define MakeVar(/;"	macro	line:86
+Mapping	include/string_util.h	/^} Mapping;$/;"	typedef	line:112
 Mapping	src/ftest.c	/^} Mapping;$/;"	typedef	line:11
 Mapping	src/hashe2.c	/^} Mapping;$/;"	typedef	line:10
 MediaArgs	include/media_args.h	/^} MediaArgs;$/;"	typedef	line:74
 NO_DECLTYPE	include/uthash.h	/^#define NO_DECLTYPE$/;"	macro	line:38
 NO_SHORT_OPT	include/option_parser.h	/^#define NO_SHORT_OPT /;"	macro	line:8
-NULLCHECK	tests/include/tests.h	/^#define NULLCHECK(/;"	macro	line:127
+NULLCHECK	tests/include/tests.h	/^#define NULLCHECK(/;"	macro	line:128
 N_NO_REPEAT	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
 N_REPEAT_ALL	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
 N_REPEAT_ONE	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
@@ -174,10 +174,10 @@ PL_NONE	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x
 PL_PLAYLIST	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:11
 PL_STDOUT	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:11
 PRINT_FAIL	tests/include/tests.h	/^#define PRINT_FAIL /;"	macro	line:16
-PRINT_NAME_FAIL	tests/include/tests.h	/^#define PRINT_NAME_FAIL(/;"	macro	line:54
-PRINT_NAME_FAIL_a	tests/include/tests.h	/^#define PRINT_NAME_FAIL_a(/;"	macro	line:57
-PRINT_NAME_PASS	tests/include/tests.h	/^#define PRINT_NAME_PASS(/;"	macro	line:55
-PRINT_NAME_PASS_a	tests/include/tests.h	/^#define PRINT_NAME_PASS_a(/;"	macro	line:58
+PRINT_NAME_FAIL	tests/include/tests.h	/^#define PRINT_NAME_FAIL(/;"	macro	line:55
+PRINT_NAME_FAIL_a	tests/include/tests.h	/^#define PRINT_NAME_FAIL_a(/;"	macro	line:58
+PRINT_NAME_PASS	tests/include/tests.h	/^#define PRINT_NAME_PASS(/;"	macro	line:56
+PRINT_NAME_PASS_a	tests/include/tests.h	/^#define PRINT_NAME_PASS_a(/;"	macro	line:59
 PRINT_PASS	tests/include/tests.h	/^#define PRINT_PASS /;"	macro	line:17
 P_MPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
 P_NICEPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
@@ -186,25 +186,26 @@ P_VLC	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumer
 Pformat	include/media_args.h	/^} Pformat;$/;"	typedef	line:8
 Player	include/media_args.h	/^} Player;$/;"	typedef	line:16
 Poutput	include/media_args.h	/^} Poutput;$/;"	typedef	line:12
-PrintRes	tests/include/tests.h	/^#define PrintRes /;"	macro	line:30
+PrintIfPassed	tests/include/tests.h	/^#define PrintIfPassed /;"	macro	line:30
+PrintRes	tests/include/tests.h	/^#define PrintRes /;"	macro	line:31
 PrintTest	tests/include/tests.h	/^#define PrintTest(/;"	macro	line:25
-PrintTestA	tests/include/tests.h	/^#define PrintTestA(/;"	macro	line:48
-PrintTestResults	tests/include/tests.h	/^#define PrintTestResults(/;"	macro	line:116
-PrintTestV	tests/include/tests.h	/^#define PrintTestV(/;"	macro	line:45
+PrintTestA	tests/include/tests.h	/^#define PrintTestA(/;"	macro	line:49
+PrintTestResults	tests/include/tests.h	/^#define PrintTestResults(/;"	macro	line:117
+PrintTestV	tests/include/tests.h	/^#define PrintTestV(/;"	macro	line:46
 PrintTesti	tests/include/tests.h	/^#define PrintTesti(/;"	macro	line:26
 PrintTestii	tests/include/tests.h	/^#define PrintTestii(/;"	macro	line:28
 PrintTestl	tests/include/tests.h	/^#define PrintTestl(/;"	macro	line:27
 PrintTestll	tests/include/tests.h	/^#define PrintTestll(/;"	macro	line:29
-PrintTitle	tests/include/tests.h	/^#define PrintTitle(/;"	macro	line:131
-PrintTitleN	tests/include/tests.h	/^#define PrintTitleN(/;"	macro	line:132
+PrintTitle	tests/include/tests.h	/^#define PrintTitle(/;"	macro	line:132
+PrintTitleN	tests/include/tests.h	/^#define PrintTitleN(/;"	macro	line:133
 REGEX_CAPURES	include/time_regex.h	/^#define REGEX_CAPURES(/;"	macro	line:65
 REGEX_ERR	src/time_util.c	/^	#define REGEX_ERR /;"	macro	line:74
 REGEX_RESULT	include/time_regex.h	/^#define REGEX_RESULT(/;"	macro	line:72
 SATURDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
-SEP	tests/include/tests.h	/^#define SEP /;"	macro	line:130
+SEP	tests/include/tests.h	/^#define SEP /;"	macro	line:131
 STRARR_MATCH_REGEX	src/time_util.c	/^	#define STRARR_MATCH_REGEX(/;"	macro	line:87
 STRINGUTILHEAD	include/string_util.h	/^#define STRINGUTILHEAD$/;"	macro	line:2
-STRING_FAIL	tests/include/tests.h	/^#define STRING_FAIL(/;"	macro	line:61
+STRING_FAIL	tests/include/tests.h	/^#define STRING_FAIL(/;"	macro	line:62
 STRING_HELPER_HEADER	tests/include/string_helper.h	/^#define STRING_HELPER_HEADER$/;"	macro	line:2
 STRING_NUM_SECTION	tests/include/string_test.h	/^static int STRING_NUM_SECTION = 0; $/;"	variable	line:7
 STRING_SHOW_FAIL_DATA	tests/string_helper.c	/^#define STRING_SHOW_FAIL_DATA(/;"	macro	line:8
@@ -228,10 +229,10 @@ Section	tests/include/strutil_test.h	/^#define Section(/;"	macro	line:11
 Section	tests/include/strutil_test.h	/^#undef  Section$/;"	macro	line:10
 Section	tests/include/time_test.h	/^#define Section(/;"	macro	line:11
 Section	tests/include/time_test.h	/^#undef  Section$/;"	macro	line:10
-SectionEnd	tests/include/tests.h	/^#define SectionEnd /;"	macro	line:78
-Sections	tests/include/tests.h	/^#define Sections /;"	macro	line:82
-SpiltData	include/string_util.h	/^} SpiltData;$/;"	typedef	line:114
-StartSection	tests/include/tests.h	/^#define StartSection(/;"	macro	line:74
+SectionEnd	tests/include/tests.h	/^#define SectionEnd /;"	macro	line:79
+Sections	tests/include/tests.h	/^#define Sections /;"	macro	line:83
+SpiltData	include/string_util.h	/^} SpiltData;$/;"	typedef	line:105
+StartSection	tests/include/tests.h	/^#define StartSection(/;"	macro	line:75
 Status	include/media_args.h	/^} Status;$/;"	typedef	line:24
 String	include/string_buffer.h	/^} String;$/;"	typedef	line:10
 String	src/ml.c	/^} String;$/;"	typedef	line:19
@@ -268,7 +269,7 @@ TIME_NUM_SECTION	tests/include/time_test.h	/^static int TIME_NUM_SECTION = 0; \/
 TIME_REGEX_HEAD_MA	include/time_regex.h	/^#define TIME_REGEX_HEAD_MA$/;"	macro	line:3
 TIME_TEST_HEADER	tests/include/time_test.h	/^#define TIME_TEST_HEADER$/;"	macro	line:2
 TM_ERROR_MSG	tests/time_helper.c	/^#define TM_ERROR_MSG(/;"	macro	line:7
-TRUTH	tests/include/tests.h	/^#define TRUTH(/;"	macro	line:126
+TRUTH	tests/include/tests.h	/^#define TRUTH(/;"	macro	line:127
 TRUTH_ARG	include/option_parser_private.h	/^#define TRUTH_ARG(/;"	macro	line:9
 TRUTH_STATE	include/option_parser_private.h	/^#define TRUTH_STATE(/;"	macro	line:10
 TRUTH_VALUE	include/option_parser_private.h	/^#define TRUTH_VALUE(/;"	macro	line:8
@@ -278,11 +279,11 @@ T_BOTH	include/media_args.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOT
 T_NONE	include/media_args.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:19
 T_VIDEO	include/media_args.h	/^	T_NONE = 0x0, T_VIDEO = 0x1, T_AUDIO = 0x2, T_BOTH = 0x3$/;"	enumerator	line:19
 Test	tests/include/all_tests.h	/^} Test;$/;"	typedef	line:13
-TestEndAdd	tests/include/tests.h	/^#define TestEndAdd(/;"	macro	line:137
-TestManual	tests/include/tests.h	/^#define TestManual(/;"	macro	line:146
-TestResult	tests/include/tests.h	/^} TestResult;$/;"	typedef	line:71
-TestResults	tests/include/tests.h	/^#define TestResults /;"	macro	line:105
-TestRun	tests/include/tests.h	/^#define TestRun /;"	macro	line:91
+TestEndAdd	tests/include/tests.h	/^#define TestEndAdd(/;"	macro	line:138
+TestManual	tests/include/tests.h	/^#define TestManual(/;"	macro	line:147
+TestResult	tests/include/tests.h	/^} TestResult;$/;"	typedef	line:72
+TestResults	tests/include/tests.h	/^#define TestResults /;"	macro	line:106
+TestRun	tests/include/tests.h	/^#define TestRun /;"	macro	line:92
 TimeAdd	tests/include/time_test.h	/^#define TimeAdd(/;"	macro	line:12
 TimeEndSection	tests/include/time_test.h	/^#define TimeEndSection /;"	macro	line:14
 TimeMakeResult	tests/include/time_test.h	/^#define TimeMakeResult /;"	macro	line:16
@@ -315,7 +316,7 @@ alternation	tests/make_test_files.rb	/^		def alternation(*s); s.map(&Regexp.meth
 arg	include/option_parser.h	/^	const char *arg;$/;"	member	line:24
 argc	src/option_parser.c	/^	#define argc /;"	macro	line:73
 argc	src/option_parser.c	/^	#undef argc$/;"	macro	line:142
-args	include/string_util.h	/^	char **args; \/\/\/< args$/;"	member	line:110
+args	include/string_util.h	/^	char **args; \/\/\/< args$/;"	member	line:101
 block	include/option_parser.h	/^	VoidBlock block;$/;"	member	line:26
 bloom_bv	include/uthash.h	/^   uint8_t *bloom_bv;$/;"	member	line:943
 bloom_nbits	include/uthash.h	/^   char bloom_nbits;$/;"	member	line:944
@@ -336,18 +337,18 @@ ele	src/option_parser.c	/^	#define ele(/;"	macro	line:86
 ele	src/option_parser.c	/^	#undef ele$/;"	macro	line:143
 entry	lib/hash/hashtable_private.h	/^struct entry$/;"	struct	line:9
 entrycount	lib/hash/hashtable_private.h	/^    unsigned int entrycount;$/;"	member	line:19
-ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:15
+ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:16
 ep_num_test	tests/strutil_helper.c	/^bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){$/;"	function	line:26
-eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:51
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:52
+eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:53
 eqfn	lib/hash/hashtable_private.h	/^    int (*eqfn) (void *k1, void *k2);$/;"	member	line:23
 equal_keys	src/temp.c	/^int equal_keys(void *k1, void *k2) {$/;"	function	line:30
 equalkeys	lib/hash/tester.c	/^equalkeys(void *k1, void *k2)$/;"	function	line:41
-esprintf	tests/include/tests.h	/^#define esprintf(/;"	macro	line:53
+esprintf	tests/include/tests.h	/^#define esprintf(/;"	macro	line:54
 exclude	include/media_args.h	/^	bool exclude;$/;"	member	line:33
 excludes	include/media_args.h	/^	Excludes excludes;$/;"	member	line:42
 expand_mult	include/uthash.h	/^   unsigned expand_mult;$/;"	member	line:908
-failures	tests/include/tests.h	/^	int  failures;$/;"	member	line:69
+failures	tests/include/tests.h	/^	int  failures;$/;"	member	line:70
 flags	build/Makefile	/^flags          = ${CFLAGS} ${includes} -I..\/include -I..\/src -I ..\/lib\/hash$/;"	macro	line:6
 freekey	lib/hash/hashtable_private.h	/^#define freekey(/;"	macro	line:46
 full	src/temp.c	/^	char *full;$/;"	member	line:12
@@ -382,7 +383,7 @@ hashtable_remove	lib/hash/hashtable.c	/^hashtable_remove(struct hashtable *h, vo
 hashtable_search	lib/hash/hashtable.c	/^hashtable_search(struct hashtable *h, void *k)$/;"	function	line:163
 hashv	include/uthash.h	/^   unsigned hashv;                   \/* result of hash-fcn(key)        *\/$/;"	member	line:957
 help	include/option_parser.h	/^	const char *help;$/;"	member	line:25
-hh	include/string_util.h	/^	UT_hash_handle hh;$/;"	member	line:128
+hh	include/string_util.h	/^	UT_hash_handle hh;$/;"	member	line:111
 hh	src/ftest.c	/^	UT_hash_handle hh;$/;"	member	line:10
 hh	src/hashe2.c	/^	UT_hash_handle hh;$/;"	member	line:9
 hh_head	include/uthash.h	/^   struct UT_hash_handle *hh_head;$/;"	member	line:893
@@ -400,7 +401,7 @@ indexFor	lib/hash/hashtable_private.h	/^indexFor(unsigned int tablelength, unsig
 ineff_expands	include/uthash.h	/^   unsigned ineff_expands, noexpand;$/;"	member	line:938
 init_string	src/ml.c	/^void init_string(String *s) {$/;"	function	line:113
 k	lib/hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
-key	include/string_util.h	/^	char *key;$/;"	member	line:126
+key	include/string_util.h	/^	char *key;$/;"	member	line:109
 key	include/uthash.h	/^   void *key;                        \/* ptr to enclosing struct's key  *\/$/;"	member	line:955
 key	lib/hash/tester.c	/^struct key$/;"	struct	line:15
 key	src/ftest.c	/^	char *key;$/;"	member	line:8
@@ -412,11 +413,11 @@ len	src/ml.c	/^	size_t len;$/;"	member	line:18
 length	include/media_args.h	/^	int  length;$/;"	member	line:35
 length	include/option_parser.h	/^	const int length;$/;"	member	line:32
 length	include/string_buffer.h	/^	int length;$/;"	member	line:8
-length	include/string_util.h	/^	int  length;$/;"	member	line:111
-lengths	include/string_util.h	/^	int  *lengths;$/;"	member	line:112
+length	include/string_util.h	/^	int  length;$/;"	member	line:102
+lengths	include/string_util.h	/^	int  *lengths;$/;"	member	line:103
 libs	build/Makefile	/^libs           = -lsqlite3 -lxml2 -L\/opt\/local\/lib -lpcre -lcurl$/;"	macro	line:8
 links	include/option_parser.h	/^	const Element *links;$/;"	member	line:33
-load_hash	src/string_util.c	/^Mapping *load_hash(const char *filename){$/;"	function	line:206
+load_hash	src/string_util.c	/^Mapping *load_hash(const char *filename){$/;"	function	line:247
 loadlimit	lib/hash/hashtable_private.h	/^    unsigned int loadlimit;$/;"	member	line:20
 log2_num_buckets	include/uthash.h	/^   unsigned num_buckets, log2_num_buckets;$/;"	member	line:918
 main	build/optm.c	/^int main(int argc,  char *argv[])$/;"	function	line:2
@@ -433,13 +434,13 @@ make_playlist	src/playlist.c	/^bool make_playlist(char *filename, char *dir,  ch
 make_plist	src/playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:63
 make_pls	src/playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:116
 make_xspf	src/playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:133
-match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:244
+match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:293
 max_load_factor	lib/hash/hashtable.c	/^const float max_load_factor = 0.65;$/;"	variable	line:25
-media	src/media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:26
+media	src/media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:25
 media_req	build/Makefile	/^media_req = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}$/;"	macro	line:20
-mplayer	src/media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:85
+mplayer	src/media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:84
 name	tests/include/all_tests.h	/^	char *name;$/;"	member	line:11
-name	tests/include/tests.h	/^	char *name;$/;"	member	line:70
+name	tests/include/tests.h	/^	char *name;$/;"	member	line:71
 names	tests/tests.mk	/^names  = string time opt strutil$/;"	macro	line:1
 neg	include/option_parser.h	/^	const bool neg;$/;"	member	line:27
 new_media_args	src/option_parser.c	/^MediaArgs *new_media_args() {$/;"	function	line:15
@@ -449,14 +450,14 @@ next	include/uthash.h	/^   void *next;                       \/* next element in
 next	lib/hash/hashtable_private.h	/^    struct entry *next;$/;"	member	line:13
 nice_random	include/media_args.h	/^	bool       nice_random;$/;"	member	line:73
 nice_repeat	include/media_args.h	/^	NiceRepeat nice_repeat;$/;"	member	line:72
-niceplayer	src/media.c	/^void niceplayer(char *playlist) {$/;"	function	line:123
+niceplayer	src/media.c	/^void niceplayer(char *playlist) {$/;"	function	line:122
 noexpand	include/uthash.h	/^   unsigned ineff_expands, noexpand;$/;"	member	line:938
 nonideal_items	include/uthash.h	/^   unsigned nonideal_items;$/;"	member	line:930
 nullcheck	src/option_parser.c	/^#define nullcheck(/;"	macro	line:261
 nullcheck	src/option_parser.c	/^#undef nullcheck$/;"	macro	line:306
 num_buckets	include/uthash.h	/^   unsigned num_buckets, log2_num_buckets;$/;"	member	line:918
 num_items	include/uthash.h	/^   unsigned num_items;$/;"	member	line:919
-number_of_tests	tests/include/tests.h	/^	int  number_of_tests;$/;"	member	line:67
+number_of_tests	tests/include/tests.h	/^	int  number_of_tests;$/;"	member	line:68
 objs	build/Makefile	/^objs      = media optt tempc hashe2$/;"	macro	line:19
 one_ip	lib/hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
 one_port	lib/hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
@@ -472,7 +473,7 @@ optt_req	build/Makefile	/^optt_req  = ${opt_req} optm.o$/;"	macro	line:21
 parent	lib/hash/hashtable_itr.h	/^    struct entry *parent;$/;"	member	line:15
 parse_time	src/time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:53
 parse_time_spec	src/time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:208
-passes	tests/include/tests.h	/^	int  passes;$/;"	member	line:68
+passes	tests/include/tests.h	/^	int  passes;$/;"	member	line:69
 pl_dir	include/media_args.h	/^	char    *pl_dir;$/;"	member	line:50
 pl_format	include/media_args.h	/^	Pformat  pl_format;$/;"	member	line:52
 pl_name	include/media_args.h	/^	char    *pl_name;$/;"	member	line:51
@@ -509,23 +510,24 @@ ptr	src/ml.c	/^	char *ptr;$/;"	member	line:17
 root_dir	include/media_args.h	/^	char     *root_dir;$/;"	member	line:47
 shortcuts	include/media_args.h	/^	bool    shortcuts;$/;"	member	line:62
 signature	include/uthash.h	/^   uint32_t signature; \/* used only to find hash tables in external analysis *\/$/;"	member	line:940
-spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {$/;"	function	line:109
-spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:104
-spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:100
-spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:71
+spilt_args	src/string_util.c	/^char *spilt_args(char **arr, size_t length, char *separator, char *ending, char* hash_file ) {$/;"	function	line:111
+spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:107
+spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:103
+spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:72
 spilt_words_test	tests/strutil_helper.c	/^bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){$/;"	function	line:56
 status	include/media_args.h	/^	Status  status; \/\/TODO status$/;"	member	line:59
 str	include/string_buffer.h	/^	char *str;$/;"	member	line:7
 str	src/temp.c	/^	unsigned char *str;$/;"	member	line:11
 str_arr	include/media_args.h	/^	char **str_arr;$/;"	member	line:34
 str_hash	src/temp.c	/^unsigned long str_hash(unsigned char *str) {$/;"	function	line:15
-str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:281
-str_replace	src/string_util.c	/^char *str_replace (char *s, size_t len,  char *sub, char *rep) {$/;"	function	line:184
-str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s) {$/;"	function	line:145
-str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:256
+str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:331
+str_replace	src/string_util.c	/^inline char *str_replace (char *s, size_t len,  char *sub, char *rep){$/;"	function	line:243
+str_replace_e	src/string_util.c	/^char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {$/;"	function	line:215
+str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s, Mapping *hash) {$/;"	function	line:153
+str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:305
 strcheck	src/option_parser.c	/^#define strcheck(/;"	macro	line:262
 strcheck	src/option_parser.c	/^#undef strcheck$/;"	macro	line:307
-strcmp_null	src/string_util.c	/^bool strcmp_null(const char *s1, const char *s2 ){$/;"	function	line:234
+strcmp_null	src/string_util.c	/^bool strcmp_null(const char *s1, const char *s2 ){$/;"	function	line:283
 string_add	src/string_buffer.c	/^void string_add(String *s, char *str, bool add_space_before) {$/;"	function	line:21
 string_add_m	src/string_buffer.c	/^void string_add_m(String *s, bool add_space, int length, ...){$/;"	function	line:37
 string_append	include/string_buffer.h	/^#define string_append(/;"	macro	line:46
@@ -545,12 +547,12 @@ tablelength	lib/hash/hashtable_private.h	/^    unsigned int tablelength;$/;"	mem
 tail	include/uthash.h	/^   struct UT_hash_handle *tail; \/* tail hh in app order, for fast append    *\/$/;"	member	line:920
 tbl	include/uthash.h	/^   struct UT_hash_table *tbl;$/;"	member	line:950
 tempc_req	build/Makefile	/^tempc_req = temp.o ${strutil_req} hashtable_itr.o hashtable.o hashtable_utility.o$/;"	macro	line:22
-test_hash	src/string_util.c	/^static char *test_hash (char *s) {$/;"	function	line:291
+test_hash	src/string_util.c	/^static char *test_hash (char *s) {$/;"	function	line:341
 tests	tests/tests.mk	/^tests  = $(addprefix test_, ${names})$/;"	macro	line:2
 time_req	tests/tests.mk	/^time_req         = string_util.o time_util.o$/;"	macro	line:7
 time_test_main	tests/time_test.c	/^TestResult time_test_main(int test_no) {$/;"	function	line:17
 time_test_start	tests/time_helper.c	/^bool time_test_start(char *given, struct tm* tm ){$/;"	function	line:19
-total	include/string_util.h	/^	int  total;$/;"	member	line:113
+total	include/string_util.h	/^	int  total;$/;"	member	line:104
 truth	src/option_parser.c	/^#define truth(/;"	macro	line:260
 truth	src/option_parser.c	/^#undef truth$/;"	macro	line:305
 two_ip	lib/hash/tester.c	/^    uint32_t one_ip; uint32_t two_ip; uint16_t one_port; uint16_t two_port;$/;"	member	line:17
@@ -568,10 +570,10 @@ uthash_free	include/uthash.h	/^#define uthash_free(/;"	macro	line:69
 uthash_malloc	include/uthash.h	/^#define uthash_malloc(/;"	macro	line:68
 uthash_noexpand_fyi	include/uthash.h	/^#define uthash_noexpand_fyi(/;"	macro	line:71
 v	lib/hash/hashtable_private.h	/^    void *k, *v;$/;"	member	line:11
-val	include/string_util.h	/^	char *val;$/;"	member	line:127
+val	include/string_util.h	/^	char *val;$/;"	member	line:110
 val	src/ftest.c	/^	char *val;$/;"	member	line:9
 val	src/hashe2.c	/^	char *val;$/;"	member	line:8
 value	lib/hash/tester.c	/^struct value$/;"	struct	line:20
-vlc	src/media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:128
+vlc	src/media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:127
 write_history	include/media_args.h	/^	bool    write_history;$/;"	member	line:60
 writefunc	src/ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String *s) {$/;"	function	line:100

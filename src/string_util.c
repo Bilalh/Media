@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <assert.h>
 
 #include <pcre.h>
 #include <pcreposix.h>
@@ -13,6 +14,7 @@ static char *test_hash(char *s);
 char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end);
 
 char** ep_num (char *s) {
+	assert (s);
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
@@ -67,8 +69,9 @@ char** ep_num (char *s) {
 	return ans;
 }
 
-
 char** spilt_string_malloc (char *str, int *res_length, bool malloces){
+	assert(str);  
+	
 	char *to_spilt = strdup(str), *sep = " ", *s_ptr, *word;
 	int slength = 7;
 	if ( *res_length > 1 ) slength = *res_length;	
@@ -105,23 +108,34 @@ inline char** spilt_string (char *str, int *res_length){
 	return spilt_string_malloc(str,res_length,false);
 }
 
-
-char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {
+char *spilt_args(char **arr, size_t length, char *separator, 
+				 char *beginning, char *ending, char* hash_file ) {
+	assert(arr); assert(length >=0); assert(separator); 
+	assert(beginning); assert(ending); assert(hash_file);
+	
 	SpiltData *sd_arr[length];
 	int total = 0; // memory needed for final string
+	
 	// expand each element
+	Mapping *hash = NULL;
+	if (length > 0)  hash = load_hash(hash_file);
+	
 	for (int i = 0; i < length; ++i) {
-		sd_arr[i] = str_spilt_func(arr[i]);
+		sd_arr[i] = str_spilt_func(arr[i], hash);
 		total += sd_arr[i]->total;
 	}
 
 	int sep_len   = strlen(separator);
+	int beg_len   = strlen(beginning);
 	int end_len   = strlen(ending);
 	size_t memory = // 1 for \0
 		(sizeof(char) * total) + (sep_len * (length - 1)) + end_len + 1;
 	char *final_str = malloc(memory);
 	int index = 0;
-
+	if (beg_len >0){
+		strncpy(&final_str[index], beginning, beg_len);
+		index += beg_len;
+	}
 	// builds final string
 	for(int i = 0;  i < length; ++i) {
 		for(int j = 0; j < sd_arr[i]->length; ++j) {
@@ -142,14 +156,14 @@ char *spilt_args (char **arr, size_t length, char *separator, char *ending ) {
 	return final_str;
 }
 
-//FIXME | bugss
-SpiltData *str_spilt_func (char *s) {
+SpiltData *str_spilt_func (char *s, Mapping *hash) {
+	assert (s);
+	
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	int  *res_len = malloc(sizeof(int) * 5);
 	int total = 0;
 	int i     = 0;
-	Mapping *hash  = load_hash("zzhashb");
 	Mapping *h;
 	
 	bool pipe =0;
@@ -205,6 +219,9 @@ SpiltData *str_spilt_func (char *s) {
 }
 
 char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
+	
+	assert(s); assert(sub); assert(rep); assert(len >=0);
+	
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
 	char *r     = malloc(len * 2 + rep_len + 25 );
@@ -234,16 +251,24 @@ inline char *str_replace (char *s, size_t len,  char *sub, char *rep){
 }
 
 Mapping *load_hash(const char *filename){
+	assert( filename );
+	
 	Mapping *hash = NULL, *h;
 	FILE *hfile = fopen(filename, "r");
-
+	if (! hfile){
+		h = (Mapping*) malloc(sizeof(Mapping));
+		h->key = strdup("___test___");
+		h->val = strdup("___test___");
+		HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+		dprintf("hash  %s not found \n", filename);
+		return hash;
+	}
 	char lens[6];
 	int key_len, val_len;
-	
 	while (fgets(lens, 6, hfile) != NULL ){
 		key_len = lens[0] - 48;
 		val_len = strtol(&lens[2], NULL , 10);
-		// printf("kl:%i vl:%i\n", key_len,val_len);
+		dprintf("kl:%i vl:%i\n", key_len,val_len);
 		
 		// +3 r - \t and \n
 		char key[key_len+1], val[val_len+3];
@@ -252,7 +277,7 @@ Mapping *load_hash(const char *filename){
 		// gets rid of newline
 		val[val_len+1] ='\0'; 
 		
-		// printf("k:'%s' v:'%s'\n", key,&val[1]);
+		dprintf("k:'%s' v:'%s'\n", key,&val[1]);
 		h = (Mapping*) malloc(sizeof(Mapping));
 		h->key = strdup(key);
 		h->val = strdup(&val[1]);
@@ -284,6 +309,7 @@ int match (const char *string, char *pattern) {
 }
 
 char *str_spilt_replace (char *s) {
+	assert(s);
 	char *start   = s;
 	char **res    = malloc(sizeof(size_t) * 5);
 	char *res_len = malloc(sizeof(int) * 5);
@@ -309,7 +335,7 @@ char *str_spilt_replace (char *s) {
 }
 
 char *str_lower (char *s, size_t length) {
-	
+	assert(s); assert(length >= 0);
 	char *re = malloc(sizeof(char) * length +1);
 	char *r  = re;
 	while(( *r++ = tolower(*s++) )) ;
@@ -319,6 +345,7 @@ char *str_lower (char *s, size_t length) {
 }
 
 static char *test_hash (char *s) {
+	assert(s);
 	if (strcmp(s, "fma" ) == 0) {
 		return strdup("full metal");
 	} else {

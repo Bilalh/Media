@@ -28,7 +28,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		printf("%s\n", args[i]);
 	}
 	
-	char *regex = spilt_args(args, argc, ".*", VIDEO);
+	char *regex = spilt_args(args, argc, ".*","(", ")"VIDEO, ma->hash_location);
 	printf("regex: %s\n", regex);
 
 	// gets dir listing ignoring case and matching the patten

@@ -4,7 +4,17 @@
 #include <stdbool.h>
 #include "uthash.h"
 
-#define DEBUG
+/**
+ * @brief Gets the postion of 
+ *
+ * @param s - string with a number at the end.
+ * @return [0] - The index before the number starts
+ *         [1] - ans[index - NAME + 1] gives the length of the name part
+ *               where index = 0 unless [1] is not null
+ *         [0] == NULL - Number not found
+ */
+char** ep_num(char *s);
+
 
 /**
  * @brief Places the number in var
@@ -29,28 +39,6 @@
 	var[ep_char[EP_NUM_INDEX(ep_char)] - orginal_string] = '\0';
 
 #define EP_NUM_INDEX(ep_num_char) (ep_num_char[1] != NULL ? 1 : 0)
-
-
-/**
- * @brief Gets the postion of 
- *
- * @param s - string with a number at the end.
- * @return [0] - The index before the number starts
- *         [1] - ans[index - NAME + 1] gives the length of the name part
- *               where index = 0 unless [1] is not null
- *         [0] == NULL - Number not found
- */
-char** ep_num(char *s);
-
-/**
- * @brief Match string against the extended regular expression in
- * pattern, treating errors as no match.
- *
- * @param string
- * @param pattern - perl regex
- * @return Non zero on match (1?), 0 on any error
- */
-int match(const char *string, char *pattern);
 
 
 
@@ -104,9 +92,11 @@ char *str_spilt_replace(char *s);
  * @param arr
  * @param length
  * @param separator
+ * @param hashfile - file to load the hash from
  * @return
  */
-char *spilt_args(char **arr, size_t length, char *separator, char *ending );
+char *spilt_args(char **arr, size_t length, char *separator, 
+				 char *beginning, char *ending, char* hash_file );
 
 typedef struct {
 	char **args; ///< args
@@ -116,20 +106,28 @@ typedef struct {
 } SpiltData;
 
 
-/**
- * @brief 
- *
- * @param s 
- * @return 
-**/
-SpiltData *str_spilt_func(char *s);
-
 typedef struct  {
 	char *key;
 	char *val;
 	UT_hash_handle hh;
 } Mapping;
 
+
+/**
+ * @brief 
+ *
+ * @param s 
+ * @return 
+**/
+SpiltData *str_spilt_func(char *s, Mapping *hash);
+
+
+/**
+ * @brief 
+ *
+ * @param filename 
+ * @return 
+**/
 Mapping *load_hash(const char *filename);
 
 
@@ -141,5 +139,18 @@ Mapping *load_hash(const char *filename);
  * @return 
 **/
 char *str_lower(char *s, size_t length);
+
+/**
+ * @brief Match string against the extended regular expression in
+ * pattern, treating errors as no match.
+ *
+ * @param string
+ * @param pattern - perl regex
+ * @return Non zero on match (1?), 0 on any error
+ */
+int match(const char *string, char *pattern);
+
+
+
 
 #endif
