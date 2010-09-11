@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include <libxml/encoding.h>
 
@@ -10,8 +11,15 @@
 
 #define PLAYLIST_INT_LENGTH 10
 
-bool make_playlist(char *filename, char *dir,  char **names, Pformat formats) {
-
+bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) {
+	assert(filename); assert(names);
+	char *dir;
+	if (!dir_t) {
+		dir = ".";
+	}else{
+		dir = dir_t;
+	}
+	
 	const int extra  =  2 + 6; // 2 for \0 and / 6 for a 5 char exe
 	char fullpath[strlen(filename) + strlen(dir)+extra];
 	printf(" m3u %i plist %i pls %i xspf %i\n",

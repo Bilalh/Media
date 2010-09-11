@@ -66,6 +66,7 @@ char** ep_num (char *s) {
 
 		s--;
 	}
+	
 	return ans;
 }
 
@@ -109,7 +110,8 @@ inline char** spilt_string (char *str, int *res_length){
 }
 
 char *spilt_args(char **arr, size_t length, char *separator, 
-				 char *beginning, char *ending, char* hash_file ) {
+				 char *beginning, char *ending, char* hash_file ) 
+{
 	assert(arr); assert(length >=0); assert(separator); 
 	assert(beginning); assert(ending); assert(hash_file);
 	

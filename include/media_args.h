@@ -42,31 +42,30 @@ typedef struct {
 	Excludes excludes;
 	bool     newest_only;
 	bool     sub_dirs;
-	Types    types; //TODO types
+	Types    types; 
 	
 	char     *root_dir;
 	
 	// Playlist (pl)
-	char    *pl_dir;
-	char    *pl_name;
-	Pformat  pl_format;
-	Poutput  pl_output;
+	char    *pl_dir;       // DONE
+	char    *pl_name;      // DONE
+	Pformat  pl_format;    // DONE
+	Poutput  pl_output;    // DONE
 	bool     pl_shuffle;
 	
 	// Prefs
-	char   *hash_location;
-	bool    use_hash;
-	Status  status; //TODO status
-	bool    write_history;
+	char   *hash_location; // DONE
+	bool    use_hash;      // DONE
+	Status  status; 
+	bool    write_history; // DONE
 	bool	updated;
-	bool    shortcuts;
 	
 	
 	// Players
-	Player   player;
+	Player   player;       // DONE
 	bool     afloat;
-	String   prefix_args;
-	String   postfix_args;
+	String   prefix_args;  // DONE
+	String   postfix_args; // DONE
 		
 	//Nice Player
 	NiceRepeat nice_repeat;

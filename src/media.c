@@ -28,7 +28,8 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		printf("%s\n", args[i]);
 	}
 	
-	char *regex = spilt_args(args, argc, ".*","(", ")"VIDEO, ma->hash_location);
+	char *hash_location = ma->use_hash ? ma->hash_location : "";
+	char *regex = spilt_args(args, argc, ".*", "(", ")"VIDEO, hash_location);
 	printf("regex: %s\n", regex);
 
 	// gets dir listing ignoring case and matching the patten
@@ -61,10 +62,10 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		}
 	}
 
-	Pformat types = F_M3U;
 	if (ma->write_history)           updateHistory(sa);
-	if (ma->pl_output & PL_PLAYLIST) make_playlist("zzplaylist",path,sa,types);
+	if (ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, sa, ma->pl_format);
 	switch (ma->player){
+		//TODO players
 		case P_MPLAYER: 
 			mplayer(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 			break;

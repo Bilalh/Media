@@ -41,7 +41,6 @@ StrutilVar
 	);
 
 
-
 TestResult strutil_test_main(int test_no) {
 StrutilSetup
 
@@ -321,7 +320,7 @@ Section("Hash"){
 	};
 	
 	StrutilTestM("Testing Hash",{
-		Mapping *hash = load_hash("zzhashtest");
+		Mapping *hash = load_hash(TEST_DIR"hashes/h0");
 		Mapping *h;
 		
 		int count;

@@ -33,13 +33,6 @@ bool updateHistory(char **filenames) {
 		printf("%s\n", *filenames);
 		char **ans = ep_num(*filenames);
 		if (ans[0] != NULL) {
-			// long num = strtol(ans[0] + 1, NULL, 10);
-			// if (num == 0 ) num++;
-			// 
-			// int index = ans[1] != NULL ? 1 : 0;
-			// char s[ans[index] - *filenames + 1]; // 1 for \0
-			// strncpy(s, *filenames, ans[index] - *filenames);
-			// s[ans[index] - *filenames] = '\0';
 			EP_GET_NUMBER(ans, num);
 			EP_GET_NAME(ans, s, *filenames)
 			
@@ -54,11 +47,11 @@ bool updateHistory(char **filenames) {
 			
 			result = sqlite3_step(statement);
 			printf("r:%i Ok:%i done:%i \n", result,SQLITE_OK,SQLITE_DONE );
-			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) 
+			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ){
 				fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
-				
+			}
 			printf("reset: %i\n\n", sqlite3_reset(statement));
-			timeinfo->tm_min+=30;
+			timeinfo->tm_min+=27;
 			timegm(timeinfo);
 			
 		}

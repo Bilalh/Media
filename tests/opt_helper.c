@@ -39,7 +39,6 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 	opt_intcmp(status);
 	opt_intcmp(write_history);
 	opt_intcmp(updated);
-	opt_intcmp(shortcuts);
 	
 	opt_intcmp(player);
 	opt_intcmp(afloat);
@@ -110,7 +109,6 @@ fail:
 	print_hex(status);
 	print_bool(write_history);
 	print_bool(updated);
-	print_bool(shortcuts);
 	
 	print_hex(player);
 	print_bool(afloat);

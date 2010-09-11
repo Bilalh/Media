@@ -54,12 +54,21 @@ const Element H_filepath[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "hashlocation", .val = 258, .has_arg = no_argument}, 
+		.opt   = {.name =  "hashlocation", .val = 'I', .has_arg = required_argument}, 
 		.help  = "Filepath of the hash",
+		.arg   = "file", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->hash_location = strdup(arg);
 		}
 	},
+	{
+		.opt   = {.name =  "hash", .val = 'S', .has_arg = no_argument},
+		.help  = "Uses shortcuts from the hash, on by default",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->use_hash = TRUTH_VALUE(ch);
+		},
+	}
 };
 
 const Element H_playlist[] ={
@@ -261,14 +270,6 @@ const Element H_other[] ={
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->updated =  TRUTH_VALUE(ch) ;
-		},
-	},
-	{  
-		.opt   = {.name =  "shortcuts", .val = 'S', .has_arg = no_argument}, 
-		.help  = "Uses shortcuts from the hash, on by default",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->shortcuts =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  

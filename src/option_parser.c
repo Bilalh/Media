@@ -30,7 +30,7 @@ MediaArgs *new_media_args() {
 		
 		// Playlist
 		.pl_name       = "zzplaylist",
-		.pl_dir        = NULL,
+		.pl_dir        = ".",
 		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_shuffle    = false,
@@ -41,7 +41,6 @@ MediaArgs *new_media_args() {
 		.status        = S_NONE,
 		.write_history = false,
 		.updated       = false,
-		.shortcuts     = true,
 		
 		// Player
 		.player = P_NONE,
@@ -292,7 +291,6 @@ void print_media_args(MediaArgs *ma) {
 	print_hex ("types",         ma->types);
 	print_args("write_history", truth(ma->write_history));
 	print_args("updated",       truth(ma->updated));
-	print_args("shortcuts",     truth(ma->shortcuts));
 
 	printf("Player\n");
 	print_hex ("player",       ma->player);
