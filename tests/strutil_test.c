@@ -419,25 +419,200 @@ Section("Spilt args"){
 	
 	for(int i = 0; i < total_length; ++i){
 		
-		StrutilTestM("test n",{
+		StrutilTestM(tests[i].out,{
 			
 			char *res = spilt_args(inputs[i], tests[i].len, 
 								   tests[i].sep, tests[i].start, 
 								   tests[i].end, tests[i].hash);
 			if( strcmp(res, tests[i].out) != 0 ){
 				test_result = false;
-				PRINT_NAME_FAIL(tests[i].out);
+				PRINT_NAME_FAIL(name);
 				eprintf("exp: '%s'\n", tests[i].out );
 				eprintf("act: '%s'\n", res );
 				eprintf("sep: '%s'  end:  '%s' file:  '%s'\n","_", "END", "no_hash" );
 			}
-			PRINT_IF_PASSED_a(tests[i].out);
+			PRINT_IF_PASSED_a(name);
 		})
 		
 	}
 	
 }StrutilEndSection
 
+Section("newest_only"){
+		
+	char *in[][40] = {
+		{
+			"To index - 4.flv",
+			"To index - 6.divx",
+			"To index - 24.webm",
+			"To index - 2.mkv",
+			"To index - 22.avi",
+			"To index - 1.part.avi",
+			"To index - 20.mkv",
+			"T of Ve  - 2.mkv"
+		},
+		{
+			"A_b 1.mkv",
+			"A_b - 2.mkv",
+			"A_b   3.mkv",
+			"aaa - 11.mkv",
+			"aaa - 9.mkv"
+		},
+		{
+			"Sora no ~05.mkv",
+			"Sora no ~ 22.mkv",
+			"Sora no - 0009",
+			"Sora no 4.mkv",
+			"Sora no~~~01.mkv",
+			"Sora no_-_21.mkv",
+			
+			"na a's ~05.mkv",
+			"na a's ~ 21.mkv",
+			"na a's - 0009",
+			"na a's 4.mkv",
+			"na a's~~~01.mkv",
+			"na a's_-_24.mkv",
+
+			"ta s ~05.mkv",
+			"ta s ~ 21.mkv",
+			"ta s - 0309",
+			"ta s 4.mkv",
+			"ta s~~~01.mkv",
+			"ta s_-_21.mkv",
+
+			"Noien ~05.mkv",
+			"Noien ~ 21.mkv",
+			"Noien - 0009",
+			"Noien 4.mkv",
+			"Noien~~~41.mkv",
+			"Noien_-_51.mkv",
+
+			"ar to ~05.mkv",
+			"ar to ~ 41.mkv",
+			"ar to - 0009",
+			"ar to 4.mkv",
+			"ar to~~~01.mkv",
+			"ar to_-_21.mkv",
+		},
+		{
+			"na a's 4.mkv",
+			"ta s_-_21.mkv",
+			"Sora no ~05.mkv",
+			"ta s - 0309",
+			"ar to_-_21.mkv",
+			"Noien_-_51.mkv",
+			"Sora no 4.mkv",
+			"na a's ~ 21.mkv",
+			"ar to ~ 41.mkv",
+			"ta s ~05.mkv",
+			"na a's~~~01.mkv",
+			"ar to~~~01.mkv",
+			"Sora no - 0009",
+			"Noien ~05.mkv",
+			"ar to ~05.mkv",
+			"Sora no ~ 22.mkv",
+			"ar to - 0009",
+			"Sora no~~~01.mkv",
+			"Noien 4.mkv",
+			"na a's - 0009",
+			"Noien~~~41.mkv",
+			"Noien - 0009",
+			"Sora no_-_21.mkv",
+			"ar to 4.mkv",
+			"na a's ~05.mkv",
+			"Noien ~ 21.mkv",
+			"ta s~~~01.mkv",
+			"ta s ~ 21.mkv",
+			"ta s 4.mkv",
+			"na a's_-_24.mkv",
+		}
+	};
+
+	char *out[][10] = {
+		{
+			"To index - 24.webm",
+			"T of Ve  - 2.mkv"
+		},
+		{
+			"A_b   3.mkv",
+			"aaa - 11.mkv",
+			NULL
+		},
+		{
+			"Sora no ~ 22.mkv",
+			"na a's_-_24.mkv",
+			"ta s - 0309",
+			"Noien_-_51.mkv",
+			"ar to ~ 41.mkv"
+		},
+		{
+			"na a's_-_24.mkv",
+			"ta s - 0309",
+			"Sora no ~ 22.mkv",
+			"ar to ~ 41.mkv",
+			"Noien_-_51.mkv",
+		}
+	};
+	
+	int lens[][2]={
+		{8,2},
+		{5,3},
+		{30,5},
+		{30,5}
+	};
+	
+	for(int i = 0; i < sizeof(in) / sizeof(in[0]); ++i) {
+		char title[9];
+		sprintf(title, "Test %2d",i );
+		StrutilTestM(title, {
+			int act_len  = lens[i][0];
+			int exp_len  = lens[i][1];
+			char **act  = newest_only(in[i], &act_len, false, i == 1 ?true: false);
+
+			if (exp_len != act_len ){
+				test_result = false;
+			}else{
+				for(int j = 0; j < act_len; ++j){
+					if (!strcmp_null(out[i][j],act[j])) {
+						test_result = false;
+						break;
+					}
+				}
+			}
+			
+			if (test_result) {
+				PRINT_NAME_PASS(name);
+			} else{
+				PRINT_NAME_FAIL(name);
+				int min;
+				int max;
+				char *extra_name;
+				char **extra;
+				if(exp_len >= act_len) {
+					min        = act_len;
+					max        = exp_len;
+					extra_name = "exp";
+					extra      = out[i];
+				} else{
+					min        = exp_len;
+					max        = act_len;
+					extra_name = "act";
+					extra      = act;
+				}
+
+				eprintf("length exp: %d act: %d \n", exp_len, act_len );
+				for(int j = 0; j < min; ++j) {
+					eprintf("[%2d] act: %-30s   exp: %-30s \n", j, act[j], out[i][j] );
+				}
+				for(int j = min; j < max; ++j) {
+					eprintf("%9s [%2d] %s: %s\n", "", j, extra_name, extra[j] );
+				}
+			}
+
+		})
+	}
+
+}StrutilEndSection
 
 };
 

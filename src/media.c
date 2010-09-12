@@ -70,7 +70,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		sa[i] = files[i]->d_name;
 		total_length += strlen(sa[i]);
 	}
-	sa[file_num] = "";
+	sa[file_num] = NULL;
 	if (ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
 			printf("[%i] %s\n",i, sa[i]);
@@ -133,7 +133,7 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	index += 3 + 2 + (+ 1 + m_len) + strlen(prefix_args) + 1;
 
 	// append filenames
-	while (**filenames != '\0') {
+	while (*filenames != NULL) {
 		printf("%s\n", *filenames);
 		m_args[index++] = '"';
 

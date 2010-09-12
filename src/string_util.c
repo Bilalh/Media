@@ -75,7 +75,7 @@ char** ep_num (char *s) {
 }
 
 
-char **newest_only (char **names, int *length){
+char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){
 	Newest *hash = NULL, *h;
 
 	for(int i = 0; i < *length; ++i) {
@@ -95,14 +95,22 @@ char **newest_only (char **names, int *length){
 		// otherwise just change the data
 		} else if( num > h->num ) {
 			h->num  = num;
+			if( free_unused ) free(h->full);
 			h->full = names[i];
 		}
 
 	}
 
-	*length = HASH_COUNT(hash) ;
+	*length = HASH_COUNT(hash);
 	dprintf("new length: %d\n", *length);
-	char **new_names = malloc(sizeof(char*) * *length);
+	char **new_names;
+	if(add_null_string){
+		*length += 1;
+		new_names = calloc(*length, sizeof(char*));
+	}else{
+		new_names = malloc(sizeof(char*) * *length);
+	}
+	
 	
 	// Makes the new array and free the hash
 	for (int i = 0; hash; i++ ) {
@@ -113,7 +121,7 @@ char **newest_only (char **names, int *length){
 		free(h->key);
 		free(h);
 	}
-
+	
 	return new_names;
 }
 
