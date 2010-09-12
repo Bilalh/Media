@@ -10,7 +10,7 @@
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 bool updateHistory(char **filenames) {
-
+	//FIXME add done skip
 	sqlite3 *db;
 	int result;
 
@@ -29,7 +29,7 @@ bool updateHistory(char **filenames) {
 	char now[20];
 	
 	
-	while(**filenames != '\0') {
+	while(*filenames != NULL) {
 		printf("%s\n", *filenames);
 		char **ans = ep_num(*filenames);
 		if (ans[0] != NULL) {

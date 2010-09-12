@@ -305,7 +305,23 @@ const Element H_other[] ={
 		.help  = "Set the status to done ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->updated =  TRUTH_VALUE(ch) ;
+			if (TRUTH_STATE(ch)){
+				ma->status |=  S_UPDATED;
+			}else{
+				ma->status &= ~S_UPDATED;
+			}
+		},
+	},
+	{  
+		.opt   = {.name =  "skip", .val = 'K', .has_arg = no_argument}, 
+		.help  = "Set the status to skip ",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				ma->status |=  S_SKIP;
+			}else{
+				ma->status &= ~S_SKIP;
+			}
 		},
 	},
 	{  

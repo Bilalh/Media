@@ -140,6 +140,7 @@ struct tm *parse_time(char **str, int length) {
 				case 'a': day_func = day_diff; // TODO day_near
 				break;             
 				case 'x': day_func = day_future;
+				break;
  			}
 			tm->tm_mday += day_func(tm->tm_wday, day);
 			

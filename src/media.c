@@ -75,6 +75,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	
 	char **s_arr = sa;
 	if (ma->newest_only){
+		//CHECK recalc length ? save mem, cost time
 		s_arr = newest_only(sa, &file_num, false, true);
 		file_num--;
 	}

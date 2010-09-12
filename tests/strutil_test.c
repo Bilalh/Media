@@ -252,6 +252,29 @@ Section("ep_num") {
 		exp_str = "To.Aru";
 		exp_int = 1;
 	})
+	StrutilTestEp("K-ON!! - 22 .mkv",{
+		actual  = ep_num(name);
+		exp_str = "K-ON!!";
+		exp_int = 22; 
+	})
+	StrutilTestEp("X 1 ",{
+		actual  = ep_num(name);
+		exp_str = "X";
+		exp_int = 1; 
+	})
+	
+	// TODO spacing at end
+	// StrutilTestEp("X 1  ",{
+	// 	actual  = ep_num(name);
+	// 	exp_str = "X";
+	// 	exp_int = 1; 
+	// })
+	// StrutilTestEp("K-ON!! - 24  .mkv",{
+	// 	actual  = ep_num(name);
+	// 	exp_str = "K-ON!!";
+	// 	exp_int = 24; 
+	// })
+	
 	// TODO X     3 ep_num
 	// StrutilTestEp("X     3",{
 	// 	actual  = ep_num(name);

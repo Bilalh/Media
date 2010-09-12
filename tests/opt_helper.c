@@ -108,7 +108,6 @@ fail:
 	print_bool(use_hash);
 	print_hex(status);
 	print_bool(write_history);
-	print_bool(updated);
 	
 	print_hex(player);
 	print_bool(afloat);

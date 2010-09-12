@@ -4,11 +4,12 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <assert.h>
-
 #include <pcre.h>
 #include <pcreposix.h>
 #include "../include/string_util.h"
 #include "../include/debug.h"
+
+
 
 typedef struct {
 	char *key;
@@ -50,14 +51,17 @@ char** ep_num (char *s) {
 	
 	while (*s != *start) {
 		if (index == 0 && (*s == '-' || *s == ' ' || *s == '_'  || *s  == '~' ) ) {
-			ans[index]  = s;
-			index++;
-			// CHECK quick fix for - types
-			if( (s - start) >=2 ) ans[index] = s-2;
+			//if for 'word - 22 .mkv' types
+			if(! isdigit(*(s-1))){
+				ans[index]  = s;
+				index++;
+				// quick fix for - types
+				if( (s - start) >=2 ) ans[index] = s-2;
+			}
 		}
 		
-		dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
-		if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
+		// dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
+		else if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
 			char *t = (s + 1);
 			dprintf("1i  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
 			if( *t == ' ' || *t == '-' || *t == '_' || *t  == '~' ) {

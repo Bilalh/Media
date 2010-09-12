@@ -40,7 +40,7 @@ typedef struct {
 	
 	// Selection  
 	Excludes excludes;
-	bool     newest_only;
+	bool     newest_only;  // DONE
 	bool     sub_dirs;
 	Types    types;        // DONE
 	
@@ -58,7 +58,6 @@ typedef struct {
 	bool    use_hash;      // DONE
 	Status  status; 
 	bool    write_history; // DONE
-	bool	updated;
 	
 	
 	// Players

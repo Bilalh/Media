@@ -40,7 +40,6 @@ MediaArgs *new_media_args() {
 		.use_hash      = true,
 		.status        = S_NONE,
 		.write_history = false,
-		.updated       = false,
 		
 		// Player
 		.player = P_NONE,
@@ -290,7 +289,6 @@ void print_media_args(MediaArgs *ma) {
 	print_args("use_hash",      truth(ma->use_hash));
 	print_hex ("types",         ma->types);
 	print_args("write_history", truth(ma->write_history));
-	print_args("updated",       truth(ma->updated));
 
 	printf("Player\n");
 	print_hex ("player",       ma->player);
