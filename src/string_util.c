@@ -10,8 +10,12 @@
 #include "../include/string_util.h"
 #include "../include/debug.h"
 
-static char *test_hash(char *s);
-char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end);
+typedef struct {
+	char *key;
+	char *full;
+	int   num;
+	UT_hash_handle hh;
+} Newest;
 
 char** ep_num (char *s) {
 	assert (s);
@@ -70,6 +74,49 @@ char** ep_num (char *s) {
 	return ans;
 }
 
+
+char **newest_only (char **names, int *length){
+	Newest *hash = NULL, *h;
+
+	for(int i = 0; i < *length; ++i) {
+		char **ans = ep_num(names[i]);
+		EP_GET_NAME(ans, name, names[i]);
+		EP_GET_NUMBER(ans, num);
+
+		dprintf("%s %ld\n", name, num );
+		HASH_FIND_STR(hash, name, h);
+		// add the file to the hash if it is not there
+		if ( h == NULL ) {
+			h = (Newest*) malloc(sizeof(Newest));
+			h->full = names[i];
+			h->key  = strdup(name);
+			h->num  = num;
+			HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+		// otherwise just change the data
+		} else if( num > h->num ) {
+			h->num  = num;
+			h->full = names[i];
+		}
+
+	}
+
+	*length = HASH_COUNT(hash) ;
+	dprintf("new length: %d\n", *length);
+	char **new_names = malloc(sizeof(char*) * *length);
+	
+	// Makes the new array and free the hash
+	for (int i = 0; hash; i++ ) {
+		h = hash;
+		HASH_DEL(hash, h);
+		dprintf("key:'%s' \tnum:'%d'\n", h->key, h->num );
+		new_names[i] = h->full;
+		free(h->key);
+		free(h);
+	}
+
+	return new_names;
+}
+
 char** spilt_string_malloc (char *str, int *res_length, bool malloces){
 	assert(str);  
 	
@@ -109,8 +156,7 @@ inline char** spilt_string (char *str, int *res_length){
 	return spilt_string_malloc(str,res_length,false);
 }
 
-char *spilt_args(char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) 
-{
+char *spilt_args (char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) {
 	assert(arr); assert(length >=0); assert(separator); 
 	assert(beginning); assert(ending); assert(hash_file);
 	
@@ -251,7 +297,7 @@ inline char *str_replace (char *s, size_t len,  char *sub, char *rep){
 	return str_replace_e (s, len,  sub, rep, '\0'); 
 }
 
-Mapping *load_hash(const char *filename){
+Mapping *load_hash (const char *filename){
 	assert( filename );
 	
 	Mapping *hash = NULL, *h;
@@ -287,7 +333,7 @@ Mapping *load_hash(const char *filename){
 	return hash;
 }
 
-bool strcmp_null(const char *s1, const char *s2 ){
+bool strcmp_null (const char *s1, const char *s2 ){
 	if ( (s1 == NULL && s2 != NULL) || (s1 != NULL && s2 == NULL) ) return false;
 	if ( s1 != NULL && s2 != NULL && strcmp( s1, s2 ) != 0 ) return false;
 	return true;
@@ -295,7 +341,6 @@ bool strcmp_null(const char *s1, const char *s2 ){
 
 
 // not used
-
 // CHECK broken?
 int match (const char *string, char *pattern) {
 	int    status;
@@ -344,14 +389,3 @@ char *str_lower (char *s, size_t length) {
 
 	return re;
 }
-
-static char *test_hash (char *s) {
-	assert(s);
-	if (strcmp(s, "fma" ) == 0) {
-		return strdup("full metal");
-	} else {
-		return strdup(s);
-	}
-
-}
-

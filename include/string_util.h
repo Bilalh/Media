@@ -15,6 +15,14 @@
  */
 char** ep_num(char *s);
 
+/**
+ * @brief Takes a list of files with numbers and returns only the lastest episode(s)
+ *  The string must be malloc'ed before
+ * @param names   - A list of file names
+ * @param length  - The length of the array
+ * @return  A array of strings with newest names
+**/
+char **newest_only (char **names, int *length);
 
 /**
  * @brief Places the number in var
@@ -65,16 +73,20 @@ char** spilt_string_m (char *str, int *res_length);
 **/
 bool strcmp_null(const char *s1, const char *s2 );
 
+
 /**
  * @brief Replaces the substring sub with rep in the first len charaters of s.
  *
- * @param s
- * @param len
- * @param sub
- * @param rep
- * @return
- */
+ * @param s 
+ * @param len 
+ * @param sub 
+ * @param rep 
+ * @param end 
+ * @return 
+**/
+char *str_replace_e(char *s, size_t len,  char *sub, char *rep, char end);
 char *str_replace(char *s, size_t len,  char *sub, char *rep);
+
 
 /**
  * @brief Concatenates the array with separator and adds the ending to the end
@@ -148,6 +160,7 @@ char *str_lower(char *s, size_t length);
  * @return Non zero on match (1?), 0 on any error
  */
 int match(const char *string, char *pattern);
+
 
 
 

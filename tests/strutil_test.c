@@ -360,7 +360,6 @@ Section("Hash"){
 	})
 }StrutilEndSection
 
-
 Section("Spilt args"){
 	
 	struct spilt_test{

@@ -13,7 +13,7 @@ typedef struct  {
 int main (int argc, char const *argv[]) {
 
 	Mapping *hash = NULL, *h;
-	FILE *hfile = fopen("zzhash", "r");
+	FILE *hfile = fopen("../build/zzhash", "r");
 
 	char lens[6];
 	int key_len, val_len;
@@ -39,7 +39,7 @@ int main (int argc, char const *argv[]) {
 	
 	// iteration 
 	for(h = hash; h != NULL; h = h->hh.next) {
-		// printf("key:'%s' \tval:'%s'\n", h->key, h->val );
+		printf("key:'%s' \tval:'%s'\n", h->key, h->val );
 	}
 	
 	// deletion 
