@@ -71,30 +71,36 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		total_length += strlen(sa[i]);
 	}
 	sa[file_num] = NULL;
+
+	
+	char **s_arr = sa;
+	if (ma->newest_only){
+		s_arr = newest_only(sa, &file_num, false, true);
+		file_num--;
+	}
+
 	if (ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
-			printf("[%i] %s\n",i, sa[i]);
+			printf("[%i] %s\n",i, s_arr[i]);
 		}
 	}
 
-	
-
-	if (ma->write_history)           updateHistory(sa);
-	if (ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, sa, ma->pl_format);
+	if (ma->write_history)           updateHistory(s_arr);
+	if (ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
 	
 	pid_t pid =  fork();
 	if ( pid != 0 ){
 		switch (ma->player){
 			//TODO players
 			case P_MPLAYER: 
-				mplayer(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+				mplayer(s_arr, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 			
 				break;
 			case P_NICEPLAYER:
 				niceplayer("");
 				break;
 			case P_VLC:
-				vlc(sa, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+				vlc(s_arr, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 				break;
 			case P_NONE: break;
 		}
