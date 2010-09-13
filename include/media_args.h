@@ -20,14 +20,12 @@ typedef enum {
 } Types;
 
 typedef enum {
-	S_NONE, S_SKIP, S_UPDATED
+	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3
 } Status;
 
 typedef enum{
 	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL
 } NiceRepeat;
-
-
 
 typedef struct {
 	bool exclude;
@@ -44,19 +42,19 @@ typedef struct {
 	bool     sub_dirs;
 	Types    types;        // DONE
 	
-	char     *root_dir;
+	char     *root_dir;    // DONE
 	
 	// Playlist (pl)
 	char    *pl_dir;       // DONE
 	char    *pl_name;      // DONE
 	Pformat  pl_format;    // nDONE - use full paths
 	Poutput  pl_output;    // DONE
-	bool     pl_shuffle;
+	bool     pl_shuffle;   // DONE
 	
 	// Prefs
 	char   *hash_location; // DONE
 	bool    use_hash;      // DONE
-	Status  status; 
+	Status  status;        // DONE
 	bool    write_history; // DONE
 	
 	

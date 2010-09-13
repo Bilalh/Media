@@ -76,6 +76,14 @@ bool strcmp_null(const char *s1, const char *s2 );
 
 
 /**
+ * @brief Shuffles a array inplace. Use the seconds in the time as the seed
+ *
+ * @param array a array of pointers 
+ * @param n the length 
+**/
+void shuffle(void **array, size_t n);
+
+/**
  * @brief Replaces the substring sub with rep in the first len charaters of s.
  *
  * @param s 

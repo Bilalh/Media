@@ -352,6 +352,18 @@ bool strcmp_null (const char *s1, const char *s2 ){
 }
 
 
+void shuffle(void **array, size_t n) {
+  srand ( time(NULL) );
+	if (n > 1) {
+		for (size_t i = 0; i < n - 1; i++) {
+			size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
+			void* t = array[j];
+			array[j] = array[i];
+			array[i] = t;
+		}
+	}
+}
+
 // not used
 // CHECK broken?
 int match (const char *string, char *pattern) {

@@ -21,16 +21,15 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 #define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
-
+//FIXME no file args error in regex 
 
 //TODO sub dirs 
-
 void media(char *path, char **args, int argc, MediaArgs *ma) {
+	
 	struct dirent **files;
 	for(int i = 0; i < argc; ++i){
 		printf("%s\n", args[i]);
 	}
-	
 	
 	char *types = "";
 	switch (ma->types){
@@ -74,20 +73,22 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 
 	
 	char **s_arr = sa;
-	if (ma->newest_only){
+	if(ma->newest_only){
 		//CHECK recalc length ? save mem, cost time
 		s_arr = newest_only(sa, &file_num, false, true);
 		file_num--;
 	}
-
-	if (ma->pl_output & PL_STDOUT){
+	
+	if(ma->pl_shuffle) shuffle((void**) s_arr, file_num);
+	
+	if(ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
 			printf("[%i] %s\n",i, s_arr[i]);
 		}
 	}
 
-	if (ma->write_history)           updateHistory(s_arr);
-	if (ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
+	if(ma->write_history)           updateHistory(s_arr, ma->status);
+	if(ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
 	
 	pid_t pid =  fork();
 	if ( pid != 0 ){

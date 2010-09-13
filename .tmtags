@@ -96,14 +96,14 @@ HASH_SIGNATURE	include/uthash.h	/^#define HASH_SIGNATURE /;"	macro	line:913
 HASH_SORT	include/uthash.h	/^#define HASH_SORT(/;"	macro	line:756
 HASH_SRT	include/uthash.h	/^#define HASH_SRT(/;"	macro	line:757
 HASH_TO_BKT	include/uthash.h	/^#define HASH_TO_BKT(/;"	macro	line:175
-HELP_LINK	include/option_parser_private.h	/^const HelpLink HELP_LINK[] = {$/;"	variable	line:474
-HELP_L_LEN	include/option_parser_private.h	/^#define HELP_L_LEN /;"	macro	line:487
+HELP_LINK	include/option_parser_private.h	/^const HelpLink HELP_LINK[] = {$/;"	variable	line:491
+HELP_L_LEN	include/option_parser_private.h	/^#define HELP_L_LEN /;"	macro	line:504
 HISTORYHEAD	include/history.h	/^#define HISTORYHEAD /;"	macro	line:2
 H_filepath	include/option_parser_private.h	/^const Element H_filepath[] ={$/;"	variable	line:53
 H_filetype	include/option_parser_private.h	/^const Element H_filetype[] ={$/;"	variable	line:18
 H_mplayer	include/option_parser_private.h	/^const Element H_mplayer[] = { $/;"	variable	line:182
-H_mplayer_extra	include/option_parser_private.h	/^const Element H_mplayer_extra[] = { $/;"	variable	line:345
-H_mplayer_geom	include/option_parser_private.h	/^const Element H_mplayer_geom[] = { $/;"	variable	line:439
+H_mplayer_extra	include/option_parser_private.h	/^const Element H_mplayer_extra[] = { $/;"	variable	line:362
+H_mplayer_geom	include/option_parser_private.h	/^const Element H_mplayer_geom[] = { $/;"	variable	line:456
 H_other	include/option_parser_private.h	/^const Element H_other[] ={$/;"	variable	line:285
 H_output	include/option_parser_private.h	/^const Element H_output[] ={$/;"	variable	line:262
 H_player	include/option_parser_private.h	/^const Element H_player[] ={$/;"	variable	line:150
@@ -126,8 +126,8 @@ MEDIA_ARGS_HEAD	include/media_args.h	/^#define MEDIA_ARGS_HEAD$/;"	macro	line:2
 MLLLHEAD	include/ml.h	/^#define MLLLHEAD$/;"	macro	line:2
 ML_API	include/ml.h	/^#define ML_API /;"	macro	line:8
 MONDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
-M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:454
-M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:471
+M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:471
+M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:488
 MakeMain	tests/include/tests.h	/^#define MakeMain(/;"	macro	line:185
 MakeTest	tests/include/tests.h	/^#define MakeTest(/;"	macro	line:161
 MakeTestResult	tests/include/tests.h	/^#define MakeTestResult(/;"	macro	line:118
@@ -135,14 +135,14 @@ MakeVar	tests/include/tests.h	/^#define MakeVar(/;"	macro	line:97
 Mapping	include/string_util.h	/^} Mapping;$/;"	typedef	line:125
 Mapping	src/ftest.c	/^} Mapping;$/;"	typedef	line:11
 Mapping	src/hashe2.c	/^} Mapping;$/;"	typedef	line:10
-MediaArgs	include/media_args.h	/^} MediaArgs;$/;"	typedef	line:73
+MediaArgs	include/media_args.h	/^} MediaArgs;$/;"	typedef	line:72
 NO_DECLTYPE	include/uthash.h	/^#define NO_DECLTYPE$/;"	macro	line:38
 NO_SHORT_OPT	include/option_parser.h	/^#define NO_SHORT_OPT /;"	macro	line:8
 NULLCHECK	tests/include/tests.h	/^#define NULLCHECK(/;"	macro	line:139
 N_NO_REPEAT	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
 N_REPEAT_ALL	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
 N_REPEAT_ONE	include/media_args.h	/^	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL$/;"	enumerator	line:27
-Newest	src/string_util.c	/^} Newest;$/;"	typedef	line:18
+Newest	src/string_util.c	/^} Newest;$/;"	typedef	line:19
 NiceRepeat	include/media_args.h	/^} NiceRepeat;$/;"	typedef	line:28
 OPTIONPHEAD	include/option_parser.h	/^#define OPTIONPHEAD$/;"	macro	line:2
 OPT_HELPER_HEADER	tests/include/opt_helper.h	/^#define OPT_HELPER_HEADER$/;"	macro	line:2
@@ -216,9 +216,10 @@ STRUTIL_SHOW_FAIL_DATA	tests/strutil_helper.c	/^#define STRUTIL_SHOW_FAIL_DATA(/
 STRUTIL_TEST_FAIL	tests/strutil_helper.c	/^#define STRUTIL_TEST_FAIL(/;"	macro	line:3
 STRUTIL_TEST_HEADER	tests/include/strutil_test.h	/^#define STRUTIL_TEST_HEADER$/;"	macro	line:2
 SUNDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
-S_NONE	include/media_args.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:23
-S_SKIP	include/media_args.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:23
-S_UPDATED	include/media_args.h	/^	S_NONE, S_SKIP, S_UPDATED$/;"	enumerator	line:23
+S_NONE	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
+S_SKIP	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
+S_SKIP_UPDATED	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
+S_UPDATED	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
 Section	tests/include/opt_test.h	/^#define Section(/;"	macro	line:12
 Section	tests/include/opt_test.h	/^#undef  Section$/;"	macro	line:11
 Section	tests/include/string_test.h	/^#define Section(/;"	macro	line:11
@@ -307,12 +308,12 @@ VIDEO	src/media.c	/^#define VIDEO /;"	macro	line:20
 VID_AUD	src/media.c	/^#define VID_AUD /;"	macro	line:22
 WEDNESDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 _str	src/ml.c	/^typedef struct _str {$/;"	struct	line:16
-afloat	include/media_args.h	/^	bool     afloat;       \/\/ DONE$/;"	member	line:66
+afloat	include/media_args.h	/^	bool     afloat;       \/\/ DONE$/;"	member	line:65
 align	tests/make_test_files.rb	/^	def align()$/;"	method	line:8
 alternation	tests/make_test_files.rb	/^		def alternation(*s); s.map(&Regexp.method(:escape)).join("|") end$/;"	method	line:9
 arg	include/option_parser.h	/^	const char *arg;$/;"	member	line:24
-argc	src/option_parser.c	/^	#define argc /;"	macro	line:72
-argc	src/option_parser.c	/^	#undef argc$/;"	macro	line:141
+argc	src/option_parser.c	/^	#define argc /;"	macro	line:71
+argc	src/option_parser.c	/^	#undef argc$/;"	macro	line:140
 args	include/string_util.h	/^	char **args; \/\/\/< args$/;"	member	line:114
 block	include/option_parser.h	/^	VoidBlock block;$/;"	member	line:26
 bloom_bv	include/uthash.h	/^   uint8_t *bloom_bv;$/;"	member	line:943
@@ -327,10 +328,10 @@ day_future	src/time_util.c	/^int day_future(int day, int other_day) {$/;"	functi
 day_last	src/time_util.c	/^int day_last(int day, int other_day) {$/;"	function	line:40
 dprintf	include/debug.h	/^#define dprintf(/;"	macro	line:11
 dprintf	include/debug.h	/^#define dprintf(/;"	macro	line:14
-e	tests/strutil_test.c	/^#def/;"	macro	line:263
-ele	src/option_parser.c	/^	#define ele(/;"	macro	line:85
-ele	src/option_parser.c	/^	#undef ele$/;"	macro	line:142
-ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:20
+e	tests/strutil_test.c	/^#def/;"	macro	line:286
+ele	src/option_parser.c	/^	#define ele(/;"	macro	line:84
+ele	src/option_parser.c	/^	#undef ele$/;"	macro	line:141
+ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:21
 ep_num_test	tests/strutil_helper.c	/^bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){$/;"	function	line:26
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:51
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:52
@@ -340,7 +341,7 @@ excludes	include/media_args.h	/^	Excludes excludes;$/;"	member	line:42
 expand_mult	include/uthash.h	/^   unsigned expand_mult;$/;"	member	line:908
 failures	tests/include/tests.h	/^	int  failures;$/;"	member	line:81
 flags	build/Makefile	/^flags          = ${CFLAGS} ${includes} -I..\/include -I..\/src -I ..\/lib\/hash$/;"	macro	line:6
-full	src/string_util.c	/^	char *full;$/;"	member	line:15
+full	src/string_util.c	/^	char *full;$/;"	member	line:16
 func	tests/include/all_tests.h	/^	void (*func)();$/;"	member	line:12
 get16bits	include/uthash.h	/^#define get16bits(/;"	macro	line:431
 get16bits	include/uthash.h	/^#define get16bits(/;"	macro	line:435
@@ -355,7 +356,7 @@ help	include/option_parser.h	/^	const char *help;$/;"	member	line:25
 hh	include/string_util.h	/^	UT_hash_handle hh;$/;"	member	line:124
 hh	src/ftest.c	/^	UT_hash_handle hh;$/;"	member	line:10
 hh	src/hashe2.c	/^	UT_hash_handle hh;$/;"	member	line:9
-hh	src/string_util.c	/^	UT_hash_handle hh;$/;"	member	line:17
+hh	src/string_util.c	/^	UT_hash_handle hh;$/;"	member	line:18
 hh_head	include/uthash.h	/^   struct UT_hash_handle *hh_head;$/;"	member	line:893
 hh_next	include/uthash.h	/^   struct UT_hash_handle *hh_next;   \/* next hh in bucket order        *\/$/;"	member	line:954
 hh_prev	include/uthash.h	/^   struct UT_hash_handle *hh_prev;   \/* previous hh in bucket order    *\/$/;"	member	line:953
@@ -371,7 +372,7 @@ key	include/string_util.h	/^	char *key;$/;"	member	line:122
 key	include/uthash.h	/^   void *key;                        \/* ptr to enclosing struct's key  *\/$/;"	member	line:955
 key	src/ftest.c	/^	char *key;$/;"	member	line:8
 key	src/hashe2.c	/^	char *key;$/;"	member	line:7
-key	src/string_util.c	/^	char *key;$/;"	member	line:14
+key	src/string_util.c	/^	char *key;$/;"	member	line:15
 keylen	include/uthash.h	/^   unsigned keylen;                  \/* enclosing struct's key len     *\/$/;"	member	line:956
 len	src/ml.c	/^	size_t len;$/;"	member	line:18
 length	include/media_args.h	/^	int  length;$/;"	member	line:35
@@ -381,7 +382,7 @@ length	include/string_util.h	/^	int  length;$/;"	member	line:115
 lengths	include/string_util.h	/^	int  *lengths;$/;"	member	line:116
 libs	build/Makefile	/^libs           = -lsqlite3 -lxml2 -L\/opt\/local\/lib -lpcre -lcurl$/;"	macro	line:8
 links	include/option_parser.h	/^	const Element *links;$/;"	member	line:33
-load_hash	src/string_util.c	/^Mapping *load_hash (const char *filename){$/;"	function	line:308
+load_hash	src/string_util.c	/^Mapping *load_hash (const char *filename){$/;"	function	line:312
 log2_num_buckets	include/uthash.h	/^   unsigned num_buckets, log2_num_buckets;$/;"	member	line:918
 main	build/optm.c	/^int main(int argc,  char *argv[])$/;"	function	line:2
 main	src/ftest.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:13
@@ -396,10 +397,10 @@ make_playlist	src/playlist.c	/^bool make_playlist(char *filename, char *dir_t,  
 make_plist	src/playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:72
 make_pls	src/playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:125
 make_xspf	src/playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:142
-match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:353
+match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:357
 media	src/media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:28
 media_req	build/Makefile	/^media_req  = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}$/;"	macro	line:20
-mplayer	src/media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:118
+mplayer	src/media.c	/^void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:121
 name	tests/include/all_tests.h	/^	char *name;$/;"	member	line:11
 name	tests/include/tests.h	/^	char *name;$/;"	member	line:82
 names	tests/tests.mk	/^names  = string time opt strutil$/;"	macro	line:1
@@ -408,17 +409,17 @@ neg	include/option_parser.h	/^	const bool neg;$/;"	member	line:27
 new_media_args	src/option_parser.c	/^MediaArgs *new_media_args() {$/;"	function	line:15
 new_req	build/Makefile	/^new_req    = ${strutil_req} new.o$/;"	macro	line:23
 new_string	src/string_buffer.c	/^void new_string(String *s, int length ){$/;"	function	line:11
-newest_only	include/media_args.h	/^	bool     newest_only;$/;"	member	line:43
-newest_only	src/string_util.c	/^char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){$/;"	function	line:78
+newest_only	include/media_args.h	/^	bool     newest_only;  \/\/ DONE$/;"	member	line:43
+newest_only	src/string_util.c	/^char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){$/;"	function	line:82
 next	include/uthash.h	/^   void *next;                       \/* next element in app order      *\/$/;"	member	line:952
-nice_random	include/media_args.h	/^	bool       nice_random;$/;"	member	line:72
-nice_repeat	include/media_args.h	/^	NiceRepeat nice_repeat;$/;"	member	line:71
-niceplayer	src/media.c	/^void niceplayer(char *playlist) {$/;"	function	line:163
+nice_random	include/media_args.h	/^	bool       nice_random;$/;"	member	line:71
+nice_repeat	include/media_args.h	/^	NiceRepeat nice_repeat;$/;"	member	line:70
+niceplayer	src/media.c	/^void niceplayer(char *playlist) {$/;"	function	line:166
 noexpand	include/uthash.h	/^   unsigned ineff_expands, noexpand;$/;"	member	line:938
 nonideal_items	include/uthash.h	/^   unsigned nonideal_items;$/;"	member	line:930
-nullcheck	src/option_parser.c	/^#define nullcheck(/;"	macro	line:260
-nullcheck	src/option_parser.c	/^#undef nullcheck$/;"	macro	line:304
-num	src/string_util.c	/^	int   num;$/;"	member	line:16
+nullcheck	src/option_parser.c	/^#define nullcheck(/;"	macro	line:259
+nullcheck	src/option_parser.c	/^#undef nullcheck$/;"	macro	line:302
+num	src/string_util.c	/^	int   num;$/;"	member	line:17
 num_buckets	include/uthash.h	/^   unsigned num_buckets, log2_num_buckets;$/;"	member	line:918
 num_items	include/uthash.h	/^   unsigned num_items;$/;"	member	line:919
 number_of_tests	tests/include/tests.h	/^	int  number_of_tests;$/;"	member	line:79
@@ -430,10 +431,10 @@ opt_sbufcmp	tests/opt_helper.c	/^#define opt_sbufcmp(/;"	macro	line:6
 opt_strcmp	tests/opt_helper.c	/^#define opt_strcmp(/;"	macro	line:4
 opt_test_main	tests/opt_test.c	/^TestResult opt_test_main(int test_no) {$/;"	function	line:17
 opt_test_start	tests/opt_helper.c	/^bool opt_test_start ( char *name, MediaArgs *expected ){$/;"	function	line:11
-option_parser	src/option_parser.c	/^MediaArgs *option_parser(int *p_argc, char ***p_argv) {$/;"	function	line:67
+option_parser	src/option_parser.c	/^MediaArgs *option_parser(int *p_argc, char ***p_argv) {$/;"	function	line:66
 optt_req	build/Makefile	/^optt_req   = ${opt_req} optm.o$/;"	macro	line:21
 parse_time	src/time_util.c	/^struct tm *parse_time(char **str, int length) {$/;"	function	line:53
-parse_time_spec	src/time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:208
+parse_time_spec	src/time_util.c	/^void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){$/;"	function	line:209
 passes	tests/include/tests.h	/^	int  passes;$/;"	member	line:80
 pl_dir	include/media_args.h	/^	char    *pl_dir;       \/\/ DONE$/;"	member	line:50
 pl_format	include/media_args.h	/^	Pformat  pl_format;    \/\/ nDONE - use full paths$/;"	member	line:52
@@ -441,48 +442,48 @@ pl_name	include/media_args.h	/^	char    *pl_name;      \/\/ DONE$/;"	member	line
 pl_output	include/media_args.h	/^	Poutput  pl_output;    \/\/ DONE$/;"	member	line:53
 pl_shuffle	include/media_args.h	/^	bool     pl_shuffle;$/;"	member	line:54
 play_req	tests/tests.mk	/^play_req         = playlist.o$/;"	macro	line:9
-player	include/media_args.h	/^	Player   player;       \/\/ DONE$/;"	member	line:65
-postfix_args	include/media_args.h	/^	String   postfix_args; \/\/ DONE$/;"	member	line:68
-prefix_args	include/media_args.h	/^	String   prefix_args;  \/\/ DONE$/;"	member	line:67
+player	include/media_args.h	/^	Player   player;       \/\/ DONE$/;"	member	line:64
+postfix_args	include/media_args.h	/^	String   postfix_args; \/\/ DONE$/;"	member	line:67
+prefix_args	include/media_args.h	/^	String   prefix_args;  \/\/ DONE$/;"	member	line:66
 prev	include/uthash.h	/^   void *prev;                       \/* prev element in app order      *\/$/;"	member	line:951
 printTimeTest	tests/time_helper.c	/^#define printTimeTest(/;"	macro	line:17
 printTimeTest	tests/time_helper.c	/^#undef printTimeTest/;"	macro	line:73
-print_args	src/option_parser.c	/^#define print_args(/;"	macro	line:262
-print_args	src/option_parser.c	/^#undef print_args$/;"	macro	line:306
+print_args	src/option_parser.c	/^#define print_args(/;"	macro	line:261
+print_args	src/option_parser.c	/^#undef print_args$/;"	macro	line:304
 print_args	tests/opt_helper.c	/^	#define print_args(/;"	macro	line:58
-print_args	tests/opt_helper.c	/^	#undef print_args$/;"	macro	line:119
+print_args	tests/opt_helper.c	/^	#undef print_args$/;"	macro	line:118
 print_bool	tests/opt_helper.c	/^	#define print_bool(/;"	macro	line:66
-print_bool	tests/opt_helper.c	/^	#undef print_bool$/;"	macro	line:123
-print_help	src/option_parser.c	/^void print_help(char *arg){$/;"	function	line:147
-print_hex	src/option_parser.c	/^#define print_hex(/;"	macro	line:263
-print_hex	src/option_parser.c	/^#undef print_hex$/;"	macro	line:307
+print_bool	tests/opt_helper.c	/^	#undef print_bool$/;"	macro	line:122
+print_help	src/option_parser.c	/^void print_help(char *arg){$/;"	function	line:146
+print_hex	src/option_parser.c	/^#define print_hex(/;"	macro	line:262
+print_hex	src/option_parser.c	/^#undef print_hex$/;"	macro	line:305
 print_hex	tests/opt_helper.c	/^	#define print_hex(/;"	macro	line:64
-print_hex	tests/opt_helper.c	/^	#undef print_hex$/;"	macro	line:121
-print_int	src/option_parser.c	/^#define print_int(/;"	macro	line:264
+print_hex	tests/opt_helper.c	/^	#undef print_hex$/;"	macro	line:120
+print_int	src/option_parser.c	/^#define print_int(/;"	macro	line:263
 print_int	tests/opt_helper.c	/^	#define print_int(/;"	macro	line:62
-print_int	tests/opt_helper.c	/^	#undef print_int$/;"	macro	line:122
-print_media_args	src/option_parser.c	/^void print_media_args(MediaArgs *ma) {$/;"	function	line:258
+print_int	tests/opt_helper.c	/^	#undef print_int$/;"	macro	line:121
+print_media_args	src/option_parser.c	/^void print_media_args(MediaArgs *ma) {$/;"	function	line:257
 print_str	tests/opt_helper.c	/^	#define print_str(/;"	macro	line:59
-print_str	tests/opt_helper.c	/^	#undef print_str$/;"	macro	line:120
+print_str	tests/opt_helper.c	/^	#undef print_str$/;"	macro	line:119
 ptr	src/ml.c	/^	char *ptr;$/;"	member	line:17
 root_dir	include/media_args.h	/^	char     *root_dir;$/;"	member	line:47
 signature	include/uthash.h	/^   uint32_t signature; \/* used only to find hash tables in external analysis *\/$/;"	member	line:940
-spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) {$/;"	function	line:167
-spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:163
-spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:159
-spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:128
+spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) {$/;"	function	line:171
+spilt_string	src/string_util.c	/^inline char** spilt_string (char *str, int *res_length){$/;"	function	line:167
+spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int *res_length){$/;"	function	line:163
+spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:132
 spilt_words_test	tests/strutil_helper.c	/^bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){$/;"	function	line:56
 status	include/media_args.h	/^	Status  status; $/;"	member	line:59
 str	include/string_buffer.h	/^	char *str;$/;"	member	line:7
 str_arr	include/media_args.h	/^	char **str_arr;$/;"	member	line:34
-str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:391
-str_replace	src/string_util.c	/^inline char *str_replace (char *s, size_t len,  char *sub, char *rep){$/;"	function	line:304
-str_replace_e	src/string_util.c	/^char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {$/;"	function	line:276
-str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s, Mapping *hash) {$/;"	function	line:214
-str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:365
-strcheck	src/option_parser.c	/^#define strcheck(/;"	macro	line:261
-strcheck	src/option_parser.c	/^#undef strcheck$/;"	macro	line:305
-strcmp_null	src/string_util.c	/^bool strcmp_null (const char *s1, const char *s2 ){$/;"	function	line:344
+str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:395
+str_replace	src/string_util.c	/^inline char *str_replace (char *s, size_t len,  char *sub, char *rep){$/;"	function	line:308
+str_replace_e	src/string_util.c	/^char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {$/;"	function	line:280
+str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s, Mapping *hash) {$/;"	function	line:218
+str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:369
+strcheck	src/option_parser.c	/^#define strcheck(/;"	macro	line:260
+strcheck	src/option_parser.c	/^#undef strcheck$/;"	macro	line:303
+strcmp_null	src/string_util.c	/^bool strcmp_null (const char *s1, const char *s2 ){$/;"	function	line:348
 string_add	src/string_buffer.c	/^void string_add(String *s, char *str, bool add_space_before) {$/;"	function	line:21
 string_add_m	src/string_buffer.c	/^void string_add_m(String *s, bool add_space, int length, ...){$/;"	function	line:37
 string_append	include/string_buffer.h	/^#define string_append(/;"	macro	line:46
@@ -496,7 +497,7 @@ strutil_req	tests/tests.mk	/^strutil_req      = string_util.o$/;"	macro	line:6
 strutil_test_main	tests/strutil_test.c	/^TestResult strutil_test_main(int test_no) {$/;"	function	line:44
 strutil_test_start	tests/strutil_helper.c	/^bool strutil_test_start ( char *name, char *actual, char *expected){$/;"	function	line:6
 sub_dirs	include/media_args.h	/^	bool     sub_dirs;$/;"	member	line:44
-sub_print_help	src/option_parser.c	/^static void sub_print_help(const Element *ele){$/;"	function	line:189
+sub_print_help	src/option_parser.c	/^static void sub_print_help(const Element *ele){$/;"	function	line:188
 tail	include/uthash.h	/^   struct UT_hash_handle *tail; \/* tail hh in app order, for fast append    *\/$/;"	member	line:920
 tbl	include/uthash.h	/^   struct UT_hash_table *tbl;$/;"	member	line:950
 tests	tests/tests.mk	/^tests  = $(addprefix test_, ${names})$/;"	macro	line:2
@@ -504,12 +505,11 @@ time_req	tests/tests.mk	/^time_req         = string_util.o time_util.o$/;"	macro
 time_test_main	tests/time_test.c	/^TestResult time_test_main(int test_no) {$/;"	function	line:17
 time_test_start	tests/time_helper.c	/^bool time_test_start(char *given, struct tm* tm ){$/;"	function	line:19
 total	include/string_util.h	/^	int  total;$/;"	member	line:117
-truth	src/option_parser.c	/^#define truth(/;"	macro	line:259
-truth	src/option_parser.c	/^#undef truth$/;"	macro	line:303
+truth	src/option_parser.c	/^#define truth(/;"	macro	line:258
+truth	src/option_parser.c	/^#undef truth$/;"	macro	line:301
 types	include/media_args.h	/^	Types    types;        \/\/ DONE$/;"	member	line:45
 uint32_t	include/uthash.h	/^typedef unsigned int uint32_t;$/;"	typedef	line:60
-updateHistory	src/history.c	/^bool updateHistory(char **filenames) {$/;"	function	line:12
-updated	include/media_args.h	/^	bool	updated;$/;"	member	line:61
+updateHistory	src/history.c	/^bool updateHistory(char **filenames, Status status) {$/;"	function	line:12
 use_hash	include/media_args.h	/^	bool    use_hash;      \/\/ DONE$/;"	member	line:58
 uthash_expand_fyi	include/uthash.h	/^#define uthash_expand_fyi(/;"	macro	line:72
 uthash_fatal	include/uthash.h	/^#define uthash_fatal(/;"	macro	line:67
@@ -519,6 +519,6 @@ uthash_noexpand_fyi	include/uthash.h	/^#define uthash_noexpand_fyi(/;"	macro	lin
 val	include/string_util.h	/^	char *val;$/;"	member	line:123
 val	src/ftest.c	/^	char *val;$/;"	member	line:9
 val	src/hashe2.c	/^	char *val;$/;"	member	line:8
-vlc	src/media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:168
+vlc	src/media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:171
 write_history	include/media_args.h	/^	bool    write_history; \/\/ DONE$/;"	member	line:60
 writefunc	src/ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String *s) {$/;"	function	line:100

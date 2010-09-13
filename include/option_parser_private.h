@@ -243,7 +243,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "fast", .val = 'D', .has_arg = no_argument}, 
+		.opt   = {.name =  "fast", .val = 'd', .has_arg = no_argument}, 
 		.help  = "Makes it fast",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2, 
@@ -275,22 +275,14 @@ const Element H_output[] ={
 	},
 	{  
 		.opt   = {.name =  "nooutput", .val = 'O', .has_arg = no_argument}, 
-		.help  = "Does not write Any output",
+		.help  = "Does not write any output (including playlists)",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_output = PL_NONE;
 		}
 	}
 };
 
-const Element H_other[] ={
-	
-	{  
-		.opt   = {.name =  "last", .val = 'l', .has_arg = no_argument}, 
-		.help  = "Choose the latest file of each series",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->newest_only = TRUTH_VALUE(ch);
-		}
-	},
+const Element H_History[]={
 	{  
 		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument}, 
 		.help  = "Adds the files to the history, "
@@ -301,7 +293,7 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "done", .val = 'd', .has_arg = no_argument}, 
+		.opt   = {.name =  "done", .val = 'D', .has_arg = no_argument}, 
 		.help  = "Set the status to done ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -323,6 +315,18 @@ const Element H_other[] ={
 				ma->status &= ~S_SKIP;
 			}
 		},
+	}
+};
+
+const Element H_other[] ={
+	
+	{  
+		.opt   = {.name =  "last", .val = 'l', .has_arg = no_argument}, 
+		.help  = "Choose the latest file of each series",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->newest_only = TRUTH_VALUE(ch);
+		}
 	},
 	{  
 		.opt   = {.name =  "nicerandom", .val = 'M', .has_arg = no_argument}, 
@@ -346,6 +350,7 @@ const Element H_other[] ={
 		.arg   = "part", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			print_help(arg);
+			exit(0);
 		}
 	},
 	{  
@@ -354,8 +359,21 @@ const Element H_other[] ={
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			print_media_args(ma);
 		}
-	}
-	
+	},
+	{  
+		.opt   = {.name =  "ax", .val = 261, .has_arg = no_argument}, 
+		.help  = "Uses AX as root directory",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->root_dir = strdup("/Users/bilalh/Movies/.Movie/divx");
+		}
+	},
+	{  
+		.opt   = {.name =  "op", .val = 262, .has_arg = no_argument}, 
+		.help  = "Uses OP as root directory",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->root_dir = strdup("/Users/bilalh/Movies/.Movie/OpeningP");
+		}
+	},
 };
 
 const Element H_mplayer_extra[] = { 
@@ -493,10 +511,11 @@ const HelpLink HELP_LINK[] = {
 	{ "Playlist",          sizeof(H_playlist)      / sizeof(Element), &H_playlist[0]      },
 	{ "Player",            sizeof(H_player)        / sizeof(Element), &H_player[0]        },
 	{ "Output",            sizeof(H_output)        / sizeof(Element), &H_output[0]        },
+	{ "History",           sizeof(H_History)       / sizeof(Element), &H_History[0]       },
 	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
 	{ "Other",             sizeof(H_other)         / sizeof(Element), &H_other[0]         },
 	{ "Mplayer extra",     sizeof(H_mplayer_extra) / sizeof(Element), &H_mplayer_extra[0] },
-	{ "Mplayer geometry",  sizeof(H_mplayer_geom)  / sizeof(Element), &H_mplayer_geom[0]  }
+	{ "Mplayer geometry",  sizeof(H_mplayer_geom)  / sizeof(Element), &H_mplayer_geom[0]  },
 };
 
 
