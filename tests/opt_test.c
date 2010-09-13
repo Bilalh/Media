@@ -19,7 +19,7 @@ OptSetup
 Sections {
 Section("Basic Features"){
 	OptTest("-f", {
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 	})
 	OptTest("-m",{
 		exp->player = P_MPLAYER;
@@ -35,11 +35,6 @@ Section("Filepath"){
 		exp->root_dir = "media";
 	})
 }OptEndSection
-
-
-// Section("Mplayer"){
-// 
-// }OptEndSection
 
 
 Section("other"){
@@ -99,7 +94,7 @@ Section("Advanced"){
 		exp->player   = P_NICEPLAYER;
 		exp->player   = P_VLC;
 		exp->root_dir = "aaa";
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-profile t");
 		string_push(&exp->prefix_args, "-nofs");
@@ -113,7 +108,7 @@ Section("Advanced"){
 		exp->player   = P_VLC;
 		string_push(&exp->prefix_args, "-aspect 16:9");
 		exp->root_dir = "aaa";
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-profile t");
 		string_push(&exp->prefix_args, "-nofs");
@@ -127,7 +122,7 @@ Section("Advanced"){
 		exp->player   = P_VLC;
 		exp->root_dir = "aaa";
 		string_push(&exp->prefix_args, "-aspect 16:9");
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-profile t");
 		string_push(&exp->prefix_args, "-nofs");
@@ -140,7 +135,7 @@ Section("Advanced"){
 		exp->player   = P_NICEPLAYER;
 		exp->player   = P_VLC;
 		exp->root_dir = "aaa";
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-aspect 16:9");
 		string_push(&exp->prefix_args, "-profile t");
@@ -154,7 +149,7 @@ Section("Advanced"){
 		exp->player   = P_NICEPLAYER;
 		exp->player   = P_VLC;
 		exp->root_dir = "aaa";
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-profile t");
 		string_push(&exp->prefix_args, "-nofs");
@@ -163,7 +158,7 @@ Section("Advanced"){
 			"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
 		string_push(&exp->prefix_args, "-loop 0");
 	})
-	OptTest("-x -ol -[ --profile t -W 22 -L4 -R",{
+	OptTest("-x -ol -[ --profile t -W 22 -L4 -r",{
 		exp->pl_format |= F_PLIST;
 		exp->pl_output |= PL_PLAYLIST;
 		exp->pl_output |= PL_STDOUT;
@@ -183,13 +178,13 @@ Section("Advanced"){
 		exp->status |= S_UPDATED;
 	})
 	OptTest("-mNV --rootpath aaa -fatA 16:9 -k"
-			" -x -ol -[ --profile t -W 22 -L4 -R "
+			" -x -ol -[ --profile t -W 22 -L4 -r "
 			"-57 -F -nofs -n plys --done",{
 		exp->player   = P_MPLAYER;
 		exp->player   = P_NICEPLAYER;
 		exp->player   = P_VLC;
 		exp->root_dir = "aaa";
-		string_push(&exp->prefix_args, "-fs");
+		string_push_m(&exp->prefix_args, 2, "-fs", "-aspect 16:10");
 		exp->afloat=true;
 		string_push(&exp->prefix_args, "-profile t");
 		string_push(&exp->prefix_args, "-nofs");

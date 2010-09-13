@@ -3,7 +3,7 @@
 #include <string.h>  /* strcpy */
 #include <stdlib.h>  /* malloc */
 #include <stdio.h>   /* printf */
-#include "../include/uthash.h"
+#include <include/uthash.h>
 
 typedef struct  {
 	char *key;

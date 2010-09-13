@@ -27,7 +27,7 @@ static int OPT_NUM_SECTION = 0;
     pid_t pid = fork();\
 	if (pid == 0)\
 	{\
-		char *name = "_ "_name;\
+		char *name = "  "_name;\
 		bool test_result;\
 		OptBefore\
 		tBLOCK\
