@@ -263,7 +263,7 @@ Section("ep_num") {
 		exp_int = 1; 
 	})
 	
-	// TODO spacing at end
+	// LATER spacing at end
 	// StrutilTestEp("X 1  ",{
 	// 	actual  = ep_num(name);
 	// 	exp_str = "X";
@@ -275,7 +275,7 @@ Section("ep_num") {
 	// 	exp_int = 24; 
 	// })
 	
-	// TODO X     3 ep_num
+	// LATER X     3 ep_num
 	// StrutilTestEp("X     3",{
 	// 	actual  = ep_num(name);
 	// 	exp_str = "X";

@@ -1,18 +1,18 @@
 #include "string_util.h"
 
-// uses val s > 256 & < MAX_OPT_BLOCKS for long only options
+// uses val s > 256 && < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
 #define LONG_OPT_END_VALUE LONG_OPT_START_VALUE + 51
 
 #define MAX_OPT_BLOCKS LONG_OPT_END_VALUE - 1 + 128
 
 #define ASCII 128
+#define VAILD_ASCII(ch) ch < ASCII && ch > 0 
+
 #define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
 #define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
 #define TRUTH_STATE(ch) (ch < ASCII)
 #define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
-
-#define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 
 const Element H_filetype[] ={
@@ -53,7 +53,7 @@ const Element H_filetype[] ={
 const Element H_filepath[] ={
 	
 	{  
-		.opt   = {.name =  "rootpath", .val = 'r', .has_arg = required_argument}, 
+		.opt   = {.name =  "rootpath", .val = 'R', .has_arg = required_argument}, 
 		.help  = "Directory to start searching from",
 		.arg   = "dir", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -81,7 +81,7 @@ const Element H_filepath[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "playlistpath", .val = 'p', .has_arg = required_argument}, 
+		.opt   = {.name =  "playlistpath", .val = 'P', .has_arg = required_argument}, 
 		.help  = "Directory to write playlist in default .",
 		.arg   = "dir", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -126,7 +126,7 @@ const Element H_playlist[] ={
 	}
 	MAKE_PLAYLISTT("m3u"   ,'3', F_M3U,   "Outputs file as a m3u playlist"),
 	MAKE_PLAYLISTT("plist" ,'x', F_PLIST, "Outputs file as a plist"),
-	MAKE_PLAYLISTT("pls"   ,'P', F_PLS,   "Outputs file as a pls playlist"),
+	MAKE_PLAYLISTT("pls"   ,'U', F_PLS,   "Outputs file as a pls playlist"),
 	MAKE_PLAYLISTT("xspf"  ,'X', F_XSPF,  "Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
 	{  
@@ -138,7 +138,7 @@ const Element H_playlist[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "shuffle", .val = 'Y', .has_arg = no_argument}, 
+		.opt   = {.name =  "shuffle", .val = 'y', .has_arg = no_argument}, 
 		.help  = "shuffles the playlist",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_shuffle = TRUTH_VALUE(ch);
@@ -183,10 +183,12 @@ const Element H_mplayer[] = {
 	
 	{  
 		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument}, 
-		.help  = "Plays the file(s) in fullscreen.",
+		.help  = "Plays the file(s) in fullscreen. ",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push(&ma->prefix_args, TRUTH_ARG(ch,"-fs", "-nofs") );
+			string_push(&ma->prefix_args, "-aspect 16:10" );
+			
 		}
  	},
 	{  
@@ -337,7 +339,7 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "nicereapeat", .val = 'y', .has_arg = no_argument}, 
+		.opt   = {.name =  "nicereapeat", .val = 'Y', .has_arg = no_argument}, 
 		.help  = "Sets repeat in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -379,7 +381,7 @@ const Element H_other[] ={
 const Element H_mplayer_extra[] = { 
 	
 	{  
-		.opt   = {.name =  "profile", .val = 257, .has_arg = required_argument}, 
+		.opt   = {.name =  "profile", .val = 'p', .has_arg = required_argument}, 
 		.help  = "Adds profile ",
 		.arg   = "name", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -388,6 +390,27 @@ const Element H_mplayer_extra[] = {
 				exit(1);
 			}
 			string_push_m(&ma->prefix_args, 2,"-profile", arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "1610", .val = '0', .has_arg = no_argument}, 
+		.help  = "Uses 16:10 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 16:10");
+		}
+	},
+	{  
+		.opt   = {.name =  "169", .val = '9', .has_arg = no_argument}, 
+		.help  = "Uses 16:9 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 16:9");
+		}
+	},
+	{  
+		.opt   = {.name =  "43", .val = '4', .has_arg = no_argument}, 
+		.help  = "Uses 4:3 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 4:3");
 		}
 	},
 	{  
@@ -437,7 +460,7 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "rnd", .val = 'R', .has_arg = no_argument}, 
+		.opt   = {.name =  "rnd", .val = 'r', .has_arg = no_argument}, 
 		.help  = "Uses mplayer random unction ",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -470,13 +493,13 @@ const Element H_mplayer_extra[] = {
 	}
 };
 
-const Element H_mplayer_geom[] = { 
+const Element H_mplayer_geom[] = {
 	{  
 		.opt   = {.name =  "geometry", .val = 'G', .has_arg = required_argument}, 
 		.help  = "Palaces the player at (x,y)",
 		.arg   = "x:y", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			// TODO stricter geometry?
+			//LATER stricter geometry?
 			if (match(arg,"^([0-9][0-9]?|100)%?:([0-9][0-9]?|100)%?$") == 0){
 				printf("Invalid geometry \n");
 				exit(1);

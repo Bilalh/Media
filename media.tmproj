@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/string_util.c</string>
+	<string>include/option_parser_private.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -15,73 +15,55 @@
 			<string>!(/\.(?!htaccess)[^/]*|[ec]?tags|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>174</integer>
+	<integer>85</integer>
 	<key>metaData</key>
 	<dict>
-		<key>src/ftest.c</key>
+		<key>include/media.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>122</integer>
 				<key>line</key>
-				<integer>45</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>14</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>52</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>45</integer>
-			</dict>
-		</dict>
-		<key>src/new.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>6</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>src/string_util.c</key>
+		<key>include/option_parser_private.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>5</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>94</integer>
+				<integer>451</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>78</integer>
+			<integer>425</integer>
+		</dict>
+		<key>src/media.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>150</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>124</integer>
 		</dict>
 		<key>tests/include/opt_test.h</key>
 		<dict>
@@ -116,9 +98,9 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/new.c</string>
-		<string>src/string_util.c</string>
-		<string>src/ftest.c</string>
+		<string>include/option_parser_private.h</string>
+		<string>src/media.c</string>
+		<string>include/media.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -159,7 +141,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
+				<key>lib</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -177,6 +159,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{637, 67}, {803, 810}}</string>
+	<string>{{596, 45}, {844, 833}}</string>
 </dict>
 </plist>

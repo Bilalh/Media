@@ -44,7 +44,7 @@ Section("Filepath"){
 
 Section("other"){
 	OptTest("--done",{
-		exp->updated = true;
+		exp->status |= S_UPDATED;
 	})
 	OptTest("-[",{
 		exp->write_history = true;
@@ -54,7 +54,7 @@ Section("other"){
 	})
 }OptEndSection
 
-//FIXME -e opt  test excludes 
+//TODO  opt  test and imp excludes -e
 //-e  --exclude {dir}      Sub directories to exclude
 
 Section("output"){
@@ -180,7 +180,7 @@ Section("Advanced"){
 		string_push(&exp->prefix_args, "-geometry 50%:0%");
 		string_push(&exp->postfix_args, "-nofs");
 		exp->pl_name = "plys";
-		exp->updated = true;
+		exp->status |= S_UPDATED;
 	})
 	OptTest("-mNV --rootpath aaa -fatA 16:9 -k"
 			" -x -ol -[ --profile t -W 22 -L4 -R "
@@ -208,7 +208,7 @@ Section("Advanced"){
 		string_push(&exp->prefix_args, "-geometry 50%:0%");
 		string_push(&exp->postfix_args, "-nofs");
 		exp->pl_name = "plys";
-		exp->updated = true;
+		exp->status |= S_UPDATED;
 	})
 }OptEndSection
 

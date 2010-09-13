@@ -4,8 +4,11 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <assert.h>
+#include <time.h>
+
 #include <pcre.h>
 #include <pcreposix.h>
+
 #include "../include/string_util.h"
 #include "../include/debug.h"
 

@@ -29,14 +29,14 @@ MediaArgs *new_media_args() {
 		.root_dir    = NULL,
 		
 		// Playlist
-		.pl_name       = "zzplaylist",
+		.pl_name       = strdup("zzplaylist"),
 		.pl_dir        = ".",
 		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_shuffle    = false,
 		
 		// Prefs
-		.hash_location = "zzhash",
+		.hash_location = strdup("zzhash"),
 		.use_hash      = true,
 		.status        = S_NONE,
 		.write_history = false,
@@ -144,7 +144,6 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 
 // prints the help, section or letter if specifed
 void print_help(char *arg){
-	
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
 	
 	// print only the specified section by name or number.  

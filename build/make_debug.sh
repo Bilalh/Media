@@ -21,7 +21,7 @@ if [ -n "$2" ]; then
 	
 	if [  "${2::1}" == "a" ]; then
 		echo "make default"
-		make 
+		make all_tests 
 		./all_tests $3
 		exit
 	fi

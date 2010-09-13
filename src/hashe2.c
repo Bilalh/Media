@@ -1,3 +1,5 @@
+// example of hash
+
 #include <string.h>  /* strcpy */
 #include <stdlib.h>  /* malloc */
 #include <stdio.h>   /* printf */

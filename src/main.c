@@ -8,18 +8,30 @@
 #define PATH "/Users/bilalh/Movies/.Movie/OpeningP"
 
 int main (int argc, char **argv) {
+
+	if ( argc == 2) {
+		if( strncmp(argv[1], "-h", 2) == 0) {
+			print_help(&argv[1][2]);
+		} else if( strncmp(argv[1], "--help", 6) == 0 ) {
+			print_help(&argv[1][6]);
+		} else if( strncmp(argv[1], "-help", 5) == 0 ) {
+			print_help(&argv[1][5]);
+		}
+		exit(0);
+	}
+
 	if (argc < 3) {
 		puts("Media dir regex");
 		exit(1);
 	}
-	
+
 	// gets the path
 	char *g_path  = strdup(argv[1]);
 	argc--; argv++;
-	
-	MediaArgs *opt = option_parser(&argc,&argv);
+
+	MediaArgs *opt = option_parser(&argc, &argv);
 	char *path =  opt->root_dir ?  opt->root_dir : g_path;
-	
+
 	media(path, argv, argc , opt);
 	free(g_path);
 	// CHECK free opt?

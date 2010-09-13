@@ -13,7 +13,7 @@
 #include "../include/playlist.h"
 #include "../include/string_util.h"
 #include "../include/time_regex.h"
-
+#include "../include/debug.h"
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
@@ -21,10 +21,14 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 #define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
-//FIXME no file args error in regex 
 
 //TODO sub dirs 
 void media(char *path, char **args, int argc, MediaArgs *ma) {
+	
+	if (argc == 0) {
+		fprintf(stderr, "%s\n", "NO file args (use . for all files)");
+		exit(2);
+	}
 	
 	struct dirent **files;
 	for(int i = 0; i < argc; ++i){
@@ -70,7 +74,6 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		total_length += strlen(sa[i]);
 	}
 	sa[file_num] = NULL;
-
 	
 	char **s_arr = sa;
 	if(ma->newest_only){
@@ -83,7 +86,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	
 	if(ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
-			printf("[%i] %s\n",i, s_arr[i]);
+			printf("%s\n",s_arr[i]);
 		}
 	}
 
@@ -95,7 +98,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		switch (ma->player){
 			//TODO players
 			case P_MPLAYER: 
-				mplayer(s_arr, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 			
 				break;
 			case P_NICEPLAYER:
@@ -119,7 +122,8 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.
-void mplayer(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
+void mplayer(char **filenames, int num_of_files, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
+	
 	
 	// mplayer binary
 	const char* mplayer = "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\"";
@@ -128,13 +132,17 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
 	
-	int index   = strlen(filepath);
-	int rid_len = strlen(rid);
-	int m_len    = strlen(mplayer);
+	int index        = strlen(filepath);
+	int rid_len      = strlen(rid);
+	int m_len        = strlen(mplayer);
+	int space_quotes = num_of_files * 3; // for space and 2""
 	
 	//CHECK 1 from (8 for mplayer)
 	char m_args[total_length + 
-	strlen(prefix_args) + strlen(postfix_args) + index + rid_len+ m_len+ 1];
+			    strlen(prefix_args) + strlen(postfix_args) + 
+			    index + rid_len + m_len +
+			    space_quotes  + 1
+			   ];
 
 	sprintf(m_args, "cd %s; %s %s ", filepath, mplayer, prefix_args);
 	// 3 for cd 2 for ; 1 for  .
@@ -142,7 +150,6 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 
 	// append filenames
 	while (*filenames != NULL) {
-		printf("%s\n", *filenames);
 		m_args[index++] = '"';
 
 		strcpy(&m_args[index], *filenames);
@@ -159,7 +166,7 @@ void mplayer(char **filenames, int total_length, char *prefix_args, char *postfi
 	index += rid_len;
 
 	m_args[index] = '\0';
-	printf("%s\n", m_args);
+	dprintf("%s\n", m_args);
 	system(m_args);
 }
 

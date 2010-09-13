@@ -6,7 +6,7 @@ compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../include -I../src -I ../lib/hash
 includes       = -I/opt/local/include -I/usr/include/libxml2 
 libs           = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
-.DEFAULT_GOAL := all_tests
+.DEFAULT_GOAL := media
 
                            ### Includes ###
 vpath %.c ../src ../lib/hash
@@ -16,11 +16,10 @@ include ../tests/tests.mk
 
 
                            ### Objects ###
-objs       = media optt hashe2 new
+objs       = media optt hashe2
 media_req  = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
 optt_req   = ${opt_req} optm.o
 hashe2_req = hashe2.o
-new_req    = ${strutil_req} new.o
 
                            ### Objects rules ###
 # makes name : ${name_req}

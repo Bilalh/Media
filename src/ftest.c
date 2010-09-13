@@ -1,3 +1,5 @@
+// example of hash
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/uthash.h"

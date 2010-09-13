@@ -10,7 +10,6 @@
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 bool updateHistory(char **filenames, Status status) {
-	//FIXME add done skip
 	sqlite3 *db;
 	int result;
 
