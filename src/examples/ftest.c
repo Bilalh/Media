@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/uthash.h"
+#include "../../include/uthash.h"
 
 // reads the hash from file and prints it out
 
