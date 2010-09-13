@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/media.h"
-#include "../include/option_parser.h"
+#include <include/media.h>
+#include <include/option_parser.h>
 
 // #define PATH "/Users/bilalh/Movies/.Movie/divx"
 #define PATH "/Users/bilalh/Movies/.Movie/OpeningP"

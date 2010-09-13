@@ -6,8 +6,8 @@
 
 #include <libxml/encoding.h>
 
-#include "../include/playlist.h"
-#include "../include/xml.def"
+#include <include/playlist.h>
+#include <include/xml.def>
 
 #define PLAYLIST_INT_LENGTH 10
 

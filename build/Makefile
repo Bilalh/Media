@@ -3,20 +3,20 @@ CC             = gcc
 CFLAGS         = -g -Wall
 PERL           = perl
 compile        = ${CC} -std=gnu99 -fblocks
-flags          = ${CFLAGS} ${includes} -I../include -I../src -I ../lib/hash
+flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/opt/local/include -I/usr/include/libxml2 
 libs           = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
 .DEFAULT_GOAL := media
 
                            ### Includes ###
-vpath %.c ../src ../lib/hash
-vpath %.h ../include/
+vpath %.c ../src 
+vpath %.h ../
 # Rules for tests and requiments
 include ../tests/tests.mk
 
 
                            ### Objects ###
-objs       = media optt hashe2
+objs       = media optt hashe2_reqhe2
 media_req  = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
 optt_req   = ${opt_req} examples/optm.o
 hashe2_req = examples/hashe2.o

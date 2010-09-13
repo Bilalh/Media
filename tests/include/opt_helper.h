@@ -2,9 +2,9 @@
 #define OPT_HELPER_HEADER
 
 #include "opt_test.h"
-#include "option_parser.h"
-#include "string_util.h"
-#include "string_buffer.h"
+#include <include/option_parser.h>
+#include <include/string_util.h>
+#include <include/string_buffer.h>
 
 #define OptPrintTest(title,data)  PrintTest(title,data)
 

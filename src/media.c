@@ -8,12 +8,12 @@
 #include <pcre.h>
 #include <Block.h>
 
-#include "../include/history.h"
-#include "../include/media.h"
-#include "../include/playlist.h"
-#include "../include/string_util.h"
-#include "../include/time_regex.h"
-#include "../include/debug.h"
+#include <include/history.h>
+#include <include/media.h>
+#include <include/playlist.h>
+#include <include/string_util.h>
+#include <include/time_regex.h>
+#include <include/debug.h>
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"

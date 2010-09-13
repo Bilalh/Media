@@ -9,9 +9,8 @@
 #include <pcre.h>
 #include <pcreposix.h>
 
-#include "../include/string_util.h"
-#include "../include/debug.h"
-
+#include <include/string_util.h>
+#include <include/debug.h>
 
 
 typedef struct {

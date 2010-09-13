@@ -2,7 +2,7 @@
 #define STRUTIL_HELPER_HEADER
 
 #include "strutil_test.h"
-#include "string_util.h"
+#include <include/string_util.h>
 
 #define StrutilPrintTest(title,data)  PrintTest(title,data)
 

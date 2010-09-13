@@ -9,9 +9,9 @@
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
 
-#include "../include/ml.h"
-#include "../include/xml.def"
-#include "../include/string_util.h"
+#include <include/ml.h>
+#include <include/xml.def>
+#include <include/string_util.h>
 
 typedef struct _str {
 	char *ptr;

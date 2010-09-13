@@ -1,12 +1,10 @@
-
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "../include/string_buffer.h"
-#include "../include/debug.h"
+#include <include/string_buffer.h>
+#include <include/debug.h>
 
 void new_string(String *s, int length ){
 	if (length <= 0) length = 1;

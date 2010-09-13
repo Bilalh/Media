@@ -2,7 +2,7 @@
 #define TIME_TEST_HEADER
 #include "tests.h"
 #include "time_helper.h"
-#include "time_util.h"
+#include <include/time_util.h>
 
 static int TIME_NUM_SECTION = 0; // for Section numbering
 
