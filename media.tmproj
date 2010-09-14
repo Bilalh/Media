@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/option_parser_private.h</string>
+	<string>tests/tests.mk</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -20,7 +20,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>85</integer>
+	<integer>204</integer>
 	<key>metaData</key>
 	<dict>
 		<key>include/media.h</key>
@@ -37,20 +37,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>451</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>425</integer>
-		</dict>
 		<key>src/media.c</key>
 		<dict>
 			<key>caret</key>
@@ -58,49 +44,62 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>150</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>124</integer>
+			<integer>137</integer>
 		</dict>
-		<key>tests/include/opt_test.h</key>
+		<key>src/sql/ml.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>26</integer>
+				<integer>70</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
-			<key>selectFrom</key>
+			<integer>0</integer>
+		</dict>
+		<key>src/string_buffer.c</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>26</integer>
+				<integer>0</integer>
 			</dict>
-			<key>selectTo</key>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>tests/tests.mk</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>53</integer>
 				<key>line</key>
-				<integer>26</integer>
+				<integer>9</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>include/option_parser_private.h</string>
 		<string>src/media.c</string>
-		<string>include/media.h</string>
+		<string>src/sql/ml.c</string>
+		<string>src/string_buffer.c</string>
+		<string>tests/tests.mk</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -141,14 +140,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>lib</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>src</key>
+				<key>build</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -159,6 +151,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{596, 45}, {844, 833}}</string>
+	<string>{{638, 56}, {802, 822}}</string>
 </dict>
 </plist>

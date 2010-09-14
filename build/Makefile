@@ -16,11 +16,11 @@ include ../tests/tests.mk
 
 
                            ### Objects ###
-objs       = media optt hashe2_reqhe2
+objs       = media optt hashe2_reqhe2 ml
 media_req  = main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
 optt_req   = ${opt_req} examples/optm.o
 hashe2_req = examples/hashe2.o
-
+ml_req     = ${mal_req}
                            ### Objects rules ###
 # makes name : ${name_req}
 $(foreach name,${objs},$(eval ${name}:${${name}_req}))

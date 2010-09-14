@@ -191,7 +191,7 @@ if (mk_arr.grep Regexp.new "test_#{LNAME}_req").size == 0 then
 	mk_arr[0] += " #{LNAME}"
 	mk_arr.insert 3,  "#{LNAME}_req = "
 
-mk_arr[3..-6] = mk_arr[3..-6].align.sort!
+mk_arr[3..-6] = mk_arr[3..-6].align
 File.writelines("tests.mk",mk_arr)
 
 test_def = File.read("include/all_tests.def").split("\n")
