@@ -125,9 +125,18 @@ MAX_OPT_BLOCKS	include/option_parser_private.h	/^#define MAX_OPT_BLOCKS /;"	macr
 MEDIAHEAD	include/media.h	/^#define MEDIAHEAD$/;"	macro	line:2
 MEDIA_ARGS_HEAD	include/media_args.h	/^#define MEDIA_ARGS_HEAD$/;"	macro	line:2
 MLLLHEAD	include/ml.h	/^#define MLLLHEAD$/;"	macro	line:2
-ML_ADD_ANIME	include/ml.h	/^#define ML_ADD_ANIME /;"	macro	line:9
-ML_API	include/ml.h	/^#define ML_API /;"	macro	line:8
-ML_UPDATE_ANIME	include/ml.h	/^#define ML_UPDATE_ANIME /;"	macro	line:10
+MLOpts	include/ml.h	/^typedef struct _MLOpts MLOpts;$/;"	typedef	line:8
+ML_ADD_ANIME	include/ml.h	/^#define ML_ADD_ANIME /;"	macro	line:28
+ML_COMPLETED	include/ml.h	/^	ML_NONE =0, ML_WATCHING = 1, ML_COMPLETED = 2, $/;"	enumerator	line:15
+ML_DELETE_ANIME	include/ml.h	/^#define ML_DELETE_ANIME /;"	macro	line:30
+ML_DROPPED	include/ml.h	/^	ML_ONHOLD = 3, ML_DROPPED = 4, ML_PLANTOWATCH = 5$/;"	enumerator	line:16
+ML_FIND	include/ml.h	/^#define ML_FIND /;"	macro	line:27
+ML_NONE	include/ml.h	/^	ML_NONE =0, ML_WATCHING = 1, ML_COMPLETED = 2, $/;"	enumerator	line:15
+ML_ONHOLD	include/ml.h	/^	ML_ONHOLD = 3, ML_DROPPED = 4, ML_PLANTOWATCH = 5$/;"	enumerator	line:16
+ML_PLANTOWATCH	include/ml.h	/^	ML_ONHOLD = 3, ML_DROPPED = 4, ML_PLANTOWATCH = 5$/;"	enumerator	line:16
+ML_UPDATE_ANIME	include/ml.h	/^#define ML_UPDATE_ANIME /;"	macro	line:29
+ML_WATCHING	include/ml.h	/^	ML_NONE =0, ML_WATCHING = 1, ML_COMPLETED = 2, $/;"	enumerator	line:15
+ML_status	include/ml.h	/^} ML_status;$/;"	typedef	line:17
 MONDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
 M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:511
 M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:528
@@ -310,8 +319,8 @@ VAILD_ASCII	include/option_parser_private.h	/^#define VAILD_ASCII(/;"	macro	line
 VIDEO	src/media.c	/^#define VIDEO /;"	macro	line:20
 VID_AUD	src/media.c	/^#define VID_AUD /;"	macro	line:22
 WEDNESDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:20
-_str	src/sql/ml.c	/^typedef struct _str {$/;"	struct	line:16
-add_anime	src/sql/ml.c	/^char *add_anime(int id) {$/;"	function	line:54
+_MLOpts	include/ml.h	/^struct _MLOpts{$/;"	struct	line:19
+add_anime	src/sql/ml.c	/^char *add_anime (int id, MLOpts *opts) {$/;"	function	line:117
 afloat	include/media_args.h	/^	bool     afloat;       \/\/ DONE$/;"	member	line:63
 align	tests/make_test_files.rb	/^	def align()$/;"	method	line:8
 alternation	tests/make_test_files.rb	/^		def alternation(*s); s.map(&Regexp.method(:escape)).join("|") end$/;"	method	line:9
@@ -327,9 +336,12 @@ buckets	include/uthash.h	/^   UT_hash_bucket *buckets;$/;"	member	line:917
 compile	build/Makefile	/^compile        = ${CC} -std=gnu99 -fblocks$/;"	macro	line:5
 count	include/uthash.h	/^   unsigned count;$/;"	member	line:894
 currentTime	src/time_util.c	/^struct tm* currentTime() {$/;"	function	line:13
+date_finish	include/ml.h	/^	char      date_finish[9]; \/\/\/ mmddyyyy$/;"	member	line:24
+date_start	include/ml.h	/^	char      date_start[9];  \/\/\/ mmddyyyy$/;"	member	line:23
 day_diff	src/time_util.c	/^int day_diff(int day, int other_day) {$/;"	function	line:23
 day_future	src/time_util.c	/^int day_future(int day, int other_day) {$/;"	function	line:47
 day_last	src/time_util.c	/^int day_last(int day, int other_day) {$/;"	function	line:40
+delete_anime	src/sql/ml.c	/^char *delete_anime (int id, MLOpts *opts) {$/;"	function	line:129
 dprintf	include/debug.h	/^#define dprintf(/;"	macro	line:11
 dprintf	include/debug.h	/^#define dprintf(/;"	macro	line:14
 e	tests/strutil_test.c	/^#def/;"	macro	line:286
@@ -337,6 +349,7 @@ ele	src/option_parser.c	/^	#define ele(/;"	macro	line:84
 ele	src/option_parser.c	/^	#undef ele$/;"	macro	line:141
 ep_num	src/string_util.c	/^char** ep_num (char *s) {$/;"	function	line:23
 ep_num_test	tests/strutil_helper.c	/^bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){$/;"	function	line:26
+episode	include/ml.h	/^	int       episode;$/;"	member	line:20
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:51
 eprintf	tests/include/tests.h	/^#define eprintf(/;"	macro	line:52
 esprintf	tests/include/tests.h	/^#define esprintf(/;"	macro	line:53
@@ -350,8 +363,8 @@ func	tests/include/all_tests.h	/^	void (*func)();$/;"	member	line:12
 get16bits	include/uthash.h	/^#define get16bits(/;"	macro	line:431
 get16bits	include/uthash.h	/^#define get16bits(/;"	macro	line:435
 get16bits	include/uthash.h	/^#undef get16bits$/;"	macro	line:428
-getId	src/sql/ml.c	/^long getId(char *xml, char *name) {$/;"	function	line:159
-get_search_xml	src/sql/ml.c	/^char *get_search_xml(char *o_name) {$/;"	function	line:25
+getId	src/sql/ml.c	/^long getId (char *xml, char *name) {$/;"	function	line:135
+get_search_xml	src/sql/ml.c	/^char *get_search_xml (char *o_name) {$/;"	function	line:25
 grouping	include/option_parser.h	/^	const char *grouping;$/;"	member	line:31
 hash_location	include/media_args.h	/^	char   *hash_location; \/\/ DONE$/;"	member	line:55
 hashe2_req	build/Makefile	/^hashe2_req = examples\/hashe2.o$/;"	macro	line:22
@@ -371,7 +384,7 @@ includes	build/Makefile	/^includes       = -I\/opt\/local\/include -I\/usr\/incl
 index	include/media_args.h	/^	int  index;$/;"	member	line:34
 index	include/string_buffer.h	/^	int index;$/;"	member	line:9
 ineff_expands	include/uthash.h	/^   unsigned ineff_expands, noexpand;$/;"	member	line:938
-init_string	src/sql/ml.c	/^void init_string(String_m *s) {$/;"	function	line:222
+init_string	src/sql/ml.c	/^void init_string (String_m *s) {$/;"	function	line:200
 key	include/string_util.h	/^	char *key;$/;"	member	line:130
 key	include/uthash.h	/^   void *key;                        \/* ptr to enclosing struct's key  *\/$/;"	member	line:955
 key	src/examples/ftest.c	/^	char *key;$/;"	member	line:10
@@ -392,7 +405,7 @@ main	src/examples/ftest.c	/^int main (int argc, char const *argv[]) {$/;"	functi
 main	src/examples/hashe2.c	/^int main(int argc, char *argv[]) {$/;"	function	line:15
 main	src/examples/optm.c	/^int main(int argc,  char *argv[])$/;"	function	line:2
 main	src/main.c	/^int main (int argc, char **argv) {$/;"	function	line:10
-main	src/sql/ml.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:228
+main	src/sql/ml.c	/^int main (int argc, char  *argv[]) {$/;"	function	line:206
 main	tests/all_tests.c	/^int main (void) {$/;"	function	line:8
 main	xtra/block_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
 main	xtra/func.c	/^int main(int argc, const char *argv[])$/;"	function	line:1
@@ -401,6 +414,7 @@ make_playlist	src/playlist.c	/^bool make_playlist(char *filename, char *dir_t,  
 make_plist	src/playlist.c	/^bool make_plist(char *filepath, char **names) {$/;"	function	line:72
 make_pls	src/playlist.c	/^bool make_pls(char *filepath, char **names) {$/;"	function	line:125
 make_xspf	src/playlist.c	/^bool make_xspf(char *filepath, char **names) {$/;"	function	line:142
+mal_api	src/sql/ml.c	/^static char *mal_api (char *url, MLOpts *opts) {$/;"	function	line:53
 mal_req	tests/tests.mk	/^mal_req          = sql\/ml.o string_util.o ${hist_req}$/;"	macro	line:10
 match	src/string_util.c	/^int match (const char *string, char *pattern) {$/;"	function	line:371
 media	src/media.c	/^void media(char *path, char **args, int argc, MediaArgs *ma) {$/;"	function	line:26
@@ -471,6 +485,7 @@ print_str	tests/opt_helper.c	/^	#define print_str(/;"	macro	line:58
 print_str	tests/opt_helper.c	/^	#undef print_str$/;"	macro	line:118
 ptr	src/sql/ml.c	/^	char *ptr;$/;"	member	line:17
 root_dir	include/media_args.h	/^	char     *root_dir;    \/\/ DONE$/;"	member	line:45
+score	include/ml.h	/^	int       score;          \/\/\/ 1 - 10$/;"	member	line:22
 shuffle	src/string_util.c	/^void shuffle(void **array, size_t n) {$/;"	function	line:357
 signature	include/uthash.h	/^   uint32_t signature; \/* used only to find hash tables in external analysis *\/$/;"	member	line:940
 spilt_args	src/string_util.c	/^char *spilt_args (char **arr, size_t length, char *separator, char *beginning, char *ending, char* hash_file ) {$/;"	function	line:173
@@ -479,6 +494,7 @@ spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int 
 spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:134
 spilt_words_test	tests/strutil_helper.c	/^bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){$/;"	function	line:56
 status	include/media_args.h	/^	Status  status;        \/\/ DONE$/;"	member	line:57
+status	include/ml.h	/^	ML_status status; $/;"	member	line:21
 str	include/string_buffer.h	/^	char *str;$/;"	member	line:7
 str_arr	include/media_args.h	/^	char **str_arr;$/;"	member	line:32
 str_lower	src/string_util.c	/^char *str_lower (char *s, size_t length) {$/;"	function	line:409
@@ -515,7 +531,7 @@ truth	src/option_parser.c	/^#undef truth$/;"	macro	line:300
 types	include/media_args.h	/^	Types    types;        \/\/ DONE$/;"	member	line:43
 uint32_t	include/uthash.h	/^typedef unsigned int uint32_t;$/;"	typedef	line:60
 updateHistory	src/sql/history.c	/^bool updateHistory(char **filenames, Status status) {$/;"	function	line:12
-update_anime	src/sql/ml.c	/^char *update_anime(int id) {$/;"	function	line:106
+update_anime	src/sql/ml.c	/^char *update_anime (int id, MLOpts *opts) {$/;"	function	line:123
 use_hash	include/media_args.h	/^	bool    use_hash;      \/\/ DONE$/;"	member	line:56
 uthash_expand_fyi	include/uthash.h	/^#define uthash_expand_fyi(/;"	macro	line:72
 uthash_fatal	include/uthash.h	/^#define uthash_fatal(/;"	macro	line:67
@@ -527,4 +543,4 @@ val	src/examples/ftest.c	/^	char *val;$/;"	member	line:11
 val	src/examples/hashe2.c	/^	char *val;$/;"	member	line:10
 vlc	src/media.c	/^void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {$/;"	function	line:179
 write_history	include/media_args.h	/^	bool    write_history; \/\/ DONE$/;"	member	line:58
-writefunc	src/sql/ml.c	/^static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s) {$/;"	function	line:209
+writefunc	src/sql/ml.c	/^static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {$/;"	function	line:187

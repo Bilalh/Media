@@ -12,16 +12,18 @@
 #include <include/ml.h>
 #include <include/xml.def>
 #include <include/string_util.h>
+#include <include/debug.h>
 
-typedef struct{
+typedef struct {
 	char *ptr;
 	size_t len;
 } String_m;
 
 static void init_string(String_m *s);
 static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s);
+static char *mal_api(char *url, MLOpts *opts);
 
-char *get_search_xml(char *o_name) {
+char *get_search_xml (char *o_name) {
 	CURL *curl;
 	CURLcode res;
 
@@ -30,18 +32,18 @@ char *get_search_xml(char *o_name) {
 	String_m *str = malloc(sizeof(String_m));
 	if(curl) {
 		init_string(str);
-		char *name = curl_easy_escape( curl, o_name , 0 ); 
+		char *name = curl_easy_escape( curl, o_name , 0 );
 
 		const size_t ml_len = strlen(ML_FIND), n_len = strlen(name);
 		char url[ml_len + n_len];
 		strncpy(url, ML_FIND, ml_len);
 		strncpy(&url[ml_len], name , n_len + 1);
-		
+
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		curl_easy_setopt(curl, CURLOPT_USERPWD, "bhterra:bhterramai#");
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
-		
+
 		res = curl_easy_perform(curl);
 		curl_free(name);
 		curl_easy_cleanup(curl);
@@ -49,10 +51,11 @@ char *get_search_xml(char *o_name) {
 	return str->ptr;
 }
 
-char * mal_api(char *url){
+static char *mal_api (char *url, MLOpts *opts) {
 	CURL *curl;
 	CURLcode res;
-
+	
+	// Sets up the connection 
 	curl_global_init(CURL_GLOBAL_NOTHING);
 	curl = curl_easy_init();
 	String_m *str = malloc(sizeof(String_m));
@@ -61,65 +64,86 @@ char * mal_api(char *url){
 
 		xmlDocPtr doc;
 		xmlNodePtr root, temp;
-	    xmlChar *xmlbuff;
+		xmlChar *xmlbuff;
 		int buffersize;
-		
+
 		// makes document
 		doc  = xmlNewDoc ((xmlChar*) "1.0");
 		root = xmlNewNode(NULL, XC"entry");
 		xmlDocSetRootElement(doc, root);
-		
-		char buff[10];
-		
-		sprintf(buff, "%d\n",1 );
-		new_text_node(temp, "status",buff, root);
-		sprintf(buff, "%d\n",6 );
-		new_text_node(temp, "score",buff, root);
+
+		// Makes the xml of the options
+		if (opts){
+			char buff[10];
+			if(opts->episode){
+				dprintf("%s\n", "ep");
+				sprintf(buff, "%d", opts->episode );
+				new_text_node(temp, "episode", buff, root);
+			}
+			if(opts->status){
+				dprintf("%s\n", "status");
+				sprintf(buff, "%d", opts->status );
+				new_text_node(temp, "status", buff, root);
+			}
+			if(opts->score){
+				dprintf("%s\n", "score");
+				sprintf(buff, "%d", opts->score );
+				new_text_node(temp, "score", buff, root);
+			}
+			if(opts->date_start) {
+				dprintf("%s\n", "date_start");
+				new_text_node(temp, "date_start", opts->date_start, root);
+			}
+			if(opts->date_finish) {
+				dprintf("%s\n", "date_finish");
+				new_text_node(temp, "date_finish", opts->date_finish, root);
+			}
+		}
 		
 		xmlDocDumpFormatMemory(doc, &xmlbuff, &buffersize, 0);
 		char xml[buffersize + 7 + 1];
 		sprintf(xml, "data=%s", (char *) xmlbuff);
-		
+		dprintf("%s\n", xml);
 		curl_easy_setopt(curl, CURLOPT_POST, true);
 		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, xml);
 		curl_easy_setopt(curl, CURLOPT_URL, url);
-		
+
 		curl_easy_setopt(curl, CURLOPT_USERPWD, "bhterra:bhterramai#");
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
-		
+
 		res = curl_easy_perform(curl);
 		curl_easy_cleanup(curl);
 		xmlFree(xmlbuff);
-	    xmlFreeDoc(doc);
+		xmlFreeDoc(doc);
 	}
 	return str->ptr;
 }
 
-char *add_anime(int id) {
+char *add_anime (int id, MLOpts *opts) {
 	char url[strlen(ML_ADD_ANIME) + 4 + 10 + 1];
 	sprintf(url, "%s%d.xml\n", ML_ADD_ANIME, id );
-	return mal_api(url);
+	return mal_api(url, opts);
 }
 
-char *update_anime(int id) {
+char *update_anime (int id, MLOpts *opts) {
 	char url[strlen(ML_UPDATE_ANIME) + 4 + 10 + 1];
 	sprintf(url, "%s%d.xml\n", ML_UPDATE_ANIME, id );
-	return mal_api(url);
+	return mal_api(url, opts);
 }
 
-char *delete_anime(int id) {
+char *delete_anime (int id){
 	char url[strlen(ML_DELETE_ANIME) + 4 + 10 + 1];
 	sprintf(url, "%s%d.xml\n", ML_DELETE_ANIME, id );
-	return mal_api(url);
+	return mal_api(url, NULL);
 }
 
-long getId(char *xml, char *name) {
+long getId (char *xml, char *name) {
 	int result  = -1;
 	xmlDocPtr doc;
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
-	
+
 	doc = xmlParseDoc(XC xml);
 	xpathCtx = xmlXPathNewContext(doc);
 
@@ -164,7 +188,9 @@ long getId(char *xml, char *name) {
 	return result;
 }
 
-static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s) {
+
+// writes all data to the String_m struct
+static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
 	size_t new_len = s->len + size * nmemb;
 	s->ptr = realloc(s->ptr, new_len + 1);
 	if (s->ptr == NULL) {
@@ -177,24 +203,33 @@ static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s) {
 	return size * nmemb;
 }
 
-void init_string(String_m *s) {
+void init_string (String_m *s) {
 	s->len = 0;
 	s->ptr = malloc(s->len + 1);
 	s->ptr[0] = '\0';
 }
 
 int main (int argc, char  *argv[]) {
-	
-	char *ures = update_anime(3750);
-	// char *ures = add_anime(3750);
+
+	MLOpts opts = {
+		.episode     = 1,
+		.status      = ML_PLANTOWATCH,
+		.score       = 6,
+		.date_start  = "02092010",
+		.date_finish = "01102010"
+	};
+
+	// char *ures = update_anime(3750, &opts);
+	char *ures = add_anime(3750, &opts);
 	printf("%s\n", ures);
 	exit(0);
+
 	char *name = argv[1];
-	if (!name) name ="Azumanga Daioh";
-	
+	if (!name) name = "Azumanga Daioh";
+
 	char *xml = get_search_xml(name);
 	long id = getId(xml, name);
-	
+
 	printf("%s id = %li\n", name, id);
 	return 0;
 }
@@ -203,7 +238,7 @@ int main (int argc, char  *argv[]) {
 // command line version
 //update
 
-// curl -u bhterra:bhterramai# -d data="<?xml version=\"1.0\" encoUTF-8\"?><entry><status>1</status><score></score></entry>" http://myanimelist.net/api/animelist/update/101.xml 
+// curl -u bhterra:bhterramai# -d data="<?xml version=\"1.0\" encoUTF-8\"?><entry><status>1</status><score></score></entry>" http://myanimelist.net/api/animelist/update/101.xml
 
 //add
 
