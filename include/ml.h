@@ -2,12 +2,12 @@
 #define MLLLHEAD
 #include <stdlib.h>
 
-char *get_search_xml(char *name);
-long getId(char *xml, char *name);
-
 typedef struct _MLOpts MLOpts;
-char *add_anime(int id, MLOpts *opts);
-char *update_anime(int id, MLOpts *opts);
+char *get_search_xml(char *name);
+void get_id_and_total(char *xml, MLOpts *opts);
+
+char *add_anime(MLOpts *opts);
+char *update_anime(MLOpts *opts);
 char *delete_anime(int id);
 
 
@@ -17,11 +17,15 @@ typedef enum {
 } ML_status;
 
 struct _MLOpts{
-	int       episode;
+	char      episode[6];
 	ML_status status; 
 	int       score;          /// 1 - 10
 	char      date_start[9];  /// mmddyyyy
 	char      date_finish[9]; /// mmddyyyy
+	
+	char      id[6];
+	char      total[6];
+	char     *title;
 };
 
 #define ML_FIND               "http://myanimelist.net/api/anime/search.xml?q="

@@ -77,8 +77,8 @@ static char *mal_api (char *url, MLOpts *opts) {
 			char buff[10];
 			if(opts->episode){
 				dprintf("%s\n", "ep");
-				sprintf(buff, "%d", opts->episode );
-				new_text_node(temp, "episode", buff, root);
+				// sprintf(buff, "%d", opts->episode );
+				new_text_node(temp, "episode", opts->episode, root);
 			}
 			if(opts->status){
 				dprintf("%s\n", "status");
@@ -120,15 +120,15 @@ static char *mal_api (char *url, MLOpts *opts) {
 	return str->ptr;
 }
 
-char *add_anime (int id, MLOpts *opts) {
+char *add_anime (MLOpts *opts) {
 	char url[strlen(ML_ADD_ANIME) + 4 + 10 + 1];
-	sprintf(url, "%s%d.xml\n", ML_ADD_ANIME, id );
+	sprintf(url, "%s%s.xml\n", ML_ADD_ANIME, opts->id );
 	return mal_api(url, opts);
 }
 
-char *update_anime (int id, MLOpts *opts) {
+char *update_anime (MLOpts *opts) {
 	char url[strlen(ML_UPDATE_ANIME) + 4 + 10 + 1];
-	sprintf(url, "%s%d.xml\n", ML_UPDATE_ANIME, id );
+	sprintf(url, "%s%s.xml\n", ML_UPDATE_ANIME, opts->id );
 	return mal_api(url, opts);
 }
 
@@ -138,8 +138,9 @@ char *delete_anime (int id){
 	return mal_api(url, NULL);
 }
 
-long getId (char *xml, char *name) {
-	int result  = -1;
+void get_id_and_total(char *xml,MLOpts *opts) {
+	if (strlen(opts->total) > 0 && strlen(opts->id) >0 ) return;
+	
 	xmlDocPtr doc;
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
@@ -150,7 +151,7 @@ long getId (char *xml, char *name) {
 	if(xpathCtx == NULL) {
 		fprintf(stderr, "Error: unable to create new XPath context\n");
 		xmlFreeDoc(doc);
-		return(result);
+		return;
 	}
 
 	const int length = 20 + 14 + 15 + 5 + strlen(xml) * 3 + 1;
@@ -158,7 +159,7 @@ long getId (char *xml, char *name) {
 	const char *t  = "translate(";
 	const char *t2  = ",'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')";
 	char buf[length];
-	char *lower = str_lower(name, strlen(name));
+	char *lower = str_lower(opts->title, strlen(opts->title));
 	sprintf(buf,
 			"/anime/entry[%stitle%s='%s' or %senglish%s='%s' or %ssynonyms%s='%s']/id",
 			t, t2, lower,   t, t2, lower,   t, t2, lower
@@ -169,7 +170,7 @@ long getId (char *xml, char *name) {
 		fprintf(stderr, "Error: unable to evaluate xpath expression \"...\"\n");
 		xmlXPathFreeContext(xpathCtx);
 		xmlFreeDoc(doc);
-		return(result);
+		return;
 	}
 
 	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
@@ -178,14 +179,13 @@ long getId (char *xml, char *name) {
 	if(size > 0 && nodes->nodeTab[0]->type == XML_ELEMENT_NODE &&
 			(cur = nodes->nodeTab[0]->last) ) {
 		char *num = (char*) cur->content;
-		result = strtol(num, NULL, 10);
+		strncpy(opts->id, num, 6);
 	}
 
-	/* Cleanup */
+
 	xmlXPathFreeObject(xpathObj);
 	xmlXPathFreeContext(xpathCtx);
 	xmlFreeDoc(doc);
-	return result;
 }
 
 
@@ -207,31 +207,6 @@ void init_string (String_m *s) {
 	s->len = 0;
 	s->ptr = malloc(s->len + 1);
 	s->ptr[0] = '\0';
-}
-
-int main (int argc, char  *argv[]) {
-
-	MLOpts opts = {
-		.episode     = 1,
-		.status      = ML_PLANTOWATCH,
-		.score       = 6,
-		.date_start  = "02092010",
-		.date_finish = "01102010"
-	};
-
-	// char *ures = update_anime(3750, &opts);
-	char *ures = add_anime(3750, &opts);
-	printf("%s\n", ures);
-	exit(0);
-
-	char *name = argv[1];
-	if (!name) name = "Azumanga Daioh";
-
-	char *xml = get_search_xml(name);
-	long id = getId(xml, name);
-
-	printf("%s id = %li\n", name, id);
-	return 0;
 }
 
 

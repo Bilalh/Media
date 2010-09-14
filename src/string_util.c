@@ -366,6 +366,18 @@ void shuffle(void **array, size_t n) {
 	}
 }
 
+
+char *str_lower (char *s, size_t length) {
+	assert(s); assert(length >= 0);
+	char *re = malloc(sizeof(char) * length +1);
+	char *r  = re;
+	while(( *r++ = tolower(*s++) )) ;
+	*r = '\0';
+
+	return re;
+}
+
+
 // not used
 // CHECK broken?
 int match (const char *string, char *pattern) {
@@ -404,14 +416,4 @@ char *str_spilt_replace (char *s) {
 	}
 
 	return NULL;
-}
-
-char *str_lower (char *s, size_t length) {
-	assert(s); assert(length >= 0);
-	char *re = malloc(sizeof(char) * length +1);
-	char *r  = re;
-	while(( *r++ = tolower(*s++) )) ;
-	*r = '\0';
-
-	return re;
 }

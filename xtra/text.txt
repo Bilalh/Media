@@ -43,3 +43,7 @@ SELECT CASE
 			Raise(abort, 'Just Added')
 		END; 
 END
+
+SELECT Title, ID,Current, Total, Date, StartDate, EndDate, Finished
+	FROM  SeriesInfo
+	WHERE (updated  == 0 AND skip == 0)

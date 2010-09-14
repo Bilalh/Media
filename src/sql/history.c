@@ -8,7 +8,6 @@
 #include <include/history.h>
 #include <include/string_util.h>
 
-#define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 bool updateHistory(char **filenames, Status status) {
 	sqlite3 *db;
 	int result;
@@ -27,40 +26,40 @@ bool updateHistory(char **filenames, Status status) {
 	const char *query_si_su = "UPDATE SeriesInfo SET Skip = ?, Updated = ? Where Title = ?";
 
 	bool si_u = false, si_s = false, si_su = false;
-	
+
 	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
-	
+
 	struct tm* timeinfo = currentTime();
 	char now[20];
-	
+
 	while(*filenames != NULL) {
 		printf("%s\n", *filenames);
 		char **ans = ep_num(*filenames);
 		if (ans[0] != NULL) {
 			EP_GET_NUMBER(ans, num);
 			EP_GET_NAME(ans, s, *filenames)
-			
+
 			printf("title %s.\n", s);
 			printf("num   %li.\n", num);
-			MAKE_TIME_STR(now,timeinfo);
+			MAKE_TIME_STR(now, timeinfo);
 			printf("time  %s.\n", now);
-			
+
 			sqlite3_bind_text(statement_h, 1, s, -1, SQLITE_TRANSIENT);
 			sqlite3_bind_int(statement_h, 2, num);
 			sqlite3_bind_text(statement_h, 3, now, -1, SQLITE_STATIC);
-			
+
 			result = sqlite3_step(statement_h);
-			printf("r:%i Ok:%i done:%i \n", result,SQLITE_OK,SQLITE_DONE );
-			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ){
-				fprintf(stderr, "SQL error %s : %s\n",*filenames, sqlite3_errmsg(db));
+			printf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
+				fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			printf("reset: %i\n\n", sqlite3_reset(statement_h));
-			timeinfo->tm_min+=27;
+			timeinfo->tm_min += 27;
 			timegm(timeinfo);
-			
+
 			// for status
-			if (status == S_SKIP_UPDATED){
-				if(! si_su){
+			if (status == S_SKIP_UPDATED) {
+				if(! si_su) {
 					sqlite3_prepare_v2(db, query_si_su, strlen(query_si_su), &statement_si_su, NULL);
 					si_su = true;
 				}
@@ -68,27 +67,27 @@ bool updateHistory(char **filenames, Status status) {
 				sqlite3_bind_int(statement_si_su, 1, 1);
 				sqlite3_bind_int(statement_si_su, 2, 1);
 				result = sqlite3_step(statement_si_su);
-				printf("su r:%i Ok:%i done:%i \n", result,SQLITE_OK,SQLITE_DONE );
-				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ){
-					fprintf(stderr, "SQL error %s : %s\n",*filenames, sqlite3_errmsg(db));
+				printf("su r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
+					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				printf("sk reset: %i\n\n", sqlite3_reset(statement_si_su));
-				
-			}else if (status == S_UPDATED){
-				if(! si_u){
+
+			} else if (status == S_UPDATED) {
+				if(! si_u) {
 					sqlite3_prepare_v2(db, query_si_u, strlen(query_si_u), &statement_si_u, NULL);
 					si_u = true;
 				}
 				sqlite3_bind_text(statement_si_u, 2, s, -1, SQLITE_TRANSIENT);
 				sqlite3_bind_int(statement_si_u, 1, 1);
 				result = sqlite3_step(statement_si_u);
-				printf("up r:%i Ok:%i done:%i \n", result,SQLITE_OK,SQLITE_DONE );
-				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ){
-					fprintf(stderr, "SQL error %s : %s\n",*filenames, sqlite3_errmsg(db));
+				printf("up r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
+					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				printf("up reset: %i\n\n", sqlite3_reset(statement_si_u));
-			}else if(status == S_SKIP){
-				if(! si_s){
+			} else if(status == S_SKIP) {
+				if(! si_s) {
 					sqlite3_prepare_v2(db, query_si_s, strlen(query_si_s), &statement_si_s, NULL);
 					si_s = true;
 				}
@@ -96,12 +95,12 @@ bool updateHistory(char **filenames, Status status) {
 				sqlite3_bind_int(statement_si_s, 1, 1);
 				result = sqlite3_step(statement_si_s);
 				printf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
-				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ){
-					fprintf(stderr, "SQL error %s : %s\n",*filenames, sqlite3_errmsg(db));
+				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
+					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
-				printf("sk reset: %i\n\n", sqlite3_reset(statement_si_s));	
+				printf("sk reset: %i\n\n", sqlite3_reset(statement_si_s));
 			}
-			
+
 		}
 		filenames++;
 	}
@@ -109,4 +108,49 @@ bool updateHistory(char **filenames, Status status) {
 	sqlite3_finalize(statement_h);
 	sqlite3_close(db);
 	return true;
+}
+
+void sql_exec(char *command, SqlCallback callback ) {
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+
+	rc = sqlite3_open(DATABASE, &db);
+	if( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		exit(1);
+	}
+
+	rc = sqlite3_exec(db, command, callback, 0, &zErrMsg);
+	if( rc != SQLITE_OK ) {
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+
+	sqlite3_close(db);
+}
+
+void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+
+	rc = sqlite3_open(DATABASE, &db);
+	if( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		exit(1);
+	}
+
+
+	for(int i = 0; i < argc; ++i) {
+		rc = sqlite3_exec(db, argv[i], callback, 0, &zErrMsg);
+		if( rc != SQLITE_OK ) {
+			fprintf(stderr, "SQL error: %s\n", zErrMsg);
+			sqlite3_free(zErrMsg);
+		}
+	}
+
+	sqlite3_close(db);
 }
