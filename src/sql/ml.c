@@ -26,9 +26,12 @@ static void init_string(String_m *s);
 static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s);
 
 static char *mal_api(char *url, MLOpts *opts);
-void update_id_total(MLOpts *opts);
-void update_id(MLOpts *opts);
-void update_total(MLOpts *opts);
+static void update_id_total(MLOpts *opts);
+static void update_id(MLOpts *opts);
+static void update_total(MLOpts *opts);
+static void update_total_only(MLOpts *opts);
+static void update_updated(MLOpts *opts);
+
 
 char *get_search_xml (char *o_name) {
 	CURL *curl;
@@ -231,17 +234,13 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 // sql exec callback function
 int update_new(void *unused, int argc, char **argv, char **columns) {
 	dprintf("%s\n", "start update_new");
-	// for(int i = 0; i < argc; ++i){
-	// 	printf("%s = %s\n", columns[i], argv[i] ? argv[i] : "NULL");
-	// }
-	// printf("\n");
+
 	MLOpts opts = {
 		.status      = strcmp("1", argv[6]) == 0 ? ML_COMPLETED : ML_WATCHING
 	};
 
 	// argv[0] becames invaild after strptime is called unless it is duped.
 	strncpy(opts.title, argv[0], 100);
-
 	bool have_id = false, have_total = false;
 
 	if (argv[2]) strncpy(opts.episodes, argv[2], 6);
@@ -275,6 +274,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	// printf("%12s: '%s'\n", "date_start", opts.date_start);
 	// printf("%12s: '%s'\n", "date_finish", opts.date_finish);
 	
+	// Updates the ml list  and creates the corect sql querry 
 	if (!have_total || ! have_id  ) {
 		char *xml = get_search_xml(opts.title);
 		dprintf("%s\n", "have xml");
@@ -289,12 +289,16 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 			}
 			if (!have_total && *opts.total != '\0' ){
 				printf("%s\n", "have total");
-				update_total(&opts);	
+				if (*opts.id != '\0'){
+					update_total(&opts);
+				}else{
+					update_total_only(&opts);	
+				}
 			} 
-			printf("%s\n", "end if");
 		}
+	}else{
+		update_updated(&opts);
 	}
-
 	printf("%12s: '%s'\n", "title", opts.title);
 	printf("%12s: '%s'\n", "id", opts.id);
 	printf("%12s: '%s'\n", "episodes", opts.episodes);
@@ -304,33 +308,59 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	return 0;
 }
 
-void update_id_total(MLOpts *opts){
-	int len = 62 + strlen(opts->title) + 1;
+// makes sql statements
+static void update_updated(MLOpts *opts){
+	int len = 54 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Total = %s, Id = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated = 1 where Title = '%s'; ", 
+		opts->title
+	);
+}
+
+static void update_id_total(MLOpts *opts){
+	int len = 75 + strlen(opts->title) + 1;
+	if (sql_commands == NULL){
+		sql_commands = string_new(len);
+	}
+	
+	string_sprintf(sql_commands, len,
+		"Update SeriesInfo Set Updated = 1, Total = %s, Id = %s where Title = '%s'; ", 
 		opts->total, opts->id, opts->title
 	);
 	
 }
 
-void update_id(MLOpts *opts){
-	int len = 50 + strlen(opts->title) + 1;
+static void update_id(MLOpts *opts){
+	int len = 63 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Id = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated = 1, Id = %s where Title = '%s'; ", 
 		opts->id, opts->title
 	);
 	
 }
 
-void update_total(MLOpts *opts){
+static void update_total(MLOpts *opts){
+	int len = 67 + strlen(opts->title) + 1;
+	if (sql_commands == NULL){
+		sql_commands = string_new(len);
+	}
+	
+	string_sprintf(sql_commands, len,
+		"Update SeriesInfo Set Updated == 1, Total = %s where Title = '%s'; ", 
+		opts->total, opts->title
+	);
+	
+}
+
+static void update_total_only(MLOpts *opts){
 	int len = 53 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
@@ -357,7 +387,7 @@ static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
 	return size * nmemb;
 }
 
-void init_string (String_m *s) {
+static void init_string (String_m *s) {
 	s->len = 0;
 	s->ptr = malloc(s->len + 1);
 	s->ptr[0] = '\0';

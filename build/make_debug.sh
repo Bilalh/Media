@@ -50,7 +50,8 @@ else
 ${CLEARNNN} && echo "make $1" && make $1 -n | \
 sed 's!gcc -std=gnu99 -fblocks!Gcc!g' | \
 sed 's!-I ../lib/hash!!g' | \
-sed 's!-g -Wall -I/opt/local/include -I/usr/include/libxml2  -I../include -I../src!Inc!g' \
+sed 's!-g -Wall -I/opt/local/include -I/usr/include/libxml2!Inc!g' \
+| sed 's!-I../src -I../!!g' \
 | sed 's!-lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl!Lib!g'
 
 fi
