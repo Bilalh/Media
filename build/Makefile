@@ -26,7 +26,7 @@ nums_req   = app/latest_main.o ${hist_req}
 numsf_req  = app/latest_f_main.o ${hist_req}
 numss_req  = app/latest_fs_main.o ${hist_req}
 
-hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req}
+hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
 
 optt_req   = examples/optm.o ${opt_req}
 hashe2_req = examples/hashe2.o
