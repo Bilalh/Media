@@ -18,17 +18,20 @@ void new_string(String *s, int length ){
 // adds a space before append the string if add_space
 void string_add(String *s, char *str, bool add_space_before) {
 	int str_len = strlen(str);
-	dprintf("a in %i len %i \n", s->index, s->length);
+	dprintf("a ind %i len %i \n", s->index, s->length);
 	if ( (s->length - s->index) < str_len +1 ) { // 1 for \0
+		dprintf("reallocing to %d\n", s->length);
 		s->length += str_len * 2 + 2; // 2 for \0 and space
 		s->str = realloc(s->str, s->length);
 	}
-	dprintf("b in %i len %i \n", s->index, s->length);
+	dprintf("b ind %i len %i \n", s->index, s->length);
 	if (add_space_before) s->str[s->index++] = ' ';
 	strncpy(&s->str[s->index], str, str_len + 1);
 	s->index += str_len;
 	dprintf("'%s'\n", s->str);
 }
+
+
 
 // assumes the s->str is assigned by malloc
 // adds a space before append the string
@@ -46,3 +49,30 @@ void string_add_m(String *s, bool add_space, int length, ...){
 	va_end(args); // finished using argument list
 }
 
+
+int string_sprintf(String *s, int length,  const char *fmt,  ... ){
+	va_list args;
+	va_start(args, fmt);
+	dprintf("a '%s'\n", s->str);
+	dprintf("a ind %i len %i r_len %i \n", s->index, s->length, length);
+	if ( (s->length - s->index) < length + 2 ) { // 1 for \0
+		s->length += length * 2 + 2; 
+		dprintf("reallocing to %d\n", s->length);
+		s->str = realloc(s->str, s->length);
+	}
+	dprintf("b ind %i len %i \n", s->index, s->length);
+	
+	int wrote = vsnprintf(&s->str[s->index], length, fmt, args);
+	va_end(args);
+	
+	s->index += length-1; // to at \0 next time 
+	dprintf("c ind %i len %i \n", s->index, s->length);
+	
+	// makes sure there a null at the end
+	if (wrote >= length ){
+		fprintf(stderr, "snprinf res %d length %d\n", wrote, length );
+		s->str[s->index++] = '\0';
+	} 
+	dprintf("c '%s'\n", s->str);
+	return wrote;
+}

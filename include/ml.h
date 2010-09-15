@@ -10,6 +10,9 @@ char *add_anime(MLOpts *opts);
 char *update_anime(MLOpts *opts);
 char *delete_anime(int id);
 
+// sql exec callback function
+int update_new(void *unused, int argc, char **argv, char **columns);
+
 
 typedef enum { 
 	ML_NONE   = 0, ML_WATCHING = 1, ML_COMPLETED   = 2, 
@@ -17,15 +20,15 @@ typedef enum {
 } ML_status;
 
 struct _MLOpts{
-	char      episode[6];
+	char      episodes[6];
 	ML_status status; 
 	int       score;          /// 1 - 10
 	char      date_start[9];  /// mmddyyyy
 	char      date_finish[9]; /// mmddyyyy
 	
-	char      id[6];
+	char      id[7];
 	char      total[6];
-	char     *title;
+	char      title[100];
 };
 
 #define ML_FIND               "http://myanimelist.net/api/anime/search.xml?q="

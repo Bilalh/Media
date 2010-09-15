@@ -19,9 +19,15 @@ typedef struct {
 	size_t len;
 } String_m;
 
+char *sql_commands; 
+char *sql_commands_index = 0; 
+char *sql_commands_length = 0; 
+
+
 static void init_string(String_m *s);
 static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s);
 static char *mal_api(char *url, MLOpts *opts);
+void update_id_total(MLOpts *opts);
 
 char *get_search_xml (char *o_name) {
 	CURL *curl;
@@ -54,8 +60,8 @@ char *get_search_xml (char *o_name) {
 static char *mal_api (char *url, MLOpts *opts) {
 	CURL *curl;
 	CURLcode res;
-	
-	// Sets up the connection 
+
+	// Sets up the connection
 	curl_global_init(CURL_GLOBAL_NOTHING);
 	curl = curl_easy_init();
 	String_m *str = malloc(sizeof(String_m));
@@ -73,19 +79,19 @@ static char *mal_api (char *url, MLOpts *opts) {
 		xmlDocSetRootElement(doc, root);
 
 		// Makes the xml of the options
-		if (opts){
+		if (opts) {
 			char buff[10];
-			if(opts->episode){
+			if(opts->episodes) {
 				dprintf("%s\n", "ep");
-				// sprintf(buff, "%d", opts->episode );
-				new_text_node(temp, "episode", opts->episode, root);
+				// sprintf(buff, "%d", opts->episodes );
+				new_text_node(temp, "episode", opts->episodes, root);
 			}
-			if(opts->status){
+			if(opts->status) {
 				dprintf("%s\n", "status");
 				sprintf(buff, "%d", opts->status );
 				new_text_node(temp, "status", buff, root);
 			}
-			if(opts->score){
+			if(opts->score) {
 				dprintf("%s\n", "score");
 				sprintf(buff, "%d", opts->score );
 				new_text_node(temp, "score", buff, root);
@@ -99,7 +105,7 @@ static char *mal_api (char *url, MLOpts *opts) {
 				new_text_node(temp, "date_finish", opts->date_finish, root);
 			}
 		}
-		
+
 		xmlDocDumpFormatMemory(doc, &xmlbuff, &buffersize, 0);
 		char xml[buffersize + 7 + 1];
 		sprintf(xml, "data=%s", (char *) xmlbuff);
@@ -132,15 +138,17 @@ char *update_anime (MLOpts *opts) {
 	return mal_api(url, opts);
 }
 
-char *delete_anime (int id){
+char *delete_anime (int id) {
 	char url[strlen(ML_DELETE_ANIME) + 4 + 10 + 1];
 	sprintf(url, "%s%d.xml\n", ML_DELETE_ANIME, id );
 	return mal_api(url, NULL);
 }
 
-void get_id_and_total(char *xml,MLOpts *opts) {
-	if (strlen(opts->total) > 0 && strlen(opts->id) >0 ) return;
-	
+void get_id_and_total(char *xml, MLOpts *opts) {
+	bool done_id = false, done_total = false;
+	if(strlen(opts->total) > 0) done_total = true;
+	if(strlen(opts->id)    > 0) done_id = true;
+
 	xmlDocPtr doc;
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
@@ -160,8 +168,10 @@ void get_id_and_total(char *xml,MLOpts *opts) {
 	const char *t2  = ",'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')";
 	char buf[length];
 	char *lower = str_lower(opts->title, strlen(opts->title));
+
+	// xpath to the entry
 	sprintf(buf,
-			"/anime/entry[%stitle%s='%s' or %senglish%s='%s' or %ssynonyms%s='%s']/id",
+			"/anime/entry[%stitle%s='%s' or %senglish%s='%s' or %ssynonyms%s='%s']",
 			t, t2, lower,   t, t2, lower,   t, t2, lower
 		   );
 
@@ -174,12 +184,21 @@ void get_id_and_total(char *xml,MLOpts *opts) {
 	}
 
 	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
-	int size = (nodes) ? nodes->nodeNr : 0;
-	xmlNodePtr cur;
-	if(size > 0 && nodes->nodeTab[0]->type == XML_ELEMENT_NODE &&
-			(cur = nodes->nodeTab[0]->last) ) {
-		char *num = (char*) cur->content;
-		strncpy(opts->id, num, 6);
+	xmlNodePtr entry_c = nodes->nodeTab[0]->children;
+
+	// gets the id and total number of episodes
+	for(; (!done_id || !done_total) && entry_c != NULL; entry_c = entry_c->next  ) {
+		if( strcmp((char *) entry_c->name, "id") == 0 ) {
+			char *num = (char*) entry_c->last->content;
+			strncpy(opts->id, num, 6);
+			dprintf("id %s\n", opts->id);
+			done_id = true;
+		} else if( strcmp((char *) entry_c->name, "episodes") == 0 ) {
+			char *eps = (char*) entry_c->last->content;
+			strncpy(opts->total, eps, 6);
+			dprintf("total %s\n", opts->total);
+			done_total = true;
+		}
 	}
 
 
@@ -188,6 +207,85 @@ void get_id_and_total(char *xml,MLOpts *opts) {
 	xmlFreeDoc(doc);
 }
 
+
+// sql exec callback function
+int update_new(void *unused, int argc, char **argv, char **columns) {
+	
+	#ifdef DEBUG
+		for(int i = 0; i < argc; i++) {
+			dprintf("%s = %s\n", columns[i], argv[i] ? argv[i] : "NULL");
+		}
+		printf("\n");
+	#endif
+
+
+	MLOpts opts = {
+		.status      = strcmp("1", argv[6]) == 0 ? ML_COMPLETED : ML_WATCHING
+	};
+
+	// argv[0] becames invaild after strptime is called unless it is duped.
+	char *t = strdup(argv[0]);
+	strncpy(opts.title,   t, 100);
+	free(t);
+
+	bool have_id = false, have_total = false;
+
+	if (argv[2]) strncpy(opts.episodes, argv[2], 6);
+	if (argv[1]) {
+		strncpy(opts.id, argv[1], 7);
+		have_id = true;
+	}
+	if (argv[3]){ 
+		strncpy(opts.total,argv[3], 6);
+		have_total = true;
+	}
+	
+	struct tm* tm;
+	if( argv[4] ) {
+		strptime(argv[4], "%F %H:%M:%S", tm);
+		strftime(opts.date_start, 9, "%d%m%Y", tm);
+	}
+	
+	
+	if( argv[5] ) {
+		strptime(argv[5], "%F %H:%M:%S", tm);
+		strftime(opts.date_finish, 9, "%d%m%Y", tm);
+	}
+
+	if (!have_total || ! have_id  ) {
+		char *xml = get_search_xml(opts.title);
+		get_id_and_total(xml, &opts);
+		
+		if (!have_id && !have_total && opts.id && opts.total  ){
+			update_id_total(&opts);
+		}else{
+			if (!have_id && opts.id ) {
+				printf("%s\n", "have id");
+			}
+			if (!have_total && opts.total ){
+				printf("%s\n", "have total");	
+			} 
+		}
+	}
+
+	printf("%12s: '%s'\n", "title", opts.title);
+	printf("%12s: '%s'\n", "id", opts.id);
+	printf("%12s: '%s'\n", "episodes", opts.episodes);
+	printf("%12s: '%s'\n", "total", opts.total);
+	printf("%12s: '%s'\n", "date_start", opts.date_start);
+	printf("%12s: '%s'\n", "date_finish", opts.date_finish);
+
+	return 0;
+}
+
+void update_id_total(MLOpts *opts){
+	char buff[64 + strlen(opts->title) + 1];
+	
+	sprintf(buff, "Update SeriesInfo Set Total = %s, Id = %s where Title = '%s';", 
+		opts->total, opts->id, opts->title
+	);
+	sql_exec(buff);
+}
 
 // writes all data to the String_m struct
 static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
@@ -209,12 +307,3 @@ void init_string (String_m *s) {
 	s->ptr[0] = '\0';
 }
 
-
-// command line version
-//update
-
-// curl -u bhterra:bhterramai# -d data="<?xml version=\"1.0\" encoUTF-8\"?><entry><status>1</status><score></score></entry>" http://myanimelist.net/api/animelist/update/101.xml
-
-//add
-
-// curl -u bhterra:bhterramai# -d data="<?xml version=\"1.0\" encoding=\"UTF-8\"?><entry><status>1</status><score>6</score></entry>" http://myanimelist.net/api/animelist/add/3750.xml

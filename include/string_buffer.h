@@ -37,6 +37,17 @@ void string_add(String *s, char *str, bool add_space_before);
  */
 void string_add_m(String *s, bool add_space, int length, ...);
 
+
+/**
+ * @brief  Use sprintf on the String 
+ *
+ * @param s - The String object to copy to.
+ * @param length - The length required (inculde \0).
+ * @param fmt - The format string.
+ * @return the return value of sprintf
+**/
+int string_sprintf(String *s, int length,  const char *fmt,  ... );
+
 // add the space before adding the string
 #define string_push_m(s,length, ...) string_add_m(s, true, length, __VA_ARGS__)
 #define string_push(s,str)           string_add(s, str, true)

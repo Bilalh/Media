@@ -85,6 +85,87 @@ Section("Multiple adds/pushes _m"){
 	
 }StringEndSection
 
+
+Section("string_sprintf"){
+	StringTest("simple %s",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 5, "%s", "1234"); 
+		expected = "1234";
+	})
+	
+	StringTest("simple %d",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 5, "%d", 1234); 
+		expected = "1234";
+	})
+	
+	StringTest("multi %s",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 10, "%s %s", "1234", "abcd"); 
+		expected = "1234 abcd";
+	})
+	
+	StringTest("multi commands",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 6, "%s ", "1234"); 
+		string_sprintf(&actual, 6, "%d ", 5678); 
+		string_sprintf(&actual, 10, "%s %s", "1234", "abcd"); 
+		expected = "1234 5678 1234 abcd";
+	})
+
+	StringTest("%s long",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 70,
+			"Update SeriesInfo Set Total = %s, Id = %s where Title = '%s';", 
+			"13", "6547", "Angel b"
+		);
+		expected = 
+			"Update SeriesInfo Set Total = 13, Id = 6547 where Title = 'Angel b';";
+	})
+	
+	StringTest("2* %s long",{
+		new_string(&actual,10);
+		string_sprintf(&actual, 70,
+			"Update SeriesInfo Set Total = %s, Id = %s where Title = '%s'; ", 
+			"13", "6547", "Angel b"
+		);
+		string_sprintf(&actual, 70,
+			"Update SeriesInfo Set Total = %s, Id = %s where Title = '%s'; ", 
+			"13", "6547", "Angel b"
+		);
+		expected = 
+			"Update SeriesInfo Set Total = 13, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 13, Id = 6547 where Title = 'Angel b'; "
+		;
+	})
+	
+	StringTest("10* %s long",{
+		new_string(&actual,10);
+
+		for(int i = 1; i < 11; ++i){
+			string_sprintf(&actual, 70,
+				"Update SeriesInfo Set Total = %02d, Id = %s where Title = '%s'; ", 
+				i, "6547", "Angel b"
+			);
+		}
+		
+		expected = 
+			"Update SeriesInfo Set Total = 01, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 02, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 03, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 04, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 05, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 06, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 07, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 08, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 09, Id = 6547 where Title = 'Angel b'; "
+			"Update SeriesInfo Set Total = 10, Id = 6547 where Title = 'Angel b'; "
+		;
+	})
+	
+	
+}StringEndSection
+
 };
 
 TestRun
