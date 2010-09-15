@@ -263,17 +263,20 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	}
 	
 	
-	// struct tm* tm;
-	// if( argv[4] ) {
-	// 	strptime(argv[4], "%F %H:%M:%S", tm);
-	// 	strftime(opts.date_start, 9, "%d%m%Y", tm);
-	// }
-	// 
-	// 
-	// if( argv[5] ) {
-	// 	strptime(argv[5], "%F %H:%M:%S", tm);
-	// 	strftime(opts.date_finish, 9, "%d%m%Y", tm);
-	// }
+	// strptime seg fault in argv 4 or 5
+	struct tm* tm;
+	if( argv[4] ) {
+		strncpy(&opts.date_start[0],  &argv[4][5], 2);
+		strncpy(&opts.date_start[2], &argv[4][8], 2);
+		strncpy(&opts.date_start[4], &argv[4][0], 4);
+		
+	}
+	
+	if( argv[5] ) {
+		strncpy(&opts.date_start[0],  &argv[4][5], 2);
+		strncpy(&opts.date_start[2], &argv[4][8], 2);
+		strncpy(&opts.date_start[4], &argv[4][0], 4);
+	}
 
 
 	printf("%12s: '%s'\n", "title", opts.title);
