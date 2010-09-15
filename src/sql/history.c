@@ -134,7 +134,6 @@ void sql_exec(char *command, SqlCallback callback ) {
 	sqlite3_close(db);
 }
 
-
 void print_latest(char *num){
 	
 	char buff[173];

@@ -53,7 +53,7 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 
 /**
  * @brief Spilts a string into array of strings 
- *
+ *        Use spilt_string_m for most things
  * @param str The string to split
  * @param res_length a int pointer to hold the length. 
  * (can be used to set the starting length)
