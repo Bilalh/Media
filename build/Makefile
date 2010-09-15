@@ -68,3 +68,6 @@ list_tests:
 
 clean:
 	rm -f *.o *.out test_* *_wrapper.c *_wrapper.o  all_tests ${objs} ${examples} *~
+
+oclean: 
+	rm -f *.o *.out test_* *_wrapper.c *_wrapper.o  all_tests ${examples} *~

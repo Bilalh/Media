@@ -11,7 +11,7 @@
 
 static int print_latest_callback(void *unused, int argc, char **argv, char **columns);
 
-bool updateHistory(char **filenames, Status status) {
+bool updateHistory(char **filenames, Status status, int sep) {
 	sqlite3 *db;
 	int result;
 
@@ -57,7 +57,7 @@ bool updateHistory(char **filenames, Status status) {
 				fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			printf("reset: %i\n\n", sqlite3_reset(statement_h));
-			timeinfo->tm_min += 27;
+			timeinfo->tm_min += sep;
 			timegm(timeinfo);
 
 			// for status

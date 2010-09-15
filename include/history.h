@@ -12,10 +12,10 @@
  * @brief Adds the filenames to database
  *
  * @param filenames - null term array of strings
+ * @param sep       - The time in minutes to use as the sep
  * @return true if addded
 **/
-bool updateHistory(char **filenames, Status status );
-
+bool updateHistory(char **filenames, Status status, int sep);
 
 typedef int (*SqlCallback)(void *unused, int argc, char **argv, char **columns);
 
