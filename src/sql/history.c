@@ -8,6 +8,9 @@
 #include <include/history.h>
 #include <include/string_util.h>
 
+
+static int print_latest_callback(void *unused, int argc, char **argv, char **columns);
+
 bool updateHistory(char **filenames, Status status) {
 	sqlite3 *db;
 	int result;
@@ -131,6 +134,58 @@ void sql_exec(char *command, SqlCallback callback ) {
 	sqlite3_close(db);
 }
 
+
+void print_latest(char *num){
+	
+	char buff[173];
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
+		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime') "
+		"AND Skip == 0 AND Finished == 0",  
+		num
+	);
+	sql_exec(buff, print_latest_callback);
+}
+
+void print_latest_with_finished(char *num){
+	char buff[155];
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
+		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime') "
+		"AND Skip == 0",  
+		num
+	);
+	sql_exec(buff, print_latest_callback);
+}
+
+void print_latest_with_finished_and_skipped(char *num){
+	char buff[141];
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
+		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')",  
+		num
+	);
+	sql_exec(buff, print_latest_callback);
+}
+
+
+static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
+
+	struct tm  tm = {}; char buff[28];
+	strptime(argv[3], "%F %H:%M:%S", &tm);
+	strftime(buff, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
+	
+	// prints the data 
+	if(argv[2]){
+		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1],argv[2], buff);
+	}else if(*argv[3] == '1'){
+		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1], argv[1], buff);
+	}else{
+		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1], "?", buff);
+	}
+	return 0;
+}
+
 void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 	sqlite3 *db;
 	char *zErrMsg = 0;
@@ -154,3 +209,7 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 
 	sqlite3_close(db);
 }
+
+
+
+

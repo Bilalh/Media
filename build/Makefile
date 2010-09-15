@@ -14,11 +14,14 @@ vpath %.h ../
 # Rules for tests and requiments
 include ../tests/tests.mk
 
-
                            ### Objects ###
-objs       = media ml optt hashe2 
+objs       = media ml nums numsf numss optt hashe2 
 media_req  = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
-ml_req     = app/ml_main.o ${mal_req}
+ml_req     = app/ml_main.o ${mal_req} ${hist_req}
+
+nums_req   =  app/latest_main.o ${hist_req}
+numsf_req   = app/latest_f_main.o ${hist_req}
+numss_req   = app/latest_fs_main.o ${hist_req}
 
 optt_req   = examples/optm.o ${opt_req}
 hashe2_req = examples/hashe2.o

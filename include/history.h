@@ -1,9 +1,11 @@
 #ifndef HISTORYHEAD
 #define HISTORYHEAD 
 #include <stdbool.h>
+
+#include <sqlite3.h>
+
 #include "time_util.h"
 #include "media_args.h"
-
 
 
 /**
@@ -27,6 +29,10 @@ typedef int (*SqlCallback)(void *unused, int argc, char **argv, char **columns);
 void sql_exec_array (int argc, char **argv, SqlCallback callback );
 void sql_exec(char *command, SqlCallback callback);
 
+
+void print_latest(char *num);
+void print_latest_with_finished(char *num);
+void print_latest_with_finished_and_skipped(char *num);
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 

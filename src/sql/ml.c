@@ -285,12 +285,11 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	printf("%12s: '%s'\n", "total", opts.total);
 	printf("%12s: '%s'\n", "date_start", opts.date_start);
 	printf("%12s: '%s'\n", "date_finish", opts.date_finish);
-
+	
 	if (!have_total || ! have_id  ) {
 		char *xml = get_search_xml(opts.title);
 		printf("%s\n", "have xml");
 		get_id_and_total(xml, &opts);
-		
 		if (!have_id && !have_total && *opts.id != '\0' && *opts.total != '\0'  ){
 			printf("%s id '%s' total '%s'\n", "have both", opts.id, opts.total );
 			update_id_total(&opts);
