@@ -85,6 +85,22 @@ Section("Multiple adds/pushes _m"){
 	
 }StringEndSection
 
+Section("Misc"){
+	StringTestM("string_new",{
+		String *s = string_new(10);
+		string_push(s,"abc");
+		
+		if (strcmp(s->str," abc") != 0 ){
+			test_result = false;
+			PRINT_NAME_FAIL(name);
+			eprintf("s->str: '%s'\n", s->str);
+		}
+		
+		PRINT_IF_PASSED(name);
+		free(s->str);
+		free(s);
+	})
+}StringEndSection
 
 Section("string_sprintf"){
 	StringTest("simple %s",{
@@ -162,24 +178,82 @@ Section("string_sprintf"){
 			"Update SeriesInfo Set Total = 10, Id = 6547 where Title = 'Angel b'; "
 		;
 	})
+	
+	StringTest("len 2 aaa",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "a";
+	})
+	StringTest("len 2 aaa *2",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "aa";
+	})
+	StringTest("len 1 aaa",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 1, "%s", "aaa");
+		expected = "";
+	})
+	StringTest("len 1 aaa then len2",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "a";
+	})
+	StringTest("len 2 aaa then len1",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		expected = "a";
+	})	
+	StringTest("len1 len2 len1 len2 ",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "aa";
+	})
+	StringTest("len1 len2 *lots ",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 1, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "aaaaaa";
+	})
+	StringTest("0 len",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 0, "%s", "aaa");
+		expected = "";
+	})
+	StringTest("0 len 2 len",{
+		new_string(&actual, 10);
+		string_sprintf(&actual, 0, "%s", "aaa");
+		string_sprintf(&actual, 2, "%s", "aaa");
+		expected = "a";
+	})
+	
+	
 }StringEndSection
 	
-Section("Misc"){
-	StringTestM("string_new",{
-		String *s = string_new(10);
-		string_push(s,"abc");
-		
-		if (strcmp(s->str," abc") != 0 ){
-			test_result = false;
-			PRINT_NAME_FAIL(name);
-			eprintf("s->str: '%s'\n", s->str);
-		}
-		
-		PRINT_IF_PASSED(name);
-		free(s->str);
-		free(s);
-	})
-}StringEndSection
+
 
 };
 

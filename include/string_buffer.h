@@ -43,7 +43,8 @@ void string_add_m(String *s, bool add_space, int length, ...);
  * @brief  Use sprintf on the String 
  *
  * @param s - The String object to copy to.
- * @param length - The length required (inculde \0).
+ * @param length - The length required (inculde \0).  
+ *                 A length <=1 means that no data is written 
  * @param fmt - The format string.
  * @return the return value of sprintf
 **/

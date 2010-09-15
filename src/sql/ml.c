@@ -271,7 +271,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 		strncpy(&opts.date_start[4], &argv[4][0], 4);
 		
 	}
-	
+
 	if( argv[5] ) {
 		strncpy(&opts.date_start[0],  &argv[4][5], 2);
 		strncpy(&opts.date_start[2], &argv[4][8], 2);

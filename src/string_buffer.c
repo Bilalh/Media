@@ -71,14 +71,20 @@ int string_sprintf(String *s, int length,  const char *fmt,  ... ){
 	int wrote = vsnprintf(&s->str[s->index], length, fmt, args);
 	va_end(args);
 	
-	s->index += wrote; // to at \0 next time 
 	dprintf("c ind %i len %i spf %i \n", s->index, s->length, wrote);
 	
 	// makes sure there a null at the end
 	if (wrote >= length ){
-		fprintf(stderr, "snprinf res %d length %d\n", wrote, length );
-		s->str[s->index++] = '\0';
-	} 
+		dprintf("tl '%s'\n", s->str);
+		if (length <= 1) {
+			return wrote;
+		}
+		dprintf("spf %d %d\n",wrote, wrote );
+		s->index += wrote - length;
+		s->str[s->index] = '\0';
+	}else{
+		s->index += wrote; // to start \0 next time 
+	}
 	dprintf("c '%s'\n", s->str);
 	return wrote;
 }
