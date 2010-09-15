@@ -38,6 +38,7 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 	opt_intcmp(use_hash);
 	opt_intcmp(status);
 	opt_intcmp(write_history);
+	opt_intcmp(sep);
 	
 	opt_intcmp(player);
 	opt_intcmp(afloat);
@@ -107,6 +108,7 @@ fail:
 	print_bool(use_hash);
 	print_hex(status);
 	print_bool(write_history);
+	print_int(sep);
 	
 	print_hex(player);
 	print_bool(afloat);

@@ -56,7 +56,7 @@ typedef struct {
 	bool    use_hash;      // DONE
 	Status  status;        // DONE
 	bool    write_history; // DONE
-	
+	int     sep;           // DONE
 	
 	// Players
 	Player   player;       // DONE

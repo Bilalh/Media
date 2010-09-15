@@ -7,7 +7,7 @@
 #include <include/debug.h>
 
 String *string_new(int length){
-	char *s = malloc(sizeof(String));
+	String *s = malloc(sizeof(String));
 	new_string(s,length);
 	return s;
 }

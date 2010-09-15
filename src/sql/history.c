@@ -57,8 +57,6 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			printf("reset: %i\n\n", sqlite3_reset(statement_h));
-			timeinfo->tm_min += sep;
-			timegm(timeinfo);
 
 			// for status
 			if (status == S_SKIP_UPDATED) {

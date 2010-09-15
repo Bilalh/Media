@@ -14,6 +14,7 @@
 #define TRUTH_STATE(ch) (ch < ASCII)
 #define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
 
+//LATER usee fprintf stderr 
 
 const Element H_filetype[] ={
 
@@ -328,6 +329,20 @@ const Element H_other[] ={
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->newest_only = TRUTH_VALUE(ch);
+		}
+	},
+	{  
+		.opt   = {.name =  "sep", .val = 'w', .has_arg = required_argument}, 
+		.help  = "Use {num} as the separator between episodes",
+		.arg   = "num", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int temp;
+			int res = sscanf(arg, "%4d",&temp);
+			if (res == -1){
+				fprintf(stderr, "Invalid separator  %s\n", arg );
+				exit(4);
+			}
+			ma->sep = temp;
 		}
 	},
 	{  

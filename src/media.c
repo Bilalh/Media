@@ -90,7 +90,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 		}
 	}
 
-	if(ma->write_history)           updateHistory(s_arr, ma->status, 27);
+	if(ma->write_history)           updateHistory(s_arr, ma->status, ma->sep);
 	if(ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
 	
 	pid_t pid =  fork();
