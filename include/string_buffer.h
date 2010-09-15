@@ -18,6 +18,7 @@ typedef struct {
  * @param length The starting length
  */
 void new_string(String *s, int length);
+String *string_new(int length);
 
 /**
  * @brief Copies the char array into the String

@@ -15,6 +15,8 @@ static int STRING_NUM_SECTION = 0;
 #define StringPrintTestResults   PrintTestResults(STRING)
 #define StringMakeResult         MakeTestResult(STRING)
 #define StringResults            TestResults
+#define StringTestM(_name, tBLOCK) TestManual(String, _name, tBLOCK)
+
 
 // funtions to run on test data
 #define StringTest(name, tBLOCK)\

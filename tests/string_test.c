@@ -162,8 +162,23 @@ Section("string_sprintf"){
 			"Update SeriesInfo Set Total = 10, Id = 6547 where Title = 'Angel b'; "
 		;
 	})
+}StringEndSection
 	
-	
+Section("Misc"){
+	StringTestM("string_new",{
+		String *s = string_new(10);
+		string_push(s,"abc");
+		
+		if (strcmp(s->str," abc") != 0 ){
+			test_result = false;
+			PRINT_NAME_FAIL(name);
+			eprintf("s->str: '%s'\n", s->str);
+		}
+		
+		PRINT_IF_PASSED(name);
+		free(s->str);
+		free(s);
+	})
 }StringEndSection
 
 };

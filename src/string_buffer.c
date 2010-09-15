@@ -3,8 +3,15 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+#define DEBUG
 #include <include/string_buffer.h>
 #include <include/debug.h>
+
+String *string_new(int length){
+	char *s = malloc(sizeof(String));
+	new_string(s,length);
+	return s;
+}
 
 void new_string(String *s, int length ){
 	if (length <= 0) length = 1;
@@ -65,8 +72,8 @@ int string_sprintf(String *s, int length,  const char *fmt,  ... ){
 	int wrote = vsnprintf(&s->str[s->index], length, fmt, args);
 	va_end(args);
 	
-	s->index += length-1; // to at \0 next time 
-	dprintf("c ind %i len %i \n", s->index, s->length);
+	s->index += wrote; // to at \0 next time 
+	dprintf("c ind %i len %i spf %i \n", s->index, s->length, wrote);
 	
 	// makes sure there a null at the end
 	if (wrote >= length ){
