@@ -168,7 +168,6 @@ void print_latest_with_finished_and_skipped(char *num){
 	sql_exec(buff, print_latest_callback);
 }
 
-
 static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
 
 	struct tm  tm = {}; char buff[28];

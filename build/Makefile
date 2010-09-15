@@ -15,9 +15,9 @@ vpath %.h ../
 include ../tests/tests.mk
 
                            ### Objects ###
-objs       = media ml nums numsf numss optt hashe2 
+objs       = media mal nums numsf numss optt hashe2 
 media_req  = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
-ml_req     = app/ml_main.o ${mal_req} ${hist_req}
+mal_req     = app/ml_main.o ${ml_req} ${hist_req}
 
 nums_req   =  app/latest_main.o ${hist_req}
 numsf_req   = app/latest_f_main.o ${hist_req}

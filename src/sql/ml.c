@@ -24,8 +24,11 @@ String *sql_commands = NULL;
 
 static void init_string(String_m *s);
 static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s);
+
 static char *mal_api(char *url, MLOpts *opts);
 void update_id_total(MLOpts *opts);
+void update_id(MLOpts *opts);
+void update_total(MLOpts *opts);
 
 char *get_search_xml (char *o_name) {
 	CURL *curl;
@@ -160,7 +163,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 		return;
 	}
 
-	printf("%s\n", "after xml doc");
+	dprintf("%s\n", "after xml doc");
 	const int length = 20 + 14 + 15 + 5 + strlen(xml) * 3 + 1;
 
 	const char *t  = "translate(";
@@ -185,26 +188,24 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
 	if (nodes->nodeNr == 0){
-		fprintf(stderr, "%s\n", "no nodes found");
+		dprintf(stderr, "%s\n", "no nodes found");
 		return;
 	}
-	printf("%s\n", "after xpath get nodes");
+	dprintf("%s\n", "after xpath get nodes");
 	
 	
 	if (! nodes) {
-		fprintf(stderr, "%s\n", "nodes failed");
+		dprintf(stderr, "%s\n", "nodes failed");
 		return;
 	}
-	xmlNodePtr entry_t = nodes->nodeTab[0];
-	printf("%s\n", "after xpath get nodeTab");
-	
 	
 	xmlNodePtr entry_c = nodes->nodeTab[0]->children;
 	if (! entry_c ){
-		fprintf(stderr, "%s\n", "entry_c failed");
+		dprintf(stderr, "%s\n", "entry_c failed");
 		return;
 	}
-	
+
+	dprintf("%s\n", "after xpath get nodeTab");
 
 	// gets the id and total number of episodes
 	for(; (!done_id || !done_total) && entry_c != NULL; entry_c = entry_c->next  ) {
@@ -227,44 +228,33 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xmlFreeDoc(doc);
 }
 
-
 // sql exec callback function
 int update_new(void *unused, int argc, char **argv, char **columns) {
-	printf("%s\n", "start update_new");
+	dprintf("%s\n", "start update_new");
 	// for(int i = 0; i < argc; ++i){
 	// 	printf("%s = %s\n", columns[i], argv[i] ? argv[i] : "NULL");
 	// }
 	// printf("\n");
-
-
-
 	MLOpts opts = {
 		.status      = strcmp("1", argv[6]) == 0 ? ML_COMPLETED : ML_WATCHING
 	};
 
-
 	// argv[0] becames invaild after strptime is called unless it is duped.
-	char *t = strdup(argv[0]);
-	strncpy(opts.title,   t, 100);
-	free(t);
+	strncpy(opts.title, argv[0], 100);
 
 	bool have_id = false, have_total = false;
-
 
 	if (argv[2]) strncpy(opts.episodes, argv[2], 6);
 	if (argv[1]) {
 		strncpy(opts.id, argv[1], 7);
 		have_id = true;
-	}
-	
+	}	
 	if (argv[3]){ 
 		strncpy(opts.total,argv[3], 6);
 		have_total = true;
 	}
 	
-	
 	// strptime seg fault in argv 4 or 5
-	struct tm* tm;
 	if( argv[4] ) {
 		strncpy(&opts.date_start[0],  &argv[4][5], 2);
 		strncpy(&opts.date_start[2], &argv[4][8], 2);
@@ -278,27 +268,28 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 		strncpy(&opts.date_start[4], &argv[4][0], 4);
 	}
 
-
-	printf("%12s: '%s'\n", "title", opts.title);
-	printf("%12s: '%s'\n", "id", opts.id);
-	printf("%12s: '%s'\n", "episodes", opts.episodes);
-	printf("%12s: '%s'\n", "total", opts.total);
-	printf("%12s: '%s'\n", "date_start", opts.date_start);
-	printf("%12s: '%s'\n", "date_finish", opts.date_finish);
+	// printf("%12s: '%s'\n", "title", opts.title);
+	// printf("%12s: '%s'\n", "id", opts.id);
+	// printf("%12s: '%s'\n", "episodes", opts.episodes);
+	// printf("%12s: '%s'\n", "total", opts.total);
+	// printf("%12s: '%s'\n", "date_start", opts.date_start);
+	// printf("%12s: '%s'\n", "date_finish", opts.date_finish);
 	
 	if (!have_total || ! have_id  ) {
 		char *xml = get_search_xml(opts.title);
-		printf("%s\n", "have xml");
+		dprintf("%s\n", "have xml");
 		get_id_and_total(xml, &opts);
 		if (!have_id && !have_total && *opts.id != '\0' && *opts.total != '\0'  ){
-			printf("%s id '%s' total '%s'\n", "have both", opts.id, opts.total );
+			dprintf("%s id '%s' total '%s'\n", "have both", opts.id, opts.total );
 			update_id_total(&opts);
 		}else{
 			if (!have_id && *opts.id != '\0' ) {
 				printf("%s\n", "have id");
+				update_id(&opts);
 			}
 			if (!have_total && *opts.total != '\0' ){
-				printf("%s\n", "have total");	
+				printf("%s\n", "have total");
+				update_total(&opts);	
 			} 
 			printf("%s\n", "end if");
 		}
@@ -314,17 +305,41 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 }
 
 void update_id_total(MLOpts *opts){
-	int len = 64 + strlen(opts->title) + 1;
+	int len = 62 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
-	printf("beg %s\n", sql_commands->str);
 	
 	string_sprintf(sql_commands, len,
 		"Update SeriesInfo Set Total = %s, Id = %s where Title = '%s'; ", 
 		opts->total, opts->id, opts->title
 	);
-	printf("end %s\n", sql_commands->str);
+	
+}
+
+void update_id(MLOpts *opts){
+	int len = 50 + strlen(opts->title) + 1;
+	if (sql_commands == NULL){
+		sql_commands = string_new(len);
+	}
+	
+	string_sprintf(sql_commands, len,
+		"Update SeriesInfo Set Id = %s where Title = '%s'; ", 
+		opts->id, opts->title
+	);
+	
+}
+
+void update_total(MLOpts *opts){
+	int len = 53 + strlen(opts->title) + 1;
+	if (sql_commands == NULL){
+		sql_commands = string_new(len);
+	}
+	
+	string_sprintf(sql_commands, len,
+		"Update SeriesInfo Set Total = %s where Title = '%s'; ", 
+		opts->total, opts->title
+	);
 	
 }
 
