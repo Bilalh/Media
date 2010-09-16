@@ -9,7 +9,6 @@
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
 
-
 #include <include/ml.h>
 #include <include/xml.def>
 #include <include/string_buffer.h>
@@ -125,6 +124,8 @@ static char *mal_api (char *url, MLOpts *opts) {
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
 
 		res = curl_easy_perform(curl);
+		dprintf("curl res%i\n", res);
+		
 		curl_easy_cleanup(curl);
 		xmlFree(xmlbuff);
 		xmlFreeDoc(doc);
@@ -165,7 +166,9 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
 
-	doc = xmlParseDoc(XC xml);
+	doc = xmlReadDoc(XC xml, NULL, NULL, 
+		XML_PARSE_NOWARNING | XML_PARSE_NOERROR
+	);
 	xpathCtx = xmlXPathNewContext(doc);
 
 	if(xpathCtx == NULL) {
@@ -312,22 +315,26 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 					update_total_only(&opts);	
 				}
 			} 
+			if (*opts.total == '\0' ||  *opts.total == '\0'){
+				printf("%-36s %s\n",opts.title, "id &| total not found");
+			}
+			
 		}
 	}else{
+		update_anime = true;
 		update_updated(&opts);
 	}
-	printf("%12s: '%s'\n", "title", opts.title);
-	printf("%12s: '%s'\n", "id", opts.id);
-	printf("%12s: '%s'\n", "episodes", opts.episodes);
-	printf("%12s: '%s'\n", "total", opts.total);
-	printf("%12s: '%s'\n", "date_start", opts.date_start);
-	printf("%12s: '%s'\n", "date_finish", opts.date_finish);
+   dprintf("%12s: '%s'\n", "title", opts.title);
+   dprintf("%12s: '%s'\n", "id", opts.id);
+   dprintf("%12s: '%s'\n", "episodes", opts.episodes);
+   dprintf("%12s: '%s'\n", "total", opts.total);
+   dprintf("%12s: '%s'\n", "date_start", opts.date_start);
+   dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);
 	
 	
 	if (update_anime){
-		printf("%s\n", "dd");
 		add_anime(&opts);
-		update_anime2(&opts);
+		printf("%-36s %s\n",opts.title, update_anime2(&opts));
 	}
 	
 	return 0;
