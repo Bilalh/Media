@@ -9,6 +9,7 @@
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
 
+
 #include <include/ml.h>
 #include <include/xml.def>
 #include <include/string_buffer.h>
@@ -32,6 +33,7 @@ static void update_total(MLOpts *opts);
 static void update_total_only(MLOpts *opts);
 static void update_updated(MLOpts *opts);
 
+char *update_anime2 (MLOpts *opts);
 
 char *get_search_xml (char *o_name) {
 	CURL *curl;
@@ -142,6 +144,12 @@ char *update_anime (MLOpts *opts) {
 	return mal_api(url, opts);
 }
 
+char *update_anime2 (MLOpts *opts) {
+	char url[strlen(ML_UPDATE_ANIME) + 4 + 10 + 1];
+	sprintf(url, "%s%s.xml\n", ML_UPDATE_ANIME, opts->id );
+	return mal_api(url, opts);
+}
+
 char *delete_anime (int id) {
 	char url[strlen(ML_DELETE_ANIME) + 4 + 10 + 1];
 	sprintf(url, "%s%d.xml\n", ML_DELETE_ANIME, id );
@@ -174,6 +182,8 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	char buf[length];
 	char *lower = str_lower(opts->title, strlen(opts->title));
 	
+	dprintf("%s\n", "after lowering ");
+	
 
 	// xpath to the entry
 	sprintf(buf,
@@ -181,6 +191,9 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 			t, t2, lower,   t, t2, lower,   t, t2, lower
 		   );
 
+	dprintf("%s\n", "after buf spf ");
+	
+	
 	xpathObj = xmlXPathEvalExpression(XC buf, xpathCtx);
 	if(xpathObj == NULL) {
 		fprintf(stderr, "Error: unable to evaluate xpath expression \"...\"\n");
@@ -189,22 +202,25 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 		return;
 	}
 	
-	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
-	if (nodes->nodeNr == 0){
-		dprintf(stderr, "%s\n", "no nodes found");
-		return;
-	}
-	dprintf("%s\n", "after xpath get nodes");
+	dprintf("%s\n", "after xpath ObJ");
 	
+	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
 	
 	if (! nodes) {
-		dprintf(stderr, "%s\n", "nodes failed");
+		dprintf( "%s\n", "nodes failed");
 		return;
 	}
+	
+	if (nodes->nodeNr == 0){
+		dprintf( "%s\n", "no nodes found");
+		return;
+	}
+	
+	dprintf("%s\n", "after xpath nodes");
 	
 	xmlNodePtr entry_c = nodes->nodeTab[0]->children;
 	if (! entry_c ){
-		dprintf(stderr, "%s\n", "entry_c failed");
+		dprintf( "%s\n", "entry_c failed");
 		return;
 	}
 
@@ -267,30 +283,31 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 		strncpy(&opts.date_start[4], &argv[4][0], 4);
 	}
 
-	// printf("%12s: '%s'\n", "title", opts.title);
-	// printf("%12s: '%s'\n", "id", opts.id);
-	// printf("%12s: '%s'\n", "episodes", opts.episodes);
-	// printf("%12s: '%s'\n", "total", opts.total);
-	// printf("%12s: '%s'\n", "date_start", opts.date_start);
-	// printf("%12s: '%s'\n", "date_finish", opts.date_finish);
 	
 	// Updates the ml list  and creates the corect sql querry 
+	
+	bool update_anime = false;
+	
 	if (!have_total || ! have_id  ) {
 		char *xml = get_search_xml(opts.title);
 		dprintf("%s\n", "have xml");
 		get_id_and_total(xml, &opts);
+		dprintf("%s\n", "after get_id_and_total");
 		if (!have_id && !have_total && *opts.id != '\0' && *opts.total != '\0'  ){
 			dprintf("%s id '%s' total '%s'\n", "have both", opts.id, opts.total );
 			update_id_total(&opts);
+			update_anime = true;
 		}else{
 			if (!have_id && *opts.id != '\0' ) {
 				printf("%s\n", "have id");
 				update_id(&opts);
+				update_anime = true;
 			}
 			if (!have_total && *opts.total != '\0' ){
 				printf("%s\n", "have total");
 				if (*opts.id != '\0'){
 					update_total(&opts);
+					update_anime = true;
 				}else{
 					update_total_only(&opts);	
 				}
@@ -305,6 +322,14 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	printf("%12s: '%s'\n", "total", opts.total);
 	printf("%12s: '%s'\n", "date_start", opts.date_start);
 	printf("%12s: '%s'\n", "date_finish", opts.date_finish);
+	
+	
+	if (update_anime){
+		printf("%s\n", "dd");
+		add_anime(&opts);
+		update_anime2(&opts);
+	}
+	
 	return 0;
 }
 

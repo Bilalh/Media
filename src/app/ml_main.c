@@ -16,32 +16,9 @@ int main (int argc, char  *argv[]) {
 	         " FROM SeriesInfo WHERE (updated == 0 AND skip == 0)", 
 			 update_new);
 	
-	printf("%s\n", sql_commands->str);
-	// sql_exec(sql_commands->str, NULL);
+	 if (sql_commands){
+		printf("%s\n", sql_commands->str);
+		sql_exec(sql_commands->str, NULL);
+	}
 	return 0;
 }
-
-
-
-// int main (int argc, char  *argv[]) {
-// 
-// 	MLOpts opts = {
-// 		.title       = "Azumanga Daioh",
-// 		.episodes    = "1",
-// 		.status      = ML_PLANTOWATCH,
-// 		.score       = 6,
-// 		.date_start  = "02092010",
-// 		.date_finish = "01102010",
-// 	};
-// 	
-// 	// char *ures = update_anime(&opts);
-// 	// // char *ures = add_anime(&opts);
-// 	// printf("%s\n", ures);
-// 	// exit(0);
-// 
-// 	char *xml = get_search_xml(opts.title);
-// 	get_id_and_total(xml, &opts);
-// 
-// 	printf("%15s    id = %s\n%15s total = %s\n", opts.title, opts.id,"", opts.episodes);
-// 	return 0;
-// }
