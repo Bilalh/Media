@@ -1,3 +1,4 @@
+// FIXME opt mmap and malloc error when adding new field when forking
 #include "include/opt_test.h"
 OptVar
 
@@ -12,6 +13,10 @@ OptVar
 // test_result must be a true value for true and false otherwise
 #define OptAfter(name) \
 	test_result = opt_test_start (name, exp);\
+	free(exp->prefix_args.str);\
+	free(exp->postfix_args.str);\
+	free(exp->pl_name);\
+	free(exp->hash_location);\
 	free(exp);
 
 TestResult opt_test_main(int test_no) {

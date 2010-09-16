@@ -42,6 +42,7 @@ bool opt_test_start ( char *name, MediaArgs *expected ){
 	
 	opt_intcmp(player);
 	opt_intcmp(afloat);
+	opt_intcmp(all_spaces);
 	opt_sbufcmp(prefix_args);
 	opt_sbufcmp(postfix_args);
 
@@ -112,6 +113,8 @@ fail:
 	
 	print_hex(player);
 	print_bool(afloat);
+	print_hex(all_spaces);
+	
 	print_bool(nice_repeat);
 	print_bool(nice_random);
 	free(actual);

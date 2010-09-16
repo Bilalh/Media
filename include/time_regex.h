@@ -12,7 +12,7 @@
  * @param opts   The pcre options to use (0 none)
  * 
  * Useful options:
- * PCRE_CASELESS   match both upper and  lower case
+ * PCRE_CASELESS   match both upper and  lower case could use (?i) instead
  * PCRE_DOTALL     make . match everything
  * PCRE_MULTILINE  for mutiline pattens
  *

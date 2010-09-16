@@ -20,11 +20,10 @@ static int OPT_NUM_SECTION = 0;
 
 // function to run on test data
 // uses fork since getopt_long can only be used once per program
-// the child puts the result of the test (a boolean) in the exit status 
 // the parent adds it to the results 
 #define OptTest(_name, tBLOCK){\
 	int stat_loc;\
-    pid_t pid = fork();\
+    pid_t  pid = fork();\
 	if (pid == 0)\
 	{\
 		char *name = "  "_name;\

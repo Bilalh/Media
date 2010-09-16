@@ -65,7 +65,7 @@ typedef struct {
 	// Players
 	Player   player;       // DONE
 	bool     afloat;       // DONE
-	Spaces   all_spaces;
+	Spaces   all_spaces;   // DONE
 	String   prefix_args;  // DONE
 	String   postfix_args; // DONE
 		
