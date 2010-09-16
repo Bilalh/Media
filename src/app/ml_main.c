@@ -13,13 +13,13 @@
 extern String *sql_commands;
 
 int main (int argc, char  *argv[]) {
-	sql_exec("SELECT Title, ID, Current, Total, StartDate, EndDate, Finished"
+	sql_exec("SELECT Title, ID, Current, Total, StartDate, EndDate, Finished, Date"
 	         " FROM SeriesInfo WHERE (updated == 0 AND skip == 0)", 
 			 update_new);
 	
 	 if (sql_commands){
 		dprintf("%s\n", sql_commands->str);
-		// sql_exec(sql_commands->str, NULL);
+		sql_exec(sql_commands->str, NULL);
 	}
 	return 0;
 }

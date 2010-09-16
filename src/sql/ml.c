@@ -31,7 +31,9 @@ static void update_id(MLOpts *opts);
 static void update_total(MLOpts *opts);
 static void update_total_only(MLOpts *opts);
 static void update_updated(MLOpts *opts);
+static void update_end_date(MLOpts *opts, char *date);
 
+// does not like update_anime in the sql callback
 char *update_anime2 (MLOpts *opts);
 
 char *get_search_xml (char *o_name) {
@@ -277,13 +279,12 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 		strncpy(&opts.date_start[0],  &argv[4][5], 2);
 		strncpy(&opts.date_start[2], &argv[4][8], 2);
 		strncpy(&opts.date_start[4], &argv[4][0], 4);
-		
 	}
 
 	if( argv[5] ) {
-		strncpy(&opts.date_start[0],  &argv[4][5], 2);
-		strncpy(&opts.date_start[2], &argv[4][8], 2);
-		strncpy(&opts.date_start[4], &argv[4][0], 4);
+		strncpy(&opts.date_finish[0],  &argv[4][5], 2);
+		strncpy(&opts.date_finish[2], &argv[4][8], 2);
+		strncpy(&opts.date_finish[4], &argv[4][0], 4);
 	}
 
 	
@@ -324,12 +325,20 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 		update_anime = true;
 		update_updated(&opts);
 	}
-   dprintf("%12s: '%s'\n", "title", opts.title);
-   dprintf("%12s: '%s'\n", "id", opts.id);
-   dprintf("%12s: '%s'\n", "episodes", opts.episodes);
-   dprintf("%12s: '%s'\n", "total", opts.total);
-   dprintf("%12s: '%s'\n", "date_start", opts.date_start);
-   dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);
+	dprintf("%12s: '%s'\n", "title", opts.title);
+	dprintf("%12s: '%s'\n", "id", opts.id);
+	dprintf("%12s: '%s'\n", "episodes", opts.episodes);
+	dprintf("%12s: '%s'\n", "total", opts.total);
+	dprintf("%12s: '%s'\n", "date_start", opts.date_start);
+
+	if (*opts.date_finish == '\0' && strcmp(opts.episodes,opts.total) == 0){
+		strncpy(&opts.date_finish[0], &argv[7][5], 2);
+		strncpy(&opts.date_finish[2], &argv[7][8], 2);
+		strncpy(&opts.date_finish[4], &argv[7][0], 4);
+		update_end_date(&opts, argv[7]);
+	}
+
+	dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);
 	
 	
 	if (update_anime){
@@ -340,9 +349,21 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	return 0;
 }
 
+static void update_end_date(MLOpts *opts, char *date){
+	const int len = 53 + 20 + strlen(opts->title) + 1;
+	if (sql_commands == NULL){
+		sql_commands = string_new(len);
+	}
+	
+	string_sprintf(sql_commands, len,
+		"Update SeriesInfo Set EndDate = %s where Title = '%s'; ", 
+		date, opts->title
+	);
+}
+
 // makes sql statements
 static void update_updated(MLOpts *opts){
-	int len = 54 + strlen(opts->title) + 1;
+	const int len = 54 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
@@ -354,7 +375,7 @@ static void update_updated(MLOpts *opts){
 }
 
 static void update_id_total(MLOpts *opts){
-	int len = 75 + strlen(opts->title) + 1;
+	const int len = 75 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
@@ -367,7 +388,7 @@ static void update_id_total(MLOpts *opts){
 }
 
 static void update_id(MLOpts *opts){
-	int len = 63 + strlen(opts->title) + 1;
+	const int len = 63 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
@@ -380,7 +401,7 @@ static void update_id(MLOpts *opts){
 }
 
 static void update_total(MLOpts *opts){
-	int len = 67 + strlen(opts->title) + 1;
+	const int len = 67 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
@@ -393,7 +414,7 @@ static void update_total(MLOpts *opts){
 }
 
 static void update_total_only(MLOpts *opts){
-	int len = 53 + strlen(opts->title) + 1;
+	const int len = 53 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
 		sql_commands = string_new(len);
 	}
