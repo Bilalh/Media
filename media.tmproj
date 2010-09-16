@@ -16,6 +16,10 @@
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>filename</key>
+			<string>../../../Library/Application Support/Media/Media.db</string>
+		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>172</integer>
@@ -66,7 +70,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -75,14 +79,14 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
+				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
 					<dict/>
 				</dict>
-				<key>src</key>
+				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -93,6 +97,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{409, 52}, {777, 826}}</string>
+	<string>{{638, 52}, {802, 826}}</string>
 </dict>
 </plist>

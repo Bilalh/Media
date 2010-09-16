@@ -12,4 +12,7 @@ typedef struct {
 	void (*func)();
 } Test;
 
+// opt_test broken in fork mallocing?
+
+
 #endif
