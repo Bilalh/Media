@@ -53,8 +53,8 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
 	^ (struct dirent * s) {
-		MAKE_REGEX(at, regex,);
-		int res =MATCH_REGEX(at, s->d_name, strlen(s->d_name));
+		MAKE_REGEX_OPTS(at, regex,PCRE_CASELESS,);
+		int res = MATCH_REGEX(at, s->d_name, strlen(s->d_name));
 		return res > 0;
 	},
 	^ (const void * a, const void * b) {
@@ -110,11 +110,41 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 			case P_NONE: break;
 		}
 	}else{
-		if (ma->afloat){
+		
+		#define all_afloat \
+		" -e 'tell application \"mplayer-pigoz.mpBinaries\" to activate' " \
+		" -e 'tell application \"Afloat Scripting\" to set"                \
+		" topmost window kept afloat to true without badge shown'"         
+		
+		
+		#define all_spaces_manual \
+		" -e 'tell application \"System Events\"'"                         \
+		" -e 'keystroke (ASCII character of 32)'"                          \
+		" -e 'keystroke \"f\" using {command down, control down}'"         
+		
+		#define all_spaces_auto \
+		all_spaces_manual                                                                  \
+		" -e 'delay 0.3'"                                                                  \
+		" -e 'tell window \"Afloat — Adjust Effects\" of application process \"mplayer\"'" \
+		" -e 'click checkbox \"Keep this window on the screen on all Spaces\"'"            \
+		" -e 'end tell' -e 'keystroke \"f\" using {command down, control down}'"           \
+		" -e 'keystroke (ASCII character of 32)' -e 'end tell'"                           
+				
+		if (ma->afloat && ma->all_spaces == SPACES_MANUAL ){
 			sleep(1);
-			system("osascript -e 'tell application \"mplayer-pigoz.mpBinaries\" to activate' " 
-				   "-e 'tell application \"Afloat Scripting\" to set " 
-				   "topmost window kept afloat to true without badge shown'");
+			system("osascript " all_afloat all_spaces_manual " -e 'end tell'");
+		}else if (ma->afloat && ma->all_spaces == SPACES_AUTO ){
+			sleep(1);
+			system("osascript " all_afloat all_spaces_auto);
+		}else if (ma->afloat){
+			sleep(1);
+			system("osascript " all_afloat);
+		}else if (ma->all_spaces== SPACES_MANUAL){
+			sleep(1);
+			system("osascript " all_spaces_manual);
+		}else if (ma->all_spaces== SPACES_AUTO){
+			sleep(1);
+			system("osascript " all_spaces_auto);
 		}
 	}
 	

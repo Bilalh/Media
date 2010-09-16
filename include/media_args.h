@@ -27,6 +27,10 @@ typedef enum{
 	N_NO_REPEAT, N_REPEAT_ONE, N_REPEAT_ALL
 } NiceRepeat;
 
+typedef enum{
+	SPACES_NONE, SPACES_MANUAL, SPACES_AUTO
+} Spaces;
+
 typedef struct {
 	bool exclude;
 	char **str_arr;
@@ -61,6 +65,7 @@ typedef struct {
 	// Players
 	Player   player;       // DONE
 	bool     afloat;       // DONE
+	Spaces   all_spaces;
 	String   prefix_args;  // DONE
 	String   postfix_args; // DONE
 		

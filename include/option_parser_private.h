@@ -18,41 +18,78 @@
 
 const Element H_filetype[] ={
 
-{  
-	.opt   = {.name =  "video", .val = 258, .has_arg = no_argument}, 
-	.help  = "Displays videos as well.",
-	.arg   = "", .neg = true,
-	.block = ^(MediaArgs *ma, int ch, char *arg ) {
-		if ( TRUTH_STATE_l(ch) ){
-			ma->types |= T_VIDEO;
-		}else{
-			ma->types &= ~T_VIDEO;
+	{  
+		.opt   = {.name =  "all", .val = 260, .has_arg = no_argument}, 
+		.help  = "Display all files.",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->types = T_NONE;
 		}
-	}
-},	
-{  
-	.opt   = {.name =  "audio", .val = 259, .has_arg = no_argument}, 
-	.help  = "Displays audio as well.",
-	.arg   = "", .neg = true,
-	.block = ^(MediaArgs *ma, int ch, char *arg ) {
-		if ( TRUTH_STATE_l(ch) ){
-			ma->types |= T_AUDIO;
-		}else{
-			ma->types &= ~T_AUDIO;
+	},
+	{  
+		.opt   = {.name =  "audio", .val = 259, .has_arg = no_argument}, 
+		.help  = "Displays audio as well.",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if ( TRUTH_STATE_l(ch) ){
+				ma->types |= T_AUDIO;
+			}else{
+				ma->types &= ~T_AUDIO;
+			}
 		}
-	}
-},
-{  
-	.opt   = {.name =  "all", .val = 260, .has_arg = no_argument}, 
-	.help  = "Display all files.",
-	.block = ^(MediaArgs *ma, int ch, char *arg ) {
-		ma->types = T_NONE;
-	}
-},
+	},
+	{  
+		.opt   = {.name =  "video", .val = 258, .has_arg = no_argument}, 
+		.help  = "Displays videos as well.",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if ( TRUTH_STATE_l(ch) ){
+				ma->types |= T_VIDEO;
+			}else{
+				ma->types &= ~T_VIDEO;
+			}
+		}
+	},	
 };
 
 const Element H_filepath[] ={
 	
+	{  
+		.opt   = {.name =  "exclude", .val = 'e', .has_arg = required_argument}, 
+		.help  = "Sub directories to exclude",
+		.arg   = "dir", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			Excludes *e = &ma->excludes;
+			if ( (e->length - e->length ) < 1 ){
+				e->length  = e->length * 2 + 1;
+				e->str_arr = realloc(e->str_arr,  e->length );
+			}
+			e->str_arr[e->index++] = strdup(arg);
+		}
+	},
+	{
+		.opt   = {.name =  "hash", .val = 'S', .has_arg = no_argument},
+		.help  = "Uses shortcuts from the hash, on by default",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->use_hash = TRUTH_VALUE(ch);
+		},
+	},
+	{  
+		.opt   = {.name =  "hashlocation", .val = 'I', .has_arg = required_argument}, 
+		.help  = "Filepath of the hash",
+		.arg   = "file", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->hash_location = strdup(arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "playlistpath", .val = 'P', .has_arg = required_argument}, 
+		.help  = "Directory to write playlist in default .",
+		.arg   = "dir", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_dir = strdup(arg);
+		}
+	},
 	{  
 		.opt   = {.name =  "rootpath", .val = 'R', .has_arg = required_argument}, 
 		.help  = "Directory to start searching from",
@@ -68,43 +105,6 @@ const Element H_filepath[] ={
 			ma->sub_dirs = TRUTH_VALUE(ch);
 		}
 	},
-	{  
-		.opt   = {.name =  "exclude", .val = 'e', .has_arg = required_argument}, 
-		.help  = "Sub directories to exclude",
-		.arg   = "dir", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			Excludes *e = &ma->excludes;
-			if ( (e->length - e->length ) < 1 ){
-				e->length  = e->length * 2 + 1;
-				e->str_arr = realloc(e->str_arr,  e->length );
-			}
-			e->str_arr[e->index++] = strdup(arg);
-		}
-	},
-	{  
-		.opt   = {.name =  "playlistpath", .val = 'P', .has_arg = required_argument}, 
-		.help  = "Directory to write playlist in default .",
-		.arg   = "dir", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_dir = strdup(arg);
-		}
-	},
-	{  
-		.opt   = {.name =  "hashlocation", .val = 'I', .has_arg = required_argument}, 
-		.help  = "Filepath of the hash",
-		.arg   = "file", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->hash_location = strdup(arg);
-		}
-	},
-	{
-		.opt   = {.name =  "hash", .val = 'S', .has_arg = no_argument},
-		.help  = "Uses shortcuts from the hash, on by default",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->use_hash = TRUTH_VALUE(ch);
-		},
-	}
 };
 
 const Element H_playlist[] ={
@@ -151,6 +151,13 @@ const Element H_playlist[] ={
 const Element H_player[] ={
 	
 	{  
+		.opt   = {.name =  "none", .val = 'M', .has_arg = no_argument}, 
+		.help  = "does not play the files.",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->player = P_NONE;
+		}
+	},
+	{  
 		.opt   = {.name =  "mplayer", .val = 'm', .has_arg = no_argument}, 
 		.help  = "plays the files using mplayer.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -171,58 +178,16 @@ const Element H_player[] ={
 			ma->player = P_VLC;
 		}
 	},
-	{  
-		.opt   = {.name =  "none", .val = 256, .has_arg = no_argument}, 
-		.help  = "does not play the files.",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->player = P_NONE;
-		}
-	}
+
 };
 
 const Element H_mplayer[] = { 
 	
 	{  
-		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument}, 
-		.help  = "Plays the file(s) in fullscreen. ",
-		.arg   = "", .neg = true,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, TRUTH_ARG(ch,"-fs", "-nofs") );
-			string_push(&ma->prefix_args, "-aspect 16:10" );
-			
-		}
- 	},
-	{  
 		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument}, 
 		.help  = "Makes the window afloat",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->afloat = true;
-		}
-	},
-	{  
-		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
-		.help  = "Adds profile t  - afloat and 360p.",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			if (TRUTH_STATE(ch)){
-				string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
-				ma->afloat = true;
-			}else{
-				string_push(&ma->prefix_args, "-xy 1");
-				ma->afloat = false;
-			}
-		}
-	},
-	{  
-		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
-		.help  = "Adds profile T  - ontop and 360p.",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			if (TRUTH_STATE(ch)){
-				string_push(&ma->prefix_args, "-profile T");
-			}else{
-				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
-			}
 		}
 	},
 	{  
@@ -254,12 +219,64 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
+		.opt   = {.name =  "fs", .val = 'f', .has_arg = no_argument}, 
+		.help  = "Plays the file(s) in fullscreen. ",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, TRUTH_ARG(ch,"-fs", "-nofs") );
+			string_push(&ma->prefix_args, "-aspect 16:10" );
+			
+		}
+ 	},
+	{  
 		.opt   = {.name =  "loop0", .val = 'k', .has_arg = no_argument}, 
 		.help  = "Adds -loop 0 -- meaning loops forever",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push(&ma->prefix_args, "-loop 0");
 		}
 	},
+	{  
+		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
+		.help  = "Adds profile t  - afloat and 360p.",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
+				ma->afloat = true;
+			}else{
+				string_push(&ma->prefix_args, "-xy 1");
+				ma->afloat = false;
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
+		.help  = "Adds profile T  - ontop and 360p.",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-profile T");
+			}else{
+				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "allspaces", .val = 'c', .has_arg = no_argument}, 
+		.help  = "Brings up the afloat menu",
+		.arg   = "", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->all_spaces = TRUTH_ARG(ch, SPACES_MANUAL, SPACES_NONE);
+		}
+	},
+	{  
+		.opt   = {.name =  "autospaces", .val = 'C', .has_arg = no_argument}, 
+		.help  = "Make the player appear on spaces",
+		.arg   = "", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->all_spaces = TRUTH_ARG(ch, SPACES_AUTO, SPACES_NONE);
+		}
+	},	
 };
 
 const Element H_output[] ={
@@ -286,15 +303,7 @@ const Element H_output[] ={
 };
 
 const Element H_History[]={
-	{  
-		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument}, 
-		.help  = "Adds the files to the history, "
-		 	"which is stored in a sql database.",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->write_history =  TRUTH_VALUE(ch) ;
-		},
-	},
+	
 	{  
 		.opt   = {.name =  "done", .val = 'D', .has_arg = no_argument}, 
 		.help  = "Set the status to done ",
@@ -305,6 +314,15 @@ const Element H_History[]={
 			}else{
 				ma->status &= ~S_UPDATED;
 			}
+		},
+	},
+	{  
+		.opt   = {.name =  "history", .val = '[', .has_arg = no_argument}, 
+		.help  = "Adds the files to the history, "
+		 	"which is stored in a sql database.",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->write_history =  TRUTH_VALUE(ch) ;
 		},
 	},
 	{  
@@ -346,7 +364,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "nicerandom", .val = 'M', .has_arg = no_argument}, 
+		.opt   = {.name =  "nicerandom", .val = ':', .has_arg = no_argument}, 
 		.help  = "Sets random in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

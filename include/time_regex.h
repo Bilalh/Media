@@ -7,11 +7,18 @@
 /**
  * @brief Makes a pcre object for matching regexes
  *
- * @param name The name 
+ * @param name   The name 
  * @param regex  The regex
+ * @param opts   The pcre options to use (0 none)
+ * 
+ * Useful options:
+ * PCRE_CASELESS   match both upper and  lower case
+ * PCRE_DOTALL     make . match everything
+ * PCRE_MULTILINE  for mutiline pattens
+ *
  * @param err_action The action to carry out on error
  */
-#define MAKE_REGEX(name,regex,err_action)\
+#define MAKE_REGEX_OPTS(name,regex,opts,err_action)\
 	static const pcre *pcre_##name;\
 	const char *pcre_error_##name;\
 	int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
@@ -19,7 +26,7 @@
 	\
 	pcre_##name = pcre_compile(\
 			 regex,                  /* the pattern */\
-			 0,                      /* default options */\
+			 opts,                   /* options */\
 			 &pcre_error_##name,     /* for error message */\
 			 &prce_error_pos_##name, /* for error offset */\
 			 NULL                    /* use default character tables */\
@@ -29,6 +36,9 @@
 		printf("%s\n", "error compiled");\
 		err_action\
 	}
+
+#define MAKE_REGEX(name,regex,err_action) MAKE_REGEX_OPTS(name,regex,0,err_action)
+
 
 /**
  * @brief Checks if a string matches the a regex compiled by MAKE_REGEX

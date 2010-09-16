@@ -43,8 +43,9 @@ MediaArgs *new_media_args() {
 		.sep           = 27,
 		
 		// Player
-		.player = P_NONE,
-		.afloat = false,
+		.player     = P_NONE,
+		.afloat     = false,
+		.all_spaces = SPACES_NONE,
 		
 		.prefix_args.length = m.postfix_args.length = 16,
 		.prefix_args.index  = m.postfix_args.index  = 0,
