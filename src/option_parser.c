@@ -50,12 +50,12 @@ MediaArgs *new_media_args() {
 		.prefix_args.length = m.postfix_args.length = 16,
 		.prefix_args.index  = m.postfix_args.index  = 0,
 		
-		.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length),
-		.postfix_args.str   = malloc(sizeof(char) * m.postfix_args.length),
-		
 		.nice_repeat = false,
 		.nice_random = false
 	};
+	
+	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
+	m.postfix_args.str   = malloc(sizeof(char) * m.postfix_args.length);
 	
 	m.prefix_args.str[0]  = '\0',
 	m.postfix_args.str[0] = '\0',
