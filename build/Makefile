@@ -1,6 +1,6 @@
                            ### Variables ###
 CC             = gcc
-CFLAGS         = -g -Wall -O2
+CFLAGS         = -g -Wall
 PERL           = perl
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
