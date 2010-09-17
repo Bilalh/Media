@@ -31,9 +31,11 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	}
 	
 	struct dirent **files;
+	#ifndef DEBUG
 	for(int i = 0; i < argc; ++i){
-		printf("%s\n", args[i]);
+		dprintf("args[%i]%s\n",i, args[i]);
 	}
+	#endif
 	
 	char *types = "";
 	switch (ma->types){
@@ -48,7 +50,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	}
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
 	char *regex = spilt_args(args, argc, ".*", "(", types, hash_location);
-	printf("regex: %s\n", regex);
+	dprintf("regex: %s\n", regex);
 
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
