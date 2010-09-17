@@ -1,6 +1,6 @@
                            ### Variables ###
 CC             = gcc
-CFLAGS         = -g -Wall
+CFLAGS         = -g -Wall -O2
 PERL           = perl
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
@@ -16,7 +16,7 @@ include ../tests/tests.mk
 
 
                            ### Objects ###
-objs       = media mal nums numsf numss hista
+objs       = media mal nums numsf numss hista shash
 examples   = optt hashe2
 
 media_req  = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
@@ -27,6 +27,7 @@ numsf_req  = app/latest_f_main.o ${hist_req}
 numss_req  = app/latest_fs_main.o ${hist_req}
 
 hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
+shash_req  = app/hash_lookup.o ${strutil_req}
 
 optt_req   = examples/optm.o ${opt_req}
 hashe2_req = examples/hashe2.o

@@ -145,8 +145,8 @@ SpiltData *str_spilt_func(char *s, Mapping *hash);
 /**
  * @brief 
  *
- * @param filename 
- * @return 
+ * @param filename  the hash location
+ * @return  the hash
 **/
 Mapping *load_hash(const char *filename);
 
