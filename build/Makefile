@@ -23,6 +23,7 @@ to_bin:
 	cp hista mal media nums numsf numss ~/bin
 
                            ### Objects ###
+
 objs       = media mal nums numsf numss hista shash
 examples   = optt hashe2
 
@@ -56,6 +57,10 @@ examples: ${examples}
 
 
                            ### Tests ###
+
+run_tests: all_tests
+	./all_tests
+
 all_tests: ${tests} ../tests/all_tests.o
 	${compile} ${libs} ${flags} $(filter %.o,${^F}) -o $@
 	@echo "Built all tests : ${tests}"

@@ -100,7 +100,7 @@ static char *mal_api (char *url, MLOpts *opts) {
 			}
 			if(opts->score) {
 				dprintf("%s\n", "score");
-				sprintf(buff, "%d", opts->score );
+				sprintf(buff, "%s", opts->score );
 				new_text_node(temp, "score", buff, root);
 			}
 			if(opts->date_start) {
@@ -112,11 +112,14 @@ static char *mal_api (char *url, MLOpts *opts) {
 				new_text_node(temp, "date_finish", opts->date_finish, root);
 			}
 		}
-
+		
+		// make xml arg 
 		xmlDocDumpFormatMemory(doc, &xmlbuff, &buffersize, 0);
 		char xml[buffersize + 7 + 1];
 		sprintf(xml, "data=%s", (char *) xmlbuff);
 		dprintf("%s\n", xml);
+		
+		// does post 
 		curl_easy_setopt(curl, CURLOPT_POST, true);
 		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, xml);
 		curl_easy_setopt(curl, CURLOPT_URL, url);
@@ -254,42 +257,58 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 
 // sql exec callback function
 int update_new(void *unused, int argc, char **argv, char **columns) {
+	const char *title_arg     =  argv[0];
+	const char *id_arg        =  argv[1];
+	const char *ep_arg        =  argv[2];
+	const char *total_arg     =  argv[3];
+	const char *date_start_a  =  argv[4];
+	const char *date_fin_a    =  argv[5];
+	const char *date_a        =  argv[7];
+	const char *fin_arg       =  argv[6];
+	const char *score_arg     =  argv[8];
+	
 	dprintf("%s\n", "start update_new");
+	// sets to zero
+	MLOpts opts = {};
 
-	MLOpts opts = {
-		.status      = strcmp("1", argv[6]) == 0 ? ML_COMPLETED : ML_WATCHING
-	};
+	if( strcmp("1", fin_arg ) == 0 ) {
+		opts.status = ML_COMPLETED;
+		if( score_arg ) strncpy(opts.score, score_arg, 3);	
+	}else{
+		opts.status = ML_WATCHING;
+	}
+	
 
-	// argv[0] becames invaild after strptime is called unless it is duped.
-	strncpy(opts.title, argv[0], 100);
+	// title_arg becames invaild after strptime is called unless it is duped.
+	strncpy(opts.title, title_arg, 100);
 	bool have_id = false, have_total = false;
 
-	if (argv[2]) strncpy(opts.episodes, argv[2], 6);
-	if (argv[1]) {
-		strncpy(opts.id, argv[1], 7);
-		have_id = true;
-	}	
-	if (argv[3]){ 
-		strncpy(opts.total,argv[3], 6);
+	if( ep_arg ) {
+	   strncpy(opts.episodes, ep_arg, 6);
+	} 
+	if( id_arg ) {
+	   strncpy(opts.id, id_arg, 7);
+	   have_id = true;
+	}  
+	if( total_arg ){ 
+		strncpy(opts.total, total_arg, 6);
 		have_total = true;
 	}
 	
 	// strptime seg fault in argv 4 or 5
-	if( argv[4] ) {
-		strncpy(&opts.date_start[0],  &argv[4][5], 2);
-		strncpy(&opts.date_start[2], &argv[4][8], 2);
-		strncpy(&opts.date_start[4], &argv[4][0], 4);
+	if( date_start_a ) {
+		strncpy(&opts.date_start[0], &date_start_a[5], 2);
+		strncpy(&opts.date_start[2], &date_start_a[8], 2);
+		strncpy(&opts.date_start[4], &date_start_a[0], 4);
 	}
 
-	if( argv[5] ) {
-		strncpy(&opts.date_finish[0],  &argv[4][5], 2);
-		strncpy(&opts.date_finish[2], &argv[4][8], 2);
-		strncpy(&opts.date_finish[4], &argv[4][0], 4);
+	if( date_fin_a ) {
+		strncpy(&opts.date_finish[0], &date_fin_a[5], 2);
+		strncpy(&opts.date_finish[2], &date_fin_a[8], 2);
+		strncpy(&opts.date_finish[4], &date_fin_a[0], 4);
 	}
 
-	
 	// Updates the ml list  and creates the corect sql querry 
-	
 	bool update_anime = false;
 	
 	if (!have_total || ! have_id  ) {
@@ -332,10 +351,10 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	dprintf("%12s: '%s'\n", "date_start", opts.date_start);
 
 	if (*opts.date_finish == '\0' && strcmp(opts.episodes,opts.total) == 0){
-		strncpy(&opts.date_finish[0], &argv[7][5], 2);
-		strncpy(&opts.date_finish[2], &argv[7][8], 2);
-		strncpy(&opts.date_finish[4], &argv[7][0], 4);
-		update_end_date(&opts, argv[7]);
+		strncpy(&opts.date_finish[0], &date_a[5], 2);
+		strncpy(&opts.date_finish[2], &date_a[8], 2);
+		strncpy(&opts.date_finish[4], &date_a[0], 4);
+		update_end_date(&opts, date_a);
 	}
 
 	dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);

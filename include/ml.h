@@ -22,7 +22,7 @@ typedef enum {
 struct _MLOpts{
 	char      episodes[6];
 	ML_status status; 
-	int       score;          /// 1 - 10
+	char      score[3];       /// 1 - 10
 	char      date_start[9];  /// mmddyyyy
 	char      date_finish[9]; /// mmddyyyy
 	
