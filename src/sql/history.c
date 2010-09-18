@@ -7,6 +7,7 @@
 
 #include <include/history.h>
 #include <include/string_util.h>
+#include <include/debug.h>
 
 
 static int print_latest_callback(void *unused, int argc, char **argv, char **columns);
@@ -42,21 +43,22 @@ bool updateHistory(char **filenames, Status status, int sep) {
 			EP_GET_NUMBER(ans, num);
 			EP_GET_NAME(ans, s, *filenames)
 
-			printf("title %s.\n", s);
-			printf("num   %li.\n", num);
+			dprintf("title %s.\n", s);
+			dprintf("num   %li.\n", num);
 			MAKE_TIME_STR(now, timeinfo);
-			printf("time  %s.\n", now);
+			dprintf("time  %s.\n", now);
 
 			sqlite3_bind_text(statement_h, 1, s, -1, SQLITE_TRANSIENT);
 			sqlite3_bind_int(statement_h, 2, num);
 			sqlite3_bind_text(statement_h, 3, now, -1, SQLITE_STATIC);
 
 			result = sqlite3_step(statement_h);
-			printf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+			dprintf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 				fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
-			printf("reset: %i\n\n", sqlite3_reset(statement_h));
+			result = sqlite3_reset(statement_h);
+			dprintf("reset: %i\n\n", reset);
 
 			// for status
 			if (status == S_SKIP_UPDATED) {
@@ -72,7 +74,8 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
-				printf("sk reset: %i\n\n", sqlite3_reset(statement_si_su));
+				result = sqlite3_reset(statement_si_su)
+				dprintf("sk reset: %i\n\n", result);
 
 			} else if (status == S_UPDATED) {
 				if(! si_u) {
@@ -86,7 +89,8 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
-				printf("up reset: %i\n\n", sqlite3_reset(statement_si_u));
+				result = sqlite3_reset(statement_si_u);
+				dprintf("up reset: %i\n\n", result);
 			} else if(status == S_SKIP) {
 				if(! si_s) {
 					sqlite3_prepare_v2(db, query_si_s, strlen(query_si_s), &statement_si_s, NULL);
@@ -99,7 +103,8 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
-				printf("sk reset: %i\n\n", sqlite3_reset(statement_si_s));
+				result = sqlite3_reset(statement_si_s);
+				dprintf("sk reset: %i\n\n", result);
 			}
 
 		}

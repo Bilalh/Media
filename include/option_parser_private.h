@@ -184,30 +184,17 @@ const Element H_player[] ={
 const Element H_mplayer[] = { 
 	
 	{  
+		.opt   = {.name =  "1610", .val = '0', .has_arg = no_argument}, 
+		.help  = "Uses 16:10 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 16:10");
+		}
+	},
+	{  
 		.opt   = {.name =  "afloat", .val = 'a', .has_arg = no_argument}, 
 		.help  = "Makes the window afloat",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->afloat = true;
-		}
-	},
-	{  
-		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument}, 
-		.help  = "Sets the aspect ratio",
-		.arg   = "W:H", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			int a, b, res;
-			res = sscanf(arg, "%8i:%8i",&a,&b);
-			// printf("    Abeg aspect %s\n", arg);
-			if (res != 2){
-				printf("Invalid aspect ratio\n");
-				exit(1);
-			}else{
-				// printf("    Aend aspect %s\n",arg );
-				// string_push_m(&ma->prefix_args, 2,"-aspect", arg);
-				string_push(&ma->prefix_args,"-aspect");
-				string_push(&ma->prefix_args, arg);
-				// string_push(&ma->prefix_args,arg);
-			}
 		}
 	},
 	{  
@@ -258,6 +245,30 @@ const Element H_mplayer[] = {
 				string_push(&ma->prefix_args, "-profile T");
 			}else{
 				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "framedrop", .val = 'j', .has_arg = no_argument}, 
+		.help  = "Enable frame dropping",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-framedrop");
+			}else{
+				string_push(&ma->prefix_args, "-noframedrop");
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "hframedrop", .val = 'J', .has_arg = no_argument}, 
+		.help  = "Enable hard frame dropping",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-hardframedrop");
+			}else{
+				string_push(&ma->prefix_args, "-noframedrop");
 			}
 		}
 	},
@@ -426,27 +437,6 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "1610", .val = '0', .has_arg = no_argument}, 
-		.help  = "Uses 16:10 aspect ratio",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "-aspect 16:10");
-		}
-	},
-	{  
-		.opt   = {.name =  "169", .val = '9', .has_arg = no_argument}, 
-		.help  = "Uses 16:9 aspect ratio",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "-aspect 16:9");
-		}
-	},
-	{  
-		.opt   = {.name =  "43", .val = '4', .has_arg = no_argument}, 
-		.help  = "Uses 4:3 aspect ratio",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			string_push(&ma->prefix_args, "-aspect 4:3");
-		}
-	},
-	{  
 		.opt   = {.name =  "width", .val = 'W', .has_arg = required_argument}, 
 		.help  = "Set the width",
 		.arg   = "width", .neg = false,
@@ -526,6 +516,50 @@ const Element H_mplayer_extra[] = {
 	}
 };
 
+const Element H_mplayer_aspect[] = {
+	{  
+		.opt   = {.name =  "aspect", .val = 'A', .has_arg = required_argument}, 
+		.help  = "Sets the aspect ratio",
+		.arg   = "W:H", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int a, b, res;
+			res = sscanf(arg, "%8i:%8i",&a,&b);
+			// printf("    Abeg aspect %s\n", arg);
+			if (res != 2){
+				printf("Invalid aspect ratio\n");
+				exit(1);
+			}else{
+				// printf("    Aend aspect %s\n",arg );
+				// string_push_m(&ma->prefix_args, 2,"-aspect", arg);
+				string_push(&ma->prefix_args,"-aspect");
+				string_push(&ma->prefix_args, arg);
+				// string_push(&ma->prefix_args,arg);
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "169", .val = '9', .has_arg = no_argument}, 
+		.help  = "Uses 16:9 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 16:9");
+		}
+	},
+	{  
+		.opt   = {.name =  "43", .val = '4', .has_arg = no_argument}, 
+		.help  = "Uses 4:3 aspect ratio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-aspect 4:3");
+		}
+	},
+	{  
+		.opt   = {.name =  "original", .val = 'i', .has_arg = no_argument}, 
+		.help  = "Uses original size",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args, "-xy 1");
+		}
+	},
+};
+
 const Element H_mplayer_geom[] = {
 	{  
 		.opt   = {.name =  "geometry", .val = 'G', .has_arg = required_argument}, 
@@ -562,16 +596,17 @@ const Element H_mplayer_geom[] = {
 };
 
 const HelpLink HELP_LINK[] = {
-	{ "Filepath",          sizeof(H_filepath)      / sizeof(Element), &H_filepath[0]      },
-	{ "Mplayer",           sizeof(H_mplayer)       / sizeof(Element), &H_mplayer[0]       },
-	{ "Playlist",          sizeof(H_playlist)      / sizeof(Element), &H_playlist[0]      },
-	{ "Player",            sizeof(H_player)        / sizeof(Element), &H_player[0]        },
-	{ "Output",            sizeof(H_output)        / sizeof(Element), &H_output[0]        },
-	{ "History",           sizeof(H_History)       / sizeof(Element), &H_History[0]       },
-	{ "Filetype",          sizeof(H_filetype)      / sizeof(Element), &H_filetype[0]      },
-	{ "Other",             sizeof(H_other)         / sizeof(Element), &H_other[0]         },
-	{ "Mplayer extra",     sizeof(H_mplayer_extra) / sizeof(Element), &H_mplayer_extra[0] },
-	{ "Mplayer geometry",  sizeof(H_mplayer_geom)  / sizeof(Element), &H_mplayer_geom[0]  },
+	{ "Filepath",          sizeof(H_filepath)       / sizeof(Element), &H_filepath[0]       },
+	{ "Mplayer",           sizeof(H_mplayer)        / sizeof(Element), &H_mplayer[0]        },
+	{ "Playlist",          sizeof(H_playlist)       / sizeof(Element), &H_playlist[0]       },
+	{ "Player",            sizeof(H_player)         / sizeof(Element), &H_player[0]         },
+	{ "Output",            sizeof(H_output)         / sizeof(Element), &H_output[0]         },
+	{ "History",           sizeof(H_History)        / sizeof(Element), &H_History[0]        },
+	{ "Filetype",          sizeof(H_filetype)       / sizeof(Element), &H_filetype[0]       },
+	{ "Other",             sizeof(H_other)          / sizeof(Element), &H_other[0]          },
+	{ "Mplayer extra",     sizeof(H_mplayer_extra)  / sizeof(Element), &H_mplayer_extra[0]  },
+	{ "Mplayer aspect",    sizeof(H_mplayer_aspect) / sizeof(Element), &H_mplayer_aspect[0] },
+	{ "Mplayer geometry",  sizeof(H_mplayer_geom)   / sizeof(Element), &H_mplayer_geom[0]   },
 };
 
 

@@ -15,6 +15,13 @@ vpath %.h ../
 include ../tests/tests.mk
 
 
+                           ### Distribution ###
+dist: CFLAGS += -O2
+dist: clean all oclean
+
+to_bin:
+	cp hista mal media nums numsf numss ~/bin
+
                            ### Objects ###
 objs       = media mal nums numsf numss hista shash
 examples   = optt hashe2
@@ -34,6 +41,7 @@ hashe2_req = examples/hashe2.o
 
 
                            ### Objects rules ###
+
 # makes name : ${name_req}
 $(foreach name,${objs} ${examples},$(eval ${name}:${${name}_req}))
 
@@ -64,6 +72,7 @@ list_tests:
 
 
                            ### util ###
+
 %.o: %.c
 	${compile} ${flags} -c $^ -o ${@F}
 

@@ -23,7 +23,7 @@ typedef struct{
 	const struct option opt;
 	const char *arg;
 	const char *help;
-	VoidBlock block;
+	const VoidBlock block;
 	const bool neg;
 } Element;
 

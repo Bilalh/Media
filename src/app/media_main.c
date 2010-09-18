@@ -11,11 +11,11 @@ int main (int argc, char **argv) {
 
 	if ( argc == 2) {
 		if( strncmp(argv[1], "-h", 2) == 0) {
-			print_help(&argv[1][2]);
+			print_help("");
 		} else if( strncmp(argv[1], "--help", 6) == 0 ) {
-			print_help(&argv[1][6]);
+			print_help("");
 		} else if( strncmp(argv[1], "-help", 5) == 0 ) {
-			print_help(&argv[1][5]);
+			print_help("");
 		}
 		exit(0);
 	}
