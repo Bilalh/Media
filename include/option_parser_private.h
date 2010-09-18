@@ -514,6 +514,7 @@ const Element H_mplayer_extra[] = {
 			}
 		}
 	}
+
 };
 
 const Element H_mplayer_aspect[] = {
@@ -551,6 +552,25 @@ const Element H_mplayer_aspect[] = {
 			string_push(&ma->prefix_args, "-aspect 4:3");
 		}
 	},
+};
+
+const Element H_mplayer_sizes[]={
+	#define M_SIZE(_size,_val)                                          \
+	{                                                                   \
+		.opt   = {.name = #_size, .val = _val, .has_arg = no_argument}, \
+		.help  = "Set the with to " #_size,                             \
+		.arg   = "", .neg = false,                                      \
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {                 \
+			string_push(&ma->prefix_args, #_size);                      \
+		}                                                               \
+	}
+	
+	M_SIZE( 480,  263 ),
+	M_SIZE( 560,  '2' ),
+	M_SIZE( 600,  264 ),
+	M_SIZE( 720,  265 ),
+	M_SIZE( 800,  266 ),
+	M_SIZE( 1080, 267 ),
 	{  
 		.opt   = {.name =  "original", .val = 'i', .has_arg = no_argument}, 
 		.help  = "Uses original size",
@@ -581,8 +601,8 @@ const Element H_mplayer_geom[] = {
 		.help  = _help,                                                 \
 		.arg   = "", .neg = false,                                      \
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {                 \
-		string_push(&ma->prefix_args, _geo);                            \
-	}                                                                   \
+			string_push(&ma->prefix_args, _geo);                        \
+		}                                                               \
 	}
 	M_GEO("tl", '1', "-geometry 0%:0%"   ,"Places the player at the top left"),
 	M_GEO("tr", '=', "-geometry 100%:0%" ,"Places the player at the top right"),
@@ -606,6 +626,7 @@ const HelpLink HELP_LINK[] = {
 	{ "Other",             sizeof(H_other)          / sizeof(Element), &H_other[0]          },
 	{ "Mplayer extra",     sizeof(H_mplayer_extra)  / sizeof(Element), &H_mplayer_extra[0]  },
 	{ "Mplayer aspect",    sizeof(H_mplayer_aspect) / sizeof(Element), &H_mplayer_aspect[0] },
+	{ "Mplayer sizes",     sizeof(H_mplayer_sizes)  / sizeof(Element), &H_mplayer_sizes[0]  },
 	{ "Mplayer geometry",  sizeof(H_mplayer_geom)   / sizeof(Element), &H_mplayer_geom[0]   },
 };
 
