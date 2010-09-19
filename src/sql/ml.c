@@ -13,6 +13,7 @@
 #include <include/xml.def>
 #include <include/string_buffer.h>
 #include <include/string_util.h>
+
 #include <include/debug.h>
 
 typedef struct {
@@ -89,26 +90,28 @@ static char *mal_api (char *url, MLOpts *opts) {
 		// Makes the xml of the options
 		if (opts) {
 			char buff[10];
-			if(opts->episodes) {
+			if( *opts->episodes ) {
 				dprintf("%s\n", "ep");
 				// sprintf(buff, "%d", opts->episodes );
 				new_text_node(temp, "episode", opts->episodes, root);
 			}
-			if(opts->status) {
+			if( opts->status ) {
 				dprintf("%s\n", "status");
 				sprintf(buff, "%d", opts->status );
 				new_text_node(temp, "status", buff, root);
 			}
-			if(opts->score) {
+			if( *opts->score ) {
 				dprintf("%s\n", "score");
+				dprintf("%s\n", opts->score );
+				
 				sprintf(buff, "%s", opts->score );
 				new_text_node(temp, "score", buff, root);
 			}
-			if(opts->date_start) {
+			if( *opts->date_start ) {
 				dprintf("%s\n", "date_start");
 				new_text_node(temp, "date_start", opts->date_start, root);
 			}
-			if(opts->date_finish) {
+			if( *opts->date_finish ) {
 				dprintf("%s\n", "date_finish");
 				new_text_node(temp, "date_finish", opts->date_finish, root);
 			}
@@ -264,8 +267,8 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	const char *total_arg     =  argv[3];
 	const char *date_start_a  =  argv[4];
 	const char *date_fin_a    =  argv[5];
-	const char *date_a        =  argv[7];
 	const char *fin_arg       =  argv[6];
+	const char *date_a        =  argv[7];
 	const char *score_arg     =  argv[8];
 	
 	dprintf("%s\n", "start update_new");
@@ -274,7 +277,10 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 
 	if( strcmp("1", fin_arg ) == 0 ) {
 		opts.status = ML_COMPLETED;
-		if( score_arg ) strncpy(opts.score, score_arg, 3);	
+		if( score_arg ) {
+			dprintf("%s\n", "adding score beg");
+			strncpy(opts.score, score_arg, 3);
+		}	
 	}else{
 		opts.status = ML_WATCHING;
 	}
@@ -285,13 +291,16 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	bool have_id = false, have_total = false;
 
 	if( ep_arg ) {
-	   strncpy(opts.episodes, ep_arg, 6);
+		dprintf("eps %s\n", ep_arg);
+		strncpy(opts.episodes, ep_arg, 6);
 	} 
 	if( id_arg ) {
-	   strncpy(opts.id, id_arg, 7);
-	   have_id = true;
+		dprintf("id %s\n", id_arg);
+		strncpy(opts.id, id_arg, 7);
+		have_id = true;
 	}  
 	if( total_arg ){ 
+		dprintf("total %s\n", total_arg);
 		strncpy(opts.total, total_arg, 6);
 		have_total = true;
 	}
@@ -313,6 +322,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	bool update_anime = false;
 	
 	if (!have_total || ! have_id  ) {
+		dprintf("%s\n", "id or total missing");
 		char *xml = get_search_xml(opts.title);
 		dprintf("%s\n", "have xml");
 		get_id_and_total(xml, &opts);
@@ -361,12 +371,14 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 			update_fin(&opts);
 		}
 		if( score_arg ) {
+			dprintf("%s\n", "adding score end");
 			strncpy(opts.score, score_arg, 3);	
 		}
 		opts.status = ML_COMPLETED;
 	}
 
 	dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);
+	dprintf("%12s: '%s'\n\n", "score", opts.score);
 	
 	
 	if (update_anime){
