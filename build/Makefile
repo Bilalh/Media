@@ -16,7 +16,7 @@ include ../tests/tests.mk
 
 
                            ### Distribution ###
-dist: CFLAGS += -O2
+dist: CFLAGS = -O2 -Wall
 dist: clean all oclean
 
 to_bin:
@@ -82,7 +82,7 @@ list_tests:
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c *_wrapper.o  all_tests ${objs} ${examples} *~
-
-oclean: 
-	rm -f *.o *.out test_* *_wrapper.c *_wrapper.o  all_tests ${examples} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} *~
+                                       
+oclean:                                
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} *~

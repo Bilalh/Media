@@ -7,6 +7,7 @@
 #include <include/debug.h>
 
 String *string_new(int length){
+	if (length <= 0) length = 1;
 	String *s = malloc(sizeof(String));
 	new_string(s,length);
 	return s;
