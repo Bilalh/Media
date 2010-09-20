@@ -15,7 +15,7 @@ typedef struct  {
 int main (int argc, char const *argv[]) {
 
 	Mapping *hash = NULL, *h;
-	FILE *hfile = fopen("../build/zzhash", "r");
+	FILE *hfile = fopen("zzhash", "r");
 
 	char lens[6];
 	int key_len, val_len;
