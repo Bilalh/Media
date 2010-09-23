@@ -460,6 +460,7 @@ const Element H_mplayer_extra[] = {
 			double x;
 			res = sscanf(arg, "%8i%1s",&y,temp);
 			if (res != 1){
+				printf("Invalid height \n");
 				exit(1);
 			}else{
 				x = y * 16.0/9.0;
@@ -476,6 +477,7 @@ const Element H_mplayer_extra[] = {
 			int res, x; char temp[1];
 			res = sscanf(arg, "%8i%1s",&x,temp);
 			if (res != 1){
+				printf("Invalid loop value \n");
 				exit(1);
 			}else{
 				string_push_m(&ma->prefix_args, 2,  "-loop", arg);
@@ -513,8 +515,22 @@ const Element H_mplayer_extra[] = {
 				string_push(&ma->postfix_args,arg);
 			}
 		}
-	}
-
+	},
+	{  
+		.opt   = {.name =  "volume", .val = 'v', .has_arg = no_argument}, 
+		.help  = "Set mplayer volume {0-100}",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int res, x; char temp[1];
+			res = sscanf(arg, "%8i%1s",&x,temp);
+			if (res != 1){
+				printf("Invalid loop value \n");
+				exit(1);
+			}else{
+				string_push_m(&ma->prefix_args, 2,  "-volume", arg);
+			}
+		}
+	},
+	
 };
 
 const Element H_mplayer_aspect[] = {
