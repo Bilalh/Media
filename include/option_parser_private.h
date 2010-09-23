@@ -517,13 +517,17 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "volume", .val = 'v', .has_arg = no_argument}, 
+		.opt   = {.name =  "volume", .val = 'v', .has_arg = required_argument}, 
 		.help  = "Set mplayer volume {0-100}",
+		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			int res, x; char temp[1];
 			res = sscanf(arg, "%8i%1s",&x,temp);
-			if (res != 1){
-				printf("Invalid loop value \n");
+			if(res != 1){
+				printf("Invalid volume value \n");
+				exit(1);
+			}else if( x < 0 || x > 100){
+				printf("Invalid volume value needs to in [0,100] \n");
 				exit(1);
 			}else{
 				string_push_m(&ma->prefix_args, 2,  "-volume", arg);
