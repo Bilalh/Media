@@ -14,7 +14,7 @@
 #define TRUTH_STATE(ch) (ch < ASCII)
 #define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
 
-//LATER usee fprintf stderr 
+//LATER use fprintf stderr 
 
 const Element H_filetype[] ={
 
@@ -499,7 +499,7 @@ const Element H_mplayer_extra[] = {
 	{  
 		.opt   = {.name =  "prefix", .val = 'E', .has_arg = required_argument}, 
 		.help  = "Set mplayer prefix options, can be used multiple times",
-		.arg   = "args", .neg = false,
+		.arg   = "arg", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (arg != NULL && *arg != '\0'){
 				string_push(&ma->prefix_args,arg);
@@ -509,7 +509,7 @@ const Element H_mplayer_extra[] = {
 	{  
 		.opt   = {.name =  "postfix", .val = 'F', .has_arg = required_argument}, 
 		.help  = "Set mplayer postfix options, can be used multiple times",
-		.arg   = "args", .neg = false,
+		.arg   = "arg", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (arg != NULL && *arg != '\0'){
 				string_push(&ma->postfix_args,arg);
