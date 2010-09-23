@@ -21,9 +21,8 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 #define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
-
 //TODO sub dirs 
-void media(char *path, char **args, int argc, MediaArgs *ma) {
+void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	if (argc == 0) {
 		fprintf(stderr, "%s\n", "NO file args (use . for all files)");
@@ -49,14 +48,25 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 			break;
 	}
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
-	char *regex = spilt_args(args, argc, ".*", "(", types, hash_location);
+	char *regex = spilt_args(args, argc, ".*?", "(", types, hash_location);
 	dprintf("regex: %s\n", regex);
-
+	
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,
 	^ (struct dirent * s) {
 		MAKE_REGEX_OPTS(at, regex,PCRE_CASELESS,);
 		int res = MATCH_REGEX(at, s->d_name, strlen(s->d_name));
+		if (ma->safe && res > 0 ){
+			MAKE_REGEX_OPTS(safe_r, 
+				"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|"
+				"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|fantasy|To ?aru Majutsu no Index|Princess |"
+				"Nogizaka Haruka| eng|Sora no Woto Op 2|Saki ed|moon|Myself;|Kiddy Girl-and|Turn a moon|"
+				"Rave|Dragonaut The Resonance|Shining Tears|Sakuranbo K|Tales of Symphonia  lyn|"
+				"Gundam Seed Destiny|Shugo Chara",
+				PCRE_CASELESS,);
+			res = MATCH_REGEX(safe_r, s->d_name, strlen(s->d_name));
+			res = res < 0 ? true : false;
+		}
 		return res > 0;
 	},
 	^ (const void * a, const void * b) {

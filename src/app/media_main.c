@@ -21,7 +21,7 @@ int main (int argc, char **argv) {
 	}
 
 	if (argc < 3) {
-		puts("Media dir regex");
+		print_usage();
 		exit(1);
 	}
 

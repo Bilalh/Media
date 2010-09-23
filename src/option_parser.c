@@ -41,6 +41,7 @@ MediaArgs *new_media_args() {
 		.status        = S_NONE,
 		.write_history = false,
 		.sep           = 27,
+		.safe          = false,
 		
 		// Player
 		.player     = P_NONE,
@@ -62,6 +63,15 @@ MediaArgs *new_media_args() {
 	
 	*ma = m;
 	return ma;
+}
+
+void print_usage(){
+	printf("%s", 
+		"Usage media {start_path|-h} [args]\n"
+		"   args: 0123456789=AaCcDdEeFfGHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/\n"
+		"   Use -h[num] for a section\n"
+		"   Use -h,{letters} for details of a args\n"
+	);
 }
 
 // Parser the options and returns a MediaArgs struct
@@ -128,6 +138,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	opts[index].flag    = 0;
 	letters[s_index] = '\0';
 
+
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
@@ -147,7 +158,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 // prints the help, section or letter if specifed
 void print_help(char *arg){
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
-	
+	size_t s_len  = length;
 	// print only the specified section by name or number.  
 	if (arg != NULL && *arg != '\0'){
 		int number = -1;
@@ -174,6 +185,10 @@ void print_help(char *arg){
 				}
 			}
 		}
+	}
+	
+	if (length == s_len && start == 0){
+		print_usage();
 	}
 	
 	for(int i = start; i < length; ++i){

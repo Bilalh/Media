@@ -420,6 +420,15 @@ const Element H_other[] ={
 			ma->root_dir = strdup("/Users/bilalh/Movies/.Movie/OpeningP");
 		}
 	},
+	{  
+		.opt   = {.name =  "safe", .val = 'u', .has_arg = no_argument}, 
+		.help  = "For testing use file that are know to work",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->safe = TRUTH_VALUE(ch);
+		}
+	},
+	
 };
 
 const Element H_mplayer_extra[] = { 

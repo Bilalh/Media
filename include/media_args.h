@@ -61,6 +61,7 @@ typedef struct {
 	Status  status;        // DONE
 	bool    write_history; // DONE
 	int     sep;           // DONE
+	bool    safe;
 	
 	// Players
 	Player   player;       // DONE
