@@ -590,7 +590,7 @@ const Element H_mplayer_sizes[]={
 		.help  = "Set the with to " #_size,                             \
 		.arg   = "", .neg = false,                                      \
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {                 \
-			string_push(&ma->prefix_args, #_size);                      \
+			string_push(&ma->prefix_args, "-xy " #_size);                      \
 		}                                                               \
 	}
 	
