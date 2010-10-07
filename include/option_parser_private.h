@@ -10,6 +10,7 @@
 #define VAILD_ASCII(ch) ch < ASCII && ch > 0 
 
 #define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
+#define TRUTH_VALUE_l(ch)  ((ch < LONG_OPT_END_VALUE) ? true : false)
 #define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
 #define TRUTH_STATE(ch) (ch < ASCII)
 #define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
@@ -141,6 +142,7 @@ const Element H_playlist[] ={
 	{  
 		.opt   = {.name =  "shuffle", .val = 'y', .has_arg = no_argument}, 
 		.help  = "shuffles the playlist",
+		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_shuffle = TRUTH_VALUE(ch);
 		}
@@ -400,13 +402,6 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "print_opt", .val = 'Z', .has_arg = no_argument}, 
-		.help  = "Shows the opt struct",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			print_media_args(ma);
-		}
-	},
-	{  
 		.opt   = {.name =  "ax", .val = 261, .has_arg = no_argument}, 
 		.help  = "Uses AX as root directory",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -428,7 +423,33 @@ const Element H_other[] ={
 			ma->safe = TRUTH_VALUE(ch);
 		}
 	},
-	
+	{  
+		.opt   = {.name =  "print_opt", .val = 'Z', .has_arg = no_argument}, 
+		.help  = "Shows the opt struct",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			print_media_args(ma);
+		}
+	},
+	{  
+		.opt   = {.name =  "regex_print", .val = 280, .has_arg = no_argument}, 
+		.help  = "Prints the regex",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->regex_print = TRUTH_VALUE_l(ch);
+		}
+	},
+	{  
+		.opt   = {.name =  "regex_separator", .val = ',', .has_arg = required_argument}, 
+		.help  = "Set the separator to use between args default",
+		.arg   = "sep", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if( ! arg){
+				fprintf(stderr, "%s\n", "Arg null in regex_separator");
+				exit(11);
+			}
+			ma->regex_sep = strdup(arg);
+		}
+	},
 };
 
 const Element H_mplayer_extra[] = { 
@@ -443,6 +464,21 @@ const Element H_mplayer_extra[] = {
 				exit(1);
 			}
 			string_push_m(&ma->prefix_args, 2,"-profile", arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "chapter", .val = 'q', .has_arg = required_argument}, 
+		.help  = "Plays from chapter num",
+		.arg   = "num", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int a, res; char temp[1];
+			res = sscanf(arg, "%8i%1s",&a,temp);
+			if (res != 1){
+				printf("Invalid chapter number \n");
+				exit(1);
+			}else{
+				string_push_m(&ma->prefix_args, 2,"-chapter", arg);
+			}
 		}
 	},
 	{  
@@ -599,7 +635,11 @@ const Element H_mplayer_sizes[]={
 	M_SIZE( 600,  264 ),
 	M_SIZE( 720,  265 ),
 	M_SIZE( 800,  266 ),
-	M_SIZE( 1080, 267 ),
+	M_SIZE( 1000,  267 ),
+	M_SIZE( 1200,  268 ),
+	M_SIZE( 1300,  269 ),
+	M_SIZE( 1440,  270 ),
+	M_SIZE( 1080, 271 ),
 	{  
 		.opt   = {.name =  "original", .val = 'i', .has_arg = no_argument}, 
 		.help  = "Uses original size",
@@ -640,7 +680,8 @@ const Element H_mplayer_geom[] = {
 	M_GEO("lc", '5', "-geometry 0%:50%"  ,"Places the player at the left centre"),
 	M_GEO("rc", '8', "-geometry 100%:50%","Places the player at the right centre"),
 	M_GEO("tc", '7', "-geometry 50%:0%"  ,"Places the player at the top centre"),
-	M_GEO("bc", '6', "-geometry 50%:93%" ,"Places the player at the bottom centre")
+	M_GEO("bc", '6', "-geometry 50%:93%" ,"Places the player at the bottom centre"),
+	M_GEO("cc", 281, "-geometry 43%:50%" ,"Places the player at the centre")
 	#undef M_GEO
 };
 

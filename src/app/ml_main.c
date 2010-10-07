@@ -18,7 +18,7 @@ int main (int argc, char  *argv[]) {
 	
 	 if (sql_commands){
 		dprintf("%s\n", sql_commands->str);
-		sql_exec(sql_commands->str, NULL);
+		// sql_exec(sql_commands->str, NULL);
 	}
 	return 0;
 }

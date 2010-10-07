@@ -43,7 +43,7 @@ typedef struct {
 	// Selection  
 	Excludes excludes;
 	bool     newest_only;  // DONE
-	bool     sub_dirs;
+	bool     sub_dirs;     // TODO sub dirs
 	Types    types;        // DONE
 	
 	char     *root_dir;    // DONE
@@ -61,7 +61,7 @@ typedef struct {
 	Status  status;        // DONE
 	bool    write_history; // DONE
 	int     sep;           // DONE
-	bool    safe;
+	bool    safe;          // DONE
 	
 	// Players
 	Player   player;       // DONE
@@ -73,6 +73,10 @@ typedef struct {
 	//Nice Player
 	NiceRepeat nice_repeat;
 	bool       nice_random;
+	
+	bool       regex_print;  // DONE
+	char      *regex_sep;    // DONE
+	
 } MediaArgs;
 
 #endif

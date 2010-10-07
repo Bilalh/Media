@@ -52,7 +52,9 @@ MediaArgs *new_media_args() {
 		.prefix_args.index  = m.postfix_args.index  = 0,
 		
 		.nice_repeat = false,
-		.nice_random = false
+		.nice_random = false,
+		.regex_print = false,
+		.regex_sep   = strdup(".*"),
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -77,7 +79,7 @@ void print_usage(){
 // Parser the options and returns a MediaArgs struct
 MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 
-	// uses these cause memeory error with malloc
+	// using argc these cause memeory error with malloc
 	// mmap error 12 can allocate region 
 	// int argc = *p_argc;
 	#define argc (*p_argc)
@@ -315,6 +317,12 @@ void print_media_args(MediaArgs *ma) {
 	print_args("postfix_args", strcheck(ma->postfix_args));
 	print_args("nice_repeat",  truth(ma->nice_repeat));
 	print_args("nice_random",  truth(ma->nice_random));
+	
+	printf("Regex\n");
+	
+	print_args("regex_print",  truth(ma->regex_print));
+	print_args("regex_sep",    nullcheck(ma->regex_sep));
+
 
 #undef truth
 #undef nullcheck

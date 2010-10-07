@@ -48,8 +48,9 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			break;
 	}
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
-	char *regex = spilt_args(args, argc, ".*?", "(", types, hash_location);
+	char *regex = spilt_args(args, argc, ma->regex_sep, "(", types, hash_location);
 	dprintf("regex: %s\n", regex);
+	if(ma->regex_print) printf("regex: %s\n", regex);
 	
 	// gets dir listing ignoring case and matching the patten
 	int file_num = scandir_b( path, &files,

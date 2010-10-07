@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/media.c</string>
+	<string>src/option_parser.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -15,8 +15,6 @@
 			<string>!(/\.(?!htaccess)[^/]*|[ec]?tags|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -28,13 +26,27 @@
 			<key>filename</key>
 			<string>../../../Library/Application Support/Media/zzhash</string>
 			<key>lastUsed</key>
-			<date>2010-09-17T02:40:19Z</date>
+			<date>2010-10-04T16:15:45Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>205</integer>
+	<integer>213</integer>
 	<key>metaData</key>
 	<dict>
+		<key>../../../Library/Application Support/Media/zzhash</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>5</integer>
+		</dict>
 		<key>build/make_wrapper.sh</key>
 		<dict>
 			<key>caret</key>
@@ -49,24 +61,25 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>src/media.c</key>
+		<key>src/option_parser.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>52</integer>
+				<integer>160</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>65</integer>
+			<integer>136</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/media.c</string>
+		<string>../../../Library/Application Support/Media/zzhash</string>
+		<string>src/option_parser.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -98,7 +111,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -107,14 +120,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>include</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>lib</key>
+				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -125,6 +131,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{522, 99}, {907, 779}}</string>
+	<string>{{586, 104}, {854, 774}}</string>
 </dict>
 </plist>

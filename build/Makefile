@@ -69,7 +69,7 @@ test_%: ../tests/%_test.o ../tests/%_helper.o %_wrapper.o
 	${compile} ${libs} ${flags}  ${^F} -o $@
 
 list_tests:
-	@${PERL} -e 'print join "\n", qw{${tests}}, ""'
+	@${PERL} -e 'print join "\n", qw{${tests} all_tests run_tests}, ""'
 
 # makes main method
 %_wrapper.c:

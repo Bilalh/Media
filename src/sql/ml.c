@@ -13,7 +13,6 @@
 #include <include/xml.def>
 #include <include/string_buffer.h>
 #include <include/string_util.h>
-
 #include <include/debug.h>
 
 typedef struct {
@@ -69,7 +68,8 @@ char *get_search_xml (char *o_name) {
 static char *mal_api (char *url, MLOpts *opts) {
 	CURL *curl;
 	CURLcode res;
-
+	dprintf("url %s\n", url);
+	
 	// Sets up the connection
 	curl_global_init(CURL_GLOBAL_NOTHING);
 	curl = curl_easy_init();
@@ -119,6 +119,7 @@ static char *mal_api (char *url, MLOpts *opts) {
 		
 		// make xml arg 
 		xmlDocDumpFormatMemory(doc, &xmlbuff, &buffersize, 0);
+		
 		char xml[buffersize + 7 + 1];
 		sprintf(xml, "data=%s", (char *) xmlbuff);
 		dprintf("%s\n", xml);
@@ -133,7 +134,7 @@ static char *mal_api (char *url, MLOpts *opts) {
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
 
 		res = curl_easy_perform(curl);
-		dprintf("curl res%i\n", res);
+		dprintf("curl res %i\n", res);
 		
 		curl_easy_cleanup(curl);
 		xmlFree(xmlbuff);
