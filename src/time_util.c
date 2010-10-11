@@ -75,15 +75,12 @@ struct tm *parse_time(char **str, int length) {
 		printf("%s %s:%d %s\n",__FILE__, __func__, __LINE__, "error in pcre_compile");\
 		return tm;
 
-	MAKE_REGEX(at,   "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
-	MAKE_REGEX(date, "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
+	MAKE_REGEX(at,        "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
+	MAKE_REGEX(at_am_pm,  "^at (0?[0-9]|1[0-2])([ap]m)",REGEX_ERR);
 	MAKE_REGEX(ago_after, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
 	MAKE_REGEX(date_time, "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
-	MAKE_REGEX(week_day, "^((?:last|near|next) )?[a-zA-Z]{2}[deinrtu](?:[a-zA-Z]{3,6})?",REGEX_ERR);
-	// MAKE_REGEX(week_day_assume_last, 
-	// 	"^(last|near|next) [a-zA-Z]{2}[deinrtu]([a-zA-Z]{3,6})?"
-	// 	,REGEX_ERR
-	// );
+	MAKE_REGEX(week_day,  "^((?:last|near|next) )?[a-zA-Z]{2}[deinrtu](?:[a-zA-Z]{3,6})?",REGEX_ERR);
+	MAKE_REGEX(date,      "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
 	MAKE_REGEX(n_month, 
 		"^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnprtvy][a-zA-Z]{0,6}( \\d{4})?"
 		,REGEX_ERR
@@ -117,6 +114,26 @@ struct tm *parse_time(char **str, int length) {
 			tm->tm_min  = strtol(&strarr[index+1][h_len+1], NULL, 10);
 			index      += 2;
 			continue; 
+			
+		}else if (*strarr[index] == 'a' &&  STRARR_MATCH_REGEX(at_am_pm)){
+				
+				int am_pm = 0; // diff for am/pm
+				char *am_pm_start = NULL;
+				
+				long hour = strtol(strarr[index+1], &am_pm_start, 10);
+				if (*am_pm_start == 'p' && hour != 12) {
+					am_pm = 12;
+				}else if (*am_pm_start == 'a' && hour == 12){
+					hour = 0;
+				}
+								
+				tm->tm_hour = hour + am_pm;
+				tm->tm_min  = 0;
+				tm->tm_sec  = 0;
+				
+				index++;
+				continue;
+				
 		}else if ( STRARR_MATCH_REGEX(week_day) ){
 			
 			// assume last [day] if none given

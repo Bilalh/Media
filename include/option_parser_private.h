@@ -623,23 +623,24 @@ const Element H_mplayer_sizes[]={
 	#define M_SIZE(_size,_val)                                          \
 	{                                                                   \
 		.opt   = {.name = #_size, .val = _val, .has_arg = no_argument}, \
-		.help  = "Set the with to " #_size,                             \
+		.help  = "Set the width to " #_size,                             \
 		.arg   = "", .neg = false,                                      \
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {                 \
 			string_push(&ma->prefix_args, "-xy " #_size);                      \
 		}                                                               \
 	}
 	
-	M_SIZE( 480,  263 ),
-	M_SIZE( 560,  '2' ),
-	M_SIZE( 600,  264 ),
-	M_SIZE( 720,  265 ),
-	M_SIZE( 800,  266 ),
-	M_SIZE( 1000,  267 ),
-	M_SIZE( 1200,  268 ),
-	M_SIZE( 1300,  269 ),
-	M_SIZE( 1440,  270 ),
-	M_SIZE( 1080, 271 ),
+	M_SIZE( 480,   263 ),
+	M_SIZE( 560,   '2' ),
+	M_SIZE( 600,   264 ),
+	M_SIZE( 720,   265 ),
+	M_SIZE( 800,   266 ),
+	M_SIZE( 900,   267 ),
+	M_SIZE( 1000,  268 ),
+	M_SIZE( 1200,  270 ),
+	M_SIZE( 1300,  271 ),
+	M_SIZE( 1440,  272 ),
+	M_SIZE( 1920,  273 ),
 	{  
 		.opt   = {.name =  "original", .val = 'i', .has_arg = no_argument}, 
 		.help  = "Uses original size",

@@ -262,6 +262,22 @@ Section("Days"){
 		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
 
 	})
+	TimeTest("near sun", {
+		tm->tm_mday += day_diff(tm->tm_wday, SUNDAY);
+
+	})
+	TimeTest("next Wed", {
+		tm->tm_mday += day_future(tm->tm_wday, WEDNESDAY);
+
+	})
+	TimeTest("last Friday", {
+		tm->tm_mday += day_last(tm->tm_wday, FRIDAY);
+
+	})
+	TimeTest("last Sun", {
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
+
+	})
 }TimeEndSection
 
 
@@ -274,7 +290,74 @@ Section("day -> last day"){
 		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
 
 	})
+	TimeTest("Monday", {
+		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
+
+	})
+	TimeTest("tue", {
+		tm->tm_mday += day_last(tm->tm_wday, TUESDAY);
+
+	})
+	TimeTest("Wed", {
+		tm->tm_mday += day_last(tm->tm_wday, WEDNESDAY);
+
+	})
+	TimeTest("Thursday", {
+		tm->tm_mday += day_last(tm->tm_wday, THURSDAY);
+
+	})
+	TimeTest("fri", {
+		tm->tm_mday += day_last(tm->tm_wday, FRIDAY);
+
+	})
+	TimeTest("Sat", {
+		tm->tm_mday += day_last(tm->tm_wday, SATURDAY);
+
+	})
+	
 }TimeEndSection
+
+
+Section("at am/pm"){
+	TimeTest("at 8pm",{
+		tm->tm_hour = 20;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 5pm",{
+		tm->tm_hour = 17;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 1pm",{
+		tm->tm_hour = 13;
+		tm->tm_min  = 0;
+	})
+
+	TimeTest("at 8am",{
+		tm->tm_hour = 8;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 2am",{
+		tm->tm_hour = 2;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 10am",{
+		tm->tm_hour = 10;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 12pm",{
+		tm->tm_hour = 12;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 12am",{
+		tm->tm_hour = 0;
+		tm->tm_min  = 0;
+	})
+	TimeTest("at 0am",{
+		tm->tm_hour = 0;
+		tm->tm_min  = 0;
+	})
+}TimeEndSection
+
 
 };
 
