@@ -13,7 +13,6 @@
 #include <include/xml.def>
 #include <include/string_buffer.h>
 #include <include/string_util.h>
-
 #include <include/debug.h>
 
 typedef struct {
@@ -169,6 +168,11 @@ char *delete_anime (int id) {
 }
 
 void get_id_and_total(char *xml, MLOpts *opts) {
+	if (xml == NULL || *xml == '\0'){
+		dprintf("%s\n", "XMl null or empty");
+		return;
+	}
+	
 	bool done_id = false, done_total = false;
 	if(strlen(opts->total) > 0) done_total = true;
 	if(strlen(opts->id)    > 0) done_id = true;
@@ -206,8 +210,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 		   );
 
 	dprintf("%s\n", "after buf spf ");
-	
-	
+	//FIXME seg fault on getting no vaild data
 	xpathObj = xmlXPathEvalExpression(XC buf, xpathCtx);
 	dprintf("%s\n", "after xpath eval ");
 	if(xpathObj == NULL) {
@@ -274,7 +277,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	const char *date_a        =  argv[7];
 	const char *score_arg     =  argv[8];
 	
-	dprintf("%s\n", "start update_new");
+	dprintf("%s title: %s\n", "start update_new", title_arg);
 	
 	// sets to zero
 	MLOpts opts = {};

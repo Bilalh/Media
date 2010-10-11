@@ -1,4 +1,3 @@
-//TODO sub dirs
 
 #include <fts.h>
 #include <string.h>
