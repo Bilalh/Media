@@ -75,8 +75,8 @@ struct tm *parse_time(char **str, int length) {
 		printf("%s %s:%d %s\n",__FILE__, __func__, __LINE__, "error in pcre_compile");\
 		return tm;
 
-	MAKE_REGEX(at,        "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
-	MAKE_REGEX(at_am_pm,  "^at (0?[0-9]|1[0-2])([ap]m)",REGEX_ERR);
+	MAKE_REGEX(at,        "^(at )?([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
+	MAKE_REGEX(at_am_pm,  "^(at )?(0?[0-9]|1[0-2])(:[0-5]?[0-9])?([ap]m)",REGEX_ERR);
 	MAKE_REGEX(ago_after, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
 	MAKE_REGEX(date_time, "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
 	MAKE_REGEX(week_day,  "^((?:last|near|next) )?[a-zA-Z]{2}[deinrtu](?:[a-zA-Z]{3,6})?",REGEX_ERR);
@@ -91,48 +91,71 @@ struct tm *parse_time(char **str, int length) {
 	while (index < length){
 		int index_len = strlen(strarr[index]);
 		
-		/*printf("\n\t%s\n%10s %i  %10s %i  %10s %i\n%10s %i  %10s %i  %10s %i\n",  
-			strarr[index],
-			"at",        STRARR_MATCH_REGEX(at),
-			"date",      STRARR_MATCH_REGEX(date),
-			"ago_after", STRARR_MATCH_REGEX(ago_after), 
-			"date_time", STRARR_MATCH_REGEX(date_time), 
-			"week_day",  STRARR_MATCH_REGEX(week_day),
-			"n_month",   STRARR_MATCH_REGEX(n_month)
-		);    */
+		// Shows which regex the string matches at the current index
 		
-		if( *strarr[index] == 'a' && STRARR_MATCH_REGEX(at)){
-			char s_hour[3]; 
-			
-			// separates  the hour part
-			int h_len = 2;
-			if (strarr[index+1][1] == ':') h_len--;
-			strncpy(s_hour,strarr[index+1],h_len);
-			s_hour[h_len] ='\0';
-			
-			tm->tm_hour = strtol(s_hour, NULL, 10);
-			tm->tm_min  = strtol(&strarr[index+1][h_len+1], NULL, 10);
-			index      += 2;
-			continue; 
-			
-		}else if (*strarr[index] == 'a' &&  STRARR_MATCH_REGEX(at_am_pm)){
-				
+		// printf("\n\t%s\n%10s %i  %10s %i  %10s %i\n%10s %i  %10s %i  %10s %i\n",  
+		// 	strarr[index],
+		// 	"at",        STRARR_MATCH_REGEX(at),
+		// 	"at_am_pm",  STRARR_MATCH_REGEX(at_am_pm),
+		// 	"date",      STRARR_MATCH_REGEX(date),
+		// 	"ago_after", STRARR_MATCH_REGEX(ago_after), 
+		// 	"date_time", STRARR_MATCH_REGEX(date_time), 
+		// 	"week_day",  STRARR_MATCH_REGEX(week_day),
+		// 	"n_month",   STRARR_MATCH_REGEX(n_month)
+		// );    
+		// does at npm, nam with or withou the at
+		if (STRARR_MATCH_REGEX(at_am_pm)){
+				// printf("%s\n", "dd");
 				int am_pm = 0; // diff for am/pm
 				char *am_pm_start = NULL;
+				int has_at = 0;
+				if (strarr[index][0] == 'a') has_at = 1;
+				// printf("has_at %d\n", has_at);
 				
-				long hour = strtol(strarr[index+1], &am_pm_start, 10);
+				
+				long hour = strtol(strarr[index+has_at], &am_pm_start, 10);
+				long min  = 0;
+				
+				// printf("%c\n", *am_pm_start);
+				
+				if (*am_pm_start == ':' ){
+					int offset = am_pm_start - strarr[index+has_at];
+					// printf("offset %c\n", strarr[index+has_at][offset+1]);
+					min    = strtol(&strarr[index+has_at][offset+1], &am_pm_start, 10);
+					// printf("ampm %c\n", *am_pm_start);
+					// printf("min %d\n", min);
+					// printf("hour %d\n", hour);
+				}
+				
 				if (*am_pm_start == 'p' && hour != 12) {
 					am_pm = 12;
 				}else if (*am_pm_start == 'a' && hour == 12){
 					hour = 0;
 				}
-								
+				
 				tm->tm_hour = hour + am_pm;
-				tm->tm_min  = 0;
+				tm->tm_min  = min;
 				tm->tm_sec  = 0;
 				
 				index++;
 				continue;
+		
+		// does at nn:mm with or without the at
+		}else if(STRARR_MATCH_REGEX(at)){
+			int has_at = 0;
+			if (strarr[index][0] == 'a') has_at = 1;
+			char s_hour[3]; 
+
+			// separates  the hour part
+			int h_len = 2;
+			if (strarr[index+has_at][1] == ':') h_len--;
+			strncpy(s_hour,strarr[index+has_at],h_len);
+			s_hour[h_len] ='\0';
+
+			tm->tm_hour = strtol(s_hour, NULL, 10);
+			tm->tm_min  = strtol(&strarr[index+has_at][h_len+1], NULL, 10);
+			index      += 1 + has_at;
+			continue;
 				
 		}else if ( STRARR_MATCH_REGEX(week_day) ){
 			

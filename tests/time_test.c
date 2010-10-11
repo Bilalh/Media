@@ -317,7 +317,6 @@ Section("day -> last day"){
 	
 }TimeEndSection
 
-
 Section("at am/pm"){
 	TimeTest("at 8pm",{
 		tm->tm_hour = 20;
@@ -355,6 +354,73 @@ Section("at am/pm"){
 	TimeTest("at 0am",{
 		tm->tm_hour = 0;
 		tm->tm_min  = 0;
+	})
+}TimeEndSection
+
+
+
+Section("at am/pm with minutes"){
+	TimeTest("at 10:30pm",{
+		tm->tm_hour = 22;
+		tm->tm_min  = 30;
+	})
+	TimeTest("at 11:43pm",{
+		tm->tm_hour = 23;
+		tm->tm_min  = 43;
+	})
+	TimeTest("at 1:1pm",{
+		tm->tm_hour = 13;
+		tm->tm_min  = 1;
+	})
+	TimeTest("at 12:00pm",{
+		tm->tm_hour = 12;
+		tm->tm_min  = 00;
+	})
+	TimeTest("at 12:30am",{
+		tm->tm_hour = 0;
+		tm->tm_min  = 30;
+	})
+	TimeTest("at 11:3am",{
+		tm->tm_hour = 11;
+		tm->tm_min  = 3;
+	})
+	TimeTest("at 6:54am",{
+		tm->tm_hour = 6;
+		tm->tm_min  = 54;
+	})
+	TimeTest("at 1:21am",{
+		tm->tm_hour = 1;
+		tm->tm_min  = 21;
+	})
+}TimeEndSection
+
+
+
+Section("last with with the at"){
+	TimeTest("last sun at 8pm",{
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
+		tm->tm_hour = 20;
+		tm->tm_min  = 0;
+	})
+	TimeTest("last sun 10:30pm",{
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
+		tm->tm_hour = 22;
+		tm->tm_min  = 30;
+	})
+	TimeTest("last sun 22:30",{
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
+		tm->tm_hour = 22;
+		tm->tm_min  = 30;
+	})
+	TimeTest("mon 9:30pm",{
+		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
+		tm->tm_hour = 21;
+		tm->tm_min  = 30;
+	})
+	TimeTest("mon 21:30",{
+		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
+		tm->tm_hour = 21;
+		tm->tm_min  = 30;
 	})
 }TimeEndSection
 
