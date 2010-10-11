@@ -107,7 +107,6 @@ Section("Relative time with at nn:nn"){
 
 Section("Invalid inputs"){
 	TimeTest("37 mimuts ago" ,{})
-	TimeTest("2 houss after"  ,{})
 	TimeTest("1 dps ago"     ,{})
 	TimeTest("1 dax now"    ,{})
 	TimeTest("five days ago" ,{})
@@ -261,6 +260,18 @@ Section("Days"){
 	})
 	TimeTest("last monday", {
 		tm->tm_mday += day_last(tm->tm_wday, MONDAY);
+
+	})
+}TimeEndSection
+
+
+Section("day -> last day"){
+	TimeTest("last sunday", {
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
+
+	})
+	TimeTest("sunday", {
+		tm->tm_mday += day_last(tm->tm_wday, SUNDAY);
 
 	})
 }TimeEndSection

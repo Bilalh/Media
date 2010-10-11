@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/option_parser.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,11 +24,11 @@
 			<key>filename</key>
 			<string>../../../Library/Application Support/Media/zzhash</string>
 			<key>lastUsed</key>
-			<date>2010-10-04T16:15:45Z</date>
+			<date>2010-10-10T01:31:37Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>213</integer>
+	<integer>183</integer>
 	<key>metaData</key>
 	<dict>
 		<key>../../../Library/Application Support/Media/zzhash</key>
@@ -38,14 +36,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>135</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>98</integer>
 		</dict>
 		<key>build/make_wrapper.sh</key>
 		<dict>
@@ -61,26 +59,7 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>src/option_parser.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>160</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>136</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>../../../Library/Application Support/Media/zzhash</string>
-		<string>src/option_parser.c</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -111,7 +90,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -131,6 +110,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{586, 104}, {854, 774}}</string>
+	<string>{{577, 104}, {854, 774}}</string>
 </dict>
 </plist>

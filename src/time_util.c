@@ -72,17 +72,22 @@ struct tm *parse_time(char **str, int length) {
 	strl[str_index] = '\0';
 	
 	#define REGEX_ERR \
-		printf("%s\n", "error in pcre_compile");\
+		printf("%s %s:%d %s\n",__FILE__, __func__, __LINE__, "error in pcre_compile");\
 		return tm;
 
 	MAKE_REGEX(at,   "^at ([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])",REGEX_ERR);
 	MAKE_REGEX(date, "^\\d{4}-\\d{2}-\\d{2}",REGEX_ERR);
 	MAKE_REGEX(ago_after, "^(\\d+ (min(ute)?|hour|day)s? )+(ago|after)",REGEX_ERR);
 	MAKE_REGEX(date_time, "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",REGEX_ERR);
-	MAKE_REGEX(week_day, "^(last|near|next) [a-zA-Z]{2}[deinrtu]([a-zA-Z]{3,6})?",REGEX_ERR);
-	MAKE_REGEX(n_month  , 
-			"^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnprtvy][a-zA-Z]{0,6}( \\d{4})?"
-		,REGEX_ERR);
+	MAKE_REGEX(week_day, "^((?:last|near|next) )?[a-zA-Z]{2}[deinrtu](?:[a-zA-Z]{3,6})?",REGEX_ERR);
+	// MAKE_REGEX(week_day_assume_last, 
+	// 	"^(last|near|next) [a-zA-Z]{2}[deinrtu]([a-zA-Z]{3,6})?"
+	// 	,REGEX_ERR
+	// );
+	MAKE_REGEX(n_month, 
+		"^\\d{1,2}(th|st|nd|rd) [a-zA-Z]{2}[bcglnprtvy][a-zA-Z]{0,6}( \\d{4})?"
+		,REGEX_ERR
+	);
 
 	#define STRARR_MATCH_REGEX(regex) (MATCH_REGEX(regex, strarr[index], index_len) >= 0)
 
@@ -114,11 +119,16 @@ struct tm *parse_time(char **str, int length) {
 			continue; 
 		}else if ( STRARR_MATCH_REGEX(week_day) ){
 			
+			// assume last [day] if none given
+			// 1 if false  0 if true
+			int assume_last =  REGEX_RESULT(week_day) -1;
+			
 			int day = MONDAY; 
 			int (*day_func)(int,int) = day_last;
 			
 			// finds the day
-			switch( strarr[index+1][2] ){
+			
+			switch( strarr[index+ assume_last][2] ){
 				case 'e': day = TUESDAY; 
 				break;
 				case 'd': day = WEDNESDAY; 
@@ -130,21 +140,25 @@ struct tm *parse_time(char **str, int length) {
 				case 't': day = SATURDAY; 
 				break;
 				case 'n':   
-					if ( strarr[index+1][1] == 'u' ) 
+					if ( strarr[index+assume_last][1] == 'u' ) 
 						day = SUNDAY; 
 				break;
 			}
 			
-			// choses the funtion to use 
-			switch( strarr[index][2] ){
-				case 'a': day_func = day_diff; // TODO day_near
-				break;             
-				case 'x': day_func = day_future;
-				break;
- 			}
-			tm->tm_mday += day_func(tm->tm_wday, day);
 			
-			index++;
+			if (assume_last == 1){
+				// choses the funtion to use 
+				switch( strarr[index][2] ){
+					case 'a': day_func = day_diff; // TODO day_near
+					break;             
+					case 'x': day_func = day_future;
+					break;
+	 			}
+			}
+			
+			tm->tm_mday += day_func(tm->tm_wday, day);
+			// move along 2 if assume otherwise 1 
+			index+=assume_last+1;
 			continue;
 		        
 		// saves using regex if it does not start with a digit5	
@@ -179,6 +193,7 @@ struct tm *parse_time(char **str, int length) {
 				strptime(strarr[index], "%F", tm);
 				index++;
 				continue;
+				
 			}else if( STRARR_MATCH_REGEX(n_month) ){
 				// parses the month
 				strptime(strarr[index+1], "%b", tm);
@@ -194,6 +209,7 @@ struct tm *parse_time(char **str, int length) {
 					
 				index += REGEX_RESULT(n_month);
 				continue;
+				
 			}
 		}
 		

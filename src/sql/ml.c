@@ -13,6 +13,7 @@
 #include <include/xml.def>
 #include <include/string_buffer.h>
 #include <include/string_util.h>
+
 #include <include/debug.h>
 
 typedef struct {
@@ -208,6 +209,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	
 	xpathObj = xmlXPathEvalExpression(XC buf, xpathCtx);
+	dprintf("%s\n", "after xpath eval ");
 	if(xpathObj == NULL) {
 		fprintf(stderr, "Error: unable to evaluate xpath expression \"...\"\n");
 		xmlXPathFreeContext(xpathCtx);
@@ -273,6 +275,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	const char *score_arg     =  argv[8];
 	
 	dprintf("%s\n", "start update_new");
+	
 	// sets to zero
 	MLOpts opts = {};
 

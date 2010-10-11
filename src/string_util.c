@@ -378,8 +378,8 @@ char *str_lower (char *s, size_t length) {
 }
 
 
-// not used
-// CHECK broken?
+// only used in opt private
+// CHECK broken in some cases? only used in opt private
 int match (const char *string, char *pattern) {
 	int    status;
 	regex_t    re;

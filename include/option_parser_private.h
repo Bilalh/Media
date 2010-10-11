@@ -2,18 +2,18 @@
 
 // uses val s > 256 && < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
-#define LONG_OPT_END_VALUE LONG_OPT_START_VALUE + 51
+#define LONG_OPT_END_VALUE   LONG_OPT_START_VALUE + 51
 
-#define MAX_OPT_BLOCKS LONG_OPT_END_VALUE - 1 + 128
+#define MAX_OPT_BLOCKS       LONG_OPT_END_VALUE - 1 + 128
 
-#define ASCII 128
-#define VAILD_ASCII(ch) ch < ASCII && ch > 0 
+#define ASCII        128
+#define VAILD_ASCII(ch)                 (ch < ASCII && ch > 0)
 
-#define TRUTH_VALUE(ch)  ((ch < ASCII) ? true : false)
-#define TRUTH_VALUE_l(ch)  ((ch < LONG_OPT_END_VALUE) ? true : false)
-#define TRUTH_ARG(ch,istrue, isfalse)  ((ch < ASCII) ? istrue : isfalse)
-#define TRUTH_STATE(ch) (ch < ASCII)
-#define TRUTH_STATE_l(ch) (ch < LONG_OPT_END_VALUE)
+#define TRUTH_VALUE(ch)                 ((ch < ASCII) ? true : false)
+#define TRUTH_VALUE_l(ch)               ((ch < LONG_OPT_END_VALUE) ? true : false)
+#define TRUTH_ARG(ch,istrue, isfalse)   ((ch < ASCII) ? istrue : isfalse)
+#define TRUTH_STATE(ch)                 (ch < ASCII)
+#define TRUTH_STATE_l(ch)               (ch < LONG_OPT_END_VALUE)
 
 //LATER use fprintf stderr 
 
@@ -440,7 +440,7 @@ const Element H_other[] ={
 	},
 	{  
 		.opt   = {.name =  "regex_separator", .val = ',', .has_arg = required_argument}, 
-		.help  = "Set the separator to use between args default",
+		.help  = "Set the separator to use between args default: .*",
 		.arg   = "sep", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if( ! arg){
@@ -471,9 +471,9 @@ const Element H_mplayer_extra[] = {
 		.help  = "Plays from chapter num",
 		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			int a, res; char temp[1];
-			res = sscanf(arg, "%8i%1s",&a,temp);
-			if (res != 1){
+			int a, b,res; char temp[1];
+			res = sscanf(arg, "%8d-%8d%1s",&a,&b, temp);
+			if (res > 2){
 				printf("Invalid chapter number \n");
 				exit(1);
 			}else{
@@ -647,6 +647,7 @@ const Element H_mplayer_sizes[]={
 			string_push(&ma->prefix_args, "-xy 1");
 		}
 	},
+	#undef M_SIZE
 };
 
 const Element H_mplayer_geom[] = {
@@ -656,7 +657,7 @@ const Element H_mplayer_geom[] = {
 		.arg   = "x:y", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			//LATER stricter geometry?
-			if (match(arg,"^([0-9][0-9]?|100)%?:([0-9][0-9]?|100)%?$") == 0){
+				if (match(arg,"^([0-9][0-9]?|100)%?:([0-9][0-9]?|100)%?$") == 0){
 				printf("Invalid geometry \n");
 				exit(1);
 			}
