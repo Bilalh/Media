@@ -99,7 +99,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				sqlite3_bind_text(statement_si_s, 2, s, -1, SQLITE_TRANSIENT);
 				sqlite3_bind_int(statement_si_s, 1, 1);
 				result = sqlite3_step(statement_si_s);
-				printf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				dprintf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
