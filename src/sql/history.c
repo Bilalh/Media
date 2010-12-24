@@ -241,6 +241,9 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 void print_ongoing(){
 	char *buff = "Select * From OngoingSeries";
 	sql_exec(buff, print_ongoing_callback);
+	puts("");
+	buff = "Select * From RewatchingOngoingSeries";
+	sql_exec(buff, print_ongoing_callback);
 }
 
 // Prints the data from the  print_ongoing functions
