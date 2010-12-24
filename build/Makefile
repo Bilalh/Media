@@ -52,9 +52,11 @@ ${objs} ${examples}:
 list_objs:
 	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
 
+list_examples:
+	@${PERL} -e 'print join "\n", qw{${examples}}, ""'
+
 all:      ${objs}
 examples: ${examples}
-
 
                            ### Tests ###
 
@@ -86,3 +88,6 @@ clean:
                                        
 oclean:                                
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} *~
+
+help: list_objs list_tests 
+	@${PERL} -e 'print join "\n", qw{dist to_bin}, ""'

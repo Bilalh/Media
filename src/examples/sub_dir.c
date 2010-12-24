@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
 				files[f_i++] = strdup(node->fts_path);
 				if (f_i == f_len){
 					f_len *= 2;
-					files = realloc(files, sizeof(char*)* f_len);
+					files = realloc(files, sizeof(char*) * f_len);
 				}
         }
     }
@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
     }
 	
 	int i=0;
-	printf("%d %d\n",f_len, f_i );
+	printf("f_len: %d f_i: %d\n",f_len, f_i );
 	for(i = 0; i < f_i; ++i){
 		printf("%d %s\n",i, files[i]);
 	}

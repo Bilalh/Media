@@ -59,11 +59,12 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		int res = MATCH_REGEX(at, s->d_name, strlen(s->d_name));
 		if (ma->safe && res > 0 ){
 			MAKE_REGEX_OPTS(safe_r, 
-				"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|"
-				"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|fantasy|To ?aru Majutsu no Index|Princess |"
-				"Nogizaka Haruka| eng|Sora no Woto Op 2|Saki ed|moon|Myself;|Kiddy Girl-and|Turn a moon|"
-				"Rave|Dragonaut The Resonance|Shining Tears|Sakuranbo K|Tales of Symphonia  lyn|"
-				"Gundam Seed Destiny|Shugo Chara",
+				"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|Rave|"
+				"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|To ?aru Majutsu no Index|Princess |"
+				"Nogizaka Haruka| eng|So ?ra ?no ?Wo ?to Op 2|Saki ed|moon|Myself;|Shining Tears|"
+				"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|Starry Heavens|"
+				"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Azumanga|"
+				"fantasy|Kidou Tenshi",
 				PCRE_CASELESS,);
 			res = MATCH_REGEX(safe_r, s->d_name, strlen(s->d_name));
 			res = res < 0 ? true : false;

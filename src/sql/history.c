@@ -127,7 +127,7 @@ void sql_exec(char *command, SqlCallback callback ) {
 		sqlite3_close(db);
 		exit(1);
 	}
-
+	
 	rc = sqlite3_exec(db, command, callback, 0, &zErrMsg);
 	if( rc != SQLITE_OK ) {
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -135,56 +135,6 @@ void sql_exec(char *command, SqlCallback callback ) {
 	}
 
 	sqlite3_close(db);
-}
-
-void print_latest(char *num){
-	
-	char buff[173];
-	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
-		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime') "
-		"AND Skip == 0 AND Finished == 0",  
-		num
-	);
-	sql_exec(buff, print_latest_callback);
-}
-
-void print_latest_with_finished(char *num){
-	char buff[155];
-	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
-		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime') "
-		"AND Skip == 0",  
-		num
-	);
-	sql_exec(buff, print_latest_callback);
-}
-
-void print_latest_with_finished_and_skipped(char *num){
-	char buff[141];
-	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished FROM SeriesInfo "
-		"WHERE strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')",  
-		num
-	);
-	sql_exec(buff, print_latest_callback);
-}
-
-static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
-
-	struct tm  tm = {}; char buff[28];
-	strptime(argv[3], "%F %H:%M:%S", &tm);
-	strftime(buff, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
-	
-	// prints the data 
-	if(argv[2]){
-		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1],argv[2], buff);
-	}else if(*argv[3] == '1'){
-		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1], argv[1], buff);
-	}else{
-		printf("%-36s %3s/%-3s %17s\n", argv[0], argv[1], "?", buff);
-	}
-	return 0;
 }
 
 void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
@@ -211,6 +161,80 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 	sqlite3_close(db);
 }
 
+void print_latest(char *num){
+	
+	char buff[329 + strlen(num)*2];
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
+		"	WHERE("
+		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		"		AND Skip = 0 AND Finished = 0"
+		"	)OR("
+		"		Rewatching = 1 AND"
+		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
+		"	)",
+		num, num
+	);
+	sql_exec(buff, print_latest_callback);
+}
 
+void print_latest_with_finished(char *num){
+	
+	char buff[332 + strlen(num)*2]; // few extra 332? 
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
+		"	WHERE("
+		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		"		AND (Finished = 1 OR Skip = 0)"
+		"	)OR("
+		"		Rewatching = 1 AND"
+		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
+		"	)",
+		num, num
+	);
+	sql_exec(buff, print_latest_callback);
+}
+
+void print_latest_with_finished_and_skipped(char *num){
+	char buff[298 + strlen(num)*2];
+	sprintf(buff, 
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
+		"	WHERE("
+		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		"	)OR("
+		"		Rewatching = 1 AND"
+		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
+		"	)",
+		num, num
+	);
+	sql_exec(buff, print_latest_callback);
+}
+
+// Prints the data from the  print_latest functions
+static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
+	
+	const char* title = argv[0];
+	const char* total = argv[2] ? argv[2] : "?";
+	char *current, *date_data;
+	
+	// Set the pointer to the data argv[5] tells if we are rewatching 
+	if ( *argv[5] == '0' ){
+		current   = argv[1];
+		date_data = argv[3];
+	}else{
+		current   = argv[6];
+		date_data = argv[3];
+	}
+	
+	// Makes the date
+	struct tm tm = {}; char date[28];
+	strptime(date_data, "%F %H:%M:%S", &tm);
+	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
+	
+	// prints the data 
+	printf("%-42s %3s/%-3s %17s\n", title, current ,total, date);
+
+	return 0;
+}
 
 

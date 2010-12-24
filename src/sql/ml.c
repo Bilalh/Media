@@ -420,6 +420,7 @@ static void update_end_date_fin(MLOpts *opts, const char *date){
 	);
 }
 
+//FIXME escape names
 // makes sql statements
 static void update_updated(MLOpts *opts){
 	const int len = 54 + strlen(opts->title) + 1;
