@@ -10,7 +10,8 @@
 #include <include/debug.h>
 
 
-static int print_latest_callback(void *unused, int argc, char **argv, char **columns);
+static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
+static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
 
 bool updateHistory(char **filenames, Status status, int sep) {
 	sqlite3 *db;
@@ -237,4 +238,26 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	return 0;
 }
 
+void print_ongoing(){
+	char *buff = "Select * From OngoingSeries";
+	sql_exec(buff, print_ongoing_callback);
+}
+
+// Prints the data from the  print_ongoing functions
+static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns){
+	
+	const char* title   = argv[0];
+	const char *current = argv[1];
+	const char* total   = argv[2] ? argv[2] : "?";
+	
+	// Makes the date
+	struct tm tm = {}; char date[28];
+	strptime(argv[3], "%F %H:%M:%S", &tm);
+	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
+	
+	// prints the data 
+	printf("%-42s %3s/%-3s %17s\n", title, current ,total, date);
+
+	return 0;
+}
 
