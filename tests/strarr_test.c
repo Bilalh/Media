@@ -26,19 +26,19 @@ StrarrSetup
 Sections {
 Section("Basic Features"){
 	StrarrTest("a b", {
-		actual   = string_array_new(16);
+		actual   = string_array_new(2);
 		string_array_add(actual, "a");
 		string_array_add(actual, "b");
 		
 	})
 	StrarrTest("a b c",{
-		actual   = string_array_new(16);
+		actual   = string_array_new(2);
 		string_array_add(actual, "a");
 		string_array_add(actual, "b");
 		string_array_add(actual, "c");
 	})
 	StrarrTest("das dasd sajfdsiof jdsiof dsfoijds fiodsj fods fjdsoifj dsoig ffdsg fd",{
-		actual   = string_array_new(16);
+		actual   = string_array_new(3);
 		string_array_add(actual, "das");
 		string_array_add(actual, "dasd");
 		string_array_add(actual, "sajfdsiof");

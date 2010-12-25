@@ -8,13 +8,11 @@
 
 #include <include/string_util.h>
 #include <include/time_regex.h>
+#include <include/string_array.h>
 
 
 MAKE_REGEX_VARS(at);
-
-char **string_array;
-int current;
-int  length;
+StringArray *file_name_buffer;
 
 static int ftw_callback(const char *fpath, const struct stat *sb, int typeflag) {
 	
@@ -23,13 +21,8 @@ static int ftw_callback(const char *fpath, const struct stat *sb, int typeflag) 
     if (typeflag == FTW_F) {
 		int res = MATCH_REGEX(at, fpath, strlen(fpath));
 		if (res >0)  {
-			
-			if (current == length){
-				length *=2;
-				string_array = realloc(string_array, sizeof(char*) *length);
-			}
-			
-			string_array[current++] =  strdup(fpath); 
+			printf("%s\n", fpath );
+			string_array_add(file_name_buffer, strdup(fpath));
 			
 		}
     }
@@ -40,10 +33,12 @@ static int ftw_callback(const char *fpath, const struct stat *sb, int typeflag) 
 int main() {
 	char *regex  = "(.).*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$";
 	MAKE_REGEX_PREMADE_VARS(at, regex,PCRE_CASELESS)
-	string_array = malloc(sizeof(char*) *16);
-	current      = 0;
-	length       = 16;
+	file_name_buffer = string_array_new(160);
 	
-    ftw("/Users/bilalh/Movies/.Movie/OpeningP", ftw_callback, 10);
+	for(int i = 0; i < file_name_buffer->index; ++i){
+		printf("%s\n", file_name_buffer->arr[i]);
+	}
+	
+    ftw("/Users/bilalh/Movies/.Movie/. アニメ/divx", ftw_callback, 10);
 	return 0;
 }

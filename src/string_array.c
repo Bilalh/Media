@@ -23,7 +23,7 @@ void string_array_add(StringArray *sa, char *str){
 	
 	if (sa->index == sa->length){
 		sa->length *=2;
-		sa = realloc(sa, sizeof(char*) * sa->length);
+		sa->arr = realloc(sa->arr, sizeof(char*) * sa->length);
 	}
 	
 	sa->arr[sa->index++] = strdup(str);

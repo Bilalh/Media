@@ -42,7 +42,7 @@ shash_req  = app/hash_lookup.o ${strutil_req}
 optt_req   = examples/optm.o ${opt_req}
 hashe2_req = examples/hashe2.o
 
-subdir_test_req = examples/sub_dir2.o  ${strutil_req}
+subdir_test_req = examples/sub_dir2.o  ${strutil_req} ${strarr_req}
 
                            ### Objects rules ###
 
