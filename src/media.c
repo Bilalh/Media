@@ -14,6 +14,7 @@
 #include <include/string_util.h>
 #include <include/time_regex.h>
 #include <include/debug.h>
+#include <include/sub_dirs.h>
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
@@ -21,7 +22,6 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 #define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
-//TODO sub dirs 
 void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	if (argc == 0) {
@@ -29,7 +29,6 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		exit(2);
 	}
 	
-	struct dirent **files;
 	#ifndef DEBUG
 	for(int i = 0; i < argc; ++i){
 		dprintf("args[%i]%s\n",i, args[i]);
@@ -52,61 +51,44 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	dprintf("regex: %s\n", regex);
 	if(ma->regex_print) printf("regex: %s\n", regex);
 	
-	// gets dir listing ignoring case and matching the patten
-	int file_num = scandir_b( path, &files,
-	^ (struct dirent * s) {
-		MAKE_REGEX_OPTS(at, regex,PCRE_CASELESS,);
-		int res = MATCH_REGEX(at, s->d_name, strlen(s->d_name));
-		if (ma->safe && res > 0 ){
-			MAKE_REGEX_OPTS(safe_r, 
-				"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|Rave|"
-				"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|To ?aru Majutsu no Index|Princess |"
-				"Nogizaka Haruka| eng|So ?ra ?no ?Wo ?to Op 2|Saki ed|moon|Myself;|Shining Tears|"
-				"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|Starry Heavens|"
-				"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Azumanga|"
-				"fantasy|Kidou Tenshi",
-				PCRE_CASELESS,);
-			res = MATCH_REGEX(safe_r, s->d_name, strlen(s->d_name));
-			res = res < 0 ? true : false;
-		}
-		return res > 0;
-	},
-	^ (const void * a, const void * b) {
-		return strcasecmp( DIRENT(a)->d_name, DIRENT(b)->d_name);
+	StringsPlusMeta* (*get_files_func)(char *dir, char *regex, bool safe);
+	if (true || ma->sub_dirs){
+		get_files_func = get_files_recursive;
+	}else{
+		get_files_func = get_files;
 	}
-	);
-
-	if (file_num == 0) {
-		printf("%s\n", "NO files found");
+	
+	StringsPlusMeta *sta = get_files_func(path, regex, ma->safe);
+	
+	if (sta == NULL){
+		puts("NO files found");
 		exit(EXIT_FAILURE);
 	}
-
-	char *sa[file_num+1];
-	int total_length = 0;
-	for(int i = 0 ; i < file_num; ++i) {
-		sa[i] = files[i]->d_name;
-		total_length += strlen(sa[i]);
-	}
-	sa[file_num] = NULL;
 	
-	char **s_arr = sa;
+	// so that the code does not have to be changed
+	char **s_arr = sta->str_arr;
+	int file_num = sta->length;
+	int total_length = sta->total_length;
+	
 	if(ma->newest_only){
-		//CHECK recalc length ? save mem, cost time
-		s_arr = newest_only(sa, &file_num, false, true);
+		s_arr = newest_only(s_arr, &file_num, true, true);
 		file_num--;
 	}
 	
-	if(ma->pl_shuffle) shuffle((void**) s_arr, file_num);
+	if(ma->pl_shuffle) {
+		shuffle((void**) s_arr, file_num);
+	}
 	
 	if(ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
-			printf("%s\n",s_arr[i]);
+			printf("%s\n",basename(s_arr[i]));
 		}
 	}
 
 	if(ma->write_history)           updateHistory(s_arr, ma->status, ma->sep);
 	if(ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
 	
+	// Forks to allow the progam to set the options of the player e.g. afloat
 	pid_t pid =  fork();
 	if ( pid != 0 ){
 		switch (ma->player){
@@ -129,7 +111,6 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		" -e 'tell application \"mplayer-pigoz.mpBinaries\" to activate' " \
 		" -e 'tell application \"Afloat Scripting\" to set"                \
 		" topmost window kept afloat to true without badge shown'"         
-		
 		
 		#define all_spaces_manual \
 		" -e 'tell application \"System Events\"'"                         \

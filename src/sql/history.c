@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libgen.h>
 
 #include <sqlite3.h>
 #include <libxml/tree.h>
@@ -38,6 +39,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 	char now[20];
 
 	while(*filenames != NULL) {
+		*filenames = basename(*filenames);
 		printf("%s\n", *filenames);
 		char **ans = ep_num(*filenames);
 		if (ans[0] != NULL) {

@@ -22,7 +22,7 @@ void new_string_array(StringArray *sa, int length );
  * @param sa The string object
  * @param str The string that will be copied to the StringArray
 **/
-void string_array_add(StringArray *sa, char *str);
+void string_array_add(StringArray *sa, const char *str);
 
 
 #endif

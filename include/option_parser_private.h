@@ -431,7 +431,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "regex_print", .val = 280, .has_arg = no_argument}, 
+		.opt   = {.name =  "regex-print", .val = 280, .has_arg = no_argument}, 
 		.help  = "Prints the regex",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -439,7 +439,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "regex_separator", .val = ',', .has_arg = required_argument}, 
+		.opt   = {.name =  "regex-separator", .val = ',', .has_arg = required_argument}, 
 		.help  = "Set the separator to use between args default: .*",
 		.arg   = "sep", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

@@ -43,7 +43,7 @@ typedef struct {
 	// Selection  
 	Excludes excludes;
 	bool     newest_only;  // DONE
-	bool     sub_dirs;     // TODO sub dirs
+	bool     sub_dirs;     
 	Types    types;        // DONE
 	
 	char     *root_dir;    // DONE

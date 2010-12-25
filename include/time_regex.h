@@ -39,12 +39,12 @@
 
 #define MAKE_REGEX(name,regex,err_action) MAKE_REGEX_OPTS(name,regex,0,err_action)
 
-// Makes the vars for a regex 
+// Makes the vars as static for a regex 
 #define MAKE_REGEX_VARS(name)\
 	static const pcre *pcre_##name;\
-	const char *pcre_error_##name;\
-	int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
-	int pcre_res_##name = -1;\
+	static const char *pcre_error_##name;\
+	static int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
+	static int pcre_res_##name = -1;\
 
 // make a pcre using pre make varables make by MAKE_REGEX_VARS
 #define MAKE_REGEX_PREMADE_VARS(name,regex,opts)\

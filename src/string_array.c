@@ -19,9 +19,9 @@ void new_string_array(StringArray *sa, int length ){
 	sa->index  = 0;
 }
 
-void string_array_add(StringArray *sa, char *str){
+void string_array_add(StringArray *sa, const char *str){
 	
-	if (sa->index == sa->length){
+	if (sa->index + 1 == sa->length){
 		sa->length *=2;
 		sa->arr = realloc(sa->arr, sizeof(char*) * sa->length);
 	}
