@@ -22,6 +22,11 @@
 #define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
 #define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
+// Makes the command for vlc and mplayer
+static char *make_command(const char *bin_path, char **filenames, int num_of_files,
+						  int total_length, char *prefix_args, char *postfix_args, 
+						  char *filepath, bool background);
+
 void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	if (argc == 0) {
@@ -52,7 +57,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	if(ma->regex_print) printf("regex: %s\n", regex);
 	
 	StringsPlusMeta* (*get_files_func)(char *dir, char *regex, bool safe);
-	if (true || ma->sub_dirs){
+	if (ma->sub_dirs){
 		get_files_func = get_files_recursive;
 	}else{
 		get_files_func = get_files;
@@ -86,22 +91,22 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	}
 
 	if(ma->write_history)           updateHistory(s_arr, ma->status, ma->sep);
-	if(ma->pl_output & PL_PLAYLIST) make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
-	
+	if(ma->pl_output & PL_PLAYLIST) {
+		make_playlist(ma->pl_name, ma->pl_dir, s_arr, ma->pl_format);
+	}
 	// Forks to allow the progam to set the options of the player e.g. afloat
 	pid_t pid =  fork();
 	if ( pid != 0 ){
 		switch (ma->player){
-			//TODO players
 			case P_MPLAYER: 
-				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
-			
+				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, 
+				path,ma->background);
 				break;
 			case P_NICEPLAYER:
 				niceplayer("");
 				break;
 			case P_VLC:
-				vlc(s_arr, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
+				vlc(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, path);
 				break;
 			case P_NONE: break;
 		}
@@ -147,29 +152,52 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.
-void mplayer(char **filenames, int num_of_files, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
-	
+void mplayer(char **filenames, int num_of_files, int total_length, 
+			 char *prefix_args, char *postfix_args, char *filepath, bool background) {
 	
 	// mplayer binary
 	const char* mplayer = "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\"";
-	const char *rid   = "&> /dev/null";      // discards output.
+	char *command = make_command(mplayer, filenames, num_of_files, total_length, 
+								 prefix_args, postfix_args, filepath, background);
+	system(command);
+}
+
+/// \brief Filenames should end with "", total length the length of all the strings
+/// filepath, to the directory to call vlc from.	
+void vlc(char **filenames, int num_of_files, int total_length, 
+		 char *prefix_args, char *postfix_args, char *filepath) {
 	
+	// vlc binary
+	const char* vlc = "\"/Applications/VLC.app/Contents/MacOS/VLC\"";
+	char *command = make_command(vlc, filenames, num_of_files, total_length, 
+								 prefix_args, postfix_args, filepath, true);
+	system(command);
+}
+
+static char *make_command(const char *bin_path, char **filenames, int num_of_files,
+						  int total_length, char *prefix_args, char *postfix_args, 
+						  char *filepath, bool background)
+{
+	// discards output.
+	const char *rid   = background ? "&> /dev/null &" :"&> /dev/null"; 
+
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
-	
+
 	int index        = strlen(filepath);
 	int rid_len      = strlen(rid);
-	int m_len        = strlen(mplayer);
+	int m_len        = strlen(bin_path);
 	int space_quotes = num_of_files * 3; // for space and 2""
-	
+
 	//CHECK 1 from (8 for mplayer)
-	char m_args[total_length + 
+	char *m_args = malloc(sizeof(char)* 
+			   (total_length + 
 			    strlen(prefix_args) + strlen(postfix_args) + 
 			    index + rid_len + m_len +
 			    space_quotes  + 1
-			   ];
+			   ));
 
-	sprintf(m_args, "cd %s; %s %s ", filepath, mplayer, prefix_args);
+	sprintf(m_args, "cd %s; %s %s ", filepath, bin_path, prefix_args);
 	// 3 for cd 2 for ; 1 for  .
 	index += 3 + 2 + (+ 1 + m_len) + strlen(prefix_args) + 1;
 
@@ -186,21 +214,16 @@ void mplayer(char **filenames, int num_of_files, int total_length, char *prefix_
 	}
 	strcpy(&m_args[index], postfix_args);
 	index += strlen(postfix_args);
-	
+
 	strcpy(&m_args[index], rid);
 	index += rid_len;
 
 	m_args[index] = '\0';
 	dprintf("%s\n", m_args);
-	system(m_args);
+	return m_args;	
 }
 
 //TODO niceplayer
 void niceplayer(char *playlist) {
-	
-}
-	
-// TODO vlc
-void vlc(char **filenames, int total_length, char *prefix_args, char *postfix_args, char *filepath) {
 	
 }

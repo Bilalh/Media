@@ -43,7 +43,7 @@ typedef struct {
 	// Selection  
 	Excludes excludes;
 	bool     newest_only;  // DONE
-	bool     sub_dirs;     
+	bool     sub_dirs;     // DONE
 	Types    types;        // DONE
 	
 	char     *root_dir;    // DONE
@@ -69,6 +69,7 @@ typedef struct {
 	Spaces   all_spaces;   // DONE
 	String   prefix_args;  // DONE
 	String   postfix_args; // DONE
+	bool     background;   // DONE
 		
 	//Nice Player
 	NiceRepeat nice_repeat;

@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <assert.h>
 #include <time.h>
+#include <libgen.h>
 
 #include <pcre.h>
 #include <pcreposix.h>
@@ -80,11 +81,14 @@ char** ep_num (char *s) {
 	return ans;
 }
 
-
 char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){
 	Newest *hash = NULL, *h;
 
 	for(int i = 0; i < *length; ++i) {
+		char *full_path = names[i];
+		// CHECK mallocing 
+		names[i] = basename(names[i]);
+		
 		char **ans = ep_num(names[i]);
 		EP_GET_NAME(ans, name, names[i]);
 		EP_GET_NUMBER(ans, num);
@@ -94,7 +98,7 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 		// add the file to the hash if it is not there
 		if ( h == NULL ) {
 			h = (Newest*) malloc(sizeof(Newest));
-			h->full = names[i];
+			h->full = full_path; //names[i];
 			h->key  = strdup(name);
 			h->num  = num;
 			HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
@@ -102,7 +106,7 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 		} else if( num > h->num ) {
 			h->num  = num;
 			if( free_unused ) free(h->full);
-			h->full = names[i];
+			h->full = full_path; //names[i];
 		}
 
 	}
@@ -286,11 +290,11 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
 	char *r     = malloc(len * 2 + rep_len + 25 );
-	//FIXME mallocing in str_replace
 	dprintf("s %s %d sub %s rep %s \n", s,len, sub, rep);
 	// counters for s and r
 	int is = 0, ir = 0;
 	while(is < len) {
+		//FIXME mallocing in str_replace
 		// checks if sub is a sub string og s
 		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
 			strncpy(&r[ir], rep , rep_len);

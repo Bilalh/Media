@@ -185,11 +185,13 @@ struct tm *parse_time(char **str, int length) {
 				break;
 			}
 			
-			
+			// last 
+			// near
+			// next
 			if (assume_last == 1){
 				// choses the funtion to use 
 				switch( strarr[index][2] ){
-					case 'a': day_func = day_diff; // TODO day_near
+					case 'a': day_func = day_diff;
 					break;             
 					case 'x': day_func = day_future;
 					break;

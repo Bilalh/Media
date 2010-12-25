@@ -112,10 +112,11 @@ const Element H_playlist[] ={
 
 	#define MAKE_PLAYLISTT(_name,_val,_ftype,_help){\
 		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument},\
-		.help  = _help,\
+		.help  = _help "Also sets sub_dirs",\
 		.arg   = "", .neg = true,\
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {\
 			if (TRUTH_STATE(ch)){\
+				ma->sub_dirs  = true;\
 				ma->pl_output |= PL_PLAYLIST;\
 				ma->pl_format |= _ftype;\
 			}else{\
@@ -180,7 +181,14 @@ const Element H_player[] ={
 			ma->player = P_VLC;
 		}
 	},
-
+	{  
+		.opt   = {.name =  "background", .val = '^', .has_arg = no_argument}, 
+		.help  = "background the player",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->background = TRUTH_VALUE(ch);
+		}
+	},
 };
 
 const Element H_mplayer[] = { 

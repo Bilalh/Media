@@ -51,6 +51,8 @@ MediaArgs *new_media_args() {
 		.prefix_args.length = m.postfix_args.length = 16,
 		.prefix_args.index  = m.postfix_args.index  = 0,
 		
+		.background  = false,
+		
 		.nice_repeat = false,
 		.nice_random = false,
 		.regex_print = false,
@@ -315,6 +317,8 @@ void print_media_args(MediaArgs *ma) {
 	print_args("afloat",       truth(ma->afloat));
 	print_args("prefix_args",  strcheck(ma->prefix_args));
 	print_args("postfix_args", strcheck(ma->postfix_args));
+	print_args("background",   truth(ma->background));
+	
 	print_args("nice_repeat",  truth(ma->nice_repeat));
 	print_args("nice_random",  truth(ma->nice_random));
 	

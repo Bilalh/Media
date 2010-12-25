@@ -8,10 +8,11 @@
 
 #include <include/playlist.h>
 #include <include/xml.def>
+#include <include/debug.h>
+
 
 #define PLAYLIST_INT_LENGTH 10
 
-//TODO paths in m3u
 bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) {
 	assert(filename); assert(names);
 	char *dir;
@@ -23,7 +24,7 @@ bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) 
 	
 	const int extra  =  2 + 6; // 2 for \0 and / 6 for a 5 char exe
 	char fullpath[strlen(filename) + strlen(dir)+extra];
-	printf(" m3u %i plist %i pls %i xspf %i\n",
+	dprintf(" m3u %i plist %i pls %i xspf %i\n",
 		   (formats & F_M3U),
 		   (formats & F_PLIST),
 		   (formats & F_PLS),
@@ -58,7 +59,7 @@ bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) 
 bool make_m3u(char *filepath, char **names) {
 	FILE *out = fopen(filepath, "w");
 
-	while(**names) {
+	while(*names != NULL) {
 		fprintf(out, "%s\n", *names);
 		names++;
 	}
@@ -93,7 +94,7 @@ bool make_plist(char *filepath, char **names) {
 	
 	// <array> 
 	new_node(array, "array", dict2);
-	while (**names){
+	while (*names != NULL){
 		new_text_node(temp, "string",*names, array);
 		names++;
 	}
@@ -126,7 +127,7 @@ bool make_pls(char *filepath, char **names) {
 	FILE *out = fopen(filepath, "w");
 	fprintf(out, "%s\n", "[playlist]");
 	int i = 1;
-	while(**names) {
+	while(*names != NULL) {
 		fprintf(out, "File%i=%s\nTitle%i=%s\n", 
 			i,*names,i,*names
 		);
@@ -159,7 +160,7 @@ bool make_xspf(char *filepath, char **names) {
 	new_node(trackList, "trackList", root);
 	
 	int i = 1;
-	while (**names){
+	while (*names != NULL){
 		new_node(track, "track", trackList);
 		new_text_node(temp, "location",*names, track);
 		new_text_node(temp, "title",*names, track);

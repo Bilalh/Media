@@ -1,4 +1,3 @@
-//FIXME write test
 
 #include "include/strarr_test.h"
 

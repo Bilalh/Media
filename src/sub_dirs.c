@@ -129,26 +129,3 @@ StringsPlusMeta* get_files(char *dir, char *regex, bool safe) {
 	return spm_malloc;
 }
 
-int main2 (int argc, char const *argv[]) {
-	
-	StringsPlusMeta *sta = get_files_recursive (
-	"/Users/bilalh/Movies/.Movie/. アニメ/divx", 
-	"(.).*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$", true);
-	
-	if (sta == NULL){
-		puts("NO files found");
-		exit(EXIT_FAILURE);
-	}
-	
-	char **ptr  = sta->str_arr;
-	int new_length = sta->length;
-	
-	ptr = newest_only(ptr, &new_length, true, true);
-	
-	while (*ptr != NULL){
-		printf("%s\n", *ptr );
-		++ptr;
-	}
-	
-	return 0;
-}
