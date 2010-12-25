@@ -90,6 +90,7 @@ static int #{UNAME}_NUM_SECTION = 0;
 #define #{TNAME}Test(name, tBLOCK)\\
 	{\\
 		bool test_result;\\
+		char *_name = name;\\
 		#{TNAME}Before\\
 		tBLOCK\\
 		#{TNAME}After(name)\\

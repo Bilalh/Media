@@ -1,16 +1,19 @@
-names  = string time opt strutil
+names  = string time opt strutil strarr
 tests  = $(addprefix test_, ${names})
 
-opt_req          = option_parser.o string_buffer.o string_util.o
-string_req       = string_buffer.o
-strutil_req      = string_util.o
-time_req         = string_util.o time_util.o
-hist_req         = sql/history.o string_util.o time_util.o
-play_req         = playlist.o
-ml_req           = sql/ml.o string_util.o string_buffer.o ${hist_req} 
+strarr_req  = string_array.o
+opt_req     = option_parser.o string_buffer.o string_util.o
+string_req  = string_buffer.o
+strutil_req = string_util.o
+time_req    = string_util.o time_util.o
+hist_req    = sql/history.o string_util.o time_util.o
+play_req    = playlist.o
+ml_req      = sql/ml.o string_util.o string_buffer.o ${hist_req} 
 
 # Makes the test_% : ${test_%_req}
 $(foreach name,${names},$(eval test_${name}:${${name}_req}))
+
+test_strarr : ${strutil_req}
 
 all_tests: $(foreach name,${names},${name}_test.o ${name}_helper.o )
 all_tests: $(foreach name,${names},${${name}_req})

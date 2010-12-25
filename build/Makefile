@@ -25,7 +25,7 @@ to_bin:
                            ### Objects ###
 
 objs       = media mal nums numsf numss ongoing hista shash
-examples   = optt hashe2
+examples   = optt hashe2 subdir_test
 
 media_req  = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req}
 mal_req    = app/ml_main.o ${ml_req} ${hist_req}
@@ -42,6 +42,7 @@ shash_req  = app/hash_lookup.o ${strutil_req}
 optt_req   = examples/optm.o ${opt_req}
 hashe2_req = examples/hashe2.o
 
+subdir_test_req = examples/sub_dir2.o  ${strutil_req}
 
                            ### Objects rules ###
 

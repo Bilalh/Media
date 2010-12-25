@@ -429,7 +429,7 @@ static void update_updated(MLOpts *opts){
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1 where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated = 1 where Title = \"%s\"; ", 
 		opts->title
 	);
 }

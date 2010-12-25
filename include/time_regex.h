@@ -39,6 +39,23 @@
 
 #define MAKE_REGEX(name,regex,err_action) MAKE_REGEX_OPTS(name,regex,0,err_action)
 
+// Makes the vars for a regex 
+#define MAKE_REGEX_VARS(name)\
+	static const pcre *pcre_##name;\
+	const char *pcre_error_##name;\
+	int  prce_error_pos_##name, pcre_ovector_##name[PCRE_OVECCOUNT];\
+	int pcre_res_##name = -1;\
+
+// make a pcre using pre make varables make by MAKE_REGEX_VARS
+#define MAKE_REGEX_PREMADE_VARS(name,regex,opts)\
+	pcre_##name = pcre_compile(\
+			 regex,                  /* the pattern */\
+			 opts,                   /* options */\
+			 &pcre_error_##name,     /* for error message */\
+			 &prce_error_pos_##name, /* for error offset */\
+			 NULL                    /* use default character tables */\
+	);\
+	
 
 /**
  * @brief Checks if a string matches the a regex compiled by MAKE_REGEX
