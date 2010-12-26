@@ -31,6 +31,7 @@ typedef enum{
 	SPACES_NONE, SPACES_MANUAL, SPACES_AUTO
 } Spaces;
 
+// TODO use StringArray and imp
 typedef struct {
 	bool exclude;
 	char **str_arr;
@@ -51,7 +52,7 @@ typedef struct {
 	// Playlist (pl)
 	char    *pl_dir;       // DONE
 	char    *pl_name;      // DONE
-	Pformat  pl_format;    // nDONE - use full paths
+	Pformat  pl_format;    // nDONE - nice paths
 	Poutput  pl_output;    // DONE
 	bool     pl_shuffle;   // DONE
 	

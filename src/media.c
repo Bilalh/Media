@@ -159,7 +159,7 @@ void mplayer(char **filenames, int num_of_files, int total_length,
 	const char* mplayer = "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\"";
 	char *command = make_command(mplayer, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, background);
-	system(command);
+	system(strdup(command));
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings
@@ -171,7 +171,7 @@ void vlc(char **filenames, int num_of_files, int total_length,
 	const char* vlc = "\"/Applications/VLC.app/Contents/MacOS/VLC\"";
 	char *command = make_command(vlc, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, true);
-	system(command);
+	system(strdup(command));
 }
 
 static char *make_command(const char *bin_path, char **filenames, int num_of_files,

@@ -263,7 +263,7 @@ static void sub_print_help(const Element *ele){
 		printf(s_exp, short_opt, long_opt);	
 	}
 	
-	//TODO spacing on multiple lines
+	//LATER spacing on multiple lines
 	printf("%s\n",hh );
 	while(h_len - h_cur > 0){
 		strncpy(hh, &ho[h_cur], h_num);

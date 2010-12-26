@@ -1,4 +1,4 @@
-// FIXME opt mmap and malloc error when adding new field when forking
+// TODO opt mmap and malloc error when adding new field when forking
 #include "include/opt_test.h"
 OptVar
 
@@ -54,7 +54,7 @@ Section("other"){
 	})
 }OptEndSection
 
-//TODO  opt  test and imp excludes -e
+//LATER  opt  test and imp excludes -e
 //-e  --exclude {dir}      Sub directories to exclude
 
 Section("output"){

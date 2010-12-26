@@ -41,7 +41,7 @@ char** ep_num (char *s) {
 		dprintf("no number\n");
 		ans[0] = ans[1] = s;
 		char *temp = s - 1;
-		// TODO no ext on name only
+		// LATER no ext on name only
 		while ( temp != start ){
 			if ( *temp == '.'){
 				ans[1] = temp;
@@ -382,7 +382,6 @@ char *str_lower (char *s, size_t length) {
 }
 
 
-// only used in opt private
 // CHECK broken in some cases? only used in opt private
 int match (const char *string, char *pattern) {
 	int    status;

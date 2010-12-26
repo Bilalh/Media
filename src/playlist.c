@@ -68,7 +68,7 @@ bool make_m3u(char *filepath, char **names) {
 	return true;
 }
 
-//TODO string path names
+//TODO nice string path names
 //TODO apple top
 bool make_plist(char *filepath, char **names) {
 	xmlDocPtr doc;
@@ -122,24 +122,24 @@ bool make_plist(char *filepath, char **names) {
 	return false;
 }
 
-//TODO string path names
 bool make_pls(char *filepath, char **names) {
 	FILE *out = fopen(filepath, "w");
 	fprintf(out, "%s\n", "[playlist]");
 	int i = 1;
 	while(*names != NULL) {
 		fprintf(out, "File%i=%s\nTitle%i=%s\n", 
-			i,*names,i,*names
+			i,*names,i,basename(*names)
 		);
+		i++;
 		names++;
 	}
-
+	fprintf(out,  "NumberOfEntries=%d\n", i-1);
 	fclose(out);
 	return false;
 }
-//CHECK xmlCleanupParser?
 
-//TODO string path names
+//CHECK xmlCleanupParser?
+//TODO add file:// at start of filespaths
 bool make_xspf(char *filepath, char **names) {
 	xmlDocPtr doc;
 	xmlNodePtr root, rr, trackList,track, temp;
@@ -163,7 +163,7 @@ bool make_xspf(char *filepath, char **names) {
 	while (*names != NULL){
 		new_node(track, "track", trackList);
 		new_text_node(temp, "location",*names, track);
-		new_text_node(temp, "title",*names, track);
+		new_text_node(temp, "title",basename(*names), track);
 		char num[PLAYLIST_INT_LENGTH];
 		sprintf(num, "%i", i);
 		new_text_node(temp, "trackNum",num, track);

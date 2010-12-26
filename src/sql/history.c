@@ -221,12 +221,18 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	char *current, *date_data;
 	
 	// Set the pointer to the data argv[5] tells if we are rewatching 
+	char *rewatching;
+	int   length;
 	if ( *argv[5] == '0' ){
-		current   = argv[1];
-		date_data = argv[3];
+		current    = argv[1];
+		date_data  = argv[3];
+		rewatching = ""; 
+		length     = 42;
 	}else{
-		current   = argv[6];
-		date_data = argv[3];
+		current    = argv[6];
+		date_data  = argv[3];
+		rewatching = "R ";
+		length     = 40;
 	}
 	
 	// Makes the date
@@ -235,7 +241,7 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
 	
 	// prints the data 
-	printf("%-42s %3s/%-3s %17s\n", title, current ,total, date);
+	printf("%s%-*s %3s/%-3s %17s\n", rewatching, length, title, current ,total, date);
 
 	return 0;
 }
