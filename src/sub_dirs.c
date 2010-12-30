@@ -19,7 +19,7 @@
 	"Nogizaka Haruka| eng|So ?ra ?no ?Wo ?to Op 2|Saki ed|moon|Myself;|Shining Tears|" \
 	"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|Starry Heavens|"     \
 	"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Azumanga|"    \
-	"fantasy|Kidou Tenshi"
+	"fantasy|Kidou Tenshi|OVA EX"
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 
