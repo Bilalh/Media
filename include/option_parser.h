@@ -17,8 +17,12 @@ MediaArgs *new_media_args();
 **/
 MediaArgs *option_parser(int *p_argc, char ***p_argv);
 
+// prints the help, section or letter if specifed
 void print_help(); 
+
 void print_usage();
+
+// prints the media_args struct
 void print_media_args(MediaArgs *ma);
 
 typedef struct{

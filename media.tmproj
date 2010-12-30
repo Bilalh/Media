@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/sql/ml.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,7 +24,7 @@
 			<key>filename</key>
 			<string>../../../Library/Application Support/Media/zzhash</string>
 			<key>lastUsed</key>
-			<date>2010-12-24T19:09:16Z</date>
+			<date>2010-12-29T02:52:56Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -63,40 +61,7 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>src/media.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>35</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>119</integer>
-		</dict>
-		<key>src/sql/ml.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>69</integer>
-				<key>line</key>
-				<integer>268</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>4</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/media.c</string>
-		<string>src/sql/ml.c</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -127,7 +92,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -136,12 +101,26 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>include</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
 					<dict>
+						<key>app</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
 						<key>sql</key>
 						<dict>
 							<key>isExpanded</key>

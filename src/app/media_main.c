@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libgen.h>
+
 #include <include/media.h>
 #include <include/option_parser.h>
 

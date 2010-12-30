@@ -112,7 +112,7 @@ const Element H_playlist[] ={
 
 	#define MAKE_PLAYLISTT(_name,_val,_ftype,_help){\
 		.opt   = {.name =  _name, .val = _val, .has_arg = no_argument},\
-		.help  = _help "Also sets sub_dirs",\
+		.help  = _help ". Also sets sub_dirs",\
 		.arg   = "", .neg = true,\
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {\
 			if (TRUTH_STATE(ch)){\
@@ -271,7 +271,7 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "hframedrop", .val = 'J', .has_arg = no_argument}, 
+		.opt   = {.name =  "hardframedrop", .val = 'J', .has_arg = no_argument}, 
 		.help  = "Enable hard frame dropping",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -283,21 +283,17 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "allspaces", .val = 'c', .has_arg = no_argument}, 
-		.help  = "Brings up the afloat menu",
-		.arg   = "", .neg = false,
+		.opt   = {.name =  "profile", .val = 'p', .has_arg = required_argument}, 
+		.help  = "Adds profile ",
+		.arg   = "name", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->all_spaces = TRUTH_ARG(ch, SPACES_MANUAL, SPACES_NONE);
+			if (*arg == '-'){
+				puts("opt: option `--profile' requires an argument");
+				exit(1);
+			}
+			string_push_m(&ma->prefix_args, 2,"-profile", arg);
 		}
 	},
-	{  
-		.opt   = {.name =  "autospaces", .val = 'C', .has_arg = no_argument}, 
-		.help  = "Make the player appear on spaces",
-		.arg   = "", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->all_spaces = TRUTH_ARG(ch, SPACES_AUTO, SPACES_NONE);
-		}
-	},	
 };
 
 const Element H_output[] ={
@@ -463,18 +459,6 @@ const Element H_other[] ={
 const Element H_mplayer_extra[] = { 
 	
 	{  
-		.opt   = {.name =  "profile", .val = 'p', .has_arg = required_argument}, 
-		.help  = "Adds profile ",
-		.arg   = "name", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			if (*arg == '-'){
-				puts("opt: option `--profile' requires an argument");
-				exit(1);
-			}
-			string_push_m(&ma->prefix_args, 2,"-profile", arg);
-		}
-	},
-	{  
 		.opt   = {.name =  "chapter", .val = 'q', .has_arg = required_argument}, 
 		.help  = "Plays from chapter num",
 		.arg   = "num", .neg = false,
@@ -570,6 +554,28 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
+		.opt   = {.name =  "quick", .val = 'g', .has_arg = no_argument}, 
+		.help  = "--framedrop and --fast",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 3, "-framedrop",
+				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
+		}
+	},
+	{  
+		.opt   = {.name =  "quick-random", .val = 'b', .has_arg = no_argument}, 
+		.help  = "--framedrop and --fast --rnd --top(profile t  - afloat and 360pi in 16:9)",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 3, "-framedrop",
+				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
+			
+			ma->afloat = true;
+			string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
+			
+			string_push(&ma->prefix_args, "-shuffle");
+			string_push(&ma->prefix_args, "-aspect 16:9");
+		}
+	},
+	{  
 		.opt   = {.name =  "volume", .val = 'v', .has_arg = required_argument}, 
 		.help  = "Set mplayer volume {0-100}",
 		.arg   = "num", .neg = false,
@@ -587,7 +593,22 @@ const Element H_mplayer_extra[] = {
 			}
 		}
 	},
-	
+	{  
+		.opt   = {.name =  "allspaces", .val = 'c', .has_arg = no_argument}, 
+		.help  = "Brings up the afloat menu",
+		.arg   = "", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->all_spaces = TRUTH_ARG(ch, SPACES_MANUAL, SPACES_NONE);
+		}
+	},
+	{  
+		.opt   = {.name =  "autospaces", .val = 'C', .has_arg = no_argument}, 
+		.help  = "Make the player appear on spaces",
+		.arg   = "", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->all_spaces = TRUTH_ARG(ch, SPACES_AUTO, SPACES_NONE);
+		}
+	},
 };
 
 const Element H_mplayer_aspect[] = {

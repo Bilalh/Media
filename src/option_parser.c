@@ -72,9 +72,9 @@ MediaArgs *new_media_args() {
 void print_usage(){
 	printf("%s", 
 		"Usage media {start_path|-h} [args]\n"
-		"   args: 0123456789=AaCcDdEeFfGHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/\n"
+		"   args: 0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^\n"
 		"   Use -h[num] for a section\n"
-		"   Use -h,{letters} for details of a args\n"
+		"   Use -h,{letters} for details of the arg(s)\n"
 	);
 }
 
@@ -278,9 +278,9 @@ void print_media_args(MediaArgs *ma) {
 #define truth(boolean) (boolean ? "true" : "false" )
 #define nullcheck(val) (val == NULL ? "NULL" : val )
 #define strcheck(s)    (s.str != NULL ? s.str : "NULL" )
-#define print_args(title,value) printf("%20s: %s\n",  title, value);
-#define print_hex(title,value) printf("%20s: 0x%x\n",  title, value);
-#define print_int(title,value) printf("%20s: %i\n",  title, value);
+#define print_args(title,value) printf("%20s: %s\n",   title, value);
+#define print_hex(title,value)  printf("%20s: 0x%x\n", title, value);
+#define print_int(title,value)  printf("%20s: %i\n",   title, value);
 
 	printf("Selection\n");
 	print_args("exclude",      truth(ma->excludes.exclude));
