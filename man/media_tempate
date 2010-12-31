@@ -1,4 +1,4 @@
-.TH MEDIA 7 "R216" "Thu, December 30, 2008" 
+.TH MEDIA 7 "R216" "Tue, December 30, 2008" 
 .SH NAME
 .B media
 \- Media -- Finds, Plays and keeps track of media files
@@ -92,6 +92,10 @@ function add_hash_hash() {
 	fi
 .br
 }
+
+.SH SEE ALSO 
+mal(7), hista(7), mal(7), nums(7), ongoing(7), shash(7)
+
 
 .SH BUGS
 plist -x and exclude -e are not implemented

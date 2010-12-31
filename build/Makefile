@@ -88,6 +88,9 @@ list_tests:
 %_wrapper.c:
 	./make_wrapper.sh "$@" "../tests/include/"
 
+#needs sudo
+install_man_pages:
+	cp ../man/*.7 /usr/local/share/man/man7/.
 
                            ### util ###
 
@@ -101,4 +104,4 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${scripts} *~
 
 help: list_objs list_tests 
-	@${PERL} -e 'print join "\n", qw{dist to_bin}, ""'
+	@${PERL} -e 'print join "\n", qw{dist to_bin install_man_pages}, ""'
