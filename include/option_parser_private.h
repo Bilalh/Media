@@ -1,4 +1,27 @@
+#ifndef OPT_PRIVATE_HEADD
+#define OPT_PRIVATE_HEADD
+
+#include <getopt.h>
+#include <stdbool.h>
+#include <Block.h>
+
 #include "string_util.h"
+#include "media_args.h"
+
+typedef void (^VoidBlock)();
+typedef struct{
+	const struct option opt;
+	const char *arg;
+	const char *help;
+	const VoidBlock block;
+	const bool neg;
+} Element;
+
+typedef struct {
+	const char *grouping;
+	const int length;
+	const Element *links;
+} HelpLink;
 
 // uses val s > 256 && < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
@@ -733,3 +756,5 @@ const HelpLink HELP_LINK[] = {
 
 
 #define HELP_L_LEN sizeof(HELP_LINK) / sizeof(HelpLink)
+
+#endif

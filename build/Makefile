@@ -25,6 +25,7 @@ to_bin:
                            ### Objects ###
 
 objs       = media mal nums numsf numss ongoing hista shash
+scripts    = make_man_options
 examples   = optt hashe2 subdir_test
 
 media_req    = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
@@ -46,16 +47,21 @@ hashe2_req = examples/hashe2.o
 
 subdir_test_req = ${sub_dirs_req}
 
+make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
+
                            ### Objects rules ###
 
 # makes name : ${name_req}
-$(foreach name,${objs} ${examples},$(eval ${name}:${${name}_req}))
+$(foreach name,${objs} ${examples} ${scripts},$(eval ${name}:${${name}_req}))
 
-${objs} ${examples}: 
+${objs} ${examples} ${scripts}: 
 	${compile} ${libs} ${flags} ${^F} -o $@
 
 list_objs:
 	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
+
+list_scripts:
+	@${PERL} -e 'print join "\n", qw{${scripts}}, ""'
 
 list_examples:
 	@${PERL} -e 'print join "\n", qw{${examples}}, ""'
@@ -89,10 +95,10 @@ list_tests:
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${scripts} *~
                                        
 oclean:                                
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${scripts} *~
 
 help: list_objs list_tests 
 	@${PERL} -e 'print join "\n", qw{dist to_bin}, ""'

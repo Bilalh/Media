@@ -1,0 +1,107 @@
+.TH MEDIA 7 "R216" "Thu, December 30, 2008" 
+.SH NAME
+.B media
+\- Media -- Finds, Plays and keeps track of media files
+.SH SYNOPSIS
+media start_path [-0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^]
+.br
+.SH DESCRIPTION
+Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
+.br
+.SH Arguments
+The the arguements are  Perl Compatible Regular Expressions (igonring case and matching anywhere unless there a $ or a ^) and each argument is joined using '.*'. If a --hashlocation <path> is given the abbreviation in the regex are expanded. e.g.  if a b c was given the regex would be a.*b.*c.* , Uses quotes to stop this e.g 'a b c'.  if a mapped to b and c mapped to d then  the arguments a 'b|c' wwould be 
+.br
+	b.*(b|d)
+.br
+as shown above abbreviation are expended in ORs.
+
+.SH OPTIONS
+To see options use media -h to see all options
+.br
+Use -h[num] for a section
+.br
+Use -h,[letters] for details of the options(s)
+.br
+Most -- options have a negation in form --no , --no-fs for --fs for example   
+.br 
+
+.I Filepath
+.BR
+
+.TP 0.5i
+.BR -e , "  --exclude {dir}     " 
+Sub directories to exclude
+
+.TP 0.5i
+.BR -S , "  --[no-]hash         " 
+Uses shortcuts from the hash, on by default
+
+
+
+.br
+.SH EXAMPLES
+Example 1:  media <dir> -mlo
+.br
+Plays the latest episodes using mplayer
+.P
+
+Example 2 media <dir>  -s -^ -m
+.br
+Looks in sub directories (-s) and backgrounds mplayer (-^)
+.p
+
+Example 3: media <dir> --mplayer --top --169 --rnd  --shuffle --framedrop --fast 
+.br
+Plays the all the files in the dir randomly and places the player in the top left hand coner. Also set frame drop and mutithreading
+.P
+
+Example 4: media <dir> -m --tl -W480 --aspect 16:9
+Plays the files using mplayer and playes the play at the top left hand coner with a width of 480 pixels in a 16:9 aspect ratio
+
+Example 5: media <dir> -o --hashlocation <path> 
+Uses a hashmap to expand abbreviation. The hash should be in the form 
+.br
+	3 19 fma	Fullmetal Alchemist
+.br
+where the 3 is the length of the abbreviation (which has to be less then 10). 19 is length of the expansion. there is a tab between the abbreviation and the expansion
+.br
+Below is a function is easily add abbreviation to a hashfile located at HASH_PATH
+.br
+
+.br
+function add_hash_hash() {
+.br
+	HASH_PATH="~/path/to/hashfile"
+.br
+	if [ $#  -ne 2  ]; then                                                                       
+.br
+		echo "add_hash_hash key val"                                                                       
+.br
+	elif [[ ${#1} -lt 10 && ${#1} -gt 0 && ${#2} -gt 0 ]]; then                                   
+.br
+		key=$1                                                                                    
+.br
+		val=$2                                                                                    
+.br
+		printf "%d %2d ${key}\\t${val}\\n" ${#key} ${#val}  >> "$HASH_PATH";
+.br
+	else                                                                                          
+.br
+		echo "len(key) < 10 and > 0  len(val) > 0"                                                
+.br
+	fi
+.br
+}
+
+.SH BUGS
+plist -x and exclude -e are not implemented
+.br
+IF using sub directories (-s) and -m -o  it might complain about a malloc error, AFTER the program exits
+.SH VERSION
+This documentation describes
+.B media
+version R216
+.SH AUTHOR
+.br
+.B Bilal Hussain
+.br

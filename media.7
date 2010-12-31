@@ -1,0 +1,465 @@
+.TH MEDIA 7 "R216" "Thu, December 30, 2008" 
+.SH NAME
+.B media
+\- Media -- Finds, Plays and keeps track of media files
+.SH SYNOPSIS
+media start_path [-0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^]
+.br
+.SH DESCRIPTION
+Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
+.br
+.SH Arguments
+The the arguements are  Perl Compatible Regular Expressions (igonring case and matching anywhere unless there a $ or a ^) and each argument is joined using '.*'. If a --hashlocation <path> is given the abbreviation in the regex are expanded. e.g.  if a b c was given the regex would be a.*b.*c.* , Uses quotes to stop this e.g 'a b c'.  if a mapped to b and c mapped to d then  the arguments a 'b|c' wwould be 
+.br
+	b.*(b|d)
+.br
+as shown above abbreviation are expended in ORs.
+
+.SH OPTIONS
+To see options use media -h to see all options
+.br
+Use -h[num] for a section
+.br
+Use -h,[letters] for details of the options(s)
+.br
+Most -- options have a negation in form --no , --no-fs for --fs for example   
+.br 
+
+
+.I 0  Filepath
+.BR
+
+.TP 0.5i
+.BR -e , "  --exclude {dir}     " 
+Sub directories to exclude
+
+.TP 0.5i
+.BR -S , "  --[no-]hash         " 
+Uses shortcuts from the hash, on by default
+
+.TP 0.5i
+.BR -I , "  --hashlocation {file}" 
+Filepath of the hash
+
+.TP 0.5i
+.BR -P , "  --playlistpath {dir}" 
+Directory to write playlist in default .
+
+.TP 0.5i
+.BR -R , "  --rootpath {dir}    " 
+Directory to start searching from
+
+.TP 0.5i
+.BR -s , "  --subdirectories    " 
+Look in sub directories if true, default false
+
+.I 1  Mplayer
+.BR
+
+.TP 0.5i
+.BR -0 , "  --1610              " 
+Uses 16:10 aspect ratio
+
+.TP 0.5i
+.BR -a , "  --afloat            " 
+Makes the window afloat
+
+.TP 0.5i
+.BR -d , "  --fast              " 
+Makes it fast
+
+.TP 0.5i
+.BR -f , "  --[no-]fs           " 
+Plays the file(s) in fullscreen. 
+
+.TP 0.5i
+.BR -k , "  --loop0             " 
+Adds -loop 0 -- meaning loops forever
+
+.TP 0.5i
+.BR -t , "  --[no-]top          " 
+Adds profile t  - afloat and 360p.
+
+.TP 0.5i
+.BR -T , "  --[no-]mtop         " 
+Adds profile T  - ontop and 360p.
+
+.TP 0.5i
+.BR -j , "  --[no-]framedrop    " 
+Enable frame dropping
+
+.TP 0.5i
+.BR -J , "  --[no-]hardframedrop" 
+Enable hard frame dropping
+
+.TP 0.5i
+.BR -p , "  --profile {name}    " 
+Adds profile 
+
+.I 2  Playlist
+.BR
+
+.TP 0.5i
+.BR -3 , "  --[no-]m3u          " 
+Outputs file as a m3u playlist. Also sets sub_dirs
+
+.TP 0.5i
+.BR -x , "  --[no-]plist        " 
+Outputs file as a plist. Also sets sub_dirs
+
+.TP 0.5i
+.BR -U , "  --[no-]pls          " 
+Outputs file as a pls playlist. Also sets sub_dirs
+
+.TP 0.5i
+.BR -X , "  --[no-]xspf         " 
+Outputs file as a xspf playlist. Also sets sub_dirs
+
+.TP 0.5i
+.BR -n , "  --filename {name}   " 
+The filename of the playlist
+
+.TP 0.5i
+.BR -y , "  --[no-]shuffle      " 
+shuffles the playlist
+
+.I 3  Player
+.BR
+
+.TP 0.5i
+.BR -M , "  --none              " 
+does not play the files.
+
+.TP 0.5i
+.BR -m , "  --mplayer           " 
+plays the files using mplayer.
+
+.TP 0.5i
+.BR -N , "  --niceplayer        " 
+plays the files using niceplayer.
+
+.TP 0.5i
+.BR -V , "  --vlc               " 
+plays the files using vlc.
+
+.TP 0.5i
+.BR -^ , "  --[no-]background   " 
+background the player
+
+.I 4  Output
+.BR
+
+.TP 0.5i
+.BR -o , "  --[no-]out          " 
+Outputs file list to stdout
+
+.TP 0.5i
+.BR -O , "  --nooutput          " 
+Does not write any output (including playlists)
+
+.I 5  History
+.BR
+
+.TP 0.5i
+.BR -D , "  --[no-]done         " 
+Set the status to done 
+
+.TP 0.5i
+.BR -[ , "  --[no-]history      " 
+Adds the files to the history, which is stored in a sql database.
+
+.TP 0.5i
+.BR -K , "  --[no-]skip         " 
+Set the status to skip 
+
+.I 6  Filetype
+.BR
+
+.TP 0.5i
+.BR    , "  --all               " 
+Display all files.
+
+.TP 0.5i
+.BR    , "  --[no-]audio        " 
+Displays audio as well.
+
+.TP 0.5i
+.BR    , "  --[no-]video        " 
+Displays videos as well.
+
+.I 7  Other
+.BR
+
+.TP 0.5i
+.BR -l , "  --[no-]last         " 
+Choose the latest file of each series
+
+.TP 0.5i
+.BR -w , "  --sep     {num}     " 
+Use {num} as the separator between episodes
+
+.TP 0.5i
+.BR -: , "  --[no-]nicerandom   " 
+Sets random in niceplayer
+
+.TP 0.5i
+.BR -Y , "  --[no-]nicereapeat  " 
+Sets repeat in niceplayer
+
+.TP 0.5i
+.BR -h , "  --help    [part]    " 
+Displays the help.
+
+.TP 0.5i
+.BR    , "  --ax                " 
+Uses AX as root directory
+
+.TP 0.5i
+.BR    , "  --op                " 
+Uses OP as root directory
+
+.TP 0.5i
+.BR -u , "  --[no-]safe         " 
+For testing use file that are know to work
+
+.TP 0.5i
+.BR -Z , "  --print_opt         " 
+Shows the opt struct
+
+.TP 0.5i
+.BR    , "  --[no-]regex-print  " 
+Prints the regex
+
+.TP 0.5i
+.BR -, , "  --regex-separator {sep}" 
+Set the separator to use between args default: .*
+
+.I 8  Mplayer extra
+.BR
+
+.TP 0.5i
+.BR -q , "  --chapter {num}     " 
+Plays from chapter num
+
+.TP 0.5i
+.BR -W , "  --width   {width}   " 
+Set the width
+
+.TP 0.5i
+.BR -H , "  --height  {height}  " 
+Set the height using 16:9
+
+.TP 0.5i
+.BR -L , "  --loop    {num}     " 
+Adds -loop -- meaning loops forever
+
+.TP 0.5i
+.BR -r , "  --[no-]rnd          " 
+Uses mplayer random unction 
+
+.TP 0.5i
+.BR -E , "  --prefix  {arg}     " 
+Set mplayer prefix options, can be used multiple times
+
+.TP 0.5i
+.BR -F , "  --postfix {arg}     " 
+Set mplayer postfix options, can be used multiple times
+
+.TP 0.5i
+.BR -g , "  --quick             " 
+--framedrop and --fast
+
+.TP 0.5i
+.BR -b , "  --quick-random      " 
+--framedrop and --fast --rnd --top(profile t  - afloat and 360pi in 16:9)
+
+.TP 0.5i
+.BR -v , "  --volume  {num}     " 
+Set mplayer volume {0-100}
+
+.TP 0.5i
+.BR -c , "  --allspaces         " 
+Brings up the afloat menu
+
+.TP 0.5i
+.BR -C , "  --autospaces        " 
+Make the player appear on spaces
+
+.I 9  Mplayer aspect
+.BR
+
+.TP 0.5i
+.BR -A , "  --aspect  {W:H}     " 
+Sets the aspect ratio
+
+.TP 0.5i
+.BR -9 , "  --169               " 
+Uses 16:9 aspect ratio
+
+.TP 0.5i
+.BR -4 , "  --43                " 
+Uses 4:3 aspect ratio
+
+.I 10  Mplayer sizes
+.BR
+
+.TP 0.5i
+.BR    , "  --480               " 
+Set the width to 480
+
+.TP 0.5i
+.BR -2 , "  --560               " 
+Set the width to 560
+
+.TP 0.5i
+.BR    , "  --600               " 
+Set the width to 600
+
+.TP 0.5i
+.BR    , "  --720               " 
+Set the width to 720
+
+.TP 0.5i
+.BR    , "  --800               " 
+Set the width to 800
+
+.TP 0.5i
+.BR    , "  --900               " 
+Set the width to 900
+
+.TP 0.5i
+.BR    , "  --1000              " 
+Set the width to 1000
+
+.TP 0.5i
+.BR    , "  --1200              " 
+Set the width to 1200
+
+.TP 0.5i
+.BR    , "  --1300              " 
+Set the width to 1300
+
+.TP 0.5i
+.BR    , "  --1440              " 
+Set the width to 1440
+
+.TP 0.5i
+.BR    , "  --1920              " 
+Set the width to 1920
+
+.TP 0.5i
+.BR -i , "  --original          " 
+Uses original size
+
+.I 11  Mplayer geometry
+.BR
+
+.TP 0.5i
+.BR -G , "  --geometry {x:y}    " 
+Palaces the player at (x,y)
+
+.TP 0.5i
+.BR -1 , "  --tl                " 
+Places the player at the top left
+
+.TP 0.5i
+.BR -= , "  --tr                " 
+Places the player at the top right
+
+.TP 0.5i
+.BR -z , "  --bl                " 
+Places the player at the bottom right
+
+.TP 0.5i
+.BR -/ , "  --br                " 
+Places the player at the bottom left
+
+.TP 0.5i
+.BR -5 , "  --lc                " 
+Places the player at the left centre
+
+.TP 0.5i
+.BR -8 , "  --rc                " 
+Places the player at the right centre
+
+.TP 0.5i
+.BR -7 , "  --tc                " 
+Places the player at the top centre
+
+.TP 0.5i
+.BR -6 , "  --bc                " 
+Places the player at the bottom centre
+
+.TP 0.5i
+.BR    , "  --cc                " 
+Places the player at the centre
+
+
+
+.br
+.SH EXAMPLES
+Example 1:  media <dir> -mlo
+.br
+Plays the latest episodes using mplayer
+.P
+
+Example 2 media <dir>  -s -^ -m
+.br
+Looks in sub directories (-s) and backgrounds mplayer (-^)
+.p
+
+Example 3: media <dir> --mplayer --top --169 --rnd  --shuffle --framedrop --fast 
+.br
+Plays the all the files in the dir randomly and places the player in the top left hand coner. Also set frame drop and mutithreading
+.P
+
+Example 4: media <dir> -m --tl -W480 --aspect 16:9
+Plays the files using mplayer and playes the play at the top left hand coner with a width of 480 pixels in a 16:9 aspect ratio
+
+Example 5: media <dir> -o --hashlocation <path> 
+Uses a hashmap to expand abbreviation. The hash should be in the form 
+.br
+	3 19 fma	Fullmetal Alchemist
+.br
+where the 3 is the length of the abbreviation (which has to be less then 10). 19 is length of the expansion. there is a tab between the abbreviation and the expansion
+.br
+Below is a function is easily add abbreviation to a hashfile located at HASH_PATH
+.br
+
+.br
+function add_hash_hash() {
+.br
+	HASH_PATH="~/path/to/hashfile"
+.br
+	if [ $#  -ne 2  ]; then                                                                       
+.br
+		echo "add_hash_hash key val"                                                                       
+.br
+	elif [[ ${#1} -lt 10 && ${#1} -gt 0 && ${#2} -gt 0 ]]; then                                   
+.br
+		key=$1                                                                                    
+.br
+		val=$2                                                                                    
+.br
+		printf "%d %2d ${key}\\t${val}\\n" ${#key} ${#val}  >> "$HASH_PATH";
+.br
+	else                                                                                          
+.br
+		echo "len(key) < 10 and > 0  len(val) > 0"                                                
+.br
+	fi
+.br
+}
+
+.SH BUGS
+plist -x and exclude -e are not implemented
+.br
+IF using sub directories (-s) and -m -o  it might complain about a malloc error, AFTER the program exits
+.SH VERSION
+This documentation describes
+.B media
+version R216
+.SH AUTHOR
+.br
+.B Bilal Hussain
+.br

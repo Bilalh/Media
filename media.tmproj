@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/app/history_add_main.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,37 +28,9 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>310</integer>
+	<integer>168</integer>
 	<key>metaData</key>
 	<dict>
-		<key>src/app/history_add_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>27</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
-		<key>src/app/media_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>37</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-		</dict>
 		<key>src/examples/sub_dir2.c</key>
 		<dict>
 			<key>caret</key>
@@ -91,27 +61,7 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>src/string_util.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>310</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>74</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/app/history_add_main.c</string>
-		<string>src/app/media_main.c</string>
-		<string>src/string_util.c</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -142,7 +92,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -151,36 +101,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>include</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>src</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict>
-						<key>app</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-						<key>sql</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
-				</dict>
-				<key>tests</key>
+				<key>xtra</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>

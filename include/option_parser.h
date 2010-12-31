@@ -1,12 +1,10 @@
 #ifndef OPTIONPHEAD
 #define OPTIONPHEAD
-#include <getopt.h>
 #include <stdbool.h>
 #include <Block.h>
 #include "media_args.h"
 
 #define NO_SHORT_OPT 0
-typedef void (^VoidBlock)();
 
 MediaArgs *new_media_args();
 
@@ -24,19 +22,5 @@ void print_usage();
 
 // prints the media_args struct
 void print_media_args(MediaArgs *ma);
-
-typedef struct{
-	const struct option opt;
-	const char *arg;
-	const char *help;
-	const VoidBlock block;
-	const bool neg;
-} Element;
-
-typedef struct {
-	const char *grouping;
-	const int length;
-	const Element *links;
-} HelpLink;
 
 #endif
