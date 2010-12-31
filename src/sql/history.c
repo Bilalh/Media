@@ -261,6 +261,8 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	const char *current = argv[1];
 	const char* total   = argv[2] ? argv[2] : "?";
 	
+	if (*current == '0') return 0;
+	
 	// Makes the date
 	struct tm tm = {}; char date[28];
 	strptime(argv[3], "%F %H:%M:%S", &tm);
