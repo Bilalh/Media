@@ -228,6 +228,8 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	// Makes the date
 	struct tm tm = {}; char date[28];
 	strptime(date_data, "%F %H:%M:%S", &tm);
+	time_t temp = mktime(&tm);
+	tm = *localtime(&temp);
 	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
 	
 	const int  length = 40;
@@ -238,10 +240,10 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 }
 
 void print_ongoing(){
-	char *buff = "Select * From OngoingSeries";
+	char *buff = "Select * From OngoingSeries Where Rewatching = 0";
 	sql_exec(buff, print_ongoing_callback);
 	puts("");
-	buff = "Select * From RewatchingOngoingSeries";
+	buff = "Select * From OngoingSeries Where Rewatching = 1";
 	sql_exec(buff, print_ongoing_callback);
 }
 
@@ -252,11 +254,12 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	const char *current = argv[1];
 	const char* total   = argv[2] ? argv[2] : "?";
 	
-	if (*current == '0') return 0;
 	
 	// Makes the date
 	struct tm tm = {}; char date[28];
 	strptime(argv[3], "%F %H:%M:%S", &tm);
+	time_t temp = mktime(&tm);
+	tm = *localtime(&temp);
 	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
 	
 	// prints the data 

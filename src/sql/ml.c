@@ -193,7 +193,8 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	}
 
 	dprintf("%s\n", "after xml doc");
-	const int length = 20 + 14 + 15 + 5 + strlen(xml) * 3 + 1;
+	// TODO change 1024 to actual amount for the synonyms
+	const int length = 20 + 14 + 15 + 5 +  1024;
 
 	const char *t  = "translate(";
 	const char *t2  = ",'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')";
@@ -202,12 +203,24 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	dprintf("%s\n", "after lowering ");
 	
-
+	
+	
 	// xpath to the entry
 	sprintf(buf,
 			"/anime/entry[%stitle%s='%s' or %senglish%s='%s' or %ssynonyms%s='%s']",
 			t, t2, lower,   t, t2, lower,   t, t2, lower
 		   );
+
+	// xpath to the entry
+	sprintf(buf,
+			"/anime/entry[%stitle%s='%s' or %senglish%s='%s' or "
+				"substring(%ssynonyms%s, string-length(synonyms) - string-length('%s')+1) = '%s' or "
+				"contains(%ssynonyms%s, '%s;')"
+			"]",
+			t, t2, lower,   t, t2, lower,   t, t2, lower, lower,  t, t2, lower
+		   );
+
+	dprintf("xpath: %s\n", buf);
 
 	dprintf("%s\n", "after buf spf ");
 	//FIXME seg fault on getting no vaild data

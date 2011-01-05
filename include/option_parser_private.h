@@ -585,8 +585,8 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "quick-random", .val = 'b', .has_arg = no_argument}, 
-		.help  = "--framedrop and --fast --rnd --top(profile t  - afloat and 360pi in 16:9)",
+		.opt   = {.name =  "quick-top", .val = 'b', .has_arg = no_argument}, 
+		.help  = "--framedrop, --fast and --top(profile t  - afloat and 360pi in 16:9)",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 3, "-framedrop",
 				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
@@ -594,6 +594,18 @@ const Element H_mplayer_extra[] = {
 			ma->afloat = true;
 			string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
 			
+			string_push(&ma->prefix_args, "-aspect 16:9");
+		}
+	},
+	{  
+		.opt   = {.name =  "quick-random", .val = 'B', .has_arg = no_argument}, 
+		.help  = "--framedrop, --fast, --rnd and --top(profile t  - afloat and 360pi in 16:9)",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 3, "-framedrop",
+				"-lavdopts", "skipframe=nonref:skiploopfilter=all:fast=1" );
+			
+			ma->afloat = true;
+			string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
 			string_push(&ma->prefix_args, "-shuffle");
 			string_push(&ma->prefix_args, "-aspect 16:9");
 		}
