@@ -79,6 +79,8 @@ typedef struct {
 	bool       regex_print;  // DONE
 	char      *regex_sep;    // DONE
 	
+	bool       dot_default;
+	
 } MediaArgs;
 
 #endif

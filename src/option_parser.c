@@ -57,6 +57,8 @@ MediaArgs *new_media_args() {
 		.nice_random = false,
 		.regex_print = false,
 		.regex_sep   = strdup(".*"),
+		
+		.dot_default = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -326,6 +328,8 @@ void print_media_args(MediaArgs *ma) {
 	
 	print_args("regex_print",  truth(ma->regex_print));
 	print_args("regex_sep",    nullcheck(ma->regex_sep));
+
+	print_args("dot_default",  truth(ma->dot_default));
 
 
 #undef truth

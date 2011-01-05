@@ -129,6 +129,14 @@ const Element H_filepath[] ={
 			ma->sub_dirs = TRUTH_VALUE(ch);
 		}
 	},
+	{  
+		.opt   = {.name =  "dot-default", .val = '.', .has_arg = no_argument}, 
+		.help  = "Uses . for the regex args if no regex args given",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->dot_default = TRUTH_VALUE(ch);
+		}
+	},
 };
 
 const Element H_playlist[] ={

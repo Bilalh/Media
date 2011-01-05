@@ -29,9 +29,16 @@ static char *make_command(const char *bin_path, char **filenames, int num_of_fil
 
 void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
+	char *dot_default[] = {"."};  
+	
 	if (argc == 0) {
-		fprintf(stderr, "%s\n", "NO file args (use . for all files)");
-		exit(2);
+		if (ma->dot_default){
+			argc = 1;
+			args = dot_default;
+		}else{
+			fprintf(stderr, "%s\n", "NO file args (use . for all files)");
+			exit(2);
+		}
 	}
 	
 	#ifndef DEBUG
