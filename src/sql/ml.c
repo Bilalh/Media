@@ -454,7 +454,7 @@ static void update_id_total(MLOpts *opts){
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1, Total = %s, Id = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated = 1, Total = %s, Id = %s where Title = \"%s\"; ", 
 		opts->total, opts->id, opts->title
 	);
 	
@@ -467,7 +467,7 @@ static void update_id(MLOpts *opts){
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1, Id = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated = 1, Id = %s where Title = \"%s\"; ", 
 		opts->id, opts->title
 	);
 	
@@ -480,7 +480,7 @@ static void update_total(MLOpts *opts){
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated == 1, Total = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Updated == 1, Total = %s where Title = \"%s\"; ", 
 		opts->total, opts->title
 	);
 	
@@ -493,7 +493,7 @@ static void update_total_only(MLOpts *opts){
 	}
 	
 	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Total = %s where Title = '%s'; ", 
+		"Update SeriesInfo Set Total = %s where Title = \"%s\"; ", 
 		opts->total, opts->title
 	);
 	
@@ -504,7 +504,7 @@ static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
 	size_t new_len = s->len + size * nmemb;
 	s->ptr = realloc(s->ptr, new_len + 1);
 	if (s->ptr == NULL) {
-		fprintf(stderr, "realloc() failed\n");
+		fprintf(stderr, "realloc() failed in ml.c\n");
 		exit(EXIT_FAILURE);
 	}
 	memcpy(s->ptr + s->len, ptr, size * nmemb);
