@@ -12,6 +12,6 @@
 #else
 
 #define dprintf(fmt, ...) \
-		printf(" %s:%18s:%i%s", basename(__FILE__),__func__, __LINE__,"   ");\
+		printf("%15s:%12s:%i%s", basename(__FILE__),__func__, __LINE__,"   ");\
 		printf(fmt,## __VA_ARGS__)
 #endif

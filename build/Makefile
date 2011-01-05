@@ -24,7 +24,7 @@ to_bin:
 
                            ### Objects ###
 
-objs       = media mal nums numsf numss ongoing hista shash
+objs       = media mal nums numsf numss ongoing hista hists shash
 scripts    = make_man_options
 examples   = optt hashe2 subdir_test
 
@@ -39,6 +39,7 @@ ongoing_req = app/ongoing_main.o ${hist_req}
 
 
 hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
+hists_req  = app/set_score_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
 shash_req  = app/hash_lookup.o ${strutil_req}
 
 
@@ -90,7 +91,7 @@ list_tests:
 
 #needs sudo
 install_man_pages:
-	cp ../man/*.7 /usr/local/share/man/man7/.
+	mkdir -p /usr/local/share/man/man7/ && cp ../man/*.7 /usr/local/share/man/man7/.
 
                            ### util ###
 

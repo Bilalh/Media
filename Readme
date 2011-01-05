@@ -1,2 +1,2 @@
 #make lines
-ls * */*  */*/* | grep -P "\.([ch]|pls|rb|sh|mk|h\d|ddd|txt|)|.*file"  | xargs
+wc `ls * */* */*/*` 2>/dev/null

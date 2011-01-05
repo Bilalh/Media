@@ -1,19 +1,22 @@
-.TH hista 7 "R200" "Tue, December 30, 2008" 
+.TH hists 7 "R230" "Tue, December 30, 2009" 
 .SH NAME
-.B hista
+.B hists
 \- adds/updates a series history
 .SH SYNOPSIS
-hista Series lower_num [time] [upper_num] [sep|t] [score|t] [t] 
+hists Series Score [lower_num|t] [time] [upper_num] [sep|t] [t] 
 .br
 
 
 .SH DESCRIPTION
-hista adds/updates a series watching history. 
+hists adds/updates a series watching history. 
 .br
 
 .SH AUGMENTS 
 .B Series
 \- The name of the series
+
+.B score 
+\- The rating of the series from 1 to 10
 
 .B lower_num
 \- The episode to update 
@@ -36,14 +39,11 @@ hista adds/updates a series watching history.
 .B sep
 \- The time between the start of the start of two episode in minutes default 27 minutes. 
 
-.B score 
-\- The rating of the series from 1 to 10
-
 .B t 
 \- Prints the choices made 
 
 .SH SEE ALSO 
-hists(7) media(7), mal(7), nums(7), ongoing(7), shash(7)
+media(7), mal(7), hista(7), nums(7), ongoing(7), shash(7)
 
 
 .SH BUGS
@@ -51,7 +51,7 @@ None yet
 .SH VERSION
 This documentation describes
 .B hista
-version 200
+version 230
 .br
 .SH AUTHOR
 .br
