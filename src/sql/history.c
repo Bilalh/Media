@@ -166,49 +166,43 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 
 void print_latest(char *num){
 	
-	char buff[329 + strlen(num)*2];
+	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
-		"	WHERE("
-		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
-		"		AND Skip = 0 AND Finished = 0"
-		"	)OR("
-		"		Rewatching = 1 AND"
-		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
-		"	)",
-		num, num
+		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		" FROM SeriesData"
+		" WHERE("
+		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		"	AND Finished = 0 AND (Skip = 0 OR Dropped = 0)"
+		")",
+		num
 	);
 	sql_exec(buff, print_latest_callback);
 }
 
 void print_latest_with_finished(char *num){
 	
-	char buff[332 + strlen(num)*2]; // few extra 332? 
+	char buff[200 + strlen(num)]; // few extra 332? 
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
-		"	WHERE("
-		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
-		"		AND (Finished = 1 OR Skip = 0)"
-		"	)OR("
-		"		Rewatching = 1 AND"
-		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
-		"	)",
-		num, num
+		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		" FROM SeriesData"
+		" WHERE("
+		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		"	AND (Skip = 0 OR Dropped = 0)"
+		")",
+		num
 	);
 	sql_exec(buff, print_latest_callback);
 }
 
 void print_latest_with_finished_and_skipped(char *num){
-	char buff[298 + strlen(num)*2];
+	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching, RewatchingCurrent, RewatchingDate FROM SeriesInfo" 
-		"	WHERE("
-		"		strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
-		"	)OR("
-		"		Rewatching = 1 AND"
-		"		strftime('%%s',RewatchingDate) > strftime('%%s', 'now','-%s day','localtime')"
-		"	)",
-		num, num
+		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		" FROM SeriesData"
+		" WHERE("
+		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
+		")",
+		num
 	);
 	sql_exec(buff, print_latest_callback);
 }
@@ -217,22 +211,18 @@ void print_latest_with_finished_and_skipped(char *num){
 static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
 	
 	const char* title = argv[0];
+	const char* current = argv[1];
 	const char* total = argv[2] ? argv[2] : "?";
-	char *current, *date_data;
+	const char* date_data  = argv[3];
 	
-	// Set the pointer to the data argv[5] tells if we are rewatching 
-	char *rewatching;
-	int   length;
-	if ( *argv[5] == '0' ){
-		current    = argv[1];
-		date_data  = argv[3];
-		rewatching = ""; 
-		length     = 42;
+	char *status;
+	
+	if       ( *argv[5] == '1' ){ // rewatching 
+		status = "R "; 
+	}else if ( *argv[4] == '1' ){ // finished
+		status = "F ";
 	}else{
-		current    = argv[6];
-		date_data  = argv[3];
-		rewatching = "R ";
-		length     = 40;
+		status = "O ";
 	}
 	
 	// Makes the date
@@ -240,8 +230,9 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	strptime(date_data, "%F %H:%M:%S", &tm);
 	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
 	
+	const int  length = 40;
 	// prints the data 
-	printf("%s%-*s %3s/%-3s %17s\n", rewatching, length, title, current ,total, date);
+	printf("%s%-*s %3s/%-3s %17s\n", status, length, title, current ,total, date);
 
 	return 0;
 }

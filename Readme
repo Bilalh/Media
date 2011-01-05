@@ -1,1 +1,63 @@
-fin?
+SELECT Title, Current, Total, Date, Finished, Rewatching
+FROM SeriesData 
+WHERE(
+	strftime('%s',Date) > strftime('%s', 'now','-20 day','localtime')
+	AND Finished = 0 AND (Skip = 0 OR Dropped = 0)
+)
+
+Create View SeriesData as
+SELECT 
+
+	si.Title, 
+	(
+		SELECT CASE 
+			WHEN si.Rewatching = '1'THEN si.RewatchingCurrent 
+			ELSE si.Current 
+		END
+	) as Current, 
+	
+	si.Total,
+	(
+		SELECT CASE 
+			WHEN si.Rewatching = '1'THEN si.RewatchingDate 
+			ELSE si.Date 
+		END
+	) as Date, 
+
+	(
+		SELECT CASE 
+			WHEN si.Rewatching = '1'THEN 0 
+			ELSE si.Finished 
+		END
+	) as Finished, 
+
+	(
+		SELECT CASE WHEN 
+			Exists(Select * From OldSeries os Where os.Title=si.Title ) OR
+			si.Rewatching = '1' 
+		THEN '1' ELSE '0' 
+		END
+	) as Rewatching,
+	
+	si.Skip,
+	si.dropped,
+	si.Score,
+	(
+		SELECT CASE 
+			WHEN si.Rewatching = '1'THEN si.RewatchingStart
+			ELSE si.StartDate 
+		END
+	) as StartDate,
+
+	(
+		SELECT CASE 
+			WHEN si.Rewatching = '1'THEN NULL
+			ELSE si.EndDate 
+		END
+	) as EndDate,
+	
+	si.Updated,
+	si.Id
+
+FROM SeriesInfo si
+ORDER BY si.Title
