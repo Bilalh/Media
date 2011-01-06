@@ -19,9 +19,14 @@ include ../tests/tests.mk
 dist: CFLAGS = -O2 -Wall
 dist: clean all oclean
 
+install: to_bin to_scripts
+
 to_bin:
 	cp ${objs} ~/bin
 
+to_scripts:
+	cp ../src/history/mweb.rb ~/scripts/histw
+	
                            ### Objects ###
 
 objs       = media mal nums numsf numss ongoing hista hists shash

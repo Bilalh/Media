@@ -6,9 +6,9 @@ opt_req     = option_parser.o string_buffer.o string_util.o
 string_req  = string_buffer.o
 strutil_req = string_util.o
 time_req    = string_util.o time_util.o
-hist_req    = sql/history.o string_util.o time_util.o
+hist_req    = history/history.o string_util.o time_util.o
 play_req    = playlist.o
-ml_req      = sql/ml.o string_util.o string_buffer.o ${hist_req} 
+ml_req      = history/ml.o string_util.o string_buffer.o ${hist_req} 
 
 # Makes the test_% : ${test_%_req}
 $(foreach name,${names},$(eval test_${name}:${${name}_req}))
