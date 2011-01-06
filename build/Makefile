@@ -55,6 +55,18 @@ subdir_test_req = ${sub_dirs_req}
 
 make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
 
+                           ### Scripts rules ###
+temp_files   = years days
+result_files = years.pdf days.pdf
+
+plot:
+	../src/scripts/make_plot_years.rb > years
+	../src/scripts/make_plot_days.rb > days
+	../src/scripts/make_plot_years.r          && \
+	mv Rplots.pdf years.pdf                   && \
+	../src/scripts/make_plot_days.r           && \
+	mv Rplots.pdf days.pdf                   
+	
                            ### Objects rules ###
 
 # makes name : ${name_req}
@@ -104,10 +116,10 @@ install_man_pages:
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${scripts} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${scripts} ${temp_files} ${result_files} *~
                                        
 oclean:                                
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${scripts} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${scripts} ${temp_files} *~
 
 help: list_objs list_tests 
 	@${PERL} -e 'print join "\n", qw{dist to_bin install_man_pages}, ""'
