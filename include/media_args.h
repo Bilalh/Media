@@ -55,6 +55,7 @@ typedef struct {
 	Pformat  pl_format;    // nDONE - nice paths
 	Poutput  pl_output;    // DONE
 	bool     pl_shuffle;   // DONE
+	bool     pl_reverse;   // DONE
 	
 	// Prefs
 	char   *hash_location; // DONE
@@ -79,7 +80,7 @@ typedef struct {
 	bool       regex_print;  // DONE
 	char      *regex_sep;    // DONE
 	
-	bool       dot_default;
+	bool       dot_default;  // DONE
 	
 } MediaArgs;
 

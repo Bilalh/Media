@@ -18,9 +18,9 @@
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
-#define VIDEO  ".*\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
-#define AUDIO  ".*\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
-#define VID_AUD ".*\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
+#define VIDEO   "(.*)?\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
+#define AUDIO   "(.*)?\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
+#define VID_AUD "(.*)?\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
 // Makes the command for vlc and mplayer
 static char *make_command(const char *bin_path, char **filenames, int num_of_files,
@@ -89,6 +89,10 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	if(ma->pl_shuffle) {
 		shuffle((void**) s_arr, file_num);
+	}
+
+	if(ma->pl_reverse) {
+		reverse((void**) s_arr, file_num);
 	}
 	
 	if(ma->pl_output & PL_STDOUT){

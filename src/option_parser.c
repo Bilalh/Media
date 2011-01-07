@@ -15,7 +15,7 @@ static void sub_print_help(const Element *ele);
 MediaArgs *new_media_args() {
 
 	MediaArgs *ma = malloc(sizeof(MediaArgs));
-	// all unmentioned  set to NULL.
+	// all unmentioned  set to NULL or  0 .
 	MediaArgs m = {
 		// Selection
 		.excludes.exclude = false,
@@ -34,6 +34,8 @@ MediaArgs *new_media_args() {
 		.pl_format     = F_NONE,
 		.pl_output     = PL_NONE,
 		.pl_shuffle    = false,
+		.pl_reverse    = false,
+		
 		
 		// Prefs
 		.hash_location = strdup("zzhash"),
@@ -102,7 +104,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	#define ele(i) HELP_LINK[i].links
 	
 	struct option opts[t_len *2 + 1 ];
-	char letters[t_len * 3 + 1]; // since opt with arg needs a : after it
+	char letters[t_len * 3 + 1]; // since opt with arg needs a : or opt args need :: after it
 	
 	// builds the options array.
 	for(int i = 0; i < HELP_L_LEN; ++i) {
@@ -275,7 +277,7 @@ static void sub_print_help(const Element *ele){
 	} 
 }
 
-// prints the media_args struct
+// prints the media_args struct -- for debuging
 void print_media_args(MediaArgs *ma) {
 #define truth(boolean) (boolean ? "true" : "false" )
 #define nullcheck(val) (val == NULL ? "NULL" : val )
@@ -305,7 +307,8 @@ void print_media_args(MediaArgs *ma) {
 	print_hex ("pl_format",  ma->pl_format);
 	print_hex ("pl_output",  ma->pl_output);
 	print_args("pl_shuffle", truth(ma->pl_shuffle));
-                              
+	print_args("pl_reverse", truth(ma->pl_reverse));
+   
 	printf("Prefs\n");
 	print_args("hash_location", nullcheck(ma->hash_location));
 	print_args("use_hash",      truth(ma->use_hash));

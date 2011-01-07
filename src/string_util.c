@@ -371,6 +371,17 @@ void shuffle(void **array, size_t n) {
 }
 
 
+void reverse(void** arr, size_t length){
+	
+	int i,j;
+	for(i = 0, j = length -1 ; i < j ; i++,j-- ){
+		void *t  = arr[i];
+		arr[i]   = arr[j];
+		arr[j]   = t;
+	}
+	
+}
+
 char *str_lower (char *s, size_t length) {
 	assert(s); assert(length >= 0);
 	char *re = malloc(sizeof(char) * length +1);

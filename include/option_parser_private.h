@@ -78,7 +78,7 @@ const Element H_filetype[] ={
 const Element H_filepath[] ={
 	
 	{  
-		.opt   = {.name =  "exclude", .val = 'e', .has_arg = required_argument}, 
+		.opt   = {.name =  "exclude", .val = 'Q', .has_arg = required_argument}, 
 		.help  = "Sub directories to exclude",
 		.arg   = "dir", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -163,6 +163,7 @@ const Element H_playlist[] ={
 	MAKE_PLAYLISTT("pls"   ,'U', F_PLS,   "Outputs file as a pls playlist"),
 	MAKE_PLAYLISTT("xspf"  ,'X', F_XSPF,  "Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
+	
 	{  
 		.opt   = {.name =  "filename", .val = 'n', .has_arg = required_argument}, 
 		.help  = "The filename of the playlist",
@@ -177,6 +178,14 @@ const Element H_playlist[] ={
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_shuffle = TRUTH_VALUE(ch);
+		}
+	},
+	{  
+		.opt   = {.name =  "reverse", .val = 'e', .has_arg = no_argument}, 
+		.help  = "reverse the playlist",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_reverse = TRUTH_VALUE(ch);
 		}
 	}
 	

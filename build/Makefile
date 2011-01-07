@@ -16,7 +16,7 @@ include ../tests/tests.mk
 
 
                            ### Distribution ###
-dist: CFLAGS = -O2 -Wall
+dist: CFLAGS = -O2 -Wall 
 dist: clean all oclean
 
 install: to_bin to_scripts

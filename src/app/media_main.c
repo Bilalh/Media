@@ -35,7 +35,5 @@ int main (int argc, char **argv) {
 	char *path =  opt->root_dir ?  opt->root_dir : g_path;
 
 	media(path, argv, argc , opt);
-	free(g_path);
-	// CHECK free opt?
 	return 0;
 }
