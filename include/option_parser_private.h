@@ -7,6 +7,7 @@
 
 #include "string_util.h"
 #include "media_args.h"
+#include "version.h"
 
 typedef void (^VoidBlock)();
 typedef struct{
@@ -492,6 +493,13 @@ const Element H_other[] ={
 				exit(11);
 			}
 			ma->regex_sep = strdup(arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "version", .val = 283, .has_arg = no_argument}, 
+		.help  = "Shows the version number",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			printf("Media revision %d\n", MEDIA_VERION_NUMBER);
 		}
 	},
 };
