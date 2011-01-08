@@ -14,6 +14,7 @@
 #include <include/string_buffer.h>
 #include <include/string_util.h>
 #include <include/debug.h>
+#include <include/colours.h>
 
 typedef struct {
 	char *ptr;
@@ -367,7 +368,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 				}
 			} 
 			if (*opts.total == '\0' ||  *opts.total == '\0'){
-				printf("%-36s %s\n",opts.title, "id &| total not found");
+				printf("%-36s %s\n",opts.title, COLOURJ("id &| total not found",BOLD_RED));
 			}
 			
 		}
@@ -403,7 +404,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	
 	if (update_anime){
 		add_anime(&opts);
-		printf("%-36s %s\n",opts.title, update_anime2(&opts));
+		printf("%-36s " SSS("%s") "\n",opts.title, COLOUR(update_anime2(&opts),BLUE) );
 	}
 	
 	return 0;

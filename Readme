@@ -1,2 +1,2 @@
 #make lines
-wc `ls * */* */*/*` 2>/dev/null
+wc `ls * */* */*/* | grep -v "lines$"`  2>/dev/null | pbcopy
