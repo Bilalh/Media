@@ -1,3 +1,5 @@
+# Uses make dist to make everything and make install to install
+
                            ### Variables ###
 CC             = gcc
 CFLAGS         = -g -Wall
@@ -6,11 +8,16 @@ compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/opt/local/include -I/usr/include/libxml2 
 libs           = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
+
 .DEFAULT_GOAL := media
+SCRIPT_DST     = ${HOME}/scripts
+SCRIPT_SRC     = ../src/scripts
+BIN            = ${HOME}/bin
 
                            ### Includes ###
 vpath %.c ../src 
 vpath %.h ../
+vpath %.sh %.rb %.r %.py %.pl ../src/scripts
 # Rules for tests and requiments
 include ../tests/tests.mk
 
@@ -22,15 +29,12 @@ dist: clean all oclean
 install: to_bin to_scripts
 
 to_bin:
-	cp ${objs} ~/bin
+	cp ${objs} ${BIN}
 
-to_scripts:
-	cp ../src/history/mweb.rb ~/scripts/histw
-	
                            ### Objects ###
 
 objs       = media mal nums numsf numss ongoing hista hists shash
-scripts    = make_man_options
+c_scripts  = make_man_options
 examples   = optt hashe2 subdir_test
 
 media_req    = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
@@ -55,40 +59,53 @@ subdir_test_req = ${sub_dirs_req}
 
 make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
 
-                           ### Scripts rules ###
-temp_files   = years days
-result_files = years.pdf days.pdf
+                           ### Scripts ###
+scripts_keep_name = get_number.sh get_titles.sh
+scripts           = histm gf
+histm_location    = history_add_menu.rb
+gf_location       = get_selected_finder_item.sh
 
-plot:
-	../src/scripts/make_plot_years.rb > years
-	../src/scripts/make_plot_days.rb > days
-	../src/scripts/make_plot_years.r          && \
-	mv Rplots.pdf years.pdf                   && \
-	../src/scripts/make_plot_days.r           && \
-	mv Rplots.pdf days.pdf                   
-	
                            ### Objects rules ###
-
 # makes name : ${name_req}
-$(foreach name,${objs} ${examples} ${scripts},$(eval ${name}:${${name}_req}))
+$(foreach name,${objs} ${examples} ${c_scripts} ,$(eval ${name}:${${name}_req}))
 
-${objs} ${examples} ${scripts}: 
+.PHONY: ${scripts} ${scripts_keep_name}
+${scripts}:
+	cp "${SCRIPT_SRC}/${${@}_location}" "${SCRIPT_DST}/$@"; \
+	chmod +x "${SCRIPT_DST}/$@";
+	
+${scripts_keep_name}:
+	cp "${SCRIPT_SRC}/$@" "${SCRIPT_DST}/$@"; \
+	chmod +x "${SCRIPT_DST}/$@";
+
+${objs} ${examples} ${c_scripts}: 
 	${compile} ${libs} ${flags} ${^F} -o $@
 
+all:         ${objs}
+examples:    ${examples}
+cscripts:    ${c_scripts}
+to_scripts:  ${scripts} ${scripts_keep_name}
+
+#TODO put mweb.rb in scripts
+to_scripts:
+	cp ../src/history/mweb.rb ${SCRIPT_DST}/histw; \
+	chmod +x ${SCRIPT_DST}/histw;
+
+                           ### Help ###
 list_objs:
 	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
 
-list_scripts:
-	@${PERL} -e 'print join "\n", qw{${scripts}}, ""'
+list_cscripts:
+	@${PERL} -e 'print join "\n", qw{${c_scripts}}, ""'
 
 list_examples:
 	@${PERL} -e 'print join "\n", qw{${examples}}, ""'
 
-all:      ${objs}
-examples: ${examples}
+list_targets:
+	@${PERL} -e 'print join "\n", qw{dist all cscripts to_scripts run_tests examples}, ""'
 
+	
                            ### Tests ###
-
 run_tests: all_tests
 	./all_tests
 
@@ -110,16 +127,27 @@ list_tests:
 install_man_pages:
 	mkdir -p /usr/local/share/man/man7/ && cp ../man/*.7 /usr/local/share/man/man7/.
 
-                           ### util ###
+	                           ### Scripts rules ###
+temp_files   = years days
+result_files = years.pdf days.pdf
 
+plot:
+	../src/scripts/make_plot_years.rb > years
+	../src/scripts/make_plot_days.rb > days
+	../src/scripts/make_plot_years.r          && \
+	mv Rplots.pdf years.pdf                   && \
+	../src/scripts/make_plot_days.r           && \
+	mv Rplots.pdf days.pdf
+
+                           ### util ###
 %.o: %.c
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${scripts} ${temp_files} ${result_files} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${c_scripts} ${temp_files} ${result_files} *~
                                        
 oclean:                                
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${scripts} ${temp_files} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: list_objs list_tests 
 	@${PERL} -e 'print join "\n", qw{dist to_bin install_man_pages}, ""'

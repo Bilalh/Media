@@ -40,7 +40,7 @@ alias shash='shash "/Users/bilalh/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'
 alias mo='ongoing'
 alias on='ongoing'
-
+alias onm='histm'
 
 function hget () {
 	shash "$1"
