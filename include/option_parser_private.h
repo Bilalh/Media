@@ -500,6 +500,7 @@ const Element H_other[] ={
 		.help  = "Shows the version number",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			printf("Media revision %d\n", MEDIA_VERION_NUMBER);
+			exit(0);
 		}
 	},
 };

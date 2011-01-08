@@ -14,6 +14,8 @@
 
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
+static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns);
+
 
 bool updateHistory(char **filenames, Status status, int sep) {
 	sqlite3 *db;
@@ -243,12 +245,12 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	return 0;
 }
 
-void print_ongoing(){
+void print_ongoing(bool colour){
 	char *buff = "Select * From OngoingSeries Where Rewatching = 0";
-	sql_exec(buff, print_ongoing_callback);
+	sql_exec(buff, colour ? print_ongoing_callback : print_ongoing_callback_no_colour);
 	puts("");
 	buff = "Select * From OngoingSeries Where Rewatching = 1";
-	sql_exec(buff, print_ongoing_callback);
+	sql_exec(buff, colour ? print_ongoing_callback : print_ongoing_callback_no_colour);
 }
 
 // Prints the data from the  print_ongoing functions
@@ -273,4 +275,28 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 
 	return 0;
 }
+
+// Prints the data from the  print_ongoing functions
+static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns){
+	
+	const char* title   = argv[0];
+	const char *current = argv[1];
+	const char* total   = argv[2] ? argv[2] : "?";
+	
+	
+	// Makes the date
+	struct tm tm = {}; char date[TIME_LENGTH];
+	strptime(argv[3], SQL_DATE, &tm);
+	time_t temp = mktime(&tm);
+	tm = *localtime(&temp);
+	strftime(date, TIME_LENGTH, TIME_STRING, &tm);
+	
+	// prints the data 
+	printf("%-42s " "%3s" "/" "%-3s" " %17s\n", 
+		title, current, total , date
+	);
+
+	return 0;
+}
+
 

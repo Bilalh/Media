@@ -33,8 +33,12 @@ void sql_exec(char *command, SqlCallback callback);
 void print_latest(char *num);
 void print_latest_with_finished(char *num);
 void print_latest_with_finished_and_skipped(char *num);
-// prints ongoing series
-void print_ongoing();
+/**
+ * @brief prints ongoing series 
+ *
+ * @param colour prints in colour if true
+**/
+void print_ongoing(bool colour);
 
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"

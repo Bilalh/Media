@@ -1,17 +1,17 @@
-    1       8      43 Readme
-  154     462    4588 build/Makefile
+    1      14      72 Readme
+  156     472    4709 build/Makefile
    57     193    1079 build/make_debug.sh
     6      21     204 build/make_wrapper.sh
   136     780    3486 build/zzhash
  1579   10711   66787 doc/doxyfile
    29     148    1348 include/colours.h
    17      48     355 include/debug.h
-   42     148    1116 include/history.h
+   46     161    1188 include/history.h
    16      49     459 include/media.h
    87     246    1781 include/media_args.h
    39     104    1061 include/ml.h
    25      64     493 include/option_parser.h
-  796    3442   24419 include/option_parser_private.h
+  797    3443   24431 include/option_parser_private.h
    16      37     357 include/playlist.h
    27      84     560 include/string_array.h
    62     267    1698 include/string_buffer.h
@@ -31,7 +31,7 @@
    43     115     672 man/nums.7
    30      90     575 man/ongoing.7
    30      68     421 man/shash.7
-  200     214    4467 media.tmproj
+  141     155    3233 media.tmproj
    35      96     649 src/app/hash_lookup.c
   168     491    3663 src/app/history_add_main.c
    25      57     388 src/app/latest_f_main.c
@@ -39,11 +39,12 @@
    24      57     372 src/app/latest_main.c
    38     104     788 src/app/media_main.c
    23      58     546 src/app/ml_main.c
-    8      15     118 src/app/ongoing_main.c
+    8      15     122 src/app/ongoing_main.c
+    8      15     123 src/app/ongoing_no_colour_main.c
+   28      90     621 src/app/set_id_total.c
   133     445    3056 src/app/set_score_main.c
    23      69    1718 src/examples/afloat.scpt
     7      22     157 src/examples/colours2.c
-    0      37    8664 src/examples/colours2.c.out
   113     337    3062 src/examples/colours_exp.c
     4       4      40 src/examples/ddd
    58     159    1192 src/examples/ftest.c
@@ -56,19 +57,19 @@
    21      84     916 src/history/add_missing.rb
    18      50     663 src/history/find_missing.rb
    26      52     587 src/history/find_score.rb
-  276     927    7935 src/history/history.c
+  302    1028    8721 src/history/history.c
    10      47     483 src/history/make_history.rb
   305    1077    7826 src/history/media.sql
-  522    1591   13609 src/history/ml.c
+  524    1595   13695 src/history/ml.c
    11      73     497 src/history/mweb.rb
   100     349    2432 src/make_man_options.c
   239     820    7319 src/media.c
   344    1116    9224 src/option_parser.c
   177     491    4335 src/playlist.c
   410    1612   10953 src/scripts/automan
-    2      10      90 src/scripts/get_number.sh
+    2      10      92 src/scripts/get_number.sh
     6      22     158 src/scripts/get_selected_finder_item.sh
-    2       6      60 src/scripts/get_titles.sh
+    2       6      62 src/scripts/get_titles.sh
    35     117     948 src/scripts/history_add_menu.rb
     6      23     218 src/scripts/make_plot_days.r
    36      77     621 src/scripts/make_plot_days.rb
@@ -117,5 +118,5 @@
    13      33     306 xtra/block_test.c
     8      16     106 xtra/func.c
    55     170    1493 xtra/text.txt
-    1       8      43 Readme
-12818   48417  399530 total
+    1      14      72 Readme
+12830   48567  391519 total
