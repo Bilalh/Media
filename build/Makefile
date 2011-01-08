@@ -7,13 +7,13 @@ PERL           = perl
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/opt/local/include -I/usr/include/libxml2 
-libs           = -lsqlite3 -lxml2 -L/opt/local/lib -lpcre -lcurl
+libs           = -lsqlite3 -lxml2  -lcurl -L/opt/local/lib -lpcre
 
 .DEFAULT_GOAL := media
 SCRIPT_DST     = ${HOME}/scripts
 SCRIPT_SRC     = ../src/scripts
 BIN            = ${HOME}/bin
-
+MAN_DST        = /usr/local/share/man/man7/
                            ### Includes ###
 vpath %.c ../src 
 vpath %.h ../
@@ -132,7 +132,7 @@ list_tests:
 
 #needs sudo
 install_man_pages:
-	mkdir -p /usr/local/share/man/man7/ && cp ../man/*.7 /usr/local/share/man/man7/.
+	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/.
 
 	                           ### Scripts rules ###
 temp_files   = years days
