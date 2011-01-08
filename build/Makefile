@@ -33,7 +33,7 @@ to_bin:
 
                            ### Objects ###
 
-objs       = media mal nums numsf numss ongoing hista hists shash
+objs       = media mal nums numsf numss ongoing hista hists shash set_id
 c_scripts  = make_man_options 
 examples   = optt hashe2 subdir_test colours2
 
@@ -45,6 +45,7 @@ nums_req    = app/latest_main.o ${hist_req}
 numsf_req   = app/latest_f_main.o ${hist_req}
 numss_req   = app/latest_fs_main.o ${hist_req}
 ongoing_req = app/ongoing_main.o ${hist_req} 
+set_id_req  = app/set_id_total.o ${hist_req} 
 
 
 hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}

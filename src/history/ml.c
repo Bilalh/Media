@@ -9,6 +9,7 @@
 #include <libxml/xpath.h>
 #include <libxml/xpathInternals.h>
 
+
 #include <include/ml.h>
 #include <include/xml.def>
 #include <include/string_buffer.h>
@@ -182,7 +183,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xmlXPathContextPtr xpathCtx;
 	xmlXPathObjectPtr xpathObj;
 
-	doc = xmlReadDoc(XC xml, NULL, NULL, 
+	doc = xmlReadDoc(xmlCharStrdup(xml), NULL, NULL, 
 		XML_PARSE_NOWARNING | XML_PARSE_NOERROR
 	);
 	xpathCtx = xmlXPathNewContext(doc);
@@ -204,7 +205,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	dprintf("%s\n", "after lowering ");
 	
-	
+	printf("%s\n", xml);
 	
 	// xpath to the entry
 	sprintf(buf,
@@ -225,8 +226,8 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 
 	dprintf("%s\n", "after buf spf ");
 	//FIXME seg fault on getting no vaild data
-	xpathObj = xmlXPathEvalExpression(XC buf, xpathCtx);
-	dprintf("%s\n", "after xpath eval ");
+	xpathObj = xmlXPathEvalExpression(xmlCharStrdup(buf), xpathCtx);
+	dprintf("%s\n\n", "after xpath eval ");
 	if(xpathObj == NULL) {
 		fprintf(stderr, "Error: unable to evaluate xpath expression \"...\"\n");
 		xmlXPathFreeContext(xpathCtx);
@@ -235,11 +236,12 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	}
 	
 	dprintf("%s\n", "after xpath ObJ");
+	dprintf("type:%d\n", xpathObj->type);
 	
 	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
 	
-	if (! nodes) {
-		dprintf( "%s\n", "nodes failed");
+	if ( ! nodes ) {
+		dprintf( "%s\n", "nodes NULL");
 		return;
 	}
 	
