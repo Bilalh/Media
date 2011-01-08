@@ -41,12 +41,11 @@ media_req    = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${str
 mal_req      = app/ml_main.o ${ml_req} ${hist_req}
 sub_dirs_req = sub_dirs.o ${strutil_req} ${strarr_req}
 
-nums_req    = app/latest_main.o ${hist_req}
-numsf_req   = app/latest_f_main.o ${hist_req}
-numss_req   = app/latest_fs_main.o ${hist_req}
-ongoing_req = app/ongoing_main.o ${hist_req} 
-ongoingnc_req = app/ongoing_no_colour_main.o ${hist_req} 
-set_id_req  = app/set_id_total.o ${hist_req} 
+nums_req = app/latest_main.o ${hist_req} numsf_req =
+app/latest_f_main.o ${hist_req} numss_req = app/latest_fs_main.o
+${hist_req} ongoing_req = app/ongoing_main.o ${hist_req}
+ongoingnc_req = app/ongoing_no_colour_main.o ${hist_req} set_id_req =
+app/set_id_total.o ${hist_req}
 
 
 hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
