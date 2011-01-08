@@ -1,0 +1,14 @@
+#ifndef TIMEE_DEF_HEADD
+#define TIMEE_DEF_HEADD
+
+#include "colours.h"
+
+#define TIME_LENGTH 28
+#define COLOUR_TIME_LENGTH TIME_LENGTH + 7 + 15
+
+#define TIME_STRING "%Y-%m-%d %H:%M %a %d %b"
+#define COLOUR_TIME_STRING "%Y-%m-%d %H:%M " RESET BOLD "%a %d %b" RESET
+#define SQL_DATE "%F %H:%M:%S"
+
+
+#endif

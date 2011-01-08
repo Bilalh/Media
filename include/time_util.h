@@ -1,10 +1,11 @@
 #ifndef TIMEUTILHEAD
 #define TIMEUTILHEAD
 
+#include <time.h>
+
 #define MAKE_TIME_STR(str,stucttmPtr) strftime(str, 20, "%F %H:%M:%S", stucttmPtr);
 #define DATE_TIME_UK_REGEX "[0-9]{2}-[0-9]{2}-[0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2}"
 
-#include <time.h>
 
 struct tm* currentTime();
 

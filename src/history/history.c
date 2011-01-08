@@ -9,7 +9,8 @@
 #include <include/history.h>
 #include <include/string_util.h>
 #include <include/debug.h>
-
+#include <include/colours.h>
+#include <include/time.def>
 
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
@@ -217,24 +218,27 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	
 	char *status;
 	
-	if       ( *argv[5] == '1' ){ // rewatching 
-		status = "R "; 
+	if ( *argv[5] == '1' ){ // rewatching 
+		status = COLOURJ("R ",GREEN); 
 	}else if ( *argv[4] == '1' ){ // finished
-		status = "F ";
+		status = COLOURJ("F ",CYAN); 
 	}else{
-		status = "O ";
+		status = COLOURJ("O ",YELLOW); 
 	}
 	
 	// Makes the date
-	struct tm tm = {}; char date[28];
-	strptime(date_data, "%F %H:%M:%S", &tm);
+	struct tm tm = {}; char date[COLOUR_TIME_LENGTH];
+	strptime(date_data, SQL_DATE, &tm);
 	time_t temp = mktime(&tm);
 	tm = *localtime(&temp);
-	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
+	strftime(date, COLOUR_TIME_LENGTH, COLOUR_TIME_STRING, &tm);
 	
 	const int  length = 40;
 	// prints the data 
-	printf("%s%-*s %3s/%-3s %17s\n", status, length, title, current ,total, date);
+	printf("%s%-*s " SSS("%3s") "/" SSS("%-3s") " %17s\n", 
+		status, length, title, 
+		COLOUR(current,BLUE) , COLOUR(total,RED) , date
+	);
 
 	return 0;
 }
@@ -256,14 +260,16 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	
 	
 	// Makes the date
-	struct tm tm = {}; char date[28];
-	strptime(argv[3], "%F %H:%M:%S", &tm);
+	struct tm tm = {}; char date[COLOUR_TIME_LENGTH];
+	strptime(argv[3], SQL_DATE, &tm);
 	time_t temp = mktime(&tm);
 	tm = *localtime(&temp);
-	strftime(date, 28, "%Y-%m-%d %H:%M %a %d %b", &tm);
+	strftime(date, COLOUR_TIME_LENGTH, COLOUR_TIME_STRING, &tm);
 	
 	// prints the data 
-	printf("%-42s %3s/%-3s %17s\n", title, current ,total, date);
+	printf("%-42s " SSS("%3s") "/" SSS("%-3s") " %17s\n", 
+		title, COLOUR(current,BLUE) , COLOUR(total,RED) , date
+	);
 
 	return 0;
 }
