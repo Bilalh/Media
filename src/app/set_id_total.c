@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include <include/history.h>
+#include <include/history.h>
 
 int main (int argc, char const *argv[]) {
 	

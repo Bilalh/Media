@@ -76,7 +76,7 @@ MediaArgs *new_media_args() {
 void print_usage(){
 	printf("%s", 
 		"Usage media {start_path|-h} [args]\n"
-		"   args: 0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^\n"
+		"   args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[=^/]\n"
 		"   Use -h[num] for a section\n"
 		"   Use -h,{letters} for details of the arg(s)\n"
 	);

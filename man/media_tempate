@@ -3,7 +3,7 @@
 .B media
 \- Media -- Finds, Plays and keeps track of media files
 .SH SYNOPSIS
-media start_path [-0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^]
+media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[=^/]
 .br
 .SH DESCRIPTION
 Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
@@ -25,6 +25,9 @@ Use -h,[letters] for details of the options(s)
 Most -- options have a negation in form --no , --no-fs for --fs for example   
 .br 
 
+
+
+
 .I Filepath
 .BR
 
@@ -35,6 +38,7 @@ Sub directories to exclude
 .TP 0.5i
 .BR -S , "  --[no-]hash         " 
 Uses shortcuts from the hash, on by default
+
 
 
 

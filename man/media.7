@@ -1,9 +1,9 @@
-.TH MEDIA 7 "R200" "Tue, December 30, 2008" 
+.TH MEDIA 7 "R248" "Tue, December 30, 2010" 
 .SH NAME
 .B media
 \- Media -- Finds, Plays and keeps track of media files
 .SH SYNOPSIS
-media start_path [-0123456789=AabCcDdEeFfhGgHhIiJjKkLlMmNnOoPpRrSsTtUVvWwXxYyZz[/^]
+media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[=^/]
 .br
 .SH DESCRIPTION
 Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
@@ -30,7 +30,7 @@ Most -- options have a negation in form --no , --no-fs for --fs for example
 .BR
 
 .TP 0.5i
-.BR -e , "  --exclude {dir}     " 
+.BR -Q , "  --exclude {dir}     " 
 Sub directories to exclude
 
 .TP 0.5i
@@ -52,6 +52,10 @@ Directory to start searching from
 .TP 0.5i
 .BR -s , "  --subdirectories    " 
 Look in sub directories if true, default false
+
+.TP 0.5i
+.BR -. , "  --[no-]dot-default  " 
+Uses . for the regex args if no regex args given
 
 .I 1  Mplayer
 .BR
@@ -122,6 +126,10 @@ The filename of the playlist
 .TP 0.5i
 .BR -y , "  --[no-]shuffle      " 
 shuffles the playlist
+
+.TP 0.5i
+.BR -e , "  --[no-]reverse      " 
+reverse the playlist
 
 .I 3  Player
 .BR
@@ -234,6 +242,10 @@ Prints the regex
 .BR -, , "  --regex-separator {sep}" 
 Set the separator to use between args default: .*
 
+.TP 0.5i
+.BR    , "  --version           " 
+Shows the version number
+
 .I 8  Mplayer extra
 .BR
 
@@ -270,8 +282,12 @@ Set mplayer postfix options, can be used multiple times
 --framedrop and --fast
 
 .TP 0.5i
-.BR -b , "  --quick-random      " 
---framedrop and --fast --rnd --top(profile t  - afloat and 360pi in 16:9)
+.BR -b , "  --quick-top         " 
+--framedrop, --fast and --top(profile t  - afloat and 360pi in 16:9)
+
+.TP 0.5i
+.BR -B , "  --quick-random      " 
+--framedrop, --fast, --rnd and --top(profile t  - afloat and 360pi in 16:9)
 
 .TP 0.5i
 .BR -v , "  --volume  {num}     " 
@@ -395,9 +411,9 @@ Places the player at the bottom centre
 Places the player at the centre
 
 
-
 .br
 .SH EXAMPLES
+
 Example 1:  media <dir> -mlo -[
 .br
 Plays the latest episodes using mplayer and adds the episode to the history 
@@ -454,6 +470,7 @@ function add_hash_hash() {
 .SH SEE ALSO 
 mal(7), hista(7), nums(7), ongoing(7), shash(7)
 
+
 .SH BUGS
 plist -x and exclude -e are not implemented
 .br
@@ -461,7 +478,7 @@ IF using sub directories (-s) and -m -o  it might complain about a malloc error,
 .SH VERSION
 This documentation describes
 .B media
-version R200
+version R248
 .SH AUTHOR
 .br
 .B Bilal Hussain
