@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>src/history/history.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -61,7 +63,40 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
+		<key>src/history/history.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>82</integer>
+				<key>line</key>
+				<integer>249</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>201</integer>
+		</dict>
+		<key>src/media.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>94</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>203</integer>
+		</dict>
 	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>src/media.c</string>
+		<string>src/history/history.c</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -101,17 +136,25 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
+				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
-					<dict/>
+					<dict>
+						<key>history</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+					</dict>
 				</dict>
 			</dict>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{634, 108}, {806, 707}}</string>
+	<string>{{506, 170}, {806, 707}}</string>
 </dict>
 </plist>

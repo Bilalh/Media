@@ -670,6 +670,13 @@ const Element H_mplayer_extra[] = {
 			ma->all_spaces = TRUTH_ARG(ch, SPACES_AUTO, SPACES_NONE);
 		}
 	},
+	{  
+		.opt   = {.name =  "null", .val = ']', .has_arg = no_argument}, 
+		.help  = "Only plays audio",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push(&ma->prefix_args,"-vo null");
+		}
+	},
 };
 
 const Element H_mplayer_aspect[] = {
