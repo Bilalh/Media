@@ -15,6 +15,7 @@
 #include <include/time_regex.h>
 #include <include/debug.h>
 #include <include/sub_dirs.h>
+#include <include/colours.h>
 
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
@@ -97,7 +98,31 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	if(ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
-			printf("%s\n",basename(s_arr[i]));
+			
+			char *print = strdup(basename(s_arr[i]));
+			
+			if (ma->colour_ep){
+				char **ep_num_ans = ep_num(s_arr[i]);
+				if (ep_num_ans[0] != NULL){
+					EP_GET_NUMBER(ep_num_ans,num);
+					char buff[20+3]; //  . 0 at start and \0
+					// ? for highlighting 01 
+					// LATER check for 001 
+					sprintf(buff,"%s%ld", *(ep_num_ans[0]+1) == '0' ? "0" : "", num);
+					
+					int length = strlen(buff);
+					char rep[length + strlen(RESET)*2 + strlen(BLUE) + 1];
+					sprintf(rep, SSS("%s") ".", COLOUR(buff,BLUE));
+
+					// so that we only match the ep_num
+					buff[length] = '.';
+					buff[length+1] = '\0';
+
+					print = str_replace(print, strlen(print), buff, rep);
+				}
+			}
+			
+			printf("%s\n", print);
 		}
 	}
 

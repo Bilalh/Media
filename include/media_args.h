@@ -81,6 +81,8 @@ typedef struct {
 	char      *regex_sep;    // DONE
 	
 	bool       dot_default;  // DONE
+	bool       colour_ep;    // DONE
+
 	
 } MediaArgs;
 

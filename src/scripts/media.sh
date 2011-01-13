@@ -27,7 +27,7 @@ function mediaf(){
 
 }
 
-alias  ax='mediah "/Users/bilalh/Movies/.Movie/divx" --out'
+alias  ax='mediah "/Users/bilalh/Movies/.Movie/divx" --out --colour-ep'
 alias  ay='ax --mplayer'
 alias  ml='ay --last'
 alias mll='ml --none --dot-default'

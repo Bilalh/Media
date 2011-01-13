@@ -30,7 +30,7 @@ typedef struct {
 
 #define MAX_OPT_BLOCKS       LONG_OPT_END_VALUE - 1 + 128
 
-#define ASCII        128
+#define ASCII                           128
 #define VAILD_ASCII(ch)                 (ch < ASCII && ch > 0)
 
 #define TRUTH_VALUE(ch)                 ((ch < ASCII) ? true : false)
@@ -357,7 +357,15 @@ const Element H_output[] ={
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_output = PL_NONE;
 		}
-	}
+	},
+	{  
+		.opt   = {.name =  "colour-ep-num", .val = '}', .has_arg = no_argument}, 
+		.help  = "Colours the episode number blue",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->colour_ep = TRUTH_VALUE(ch);
+		}
+	},
 };
 
 const Element H_History[]={

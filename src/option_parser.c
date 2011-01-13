@@ -12,10 +12,10 @@ static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
 
 // creates a new MediaArgs with the default values. 
+// all unmentioned  memebers are set to NULL
 MediaArgs *new_media_args() {
 
 	MediaArgs *ma = malloc(sizeof(MediaArgs));
-	// all unmentioned  set to NULL or  0 .
 	MediaArgs m = {
 		// Selection
 		.excludes.exclude = false,
@@ -60,7 +60,8 @@ MediaArgs *new_media_args() {
 		.regex_print = false,
 		.regex_sep   = strdup(".*"),
 		
-		.dot_default = false
+		.dot_default = false,
+		.colour_ep   = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -333,6 +334,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("regex_sep",    nullcheck(ma->regex_sep));
 
 	print_args("dot_default",  truth(ma->dot_default));
+	print_args("colour_ep",  truth(ma->dot_default));
 
 
 #undef truth
