@@ -187,13 +187,15 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		}
 	
 		if(ma->write_history && ma->label_watched){
-			const char* set_label = "SetLabel";
+			const char* set_label = "hide_extension.applescript";
 			int len_len           = strlen(set_label);
 			int path_len          = strlen(path);
 			int colour_len        = strlen(PREFS_WATCHED_COLOUR);
 			for(int i = 0; i < file_num; ++i){
-				char args[strlen(s_arr[i]) + len_len + path_len + colour_len + 5 + 1];
-				sprintf(args, "%s %s '%s/%s'", set_label, PREFS_WATCHED_COLOUR, path, s_arr[i] );
+				char args[strlen(s_arr[i]) + len_len + path_len + colour_len + 5 + 11+ 1 ];
+				sprintf(args, "SetLabel %s '%s/%s' &>/dev/null", PREFS_WATCHED_COLOUR, path, s_arr[i] );
+				system(args);
+				sprintf(args, "hide_extension.applescript '%s/%s' &>/dev/null", path, s_arr[i] );
 				system(args);
 			}
 			

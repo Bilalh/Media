@@ -64,7 +64,7 @@ subdir_test_req = ${sub_dirs_req}
 make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
-scripts_keep_name = get_number.sh get_titles.sh
+scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript
 
 scripts                   = histm gf setLabel setLabelByNumber
 histm_location            = history_add_menu.rb
