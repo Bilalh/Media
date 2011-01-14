@@ -1,17 +1,28 @@
     1      14      72 Readme
-  156     472    4709 build/Makefile
+  164     497    5050 build/Makefile
+   83     922   38384 build/hista
+   84     904   38384 build/hists
    57     193    1079 build/make_debug.sh
     6      21     204 build/make_wrapper.sh
+   90    1122   44424 build/mal
+  171    2732   90392 build/media
+   84     827   34016 build/nums
+   84     826   34016 build/numsf
+   84     826   34016 build/numss
+   84     821   34016 build/ongoing
+   84     823   34016 build/ongoingnc
+   79     851   34016 build/set_id
+   52     489   23464 build/shash
   136     780    3486 build/zzhash
  1579   10711   66787 doc/doxyfile
    29     148    1348 include/colours.h
    17      48     355 include/debug.h
    46     161    1188 include/history.h
    16      49     459 include/media.h
-   87     246    1781 include/media_args.h
+   89     254    1909 include/media_args.h
    39     104    1061 include/ml.h
    25      64     493 include/option_parser.h
-  797    3443   24431 include/option_parser_private.h
+  820    3558   25187 include/option_parser_private.h
    16      37     357 include/playlist.h
    27      84     560 include/string_array.h
    62     267    1698 include/string_buffer.h
@@ -23,15 +34,17 @@
   960    4620   64543 include/uthash.h
     2       6      66 include/version.h
     9      27     271 include/xml.def
-   59     161     903 man/hista.7
+   62     175    1000 man/hista.7
+   60     173     954 man/histm.7
    59     161     904 man/hists.7
-   29      56     327 man/mal.7
-  468    1691    9972 man/media.7
-  112     549    3595 man/media_tempate
-   43     115     672 man/nums.7
+   29      67     384 man/mal.7
+  485    1754   10344 man/media.7
+  116     549    3605 man/media_tempate
+   47     121     707 man/nums.7
    30      90     575 man/ongoing.7
    30      68     421 man/shash.7
-  141     155    3233 media.tmproj
+  152     166    3533 media.tmproj
+   26      88    1076 prefs.h
    35      96     649 src/app/hash_lookup.c
   168     491    3663 src/app/history_add_main.c
    25      57     388 src/app/latest_f_main.c
@@ -41,7 +54,7 @@
    23      58     546 src/app/ml_main.c
     8      15     122 src/app/ongoing_main.c
     8      15     123 src/app/ongoing_no_colour_main.c
-   28      90     621 src/app/set_id_total.c
+   28      89     618 src/app/set_id_total.c
   133     445    3056 src/app/set_score_main.c
    23      69    1718 src/examples/afloat.scpt
     7      22     157 src/examples/colours2.c
@@ -63,8 +76,8 @@
   524    1595   13695 src/history/ml.c
    11      73     497 src/history/mweb.rb
   100     349    2432 src/make_man_options.c
-  239     820    7319 src/media.c
-  344    1116    9224 src/option_parser.c
+  281     946    8195 src/media.c
+  348    1125    9396 src/option_parser.c
   177     491    4335 src/playlist.c
   410    1612   10953 src/scripts/automan
     2      10      92 src/scripts/get_number.sh
@@ -75,11 +88,13 @@
    36      77     621 src/scripts/make_plot_days.rb
     7      25     264 src/scripts/make_plot_years.r
    39      95     705 src/scripts/make_plot_years.rb
-   65     161    1455 src/scripts/media.sh
+   64     160    1453 src/scripts/media.sh
+   25      76     551 src/scripts/set_label.rb
+   15      47     289 src/scripts/set_label_by_number.applescript
    29      74     632 src/string_array.c
    91     356    2422 src/string_buffer.c
   433    1556    9823 src/string_util.c
-  131     386    3519 src/sub_dirs.c
+  133     389    3543 src/sub_dirs.c
   279     894    7479 src/time_util.c
     0       3      21 tests/Readme
    44     123    1002 tests/all_tests.c
@@ -119,4 +134,4 @@
     8      16     106 xtra/func.c
    55     170    1493 xtra/text.txt
     1      14      72 Readme
-12830   48567  391519 total
+14054   60483  836696 total
