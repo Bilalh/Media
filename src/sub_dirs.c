@@ -85,6 +85,8 @@ StringsPlusMeta* get_files_recursive(char *dir, char *regex, bool safe) {
 StringsPlusMeta* get_files(char *dir, char *regex, bool safe) {
 	// gets dir listing ignoring case and matching the patten
 	
+	
+	//Later needs blocks
 	struct dirent **files;
 	int file_num = scandir_b( dir, &files,
 	^ (struct dirent * s) {

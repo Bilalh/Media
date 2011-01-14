@@ -61,7 +61,8 @@ MediaArgs *new_media_args() {
 		.regex_sep   = strdup(".*"),
 		
 		.dot_default = false,
-		.colour_ep   = false
+		.colour_ep   = false,
+		.label_watched = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -333,8 +334,9 @@ void print_media_args(MediaArgs *ma) {
 	print_args("regex_print",  truth(ma->regex_print));
 	print_args("regex_sep",    nullcheck(ma->regex_sep));
 
-	print_args("dot_default",  truth(ma->dot_default));
-	print_args("colour_ep",  truth(ma->dot_default));
+	print_args("dot_default",   truth(ma->dot_default));
+	print_args("colour_ep",     truth(ma->dot_default));
+	print_args("label_watched", truth(ma->dot_default));
 
 
 #undef truth

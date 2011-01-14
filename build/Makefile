@@ -4,20 +4,22 @@
 CC             = gcc
 CFLAGS         = -g -Wall
 PERL           = perl
+
+SCRIPT_DST     = ${HOME}/scripts
+BIN            = ${HOME}/bin
+MAN_DST        = /usr/local/share/man/man7/
+.DEFAULT_GOAL := media
+
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/opt/local/include -I/usr/include/libxml2 
 libs           = -lsqlite3 -lxml2  -lcurl -L/opt/local/lib -lpcre
+script_src     = ../src/scripts
 
-.DEFAULT_GOAL := media
-SCRIPT_DST     = ${HOME}/scripts
-SCRIPT_SRC     = ../src/scripts
-BIN            = ${HOME}/bin
-MAN_DST        = /usr/local/share/man/man7/
                            ### Includes ###
 vpath %.c ../src 
 vpath %.h ../
-vpath %.sh %.rb %.r %.py %.pl ../src/scripts
+vpath %.sh %.rb %.r %.py %.pl %.applescript ../src/scripts
 # Rules for tests and requiments
 include ../tests/tests.mk
 
@@ -34,8 +36,8 @@ to_bin:
                            ### Objects ###
 
 objs       = media mal nums numsf numss ongoing ongoingnc hista hists shash set_id
-c_scripts  = make_man_options 
 examples   = optt hashe2 subdir_test colours2
+c_scripts  = make_man_options 
 
 media_req    = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
 mal_req      = app/ml_main.o ${ml_req} ${hist_req}
@@ -54,19 +56,21 @@ hists_req  = app/set_score_main.o ${hist_req} ${time_req}  ${strutil_req} ${stri
 shash_req  = app/hash_lookup.o ${strutil_req}
 
 
-optt_req   = examples/optm.o ${opt_req}
-hashe2_req = examples/hashe2.o
-colours2_req = examples/colours2.o
-
+optt_req        = examples/optm.o ${opt_req}
+hashe2_req      = examples/hashe2.o
+colours2_req    = examples/colours2.o
 subdir_test_req = ${sub_dirs_req}
 
 make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
 scripts_keep_name = get_number.sh get_titles.sh
-scripts           = histm gf
-histm_location    = history_add_menu.rb
-gf_location       = get_selected_finder_item.sh
+
+scripts                   = histm gf setLabel setLabelByNumber
+histm_location            = history_add_menu.rb
+gf_location               = get_selected_finder_item.sh
+setLabel_location         = set_label.rb
+setLabelByNumber_location = set_label_by_number.applescript
 
                            ### Objects rules ###
 # makes name : ${name_req}
@@ -74,11 +78,11 @@ $(foreach name,${objs} ${examples} ${c_scripts} ,$(eval ${name}:${${name}_req}))
 
 .PHONY: ${scripts} ${scripts_keep_name}
 ${scripts}:
-	cp "${SCRIPT_SRC}/${${@}_location}" "${SCRIPT_DST}/$@"; \
+	cp "${script_src}/${${@}_location}" "${SCRIPT_DST}/$@"; \
 	chmod +x "${SCRIPT_DST}/$@";
 	
 ${scripts_keep_name}:
-	cp "${SCRIPT_SRC}/$@" "${SCRIPT_DST}/$@"; \
+	cp "${script_src}/$@" "${SCRIPT_DST}/$@"; \
 	chmod +x "${SCRIPT_DST}/$@";
 
 ${objs} ${examples} ${c_scripts}: 

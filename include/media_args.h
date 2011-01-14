@@ -74,15 +74,15 @@ typedef struct {
 	bool     background;   // DONE
 		
 	//Nice Player
-	NiceRepeat nice_repeat;
-	bool       nice_random;
-	
-	bool       regex_print;  // DONE
-	char      *regex_sep;    // DONE
-	
-	bool       dot_default;  // DONE
-	bool       colour_ep;    // DONE
-
+	NiceRepeat nice_repeat;   
+	bool       nice_random;   
+	                          
+	bool       regex_print;   // DONE
+	char      *regex_sep;     // DONE
+	                          
+	bool       dot_default;   // DONE
+	bool       colour_ep;     // DONE
+	bool	   label_watched; // DONE
 	
 } MediaArgs;
 

@@ -360,7 +360,7 @@ const Element H_output[] ={
 	},
 	{  
 		.opt   = {.name =  "colour-ep-num", .val = '}', .has_arg = no_argument}, 
-		.help  = "Colours the episode number blue",
+		.help  = "Colours the episodes numbers (default blue)",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->colour_ep = TRUTH_VALUE(ch);
@@ -402,7 +402,15 @@ const Element H_History[]={
 				ma->status &= ~S_SKIP;
 			}
 		},
-	}
+	},
+	{  
+		.opt   = {.name =  "label-watched", .val = '%', .has_arg = no_argument}, 
+		.help  = "Label the watched episodes (default orange  ) ",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->label_watched = TRUTH_VALUE(ch);
+		}
+	},
 };
 
 const Element H_other[] ={

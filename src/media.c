@@ -17,11 +17,10 @@
 #include <include/sub_dirs.h>
 #include <include/colours.h>
 
+#include <prefs.h>
+
 #define DIRENT(value) (*(struct dirent **) value)
 // #define VIDEO  ".*\\.(mkv|mp4|avi)$"
-#define VIDEO   "(.*)?\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
-#define AUDIO   "(.*)?\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
-#define VID_AUD "(.*)?\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
 
 // Makes the command for vlc and mplayer
 static char *make_command(const char *bin_path, char **filenames, int num_of_files,
@@ -50,11 +49,11 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	char *types = "";
 	switch (ma->types){
-		case T_VIDEO: types = ")"VIDEO;
+		case T_VIDEO: types = ")"PREFS_VIDEO_REGEX;
 			break;
-		case T_AUDIO: types = ")"AUDIO;
+		case T_AUDIO: types = ")"PREFS_AUDIO_REGEX;
 			break;
-		case T_BOTH : types = ")"VID_AUD;
+		case T_BOTH : types = ")"PREFS_AUDIO_VIDEO_REGEX;
 			break;
 		case T_NONE : types = ")";
 			break;
@@ -101,18 +100,22 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			
 			char *print = strdup(basename(s_arr[i]));
 			
+			char **ep_num_ans =  NULL;
 			if (ma->colour_ep){
-				char **ep_num_ans = ep_num(s_arr[i]);
+				ep_num_ans = ep_num(s_arr[i]);
+			}
+				
+			if (ma->colour_ep){
 				if (ep_num_ans[0] != NULL){
 					EP_GET_NUMBER(ep_num_ans,num);
-					char buff[20+3]; //  . 0 at start and \0
-					// ? for highlighting 01 
+					char buff[20+3]; //  .   0 at start and \0
 					// LATER check for 001 
+					// ? for highlighting 01 
 					sprintf(buff,"%s%ld", *(ep_num_ans[0]+1) == '0' ? "0" : "", num);
 					
 					int length = strlen(buff);
-					char rep[length + strlen(RESET)*2 + strlen(BLUE) + 1];
-					sprintf(rep, SSS("%s") ".", COLOUR(buff,BLUE));
+					char rep[length + strlen(RESET)*2 + strlen(PREFS_EP_COLOUR) + 1];
+					sprintf(rep, SSS("%s") ".", COLOUR(buff,PREFS_EP_COLOUR));
 
 					// so that we only match the ep_num
 					buff[length] = '.';
@@ -121,7 +124,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 					print = str_replace(print, strlen(print), buff, rep);
 				}
 			}
-			
+					
 			printf("%s\n", print);
 		}
 	}
@@ -182,6 +185,20 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			sleep(1);
 			system("osascript " all_spaces_auto);
 		}
+	
+		if(ma->write_history && ma->label_watched){
+			const char* set_label = "SetLabel";
+			int len_len           = strlen(set_label);
+			int path_len          = strlen(path);
+			int colour_len        = strlen(PREFS_WATCHED_COLOUR);
+			for(int i = 0; i < file_num; ++i){
+				char args[strlen(s_arr[i]) + len_len + path_len + colour_len + 5 + 1];
+				sprintf(args, "%s %s '%s/%s'", set_label, PREFS_WATCHED_COLOUR, path, s_arr[i] );
+				system(args);
+			}
+			
+		}
+		
 	}
 	
 }
@@ -189,24 +206,25 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.
 void mplayer(char **filenames, int num_of_files, int total_length, 
-			 char *prefix_args, char *postfix_args, char *filepath, bool background) {
+			 char *prefix_args, char *postfix_args, char *filepath, bool background) 
+{
 	
 	// mplayer binary
-	const char* mplayer = "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\"";
-	char *command = make_command(mplayer, filenames, num_of_files, total_length, 
+	char *command = make_command(PREFS_MPLAYER_BINARY, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, background);
+	// strdup is needed
 	system(strdup(command));
 }
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call vlc from.	
 void vlc(char **filenames, int num_of_files, int total_length, 
-		 char *prefix_args, char *postfix_args, char *filepath) {
+		 char *prefix_args, char *postfix_args, char *filepath)
+{
 	
-	// vlc binary
-	const char* vlc = "\"/Applications/VLC.app/Contents/MacOS/VLC\"";
-	char *command = make_command(vlc, filenames, num_of_files, total_length, 
+	char *command = make_command(PREFS_VLC_BINARY, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, true);
+	// strdup is needed
 	system(strdup(command));
 }
 
@@ -259,7 +277,5 @@ static char *make_command(const char *bin_path, char **filenames, int num_of_fil
 	return m_args;	
 }
 
-//TODO niceplayer
-void niceplayer(char *playlist) {
-	
-}
+//LATER niceplayer
+void niceplayer(char *playlist) {}

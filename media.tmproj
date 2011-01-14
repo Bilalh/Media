@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>src/media.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -28,9 +30,23 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>223</integer>
+	<integer>198</integer>
 	<key>metaData</key>
 	<dict>
+		<key>prefs.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/examples/sub_dir2.c</key>
 		<dict>
 			<key>caret</key>
@@ -61,7 +77,26 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
+		<key>src/media.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>215</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>188</integer>
+		</dict>
 	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>prefs.h</string>
+		<string>src/media.c</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -106,27 +141,12 @@
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
-					<dict>
-						<key>history</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-						<key>scripts</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
+					<dict/>
 				</dict>
 			</dict>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{506, 170}, {806, 707}}</string>
+	<string>{{506, 255}, {862, 622}}</string>
 </dict>
 </plist>
