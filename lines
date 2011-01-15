@@ -1,18 +1,7 @@
     1      14      72 Readme
-  164     497    5050 build/Makefile
-   83     922   38384 build/hista
-   84     904   38384 build/hists
+  164     498    5077 build/Makefile
    57     193    1079 build/make_debug.sh
     6      21     204 build/make_wrapper.sh
-   90    1122   44424 build/mal
-  171    2732   90392 build/media
-   84     827   34016 build/nums
-   84     826   34016 build/numsf
-   84     826   34016 build/numss
-   84     821   34016 build/ongoing
-   84     823   34016 build/ongoingnc
-   79     851   34016 build/set_id
-   52     489   23464 build/shash
   136     780    3486 build/zzhash
  1579   10711   66787 doc/doxyfile
    29     148    1348 include/colours.h
@@ -43,7 +32,7 @@
    47     121     707 man/nums.7
    30      90     575 man/ongoing.7
    30      68     421 man/shash.7
-  152     166    3533 media.tmproj
+  154     168    3528 media.tmproj
    26      88    1076 prefs.h
    35      96     649 src/app/hash_lookup.c
   168     491    3663 src/app/history_add_main.c
@@ -76,13 +65,14 @@
   524    1595   13695 src/history/ml.c
    11      73     497 src/history/mweb.rb
   100     349    2432 src/make_man_options.c
-  281     946    8195 src/media.c
+  283     956    8329 src/media.c
   348    1125    9396 src/option_parser.c
   177     491    4335 src/playlist.c
   410    1612   10953 src/scripts/automan
     2      10      92 src/scripts/get_number.sh
     6      22     158 src/scripts/get_selected_finder_item.sh
     2       6      62 src/scripts/get_titles.sh
+   15      47     291 src/scripts/hide_extension.applescript
    35     117     948 src/scripts/history_add_menu.rb
     6      23     218 src/scripts/make_plot_days.r
    36      77     621 src/scripts/make_plot_days.rb
@@ -134,4 +124,4 @@
     8      16     106 xtra/func.c
    55     170    1493 xtra/text.txt
     1      14      72 Readme
-14054   60483  836696 total
+13094   49400  397999 total

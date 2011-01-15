@@ -2,9 +2,8 @@
 #define PREFERENCES_HEADER_MEDIA_
 
 // Binaries paths
-#define PREFS_VLC_BINARY        "\"/Applications/VLC.app/Contents/MacOS/VLC\""
 #define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-pigoz.mpBinaries/Contents/MacOS/mplayer\""
-
+#define PREFS_VLC_BINARY        "\"/Applications/VLC.app/Contents/MacOS/VLC\""
 
 // The label colour to set watched files to 
 // none, orange, red, yellow, blue, purple, green or grey
@@ -18,9 +17,12 @@
 #define PREFS_EP_COLOUR BLUE
 
 // Regexes for matching Video and audio files
-#define PREFS_VIDEO_REGEX       "(.*)?\\.(mkv|mp4|mov|avi|ogm|divx|rm|rmvb|flv|part|wmv)$"
-#define PREFS_AUDIO_REGEX       "(.*)?\\.(mp3|m4a|flac|ogg|m4b|aiff|ac3|aac|wav|wmv|ape)$"
-#define PREFS_AUDIO_VIDEO_REGEX "(.*)?\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape)$"
+#define PREFS_VIDEO_REGEX       "(.*)?\\.(mkv|mp4|avi|mov|part|ogm|divx|rm|rmvb|flv|wmv|webm)$"
+#define PREFS_AUDIO_REGEX       "(.*)?\\.(mp3|m4a|flac|ac3|ogg|aiff|m4b|aac|wav|wmv|ape|mka)$"
+#define PREFS_AUDIO_VIDEO_REGEX "(.*)?\\.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape|mka)$"
+
+// comment to disable.  Replaces all (the char (default ^)) with | to save '' the args 
+#define PREFS_SECOND_BAR '^'
 
 
 

@@ -58,6 +58,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		case T_NONE : types = ")";
 			break;
 	}
+	
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
 	char *regex = spilt_args(args, argc, ma->regex_sep, "(", types, hash_location);
 	dprintf("regex: %s\n", regex);

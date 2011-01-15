@@ -13,6 +13,7 @@
 #include <include/string_util.h>
 #include <include/debug.h>
 
+#include <prefs.h>
 
 typedef struct {
 	char *key;
@@ -233,10 +234,16 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 	
 	bool pipe =0;
 	while(*s != '\0' ) {
+		#ifdef PREFS_SECOND_BAR 
+			if (*s == PREFS_SECOND_BAR ) *s = '|'; 
+		#endif
 		pipe =0;
 		while(*s != '|' && *s != '\0' ) {
 			++s;
-			if (*s == '|') pipe = 1;
+			#ifdef PREFS_SECOND_BAR 
+				if (*s == PREFS_SECOND_BAR) *s = '|'; 
+			#endif
+			if (*s == '|' ) pipe = 1;
 		}
 		
 		int length = s - start;
