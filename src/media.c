@@ -20,7 +20,7 @@
 #include <prefs.h>
 
 #define DIRENT(value) (*(struct dirent **) value)
-// #define VIDEO  ".*\\.(mkv|mp4|avi)$"
+// #define VIDEO  ".*\\.(mp4)$"
 
 // Makes the command for vlc and mplayer
 static char *make_command(const char *bin_path, char **filenames, int num_of_files,

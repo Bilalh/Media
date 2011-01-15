@@ -16,10 +16,10 @@
 #define GET_FILES_REC_SAFE_REGEX \
 	"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|Rave|" \
 	"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|To ?aru Majutsu no Index|Princess |" \
-	"Nogizaka Haruka| eng|So ?ra ?no ?Wo ?to Op 2|Saki ed|moon|Myself;|Shining Tears|" \
+	"Nogizaka Haruka|So ?ra ?no ?Wo ?to|Saki ed|moon|Myself;|Shining Tears|Azumanga|"  \
 	"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|Starry Heavens|"     \
-	"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Azumanga|"    \
-	"fantasy|Kidou Tenshi|OVA EX"
+	"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Precure|"     \
+	"fantasy|Kidou Tenshi|hack sign| English|than BLACK|Luminous|Lucky Star"
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 

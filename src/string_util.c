@@ -379,7 +379,6 @@ void shuffle(void **array, size_t n) {
 
 
 void reverse(void** arr, size_t length){
-	
 	int i,j;
 	for(i = 0, j = length -1 ; i < j ; i++,j-- ){
 		void *t  = arr[i];

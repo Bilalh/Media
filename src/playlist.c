@@ -69,7 +69,7 @@ bool make_m3u(char *filepath, char **names) {
 }
 
 //TODO nice string path names
-//TODO apple top
+//TODO apple dtd
 bool make_plist(char *filepath, char **names) {
 	xmlDocPtr doc;
 	xmlNodePtr root, rr, cur,dict, dict2, array,temp;
