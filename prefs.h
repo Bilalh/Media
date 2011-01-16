@@ -24,6 +24,8 @@
 // comment to disable.  Replaces all (the char (default ^)) with | to save '' the args 
 #define PREFS_SECOND_BAR '^'
 
+// commet to get rid of colours
+#define PREFS_COLOUR
 
 
 #endif

@@ -1,5 +1,8 @@
 #ifndef COLOURS_HEAD_
 #define COLOURS_HEAD_
+#include "../prefs.h"
+
+
 #define RESET        "\033[0m"              // Need before and after 
 #define BLACK        "\033[30m"             // Black 
 #define RED          "\033[31m"             // Red 
@@ -30,4 +33,10 @@
 
 #define efprintf(fmt, ...) \
 		fprintf(stderr, RESET RED fmt RESET ,## __VA_ARGS__)
+
+
+#ifndef PREFS_COLOUR
+	#include "no_colours.h"
+#endif
+
 #endif
