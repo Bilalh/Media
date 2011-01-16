@@ -1,13 +1,16 @@
 #ifndef OPT_PRIVATE_HEADD
 #define OPT_PRIVATE_HEADD
 
+#include <sys/stat.h>
+#include <sys/stat.h>
+
 #include <getopt.h>
-#include <stdbool.h>
 #include <Block.h>
 
 #include "string_util.h"
 #include "media_args.h"
 #include "version.h"
+#include "colours.h"
 
 typedef void (^VoidBlock)();
 typedef struct{
@@ -120,6 +123,11 @@ const Element H_filepath[] ={
 		.help  = "Directory to start searching from",
 		.arg   = "dir", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			struct stat st;
+			if(stat(arg, &st) != 0) {
+				efprintf("%s does not exist or not readable\n", arg);
+				exit(2);
+			}
 			ma->root_dir = strdup(arg);
 		}
 	},
@@ -175,7 +183,7 @@ const Element H_playlist[] ={
 	},
 	{  
 		.opt   = {.name =  "shuffle", .val = 'y', .has_arg = no_argument}, 
-		.help  = "shuffles the playlist",
+		.help  = "Shuffles the playlist",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_shuffle = TRUTH_VALUE(ch);
@@ -183,7 +191,7 @@ const Element H_playlist[] ={
 	},
 	{  
 		.opt   = {.name =  "reverse", .val = 'e', .has_arg = no_argument}, 
-		.help  = "reverse the playlist",
+		.help  = "Reverses the playlist",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->pl_reverse = TRUTH_VALUE(ch);
@@ -196,28 +204,28 @@ const Element H_player[] ={
 	
 	{  
 		.opt   = {.name =  "none", .val = 'M', .has_arg = no_argument}, 
-		.help  = "does not play the files.",
+		.help  = "Does not play the files.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_NONE;
 		}
 	},
 	{  
 		.opt   = {.name =  "mplayer", .val = 'm', .has_arg = no_argument}, 
-		.help  = "plays the files using mplayer.",
+		.help  = "Plays the files using mplayer.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_MPLAYER;
 		}
 	},
 	{  
 		.opt   = {.name =  "niceplayer", .val = 'N', .has_arg = no_argument}, 
-		.help  = "plays the files using niceplayer.",
+		.help  = "Plays the files using niceplayer.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_NICEPLAYER;
 		}
 	},
 	{  
 		.opt   = {.name =  "vlc", .val = 'V', .has_arg = no_argument}, 
-		.help  = "plays the files using vlc.",
+		.help  = "Plays the files using vlc.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_VLC;
 		}
@@ -431,7 +439,7 @@ const Element H_other[] ={
 			int temp;
 			int res = sscanf(arg, "%4d",&temp);
 			if (res == -1){
-				fprintf(stderr, "Invalid separator  %s\n", arg );
+				 efprintf(  "Invalid separator  %s\n", arg );
 				exit(4);
 			}
 			ma->sep = temp;
@@ -505,7 +513,7 @@ const Element H_other[] ={
 		.arg   = "sep", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if( ! arg){
-				fprintf(stderr, "%s\n", "Arg null in regex_separator");
+				 efprintf(  "%s\n", "Arg null in regex_separator");
 				exit(11);
 			}
 			ma->regex_sep = strdup(arg);

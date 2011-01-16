@@ -11,6 +11,7 @@
 #include <include/debug.h>
 #include <include/colours.h>
 #include <include/time.def>
+#include <include/colours.h>
 
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
@@ -23,7 +24,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 
 	result = sqlite3_open(DATABASE, &db);
 	if( result ) {
-		fprintf(stderr, "No history written: %s\n", sqlite3_errmsg(db));
+		 efprintf(  "No history written: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return false;
 	}
@@ -61,7 +62,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 			result = sqlite3_step(statement_h);
 			dprintf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
-				fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+				 efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			result = sqlite3_reset(statement_h);
 			dprintf("reset: %i\n\n", reset);
@@ -78,7 +79,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				result = sqlite3_step(statement_si_su);
 				printf("su r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
-					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_su)
 				dprintf("sk reset: %i\n\n", result);
@@ -93,7 +94,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				result = sqlite3_step(statement_si_u);
 				printf("up r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
-					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_u);
 				dprintf("up reset: %i\n\n", result);
@@ -107,7 +108,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				result = sqlite3_step(statement_si_s);
 				dprintf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
-					fprintf(stderr, "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_s);
 				dprintf("sk reset: %i\n\n", result);
@@ -129,14 +130,14 @@ void sql_exec(char *command, SqlCallback callback ) {
 
 	rc = sqlite3_open(DATABASE, &db);
 	if( rc ) {
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		efprintf( "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		exit(1);
 	}
 	
 	rc = sqlite3_exec(db, command, callback, 0, &zErrMsg);
 	if( rc != SQLITE_OK ) {
-		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		efprintf( "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
 
@@ -150,7 +151,7 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 
 	rc = sqlite3_open(DATABASE, &db);
 	if( rc ) {
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		efprintf( "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		exit(1);
 	}

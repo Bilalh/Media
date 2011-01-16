@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +30,8 @@ static char *make_command(const char *bin_path, char **filenames, int num_of_fil
 
 void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
+	assert(path); assert(ma); assert(args);
+	
 	char *dot_default[] = {"."};  
 	
 	if (argc == 0) {
@@ -36,7 +39,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			argc = 1;
 			args = dot_default;
 		}else{
-			fprintf(stderr, "%s\n", "NO file args (use . for all files)");
+			efprintf("%s\n", "No file args (use . for all files)");
 			exit(2);
 		}
 	}

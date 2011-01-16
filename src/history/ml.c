@@ -189,7 +189,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xpathCtx = xmlXPathNewContext(doc);
 
 	if(xpathCtx == NULL) {
-		fprintf(stderr, "Error: unable to create new XPath context\n");
+		efprintf( "Error: unable to create new XPath context\n");
 		xmlFreeDoc(doc);
 		return;
 	}
@@ -229,7 +229,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xpathObj = xmlXPathEvalExpression(xmlCharStrdup(buf), xpathCtx);
 	dprintf("%s\n\n", "after xpath eval ");
 	if(xpathObj == NULL) {
-		fprintf(stderr, "Error: unable to evaluate xpath expression \"...\"\n");
+		efprintf( "Error: unable to evaluate xpath expression \"...\"\n");
 		xmlXPathFreeContext(xpathCtx);
 		xmlFreeDoc(doc);
 		return;
@@ -507,7 +507,7 @@ static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
 	size_t new_len = s->len + size * nmemb;
 	s->ptr = realloc(s->ptr, new_len + 1);
 	if (s->ptr == NULL) {
-		fprintf(stderr, "realloc() failed in ml.c\n");
+		efprintf( "realloc() failed in ml.c\n");
 		exit(EXIT_FAILURE);
 	}
 	memcpy(s->ptr + s->len, ptr, size * nmemb);

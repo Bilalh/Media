@@ -2,37 +2,38 @@
 #include <stdlib.h>
 #include <string.h>
 #include <libgen.h>
+#include <sys/stat.h>
+
 
 #include <include/media.h>
 #include <include/option_parser.h>
-
-// #define PATH "/Users/bilalh/Movies/.Movie/divx"
-#define PATH "/Users/bilalh/Movies/.Movie/OpeningP"
+#include <include/colours.h>
 
 int main (int argc, char **argv) {
 
-	if ( argc == 2) {
-		if( strncmp(argv[1], "-h", 2) == 0) {
-			print_help("");
-		} else if( strncmp(argv[1], "--help", 6) == 0 ) {
-			print_help("");
-		} else if( strncmp(argv[1], "-help", 5) == 0 ) {
-			print_help("");
-		}
+	if (argc == 1 ) {
+		print_usage();
 		exit(0);
 	}
 
-	if (argc < 3) {
+	MediaArgs *opt = option_parser(&argc, &argv);
+	char *path =  opt->root_dir;
+
+	if (argc == 0 && !path) {
+		efprintf("%s\n", "A Start Path MUST be given");
 		print_usage();
 		exit(1);
+	} else if (!path) {
+		path = argv[0];
+		argc--; argv++;
+	}
+	
+	struct stat st;
+	if(stat(path, &st) != 0) {
+		efprintf("%s does not exist or not readable\n", path);
+		exit(2);
 	}
 
-	// gets the path
-	char *g_path  = strdup(argv[1]);
-	argc--; argv++;
-
-	MediaArgs *opt = option_parser(&argc, &argv);
-	char *path =  opt->root_dir ?  opt->root_dir : g_path;
 
 	media(path, argv, argc , opt);
 	return 0;

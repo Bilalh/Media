@@ -7,6 +7,8 @@
 #include <include/option_parser.h>
 #include <include/option_parser_private.h>
 #include <include/string_buffer.h>
+#include <include/colours.h>
+
 
 static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
@@ -77,10 +79,11 @@ MediaArgs *new_media_args() {
 
 void print_usage(){
 	printf("%s", 
-		"Usage media {start_path|-h} [args]\n"
-		"   args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[=^/]\n"
-		"   Use -h[num] for a section\n"
-		"   Use -h,{letters} for details of the arg(s)\n"
+		"Usage media start_path [args]\n"
+		" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[]}%^=/]\n"
+		" Use -h for help"
+		" Use -h[num] for a section in the help\n"
+		" Use -h,{letters} for details of the arg(s)\n"
 	);
 }
 
@@ -169,6 +172,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 void print_help(char *arg){
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
 	size_t s_len  = length;
+	
 	// print only the specified section by name or number.  
 	if (arg != NULL && *arg != '\0'){
 		int number = -1;
@@ -198,11 +202,19 @@ void print_help(char *arg){
 	}
 	
 	if (length == s_len && start == 0){
-		print_usage();
+		printf("%s", 
+			RESET GREEN
+			"Usage media start_path [args]\n"
+			RESET
+			" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[]}%^=/]\n"
+			" Use "RESET BLUE "-h" RESET " for help\n"
+			" Use "RESET BLUE "-h" RESET "[num] for a section in the help\n"
+			" Use "RESET BLUE "-h" RESET ",{letters} for details of the arg(s)\n"
+		);
 	}
 	
 	for(int i = start; i < length; ++i){
-		printf("\n%i. %s\n",i, HELP_LINK[i].grouping);
+		printf("\n" RESET GREEN "%i. %s" RESET "\n",i, HELP_LINK[i].grouping);
 		for(int j = 0; j < HELP_LINK[i].length; j++){
 			sub_print_help(&HELP_LINK[i].links[j]);
 		}
@@ -212,9 +224,10 @@ void print_help(char *arg){
 
 // prints the element
 static void sub_print_help(const Element *ele){
-	const char *s_exp = "\t%-3s %-20s ";
+	const char *s_exp = RESET BLUE "\t%-3s" RESET BOLD "%-20s " RESET;
 	const char *h_exp = "\t%-3s %-20s %-s\n";
 	const struct option *optr = &ele->opt;
+	
 	// makes the space for the short arg
 	char short_opt[3] = ""; 
 	if (optr->val < 128) sprintf(short_opt, "-%c",optr->val);

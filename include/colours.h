@@ -27,4 +27,7 @@
 // adds %s before and after
 #define SSS(str) "%s" str "%s"
 
+
+#define efprintf(fmt, ...) \
+		fprintf(stderr, RESET RED fmt RESET ,## __VA_ARGS__)
 #endif

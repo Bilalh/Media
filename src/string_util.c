@@ -12,6 +12,7 @@
 
 #include <include/string_util.h>
 #include <include/debug.h>
+#include <include/colours.h>
 
 #include <prefs.h>
 
@@ -154,7 +155,7 @@ char** spilt_string_malloc (char *str, int *res_length, bool malloces){
 			if (temp != NULL) {
 				strs = temp;
 			} else {
-				fprintf(stderr, "realloc  failed in time spilt");
+				efprintf( "realloc  failed in time spilt");
 				exit(6);
 			}
 		}
