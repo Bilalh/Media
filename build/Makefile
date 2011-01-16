@@ -66,11 +66,12 @@ make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
                            ### Scripts ###
 scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript
 
-scripts                   = histm gf setLabel setLabelByNumber
+scripts                   = histm gf setLabel setLabelByNumber histc
 histm_location            = history_add_menu.rb
 gf_location               = get_selected_finder_item.sh
 setLabel_location         = set_label.rb
 setLabelByNumber_location = set_label_by_number.applescript
+histc_location            = history_copy.rb
 
                            ### Objects rules ###
 # makes name : ${name_req}

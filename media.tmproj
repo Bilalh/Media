@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>209</integer>
+	<integer>199</integer>
 	<key>metaData</key>
 	<dict>
 		<key>src/examples/sub_dir2.c</key>
@@ -103,6 +103,13 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>include</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
@@ -114,6 +121,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{1015, 105}, {853, 820}}</string>
+	<string>{{918, 168}, {893, 837}}</string>
 </dict>
 </plist>
