@@ -1,2 +1,19 @@
+Set mplayer and vlc binary paths in prefs.h
+
+
+(osx)
+mplayer
+http://www.mplayerosx.ch/
+lastest mplayer binary 
+http://code.google.com/p/mplayerosx-builds/downloads/list
+
+
+(linux)
+change all the blocks to func pointers 
+regex for blocks 
+.block\s=\s\^((.|\n)*?\n\t\t})
+
+
+
 #make lines
 wc `ls * */* */*/* | grep -v "lines$"`  2>/dev/null | pbcopy

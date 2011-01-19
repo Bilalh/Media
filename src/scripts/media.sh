@@ -34,7 +34,7 @@ alias mll='ml --none --dot-default'
 
 alias op='mediah "/Users/bilalh/Movies/.Movie/openingP/" --out --mplayer'
 alias opp='op --none --dot-default'
-alias opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default"
+alias opr="op --top --169 --shuffle --framedrop --fast --no-out --dot-default"
 
 alias shash='shash "/Users/bilalh/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'

@@ -5,12 +5,4 @@
 
 void media(char *path, char **args,int argc, const MediaArgs *opts);
 
-void mplayer(char **filenames, int num_of_files, int total_length, 
-	char *prefix_args, char *postfix_args, char *filepath, bool background);
-
-void vlc(char **filenames, int num_of_files, int total_length, 
-	char *prefix_args, char *postfix_args, char *filepath);
-
-void niceplayer(char *playlist);	
-
 #endif

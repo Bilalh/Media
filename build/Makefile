@@ -39,7 +39,7 @@ objs       = media mal nums numsf numss ongoing ongoingnc hista hists shash set_
 examples   = optt hashe2 subdir_test colours2
 c_scripts  = make_man_options 
 
-media_req    = app/media_main.o media.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
+media_req    = app/media_main.o media.o players.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
 mal_req      = app/ml_main.o ${ml_req} ${hist_req}
 sub_dirs_req = sub_dirs.o ${strutil_req} ${strarr_req}
 
