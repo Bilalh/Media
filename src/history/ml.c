@@ -191,6 +191,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	if(xpathCtx == NULL) {
 		efprintf( "Error: unable to create new XPath context\n");
 		xmlFreeDoc(doc);
+		printf("%s\n", xml);
 		return;
 	}
 
@@ -205,7 +206,6 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	dprintf("%s\n", "after lowering ");
 	
-	printf("%s\n", xml);
 	
 	// xpath to the entry
 	sprintf(buf,
@@ -232,6 +232,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 		efprintf( "Error: unable to evaluate xpath expression \"...\"\n");
 		xmlXPathFreeContext(xpathCtx);
 		xmlFreeDoc(doc);
+		printf("%s\n", xml);
 		return;
 	}
 	
@@ -242,11 +243,13 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	if ( ! nodes ) {
 		dprintf( "%s\n", "nodes NULL");
+		printf("%s\n", xml);
 		return;
 	}
 	
 	if (nodes->nodeNr == 0){
 		dprintf( "%s\n", "no nodes found");
+		printf("%s\n", xml);
 		return;
 	}
 	
@@ -255,6 +258,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xmlNodePtr entry_c = nodes->nodeTab[0]->children;
 	if (! entry_c ){
 		dprintf( "%s\n", "entry_c failed");
+		printf("%s\n", xml);
 		return;
 	}
 
@@ -507,7 +511,7 @@ static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {
 	size_t new_len = s->len + size * nmemb;
 	s->ptr = realloc(s->ptr, new_len + 1);
 	if (s->ptr == NULL) {
-		efprintf( "realloc() failed in ml.c\n");
+		efprintf( "realloc() failed writefunc in ml.c\n");
 		exit(EXIT_FAILURE);
 	}
 	memcpy(s->ptr + s->len, ptr, size * nmemb);

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <assert.h>
 
 #include <include/string_buffer.h>
 #include <include/debug.h>
@@ -14,6 +15,7 @@ String *string_new(int length){
 }
 
 void new_string(String *s, int length ){
+	assert(s);
 	if (length <= 0) length = 1;
 	s->str    = malloc(sizeof(char) * length);
 	s->str[0] ='\0';
@@ -24,6 +26,7 @@ void new_string(String *s, int length ){
 // assumes the s->str is assigned by malloc
 // adds a space before append the string if add_space
 void string_add(String *s, char *str, bool add_space_before) {
+	assert(s); assert(str);
 	int str_len = strlen(str);
 	dprintf("a ind %i len %i \n", s->index, s->length);
 	if ( (s->length - s->index) < str_len +1 ) { // 1 for \0
@@ -43,6 +46,7 @@ void string_add(String *s, char *str, bool add_space_before) {
 // assumes the s->str is assigned by malloc
 // adds a space before append the string
 void string_add_m(String *s, bool add_space, int length, ...){
+	assert(s);
 	// Sets up the variable argument list
 	va_list args; 
 	va_start(args, length);
@@ -58,6 +62,7 @@ void string_add_m(String *s, bool add_space, int length, ...){
 
 
 int string_sprintf(String *s, int length,  const char *fmt,  ... ){
+	assert(s); assert(fmt);
 	va_list args;
 	va_start(args, fmt);
 	dprintf("a '%s'\n", s->str);

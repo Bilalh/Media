@@ -31,6 +31,8 @@ MAKE_REGEX_VARS(getFilesRec_safe);
 
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag) {
+	assert(fpath); assert(sb);
+	
 	
 	/* if it's a file */
     if (typeflag == FTW_F) {
@@ -50,6 +52,7 @@ static int get_files_recursive_callback(const char *fpath, const struct stat *sb
 }
 
 StringsPlusMeta* get_files_recursive(char *dir, char *regex, bool safe) {
+	assert(dir); assert(regex);
 	
 	// Sets up vars
 	MAKE_REGEX_PREMADE_VARS(getFilesRec_at, regex,PCRE_CASELESS)
@@ -84,6 +87,7 @@ StringsPlusMeta* get_files_recursive(char *dir, char *regex, bool safe) {
 
 StringsPlusMeta* get_files(char *dir, char *regex, bool safe) {
 	// gets dir listing ignoring case and matching the patten
+	assert(dir); assert(regex);
 	
 	
 	//Later needs blocks

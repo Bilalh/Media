@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <assert.h>
+
 
 #include <pcre.h>
 
@@ -51,6 +53,7 @@ int day_future(int day, int other_day) {
 }
 
 struct tm *parse_time(char **str, int length) {
+	assert(str);
 	
 	struct tm* tm = currentTime();
     

@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <assert.h>
+
 
 #include <include/option_parser.h>
 #include <include/option_parser_private.h>
@@ -294,6 +296,9 @@ static void sub_print_help(const Element *ele){
 
 // prints the media_args struct -- for debuging
 void print_media_args(MediaArgs *ma) {
+	
+	assert(ma);
+	
 #define truth(boolean) (boolean ? "true" : "false" )
 #define nullcheck(val) (val == NULL ? "NULL" : val )
 #define strcheck(s)    (s.str != NULL ? s.str : "NULL" )

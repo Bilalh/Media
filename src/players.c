@@ -53,6 +53,9 @@ static char *make_command(const char *bin_path, char **filenames, int num_of_fil
 						  int total_length, char *prefix_args, char *postfix_args, 
 						  char *filepath, bool background)
 {
+	assert(bin_path); assert(filenames); assert(prefix_args);
+	assert(postfix_args); assert(filepath); 
+	
 	// discards output.
 	const char *rid   = background ? "&> /dev/null &" :"&> /dev/null"; 
 

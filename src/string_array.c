@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
+
 #include <include/string_array.h>
 
 
@@ -12,7 +14,7 @@ StringArray *string_array_new(int length){
 }
 
 void new_string_array(StringArray *sa, int length ){
-	
+	assert(sa);
 	if (length <= 0) length = 16;
 	sa->arr    = malloc(sizeof(char*) * length);
 	sa->length = length;
@@ -20,6 +22,7 @@ void new_string_array(StringArray *sa, int length ){
 }
 
 void string_array_add(StringArray *sa, const char *str){
+	assert(sa);
 	
 	if (sa->index + 1 == sa->length){
 		sa->length *=2;
