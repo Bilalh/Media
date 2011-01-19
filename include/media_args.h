@@ -12,7 +12,7 @@ typedef enum {
 } Poutput;
 
 typedef enum {
-	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC
+	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI
 } Player;
 
 typedef enum {

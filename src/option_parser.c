@@ -181,8 +181,8 @@ void print_help(char *arg){
 			while (( *arg != '\0' && isascii(*arg) )){
 				if (Element_ptr[(int)*arg] != NULL ){
 					sub_print_help(Element_ptr[(int)*arg]);
-				}else{
-					printf("\t-%c %31s\n",*arg,"NOT defined");
+				}else if (*arg != '?') { // -? can not be used
+					printf("\t-" RESET RED "%c" RESET " %32s\n",*arg,"NOT defined");
 				}
 				++arg;
 			}

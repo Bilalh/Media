@@ -25,6 +25,17 @@ void mplayer(char **filenames, int num_of_files, int total_length,
 	system(strdup(command));
 }
 
+void mplayer_gui(char **filenames, int num_of_files, int total_length, char *filepath) 
+{
+	
+	// mplayer binary
+	char *command = make_command("open -a " PREFS_MPLAYER_GUI_APP_NAME , filenames, num_of_files, total_length, 
+								 "", "", filepath, true);
+	
+	// strdup is needed
+	system(strdup(command));
+}
+
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call vlc from.	
 void vlc(char **filenames, int num_of_files, int total_length, 

@@ -143,6 +143,9 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, 
 				path,ma->background);
 				break;
+			case P_MPLAYER_GUI:
+				mplayer_gui(s_arr,file_num, total_length, path);
+				break;
 			case P_NICEPLAYER:
 				niceplayer("");
 				break;

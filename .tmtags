@@ -155,19 +155,19 @@ HASH_SIGNATURE	include/uthash.h	/^#define HASH_SIGNATURE /;"	macro	line:913
 HASH_SORT	include/uthash.h	/^#define HASH_SORT(/;"	macro	line:756
 HASH_SRT	include/uthash.h	/^#define HASH_SRT(/;"	macro	line:757
 HASH_TO_BKT	include/uthash.h	/^#define HASH_TO_BKT(/;"	macro	line:175
-HELP_LINK	include/option_parser_private.h	/^const HelpLink HELP_LINK[] = {$/;"	variable	line:811
-HELP_L_LEN	include/option_parser_private.h	/^#define HELP_L_LEN /;"	macro	line:827
+HELP_LINK	include/option_parser_private.h	/^const HelpLink HELP_LINK[] = {$/;"	variable	line:818
+HELP_L_LEN	include/option_parser_private.h	/^#define HELP_L_LEN /;"	macro	line:834
 HISTORYHEAD	include/history.h	/^#define HISTORYHEAD /;"	macro	line:2
-H_History	include/option_parser_private.h	/^const Element H_History[]={$/;"	variable	line:379
+H_History	include/option_parser_private.h	/^const Element H_History[]={$/;"	variable	line:386
 H_filepath	include/option_parser_private.h	/^const Element H_filepath[] ={$/;"	variable	line:82
 H_filetype	include/option_parser_private.h	/^const Element H_filetype[] ={$/;"	variable	line:47
-H_mplayer	include/option_parser_private.h	/^const Element H_mplayer[] = { $/;"	variable	line:243
-H_mplayer_aspect	include/option_parser_private.h	/^const Element H_mplayer_aspect[] = {$/;"	variable	line:706
-H_mplayer_extra	include/option_parser_private.h	/^const Element H_mplayer_extra[] = { $/;"	variable	line:532
-H_mplayer_geom	include/option_parser_private.h	/^const Element H_mplayer_geom[] = {$/;"	variable	line:775
-H_mplayer_sizes	include/option_parser_private.h	/^const Element H_mplayer_sizes[]={$/;"	variable	line:743
-H_other	include/option_parser_private.h	/^const Element H_other[] ={$/;"	variable	line:424
-H_output	include/option_parser_private.h	/^const Element H_output[] ={$/;"	variable	line:348
+H_mplayer	include/option_parser_private.h	/^const Element H_mplayer[] = { $/;"	variable	line:250
+H_mplayer_aspect	include/option_parser_private.h	/^const Element H_mplayer_aspect[] = {$/;"	variable	line:713
+H_mplayer_extra	include/option_parser_private.h	/^const Element H_mplayer_extra[] = { $/;"	variable	line:539
+H_mplayer_geom	include/option_parser_private.h	/^const Element H_mplayer_geom[] = {$/;"	variable	line:782
+H_mplayer_sizes	include/option_parser_private.h	/^const Element H_mplayer_sizes[]={$/;"	variable	line:750
+H_other	include/option_parser_private.h	/^const Element H_other[] ={$/;"	variable	line:431
+H_output	include/option_parser_private.h	/^const Element H_output[] ={$/;"	variable	line:355
 H_player	include/option_parser_private.h	/^const Element H_player[] ={$/;"	variable	line:203
 H_playlist	include/option_parser_private.h	/^const Element H_playlist[] ={$/;"	variable	line:151
 HelpLink	include/option_parser_private.h	/^} HelpLink;$/;"	typedef	line:28
@@ -223,10 +223,10 @@ ML_UPDATE_ANIME	include/ml.h	/^#define ML_UPDATE_ANIME /;"	macro	line:36
 ML_WATCHING	include/ml.h	/^	ML_NONE   = 0, ML_WATCHING = 1, ML_COMPLETED   = 2, $/;"	enumerator	line:18
 ML_status	include/ml.h	/^} ML_status;$/;"	typedef	line:20
 MONDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:21
-M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:790
-M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:808
-M_SIZE	include/option_parser_private.h	/^	#define M_SIZE(/;"	macro	line:744
-M_SIZE	include/option_parser_private.h	/^	#undef M_SIZE$/;"	macro	line:772
+M_GEO	include/option_parser_private.h	/^	#define M_GEO(/;"	macro	line:797
+M_GEO	include/option_parser_private.h	/^	#undef M_GEO$/;"	macro	line:815
+M_SIZE	include/option_parser_private.h	/^	#define M_SIZE(/;"	macro	line:751
+M_SIZE	include/option_parser_private.h	/^	#undef M_SIZE$/;"	macro	line:779
 MakeMain	tests/include/tests.h	/^#define MakeMain(/;"	macro	line:185
 MakeTest	tests/include/tests.h	/^#define MakeTest(/;"	macro	line:161
 MakeTestResult	tests/include/tests.h	/^#define MakeTestResult(/;"	macro	line:118
@@ -275,16 +275,17 @@ PL_NONE	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x
 PL_PLAYLIST	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:11
 PL_STDOUT	include/media_args.h	/^	PL_NONE = 0x0, PL_STDOUT = 0x1, PL_PLAYLIST = 0x2, PL_BOTH = 0x3$/;"	enumerator	line:11
 PREFERENCES_HEADER_MEDIA_	prefs.h	/^#define PREFERENCES_HEADER_MEDIA_$/;"	macro	line:2
-PREFS_AUDIO_REGEX	prefs.h	/^#define PREFS_AUDIO_REGEX /;"	macro	line:23
-PREFS_AUDIO_VIDEO_REGEX	prefs.h	/^#define PREFS_AUDIO_VIDEO_REGEX /;"	macro	line:24
-PREFS_COLOUR	prefs.h	/^#define PREFS_COLOUR$/;"	macro	line:30
-PREFS_EP_COLOUR	prefs.h	/^#define PREFS_EP_COLOUR /;"	macro	line:19
+PREFS_AUDIO_REGEX	prefs.h	/^#define PREFS_AUDIO_REGEX /;"	macro	line:25
+PREFS_AUDIO_VIDEO_REGEX	prefs.h	/^#define PREFS_AUDIO_VIDEO_REGEX /;"	macro	line:26
+PREFS_COLOUR	prefs.h	/^#define PREFS_COLOUR$/;"	macro	line:32
+PREFS_EP_COLOUR	prefs.h	/^#define PREFS_EP_COLOUR /;"	macro	line:21
+PREFS_MPLAYER_APP_NAME	prefs.h	/^#define PREFS_MPLAYER_APP_NAME /;"	macro	line:6
 PREFS_MPLAYER_BINARY	prefs.h	/^#define PREFS_MPLAYER_BINARY /;"	macro	line:5
-PREFS_MPLAYER_GUI_APP_NAME	prefs.h	/^#define PREFS_MPLAYER_GUI_APP_NAME /;"	macro	line:8
-PREFS_SECOND_BAR	prefs.h	/^#define PREFS_SECOND_BAR /;"	macro	line:27
-PREFS_VIDEO_REGEX	prefs.h	/^#define PREFS_VIDEO_REGEX /;"	macro	line:22
-PREFS_VLC_BINARY	prefs.h	/^#define PREFS_VLC_BINARY /;"	macro	line:6
-PREFS_WATCHED_COLOUR	prefs.h	/^#define PREFS_WATCHED_COLOUR /;"	macro	line:12
+PREFS_MPLAYER_GUI_APP_NAME	prefs.h	/^#define PREFS_MPLAYER_GUI_APP_NAME /;"	macro	line:10
+PREFS_SECOND_BAR	prefs.h	/^#define PREFS_SECOND_BAR /;"	macro	line:29
+PREFS_VIDEO_REGEX	prefs.h	/^#define PREFS_VIDEO_REGEX /;"	macro	line:24
+PREFS_VLC_BINARY	prefs.h	/^#define PREFS_VLC_BINARY /;"	macro	line:7
+PREFS_WATCHED_COLOUR	prefs.h	/^#define PREFS_WATCHED_COLOUR /;"	macro	line:14
 PRINT_FAIL	tests/include/tests.h	/^#define PRINT_FAIL /;"	macro	line:16
 PRINT_IF_PASSED	tests/include/tests.h	/^#define PRINT_IF_PASSED(/;"	macro	line:61
 PRINT_IF_PASSED_a	tests/include/tests.h	/^#define PRINT_IF_PASSED_a(/;"	macro	line:66
@@ -293,10 +294,11 @@ PRINT_NAME_FAIL_a	tests/include/tests.h	/^#define PRINT_NAME_FAIL_a(/;"	macro	li
 PRINT_NAME_PASS	tests/include/tests.h	/^#define PRINT_NAME_PASS(/;"	macro	line:56
 PRINT_NAME_PASS_a	tests/include/tests.h	/^#define PRINT_NAME_PASS_a(/;"	macro	line:59
 PRINT_PASS	tests/include/tests.h	/^#define PRINT_PASS /;"	macro	line:17
-P_MPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
-P_NICEPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
-P_NONE	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
-P_VLC	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC$/;"	enumerator	line:15
+P_MPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI$/;"	enumerator	line:15
+P_MPLAYER_GUI	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI$/;"	enumerator	line:15
+P_NICEPLAYER	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI$/;"	enumerator	line:15
+P_NONE	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI$/;"	enumerator	line:15
+P_VLC	include/media_args.h	/^	P_NONE, P_MPLAYER, P_NICEPLAYER,  P_VLC, P_MPLAYER_GUI$/;"	enumerator	line:15
 Pformat	include/media_args.h	/^} Pformat;$/;"	typedef	line:8
 Player	include/media_args.h	/^} Player;$/;"	typedef	line:16
 Poutput	include/media_args.h	/^} Poutput;$/;"	typedef	line:12
@@ -502,10 +504,10 @@ addEp	src/scripts/make_plot_years.rb	/^def addEp(years, yearA, monthA, dayA)$/;"
 add_anime	src/history/ml.c	/^char *add_anime (MLOpts *opts) {$/;"	function	line:148
 afloat	include/media_args.h	/^	bool     afloat;       \/\/ DONE$/;"	member	line:70
 align	tests/make_test_files.rb	/^	def align()$/;"	method	line:8
-all_afloat	src/media.c	/^		#define all_afloat /;"	macro	line:157
+all_afloat	src/media.c	/^		#define all_afloat /;"	macro	line:159
 all_spaces	include/media_args.h	/^	Spaces   all_spaces;   \/\/ DONE$/;"	member	line:71
-all_spaces_auto	src/media.c	/^		#define all_spaces_auto /;"	macro	line:167
-all_spaces_manual	src/media.c	/^		#define all_spaces_manual /;"	macro	line:162
+all_spaces_auto	src/media.c	/^		#define all_spaces_auto /;"	macro	line:169
+all_spaces_manual	src/media.c	/^		#define all_spaces_manual /;"	macro	line:164
 alternation	tests/make_test_files.rb	/^		def alternation(*s); s.map(&Regexp.method(:escape)).join("|") end$/;"	method	line:9
 arg	include/option_parser_private.h	/^	const char *arg;$/;"	member	line:18
 argc	src/option_parser.c	/^	#define argc /;"	macro	line:96
@@ -641,7 +643,7 @@ main	src/make_man_options.c	/^int main (int argc, char const *argv[]) {$/;"	func
 main	tests/all_tests.c	/^int main (void) {$/;"	function	line:8
 main	xtra/block_test.c	/^int main (int argc, char const *argv[]) {$/;"	function	line:5
 main	xtra/func.c	/^int main(int argc, const char *argv[])$/;"	function	line:1
-make_command	src/players.c	/^static char *make_command(const char *bin_path, char **filenames, int num_of_files,$/;"	function	line:40
+make_command	src/players.c	/^static char *make_command(const char *bin_path, char **filenames, int num_of_files,$/;"	function	line:53
 make_m3u	src/playlist.c	/^bool make_m3u(char *filepath, char **names) {$/;"	function	line:59
 make_man_options_req	build/Makefile	/^make_man_options_req = make_man_options.o ${string_req} ${strutil_req}$/;"	macro	line:64
 make_playlist	src/playlist.c	/^bool make_playlist(char *filename, char *dir_t,  char **names, Pformat formats) {$/;"	function	line:16
@@ -657,6 +659,7 @@ mediaf	src/scripts/media.sh	/^function mediaf(){$/;"	function	line:10
 mediah	src/scripts/media.sh	/^function mediah(){$/;"	function	line:2
 ml_req	tests/tests.mk	/^ml_req      = history\/ml.o string_util.o string_buffer.o ${hist_req} $/;"	macro	line:11
 mplayer	src/players.c	/^void mplayer(char **filenames, int num_of_files, int total_length, $/;"	function	line:16
+mplayer_gui	src/players.c	/^void mplayer_gui(char **filenames, int num_of_files, int total_length, char *filepath) $/;"	function	line:28
 name	tests/include/all_tests.h	/^	char *name;$/;"	member	line:13
 name	tests/include/tests.h	/^	char *name;$/;"	member	line:82
 names	tests/tests.mk	/^names  = string time opt strutil strarr$/;"	macro	line:1
@@ -669,7 +672,7 @@ newest_only	src/string_util.c	/^char **newest_only (char **names, int *length, b
 next	include/uthash.h	/^   void *next;                       \/* next element in app order      *\/$/;"	member	line:952
 nice_random	include/media_args.h	/^	bool       nice_random;   $/;"	member	line:78
 nice_repeat	include/media_args.h	/^	NiceRepeat nice_repeat;   $/;"	member	line:77
-niceplayer	src/players.c	/^void niceplayer(char *playlist) {}$/;"	function	line:90
+niceplayer	src/players.c	/^void niceplayer(char *playlist) {}$/;"	function	line:103
 noexpand	include/uthash.h	/^   unsigned ineff_expands, noexpand;$/;"	member	line:938
 nonideal_items	include/uthash.h	/^   unsigned nonideal_items;$/;"	member	line:930
 nullcheck	src/option_parser.c	/^#define nullcheck(/;"	macro	line:298
@@ -839,6 +842,6 @@ uthash_noexpand_fyi	include/uthash.h	/^#define uthash_noexpand_fyi(/;"	macro	lin
 val	include/string_util.h	/^	char *val;$/;"	member	line:141
 val	src/examples/ftest.c	/^	char *val;$/;"	member	line:11
 val	src/examples/hashe2.c	/^	char *val;$/;"	member	line:10
-vlc	src/players.c	/^void vlc(char **filenames, int num_of_files, int total_length, $/;"	function	line:30
+vlc	src/players.c	/^void vlc(char **filenames, int num_of_files, int total_length, $/;"	function	line:42
 write_history	include/media_args.h	/^	bool    write_history; \/\/ DONE$/;"	member	line:64
 writefunc	src/history/ml.c	/^static size_t writefunc (void *ptr, size_t size, size_t nmemb, String_m *s) {$/;"	function	line:506

@@ -217,6 +217,13 @@ const Element H_player[] ={
 		}
 	},
 	{  
+		.opt   = {.name =  "gui-mplayer", .val = '{', .has_arg = no_argument}, 
+		.help  = "Plays the files using mplayer gui.",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->player = P_MPLAYER_GUI;
+		}
+	},
+	{  
 		.opt   = {.name =  "niceplayer", .val = 'N', .has_arg = no_argument}, 
 		.help  = "Plays the files using niceplayer.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
