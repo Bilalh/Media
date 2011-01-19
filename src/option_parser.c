@@ -66,7 +66,8 @@ MediaArgs *new_media_args() {
 		
 		.dot_default = false,
 		.colour_ep   = false,
-		.label_watched = false
+		.label_watched = false,
+		.score         = 0
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -300,8 +301,8 @@ void print_media_args(MediaArgs *ma) {
 	assert(ma);
 	
 #define truth(boolean) (boolean ? "true" : "false" )
-#define nullcheck(val) (val == NULL ? "NULL" : val )
-#define strcheck(s)    (s.str != NULL ? s.str : "NULL" )
+#define nullcheck(val) (val   == NULL ? "NULL" :  val )
+#define strcheck(s)    (s.str != NULL ? s.str  : "NULL" )
 #define print_args(title,value) printf("%20s: %s\n",   title, value);
 #define print_hex(title,value)  printf("%20s: 0x%x\n", title, value);
 #define print_int(title,value)  printf("%20s: %i\n",   title, value);
@@ -353,8 +354,9 @@ void print_media_args(MediaArgs *ma) {
 	print_args("regex_sep",    nullcheck(ma->regex_sep));
 
 	print_args("dot_default",   truth(ma->dot_default));
-	print_args("colour_ep",     truth(ma->dot_default));
-	print_args("label_watched", truth(ma->dot_default));
+	print_args("colour_ep",     truth(ma->colour_ep));
+	print_args("label_watched", truth(ma->label_watched));
+	print_int("score",          ma->score);
 
 
 #undef truth

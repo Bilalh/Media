@@ -82,7 +82,8 @@ typedef struct {
 	                          
 	bool       dot_default;   // DONE
 	bool       colour_ep;     // DONE
-	bool	   label_watched; // DONE
+	bool       label_watched; // DONE
+	int        score;
 	
 } MediaArgs;
 

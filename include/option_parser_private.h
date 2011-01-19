@@ -426,6 +426,22 @@ const Element H_History[]={
 			ma->label_watched = TRUTH_VALUE(ch);
 		}
 	},
+	{  
+		.opt   = {.name =  "score", .val = '@', .has_arg = required_argument}, 
+		.help  = "Set the score (0 to not set)",
+		.arg   = "score", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int res, x; char temp[1];
+			res = sscanf(arg, "%8i%1s",&x,temp);
+			if(res != 1 || x < 0 || x > 10){
+				efprintf("Invalid score must be in 1..10\n");
+				exit(1);
+			}else{
+				ma->score = x;
+			}
+		}
+	},
+	
 };
 
 const Element H_other[] ={

@@ -206,6 +206,12 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			
 		}
 		
+		if (ma->score > 0){
+			for(int i = 0; i < file_num; ++i){
+				set_score(s_arr[i], ma->score);
+			}
+		}
+		
 	}
 	
 }

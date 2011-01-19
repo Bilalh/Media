@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <libgen.h>
+#include <assert.h>
 
 #include <sqlite3.h>
 #include <libxml/tree.h>
 
 #include <include/history.h>
 #include <include/string_util.h>
+#include <include/string_buffer.h>
 #include <include/debug.h>
 #include <include/colours.h>
 #include <include/time.def>
@@ -19,6 +21,7 @@ static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv,
 
 
 bool updateHistory(char **filenames, Status status, int sep) {
+	assert(filenames);
 	sqlite3 *db;
 	int result;
 
@@ -123,7 +126,33 @@ bool updateHistory(char **filenames, Status status, int sep) {
 	return true;
 }
 
+void set_score(char *series, int score){
+	assert(series); assert(score > 0); assert(score <= 10);
+	
+	char **ans = ep_num(series);
+	if (ans[0] != NULL) {
+		EP_GET_NAME(ans, title, series);
+		String s;
+		new_string(&s, 120);
+
+		string_sprintf(&s, 18+ 17 + 21  + strlen(series) +1,
+			" UPDATE SeriesInfo"
+			" SET Score   = %d"
+			" WHERE Title = \"%s\"; ",
+			score, title
+		);
+
+		sql_exec(s.str, NULL);
+	}else{
+		efprintf("%s\n", "null ep_num in set_score");
+	}
+
+	
+}
+
+
 void sql_exec(char *command, SqlCallback callback ) {
+	assert(command);
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
@@ -145,6 +174,7 @@ void sql_exec(char *command, SqlCallback callback ) {
 }
 
 void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
+	assert(argv); assert(callback);
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
@@ -169,6 +199,7 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 }
 
 void print_latest(char *num){
+	assert(num);
 	
 	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
@@ -184,6 +215,7 @@ void print_latest(char *num){
 }
 
 void print_latest_with_finished(char *num){
+	assert(num);
 	
 	char buff[200 + strlen(num)]; // few extra 332? 
 	sprintf(buff, 
@@ -199,6 +231,8 @@ void print_latest_with_finished(char *num){
 }
 
 void print_latest_with_finished_and_skipped(char *num){
+	assert(num);
+	
 	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
 		"SELECT Title, Current, Total, Date, Finished, Rewatching"
@@ -213,6 +247,7 @@ void print_latest_with_finished_and_skipped(char *num){
 
 // Prints the data from the  print_latest functions
 static int print_latest_callback(void *unused, int argc, char **argv, char **columns){
+	assert(argv);assert(columns);
 	
 	const char* title = argv[0];
 	const char* current = argv[1];

@@ -6,7 +6,7 @@ opt_req     = option_parser.o string_buffer.o string_util.o
 string_req  = string_buffer.o
 strutil_req = string_util.o
 time_req    = string_util.o time_util.o
-hist_req    = history/history.o string_util.o time_util.o
+hist_req    = history/history.o string_util.o time_util.o string_buffer.o
 play_req    = playlist.o
 ml_req      = history/ml.o string_util.o string_buffer.o ${hist_req} 
 

@@ -41,6 +41,14 @@ void print_latest_with_finished_and_skipped(char *num);
 void print_ongoing(bool colour);
 
 
+/**
+ * @brief Sets the score of a series 
+ *
+ * @param title The title of the series
+ * @param score The score in the range 1 - 10
+**/
+void set_score(char *title, int score);
+
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 
 #endif
