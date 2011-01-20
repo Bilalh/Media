@@ -20,7 +20,6 @@ int main (int argc, char const *argv[]) {
 
 void print_help2(){
 	size_t length = sizeof(HELP_LINK) / sizeof(HelpLink), start = 0;
-	size_t s_len  = length;
 	
 	for(int i = start; i < length; ++i){
 		printf("\n.I %i  %s\n.BR\n",i,  HELP_LINK[i].grouping);
@@ -34,8 +33,8 @@ void print_help2(){
 // prints the element
 static void sub_print_help2(const Element *ele){
 	printf("%s\n", "\n.TP 0.5i");
-	const char *s_exp = ".BR %-3s, \"  %-20s\" \n";
-	const char *h_exp = ".BR %-3s, \"  %-20s\" \n%-s\n";
+	const char *s_exp = ".BR \"%-3s\", \"  %-20s\" \n";
+	
 	const struct option *optr = &ele->opt;
 	// makes the space for the short arg
 	char short_opt[3] = ""; 
@@ -52,7 +51,7 @@ static void sub_print_help2(const Element *ele){
 
 	int ts_cols = 8000;
 	const char *ho = ele->help; 
-	int h_len = strlen(ho), h_num = ts_cols - 33, h_cur = h_num;
+	int h_num = ts_cols - 33, h_cur = h_num;
 	if (h_num < 5) h_num = 5;
 	char hh[h_num + 2]; 
 	

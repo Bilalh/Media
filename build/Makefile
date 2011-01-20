@@ -116,7 +116,7 @@ list_targets:
 	@${PERL} -e 'print join "\n", qw{dist all cscripts to_scripts run_tests examples}, ""'
 
 list_all: list_targets list_objs list_scripts list_cscripts 
-	
+list:     list_all
                            ### Tests ###
 run_tests: all_tests
 	./all_tests

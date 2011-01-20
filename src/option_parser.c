@@ -83,7 +83,7 @@ MediaArgs *new_media_args() {
 void print_usage(){
 	printf("%s", 
 		"Usage media start_path [args]\n"
-		" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[]}%^=/]\n"
+		" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]\n"
 		" Use -h for help"
 		" Use -h[num] for a section in the help\n"
 		" Use -h,{letters} for details of the arg(s)\n"
