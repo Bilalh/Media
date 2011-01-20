@@ -9,7 +9,7 @@ strutil_req       = string_util.o
 time_req          = string_util.o time_util.o
 hist_req          = history/history.o string_util.o time_util.o
 play_req          = playlist.o
-ml_req            = history/ml.o string_util.o string_buffer.o ${hist_req} 
+ml_req            = history/ml.o string_util.o ${hist_req} ${string_extra_req}
 
 # Makes the test_%                          : ${test_%_req}
 $(foreach name,${names},$(eval test_${name} : ${${name}_req}))

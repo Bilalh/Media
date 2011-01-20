@@ -13,6 +13,7 @@
 #include <include/ml.h>
 #include <include/xml.def>
 #include <include/string_buffer.h>
+#include <include/string_buffer_extra.h>
 #include <include/string_util.h>
 #include <include/debug.h>
 #include <include/colours.h>
@@ -417,25 +418,27 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 }
 
 static void update_fin(MLOpts *opts){
-	const int len = 53 + strlen(opts->title) + 1;
+
 	if (sql_commands == NULL){
+		const int len = 53 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Finished = 1 where Title = '%s'; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Finished = 1 where Title = %Q; ", 
 		opts->title
 	);
 }
 
 static void update_end_date_fin(MLOpts *opts, const char *date){
-	const int len = 67 + 20 + strlen(opts->title) + 1;
+
 	if (sql_commands == NULL){
+		const int len = 67 + 20 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set EndDate = '%s', Finished = 1 where Title = '%s'; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set EndDate = %Q, Finished = 1 where Title = %Q; ", 
 		date, opts->title
 	);
 }
@@ -443,64 +446,68 @@ static void update_end_date_fin(MLOpts *opts, const char *date){
 //FIXME escape names
 // makes sql statements
 static void update_updated(MLOpts *opts){
-	const int len = 54 + strlen(opts->title) + 1;
+	
 	if (sql_commands == NULL){
+		const int len = 54 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1 where Title = \"%s\"; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Updated = 1 where Title = %Q; ", 
 		opts->title
 	);
 }
 
 static void update_id_total(MLOpts *opts){
-	const int len = 75 + strlen(opts->title) + 1;
+	
 	if (sql_commands == NULL){
+		const int len = 75 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1, Total = %s, Id = %s where Title = \"%s\"; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Updated = 1, Total = %s, Id = %s where Title = %Q; ", 
 		opts->total, opts->id, opts->title
 	);
 	
 }
 
 static void update_id(MLOpts *opts){
-	const int len = 63 + strlen(opts->title) + 1;
 	if (sql_commands == NULL){
+		const int len = 63 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated = 1, Id = %s where Title = \"%s\"; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Updated = 1, Id = %s where Title = %Q; ", 
 		opts->id, opts->title
 	);
 	
 }
 
 static void update_total(MLOpts *opts){
-	const int len = 67 + strlen(opts->title) + 1;
+	
 	if (sql_commands == NULL){
+		const int len = 67 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Updated == 1, Total = %s where Title = \"%s\"; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Updated == 1, Total = %s where Title = %Q; ", 
 		opts->total, opts->title
 	);
 	
 }
 
 static void update_total_only(MLOpts *opts){
-	const int len = 53 + strlen(opts->title) + 1;
+	
 	if (sql_commands == NULL){
+		const int len = 53 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
-	string_sprintf(sql_commands, len,
-		"Update SeriesInfo Set Total = %s where Title = \"%s\"; ", 
+	string_mprintf(sql_commands,
+		"Update SeriesInfo Set Total = %s where Title =  %Q; ", 
 		opts->total, opts->title
 	);
 	
