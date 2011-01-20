@@ -68,10 +68,11 @@ MediaArgs *new_media_args() {
 		.regex_print = false,
 		.regex_sep   = strdup(".*"),
 		
-		.dot_default = false,
-		.colour_ep   = false,
+		.dot_default   = false,
+		.colour_ep     = false,
 		.label_watched = false,
-		.score         = 0
+		.score         = 0,
+		.menu          = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -188,7 +189,7 @@ void print_help(char *arg){
 			while (( *arg != '\0' && isascii(*arg) )){
 				if (Element_ptr[(int)*arg] != NULL ){
 					sub_print_help(Element_ptr[(int)*arg]);
-				}else if (*arg != '?') { // -? can not be used
+				}else if (*arg != '?' && *arg != '-') { // -? and -- can not be used
 					printf("\t-" RESET RED "%c" RESET " %32s\n",*arg,"NOT defined");
 				}
 				++arg;
@@ -361,6 +362,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("colour_ep",     truth(ma->colour_ep));
 	print_args("label_watched", truth(ma->label_watched));
 	print_int("score",          ma->score);
+	print_args("menu",          truth(ma->menu));
 
 
 #undef truth

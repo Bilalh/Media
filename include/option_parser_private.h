@@ -381,6 +381,14 @@ const Element H_output[] ={
 			ma->colour_ep = TRUTH_VALUE(ch);
 		}
 	},
+	{  
+		.opt   = {.name =  "menu", .val = 'g', .has_arg = no_argument}, 
+		.help  = "Uses a menu to select the file",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->menu = TRUTH_VALUE(ch);
+		}
+	},
 };
 
 const Element H_History[]={
@@ -650,7 +658,7 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "quick", .val = 'g', .has_arg = no_argument}, 
+		.opt   = {.name =  "quick", .val = '_', .has_arg = no_argument}, 
 		.help  = "--framedrop and --fast",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 3, "-framedrop",

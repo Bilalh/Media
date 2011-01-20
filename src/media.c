@@ -97,6 +97,41 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		reverse((void**) s_arr, file_num);
 	}
 	
+	
+	if (ma->menu){
+		for(int i = 0; i < file_num; ++i){
+			
+			char **ep_num_ans  = ep_num(s_arr[i]);
+			if (ep_num_ans[0] != NULL){
+				EP_GET_NUMBER(ep_num_ans,num);
+				EP_GET_NAME(ep_num_ans, s_title, s_arr[i]);
+				
+				printf(SSS("%-2d") ":  N: "SSS("%2ld") " %s \n", COLOUR(i,GREEN),COLOUR(num,BLUE), s_title );
+			}else{
+				efprintf("%s\n", "ep_num null in media");
+				exit(22);
+			}
+		}
+	
+		int res = -1;
+		while (res < 0 || res >= file_num){
+			printf("%s [%d,%d]\n", "Choose an Episode to watch in", 0, file_num-1);
+			scanf("%d", &res);
+			//TODO better line length
+			char f_buff[4096];
+			fgets(f_buff, 4096, stdin);
+		}
+		
+		// Picks only the chosen entry 
+		// TODO free other entries
+		s_arr[0] = s_arr[res];
+		if (file_num >1){
+			s_arr[1] = '\0';
+		}
+		file_num = 1;
+		
+	}
+	
 	if(ma->pl_output & PL_STDOUT){
 		for(int i = 0; i < file_num; ++i){
 			
@@ -126,8 +161,9 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 					print = str_replace(print, strlen(print), buff, rep);
 				}
 			}
-					
+			
 			printf("%s\n", print);
+			free(print);
 		}
 	}
 
@@ -173,22 +209,24 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		" -e 'click checkbox \"Keep this window on the screen on all Spaces\"'"            \
 		" -e 'end tell' -e 'keystroke \"f\" using {command down, control down}'"           \
 		" -e 'keystroke (ASCII character of 32)' -e 'end tell'"                           
-				
-		if (ma->afloat && ma->all_spaces == SPACES_MANUAL ){
-			sleep(1);
-			system("osascript " all_afloat all_spaces_manual " -e 'end tell'");
-		}else if (ma->afloat && ma->all_spaces == SPACES_AUTO ){
-			sleep(1);
-			system("osascript " all_afloat all_spaces_auto);
-		}else if (ma->afloat){
-			sleep(1);
-			system("osascript " all_afloat);
-		}else if (ma->all_spaces== SPACES_MANUAL){
-			sleep(1);
-			system("osascript " all_spaces_manual);
-		}else if (ma->all_spaces== SPACES_AUTO){
-			sleep(1);
-			system("osascript " all_spaces_auto);
+		
+		if (ma->player != P_NONE){
+			if ( ma->afloat && ma->all_spaces == SPACES_MANUAL ){
+				sleep(1);
+				system("osascript " all_afloat all_spaces_manual " -e 'end tell'");
+			}else if (ma->afloat && ma->all_spaces == SPACES_AUTO ){
+				sleep(1);
+				system("osascript " all_afloat all_spaces_auto);
+			}else if (ma->afloat){
+				sleep(1);
+				system("osascript " all_afloat);
+			}else if (ma->all_spaces== SPACES_MANUAL){
+				sleep(1);
+				system("osascript " all_spaces_manual);
+			}else if (ma->all_spaces== SPACES_AUTO){
+				sleep(1);
+				system("osascript " all_spaces_auto);
+			}
 		}
 	
 		if(ma->write_history && ma->label_watched){

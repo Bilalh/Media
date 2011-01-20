@@ -32,5 +32,7 @@ end
 puts "hista \"#{title}\" #{args}"
 puts `$HOME/bin/hista "#{title}" #{args}`
 
+
+
 rescue Interrupt, EOFError
 end
