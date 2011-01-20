@@ -291,27 +291,21 @@ const Element H_mplayer[] = {
 	},
 	{  
 		.opt   = {.name =  "top", .val = 't', .has_arg = no_argument}, 
-		.help  = "Adds profile t  - afloat and 360p.",
+		.help  = "afloat and 360p. and top left",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
-				string_push_m(&ma->prefix_args, 2, "-profile t", "-nofs");
+				string_push_m(&ma->prefix_args, 5, 
+					"-noontop", 
+					"-nofs",
+					"-geometry 0:0",
+					"-xy 480",
+					"-subfont-text-scale 4"
+				);
 				ma->afloat = true;
 			}else{
 				string_push(&ma->prefix_args, "-xy 1");
 				ma->afloat = false;
-			}
-		}
-	},
-	{  
-		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
-		.help  = "Adds profile T  - ontop and 360p.",
-		.arg   = "", .neg = true, 
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			if (TRUTH_STATE(ch)){
-				string_push(&ma->prefix_args, "-profile T");
-			}else{
-				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
 			}
 		}
 	},
@@ -351,46 +345,24 @@ const Element H_mplayer[] = {
 			string_push_m(&ma->prefix_args, 2,"-profile", arg);
 		}
 	},
-};
-
-const Element H_output[] ={
-	
 	{  
-		.opt   = {.name =  "out", .val = 'o', .has_arg = no_argument}, 
-		.help  = "Outputs file list to stdout",
-		.arg   = "", .neg = true,
+		.opt   = {.name =  "screen", .val = 282 , .has_arg = required_argument}, 
+		.help  = "Puts the video on on the chosen screen (numbered from 0)",
+		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			if (TRUTH_STATE(ch)){
-				ma->pl_output |= PL_STDOUT;
+			int a = -1, res; char temp[1];
+			res = sscanf(arg, "%8i%1s",&a,temp);
+			if (res != 1 && (a < 0 ||  a > 3) ){
+				printf("Invalid num \n");
+				exit(1);
 			}else{
-				ma->pl_output &= ~PL_STDOUT;
+				printf("%s\n", arg);
+				string_append_m(&ma->prefix_args, 2,"-vo corevideo:device_id=", arg);
 			}
 		}
 	},
-	{  
-		.opt   = {.name =  "nooutput", .val = 'O', .has_arg = no_argument}, 
-		.help  = "Does not write any output (including playlists)",
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->pl_output = PL_NONE;
-		}
-	},
-	{  
-		.opt   = {.name =  "colour-ep-num", .val = '}', .has_arg = no_argument}, 
-		.help  = "Colours the episodes numbers (default blue)",
-		.arg   = "", .neg = true,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->colour_ep = TRUTH_VALUE(ch);
-		}
-	},
-	{  
-		.opt   = {.name =  "menu", .val = 'g', .has_arg = no_argument}, 
-		.help  = "Uses a menu to select the file",
-		.arg   = "", .neg = true,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->menu = TRUTH_VALUE(ch);
-		}
-	},
 };
+
 
 const Element H_History[]={
 	
@@ -453,6 +425,45 @@ const Element H_History[]={
 	
 };
 
+const Element H_output[] ={
+	
+	{  
+		.opt   = {.name =  "out", .val = 'o', .has_arg = no_argument}, 
+		.help  = "Outputs file list to stdout",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				ma->pl_output |= PL_STDOUT;
+			}else{
+				ma->pl_output &= ~PL_STDOUT;
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "nooutput", .val = 'O', .has_arg = no_argument}, 
+		.help  = "Does not write any output (including playlists)",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->pl_output = PL_NONE;
+		}
+	},
+	{  
+		.opt   = {.name =  "colour-ep-num", .val = '}', .has_arg = no_argument}, 
+		.help  = "Colours the episodes numbers (default blue)",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->colour_ep = TRUTH_VALUE(ch);
+		}
+	},
+	{  
+		.opt   = {.name =  "menu", .val = 'g', .has_arg = no_argument}, 
+		.help  = "Uses a menu to select the file",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->menu = TRUTH_VALUE(ch);
+		}
+	},
+};
+
 const Element H_other[] ={
 	
 	{  
@@ -471,7 +482,7 @@ const Element H_other[] ={
 			int temp;
 			int res = sscanf(arg, "%4d",&temp);
 			if (res == -1){
-				 efprintf(  "Invalid separator  %s\n", arg );
+				efprintf(  "Invalid separator  %s\n", arg );
 				exit(4);
 			}
 			ma->sep = temp;
@@ -579,21 +590,6 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "width", .val = 'W', .has_arg = required_argument}, 
-		.help  = "Set the width",
-		.arg   = "width", .neg = false,
-		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			int a, res; char temp[1];
-			res = sscanf(arg, "%8i%1s",&a,temp);
-			if (res != 1){
-				printf("Invalid Width \n");
-				exit(1);
-			}else{
-				string_push_m(&ma->prefix_args, 2,"-xy", arg);
-			}
-		}
-	},
-	{  
 		.opt   = {.name =  "height", .val = 'H', .has_arg = required_argument}, 
 		.help  = "Set the height using 16:9",
 		.arg   = "height", .neg = false,
@@ -607,7 +603,23 @@ const Element H_mplayer_extra[] = {
 			}else{
 				x = y * 16.0/9.0;
 				sprintf(temp, "%lf", x);
+				printf("%s\n", temp);
 				string_push_m(&ma->prefix_args, 2,"-xy", temp);
+			}
+		}
+	},
+	{  
+		.opt   = {.name =  "width", .val = 'W', .has_arg = required_argument}, 
+		.help  = "Set the width",
+		.arg   = "width", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			int a, res; char temp[1];
+			res = sscanf(arg, "%8i%1s",&a,temp);
+			if (res != 1){
+				printf("Invalid Width \n");
+				exit(1);
+			}else{
+				string_push_m(&ma->prefix_args, 2,"-xy", arg);
 			}
 		}
 	},
@@ -627,16 +639,22 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "rnd", .val = 'r', .has_arg = no_argument}, 
-		.help  = "Uses mplayer random unction ",
+		.opt   = {.name =  "mtop", .val = 'T', .has_arg = no_argument}, 
+		.help  = "ontop and 360p. and top left",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE(ch)){
-				string_push(&ma->prefix_args, "-shuffle");
+				string_push_m(&ma->prefix_args, 5, 
+					"-ontop", 
+					"-nofs",
+					"-geometry 0:0",
+					"-xy 480",
+					"-subfont-text-scale 4"
+				);
 			}else{
-				string_push(&ma->prefix_args, "-noshuffle");
+				string_push_m(&ma->prefix_args, 2,  "-noontop", "-xy 1" );
 			}
-		},
+		}
 	},
 	{  
 		.opt   = {.name =  "prefix", .val = 'E', .has_arg = required_argument}, 
@@ -693,6 +711,18 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
+		.opt   = {.name =  "rnd", .val = 'r', .has_arg = no_argument}, 
+		.help  = "Uses mplayer random unction ",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				string_push(&ma->prefix_args, "-shuffle");
+			}else{
+				string_push(&ma->prefix_args, "-noshuffle");
+			}
+		},
+	},
+	{  
 		.opt   = {.name =  "volume", .val = 'v', .has_arg = required_argument}, 
 		.help  = "Set mplayer volume {0-100}",
 		.arg   = "num", .neg = false,
@@ -733,6 +763,20 @@ const Element H_mplayer_extra[] = {
 			string_push(&ma->prefix_args,"-vo null");
 		}
 	},
+	{  
+		.opt   = {.name =  "ss", .val = 285, .has_arg = required_argument}, 
+		.help  = "The start time",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 2,  "-ss", arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "end", .val = 286, .has_arg = required_argument}, 
+		.help  = "The end time relative to the start time ",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 2,  "-endpos", arg);
+		}
+	},
 };
 
 const Element H_mplayer_aspect[] = {
@@ -768,6 +812,19 @@ const Element H_mplayer_aspect[] = {
 		.help  = "Uses 4:3 aspect ratio",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push(&ma->prefix_args, "-aspect 4:3");
+		}
+	},
+	{  
+		.opt   = {.name =  "tv", .val = 284, .has_arg = no_argument}, 
+		.help  = "Setting for fullscreen on my tv",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 4,
+				"-vo corevideo:device_id=1",
+				"-nofs",
+				"-aspect 16:10",
+				"-xy 1920"
+			);
+			
 		}
 	},
 };
@@ -810,11 +867,6 @@ const Element H_mplayer_geom[] = {
 		.help  = "Palaces the player at (x,y)",
 		.arg   = "x:y", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			//LATER stricter geometry?
-				if (match(arg,"^([0-9][0-9]?|100)%?:([0-9][0-9]?|100)%?$") == 0){
-				printf("Invalid geometry \n");
-				exit(1);
-			}
 			string_push_m(&ma->prefix_args, 2,"-geometry", arg);
 		}
 	},
@@ -841,12 +893,12 @@ const Element H_mplayer_geom[] = {
 };
 
 const HelpLink HELP_LINK[] = {
-	{ "Filepath",          sizeof(H_filepath)       / sizeof(Element), &H_filepath[0]       },
-	{ "Mplayer",           sizeof(H_mplayer)        / sizeof(Element), &H_mplayer[0]        },
-	{ "Playlist",          sizeof(H_playlist)       / sizeof(Element), &H_playlist[0]       },
-	{ "Player",            sizeof(H_player)         / sizeof(Element), &H_player[0]         },
 	{ "Output",            sizeof(H_output)         / sizeof(Element), &H_output[0]         },
+	{ "Mplayer",           sizeof(H_mplayer)        / sizeof(Element), &H_mplayer[0]        },
+	{ "Filepath",          sizeof(H_filepath)       / sizeof(Element), &H_filepath[0]       },
+	{ "Player",            sizeof(H_player)         / sizeof(Element), &H_player[0]         },
 	{ "History",           sizeof(H_History)        / sizeof(Element), &H_History[0]        },
+	{ "Playlist",          sizeof(H_playlist)       / sizeof(Element), &H_playlist[0]       },
 	{ "Filetype",          sizeof(H_filetype)       / sizeof(Element), &H_filetype[0]       },
 	{ "Other",             sizeof(H_other)          / sizeof(Element), &H_other[0]          },
 	{ "Mplayer extra",     sizeof(H_mplayer_extra)  / sizeof(Element), &H_mplayer_extra[0]  },

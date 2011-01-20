@@ -1,0 +1,238 @@
+#put in .mplayer
+
+# Audio Japanese Subs English use fonts for default
+slang=eng
+alang=jpn,jp
+embeddedfonts=yes
+vf-add=screenshot # allows screen shots 
+subfont-osd-scale=3
+subfont-text-scale=6
+double=yes
+ass=yes # For ssa subtitles
+# quiet=yes        
+really-quiet=yes   
+volume=10
+
+#converts 5 ch flac to 2 ch
+# af-pan=2:1:0:0:1:1:0:0:1:0.5:0.5:1:1
+
+[libass]
+ass=true
+embeddedfonts=true
+#correct-pts=true
+
+[fs]
+profile-desc="Fullscreen 16:10 aspect and bigger OSD"
+aspect=16:10
+subfont-text-scale=5
+fs=yes
+volume=15
+
+[s]
+profile-desc="Puts the file on the second screen with full screen"
+vo=corevideo:device_id=1
+fs=yes
+
+[T]
+profile-desc="Always ontop with 480p and placed at top left"
+ontop=yes
+#vf=scale=480:320 bad since it does not scale well
+geometry=0:0
+xy=480
+
+[t]
+profile-desc="480p and placed at top left"
+noontop=yes
+#vf=scale=480:320 bad since it does not scale well
+geometry=0:0
+xy=480
+subfont-text-scale=4
+
+
+
+
+
+
+[fss]
+profile-desc="Fullscreen 16:10 aspect and bigger OSD on second screen"
+vo=corevideo:device_id=1
+aspect=16:10
+subfont-text-scale=5
+fs=yes
+volume=15
+
+[sl]
+profile-desc="Fullscreen 16:10 aspect and bigger OSD on second screen looped"
+vo=corevideo:device_id=1
+aspect=16:10
+subfont-text-scale=4
+fs=yes
+loop=0
+volume=15
+
+[fsf]
+profile-desc="Fullscreen 16:10 aspect and bigger OSD on first screen looped"
+vo=corevideo:device_id=0
+aspect=16:10
+subfont-text-scale=5
+fs=yes
+loop=0
+volume=15
+
+
+[tl]
+profile-desc="Top left"
+ontop=yes
+geometry=0%:0%
+
+[tr]
+profile-desc="Top Right"
+ontop=yes
+geometry=100%:0%
+
+[bl]
+profile-desc="Bottom Left"
+ontop=yes
+geometry=0%:93%
+
+[br]
+profile-desc="Bottom right"
+ontop=yes
+geometry=100%:93%
+
+
+[lc]
+profile-desc="Left centre"
+ontop=yes
+geometry=0%:50%
+
+[rc]
+profile-desc="Right centre"
+ontop=yes
+geometry=100%:50%
+
+
+[tc]
+profile-desc="Top centre"
+ontop=yes
+geometry=50%:0%
+ 
+[bc]
+profile-desc="Bottom centre"
+ontop=yes
+geometry=50%:93%
+
+
+[on]
+profile-desc="Always ontop"
+ontop=yes
+
+[ot]
+profile-desc="Always ontop"
+ontop=yes
+
+
+[f]
+profile-desc="Puts the file on the first screen with full screen"
+vo=corevideo:device_id=0
+aspect=16:10
+fs=yes
+
+[l]
+profile-desc="Loops the video and uses 16:10 aspect ratio"
+loop=0
+aspect=16:10
+
+
+
+[480] 
+profile-desc="Resize to 480p"
+xy=480
+
+[320] 
+profile-desc="Resize to 480p"
+xy=320
+
+[720] 
+profile-desc="Resize to 480p"
+xy=720
+
+[16:10]
+aspect=16:10
+
+[10]
+aspect=16:10
+
+
+
+
+
+[fsi]
+profile-desc="Fullscreen 16:10 aspect and bigger OSD with inverse"
+vf=eq2=1.0:-0.8
+brightness=-20
+aspect=16:10
+subfont-text-scale=5
+fs=yes
+loop=0
+volume=15
+
+[fun] 
+profile-desc="Lots of effects on the file"
+vf=eq2=1.0:-0.8
+speed=1.5
+flip=yes
+aspect=16:10
+subalign=1
+brightness=-20
+fs=yes
+
+
+[fun2] 
+profile-desc="Lots of effects on the file"
+vf=eq2=1.0:-0.8
+speed=1.5
+aspect=16:10
+subalign=1
+brightness=-20
+fs=yes
+
+[funt] 
+profile-desc="Lots of effects on the file"
+vf=eq2=1.0:-0.8
+speed=1.5
+aspect=16:10
+subalign=1
+brightness=-20
+ontop=yes
+geometry=0:0
+xy=480
+
+[neg] 
+profile-desc="Lots of effects on the file"
+vf=eq2=1.0:-0.8
+speed=1.5
+aspect=16:10
+subalign=1
+brightness=-20
+fs=yes
+
+[fun3] 
+profile-desc="Lots of effects on the file"
+vf=eq2=1.0:-0.8
+flip=yes
+aspect=16:10
+subalign=1
+brightness=-20
+rootwin=yes
+speed=1.5
+
+[ccs]
+profile-desc="Lots of effects on the file"
+vf=eq2=3:1:0:1
+
+
+
+# [extension.flv]  make all flv flipped!
+# profile-desc="profile for .flv files" shown in -profile help 
+# flip=yes Flips it 
