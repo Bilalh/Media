@@ -297,7 +297,7 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
-	int r_len   = len * 1.2 + rep_len + 25;
+	int r_len   = len * 2 + rep_len + 25;
 	char *r     = malloc( r_len );
 	dprintf("s %s %d sub %s rep %s \n", s,len, sub, rep);
 	
@@ -307,9 +307,12 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 		// CHECK mallocing fixed?
 		
 		// doubles the buffer r if it is to small
-		if ( r_len +  sub_len >= r_len ){
+		if ( ir +  sub_len >= r_len ){
 			r_len = r_len * 2 + 1;
 			r = realloc(r, r_len);
+			if (r == NULL){
+				efprintf("%i %s\n", r_len, "realloc error in str_replace_e" );
+			}
 		}
 		
 		// checks if sub is a sub string og s
