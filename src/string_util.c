@@ -164,8 +164,8 @@ char** spilt_string_malloc (char *str, int *res_length, bool malloces){
 	
 	free(to_spilt);
 	*res_length = i;
-	return strs;
 	
+	return strs;
 }
 
 inline char** spilt_string_m (char *str, int *res_length){

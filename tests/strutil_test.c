@@ -40,6 +40,23 @@ StrutilVar
 		free(actual);                               \
 	);
 
+#define StrutilTestRev(_name, tBLOCK)               \
+	MakeTest(Strutil, _name, tBLOCK,                \
+		char **actual;                              \
+		char **e;                                   \
+		char * exp;                                 \
+		int    alen = 0;                            \
+		int    elen = 0;                            \
+		,                                           \
+		e = spilt_string_m(exp, &elen);             \
+		actual = spilt_string_m(name, &alen);       \
+		reverse((void**)actual, alen);              \
+		test_result =                               \
+		spilt_words_test                            \
+			(name,actual,alen,e,elen);              \
+	);
+//TODO freeing
+
 
 TestResult strutil_test_main(int test_no) {
 StrutilSetup
@@ -637,7 +654,18 @@ Section("newest_only"){
 
 }StrutilEndSection
 
-//FIXME write test for reverse 
+
+Section("reverse"){
+	StrutilTestRev("a b c",{
+		exp = "c b a";
+	})
+	StrutilTestRev("f d d d ",{
+		exp ="d d d f";
+	})
+	StrutilTestRev("a a a a f",{
+		exp = "f a a a a";
+	})
+}StrutilEndSection
 
 };
 

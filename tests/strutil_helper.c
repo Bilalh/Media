@@ -55,7 +55,7 @@ bool ep_num_test(char *name, char **actual, long exp_int, char *exp_str){
 
 bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){
 	int error;
-	
+
 	if ( alen != elen ) goto fail;
 	
 	for(int i = 0; i < alen; ++i){

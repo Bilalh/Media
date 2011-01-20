@@ -226,7 +226,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	dprintf("xpath: %s\n", buf);
 
 	dprintf("%s\n", "after buf spf ");
-	//FIXME seg fault on getting no vaild data
+	//FIXME might seg fault on getting no vaild data (fixed?)
 	xpathObj = xmlXPathEvalExpression(xmlCharStrdup(buf), xpathCtx);
 	dprintf("%s\n\n", "after xpath eval ");
 	if(xpathObj == NULL) {
@@ -443,7 +443,6 @@ static void update_end_date_fin(MLOpts *opts, const char *date){
 	);
 }
 
-//FIXME escape names
 // makes sql statements
 static void update_updated(MLOpts *opts){
 	
