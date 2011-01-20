@@ -1,5 +1,5 @@
-   18      41     342 Readme
-  165     503    5137 build/Makefile
+   23      46     377 Readme
+  165     505    5154 build/Makefile
    57     193    1079 build/make_debug.sh
     6      21     204 build/make_wrapper.sh
   136     780    3486 build/zzhash
@@ -30,12 +30,12 @@
    60     173     954 man/histm.7
    59     161     904 man/hists.7
    22      63     365 man/mal.7
-  485    1754   10344 man/media.7
-  116     549    3605 man/media_tempate
+  509    1839   10933 man/media.7
+  116     551    3627 man/media_tempate
    47     121     707 man/nums.7
    30      90     575 man/ongoing.7
    30      68     421 man/shash.7
-  127     141    2975 media.tmproj
+  154     168    3570 media.tmproj
    34     131    1399 prefs.h
    35      96     649 src/app/hash_lookup.c
   168     491    3663 src/app/history_add_main.c
@@ -67,9 +67,9 @@
   305    1077    7826 src/history/media.sql
   534    1598   13772 src/history/ml.c
    11      73     499 src/history/mweb.rb
-  100     349    2432 src/make_man_options.c
-  218     665    6033 src/media.c
-  368    1214   10018 src/option_parser.c
+   99     333    2339 src/make_man_options.c
+  218     665    6037 src/media.c
+  372    1216   10005 src/option_parser.c
   106     374    3140 src/players.c
   177     491    4335 src/playlist.c
   410    1610   10939 src/scripts/automan
@@ -89,7 +89,7 @@
    32      78     677 src/string_array.c
    98     364    2518 src/string_buffer.c
    24      41     452 src/string_buffer_extra.c
-  440    1582   10024 src/string_util.c
+  449    1617   10186 src/string_util.c
   138     397    3694 src/sub_dirs.c
   282     897    7514 src/time_util.c
     0       3      21 tests/Readme
@@ -126,12 +126,12 @@
    32      98    1011 tests/string_helper.c
   265     839    7043 tests/string_test.c
   102     267    2300 tests/strutil_helper.c
-  677    1919   15381 tests/strutil_test.c
+  676    1921   15388 tests/strutil_test.c
    20      71     814 tests/tests.mk
    72     217    1913 tests/time_helper.c
   434    1027    7577 tests/time_test.c
    13      33     306 xtra/block_test.c
     8      16     106 xtra/func.c
    55     170    1493 xtra/text.txt
-   18      41     342 Readme
-13563   50671  409344 total
+   23      46     377 Readme
+13635   50820  410704 total

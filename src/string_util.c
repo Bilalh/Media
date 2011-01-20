@@ -297,12 +297,21 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	
 	int rep_len = strlen(rep);
 	int sub_len = strlen(sub);
-	char *r     = malloc(len * 2 + rep_len + 25 );
+	int r_len   = len * 1.2 + rep_len + 25;
+	char *r     = malloc( r_len );
 	dprintf("s %s %d sub %s rep %s \n", s,len, sub, rep);
+	
 	// counters for s and r
 	int is = 0, ir = 0;
 	while(is < len) {
-		//FIXME mallocing in str_replace
+		// CHECK mallocing fixed?
+		
+		// doubles the buffer r if it is to small
+		if ( r_len +  sub_len >= r_len ){
+			r_len = r_len * 2 + 1;
+			r = realloc(r, r_len);
+		}
+		
 		// checks if sub is a sub string og s
 		if (s[is] == *sub && strncmp(&s[is], sub, sub_len) == 0 ) {
 			strncpy(&r[ir], rep , rep_len);

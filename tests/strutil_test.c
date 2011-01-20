@@ -40,6 +40,7 @@ StrutilVar
 		free(actual);                               \
 	);
 
+//TODO freeing in test
 #define StrutilTestRev(_name, tBLOCK)               \
 	MakeTest(Strutil, _name, tBLOCK,                \
 		char **actual;                              \
@@ -55,7 +56,6 @@ StrutilVar
 		spilt_words_test                            \
 			(name,actual,alen,e,elen);              \
 	);
-//TODO freeing
 
 
 TestResult strutil_test_main(int test_no) {
@@ -653,7 +653,6 @@ Section("newest_only"){
 	}
 
 }StrutilEndSection
-
 
 Section("reverse"){
 	StrutilTestRev("a b c",{
