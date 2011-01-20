@@ -341,6 +341,12 @@ STRARR_TEST_FAIL	tests/strarr_helper.c	/^#define STRARR_TEST_FAIL(/;"	macro	line
 STRARR_TEST_HEADER	tests/include/strarr_test.h	/^#define STRARR_TEST_HEADER$/;"	macro	line:2
 STRINGUTILHEAD	include/string_util.h	/^#define STRINGUTILHEAD$/;"	macro	line:2
 STRING_ARRAY_HEAD	include/string_array.h	/^#define STRING_ARRAY_HEAD /;"	macro	line:2
+STRING_BUFFER_EXTRA_HEADER	include/string_buffer_extra.h	/^#define STRING_BUFFER_EXTRA_HEADER$/;"	macro	line:2
+STRING_EXTRA_HELPER_HEADER	tests/include/string_extra_helper.h	/^#define STRING_EXTRA_HELPER_HEADER$/;"	macro	line:2
+STRING_EXTRA_NUM_SECTION	tests/include/string_extra_test.h	/^static int STRING_EXTRA_NUM_SECTION = 0; $/;"	variable	line:7
+STRING_EXTRA_SHOW_FAIL_DATA	tests/string_extra_helper.c	/^#define STRING_EXTRA_SHOW_FAIL_DATA(/;"	macro	line:10
+STRING_EXTRA_TEST_FAIL	tests/string_extra_helper.c	/^#define STRING_EXTRA_TEST_FAIL(/;"	macro	line:9
+STRING_EXTRA_TEST_HEADER	tests/include/string_extra_test.h	/^#define STRING_EXTRA_TEST_HEADER$/;"	macro	line:2
 STRING_FAIL	tests/include/tests.h	/^#define STRING_FAIL(/;"	macro	line:73
 STRING_HELPER_HEADER	tests/include/string_helper.h	/^#define STRING_HELPER_HEADER$/;"	macro	line:2
 STRING_NUM_SECTION	tests/include/string_test.h	/^static int STRING_NUM_SECTION = 0; $/;"	variable	line:7
@@ -363,6 +369,8 @@ Section	tests/include/opt_test.h	/^#define Section(/;"	macro	line:12
 Section	tests/include/opt_test.h	/^#undef  Section$/;"	macro	line:11
 Section	tests/include/strarr_test.h	/^#define Section(/;"	macro	line:11
 Section	tests/include/strarr_test.h	/^#undef  Section$/;"	macro	line:10
+Section	tests/include/string_extra_test.h	/^#define Section(/;"	macro	line:11
+Section	tests/include/string_extra_test.h	/^#undef  Section$/;"	macro	line:10
 Section	tests/include/string_test.h	/^#define Section(/;"	macro	line:11
 Section	tests/include/string_test.h	/^#undef  Section$/;"	macro	line:10
 Section	tests/include/strutil_test.h	/^#define Section(/;"	macro	line:11
@@ -420,6 +428,17 @@ StringSetup	tests/string_test.c	/^#define StringSetup /;"	macro	line:5
 StringTest	tests/include/string_test.h	/^#define StringTest(/;"	macro	line:22
 StringTestM	tests/include/string_test.h	/^#define StringTestM(/;"	macro	line:18
 StringVar	tests/include/string_test.h	/^#define StringVar /;"	macro	line:13
+String_extraAfter	tests/string_extra_test.c	/^#define String_extraAfter(/;"	macro	line:13
+String_extraBefore	tests/string_extra_test.c	/^#define String_extraBefore /;"	macro	line:8
+String_extraEndSection	tests/include/string_extra_test.h	/^#define String_extraEndSection /;"	macro	line:13
+String_extraMakeResult	tests/include/string_extra_test.h	/^#define String_extraMakeResult /;"	macro	line:15
+String_extraPrintTest	tests/string_extra_helper.c	/^#define String_extraPrintTest(/;"	macro	line:7
+String_extraPrintTestResults	tests/include/string_extra_test.h	/^#define String_extraPrintTestResults /;"	macro	line:14
+String_extraResults	tests/include/string_extra_test.h	/^#define String_extraResults /;"	macro	line:16
+String_extraSetup	tests/include/string_extra_test.h	/^#define String_extraSetup$/;"	macro	line:19
+String_extraSetup	tests/string_extra_test.c	/^#define String_extraSetup /;"	macro	line:5
+String_extraTest	tests/include/string_extra_test.h	/^#define String_extraTest(/;"	macro	line:22
+String_extraVar	tests/include/string_extra_test.h	/^#define String_extraVar /;"	macro	line:12
 String_m	src/history/ml.c	/^} String_m;$/;"	typedef	line:23
 StringsPlusMeta	include/sub_dirs.h	/^} StringsPlusMeta;$/;"	typedef	line:9
 StrutilAdd	tests/include/strutil_test.h	/^#define StrutilAdd(/;"	macro	line:12
@@ -588,7 +607,7 @@ hh_head	include/uthash.h	/^   struct UT_hash_handle *hh_head;$/;"	member	line:89
 hh_next	include/uthash.h	/^   struct UT_hash_handle *hh_next;   \/* next hh in bucket order        *\/$/;"	member	line:954
 hh_prev	include/uthash.h	/^   struct UT_hash_handle *hh_prev;   \/* previous hh in bucket order    *\/$/;"	member	line:953
 hho	include/uthash.h	/^   ptrdiff_t hho; \/* hash handle offset (byte pos of hash handle in element *\/$/;"	member	line:921
-hist_req	tests/tests.mk	/^hist_req    = history\/history.o string_util.o time_util.o$/;"	macro	line:9
+hist_req	tests/tests.mk	/^hist_req          = history\/history.o string_util.o time_util.o$/;"	macro	line:10
 hista_req	build/Makefile	/^hista_req  = app\/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}$/;"	macro	line:54
 histc_location	build/Makefile	/^histc_location            = history_copy.rb$/;"	macro	line:74
 histm_location	build/Makefile	/^histm_location            = history_add_menu.rb$/;"	macro	line:70
@@ -657,12 +676,12 @@ media	src/media.c	/^void media(char *path, char **args, int argc, const MediaArg
 media_req	build/Makefile	/^media_req    = app\/media_main.o media.o players.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}$/;"	macro	line:42
 mediaf	src/scripts/media.sh	/^function mediaf(){$/;"	function	line:10
 mediah	src/scripts/media.sh	/^function mediah(){$/;"	function	line:2
-ml_req	tests/tests.mk	/^ml_req      = history\/ml.o string_util.o string_buffer.o ${hist_req} $/;"	macro	line:11
+ml_req	tests/tests.mk	/^ml_req            = history\/ml.o string_util.o string_buffer.o ${hist_req} $/;"	macro	line:12
 mplayer	src/players.c	/^void mplayer(char **filenames, int num_of_files, int total_length, $/;"	function	line:17
 mplayer_gui	src/players.c	/^void mplayer_gui(char **filenames, int num_of_files, int total_length, char *filepath) $/;"	function	line:29
 name	tests/include/all_tests.h	/^	char *name;$/;"	member	line:13
 name	tests/include/tests.h	/^	char *name;$/;"	member	line:82
-names	tests/tests.mk	/^names  = string time opt strutil strarr$/;"	macro	line:1
+names	tests/tests.mk	/^names  = string time opt strutil strarr string_extra$/;"	macro	line:1
 neg	include/option_parser_private.h	/^	const bool neg;$/;"	member	line:21
 new_media_args	src/option_parser.c	/^MediaArgs *new_media_args() {$/;"	function	line:20
 new_string	src/string_buffer.c	/^void new_string(String *s, int length ){$/;"	function	line:17
@@ -689,7 +708,7 @@ ongoing_req	build/Makefile	/^ongoing_req   = app\/ongoing_main.o ${hist_req}$/;"
 ongoingnc_req	build/Makefile	/^ongoingnc_req = app\/ongoing_no_colour_main.o ${hist_req} $/;"	macro	line:50
 opt	include/option_parser_private.h	/^	const struct option opt;$/;"	member	line:17
 opt_intcmp	tests/opt_helper.c	/^#define opt_intcmp(/;"	macro	line:3
-opt_req	tests/tests.mk	/^opt_req     = option_parser.o string_buffer.o string_util.o$/;"	macro	line:5
+opt_req	tests/tests.mk	/^opt_req           = option_parser.o string_buffer.o string_util.o$/;"	macro	line:6
 opt_sbufcmp	tests/opt_helper.c	/^#define opt_sbufcmp(/;"	macro	line:6
 opt_strcmp	tests/opt_helper.c	/^#define opt_strcmp(/;"	macro	line:4
 opt_test_main	tests/opt_test.c	/^TestResult opt_test_main(int test_no) {$/;"	function	line:22
@@ -705,7 +724,7 @@ pl_name	include/media_args.h	/^	char    *pl_name;      \/\/ DONE$/;"	member	line
 pl_output	include/media_args.h	/^	Poutput  pl_output;    \/\/ DONE$/;"	member	line:56
 pl_reverse	include/media_args.h	/^	bool     pl_reverse;   \/\/ DONE$/;"	member	line:58
 pl_shuffle	include/media_args.h	/^	bool     pl_shuffle;   \/\/ DONE$/;"	member	line:57
-play_req	tests/tests.mk	/^play_req    = playlist.o$/;"	macro	line:10
+play_req	tests/tests.mk	/^play_req          = playlist.o$/;"	macro	line:11
 player	include/media_args.h	/^	Player   player;       \/\/ DONE$/;"	member	line:69
 postfix_args	include/media_args.h	/^	String   postfix_args; \/\/ DONE$/;"	member	line:73
 prefix_args	include/media_args.h	/^	String   prefix_args;  \/\/ DONE$/;"	member	line:72
@@ -729,15 +748,15 @@ print_hex	tests/opt_helper.c	/^	#undef print_hex$/;"	macro	line:124
 print_int	src/option_parser.c	/^#define print_int(/;"	macro	line:308
 print_int	tests/opt_helper.c	/^	#define print_int(/;"	macro	line:63
 print_int	tests/opt_helper.c	/^	#undef print_int$/;"	macro	line:125
-print_latest	src/history/history.c	/^void print_latest(char *num){$/;"	function	line:193
-print_latest_callback	src/history/history.c	/^static int print_latest_callback(void *unused, int argc, char **argv, char **columns){$/;"	function	line:241
-print_latest_with_finished	src/history/history.c	/^void print_latest_with_finished(char *num){$/;"	function	line:209
-print_latest_with_finished_and_skipped	src/history/history.c	/^void print_latest_with_finished_and_skipped(char *num){$/;"	function	line:225
+print_latest	src/history/history.c	/^void print_latest(char *num){$/;"	function	line:198
+print_latest_callback	src/history/history.c	/^static int print_latest_callback(void *unused, int argc, char **argv, char **columns){$/;"	function	line:246
+print_latest_with_finished	src/history/history.c	/^void print_latest_with_finished(char *num){$/;"	function	line:214
+print_latest_with_finished_and_skipped	src/history/history.c	/^void print_latest_with_finished_and_skipped(char *num){$/;"	function	line:230
 print_media_args	src/make_man_options.c	/^void print_media_args(MediaArgs *ma){}$/;"	function	line:9
 print_media_args	src/option_parser.c	/^void print_media_args(MediaArgs *ma) {$/;"	function	line:299
-print_ongoing	src/history/history.c	/^void print_ongoing(bool colour){$/;"	function	line:276
-print_ongoing_callback	src/history/history.c	/^static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns){$/;"	function	line:285
-print_ongoing_callback_no_colour	src/history/history.c	/^static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns){$/;"	function	line:308
+print_ongoing	src/history/history.c	/^void print_ongoing(bool colour){$/;"	function	line:281
+print_ongoing_callback	src/history/history.c	/^static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns){$/;"	function	line:290
+print_ongoing_callback_no_colour	src/history/history.c	/^static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns){$/;"	function	line:313
 print_str	tests/opt_helper.c	/^	#define print_str(/;"	macro	line:60
 print_str	tests/opt_helper.c	/^	#undef print_str$/;"	macro	line:123
 print_usage	src/option_parser.c	/^void print_usage(){$/;"	function	line:83
@@ -768,8 +787,8 @@ spilt_string_m	src/string_util.c	/^inline char** spilt_string_m (char *str, int 
 spilt_string_malloc	src/string_util.c	/^char** spilt_string_malloc (char *str, int *res_length, bool malloces){$/;"	function	line:140
 spilt_words_test	tests/strutil_helper.c	/^bool spilt_words_test (char *name, char **actual, int alen, char **expected, int elen){$/;"	function	line:56
 sql_commands	src/history/ml.c	/^String *sql_commands = NULL;$/;"	variable	line:25
-sql_exec	src/history/history.c	/^void sql_exec(char *command, SqlCallback callback ) {$/;"	function	line:146
-sql_exec_array	src/history/history.c	/^void sql_exec_array (int argc, char **argv, SqlCallback callback ) {$/;"	function	line:168
+sql_exec	src/history/history.c	/^void sql_exec(char *command, SqlCallback callback ) {$/;"	function	line:151
+sql_exec_array	src/history/history.c	/^void sql_exec_array (int argc, char **argv, SqlCallback callback ) {$/;"	function	line:173
 status	include/media_args.h	/^	Status  status;        \/\/ DONE$/;"	member	line:63
 status	include/ml.h	/^	ML_status status; $/;"	member	line:24
 str	include/string_buffer.h	/^	char *str;$/;"	member	line:7
@@ -781,7 +800,7 @@ str_replace	src/string_util.c	/^inline char *str_replace (char *s, size_t len,  
 str_replace_e	src/string_util.c	/^char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {$/;"	function	line:294
 str_spilt_func	src/string_util.c	/^SpiltData *str_spilt_func (char *s, Mapping *hash) {$/;"	function	line:226
 str_spilt_replace	src/string_util.c	/^char *str_spilt_replace (char *s) {$/;"	function	line:416
-strarr_req	tests/tests.mk	/^strarr_req  = string_array.o$/;"	macro	line:4
+strarr_req	tests/tests.mk	/^strarr_req        = string_array.o$/;"	macro	line:5
 strarr_test_main	tests/strarr_test.c	/^TestResult strarr_test_main(int test_no) {$/;"	function	line:22
 strarr_test_start	tests/strarr_helper.c	/^bool strarr_test_start ( char *name, StringArray *actualA, char **expected, int elen ){$/;"	function	line:9
 strcheck	src/option_parser.c	/^#define strcheck(/;"	macro	line:305
@@ -793,14 +812,18 @@ string_append	include/string_buffer.h	/^#define string_append(/;"	macro	line:59
 string_append_m	include/string_buffer.h	/^#define string_append_m(/;"	macro	line:58
 string_array_add	src/string_array.c	/^void string_array_add(StringArray *sa, const char *str){$/;"	function	line:24
 string_array_new	src/string_array.c	/^StringArray *string_array_new(int length){$/;"	function	line:8
+string_extra_req	tests/tests.mk	/^string_extra_req  = ${string_req} string_buffer_extra.o$/;"	macro	line:4
+string_extra_test_main	tests/string_extra_test.c	/^TestResult string_extra_test_main(int test_no) {$/;"	function	line:17
+string_extra_test_start	tests/string_extra_helper.c	/^bool string_extra_test_start (char *name, String *actual, char *expected  ){$/;"	function	line:17
+string_mprintf	src/string_buffer_extra.c	/^void string_mprintf(String *s,  const char *fmt,  ... ){$/;"	function	line:14
 string_new	src/string_buffer.c	/^String *string_new(int length){$/;"	function	line:10
 string_push	include/string_buffer.h	/^#define string_push(/;"	macro	line:55
 string_push_m	include/string_buffer.h	/^#define string_push_m(/;"	macro	line:54
-string_req	tests/tests.mk	/^string_req  = string_buffer.o$/;"	macro	line:6
+string_req	tests/tests.mk	/^string_req        = string_buffer.o$/;"	macro	line:7
 string_sprintf	src/string_buffer.c	/^int string_sprintf(String *s, int length,  const char *fmt,  ... ){$/;"	function	line:64
 string_test_main	tests/string_test.c	/^TestResult string_test_main(int test_no) {$/;"	function	line:16
 string_test_start	tests/string_helper.c	/^bool string_test_start (char *name, String *actual, char *expected  ){$/;"	function	line:15
-strutil_req	tests/tests.mk	/^strutil_req = string_util.o$/;"	macro	line:7
+strutil_req	tests/tests.mk	/^strutil_req       = string_util.o$/;"	macro	line:8
 strutil_test_main	tests/strutil_test.c	/^TestResult strutil_test_main(int test_no) {$/;"	function	line:44
 strutil_test_start	tests/strutil_helper.c	/^bool strutil_test_start ( char *name, char *actual, char *expected){$/;"	function	line:6
 sub_dirs	include/media_args.h	/^	bool     sub_dirs;     \/\/ DONE$/;"	member	line:47
@@ -812,7 +835,7 @@ tail	include/uthash.h	/^   struct UT_hash_handle *tail; \/* tail hh in app order
 tbl	include/uthash.h	/^   struct UT_hash_table *tbl;$/;"	member	line:950
 temp_files	build/Makefile	/^temp_files   = years days$/;"	macro	line:143
 tests	tests/tests.mk	/^tests  = $(addprefix test_, ${names})$/;"	macro	line:2
-time_req	tests/tests.mk	/^time_req    = string_util.o time_util.o$/;"	macro	line:8
+time_req	tests/tests.mk	/^time_req          = string_util.o time_util.o$/;"	macro	line:9
 time_test_main	tests/time_test.c	/^TestResult time_test_main(int test_no) {$/;"	function	line:17
 time_test_start	tests/time_helper.c	/^bool time_test_start(char *given, struct tm* tm ){$/;"	function	line:19
 title	include/ml.h	/^	char      title[100];$/;"	member	line:31

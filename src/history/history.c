@@ -9,7 +9,6 @@
 
 #include <include/history.h>
 #include <include/string_util.h>
-#include <include/string_buffer.h>
 #include <include/debug.h>
 #include <include/colours.h>
 #include <include/time.def>
@@ -132,17 +131,15 @@ void set_score(char *series, int score){
 	char **ans = ep_num(series);
 	if (ans[0] != NULL) {
 		EP_GET_NAME(ans, title, series);
-		String s;
-		new_string(&s, 120);
-
-		string_sprintf(&s, 18+ 17 + 21  + strlen(series) +1,
+		
+		char *sql = sqlite3_mprintf(
 			" UPDATE SeriesInfo"
 			" SET Score   = %d"
-			" WHERE Title = \"%s\"; ",
-			score, title
-		);
-
-		sql_exec(s.str, NULL);
+			" WHERE Title = %Q; ",
+			score,title);
+		
+		sql_exec(sql, NULL);
+		sqlite3_free(sql);
 	}else{
 		efprintf("%s\n", "null ep_num in set_score");
 	}

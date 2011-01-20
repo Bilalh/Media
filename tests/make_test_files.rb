@@ -59,7 +59,7 @@ end
 the headers in includes. Also adds a makefile entry to tests.mk"; 
 	exit(0))  if ARGV[0] =~ /--?h|--?help/i
 
-NAME  = ARGV[0] ;
+NAME  = ARGV[0].lowercase ;
 TNAME = NAME.titlecase;
 LNAME = NAME.lowercase
 UNAME = NAME.upcase
