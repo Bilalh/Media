@@ -27,12 +27,14 @@ function mediaf(){
 
 }
 
-alias  ax='mediah "/Users/bilalh/Movies/.Movie/divx" --out --colour-ep --label-watched'
+alias  ax='mediah --ax --out --colour-ep --label-watched'
 alias  ay='ax --mplayer'
 alias  ml='ay --last'
 alias mll='ml --none --dot-default'
+alias mlg='ml --dot-default --menu --top --history'
 
-alias op='mediah "/Users/bilalh/Movies/.Movie/openingP/" --out --mplayer'
+
+alias op='mediah --op --out --mplayer'
 alias opp='op --none --dot-default'
 alias opr="op --top --169 --shuffle --framedrop --fast --no-out --dot-default"
 

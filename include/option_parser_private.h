@@ -11,6 +11,7 @@
 #include "media_args.h"
 #include "version.h"
 #include "colours.h"
+#include "../prefs.h"
 
 typedef void (^VoidBlock)();
 typedef struct{
@@ -505,14 +506,14 @@ const Element H_other[] ={
 		.opt   = {.name =  "ax", .val = 261, .has_arg = no_argument}, 
 		.help  = "Uses AX as root directory",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->root_dir = strdup("/Users/bilalh/Movies/.Movie/divx");
+			ma->root_dir = strdup(PREFS_AX);
 		}
 	},
 	{  
 		.opt   = {.name =  "op", .val = 262, .has_arg = no_argument}, 
 		.help  = "Uses OP as root directory",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->root_dir = strdup("/Users/bilalh/Movies/.Movie/OpeningP");
+			ma->root_dir = strdup(PREFS_OP);
 		}
 	},
 	{  

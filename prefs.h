@@ -32,4 +32,8 @@
 #define PREFS_COLOUR
 
 
+// paths for --ax and --op  mainly for testing
+#define PREFS_AX "/Users/bilalh/Movies/.Movie/divx"
+#define PREFS_OP "/Users/bilalh/Movies/.Movie/OpeningP"
+
 #endif
