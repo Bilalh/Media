@@ -13,6 +13,11 @@ change all the blocks to func pointers
 regex for blocks 
 .block\s=\s\^((.|\n)*?\n\t\t})
 
+(libs)
+libcurl
+libxml
+pcre
+sqlite3
 
 
 #make lines

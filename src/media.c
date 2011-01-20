@@ -198,9 +198,9 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			int colour_len        = strlen(PREFS_WATCHED_COLOUR);
 			for(int i = 0; i < file_num; ++i){
 				char args[strlen(s_arr[i]) + len_len + path_len + colour_len + 5 + 11+ 1 ];
-				sprintf(args, "SetLabel %s '%s/%s' &>/dev/null", PREFS_WATCHED_COLOUR, path, s_arr[i] );
+				sprintf(args, "SetLabel %s \"%s/%s\" &>/dev/null", PREFS_WATCHED_COLOUR, path, s_arr[i] );
 				system(args);
-				sprintf(args, "hide_extension.applescript '%s/%s' &>/dev/null", path, s_arr[i] );
+				sprintf(args, "hide_extension.applescript \"%s/%s\" &>/dev/null", path, s_arr[i] );
 				system(args);
 			}
 			

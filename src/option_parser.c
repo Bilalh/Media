@@ -15,6 +15,10 @@
 static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
 
+#define OPT_MEDIA_ARGS_HELP \
+" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]\n"
+
+
 // creates a new MediaArgs with the default values. 
 // all unmentioned  memebers are set to NULL
 MediaArgs *new_media_args() {
@@ -83,7 +87,7 @@ MediaArgs *new_media_args() {
 void print_usage(){
 	printf("%s", 
 		"Usage media start_path [args]\n"
-		" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]\n"
+		OPT_MEDIA_ARGS_HELP
 		" Use -h for help"
 		" Use -h[num] for a section in the help\n"
 		" Use -h,{letters} for details of the arg(s)\n"
@@ -209,7 +213,7 @@ void print_help(char *arg){
 			RESET GREEN
 			"Usage media start_path [args]\n"
 			RESET
-			" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:[]}%^=/]\n"
+			OPT_MEDIA_ARGS_HELP
 			" Use "RESET BLUE "-h" RESET " for help\n"
 			" Use "RESET BLUE "-h" RESET "[num] for a section in the help\n"
 			" Use "RESET BLUE "-h" RESET ",{letters} for details of the arg(s)\n"
