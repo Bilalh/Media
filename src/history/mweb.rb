@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby -wKU
-(puts 'adds the ep in Safari to the history'; exit) if ARGV[0] =~ /--?h(elp)?/
+(puts 'goes to the next ep in Safari to the history'; exit) if ARGV[0] =~ /--?h(elp)?/
  
 
 url = `osascript -e 'tell application "Safari"'  -e 'set my_URL to the URL in document 1' -e 'end tell'`
