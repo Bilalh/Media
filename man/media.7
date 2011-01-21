@@ -1,7 +1,7 @@
 .TH MEDIA 7 "R216" "Tue, December 30, 2008" 
 .SH NAME
 .B media
-\- Media -- Finds, Plays and keeps track of media files
+\-  Finds, Plays and keeps track of media files
 .SH SYNOPSIS
 media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
 .br
@@ -18,6 +18,8 @@ as shown above abbreviation are expended in ORs.
 .SH OPTIONS
 To see options use media -h to see all options
 .br
+For coloured options use media -h | less -R
+.br
 Use -h[num] for a section
 .br
 Use -h,[letters] for details of the options(s)
@@ -29,7 +31,69 @@ Most -- options have a negation in form --no , --no-fs for --fs for example
 
 
 
-.I 0  Filepath
+.I 0  Output
+.BR
+
+.TP 0.5i
+.BR "-o ", "  --[no-]out          " 
+Outputs file list to stdout
+
+.TP 0.5i
+.BR "-O ", "  --nooutput          " 
+Does not write any output (including playlists)
+
+.TP 0.5i
+.BR "-} ", "  --[no-]colour-ep-num" 
+Colours the episodes numbers (default blue)
+
+.TP 0.5i
+.BR "-g ", "  --[no-]menu         " 
+Uses a menu to select the file
+
+.I 1  Mplayer
+.BR
+
+.TP 0.5i
+.BR "-0 ", "  --1610              " 
+Uses 16:10 aspect ratio
+
+.TP 0.5i
+.BR "-a ", "  --afloat            " 
+Makes the window afloat
+
+.TP 0.5i
+.BR "-d ", "  --fast              " 
+Makes it fast
+
+.TP 0.5i
+.BR "-f ", "  --[no-]fs           " 
+Plays the file(s) in fullscreen. 
+
+.TP 0.5i
+.BR "-k ", "  --loop0             " 
+Adds -loop 0 -- meaning loops forever
+
+.TP 0.5i
+.BR "-t ", "  --[no-]top          " 
+afloat and 360p. and top left
+
+.TP 0.5i
+.BR "-j ", "  --[no-]framedrop    " 
+Enable frame dropping
+
+.TP 0.5i
+.BR "-J ", "  --[no-]hardframedrop" 
+Enable hard frame dropping
+
+.TP 0.5i
+.BR "-p ", "  --profile {name}    " 
+Adds profile 
+
+.TP 0.5i
+.BR "   ", "  --screen  {num}     " 
+Puts the video on on the chosen screen (numbered from 0)
+
+.I 2  Filepath
 .BR
 
 .TP 0.5i
@@ -60,50 +124,61 @@ Look in sub directories if true, default false
 .BR "-. ", "  --[no-]dot-default  " 
 Uses . for the regex args if no regex args given
 
-.I 1  Mplayer
+.I 3  Player
 .BR
 
 .TP 0.5i
-.BR "-0 ", "  --1610              " 
-Uses 16:10 aspect ratio
+.BR "-M ", "  --none              " 
+Does not play the files.
 
 .TP 0.5i
-.BR "-a ", "  --afloat            " 
-Makes the window afloat
+.BR "-m ", "  --mplayer           " 
+Plays the files using mplayer.
 
 .TP 0.5i
-.BR "-d ", "  --fast              " 
-Makes it fast
+.BR "-{ ", "  --gui-mplayer       " 
+Plays the files using mplayer gui.
 
 .TP 0.5i
-.BR "-f ", "  --[no-]fs           " 
-Plays the file(s) in fullscreen. 
+.BR "-N ", "  --niceplayer        " 
+Plays the files using niceplayer.
 
 .TP 0.5i
-.BR "-k ", "  --loop0             " 
-Adds -loop 0 -- meaning loops forever
+.BR "-V ", "  --vlc               " 
+Plays the files using vlc.
 
 .TP 0.5i
-.BR "-t ", "  --[no-]top          " 
-Adds profile t  - afloat and 360p.
+.BR "-^ ", "  --[no-]background   " 
+background the player
+
+.I 4  History
+.BR
 
 .TP 0.5i
-.BR "-T ", "  --[no-]mtop         " 
-Adds profile T  - ontop and 360p.
+.BR "-D ", "  --[no-]done         " 
+Set the status to done 
 
 .TP 0.5i
-.BR "-j ", "  --[no-]framedrop    " 
-Enable frame dropping
+.BR "-[ ", "  --[no-]history      " 
+Adds the files to the history, which is stored in a sql database.
 
 .TP 0.5i
-.BR "-J ", "  --[no-]hardframedrop" 
-Enable hard frame dropping
+.BR "-K ", "  --[no-]skip         " 
+Set the status to skip 
 
 .TP 0.5i
-.BR "-p ", "  --profile {name}    " 
-Adds profile 
+.BR "-% ", "  --[no-]label-watched" 
+Label the watched episodes (default orange  ) 
 
-.I 2  Playlist
+.TP 0.5i
+.BR "-@ ", "  --score   {score}   " 
+Set the score (0 to not set)
+
+.TP 0.5i
+.BR "   ", "  --[no-]movie        " 
+Set the total to 1 and set the files to finished
+
+.I 5  Playlist
 .BR
 
 .TP 0.5i
@@ -133,71 +208,6 @@ Shuffles the playlist
 .TP 0.5i
 .BR "-e ", "  --[no-]reverse      " 
 Reverses the playlist
-
-.I 3  Player
-.BR
-
-.TP 0.5i
-.BR "-M ", "  --none              " 
-Does not play the files.
-
-.TP 0.5i
-.BR "-m ", "  --mplayer           " 
-Plays the files using mplayer.
-
-.TP 0.5i
-.BR "-{ ", "  --gui-mplayer       " 
-Plays the files using mplayer gui.
-
-.TP 0.5i
-.BR "-N ", "  --niceplayer        " 
-Plays the files using niceplayer.
-
-.TP 0.5i
-.BR "-V ", "  --vlc               " 
-Plays the files using vlc.
-
-.TP 0.5i
-.BR "-^ ", "  --[no-]background   " 
-background the player
-
-.I 4  Output
-.BR
-
-.TP 0.5i
-.BR "-o ", "  --[no-]out          " 
-Outputs file list to stdout
-
-.TP 0.5i
-.BR "-O ", "  --nooutput          " 
-Does not write any output (including playlists)
-
-.TP 0.5i
-.BR "-} ", "  --[no-]colour-ep-num" 
-Colours the episodes numbers (default blue)
-
-.I 5  History
-.BR
-
-.TP 0.5i
-.BR "-D ", "  --[no-]done         " 
-Set the status to done 
-
-.TP 0.5i
-.BR "-[ ", "  --[no-]history      " 
-Adds the files to the history, which is stored in a sql database.
-
-.TP 0.5i
-.BR "-K ", "  --[no-]skip         " 
-Set the status to skip 
-
-.TP 0.5i
-.BR "-% ", "  --[no-]label-watched" 
-Label the watched episodes (default orange  ) 
-
-.TP 0.5i
-.BR "-@ ", "  --score   {score}   " 
-Set the score (0 to not set)
 
 .I 6  Filetype
 .BR
@@ -273,20 +283,20 @@ Shows the version number
 Plays from chapter num
 
 .TP 0.5i
-.BR "-W ", "  --width   {width}   " 
-Set the width
-
-.TP 0.5i
 .BR "-H ", "  --height  {height}  " 
 Set the height using 16:9
+
+.TP 0.5i
+.BR "-W ", "  --width   {width}   " 
+Set the width
 
 .TP 0.5i
 .BR "-L ", "  --loop    {num}     " 
 Adds -loop -- meaning loops forever
 
 .TP 0.5i
-.BR "-r ", "  --[no-]rnd          " 
-Uses mplayer random unction 
+.BR "-T ", "  --[no-]mtop         " 
+ontop and 360p. and top left
 
 .TP 0.5i
 .BR "-E ", "  --prefix  {arg}     " 
@@ -297,7 +307,7 @@ Set mplayer prefix options, can be used multiple times
 Set mplayer postfix options, can be used multiple times
 
 .TP 0.5i
-.BR "-g ", "  --quick             " 
+.BR "-_ ", "  --quick             " 
 --framedrop and --fast
 
 .TP 0.5i
@@ -307,6 +317,10 @@ Set mplayer postfix options, can be used multiple times
 .TP 0.5i
 .BR "-B ", "  --quick-random      " 
 --framedrop, --fast, --rnd and --top(profile t  - afloat and 360pi in 16:9)
+
+.TP 0.5i
+.BR "-r ", "  --[no-]rnd          " 
+Uses mplayer random unction 
 
 .TP 0.5i
 .BR "-v ", "  --volume  {num}     " 
@@ -324,6 +338,14 @@ Make the player appear on spaces
 .BR "-] ", "  --null              " 
 Only plays audio
 
+.TP 0.5i
+.BR "   ", "  --ss      {hh:mm:ss}" 
+The start time
+
+.TP 0.5i
+.BR "   ", "  --end     {hh:mm:ss}" 
+The end time relative to the start time 
+
 .I 9  Mplayer aspect
 .BR
 
@@ -338,6 +360,10 @@ Uses 16:9 aspect ratio
 .TP 0.5i
 .BR "-4 ", "  --43                " 
 Uses 4:3 aspect ratio
+
+.TP 0.5i
+.BR "   ", "  --tv                " 
+Setting for fullscreen on my tv
 
 .I 10  Mplayer sizes
 .BR
@@ -435,28 +461,43 @@ Places the player at the centre
 
 
 
+
+
 .br
 .SH EXAMPLES
 
-Example 1:  media <dir> -mlo -[
+.BR "media <dir> -mlo -["
 .br
-Plays the latest episodes using mplayer and adds the episode to the history 
+Plays the latest episodes(-[) using mplayer and adds the episodes to the history 
 .P
 
-Example 2 media <dir>  -s -^ -m
+.BR "media <dir> --menu --dot-default --mplayer"
 .br
-Looks in sub directories (-s) and backgrounds mplayer (-^)
+Choses a single file from the select files using mplayer. If no regex if is given then dot is assumed
+.P
+
+.BR "media <dir> --out --colour-ep --label-watched "
+.br
+Colours the episodes numbers and labels the files after watched them
+.P
+
+
+.BR "media <dir>  -s -^ -m"
+.br
+Looks in sub directories (-s) and backgrounds the player (-^)
 .p
 
-Example 3: media <dir> --mplayer --top --169 --rnd  --shuffle --framedrop --fast 
+.BR "media <dir> --mplayer --top --169 --shuffle --framedrop --fast" 
 .br
 Plays the all the files in the dir randomly and places the player in the top left hand coner. Also set frame drop and mutithreading
 .P
 
-Example 4: media <dir> -m --tl -W480 --aspect 16:9
+.BR "media <dir> -m --tl -W480 --aspect 16:9"
+.br
 Plays the files using mplayer and playes the play at the top left hand coner with a width of 480 pixels in a 16:9 aspect ratio
 
-Example 5: media <dir> -o --hashlocation <path> 
+.BR "media <dir> -o --hashlocation <path>" 
+.br
 Uses a hashmap to expand abbreviation. The hash should be in the form 
 .br
 	3 19 fma	Fullmetal Alchemist

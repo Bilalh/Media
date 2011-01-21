@@ -1,7 +1,7 @@
 .TH MEDIA 7 "R216" "Tue, December 30, 2008" 
 .SH NAME
 .B media
-\- Media -- Finds, Plays and keeps track of media files
+\-  Finds, Plays and keeps track of media files
 .SH SYNOPSIS
 media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
 .br
@@ -45,25 +45,38 @@ Uses shortcuts from the hash, on by default
 .br
 .SH EXAMPLES
 
-Example 1:  media <dir> -mlo -[
+.BR "media <dir> -mlo -["
 .br
-Plays the latest episodes using mplayer and adds the episode to the history 
+Plays the latest episodes(-[) using mplayer and adds the episodes to the history 
 .P
 
-Example 2 media <dir>  -s -^ -m
+.BR "media <dir> --menu --dot-default --mplayer"
 .br
-Looks in sub directories (-s) and backgrounds mplayer (-^)
+Choses a single file from the select files using mplayer. If no regex if is given then dot is assumed
+.P
+
+.BR "media <dir> --out --colour-ep --label-watched "
+.br
+Colours the episodes numbers and labels the files after watched them
+.P
+
+
+.BR "media <dir>  -s -^ -m"
+.br
+Looks in sub directories (-s) and backgrounds the player (-^)
 .p
 
-Example 3: media <dir> --mplayer --top --169 --rnd  --shuffle --framedrop --fast 
+.BR "media <dir> --mplayer --top --169 --shuffle --framedrop --fast" 
 .br
 Plays the all the files in the dir randomly and places the player in the top left hand coner. Also set frame drop and mutithreading
 .P
 
-Example 4: media <dir> -m --tl -W480 --aspect 16:9
+.BR "media <dir> -m --tl -W480 --aspect 16:9"
+.br
 Plays the files using mplayer and playes the play at the top left hand coner with a width of 480 pixels in a 16:9 aspect ratio
 
-Example 5: media <dir> -o --hashlocation <path> 
+.BR "media <dir> -o --hashlocation <path>" 
+.br
 Uses a hashmap to expand abbreviation. The hash should be in the form 
 .br
 	3 19 fma	Fullmetal Alchemist
