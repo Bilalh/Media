@@ -423,6 +423,19 @@ const Element H_History[]={
 		}
 	},
 	
+	{  
+		.opt   = {.name =  "movie", .val = 287, .has_arg = no_argument}, 
+		.help  = "Set the total to 1 and set the files to finished",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE(ch)){
+				ma->total = 1;
+			}else{
+				ma->total = 0;
+			}
+		}
+	},
+	
 };
 
 const Element H_output[] ={
@@ -766,6 +779,7 @@ const Element H_mplayer_extra[] = {
 	{  
 		.opt   = {.name =  "ss", .val = 285, .has_arg = required_argument}, 
 		.help  = "The start time",
+		.arg   = "hh:mm:ss", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2,  "-ss", arg);
 		}
@@ -773,6 +787,7 @@ const Element H_mplayer_extra[] = {
 	{  
 		.opt   = {.name =  "end", .val = 286, .has_arg = required_argument}, 
 		.help  = "The end time relative to the start time ",
+		.arg   = "hh:mm:ss", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2,  "-endpos", arg);
 		}

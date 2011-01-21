@@ -55,7 +55,6 @@ char *get_search_xml (char *o_name) {
 		char url[ml_len + n_len];
 		strncpy(url, ML_FIND, ml_len);
 		strncpy(&url[ml_len], name , n_len + 1);
-
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		curl_easy_setopt(curl, CURLOPT_USERPWD, "bhterra:bhterramai#");
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
@@ -65,6 +64,7 @@ char *get_search_xml (char *o_name) {
 		curl_free(name);
 		curl_easy_cleanup(curl);
 	}
+	
 	return str->ptr;
 }
 
@@ -172,7 +172,7 @@ char *delete_anime (int id) {
 
 void get_id_and_total(char *xml, MLOpts *opts) {
 	if (xml == NULL || *xml == '\0'){
-		dprintf("%s\n", "XMl null or empty");
+		efprintf("%s\n", "XMl null or empty");
 		return;
 	}
 	
@@ -243,13 +243,13 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	xmlNodeSetPtr nodes =  xpathObj->nodesetval;
 	
 	if ( ! nodes ) {
-		dprintf( "%s\n", "nodes NULL");
+		efprintf( "%s\n", "nodes NULL");
 		printf("%s\n", xml);
 		return;
 	}
 	
 	if (nodes->nodeNr == 0){
-		dprintf( "%s\n", "no nodes found");
+		efprintf( "%s\n", "no nodes found");
 		printf("%s\n", xml);
 		return;
 	}
@@ -258,7 +258,7 @@ void get_id_and_total(char *xml, MLOpts *opts) {
 	
 	xmlNodePtr entry_c = nodes->nodeTab[0]->children;
 	if (! entry_c ){
-		dprintf( "%s\n", "entry_c failed");
+		efprintf( "%s\n", "entry_c failed");
 		printf("%s\n", xml);
 		return;
 	}

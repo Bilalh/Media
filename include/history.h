@@ -49,6 +49,22 @@ void print_ongoing(bool colour);
 **/
 void set_score(char *title, int score);
 
+
+/**
+ * @brief Sets the total of the series
+ *
+ * @param series The title of the series
+ * @param total The total to use
+**/
+void set_total(char *series, int total);
+
+/**
+ * @brief Sets the total of the series to 1 and sets finished to 1
+ *
+ * @param series The title of the series
+**/
+void set_movie(char *series);
+
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 
 #endif

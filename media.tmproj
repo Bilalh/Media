@@ -92,7 +92,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -112,6 +112,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{560, 55}, {873, 823}}</string>
+	<string>{{550, 55}, {873, 823}}</string>
 </dict>
 </plist>

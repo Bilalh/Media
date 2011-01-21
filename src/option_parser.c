@@ -72,7 +72,8 @@ MediaArgs *new_media_args() {
 		.colour_ep     = false,
 		.label_watched = false,
 		.score         = 0,
-		.menu          = false
+		.menu          = false,
+		.total         = 0
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -363,6 +364,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("label_watched", truth(ma->label_watched));
 	print_int("score",          ma->score);
 	print_args("menu",          truth(ma->menu));
+	print_int("total",          ma->total);
 
 
 #undef truth

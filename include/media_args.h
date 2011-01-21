@@ -85,6 +85,8 @@ typedef struct {
 	bool       label_watched; // DONE
 	int        score;         // DONE
 	bool       menu;          // DONE
+	int        total;         // DONE
+
 	
 } MediaArgs;
 

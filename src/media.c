@@ -250,6 +250,12 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			}
 		}
 		
+		if (ma->total > 0){
+			for(int i = 0; i < file_num; ++i){
+				set_movie(s_arr[i]);
+			}
+		}
+		
 	}
 	
 }

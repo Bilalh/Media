@@ -143,7 +143,49 @@ void set_score(char *series, int score){
 	}else{
 		efprintf("%s\n", "null ep_num in set_score");
 	}
+	
+}
 
+void set_total(char *series, int total){
+	assert(series); assert(total > 0);
+	
+	char **ans = ep_num(series);
+	if (ans[0] != NULL) {
+		EP_GET_NAME(ans, title, series);
+		
+		char *sql = sqlite3_mprintf(
+			" UPDATE SeriesInfo"
+			" SET Total   = %d"
+			" WHERE Title = %Q; ",
+			total,title);
+		
+		sql_exec(sql, NULL);
+		sqlite3_free(sql);
+	}else{
+		efprintf("%s\n", "null ep_num in set_total");
+	}
+	
+}
+
+void set_movie(char *series){
+	assert(series);
+	
+	char **ans = ep_num(series);
+	if (ans[0] != NULL) {
+		EP_GET_NAME(ans, title, series);
+		
+		char *sql = sqlite3_mprintf(
+			" UPDATE SeriesInfo"
+			" SET Total   = 1,"
+			" Finished    = 1 "
+			" WHERE Title = %Q; ",
+			title);
+		
+		sql_exec(sql, NULL);
+		sqlite3_free(sql);
+	}else{
+		efprintf("%s\n", "null ep_num in set_movie");
+	}
 	
 }
 
