@@ -4,16 +4,19 @@
 CC             = gcc
 CFLAGS         = -g -Wall
 PERL           = perl
-
-SCRIPT_DST     = ${HOME}/scripts
-BIN            = ${HOME}/bin
-MAN_DST        = /usr/local/share/man/man7/
 .DEFAULT_GOAL := media
+
+
+BIN            = ${HOME}/bin
+SCRIPT_DST     = ${HOME}/scripts
+MAN_DST        = /usr/local/share/man/man7/
+# Inculdes when libs (pcre for example) headers are not installed in /usr/local/include
+EXTRA_INCLUDES = 
 
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
-includes       = -I/opt/local/include -I/usr/include/libxml2 
-libs           = -lsqlite3 -lxml2  -lcurl -L/opt/local/lib -lpcre
+includes       = -I/usr/include/libxml2 ${EXTRA_INCLUDES}
+libs           = -lsqlite3 -lxml2  -lcurl -lpcre
 script_src     = ../src/scripts
 
                            ### Includes ###

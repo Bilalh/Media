@@ -6,6 +6,7 @@
 #include "opt_test.h"
 #include "strutil_test.h"
 #include "strarr_test.h"
+#include "string_extra_test.h"
 
 #include "all_tests.def"
 
