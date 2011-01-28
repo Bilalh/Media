@@ -792,6 +792,28 @@ const Element H_mplayer_extra[] = {
 			string_push_m(&ma->prefix_args, 2,  "-endpos", arg);
 		}
 	},
+	{  
+		.opt   = {.name =  "tt", .val = 288, .has_arg = no_argument}, 
+		.help  = "afloat and 360p. and top right",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE_l(ch)){
+				string_push_m(&ma->prefix_args, 5, 
+					"-noontop", 
+					"-nofs",
+					"-geometry 100%:0%",
+					"-xy 480",
+					"-subfont-text-scale 4"
+				);
+				ma->afloat = true;
+			}else{
+				string_push(&ma->prefix_args, "-xy 1");
+				ma->afloat = false;
+			}
+		}
+	},
+	
+	
 };
 
 const Element H_mplayer_aspect[] = {
