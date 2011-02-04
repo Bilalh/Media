@@ -1,7 +1,7 @@
 # Uses make dist to make everything and make install to install
 
                            ### Variables ###
-CC             = gcc
+CC             = clang
 CFLAGS         = -g -Wall
 PERL           = perl
 .DEFAULT_GOAL := media

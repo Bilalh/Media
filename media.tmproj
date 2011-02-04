@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/media.c</string>
+	<string>src/scripts/media.sh</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -65,40 +65,24 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>src/media.c</key>
+		<key>src/scripts/media.sh</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>16</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>91</integer>
+				<integer>37</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>77</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>91</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>91</integer>
-			</dict>
+			<integer>8</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/media.c</string>
+		<string>src/scripts/media.sh</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -153,6 +137,13 @@
 							<dict/>
 						</dict>
 						<key>history</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+						<key>scripts</key>
 						<dict>
 							<key>isExpanded</key>
 							<true/>

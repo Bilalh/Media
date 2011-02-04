@@ -83,7 +83,7 @@ char** ep_num (char *s) {
 	return ans;
 }
 
-char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){
+char **filter_files(char **names, int *length, bool free_unused, bool add_null_string, FilterBlock filter ){
 	Newest *hash = NULL, *h;
 
 	for(int i = 0; i < *length; ++i) {
@@ -105,7 +105,7 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 			h->num  = num;
 			HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
 		// otherwise just change the data
-		} else if( num > h->num ) {
+		} else if( filter(h->full,full_path, h->num, num )) {
 			h->num  = num;
 			if( free_unused ) free(h->full);
 			h->full = full_path; //names[i];
@@ -137,60 +137,23 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 	return new_names;
 }
 
+
+char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){
+	return filter_files(names, length, free_unused, add_null_string, 
+		^(const char *current_name, const char *new_name, int current_num, int new_num){
+			return new_num > current_num;
+		}
+	);
+}
+
 //TODO combining the above and below func using a func pointer arg 
 
 char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string){
-	Newest *hash = NULL, *h;
-
-	for(int i = 0; i < *length; ++i) {
-		char *full_path = names[i];
-		// CHECK mallocing 
-		names[i] = basename(names[i]);
-		
-		char **ans = ep_num(names[i]);
-		EP_GET_NAME(ans, name, names[i]);
-		EP_GET_NUMBER(ans, num);
-
-		dprintf("%s %ld\n", name, num );
-		HASH_FIND_STR(hash, name, h);
-		// add the file to the hash if it is not there
-		if ( h == NULL ) {
-			h = (Newest*) malloc(sizeof(Newest));
-			h->full = full_path; //names[i];
-			h->key  = strdup(name);
-			h->num  = num;
-			HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
-		// otherwise just change the data
-		} else if( num < h->num ) {
-			h->num  = num;
-			if( free_unused ) free(h->full);
-			h->full = full_path; //names[i];
+	return filter_files(names, length, free_unused, add_null_string, 
+		^(const char *current_name, const char *new_name, int current_num, int new_num){
+			return new_num < current_num;
 		}
-
-	}
-
-	*length = HASH_COUNT(hash);
-	dprintf("new length: %d\n", *length);
-	char **new_names;
-	if(add_null_string){
-		*length += 1;
-		new_names = calloc(*length, sizeof(char*));
-	}else{
-		new_names = malloc(sizeof(char*) * *length);
-	}
-	
-	
-	// Makes the new array and free the hash
-	for (int i = 0; hash; i++ ) {
-		h = hash;
-		HASH_DEL(hash, h);
-		dprintf("key:'%s' \tnum:'%d'\n", h->key, h->num );
-		new_names[i] = h->full;
-		free(h->key);
-		free(h);
-	}
-	
-	return new_names;
+	);
 }
 
 

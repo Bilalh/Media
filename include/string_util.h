@@ -2,7 +2,10 @@
 #define STRINGUTILHEAD
 #include <stddef.h>
 #include <stdbool.h>
+
+#include <Block.h>
 #include "uthash.h"
+
 
 /**
  * @brief Gets the postion of 
@@ -35,6 +38,19 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 **/
 char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string);
 
+
+typedef int (^FilterBlock)(const char *current_name, const char *new_name, int current_num, int new_num );
+
+/**
+ * @brief Takes a list of files with numbers and returns only the filtered episode(s)
+ * @param names           - A list of file names
+ * @param length          - The length of the array
+ * @param free_unused     - Dree unsused strings passed
+ * @param add_null_string - Add a empty a string at the end
+ * @param filter          - A block that should return non zero if the file is to be inculded  
+ * @return  A array of strings with filter names
+**/
+char **filter_files(char **names, int *length, bool free_unused, bool add_null_string, FilterBlock filter );
 
 /**
  * @brief Places the number in var

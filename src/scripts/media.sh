@@ -33,6 +33,8 @@ alias  ml='ay --last'
 alias mll='ml --none --dot-default'
 alias mlg='ml --dot-default --menu --top --history'
 alias mlw='ay --un-watched --first --none --dot-default'
+alias mlgw='mlw --menu --top --history'
+alias mlwg='mlgw'
 
 alias op='mediah --op --out --mplayer'
 alias opp='op --none --dot-default'

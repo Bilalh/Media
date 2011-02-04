@@ -62,7 +62,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	char *hash_location = ma->use_hash ? ma->hash_location : "";
 	char *regex = spilt_args(args, argc, ma->regex_sep, "(", types, hash_location);
-	dprintf("regex: %s\n", regex);
+	
 	if(ma->regex_print) printf("regex: %s\n", regex);
 	
 	StringsPlusMeta* (*get_files_func)(char *dir, char *regex, bool safe);
@@ -87,7 +87,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	if(ma->find_unwatched){
 		s_arr = find_unwatched(s_arr,&file_num,true);
 	}
-	
+
 	if(ma->newest_only){
 		s_arr = newest_only(s_arr, &file_num, true, true);
 		file_num--;
@@ -95,7 +95,6 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		s_arr = oldest_only(s_arr, &file_num, true, true);
 		file_num--;
 	}
-	
 	
 	if(ma->pl_shuffle) {
 		shuffle((void**) s_arr, file_num);

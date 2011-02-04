@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <assert.h>
 
+#include <Block.h>
 #include <pcre.h>
 
 #include <include/string_util.h>
