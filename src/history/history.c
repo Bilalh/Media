@@ -207,10 +207,8 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 	}
 
 	sqlite3_stmt *statement_h;
-	const char *query_h     = "select current from SeriesData where Title = ?";
-
+	const char *query_h = "select current from SeriesData where Title = ?";
 	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
-
 
 	while(*filenames != NULL) {
 		
@@ -233,6 +231,7 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 				int current = sqlite3_column_int(statement_h, 0);
 				dprintf("current:%d\n",current );
 				
+				// not watched
 				if (num > current ){
 					dprintf("added %s\n", filename);
 					new_filenames[index++] = *filenames;

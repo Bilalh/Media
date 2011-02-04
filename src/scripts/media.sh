@@ -31,6 +31,7 @@ alias  ax='mediah --ax --out --colour-ep --label-watched'
 alias  ay='ax --mplayer'
 alias  ml='ay --last'
 alias mll='ml --none --dot-default'
+alias mlw='mll --un-watched'
 alias mlg='ml --dot-default --menu --top --history'
 
 
