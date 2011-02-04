@@ -89,6 +89,10 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		file_num--;
 	}
 	
+	if(ma->find_unwatched){
+		s_arr = find_unwatched(s_arr,&file_num,true);
+	}
+	
 	if(ma->pl_shuffle) {
 		shuffle((void**) s_arr, file_num);
 	}
@@ -98,6 +102,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	}
 	
 	
+	// shows menu
 	if (ma->menu){
 		for(int i = 0; i < file_num; ++i){
 			

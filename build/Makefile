@@ -51,7 +51,7 @@ numsf_req     = app/latest_f_main.o ${hist_req}
 numss_req     = app/latest_fs_main.o ${hist_req} 
 ongoing_req   = app/ongoing_main.o ${hist_req}
 ongoingnc_req = app/ongoing_no_colour_main.o ${hist_req} 
-set_id_req    = app/set_id_total.o ${hist_req}
+set_id_req    = app/set_id_total_main.o ${hist_req}
 
 
 hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}

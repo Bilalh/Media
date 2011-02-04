@@ -37,6 +37,8 @@ int main (int argc, char *argv[]) {
 		printf("%s\n", USAGE);
 		exit(1);
 	}
+	
+	
 		
 	if( score > 0 ){
 		

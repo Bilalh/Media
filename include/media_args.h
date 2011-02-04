@@ -87,6 +87,7 @@ typedef struct {
 	bool       menu;          // DONE
 	int        total;         // DONE
 
+	bool       find_unwatched; // DONE
 	
 } MediaArgs;
 

@@ -68,12 +68,13 @@ MediaArgs *new_media_args() {
 		.regex_print = false,
 		.regex_sep   = strdup(".*"),
 		
-		.dot_default   = false,
-		.colour_ep     = false,
-		.label_watched = false,
-		.score         = 0,
-		.menu          = false,
-		.total         = 0
+		.dot_default    = false,
+		.colour_ep      = false,
+		.label_watched  = false,
+		.score          = 0,
+		.menu           = false,
+		.total          = 0,
+		.find_unwatched = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -365,6 +366,7 @@ void print_media_args(MediaArgs *ma) {
 	print_int("score",          ma->score);
 	print_args("menu",          truth(ma->menu));
 	print_int("total",          ma->total);
+	print_args("find_unwatched", truth(ma->find_unwatched));
 
 
 #undef truth

@@ -363,7 +363,6 @@ const Element H_mplayer[] = {
 	},
 };
 
-
 const Element H_History[]={
 	
 	{  
@@ -488,6 +487,14 @@ const Element H_other[] ={
 		}
 	},
 	{  
+		.opt   = {.name =  "un-watched", .val = '+', .has_arg = no_argument}, 
+		.help  = "Choose the latest un-watched file of each series",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->find_unwatched = TRUTH_VALUE(ch);
+		}
+	},
+	{  
 		.opt   = {.name =  "sep", .val = 'w', .has_arg = required_argument}, 
 		.help  = "Use {num} as the separator between episodes",
 		.arg   = "num", .neg = false,
@@ -502,7 +509,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "nicerandom", .val = ':', .has_arg = no_argument}, 
+		.opt   = {.name =  "nice-random", .val = ':', .has_arg = no_argument}, 
 		.help  = "Sets random in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -510,7 +517,7 @@ const Element H_other[] ={
 		},
 	},
 	{  
-		.opt   = {.name =  "nicereapeat", .val = 'Y', .has_arg = no_argument}, 
+		.opt   = {.name =  "nice-reapeat", .val = 'Y', .has_arg = no_argument}, 
 		.help  = "Sets repeat in niceplayer",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

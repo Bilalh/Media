@@ -67,7 +67,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				 efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			result = sqlite3_reset(statement_h);
-			dprintf("reset: %i\n\n", reset);
+			dprintf("reset: %i\n\n", result);
 
 			// for status
 			if (status == S_SKIP_UPDATED) {
@@ -83,7 +83,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
-				result = sqlite3_reset(statement_si_su)
+				result = sqlite3_reset(statement_si_su);
 				dprintf("sk reset: %i\n\n", result);
 
 			} else if (status == S_UPDATED) {
@@ -188,6 +188,91 @@ void set_movie(char *series){
 	}
 	
 }
+
+
+char** find_unwatched(char **filenames, int *length, bool free_unused) {
+	assert(filenames);
+	
+	char **new_filenames = malloc(sizeof(char*) * (*length +1) );
+	int index =0;
+	
+	sqlite3 *db;
+	int result;
+
+	result = sqlite3_open(DATABASE, &db);
+	if( result ) {
+		efprintf(  "No history written: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return false;
+	}
+
+	sqlite3_stmt *statement_h;
+	const char *query_h     = "select current from SeriesData where Title = ?";
+
+	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
+
+
+	while(*filenames != NULL) {
+		
+		char *filename = strdup(basename(*filenames));
+		char **ans = ep_num(filename);
+		if (ans[0] != NULL) {
+			
+			EP_GET_NUMBER(ans, num);
+			EP_GET_NAME(ans, title, filename)
+
+			dprintf("title %s. num %ld\n", title, num);
+			sqlite3_bind_text(statement_h, 1, title, -1, SQLITE_TRANSIENT);
+
+			result = sqlite3_step(statement_h);
+			dprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
+			
+			// check latest
+			if (result == SQLITE_ROW){
+				
+				int current = sqlite3_column_int(statement_h, 0);
+				dprintf("current:%d\n",current );
+				
+				if (num > current ){
+					dprintf("added %s\n", filename);
+					new_filenames[index++] = *filenames;
+				}else if (free_unused) {
+					free(*filenames);
+				}
+				
+			// never watched
+			}else if( result == SQLITE_OK  || result == SQLITE_DONE ) {
+				
+				dprintf("added %s\n", filename);
+				new_filenames[index++] = *filenames;
+			}else{
+				efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+			}
+			
+			
+			result = sqlite3_reset(statement_h);
+			dprintf("reset:%d index:%d\n", result, index);
+			free(filename);
+		}
+		filenames++;
+	}
+
+	sqlite3_finalize(statement_h);
+	sqlite3_close(db);
+	
+	new_filenames[index] = strdup("");
+	
+#ifdef DEBUG
+	for(int i = 0; i < index; ++i){
+		printf("\t%s\n", new_filenames[i]);
+	}
+#endif
+	dprintf("index:%d\n", index);
+	
+	*length = index;
+	return new_filenames;
+}
+
 
 
 void sql_exec(char *command, SqlCallback callback ) {
