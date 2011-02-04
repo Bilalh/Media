@@ -88,6 +88,7 @@ typedef struct {
 	int        total;         // DONE
 
 	bool       find_unwatched; // DONE
+	bool       oldest_only;    // DONE
 	
 } MediaArgs;
 

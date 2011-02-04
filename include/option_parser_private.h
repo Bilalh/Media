@@ -487,6 +487,14 @@ const Element H_other[] ={
 		}
 	},
 	{  
+		.opt   = {.name =  "first", .val = '_', .has_arg = no_argument}, 
+		.help  = "Choose the oldest file of each series",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->oldest_only = TRUTH_VALUE(ch);
+		}
+	},
+	{  
 		.opt   = {.name =  "un-watched", .val = '+', .has_arg = no_argument}, 
 		.help  = "Choose the latest un-watched file of each series",
 		.arg   = "", .neg = true, 
@@ -697,7 +705,7 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "quick", .val = '_', .has_arg = no_argument}, 
+		.opt   = {.name =  "quick", .val = '*', .has_arg = no_argument}, 
 		.help  = "--framedrop and --fast",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 3, "-framedrop",

@@ -74,7 +74,8 @@ MediaArgs *new_media_args() {
 		.score          = 0,
 		.menu           = false,
 		.total          = 0,
-		.find_unwatched = false
+		.find_unwatched = false,
+		.oldest_only    = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -367,6 +368,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("menu",          truth(ma->menu));
 	print_int("total",          ma->total);
 	print_args("find_unwatched", truth(ma->find_unwatched));
+	print_args("oldest_only", truth(ma->oldest_only));
 
 
 #undef truth

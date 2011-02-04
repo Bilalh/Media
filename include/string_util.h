@@ -26,6 +26,17 @@ char** ep_num(char *s);
 char **newest_only (char **names, int *length, bool free_unused, bool add_null_string);
 
 /**
+ * @brief Takes a list of files with numbers and returns only the oldest episode(s)
+ * @param names           - A list of file names
+ * @param length          - The length of the array
+ * @param free_unused     - Dree unsused strings passed
+ * @param add_null_string - Add a empty a string at the end
+ * @return  A array of strings with newest names
+**/
+char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string);
+
+
+/**
  * @brief Places the number in var
  *
  * @param ep_num_char char** returned by ep_num

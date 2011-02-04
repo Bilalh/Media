@@ -83,15 +83,19 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	char **s_arr = sta->str_arr;
 	int file_num = sta->length;
 	int total_length = sta->total_length;
+
+	if(ma->find_unwatched){
+		s_arr = find_unwatched(s_arr,&file_num,true);
+	}
 	
 	if(ma->newest_only){
 		s_arr = newest_only(s_arr, &file_num, true, true);
 		file_num--;
+	}else if(ma->oldest_only){
+		s_arr = oldest_only(s_arr, &file_num, true, true);
+		file_num--;
 	}
 	
-	if(ma->find_unwatched){
-		s_arr = find_unwatched(s_arr,&file_num,true);
-	}
 	
 	if(ma->pl_shuffle) {
 		shuffle((void**) s_arr, file_num);
