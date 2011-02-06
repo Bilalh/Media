@@ -27,8 +27,9 @@ int main (int argc, char *argv[]) {
 	int upper     = -1;
 	struct tm *tm = currentTime();
 	
-	String s;
+	String s, s2;
 	new_string(&s, 120);
+	new_string(&s2, 120);
 	
 	int score = (int) strtol(argv[2], NULL, 10);
 	if( score == 0 || score > 10 ) {
@@ -107,7 +108,7 @@ int main (int argc, char *argv[]) {
 	for(int i = lower; i <=upper; ++i){
 		char time_buff[20];
 		MAKE_TIME_STR(time_buff,tm);
-		string_sprintf(&s, 87 + strlen(series) + 1,
+		string_sprintf(&s2, 87 + strlen(series) + 1,
 			"INSERT INTO History(Series,Date,Number) "
 			"VALUES(\"%s\", '%s', %d); ",
 			 series, time_buff, i
@@ -117,6 +118,8 @@ int main (int argc, char *argv[]) {
 	}
 	
 	printf("%s\n", s.str);
+	// The insert into history should be done before the updates
+	sql_exec(s2.str, NULL); 
 	sql_exec(s.str, NULL); 
 	free(tm);
 	return 0;

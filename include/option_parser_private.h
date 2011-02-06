@@ -827,7 +827,18 @@ const Element H_mplayer_extra[] = {
 			}
 		}
 	},
-	
+	{  
+		.opt   = {.name =  "ontop", .val =289 , .has_arg = no_argument}, 
+		.help  = "adds -ontop",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE_l(ch)){
+				string_push(&ma->prefix_args, "-ontop");
+			}else{
+				string_push(&ma->prefix_args, "-noontop");
+			}
+		}
+	},
 	
 };
 
