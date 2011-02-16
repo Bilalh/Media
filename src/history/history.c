@@ -326,7 +326,7 @@ void print_latest(char *num){
 	
 	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, Dropped"
 		" FROM SeriesData"
 		" WHERE("
 		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
@@ -342,7 +342,7 @@ void print_latest_with_finished(char *num){
 	
 	char buff[200 + strlen(num)]; // few extra 332? 
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, Dropped"
 		" FROM SeriesData"
 		" WHERE("
 		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
@@ -358,7 +358,7 @@ void print_latest_with_finished_and_skipped(char *num){
 	
 	char buff[200 + strlen(num)*2];
 	sprintf(buff, 
-		"SELECT Title, Current, Total, Date, Finished, Rewatching"
+		"SELECT Title, Current, Total, Date, Finished, Rewatching, Dropped"
 		" FROM SeriesData"
 		" WHERE("
 		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
@@ -379,11 +379,13 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	
 	char *status;
 	
-	if ( *argv[5] == '1' ){ // rewatching 
-		status = COLOURJ("R ",GREEN); 
-	}else if ( *argv[4] == '1' ){ // finished
+	if ( *argv[4] == '1' ){       // finished
 		status = COLOURJ("F ",CYAN); 
-	}else{
+	}else if ( *argv[5] == '1' ){ // rewatching 
+		status = COLOURJ("R ",GREEN);
+	}else if ( *argv[6] == '1' ){ // dropped 
+		status = COLOURJ("D ",WHITE);
+	}else{                        // ongoing
 		status = COLOURJ("O ",YELLOW); 
 	}
 	
