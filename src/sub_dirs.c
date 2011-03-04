@@ -98,6 +98,15 @@ StringsPlusMeta* get_files(char *dir, char *regex, bool safe) {
 	^ (struct dirent * s) {
 		MAKE_REGEX_OPTS(at, regex,PCRE_CASELESS,);
 		int res = MATCH_REGEX(at, s->d_name, strlen(s->d_name));
+		// debug
+		// if (*s->d_name == 'G') {
+		// 	char *r = "(Gundam).*\\.(mkv|mp4|avi|mov|part|ogm|divx|rm|rmvb|flv|wmv|webm)$";
+		// 	MAKE_REGEX_OPTS(at2, r,PCRE_CASELESS,);
+		// 	int res2 = MATCH_REGEX(at2, s->d_name, strlen(s->d_name));
+		// 	printf("%2d r2: '%s'\n%2d r1: '%s' name: '%s' equal %d\n", 
+		// 		res2, r, res, regex, s->d_name, (strcmp(regex, r))
+		// 	);
+		// }
 		if (safe && res > 0 ){
 			MAKE_REGEX_OPTS(safe_r, 
 				GET_FILES_REC_SAFE_REGEX,

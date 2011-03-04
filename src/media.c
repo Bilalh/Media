@@ -88,6 +88,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 		s_arr = find_unwatched(s_arr,&file_num,true);
 	}
 
+	// FIXME Illegal instruction when name has spaces at the start of filename
 	if(ma->newest_only){
 		s_arr = newest_only(s_arr, &file_num, true, true);
 		file_num--;
