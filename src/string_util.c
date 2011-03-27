@@ -146,8 +146,6 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
 	);
 }
 
-//TODO combining the above and below func using a func pointer arg 
-
 char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string){
 	return filter_files(names, length, free_unused, add_null_string, 
 		^(const char *current_name, const char *new_name, int current_num, int new_num){

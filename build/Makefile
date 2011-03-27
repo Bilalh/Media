@@ -101,7 +101,7 @@ to_scripts:  ${scripts} ${scripts_keep_name}
 to_scripts:
 	cp ../src/history/mweb.rb ${SCRIPT_DST}/histw; \
 	chmod +x ${SCRIPT_DST}/histw;
-	cp ../src/history/mwebc.rb ${SCRIPT_DST}/histwc; \
+	cp ../src/history/mwebc.rb ${SCRIPT_DST}/hi=stwc; \
 	chmod +x ${SCRIPT_DST}/histwc;
 
                            ### Help ###
