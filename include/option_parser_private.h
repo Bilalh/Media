@@ -357,7 +357,8 @@ const Element H_mplayer[] = {
 				exit(1);
 			}else{
 				printf("%s\n", arg);
-				string_append_m(&ma->prefix_args, 2,"-vo corevideo:device_id=", arg);
+				string_push(&ma->prefix_args, "-vo corevideo:device_id=");
+				string_append(&ma->prefix_args, arg);
 			}
 		}
 	},
