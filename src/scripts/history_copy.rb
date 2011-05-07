@@ -3,7 +3,7 @@ require "rubygems"
 require 'highline/import'
 
 begin
-titles = `$HOME/scripts/get_titles.sh`.split("\n").sort
+titles = `$HOME/bin/get_titles.sh`.split("\n").sort
 titles.each_with_index do |e, i|
 	e.strip!
 	say("<%= color('#{'%-2s' % i }', BLUE) %> #{'%-2s' %  `$HOME/scripts/get_number.sh \"#{e}\"`.strip} #{e}")

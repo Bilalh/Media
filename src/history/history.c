@@ -17,7 +17,7 @@
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns);
-
+static int print_ongoing_data_callback(void *unused, int argc, char **argv, char **columns);
 
 bool updateHistory(char **filenames, Status status, int sep) {
 	assert(filenames);
@@ -272,8 +272,6 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 	return new_filenames;
 }
 
-
-
 void sql_exec(char *command, SqlCallback callback ) {
 	assert(command);
 	sqlite3 *db;
@@ -412,6 +410,25 @@ void print_ongoing(bool colour){
 	puts("");
 	buff = "Select * From OngoingSeries Where Rewatching = 1";
 	sql_exec(buff, colour ? print_ongoing_callback : print_ongoing_callback_no_colour);
+}
+
+void print_ongoing_data(){
+	
+	char *buff = "Select * From OngoingSeries";
+	sql_exec(buff, print_ongoing_data_callback);
+}
+
+// Prints the data from the print_ongoing_data functions
+static int print_ongoing_data_callback(void *unused, int argc, char **argv, char **columns){
+	
+	const char* title   = argv[0];
+	const char *current = argv[1];
+	
+	printf("%s\t%s\n", 
+		title, current
+	);
+
+	return 0;
 }
 
 // Prints the data from the  print_ongoing functions

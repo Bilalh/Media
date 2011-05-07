@@ -8,7 +8,7 @@ PERL           = perl
 
 
 BIN            = ${HOME}/bin
-SCRIPT_DST     = ${HOME}/scripts
+SCRIPT_DST     = ${HOME}/bin
 MAN_DST        = /usr/local/share/man/man7/
 # Inculdes when libs (pcre for example) headers are not installed in /usr/local/include
 EXTRA_INCLUDES = 
@@ -38,7 +38,7 @@ to_bin:
 
                            ### Objects ###
 
-objs       = media mal nums numsf numss ongoing ongoingnc hista hists shash set_id
+objs       = media mal nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
 examples   = optt hashe2 subdir_test colours2
 c_scripts  = make_man_options 
 
@@ -46,17 +46,18 @@ media_req    = app/media_main.o media.o players.o ${opt_req} ${hist_req} ${play_
 mal_req      = app/ml_main.o ${ml_req} ${hist_req}
 sub_dirs_req = sub_dirs.o ${strutil_req} ${strarr_req}
 
-nums_req      = app/latest_main.o ${hist_req} 
-numsf_req     = app/latest_f_main.o ${hist_req} 
-numss_req     = app/latest_fs_main.o ${hist_req} 
-ongoing_req   = app/ongoing_main.o ${hist_req}
-ongoingnc_req = app/ongoing_no_colour_main.o ${hist_req} 
-set_id_req    = app/set_id_total_main.o ${hist_req}
+nums_req        = app/latest_main.o ${hist_req} 
+numsf_req       = app/latest_f_main.o ${hist_req} 
+numss_req       = app/latest_fs_main.o ${hist_req} 
+ongoing_req     = app/ongoing_main.o ${hist_req}
+ongoingnc_req   = app/ongoing_no_colour_main.o ${hist_req} 
+ongoingdata_req = app/history_menu_main.o ${hist_req} 
+set_id_req      = app/set_id_total_main.o ${hist_req}
 
 
-hista_req  = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
-hists_req  = app/set_score_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
-shash_req  = app/hash_lookup.o ${strutil_req}
+hista_req = app/history_add_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
+hists_req = app/set_score_main.o ${hist_req} ${time_req}  ${strutil_req} ${string_req}
+shash_req = app/hash_lookup.o ${strutil_req}
 
 
 optt_req        = examples/optm.o ${opt_req}
@@ -101,7 +102,7 @@ to_scripts:  ${scripts} ${scripts_keep_name}
 to_scripts:
 	cp ../src/history/mweb.rb ${SCRIPT_DST}/histw; \
 	chmod +x ${SCRIPT_DST}/histw;
-	cp ../src/history/mwebc.rb ${SCRIPT_DST}/hi=stwc; \
+	cp ../src/history/mwebc.rb ${SCRIPT_DST}/histwc; \
 	chmod +x ${SCRIPT_DST}/histwc;
 
                            ### Help ###

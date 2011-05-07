@@ -21,7 +21,7 @@ void mplayer(char **filenames, int num_of_files, int total_length,
 	// mplayer binary
 	char *command = make_command(PREFS_MPLAYER_BINARY, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, background);
-	
+	// printf("%s\n", command);
 	// strdup is needed
 	system(strdup(command));
 }

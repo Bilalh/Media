@@ -2,6 +2,6 @@
 
 int main (int argc, char *argv[]) {
 	
-	print_ongoing(true);
+	print_ongoing_data(false);
 	return 0;
 }

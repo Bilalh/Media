@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-SCPT="$HOME/scripts/setLabelByNumber"
+SCPT="$HOME/bin/setLabelByNumber"
 
 if ARGV.length != 2 then	
 	puts "setLabel <colour> <filepath>"
