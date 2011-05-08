@@ -15,8 +15,6 @@
 			<string>!(/\.(?!htaccess)[^/]*|[ec]?tags|\.(tmproj|o|out|aux|log|out|o|pdfsync|fdb_latexmk|synctex\.gz|pyc)|/Icon\r|/svn-commit(\.[2-9])?\.tmp)$</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -40,14 +38,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>29</integer>
+				<integer>149</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>142</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>149</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>149</integer>
+			</dict>
 		</dict>
 		<key>src/examples/sub_dir2.c</key>
 		<dict>
@@ -79,10 +93,25 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
+		<key>src/scripts/media.sh</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>75</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>build/Makefile</string>
+		<string>src/scripts/media.sh</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -130,34 +159,12 @@
 					<key>subItems</key>
 					<dict/>
 				</dict>
-				<key>man</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
-					<dict>
-						<key>app</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-						<key>history</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
+					<dict/>
 				</dict>
 			</dict>
 		</dict>

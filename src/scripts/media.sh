@@ -1,6 +1,6 @@
 #!/bin/bash
 function mediah(){
-	hashfile="/Users/bilalh/Library/Application Support/Media/zzhash"
+	hashfile="~/Application Support/Media/zzhash"
 	dir="$1";
 	shift;
 	media "$dir" --hashlocation "${hashfile}" $*
@@ -41,7 +41,7 @@ alias  opp='op --none --dot-default'
 alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default"
 alias opr1='opr -f -E -vo -E corevideo:device_id=1'
 
-alias shash='shash "/Users/bilalh/Library/Application Support/Media/zzhash"'
+alias shash='shash "~/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'
 alias on='ongoing'
 alias onm='histm'
@@ -53,7 +53,7 @@ function hget () {
 
 function hadd() {
 	
-	hashfile="/Users/bilalh/Library/Application Support/Media/zzhash"
+	hashfile="~/Library/Application Support/Media/zzhash"
 	
 	if [ $#  -ne 2  ]; then
 		echo "hadd key val"
@@ -66,7 +66,7 @@ function hadd() {
 	fi
 }
 
-alias mdb='open -a base /Users/bilalh/Library/Application\ Support/Media/Media.db'
+alias mdb='open -a base ~/Library/Application\ Support/Media/Media.db'
 
 alias au="ax -u"
 alias mu="ml -u"
