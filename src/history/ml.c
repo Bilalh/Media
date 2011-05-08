@@ -18,12 +18,15 @@
 #include <include/debug.h>
 #include <include/colours.h>
 
+#include <prefs.h>
+
 typedef struct {
 	char *ptr;
 	size_t len;
 } String_m;
 
 String *sql_commands = NULL;
+char *MAL_USER_PASS ="";
 
 static void init_string(String_m *s);
 static size_t writefunc(void *ptr, size_t size, size_t nmemb, String_m *s);
@@ -56,7 +59,7 @@ char *get_search_xml (char *o_name) {
 		strncpy(url, ML_FIND, ml_len);
 		strncpy(&url[ml_len], name , n_len + 1);
 		curl_easy_setopt(curl, CURLOPT_URL, url);
-		curl_easy_setopt(curl, CURLOPT_USERPWD, "bhterra:bhterramai#");
+		curl_easy_setopt(curl, CURLOPT_USERPWD, MAL_USER_PASS);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
 
@@ -132,7 +135,7 @@ static char *mal_api (char *url, MLOpts *opts) {
 		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, xml);
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 
-		curl_easy_setopt(curl, CURLOPT_USERPWD, "bhterra:bhterramai#");
+		curl_easy_setopt(curl, CURLOPT_USERPWD, MAL_USER_PASS);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, str);
 

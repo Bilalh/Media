@@ -4,12 +4,12 @@
 CC             = gcc
 CFLAGS         = -g -Wall
 PERL           = perl
-.DEFAULT_GOAL := media
+.DEFAULT_GOAL := dist
 
 
 BIN            = ${HOME}/bin
 SCRIPT_DST     = ${HOME}/bin
-MAN_DST        = /usr/local/share/man/man7/
+MAN_DST        = /usr/local/share/man/man7
 # Inculdes when libs (pcre for example) headers are not installed in /usr/local/include
 EXTRA_INCLUDES = 
 
@@ -34,16 +34,17 @@ dist: clean version all oclean
 install: to_bin to_scripts
 
 to_bin:
-	cp ${objs} ${BIN}
+	mkdir -p ${BIN};
+	cp ${objs} ${BIN};
 
                            ### Objects ###
 
-objs       = media mal nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
+objs       = media ml nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
 examples   = optt hashe2 subdir_test colours2
 c_scripts  = make_man_options 
 
 media_req    = app/media_main.o media.o players.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
-mal_req      = app/ml_main.o ${ml_req} ${hist_req}
+ml_req      = app/ml_main.o ${mlt_req} ${hist_req}
 sub_dirs_req = sub_dirs.o ${strutil_req} ${strarr_req}
 
 nums_req        = app/latest_main.o ${hist_req} 
@@ -100,6 +101,7 @@ to_scripts:  ${scripts} ${scripts_keep_name}
 
 #TODO put mweb.rb in scripts
 to_scripts:
+	mkdir -p ${SCRIPT_DST};\
 	cp ../src/history/mweb.rb ${SCRIPT_DST}/histw; \
 	chmod +x ${SCRIPT_DST}/histw;
 	cp ../src/history/mwebc.rb ${SCRIPT_DST}/histwc; \

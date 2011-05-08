@@ -28,12 +28,13 @@
 // comment to disable.  Replaces all (the char (default ^)) with | to save '' the args 
 #define PREFS_SECOND_BAR '^'
 
-// commet to get rid of colour
+// comment to get rid of colour
 #define PREFS_COLOUR
 
 
-// paths for --ax and --op  mainly for testing
+// paths for --ax and --op,  mainly for testing
 #define PREFS_AX "/Users/bilalh/Movies/.Movie/divx"
 #define PREFS_OP "/Users/bilalh/Movies/.Movie/OpeningP"
+
 
 #endif
