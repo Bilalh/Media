@@ -598,7 +598,7 @@ const Element H_other[] ={
 		.opt   = {.name =  "version", .val = 283, .has_arg = no_argument}, 
 		.help  = "Shows the version number",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			printf("Media revision %d\n", MEDIA_VERION_NUMBER);
+			printf("Media revision %s\n", MEDIA_VERION_NUMBER);
 			exit(0);
 		}
 	},
