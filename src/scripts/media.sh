@@ -41,7 +41,7 @@ alias  opp='op --none --dot-default'
 alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default"
 alias opr1='opr -f -E -vo -E corevideo:device_id=1'
 
-alias shash='shash "~/Library/Application Support/Media/zzhash"'
+alias shash='shash "$HOME/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'
 alias on='ongoing'
 alias onm='histm'
@@ -53,7 +53,7 @@ function hget () {
 
 function hadd() {
 	
-	hashfile="~/Library/Application Support/Media/zzhash"
+	hashfile="$HOME/Library/Application Support/Media/zzhash"
 	
 	if [ $#  -ne 2  ]; then
 		echo "hadd key val"

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>build/Makefile</string>
+	<string>src/history/ml.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,42 +26,26 @@
 			<key>filename</key>
 			<string>../../../Library/Application Support/Media/zzhash</string>
 			<key>lastUsed</key>
-			<date>2011-05-08T00:56:14Z</date>
+			<date>2011-05-08T03:07:09Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>267</integer>
+	<integer>214</integer>
 	<key>metaData</key>
 	<dict>
-		<key>build/Makefile</key>
+		<key>src/app/ml_main.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>10</integer>
 				<key>line</key>
-				<integer>149</integer>
+				<integer>25</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>142</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>149</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>149</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
 		<key>src/examples/sub_dir2.c</key>
 		<dict>
@@ -93,25 +77,25 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>src/scripts/media.sh</key>
+		<key>src/history/ml.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>75</integer>
+				<integer>289</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>300</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>build/Makefile</string>
-		<string>src/scripts/media.sh</string>
+		<string>src/app/ml_main.c</string>
+		<string>src/history/ml.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -143,7 +127,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -152,19 +136,27 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
-					<dict/>
+					<dict>
+						<key>app</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+						<key>history</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+					</dict>
 				</dict>
 			</dict>
 		</dict>
