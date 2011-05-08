@@ -29,7 +29,7 @@ include ../tests/tests.mk
 
                            ### Distribution ###
 dist: CFLAGS = -O2 -Wall 
-dist: clean all oclean
+dist: clean version all oclean
 
 install: to_bin to_scripts
 
@@ -169,3 +169,8 @@ oclean:
 
 help: 
 	@${PERL} -e 'print join "\n", qw{dist install install_man_pages}, ""'
+
+version:
+	[ -d ../.git ] && ./make_version.sh
+	
+	
