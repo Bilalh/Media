@@ -147,6 +147,10 @@ list_tests:
 install_man_pages:
 	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/.
 
+install_media_alias:
+	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
+
+
 	                           ### Scripts rules ###
 temp_files   = years days
 result_files = years.pdf days.pdf
@@ -170,7 +174,7 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: 
-	@${PERL} -e 'print join "\n", qw{dist install install_man_pages}, ""'
+	@${PERL} -e 'print join "\n", qw{dist install install_man_pages install_media_alias}, ""'
 
 version:
 	[ -d ../.git ] && ./make_version.sh

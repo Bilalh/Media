@@ -19,3 +19,9 @@ if you want to install the man pages
 <code>
 	sudo make install\_man\_pages
 </code>
+
+if you want to install the media alias & functions
+<code>
+	make install\_media\_alias
+</code>
+then add `. bin/media.sh` to your `.bashrc`
