@@ -10,6 +10,7 @@ PERL           = perl
 BIN            = ${HOME}/bin
 SCRIPT_DST     = ${HOME}/bin
 MAN_DST        = /usr/local/share/man/man7
+SUPPORT_DIR    = ~/Library/Application\ Support/Media/
 # Inculdes when libs (pcre for example) headers are not installed in /usr/local/include
 EXTRA_INCLUDES = 
 
@@ -18,6 +19,7 @@ flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/usr/include/libxml2 ${EXTRA_INCLUDES}
 libs           = -lsqlite3 -lxml2  -lcurl -lpcre
 script_src     = ../src/scripts
+
 
                            ### Includes ###
 vpath %.c ../src 
@@ -149,7 +151,9 @@ install_man_pages:
 
 install_media_alias:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
-
+	
+create_database:
+	mkdir -p ${SUPPORT_DIR} && touch ${SUPPORT_DIR}/zzhash && cat ${script_src}/media.sql | sqlite3  ${SUPPORT_DIR}/media.db
 
 	                           ### Scripts rules ###
 temp_files   = years days
@@ -174,7 +178,7 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: 
-	@${PERL} -e 'print join "\n", qw{dist install install_man_pages install_media_alias}, ""'
+	@${PERL} -e 'print join "\n", qw{dist install create_database install_man_pages install_media_alias}, ""'
 
 version:
 	[ -d ../.git ] && ./make_version.sh

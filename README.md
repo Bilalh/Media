@@ -6,13 +6,13 @@ There also other binaries see the `man` pages in man for details
 
 installing 
 ----------
-By default the program install to ~/bin
-
+By default the program install to `~/bin` and the database is created in `~/Library/Application Support/Media/`
 
 from `build`
 <code>
 	make
 	make install
+	make create_database
 </code>
 
 if you want to install the man pages
@@ -25,3 +25,11 @@ if you want to install the media alias & functions
 	make install\_media\_alias
 </code>
 then add `. bin/media.sh` to your `.bashrc`
+
+requirements
+----------
+* sqlite3
+* libxml
+* libcurl
+* pcre
+* linux has lots extra requirements see Readme
