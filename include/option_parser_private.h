@@ -491,7 +491,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "first", .val = '_', .has_arg = no_argument}, 
+		.opt   = {.name =  "first", .val = 'w', .has_arg = no_argument}, 
 		.help  = "Choose the oldest file of each series",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -507,7 +507,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "sep", .val = 'w', .has_arg = required_argument}, 
+		.opt   = {.name =  "sep", .val = '_', .has_arg = required_argument}, 
 		.help  = "Use {num} as the separator between episodes",
 		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

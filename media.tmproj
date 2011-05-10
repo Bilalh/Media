@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/history/ml.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -33,20 +31,6 @@
 	<integer>214</integer>
 	<key>metaData</key>
 	<dict>
-		<key>src/app/ml_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>25</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>src/examples/sub_dir2.c</key>
 		<dict>
 			<key>caret</key>
@@ -77,26 +61,7 @@
 				<integer>61</integer>
 			</dict>
 		</dict>
-		<key>src/history/ml.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>289</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>300</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/app/ml_main.c</string>
-		<string>src/history/ml.c</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -162,6 +127,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{250, 102}, {1167, 776}}</string>
+	<string>{{250, 141}, {962, 737}}</string>
 </dict>
 </plist>

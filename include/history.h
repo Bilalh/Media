@@ -40,6 +40,10 @@ void print_latest_with_finished_and_skipped(char *num);
 **/
 void print_ongoing(bool colour);
 
+/**
+ * @brief Prints data for ongoing series 
+**/
+void print_ongoing_data();
 
 /**
  * @brief Sets the score of a series 
