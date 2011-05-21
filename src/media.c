@@ -117,7 +117,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 				
 				printf(SSS("%-2d") ":  N: "SSS("%2ld") " %s \n", COLOUR(i,GREEN),COLOUR(num,BLUE), s_title );
 			}else{
-				efprintf("%s\n", "ep_num null in media");
+				efprintf("ep_num null in media (%s)\n", s_arr[i]);
 				exit(22);
 			}
 		}
@@ -138,7 +138,6 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 			s_arr[1] = '\0';
 		}
 		file_num = 1;
-		
 	}
 	
 	if(ma->pl_output & PL_STDOUT){

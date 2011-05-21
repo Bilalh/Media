@@ -11,9 +11,9 @@
 #include <pcreposix.h>
 
 #include <include/string_util.h>
-#include <include/debug.h>
 #include <include/colours.h>
 
+#include <include/debug.h>
 #include <prefs.h>
 
 typedef struct {
@@ -21,15 +21,28 @@ typedef struct {
 	char *full;
 	int   num;
 	UT_hash_handle hh;
-} Newest;
+} Newest; // TODO give better name 
 
 char** ep_num (char *s) {
 	assert (s);
+	dprintf("name:'%s'\n", s);
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
 	int num   = 0;
 	int dashes = 0;
+	
+	bool hack = false;
+	
+	if    (*s == ' ') hack = true;
+	while (*s == ' ') s++; 
+	
+	if (hack){
+		start = s;
+		dprintf("Using hack s:'%s' start:'%s' \n", s, start);
+		
+	}
+	
 	
 	// finds the end of the string
 	while (*s != '\0' ) {
@@ -59,20 +72,23 @@ char** ep_num (char *s) {
 			//if for 'word - 22 .mkv' types
 			if(! isdigit(*(s-1))){
 				ans[index]  = s;
+				dprintf("index[%d]='%s'\n",index, s);
 				index++;
 				// quick fix for - types
 				if( (s - start) >=2 ) ans[index] = s-2;
 			}
 		}
 		
-		// dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
-		else if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
+		dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
+		//else 
+		if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
 			char *t = (s + 1);
-			dprintf("1i  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
+			dprintf("i2  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
 			if( *t == ' ' || *t == '-' || *t == '_' || *t  == '~' ) {
 				dprintf("ii  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
 				if (*t == '~' && dashes > 0 ) t++;
 				ans[index] = t;
+				dprintf("index[%d]='%s'\n",index,t);
 				break;
 			}
 		}
@@ -92,6 +108,11 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 		names[i] = basename(names[i]);
 		
 		char **ans = ep_num(names[i]);
+		if (ans[0] == NULL){
+			efprintf("Number not found for file '%s'\n", names[i]);
+			exit(44);
+		}
+			
 		EP_GET_NAME(ans, name, names[i]);
 		EP_GET_NUMBER(ans, num);
 
@@ -318,7 +339,7 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	int sub_len = strlen(sub);
 	int r_len   = len * 2 + rep_len + 25;
 	char *r     = malloc( r_len );
-	dprintf("s %s %d sub %s rep %s \n", s,len, sub, rep);
+	dprintf("s %s %zu sub %s rep %s \n", s,len, sub, rep);
 	
 	// counters for s and r
 	int is = 0, ir = 0;
@@ -444,6 +465,7 @@ int match (const char *string, char *pattern) {
 
 }
 
+//unused
 char *str_spilt_replace (char *s) {
 	assert(s);
 	char *start   = s;

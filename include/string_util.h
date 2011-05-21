@@ -8,13 +8,14 @@
 
 
 /**
- * @brief Gets the postion of 
+ * @brief Gets the postions of  name and the ep number in a filename
  *
  * @param s - string with a number at the end.
  * @return [0] - The index before the number starts
  *         [1] - ans[index - NAME + 1] gives the length of the name part
  *               where index = 0 unless [1] is not null
- *         [0] == NULL - Number not found
+ *
+ * @error        [0] == NULL - Number not found
  */
 char** ep_num(char *s);
 

@@ -1,9 +1,12 @@
 #!/bin/bash
+# Use MEDIA_BINARY to set media location if not in the $PATH
+
 function mediah(){
-	hashfile="~/Application Support/Media/zzhash"
+	hashfile="$HOME/Library/Application Support/Media/zzhash"
 	dir="$1";
 	shift;
-	media "$dir" --hashlocation "${hashfile}" $*
+	MEDIA=${MEDIA_BINARY:-media}
+	${MEDIA} "$dir" --hashlocation "${hashfile}" $*
 }
 
 alias mg='mediaf'
@@ -27,14 +30,16 @@ function mediaf(){
 
 }
 
-alias   ax='mediah --ax --out --colour-ep --label-watched'
-alias   ay='ax --mplayer'
+alias  _ax='mediah --ax --out --colour-ep --label-watched'
+alias   ax='_ax --dot-default'
+alias   ay='_ax --mplayer'
 alias   ml='ay --last'
 alias  mll='ml --none --dot-default'
 alias  mlg='ml --dot-default --menu --top '
-alias  mlw='ax --un-watched --first --none --dot-default'
-alias mlgw='mlw --menu --top --history --mplayer'
-alias mlwg='mlgw'
+alias  mw='ax --un-watched --first '
+alias mwg='mw --menu --top --history --mplayer'
+alias mgw='mwg'
+alias mlwg='mwg'
 
 alias   op='mediah --op --out --mplayer'
 alias  opp='op --none --dot-default'
