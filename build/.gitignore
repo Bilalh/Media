@@ -12,3 +12,14 @@ ongoingnc
 set_id
 shash
 ml
+test_string
+test_time
+test_opt
+test_strutil
+test_strarr
+test_string_extra
+optt
+hashe2
+subdir_test
+colours2
+all_tests
