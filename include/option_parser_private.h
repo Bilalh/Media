@@ -222,6 +222,8 @@ const Element H_player[] ={
 		.help  = "Plays the files using mplayer gui.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->player = P_MPLAYER_GUI;
+			ma->afloat = false;
+			ma->all_spaces = SPACES_NONE;
 		}
 	},
 	{  
