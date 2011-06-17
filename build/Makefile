@@ -11,7 +11,7 @@ BIN            = ${HOME}/bin
 SCRIPT_DST     = ${HOME}/bin
 MAN_DST        = /usr/local/share/man/man7
 SUPPORT_DIR    = ~/Library/Application\ Support/Media/
-# Inculdes when libs (pcre for example) headers are not installed in /usr/local/include
+# Inculdes when libs headers  (pcre for example) are not installed in /usr/local/include
 EXTRA_INCLUDES = 
 
 compile        = ${CC} -std=gnu99 -fblocks
@@ -125,8 +125,12 @@ list_examples:
 list_targets:
 	@${PERL} -e 'print join "\n", qw{dist all cscripts to_scripts run_tests examples}, ""'
 
-list_all: list_targets list_objs list_scripts list_cscripts 
 list:     list_all
+list_all: list_targets list_objs list_scripts list_cscripts list_tests
+
+list_all:
+	@${PERL} -e 'print join "\n", qw{plot create_database install_man_pages install_media_aliases}, ""'
+
                            ### Tests ###
 run_tests: all_tests
 	./all_tests
@@ -149,7 +153,7 @@ list_tests:
 install_man_pages:
 	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/.
 
-install_media_alias:
+install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
 	
 create_database:
@@ -178,7 +182,7 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: 
-	@${PERL} -e 'print join "\n", qw{dist install create_database install_man_pages install_media_alias}, ""'
+	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- install_man_pages install_media_aliases}, ""'
 
 version:
 	[ -d ../.git ] && ./make_version.sh
