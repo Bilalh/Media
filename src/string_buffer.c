@@ -28,17 +28,17 @@ void new_string(String *s, int length ){
 void string_add(String *s, char *str, bool add_space_before) {
 	assert(s); assert(str);
 	int str_len = strlen(str);
-	dprintf("a ind %i len %i \n", s->index, s->length);
+	sbdprintf("a ind %i len %i \n", s->index, s->length);
 	if ( (s->length - s->index) < str_len +1 ) { // 1 for \0
-		dprintf("reallocing to %d\n", s->length);
+		sbdprintf("reallocing to %d\n", s->length);
 		s->length += str_len * 2 + 2; // 2 for \0 and space
 		s->str = realloc(s->str, s->length);
 	}
-	dprintf("b ind %i len %i \n", s->index, s->length);
+	sbdprintf("b ind %i len %i \n", s->index, s->length);
 	if (add_space_before) s->str[s->index++] = ' ';
 	strncpy(&s->str[s->index], str, str_len + 1);
 	s->index += str_len;
-	dprintf("'%s'\n", s->str);
+	sbdprintf("'%s'\n", s->str);
 }
 
 
@@ -65,33 +65,33 @@ int string_sprintf(String *s, int length,  const char *fmt,  ... ){
 	assert(s); assert(fmt);
 	va_list args;
 	va_start(args, fmt);
-	dprintf("a '%s'\n", s->str);
-	dprintf("a ind %i len %i r_len %i \n", s->index, s->length, length);
+	sbdprintf("a '%s'\n", s->str);
+	sbdprintf("a ind %i len %i r_len %i \n", s->index, s->length, length);
 	if ( (s->length - s->index) < length + 2 ) { // 1 for \0
 		s->length += length * 2 + 2; 
-		dprintf("reallocing to %d\n", s->length);
+		sbdprintf("reallocing to %d\n", s->length);
 		s->str = realloc(s->str, s->length);
 	}
-	dprintf("b ind %i len %i \n", s->index, s->length);
+	sbdprintf("b ind %i len %i \n", s->index, s->length);
 	
 	int wrote = vsnprintf(&s->str[s->index], length, fmt, args);
 	va_end(args);
 	
-	dprintf("c ind %i len %i spf %i \n", s->index, s->length, wrote);
+	sbdprintf("c ind %i len %i spf %i \n", s->index, s->length, wrote);
 	
 	// makes sure there a null at the end
 	if (wrote >= length ){
-		dprintf("tl '%s'\n", s->str);
+		sbdprintf("tl '%s'\n", s->str);
 		if (length <= 1) {
 			return wrote;
 		}
-		dprintf("spf %d %d\n",wrote, wrote );
+		sbdprintf("spf %d %d\n",wrote, wrote );
 		s->index += wrote - length;
 		s->str[s->index] = '\0';
 	}else{
 		s->index += wrote; // to start \0 next time 
 	}
-	dprintf("c '%s'\n", s->str);
+	sbdprintf("c '%s'\n", s->str);
 	return wrote;
 }
 

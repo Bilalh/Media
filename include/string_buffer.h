@@ -58,5 +58,11 @@ int string_sprintf(String *s, int length,  const char *fmt,  ... );
 #define string_append_m(s,length, ...) string_add_m(s, false, length, __VA_ARGS__)
 #define string_append(s,str)           string_add(s, str, false)
 
+#ifdef SBDEBUG
+#define sbdprintf(fmt,...) dprintf(fmt, ...) 
+#else 
+#define sbdprintf(fmt,...)
+#endif
+
 
 #endif

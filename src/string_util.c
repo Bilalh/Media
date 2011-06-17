@@ -25,7 +25,7 @@ typedef struct {
 
 char** ep_num (char *s) {
 	assert (s);
-	dprintf("name:'%s'\n", s);
+	sudprintf("name:'%s'\n", s);
 	char *start  = s;
 	char **ans = calloc(2, sizeof(size_t));
 	int index = 0;
@@ -40,7 +40,7 @@ char** ep_num (char *s) {
 	
 	if (hack){
 		start = s;
-		dprintf("Using hack s:'%s' start:'%s' \n", s, start);
+		sudprintf("Using hack s:'%s' start:'%s' \n", s, start);
 	}
 	
 	// finds the end of the string
@@ -52,7 +52,7 @@ char** ep_num (char *s) {
 	
 	// if there is no number (e.g movie) the whole string is the name.
 	if (num == 0 ){
-		dprintf("no number\n");
+		sudprintf("no number\n");
 		ans[0] = ans[1] = s;
 		char *temp = s - 1;
 		// LATER no ext on name only
@@ -71,23 +71,23 @@ char** ep_num (char *s) {
 			//if for 'word - 22 .mkv' types
 			if(! isdigit(*(s-1))){
 				ans[index]  = s;
-				dprintf("index[%d]='%s'\n",index, s);
+				sudprintf("index[%d]='%s'\n",index, s);
 				index++;
 				// quick fix for - types
 				if( (s - start) >=2 ) ans[index] = s-2;
 			}
 		}
 		
-		dprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
+		sudprintf("i1  x:%d s :%c: \ts+1 :%c: \n",index, *s, *(s + 1));
 		//else 
 		if(index == 1 && !(*s == ' ' || *s == '-' || *s == '_' || *s  == '~'  ) ) {
 			char *t = (s + 1);
-			dprintf("i2  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
+			sudprintf("i2  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
 			if( *t == ' ' || *t == '-' || *t == '_' || *t  == '~' ) {
-				dprintf("ii  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
+				sudprintf("ii  s :%c: \ts+1 :%c: \n", *s, *(s + 1));
 				if (*t == '~' && dashes > 0 ) t++;
 				ans[index] = t;
-				dprintf("index[%d]='%s'\n",index,t);
+				sudprintf("index[%d]='%s'\n",index,t);
 				break;
 			}
 		}
@@ -115,7 +115,7 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 		EP_GET_NAME(ans, name, names[i]);
 		EP_GET_NUMBER(ans, num);
 
-		dprintf("%s %ld\n", name, num );
+		sudprintf("%s %ld\n", name, num );
 		HASH_FIND_STR(hash, name, h);
 		// add the file to the hash if it is not there
 		if ( h == NULL ) {
@@ -134,7 +134,7 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 	}
 
 	*length = HASH_COUNT(hash);
-	dprintf("new length: %d\n", *length);
+	sudprintf("new length: %d\n", *length);
 	char **new_names;
 	if(add_null_string){
 		*length += 1;
@@ -148,7 +148,7 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 	for (int i = 0; hash; i++ ) {
 		h = hash;
 		HASH_DEL(hash, h);
-		dprintf("key:'%s' \tnum:'%d'\n", h->key, h->num );
+		sudprintf("key:'%s' \tnum:'%d'\n", h->key, h->num );
 		new_names[i] = h->full;
 		free(h->key);
 		free(h);
@@ -299,7 +299,7 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 		}
 		strncpy(&in[add], start, length);
 		in[length+add] = '\0';
-		dprintf("in %s\n", in);
+		sudprintf("in %s\n", in);
 		
 		
 		HASH_FIND_STR( hash, in, h);
@@ -309,7 +309,7 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 			res[i] = str_replace_e(start,  length+add , in, h->val,pipe ? '|' : '\0'  );
 		}
 		res_len[i] = strlen(res[i]);
-		dprintf("res[%d] %d %s\n",i, res_len[i], res[i] );
+		sudprintf("res[%d] %d %s\n",i, res_len[i], res[i] );
 		
 		total     += res_len[i];
 
@@ -338,7 +338,7 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	int sub_len = strlen(sub);
 	int r_len   = len * 2 + rep_len + 25;
 	char *r     = malloc( r_len );
-	dprintf("s %s %zu sub %s rep %s \n", s,len, sub, rep);
+	sudprintf("s %s %zu sub %s rep %s \n", s,len, sub, rep);
 	
 	// counters for s and r
 	int is = 0, ir = 0;
@@ -366,7 +366,7 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	
 	if (end != '\0') r[ir++] = end;
 	r[ir] = '\0';
-	dprintf("r %s\n", r);
+	sudprintf("r %s\n", r);
 	return r;
 }
 
@@ -384,7 +384,7 @@ Mapping *load_hash (const char *filename){
 		h->key = strdup("___test___");
 		h->val = strdup("___test___");
 		HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
-		dprintf("hash  %s not found \n", filename);
+		sudprintf("hash  %s not found \n", filename);
 		return hash;
 	}
 	char lens[6];
@@ -392,7 +392,7 @@ Mapping *load_hash (const char *filename){
 	while (fgets(lens, 6, hfile) != NULL ){
 		key_len = lens[0] - 48;
 		val_len = strtol(&lens[2], NULL , 10);
-		dprintf("kl:%i vl:%i\n", key_len,val_len);
+		sudprintf("kl:%i vl:%i\n", key_len,val_len);
 		
 		// +3 r - \t and \n
 		char key[key_len+1], val[val_len+3];
@@ -401,7 +401,7 @@ Mapping *load_hash (const char *filename){
 		// gets rid of newline
 		val[val_len+1] ='\0'; 
 		
-		dprintf("k:'%s' v:'%s'\n", key,&val[1]);
+		sudprintf("k:'%s' v:'%s'\n", key,&val[1]);
 		h = (Mapping*) malloc(sizeof(Mapping));
 		h->key = strdup(key);
 		h->val = strdup(&val[1]);

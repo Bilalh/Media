@@ -209,7 +209,11 @@ char *str_lower(char *s, size_t length);
 int match(const char *string, char *pattern);
 
 
-
+#ifdef SUDEBUG
+#define sudprintf(fmt,...) dprintf(fmt, ...) 
+#else 
+#define sudprintf(fmt,...)
+#endif
 
 
 #endif
