@@ -152,7 +152,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	}
 	// Forks to allow the progam to set the options of the player e.g. afloat
 	pid_t pid =  fork();
-	if ( pid != 0 ){
+	if ( pid != 0 ){ // parent
 		switch (ma->player){
 			case P_MPLAYER: 
 				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, 
@@ -169,7 +169,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 				break;
 			case P_NONE: break;
 		}
-	}else{
+	}else{ // child
 		
 		#define all_afloat \
 		" -e 'tell application " PREFS_MPLAYER_APP_NAME " to activate' " \

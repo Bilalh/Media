@@ -6,7 +6,7 @@
 int main() {
 	char *s;
 	read_history("ddd");
-
+ 
 	s = readline(NULL);
 
 	printf("characters read: %s\n", s);

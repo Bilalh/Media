@@ -3,6 +3,8 @@
 
 // Binaries paths
 #define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-git.mpBinaries/Contents/MacOS/mplayer\""
+#define PREFS_MPLAYER_BINARY_UN_Q "/Users/bilalh/bin/mplayer_osx/mplayer"
+
 #define PREFS_MPLAYER_APP_NAME  "\"mplayer-git.mpBinaries\""
 #define PREFS_VLC_BINARY        "\"/Applications/VLC.app/Contents/MacOS/VLC\""
 

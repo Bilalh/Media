@@ -42,7 +42,7 @@ to_bin:
                            ### Objects ###
 
 objs       = media ml nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
-examples   = optt hashe2 subdir_test colours2
+examples   = optt hashe2 subdir_test colours2 mplayer_fork_input
 c_scripts  = make_man_options 
 
 media_req    = app/media_main.o media.o players.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
@@ -68,7 +68,9 @@ hashe2_req      = examples/hashe2.o
 colours2_req    = examples/colours2.o
 subdir_test_req = ${sub_dirs_req}
 
-make_man_options_req = make_man_options.o ${string_req} ${strutil_req}
+mplayer_fork_input:libs+=-lreadline
+mplayer_fork_input_req = examples/mplayer_fork_input.o
+make_man_options_req   = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
 scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript

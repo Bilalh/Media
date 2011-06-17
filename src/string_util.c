@@ -34,15 +34,14 @@ char** ep_num (char *s) {
 	
 	bool hack = false;
 	
+	// Quick hack to fix space at start of filename
 	if    (*s == ' ') hack = true;
 	while (*s == ' ') s++; 
 	
 	if (hack){
 		start = s;
 		dprintf("Using hack s:'%s' start:'%s' \n", s, start);
-		
 	}
-	
 	
 	// finds the end of the string
 	while (*s != '\0' ) {
