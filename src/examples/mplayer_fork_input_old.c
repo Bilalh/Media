@@ -76,66 +76,79 @@ int main() {
 		close( pipeto[0] );
 		close( pipefrom[1] );
 
-		errMsg("Parent-Parent start\n");
-		int status;
-
-		/* close unused pipe end */
-		close( pipefrom[0] );
-		// writeToPipe( pipeto[1], "p" );
-
-		system("stty raw");
-		FILE *stream;
-		errMsg( "writing\n" );
-		if ( (stream = fdopen( pipeto[1], "w" )) == NULL ) {
-			perror( "fdopen() w" );
+		nPid2 = fork();
+		if ( nPid2 < 0 ) {
+			perror( "fork() 2" );
 			exit(255);
-		}
-		fprintf(stream, "%s", "p");
-		fflush(stream);
+		} else if ( nPid2 == 0 ) { // child
+			errMsg("Parent-child start\n");
+			/* Close pipe write descriptor, or we will never know when the
+			 * writer process closes its end of the pipe and stops feeding the
+			 * exec'ed program. */
+			close( pipeto[1] );
+			readFromPipe( pipefrom[0] );
+		} else {
+			errMsg("Parent-Parent start\n");
+			int status;
 
+			/* close unused pipe end */
+			close( pipefrom[0] );
+			// writeToPipe( pipeto[1], "p" );
 
-		bool line = false;
-		while(1) {
-
-			if (!line) {
-				char c = fgetc(stdin);
-				if (c == 'c') {
-					system("stty cooked");
-					line = true;
-					continue;
-				}
-				fprintf(stream, "%c", c);
-				fflush(stream);
-			} else {
-				char *s;
-				s = readline(">");
-				if (strcmp(s, "c") == 0) {
-					system("stty raw");
-					line = false;
-					continue;
-				}
-				fprintf(stream, "%s", s);
-				fflush(stream);
+			system("stty raw");
+			FILE *stream;
+			errMsg( "writing\n" );
+			if ( (stream = fdopen( pipeto[1], "w" )) == NULL ) {
+				perror( "fdopen() w" );
+				exit(255);
 			}
+			fprintf(stream, "%s", "p");
+			fflush(stream);
 
 
-			usleep(1);
+			bool line = false;
+			while(1) {
+
+				if (!line) {
+					char c = fgetc(stdin);
+					if (c == 'c') {
+						system("stty cooked");
+						line = true;
+						continue;
+					}
+					fprintf(stream, "%c", c);
+					fflush(stream);
+				} else {
+					char *s;
+					s = readline(">");
+					if (strcmp(s, "c") == 0) {
+						system("stty raw");
+						line = false;
+						continue;
+					}
+					fprintf(stream, "%s", s);
+					fflush(stream);
+				}
+
+
+				usleep(1);
+			}
+			system("stty cooked");
+
+			fclose( stream );
+			errMsg( "writing done\n" );
+
+			errMsg( "waiting for readFromPipe\n" );
+			if ( -1 == waitpid( nPid2, &status, 0 ) ) {
+				perror( "waitpid()" );
+				exit(255);
+			}
+			if ( WIFEXITED( status ) )
+				fprintf( stderr, "%d, child %d exit status: %d\n", getpid(), nPid2,	 WEXITSTATUS( status ) );
+			if ( WIFSIGNALED( status ) )
+				fprintf( stderr, "%d, child %d signal status: %d\n", getpid(), nPid2, WTERMSIG( status ) );
+			fflush( stderr );
 		}
-		system("stty cooked");
-
-		fclose( stream );
-		errMsg( "writing done\n" );
-
-		errMsg( "waiting for readFromPipe\n" );
-		if ( -1 == waitpid( nPid2, &status, 0 ) ) {
-			perror( "waitpid()" );
-			exit(255);
-		}
-		if ( WIFEXITED( status ) )
-			fprintf( stderr, "%d, child %d exit status: %d\n", getpid(), nPid2,	 WEXITSTATUS( status ) );
-		if ( WIFSIGNALED( status ) )
-			fprintf( stderr, "%d, child %d signal status: %d\n", getpid(), nPid2, WTERMSIG( status ) );
-		fflush( stderr );
 	}
 	fflush( stdout );
 	return( 0 );
