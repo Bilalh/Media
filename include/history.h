@@ -75,6 +75,9 @@ void set_movie(char *series);
 **/
 char** find_unwatched(char **filenames, int *length, bool free_unused);
 
+
+void show_menu(char **filenames, int *length, bool free_unused);
+
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 
 #endif

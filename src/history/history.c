@@ -190,6 +190,80 @@ void set_movie(char *series){
 }
 
 
+
+void show_menu(char **filenames, int *length, bool free_unused){
+	
+	
+	sqlite3 *db;
+	int result;
+
+	result = sqlite3_open(DATABASE, &db);
+	if( result ) {
+		efprintf("show_menu failed: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		exit(23);
+	}
+	
+	sqlite3_stmt *statement_h;
+	const char *query_h = "select current from SeriesData where Title = ?";
+	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
+	
+	int file_num = *length;
+	for(int i = 0; i < file_num; ++i){
+		
+		char **ep_num_ans  = ep_num(filenames[i]);
+		if (ep_num_ans[0] != NULL){
+			EP_GET_NUMBER(ep_num_ans,num);
+			EP_GET_NAME(ep_num_ans, s_title, filenames[i]);
+			sqlite3_bind_text(statement_h, 1, s_title, -1, SQLITE_TRANSIENT);
+			
+			result = sqlite3_step(statement_h);
+			dprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
+			
+			// check latest
+			if (result == SQLITE_ROW||  result == SQLITE_OK  || result == SQLITE_DONE){
+				
+				int current = sqlite3_column_int(statement_h, 0);
+				dprintf("current:%d\n",current );
+				
+				printf(SSS("%-2d") ":  N: " SSS("%2ld") "  P: "  SSS("%2d") " %s \n", 
+					COLOUR(i,GREEN),COLOUR(num,BLUE),COLOUR(current,BLUE), s_title );
+				
+				
+			}else{
+				efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+				exit(12);
+			}
+			
+			result = sqlite3_reset(statement_h);
+		}else{
+			efprintf("ep_num null in media (%s)\n", filenames[i]);
+			exit(22);
+		}
+	}
+
+	sqlite3_finalize(statement_h);
+	sqlite3_close(db);
+
+	int res = -1;
+	while (res < 0 || res >= file_num){
+		printf("%s [%d,%d]\n", "Choose an Episode to watch in", 0, file_num-1);
+		scanf("%d", &res);
+		//TODO better line length
+		char f_buff[4096];
+		fgets(f_buff, 4096, stdin);
+	}
+	
+	// Picks only the chosen entry 
+	// TODO free other entries
+	filenames[0] = filenames[res];
+	if (file_num >1){
+		filenames[1] = '\0';
+	}
+	file_num = 1;
+	*length = file_num;
+}
+
 char** find_unwatched(char **filenames, int *length, bool free_unused) {
 	assert(filenames);
 	
@@ -201,9 +275,9 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 
 	result = sqlite3_open(DATABASE, &db);
 	if( result ) {
-		efprintf(  "No history written: %s\n", sqlite3_errmsg(db));
+		efprintf(  "find_unwatched failed: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
-		return false;
+		exit(33);
 	}
 
 	sqlite3_stmt *statement_h;
@@ -246,6 +320,7 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 				new_filenames[index++] = *filenames;
 			}else{
 				efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
+				exit(18);
 			}
 			
 			
