@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <unistd.h>
 #include <include/debug.h>
 #include <include/players.h>
 #include <prefs.h>
@@ -18,12 +19,16 @@ void mplayer(char **filenames, int num_of_files, int total_length,
 			 char *prefix_args, char *postfix_args, char *filepath, bool background) 
 {
 	
-	// mplayer binary
+	// // mplayer binary
 	char *command = make_command(PREFS_MPLAYER_BINARY, filenames, num_of_files, total_length, 
 								 prefix_args, postfix_args, filepath, background);
 	// printf("%s\n", command);
 	// strdup is needed
 	system(strdup(command));
+	
+	// exec
+	// chdir(filepath);
+	// execvp( PREFS_MPLAYER_BINARY_UN_Q, "mplayer", filenames );
 }
 
 void mplayer_gui(char **filenames, int num_of_files, int total_length, char *filepath) 
