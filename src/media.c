@@ -26,6 +26,41 @@
 // #define VIDEO  ".*\\.(mp4)$"
 
 
+void show_menu(char **filenames, int *length, bool free_unused){
+	int file_num = *length;
+	for(int i = 0; i < file_num; ++i){
+		
+		char **ep_num_ans  = ep_num(filenames[i]);
+		if (ep_num_ans[0] != NULL){
+			EP_GET_NUMBER(ep_num_ans,num);
+			EP_GET_NAME(ep_num_ans, s_title, filenames[i]);
+			
+			printf(SSS("%-2d") ":  N: "SSS("%2ld") " %s \n", COLOUR(i,GREEN),COLOUR(num,BLUE), s_title );
+		}else{
+			efprintf("ep_num null in media (%s)\n", filenames[i]);
+			exit(22);
+		}
+	}
+
+	int res = -1;
+	while (res < 0 || res >= file_num){
+		printf("%s [%d,%d]\n", "Choose an Episode to watch in", 0, file_num-1);
+		scanf("%d", &res);
+		//TODO better line length
+		char f_buff[4096];
+		fgets(f_buff, 4096, stdin);
+	}
+	
+	// Picks only the chosen entry 
+	// TODO free other entries
+	filenames[0] = filenames[res];
+	if (file_num >1){
+		filenames[1] = '\0';
+	}
+	file_num = 1;
+	*length = file_num;
+}
+
 void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	assert(path); assert(ma); assert(args);
@@ -108,36 +143,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	// shows menu
 	if (ma->menu){
-		for(int i = 0; i < file_num; ++i){
-			
-			char **ep_num_ans  = ep_num(s_arr[i]);
-			if (ep_num_ans[0] != NULL){
-				EP_GET_NUMBER(ep_num_ans,num);
-				EP_GET_NAME(ep_num_ans, s_title, s_arr[i]);
-				
-				printf(SSS("%-2d") ":  N: "SSS("%2ld") " %s \n", COLOUR(i,GREEN),COLOUR(num,BLUE), s_title );
-			}else{
-				efprintf("ep_num null in media (%s)\n", s_arr[i]);
-				exit(22);
-			}
-		}
-	
-		int res = -1;
-		while (res < 0 || res >= file_num){
-			printf("%s [%d,%d]\n", "Choose an Episode to watch in", 0, file_num-1);
-			scanf("%d", &res);
-			//TODO better line length
-			char f_buff[4096];
-			fgets(f_buff, 4096, stdin);
-		}
-		
-		// Picks only the chosen entry 
-		// TODO free other entries
-		s_arr[0] = s_arr[res];
-		if (file_num >1){
-			s_arr[1] = '\0';
-		}
-		file_num = 1;
+		show_menu(s_arr, &file_num,true);
 	}
 	
 	if(ma->pl_output & PL_STDOUT){

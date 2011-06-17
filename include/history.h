@@ -71,11 +71,7 @@ void set_movie(char *series);
 
 /**
  * @brief Finds the files that have not been watched 
- *
- * @param filenames 
- * @param length 
- * @param free_unused 
- * @return 
+ * @return the files that have not be watched 
 **/
 char** find_unwatched(char **filenames, int *length, bool free_unused);
 
