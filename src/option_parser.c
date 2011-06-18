@@ -224,8 +224,8 @@ void print_help(char *arg){
 		);
 	}
 	
-	for(int i = start; i < length; ++i){
-		printf("\n" RESET GREEN "%i. %s" RESET "\n",i, HELP_LINK[i].grouping);
+	for(size_t i = start; i < length; ++i){
+		printf("\n" RESET GREEN "%zu. %s" RESET "\n",i, HELP_LINK[i].grouping);
 		for(int j = 0; j < HELP_LINK[i].length; j++){
 			sub_print_help(&HELP_LINK[i].links[j]);
 		}
@@ -256,13 +256,13 @@ static void sub_print_help(const Element *ele){
 	ioctl(0, TIOCGSIZE, &ts);
 	
 	const char *ho = ele->help; 
-	int h_len = strlen(ho), h_num = ts.ts_cols - 33, h_cur = h_num;
+	size_t h_len = strlen(ho), h_num = ts.ts_cols - 33, h_cur = h_num;
 	if (h_num < 5) h_num = 5;
 	char hh[h_num + 2]; 
 	
 	// puts short words like 'the', 'or' and 'then' on the next like.
 	bool changed = false;
-	for(int i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
+	for(size_t i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
 		if (ho[i] == ' '){
 			h_cur = i;
 			changed = true;

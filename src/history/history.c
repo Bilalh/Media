@@ -39,7 +39,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 
 	bool si_u = false, si_s = false, si_su = false;
 
-	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
+	sqlite3_prepare_v2(db, query_h, (int) strlen(query_h), &statement_h, NULL);
 
 	struct tm* timeinfo = currentTime();
 	char now[20];
@@ -72,7 +72,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 			// for status
 			if (status == S_SKIP_UPDATED) {
 				if(! si_su) {
-					sqlite3_prepare_v2(db, query_si_su, strlen(query_si_su), &statement_si_su, NULL);
+					sqlite3_prepare_v2(db, query_si_su, (int) strlen(query_si_su), &statement_si_su, NULL);
 					si_su = true;
 				}
 				sqlite3_bind_text(statement_si_su, 3, s, -1, SQLITE_TRANSIENT);
@@ -88,7 +88,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 
 			} else if (status == S_UPDATED) {
 				if(! si_u) {
-					sqlite3_prepare_v2(db, query_si_u, strlen(query_si_u), &statement_si_u, NULL);
+					sqlite3_prepare_v2(db, query_si_u, (int) strlen(query_si_u), &statement_si_u, NULL);
 					si_u = true;
 				}
 				sqlite3_bind_text(statement_si_u, 2, s, -1, SQLITE_TRANSIENT);
@@ -102,7 +102,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				dprintf("up reset: %i\n\n", result);
 			} else if(status == S_SKIP) {
 				if(! si_s) {
-					sqlite3_prepare_v2(db, query_si_s, strlen(query_si_s), &statement_si_s, NULL);
+					sqlite3_prepare_v2(db, query_si_s, (int) strlen(query_si_s), &statement_si_s, NULL);
 					si_s = true;
 				}
 				sqlite3_bind_text(statement_si_s, 2, s, -1, SQLITE_TRANSIENT);
@@ -191,7 +191,7 @@ void set_movie(char *series){
 
 
 
-void show_menu(char **filenames, int *length, bool free_unused){
+void show_menu(char **filenames, size_t *length, bool free_unused){
 	
 	
 	sqlite3 *db;
@@ -206,9 +206,9 @@ void show_menu(char **filenames, int *length, bool free_unused){
 	
 	sqlite3_stmt *statement_h;
 	const char *query_h = "select current from SeriesData where Title = ?";
-	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
+	sqlite3_prepare_v2(db, query_h, (int) strlen(query_h), &statement_h, NULL);
 	
-	int file_num = *length;
+	size_t file_num = *length;
 	for(int i = 0; i < file_num; ++i){
 		
 		char **ep_num_ans  = ep_num(filenames[i]);
@@ -247,7 +247,7 @@ void show_menu(char **filenames, int *length, bool free_unused){
 
 	int res = -1;
 	while (res < 0 || res >= file_num){
-		printf("%s [%d,%d]\n", "Choose an Episode to watch in", 0, file_num-1);
+		printf("%s [%d,%zu]\n", "Choose an Episode to watch in", 0, file_num-1);
 		scanf("%d", &res);
 		//TODO better line length
 		char f_buff[4096];
@@ -264,7 +264,7 @@ void show_menu(char **filenames, int *length, bool free_unused){
 	*length = file_num;
 }
 
-char** find_unwatched(char **filenames, int *length, bool free_unused) {
+char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 	assert(filenames);
 	
 	char **new_filenames = malloc(sizeof(char*) * (*length +1) );
@@ -282,7 +282,7 @@ char** find_unwatched(char **filenames, int *length, bool free_unused) {
 
 	sqlite3_stmt *statement_h;
 	const char *query_h = "select current from SeriesData where Title = ?";
-	sqlite3_prepare_v2(db, query_h, strlen(query_h), &statement_h, NULL);
+	sqlite3_prepare_v2(db, query_h, (int) strlen(query_h), &statement_h, NULL);
 
 	while(*filenames != NULL) {
 		

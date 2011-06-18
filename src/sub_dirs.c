@@ -27,7 +27,7 @@
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 
 static StringArray *file_name_buffer;
-static int getFilesRec_at_total_length;
+static size_t getFilesRec_at_total_length;
 static bool getFilesRec_at_safe;
 MAKE_REGEX_VARS(getFilesRec_at);
 MAKE_REGEX_VARS(getFilesRec_safe);
@@ -127,7 +127,7 @@ StringsPlusMeta* get_files(char *dir, char *regex, bool safe) {
 	}
 
 	char **sa = malloc(sizeof(char*) * file_num+1);
-	int total_length = 0;
+	size_t total_length = 0;
 	for(int i = 0 ; i < file_num; ++i) {
 		sa[i] = strdup(files[i]->d_name);
 		total_length += strlen(sa[i]);

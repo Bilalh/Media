@@ -5,7 +5,7 @@
 typedef struct{
 	char **str_arr;
 	int length;
-	int total_length;
+	size_t total_length;
 } StringsPlusMeta;
 
 /**

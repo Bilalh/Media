@@ -27,7 +27,7 @@ void new_string(String *s, int length ){
 // adds a space before append the string if add_space
 void string_add(String *s, char *str, bool add_space_before) {
 	assert(s); assert(str);
-	int str_len = strlen(str);
+	size_t str_len = strlen(str);
 	sbdprintf("a ind %i len %i \n", s->index, s->length);
 	if ( (s->length - s->index) < str_len +1 ) { // 1 for \0
 		sbdprintf("reallocing to %d\n", s->length);

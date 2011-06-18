@@ -8,8 +8,8 @@
 #define STRING_SHOW_FAIL_DATA(S,exp) \
 		printf("%s%-14s: '%s'\n", ERROR_SEP, "expected",    exp    );\
 		printf("%s%-14s: '%s'\n", ERROR_SEP, "act->str",    S->str    );\
-		printf("%s%-14s: %i \n" , ERROR_SEP, "act->index",  S->index  );\
-		printf("%s%-14s: %i \n" , ERROR_SEP, "act->length", S->length );
+		printf("%s%-14s: %zu \n" , ERROR_SEP, "act->index",  S->index  );\
+		printf("%s%-14s: %zu \n" , ERROR_SEP, "act->length", S->length );
 		
 
 bool string_test_start (char *name, String *actual, char *expected  ){

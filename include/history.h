@@ -73,10 +73,10 @@ void set_movie(char *series);
  * @brief Finds the files that have not been watched 
  * @return the files that have not be watched 
 **/
-char** find_unwatched(char **filenames, int *length, bool free_unused);
+char** find_unwatched(char **filenames, size_t *length, bool free_unused);
 
 
-void show_menu(char **filenames, int *length, bool free_unused);
+void show_menu(char **filenames, size_t *length, bool free_unused);
 
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 

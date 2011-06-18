@@ -69,7 +69,7 @@
 			 pcre_##name,           /* the compiled pattern */\
 			 NULL,                  /* no extra data*/\
 			 str,                   /* the subject string */\
-			 length,                /* the length of the subject */\
+			 (int) length,                /* the length of the subject */\
 			 0,                     /* start at the offset in the subject */\
 			 0,                     /* default options */\
 			 pcre_ovector_##name,   /* output vector for substring information */\

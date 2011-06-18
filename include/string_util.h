@@ -27,7 +27,7 @@ char** ep_num(char *s);
  * @param add_null_string - Add a empty a string at the end
  * @return  A array of strings with newest names
 **/
-char **newest_only (char **names, int *length, bool free_unused, bool add_null_string);
+char **newest_only (char **names, unsigned long *length, bool free_unused, bool add_null_string);
 
 /**
  * @brief Takes a list of files with numbers and returns only the oldest episode(s)
@@ -37,10 +37,10 @@ char **newest_only (char **names, int *length, bool free_unused, bool add_null_s
  * @param add_null_string - Add a empty a string at the end
  * @return  A array of strings with newest names
 **/
-char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string);
+char **oldest_only (char **names, unsigned long *length, bool free_unused, bool add_null_string);
 
 
-typedef int (^FilterBlock)(const char *current_name, const char *new_name, int current_num, int new_num );
+typedef int (^FilterBlock)(const char *current_name, const char *new_name, unsigned long current_num, unsigned long new_num );
 
 /**
  * @brief Takes a list of files with numbers and returns only the filtered episode(s)
@@ -51,7 +51,7 @@ typedef int (^FilterBlock)(const char *current_name, const char *new_name, int c
  * @param filter          - A block that should return non zero if the file is to be inculded  
  * @return  A array of strings with filter names
 **/
-char **filter_files(char **names, int *length, bool free_unused, bool add_null_string, FilterBlock filter );
+char **filter_files(char **names, unsigned long *length, bool free_unused, bool add_null_string, FilterBlock filter );
 
 /**
  * @brief Places the number in var
@@ -159,8 +159,8 @@ char *spilt_args(char **arr, size_t length, char *separator, char *beginning, ch
 typedef struct {
 	char **args; ///< args
 	int  length;
-	int  *lengths;
-	int  total;
+	size_t  *lengths;
+	size_t  total;
 } SpiltData;
 
 

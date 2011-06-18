@@ -5,8 +5,8 @@
 
 typedef struct {
 	char *str;
-	int length;
-	int index;
+	size_t length;
+	size_t index;
 } String;
 
 

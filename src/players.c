@@ -9,13 +9,13 @@
 #include <prefs.h>
 
 // Makes the command for vlc and mplayer
-static char *make_command(const char *bin_path, char **filenames, int num_of_files,
-						  int total_length, char *prefix_args, char *postfix_args, 
+static char *make_command(const char *bin_path, char **filenames, size_t num_of_files,
+						  size_t total_length, char *prefix_args, char *postfix_args, 
 						  char *filepath, bool background);
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call mplayer from.
-void mplayer(char **filenames, int num_of_files, int total_length, 
+void mplayer(char **filenames, size_t num_of_files, size_t total_length, 
 			 char *prefix_args, char *postfix_args, char *filepath, bool background) 
 {
 	
@@ -31,7 +31,7 @@ void mplayer(char **filenames, int num_of_files, int total_length,
 	// execvp( PREFS_MPLAYER_BINARY_UN_Q, "mplayer", filenames );
 }
 
-void mplayer_gui(char **filenames, int num_of_files, int total_length, char *filepath) 
+void mplayer_gui(char **filenames, size_t num_of_files, size_t total_length, char *filepath) 
 {
 	
 	// mplayer binary
@@ -44,7 +44,7 @@ void mplayer_gui(char **filenames, int num_of_files, int total_length, char *fil
 
 /// \brief Filenames should end with "", total length the length of all the strings
 /// filepath, to the directory to call vlc from.	
-void vlc(char **filenames, int num_of_files, int total_length, 
+void vlc(char **filenames, size_t num_of_files, size_t total_length, 
 		 char *prefix_args, char *postfix_args, char *filepath)
 {
 	
@@ -55,8 +55,8 @@ void vlc(char **filenames, int num_of_files, int total_length,
 	system(strdup(command));
 }
 
-static char *make_command(const char *bin_path, char **filenames, int num_of_files,
-						  int total_length, char *prefix_args, char *postfix_args, 
+static char *make_command(const char *bin_path, char **filenames, size_t num_of_files,
+						  size_t total_length, char *prefix_args, char *postfix_args, 
 						  char *filepath, bool background)
 {
 	assert(bin_path); assert(filenames); assert(prefix_args);
@@ -68,10 +68,10 @@ static char *make_command(const char *bin_path, char **filenames, int num_of_fil
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
 
-	int index        = strlen(filepath);
-	int rid_len      = strlen(rid);
-	int m_len        = strlen(bin_path);
-	int space_quotes = num_of_files * 3; // for space and 2""
+	size_t index        = strlen(filepath);
+	size_t rid_len      = strlen(rid);
+	size_t m_len        = strlen(bin_path);
+	size_t space_quotes = num_of_files * 3; // for space and 2""
 
 	//CHECK 1 from (8 for mplayer)
 	char *m_args = malloc(sizeof(char)* 

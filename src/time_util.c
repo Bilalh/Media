@@ -57,7 +57,8 @@ struct tm *parse_time(char **str, int length) {
 	
 	struct tm* tm = currentTime();
     
-	int total =  1, str_index = 0, index =0;
+	size_t total =  1, str_index = 0;
+	int index =0;
 	for(int i = 0; i < length; ++i){
 		total += strlen(str[i]) +1 ; //for space
 	}
@@ -92,7 +93,7 @@ struct tm *parse_time(char **str, int length) {
 	#define STRARR_MATCH_REGEX(regex) (MATCH_REGEX(regex, strarr[index], index_len) >= 0)
 
 	while (index < length){
-		int index_len = strlen(strarr[index]);
+		size_t index_len = strlen(strarr[index]);
 		
 		// Shows which regex the string matches at the current index
 		
@@ -122,7 +123,7 @@ struct tm *parse_time(char **str, int length) {
 				// printf("%c\n", *am_pm_start);
 				
 				if (*am_pm_start == ':' ){
-					int offset = am_pm_start - strarr[index+has_at];
+					size_t offset = am_pm_start - strarr[index+has_at];
 					// printf("offset %c\n", strarr[index+has_at][offset+1]);
 					min    = strtol(&strarr[index+has_at][offset+1], &am_pm_start, 10);
 					// printf("ampm %c\n", *am_pm_start);
@@ -136,8 +137,8 @@ struct tm *parse_time(char **str, int length) {
 					hour = 0;
 				}
 				
-				tm->tm_hour = hour + am_pm;
-				tm->tm_min  = min;
+				tm->tm_hour = (int) (hour + am_pm);
+				tm->tm_min  = (int) min;
 				tm->tm_sec  = 0;
 				
 				index++;
@@ -155,8 +156,8 @@ struct tm *parse_time(char **str, int length) {
 			strncpy(s_hour,strarr[index+has_at],h_len);
 			s_hour[h_len] ='\0';
 
-			tm->tm_hour = strtol(s_hour, NULL, 10);
-			tm->tm_min  = strtol(&strarr[index+has_at][h_len+1], NULL, 10);
+			tm->tm_hour = (int) strtol(s_hour, NULL, 10);
+			tm->tm_min  = (int) strtol(&strarr[index+has_at][h_len+1], NULL, 10);
 			index      += 1 + has_at;
 			continue;
 				
@@ -244,9 +245,9 @@ struct tm *parse_time(char **str, int length) {
 				strptime(strarr[index+1], "%b", tm);
 				// parses the month's day
 				char day[2];
-				int  day_len = (strarr[index+1] - strarr[index] - 3);
+				size_t  day_len = (strarr[index+1] - strarr[index] - 3);
 				strncpy(day, strarr[index], day_len);
-				tm->tm_mday = strtol(day, NULL, 10);
+				tm->tm_mday = (int) strtol(day, NULL, 10);
 				
 				if (REGEX_RESULT(n_month) == 3){
 					strptime(strarr[index+2], " %Y", tm);
@@ -268,7 +269,7 @@ struct tm *parse_time(char **str, int length) {
 
 // parse n (days|hours|minutes) and increments index by 2; 
 void parse_time_spec(char** strarr, struct tm* tm, int *index, int multiplier){
-	long num = strtol(strarr[*index], NULL, 10);			
+	int num = (int) strtol(strarr[*index], NULL, 10);			
 	switch (*strarr[*index+1]){
 		case 'm': tm->tm_min  += multiplier * num;
 		break;

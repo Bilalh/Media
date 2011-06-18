@@ -82,11 +82,11 @@ fail:
 		){
 			printf(" %s %-15s: '%s'\n","act", names[i] ,strs[i][0]->str  );
 			printf(" %s %-15s: '%s'\n","exp", names[i] ,strs[i][1]->str  );
-			printf(" act %s len: %-3i %10s: %-3i \n", 
+			printf(" act %s len: %-3zu %10s: %-3zu \n", 
 				names[i], strs[i][0]->length,
 				"index", strs[i][0]->index 
 			);
-			printf(" exp %s len: %-3i %10s: %-3i \n", 
+			printf(" exp %s len: %-3zu %10s: %-3zu \n", 
 				names[i], strs[i][1]->length,
 				"index", strs[i][1]->index 
 			);

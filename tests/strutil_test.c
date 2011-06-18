@@ -598,19 +598,19 @@ Section("newest_only"){
 		}
 	};
 	
-	int lens[][2]={
+	size_t lens[][2]={
 		{8,2},
 		{5,3},
 		{30,5},
 		{30,5}
 	};
 	
-	for(int i = 0; i < sizeof(in) / sizeof(in[0]); ++i) {
+	for(size_t i = 0; i < sizeof(in) / sizeof(in[0]); ++i) {
 		char title[9];
-		sprintf(title, "Test %2d",i );
+		sprintf(title, "Test %2zu",i );
 		StrutilTestM(title, {
-			int act_len  = lens[i][0];
-			int exp_len  = lens[i][1];
+			size_t act_len  = lens[i][0];
+			size_t exp_len  = lens[i][1];
 			char **act  = newest_only(in[i], &act_len, false, i == 1 ?true: false);
 
 			if (exp_len != act_len ){
@@ -644,7 +644,7 @@ Section("newest_only"){
 					extra      = act;
 				}
 
-				eprintf("length exp: %d act: %d \n", exp_len, act_len );
+				eprintf("length exp: %d act: %zu \n", exp_len, act_len );
 				for(int j = 0; j < min; ++j) {
 					eprintf("[%2d] act: %-30s   exp: %-30s \n", j, act[j], out[i][j] );
 				}

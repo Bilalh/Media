@@ -19,9 +19,11 @@
 typedef struct {
 	char *key;
 	char *full;
-	int   num;
+	long   num;
 	UT_hash_handle hh;
 } Newest; // TODO give better name 
+
+//TODO change HASH_FIND_STR to use 64 bit pointers
 
 char** ep_num (char *s) {
 	assert (s);
@@ -98,7 +100,7 @@ char** ep_num (char *s) {
 	return ans;
 }
 
-char **filter_files(char **names, int *length, bool free_unused, bool add_null_string, FilterBlock filter ){
+char **filter_files(char **names, unsigned long *length, bool free_unused, bool add_null_string, FilterBlock filter ){
 	Newest *hash = NULL, *h;
 
 	for(int i = 0; i < *length; ++i) {
@@ -123,7 +125,7 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 			h->full = full_path; //names[i];
 			h->key  = strdup(name);
 			h->num  = num;
-			HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+			HASH_ADD_KEYPTR( hh, hash, h->key, (int) strlen(h->key), h );
 		// otherwise just change the data
 		} else if( filter(h->full,full_path, h->num, num )) {
 			h->num  = num;
@@ -158,18 +160,18 @@ char **filter_files(char **names, int *length, bool free_unused, bool add_null_s
 }
 
 
-char **newest_only (char **names, int *length, bool free_unused, bool add_null_string){
+char **newest_only (char **names, unsigned long *length, bool free_unused, bool add_null_string){
 	return filter_files(names, length, free_unused, add_null_string, 
-		^(const char *current_name, const char *new_name, int current_num, int new_num){
+		^(const char *current_name, const char *new_name, unsigned long current_num, unsigned long new_num){
 			return new_num > current_num;
 		}
 	);
 }
 
-char **oldest_only (char **names, int *length, bool free_unused, bool add_null_string){
+char **oldest_only (char **names, unsigned long *length, bool free_unused, bool add_null_string){
 	return filter_files(names, length, free_unused, add_null_string, 
-		^(const char *current_name, const char *new_name, int current_num, int new_num){
-			return new_num < current_num;
+		^(const char *current_name, const char *new_name, unsigned long current_num, unsigned long new_num){
+			return new_num < current_num; 
 		}
 	);
 }
@@ -220,7 +222,7 @@ char *spilt_args (char **arr, size_t length, char *separator, char *beginning, c
 	assert(beginning); assert(ending); assert(hash_file);
 	
 	SpiltData *sd_arr[length];
-	int total = 0; // memory needed for final string
+	size_t total = 0; // memory needed for final string
 	
 	// expand each element
 	Mapping *hash = NULL;
@@ -231,13 +233,13 @@ char *spilt_args (char **arr, size_t length, char *separator, char *beginning, c
 		total += sd_arr[i]->total;
 	}
 
-	int sep_len   = strlen(separator);
-	int beg_len   = strlen(beginning);
-	int end_len   = strlen(ending);
+	size_t sep_len   = strlen(separator);
+	size_t beg_len   = strlen(beginning);
+	size_t end_len   = strlen(ending);
 	size_t memory = // 1 for \0
 		(sizeof(char) * total) + (sep_len * (length - 1)) + end_len + 1;
 	char *final_str = malloc(memory);
-	int index = 0;
+	size_t index = 0;
 	if (beg_len >0){
 		strncpy(&final_str[index], beginning, beg_len);
 		index += beg_len;
@@ -265,10 +267,10 @@ char *spilt_args (char **arr, size_t length, char *separator, char *beginning, c
 SpiltData *str_spilt_func (char *s, Mapping *hash) {
 	assert (s);
 	
-	char *start   = s;
-	char **res    = malloc(sizeof(size_t) * 5);
-	int  *res_len = malloc(sizeof(int) * 5);
-	int total = 0;
+	char   *start   = s;
+	char   **res    = malloc(sizeof(size_t) * 5);
+	size_t *res_len = malloc(sizeof(size_t) * 5);
+	size_t total = 0;
 	int i     = 0;
 	Mapping *h;
 	
@@ -286,7 +288,7 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 			if (*s == '|' ) pipe = 1;
 		}
 		
-		int length = s - start;
+		size_t length = s - start;
 		int add = 0;
 		
 		if (*start == '|' ) {
@@ -304,7 +306,7 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 		
 		HASH_FIND_STR( hash, in, h);
 		if (h == NULL){
-			res[i] =  str_replace_e(start,  length+add , in, in, pipe ? '|' : '\0'  );
+			res[i] =  str_replace_e(start,  length+(size_t)add , in, in, pipe ? '|' : '\0'  );
 		}else{
 			res[i] = str_replace_e(start,  length+add , in, h->val,pipe ? '|' : '\0'  );
 		}
@@ -316,7 +318,7 @@ SpiltData *str_spilt_func (char *s, Mapping *hash) {
 		if (*s == '|') {
 			++s;
 		}else{
-		}
+		} 
 		start = s;
 		++i;
 
@@ -334,14 +336,14 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 	
 	assert(s); assert(sub); assert(rep); assert(len >=0);
 	
-	int rep_len = strlen(rep);
-	int sub_len = strlen(sub);
-	int r_len   = len * 2 + rep_len + 25;
+	size_t rep_len = strlen(rep);
+	size_t sub_len = strlen(sub);
+	size_t r_len   = len * 2 + rep_len + 25;
 	char *r     = malloc( r_len );
 	sudprintf("s %s %zu sub %s rep %s \n", s,len, sub, rep);
 	
 	// counters for s and r
-	int is = 0, ir = 0;
+	size_t is = 0, ir = 0;
 	while(is < len) {
 		// CHECK mallocing fixed?
 		
@@ -350,7 +352,7 @@ char *str_replace_e (char *s, size_t len,  char *sub, char *rep, char end) {
 			r_len = r_len * 2 + 1;
 			r = realloc(r, r_len);
 			if (r == NULL){
-				efprintf("%i %s\n", r_len, "realloc error in str_replace_e" );
+				efprintf("%zu %s\n", r_len, "realloc error in str_replace_e" );
 			}
 		}
 		
@@ -383,7 +385,7 @@ Mapping *load_hash (const char *filename){
 		h = (Mapping*) malloc(sizeof(Mapping));
 		h->key = strdup("___test___");
 		h->val = strdup("___test___");
-		HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+		HASH_ADD_KEYPTR( hh, hash, h->key, (int) strlen(h->key), h );
 		sudprintf("hash  %s not found \n", filename);
 		return hash;
 	}
@@ -391,7 +393,7 @@ Mapping *load_hash (const char *filename){
 	int key_len, val_len;
 	while (fgets(lens, 6, hfile) != NULL ){
 		key_len = lens[0] - 48;
-		val_len = strtol(&lens[2], NULL , 10);
+		val_len = (int) strtol(&lens[2], NULL , 10);
 		sudprintf("kl:%i vl:%i\n", key_len,val_len);
 		
 		// +3 r - \t and \n
@@ -405,7 +407,7 @@ Mapping *load_hash (const char *filename){
 		h = (Mapping*) malloc(sizeof(Mapping));
 		h->key = strdup(key);
 		h->val = strdup(&val[1]);
-		HASH_ADD_KEYPTR( hh, hash, h->key, strlen(h->key), h );
+		HASH_ADD_KEYPTR( hh, hash, h->key, (int) strlen(h->key), h );
 	}
 	return hash;
 }
@@ -418,7 +420,7 @@ bool strcmp_null (const char *s1, const char *s2 ){
 
 
 void shuffle(void **array, size_t n) {
-  srand ( time(NULL) );
+  srand( (int) time(NULL) );
 	if (n > 1) {
 		for (size_t i = 0; i < n - 1; i++) {
 			size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
@@ -431,8 +433,7 @@ void shuffle(void **array, size_t n) {
 
 
 void reverse(void** arr, size_t length){
-	int i,j;
-	for(i = 0, j = length -1 ; i < j ; i++,j-- ){
+	for(size_t i = 0, j = length -1 ; i < j ; i++,j-- ){
 		void *t  = arr[i];
 		arr[i]   = arr[j];
 		arr[j]   = t;
