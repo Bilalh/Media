@@ -22,7 +22,7 @@ static void sub_print_help(const Element *ele);
 // creates a new MediaArgs with the default values. 
 // all unmentioned  memebers are set to NULL
 MediaArgs *new_media_args() {
-
+	
 	MediaArgs *ma = malloc(sizeof(MediaArgs));
 	MediaArgs m = {
 		// Selection
@@ -90,21 +90,21 @@ MediaArgs *new_media_args() {
 
 void print_usage(){
 	printf("%s", 
-		"Usage media start_path [args]\n"
-		OPT_MEDIA_ARGS_HELP
-		" Use -h for help"
-		" Use -h[num] for a section in the help\n"
-		" Use -h,{letters} for details of the arg(s)\n"
-	);
+		   "Usage media start_path [args]\n"
+		   OPT_MEDIA_ARGS_HELP
+		   " Use -h for help"
+		   " Use -h[num] for a section in the help\n"
+		   " Use -h,{letters} for details of the arg(s)\n"
+		   );
 }
 
 // Parser the options and returns a MediaArgs struct
 MediaArgs *option_parser(int *p_argc, char ***p_argv) {
-
+	
 	// using argc these cause memeory error with malloc
 	// mmap error 12 can allocate region 
 	// int argc = *p_argc;
-	#define argc (*p_argc)
+#define argc (*p_argc)
 	char **argv = *p_argv;
 	
 	int c, option_index = 0;
@@ -117,7 +117,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	// calculate  total length
 	for(int i = 0; i < HELP_L_LEN; ++i) t_len +=  HELP_LINK[i].length;
 	
-	#define ele(i) HELP_LINK[i].links
+#define ele(i) HELP_LINK[i].links
 	
 	struct option opts[t_len *2 + 1 ];
 	char letters[t_len * 3 + 1]; // since opt with arg needs a : or opt args need :: after it
@@ -126,7 +126,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	for(int i = 0; i < HELP_L_LEN; ++i) {
 		for(int j = 0; j < HELP_LINK[i].length; ++j) {
 			opts[index++] = ele(i)[j].opt;
-
+			
 			if (ele(i)[j].neg == true) {
 				struct option o2 = ele(i)[j].opt;
 				o2.val += 128;
@@ -136,7 +136,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 				o2.name = c2;
 				opts[index++] = o2;
 			}
-
+			
 			if ( VAILD_ASCII(ele(i)[j].opt.val) ) {
 				letters[s_index++] = ele(i)[j].opt.val;
 				Element_ptr[ele(i)[j].opt.val] = (Element*) &ele(i)[j];
@@ -147,7 +147,7 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 					letters[s_index++] = ':';
 					letters[s_index++] = ':';
 				}
-
+				
 			}
 			blocks[ele(i)[j].opt.val] = &ele(i)[j].block;
 			if (ele(i)[j].neg) {
@@ -161,8 +161,8 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	opts[index].has_arg = 0;
 	opts[index].flag    = 0;
 	letters[s_index] = '\0';
-
-
+	
+	
 	// parsers the options
 	while ((c = getopt_long(argc, argv, letters, opts, &option_index)) != -1) {
 		// int this_option_optind = optind ? optind : 1;
@@ -174,8 +174,8 @@ MediaArgs *option_parser(int *p_argc, char ***p_argv) {
 	*p_argc -= optind;
     *p_argv += optind;
 	
-	#undef argc
-	#undef ele
+#undef argc
+#undef ele
 	return ma;
 }
 
@@ -214,14 +214,14 @@ void print_help(char *arg){
 	
 	if (length == s_len && start == 0){
 		printf("%s", 
-			RESET GREEN
-			"Usage media start_path [args]\n"
-			RESET
-			OPT_MEDIA_ARGS_HELP
-			" Use "RESET BLUE "-h" RESET " for help\n"
-			" Use "RESET BLUE "-h" RESET "[num] for a section in the help\n"
-			" Use "RESET BLUE "-h" RESET ",{letters} for details of the arg(s)\n"
-		);
+			   RESET GREEN
+			   "Usage media start_path [args]\n"
+			   RESET
+			   OPT_MEDIA_ARGS_HELP
+			   " Use "RESET BLUE "-h" RESET " for help\n"
+			   " Use "RESET BLUE "-h" RESET "[num] for a section in the help\n"
+			   " Use "RESET BLUE "-h" RESET ",{letters} for details of the arg(s)\n"
+			   );
 	}
 	
 	for(size_t i = start; i < length; ++i){
@@ -230,7 +230,7 @@ void print_help(char *arg){
 			sub_print_help(&HELP_LINK[i].links[j]);
 		}
 	}
- 
+	
 }
 
 // prints the element
@@ -247,7 +247,7 @@ static void sub_print_help(const Element *ele){
 	
 	if (*optr->name != '\0'){
 		if (ele->neg == true) 
-			 sprintf(long_opt, "--[no-]%s",optr->name);
+			sprintf(long_opt, "--[no-]%s",optr->name);
 		else sprintf(long_opt, "--%s",optr->name);
 	}else long_opt[0] = '\0';
 	
@@ -256,13 +256,14 @@ static void sub_print_help(const Element *ele){
 	ioctl(0, TIOCGSIZE, &ts);
 	
 	const char *ho = ele->help; 
-	size_t h_len = strlen(ho), h_num = ts.ts_cols - 33, h_cur = h_num;
+	signed int h_len = strlen(ho);
+	int h_num = ts.ts_cols - 33, h_cur = h_num;
 	if (h_num < 5) h_num = 5;
 	char hh[h_num + 2]; 
 	
 	// puts short words like 'the', 'or' and 'then' on the next like.
 	bool changed = false;
-	for(size_t i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
+	for(int i = h_cur; i > 0 && (h_cur - i <= 4) ; i--){
 		if (ho[i] == ' '){
 			h_cur = i;
 			changed = true;
@@ -314,7 +315,7 @@ void print_media_args(MediaArgs *ma) {
 #define print_args(title,value) printf("%20s: %s\n",   title, value);
 #define print_hex(title,value)  printf("%20s: 0x%x\n", title, value);
 #define print_int(title,value)  printf("%20s: %i\n",   title, value);
-
+	
 	printf("Selection\n");
 	print_args("exclude",      truth(ma->excludes.exclude));
 	print_int("exclude index",  ma->excludes.index);
@@ -329,7 +330,7 @@ void print_media_args(MediaArgs *ma) {
 	print_args("newest_only", truth(ma->newest_only));
 	print_args("sub_dirs",    truth(ma->sub_dirs));
 	print_hex("types",        ma->types);
-
+	
 	printf("Playlist\n");
 	print_args("pl_dir",     nullcheck(ma->pl_dir));
 	print_args("pl_name",    truth(ma->pl_name));
@@ -337,15 +338,15 @@ void print_media_args(MediaArgs *ma) {
 	print_hex ("pl_output",  ma->pl_output);
 	print_args("pl_shuffle", truth(ma->pl_shuffle));
 	print_args("pl_reverse", truth(ma->pl_reverse));
-   
+	
 	printf("Prefs\n");
 	print_args("hash_location", nullcheck(ma->hash_location));
 	print_args("use_hash",      truth(ma->use_hash));
 	print_hex ("types",         ma->types);
 	print_args("write_history", truth(ma->write_history));
 	print_int ("sep",           ma->sep);
-
-
+	
+	
 	printf("Player\n");
 	print_hex ("player",       ma->player);
 	print_args("afloat",       truth(ma->afloat));
@@ -360,7 +361,7 @@ void print_media_args(MediaArgs *ma) {
 	
 	print_args("regex_print",  truth(ma->regex_print));
 	print_args("regex_sep",    nullcheck(ma->regex_sep));
-
+	
 	print_args("dot_default",   truth(ma->dot_default));
 	print_args("colour_ep",     truth(ma->colour_ep));
 	print_args("label_watched", truth(ma->label_watched));
@@ -369,8 +370,8 @@ void print_media_args(MediaArgs *ma) {
 	print_int("total",          ma->total);
 	print_args("find_unwatched", truth(ma->find_unwatched));
 	print_args("oldest_only", truth(ma->oldest_only));
-
-
+	
+	
 #undef truth
 #undef nullcheck
 #undef strcheck

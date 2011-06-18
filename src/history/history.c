@@ -193,7 +193,6 @@ void set_movie(char *series){
 
 void show_menu(char **filenames, size_t *length, bool free_unused){
 	
-	
 	sqlite3 *db;
 	int result;
 
