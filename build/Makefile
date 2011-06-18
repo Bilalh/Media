@@ -17,7 +17,7 @@ EXTRA_INCLUDES =
 compile        = ${CC} -std=gnu99 -fblocks
 flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/usr/include/libxml2 ${EXTRA_INCLUDES}
-libs           = -lsqlite3 -lxml2  -lcurl -lpcre
+libs           = -lsqlite3 -lxml2  -lcurl -lpcre -lreadline
 script_src     = ../src/scripts
 
 

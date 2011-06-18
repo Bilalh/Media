@@ -35,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		9258686A13ABE5DD00FF415A /* Media */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Media; sourceTree = BUILT_PRODUCTS_DIR; };
+		9298199813ACD9E600A85316 /* media_fork.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = media_fork.c; sourceTree = "<group>"; };
+		92A7B36313AC225B005C8D6D /* mplayer_fork_input_old.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mplayer_fork_input_old.c; sourceTree = "<group>"; };
 		92A8D36413ABE6DE00AF0037 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		92A8D36813ABE6DE00AF0037 /* make_debug.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_debug.sh; sourceTree = "<group>"; };
 		92A8D36913ABE6DE00AF0037 /* make_version.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_version.sh; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		92A8D3B813ABE6DF00AF0037 /* examples */ = {
 			isa = PBXGroup;
 			children = (
+				92A7B36313AC225B005C8D6D /* mplayer_fork_input_old.c */,
 				92A8D3B913ABE6DF00AF0037 /* afloat.scpt */,
 				92A8D3BA13ABE6DF00AF0037 /* arr.c */,
 				92A8D3BB13ABE6DF00AF0037 /* colours2.c */,
@@ -459,6 +462,7 @@
 				92A8D41713ABE6DF00AF0037 /* block_test.c */,
 				92A8D41813ABE6DF00AF0037 /* func.c */,
 				92A8D41913ABE6DF00AF0037 /* text.txt */,
+				9298199813ACD9E600A85316 /* media_fork.c */,
 			);
 			path = xtra;
 			sourceTree = "<group>";
@@ -584,6 +588,7 @@
 					"-lxml2",
 					"-lcurl",
 					"-lpcre",
+					"-lreadline",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
