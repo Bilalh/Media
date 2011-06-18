@@ -13,6 +13,6 @@
 
 // basename can not be used because of corruption 
 #define dprintf(fmt, ...) \
-		printf("%15s:%14s:%3i%s", __FILE__,__func__, __LINE__,"   ");\
+		printf("%15s:%14s:%3i%s", basename(__FILE__),__func__, __LINE__,"   ");\
 	printf(fmt,## __VA_ARGS__);
 #endif

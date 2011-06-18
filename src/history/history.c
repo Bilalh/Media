@@ -52,22 +52,22 @@ bool updateHistory(char **filenames, Status status, int sep) {
 			EP_GET_NUMBER(ans, num);
 			EP_GET_NAME(ans, s, *filenames)
 
-			dprintf("title %s.\n", s);
-			dprintf("num   %li.\n", num);
+			hdprintf("title %s.\n", s);
+			hdprintf("num   %li.\n", num);
 			MAKE_TIME_STR(now, timeinfo);
-			dprintf("time  %s.\n", now);
+			hdprintf("time  %s.\n", now);
 
 			sqlite3_bind_text(statement_h, 1, s, -1, SQLITE_TRANSIENT);
 			sqlite3_bind_int(statement_h, 2, num);
 			sqlite3_bind_text(statement_h, 3, now, -1, SQLITE_STATIC);
 
 			result = sqlite3_step(statement_h);
-			dprintf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+			hdprintf("r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 			if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 				 efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 			}
 			result = sqlite3_reset(statement_h);
-			dprintf("reset: %i\n\n", result);
+			hdprintf("reset: %i\n\n", result);
 
 			// for status
 			if (status == S_SKIP_UPDATED) {
@@ -84,7 +84,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_su);
-				dprintf("sk reset: %i\n\n", result);
+				hdprintf("sk reset: %i\n\n", result);
 
 			} else if (status == S_UPDATED) {
 				if(! si_u) {
@@ -99,7 +99,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_u);
-				dprintf("up reset: %i\n\n", result);
+				hdprintf("up reset: %i\n\n", result);
 			} else if(status == S_SKIP) {
 				if(! si_s) {
 					sqlite3_prepare_v2(db, query_si_s, (int) strlen(query_si_s), &statement_si_s, NULL);
@@ -108,12 +108,12 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				sqlite3_bind_text(statement_si_s, 2, s, -1, SQLITE_TRANSIENT);
 				sqlite3_bind_int(statement_si_s, 1, 1);
 				result = sqlite3_step(statement_si_s);
-				dprintf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				hdprintf("sk r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
 				result = sqlite3_reset(statement_si_s);
-				dprintf("sk reset: %i\n\n", result);
+				hdprintf("sk reset: %i\n\n", result);
 			}
 
 		}
@@ -217,13 +217,13 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 			sqlite3_bind_text(statement_h, 1, s_title, -1, SQLITE_TRANSIENT);
 			
 			result = sqlite3_step(statement_h);
-			dprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
+			hdprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
 			
 			// check latest
 			if (result == SQLITE_ROW||  result == SQLITE_OK  || result == SQLITE_DONE){
 				
 				int current = sqlite3_column_int(statement_h, 0);
-				dprintf("current:%d\n",current );
+				hdprintf("current:%d\n",current );
 				
 				printf(SSS("%-2d") ":  N: " SSS("%2ld") "  P: "  SSS("%2d") " %s \n", 
 					COLOUR(i,GREEN),COLOUR(num,BLUE),COLOUR(current,BLUE), s_title );
@@ -292,21 +292,21 @@ char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 			EP_GET_NUMBER(ans, num);
 			EP_GET_NAME(ans, title, filename)
 
-			dprintf("title %s. num %ld\n", title, num);
+			hdprintf("title %s. num %ld\n", title, num);
 			sqlite3_bind_text(statement_h, 1, title, -1, SQLITE_TRANSIENT);
 
 			result = sqlite3_step(statement_h);
-			dprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
+			hdprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
 			
 			// check latest
 			if (result == SQLITE_ROW){
 				
 				int current = sqlite3_column_int(statement_h, 0);
-				dprintf("current:%d\n",current );
+				hdprintf("current:%d\n",current );
 				
 				// not watched
 				if (num > current ){
-					dprintf("added %s\n", filename);
+					hdprintf("added %s\n", filename);
 					new_filenames[index++] = *filenames;
 				}else if (free_unused) {
 					free(*filenames);
@@ -315,7 +315,7 @@ char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 			// never watched
 			}else if( result == SQLITE_OK  || result == SQLITE_DONE ) {
 				
-				dprintf("added %s\n", filename);
+				hdprintf("added %s\n", filename);
 				new_filenames[index++] = *filenames;
 			}else{
 				efprintf(  "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
@@ -324,7 +324,7 @@ char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 			
 			
 			result = sqlite3_reset(statement_h);
-			dprintf("reset:%d index:%d\n", result, index);
+			hdprintf("reset:%d index:%d\n", result, index);
 			free(filename);
 		}
 		filenames++;
@@ -335,12 +335,7 @@ char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 	
 	new_filenames[index] = strdup("");
 	
-#ifdef DEBUG
-	for(int i = 0; i < index; ++i){
-		printf("\t%s\n", new_filenames[i]);
-	}
-#endif
-	dprintf("index:%d\n", index);
+	hdprintf("index:%d\n", index);
 	
 	*length = index;
 	return new_filenames;

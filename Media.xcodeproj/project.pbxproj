@@ -576,12 +576,12 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				"OTHER_CFLAGS[arch=*]" = (
-					"-I/Users/bilalh/Programming/C/media_xcode/Media/",
-					"-I/Users/bilalh/Programming/C/media_xcode/Media/src",
-					"-I/Users/bilalh/Programming/C/media_xcode/Media/include",
-					"-I/usr/local/Cellar/pcre/8.12/include",
-					"-L/usr/local/Cellar/pcre/8.12/lib",
+					"-I${PROJECT_DIR}",
+					"-I${PROJECT_DIR}/src",
+					"-I${PROJECT_DIR}/include",
+					"-I/usr/local/include",
 					"-I/usr/include/libxml2",
+					"-DXCODE_DEBUG",
 				);
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-lsqlite3",

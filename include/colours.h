@@ -38,5 +38,8 @@
 #ifndef PREFS_COLOUR
 	#include "no_colours.h"
 #endif
+#ifdef XCODE_DEBUG
+#include "no_colours.h"
+#endif
 
 #endif
