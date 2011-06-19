@@ -28,7 +28,7 @@
 #define PREFS_AUDIO_VIDEO_REGEX ".*.(mkv|mp4|mp3|m4a|mov|avi|flac|ogm|ogg|aiff|divx|rm|rmvb|flv|part|wmv|ac3|aac|wav|wmv|ape|mka)$"
 
 // comment to disable.  Replaces all (the char (default ^)) with | to save '' the args 
-#define PREFS_SECOND_BAR '^'
+#define PREFS_SECOND_BAR '@'
 
 // comment to get rid of colour
 #define PREFS_COLOUR

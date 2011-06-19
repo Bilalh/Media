@@ -17,8 +17,8 @@ typedef struct {
  * @param s A pointer to a String
  * @param length The starting length
  */
-void new_string(String *s, int length);
-String *string_new(int length);
+void new_string(String *s, size_t length);
+String *string_new(size_t length);
 
 /**
  * @brief Copies the char array into the String
@@ -36,7 +36,7 @@ void string_add(String *s, char *str, bool add_space_before);
  * @param length the number of char array to copy 
  * @param ... the char arrays
  */
-void string_add_m(String *s, bool add_space, int length, ...);
+void string_add_m(String *s, bool add_space, size_t length, ...);
 
 
 /**
@@ -48,7 +48,7 @@ void string_add_m(String *s, bool add_space, int length, ...);
  * @param fmt - The format string.
  * @return the return value of sprintf
 **/
-int string_sprintf(String *s, int length,  const char *fmt,  ... );
+int string_sprintf(String *s, size_t length,  const char *fmt,  ... );
 
 // add the space before adding the string
 #define string_push_m(s,length, ...) string_add_m(s, true, length, __VA_ARGS__)

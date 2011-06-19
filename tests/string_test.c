@@ -41,12 +41,6 @@ Section("Basic Features"){
 
 Section("Simple Multiple adds/pushes"){
 	StringTest("Add multiple", {
-		new_string(&actual,-1);
-		string_add(&actual, "-fs",false);
-		string_add(&actual, "--fast",true);
-		expected = "-fs --fast";
-	})
-	StringTest("Add multiple", {
 		new_string(&actual,13);
 		string_add(&actual, "aab",true);
 		string_add(&actual, "bbc",true);

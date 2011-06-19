@@ -26,7 +26,7 @@
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 
-static StringArray *file_name_buffer;
+static ArrayList *file_name_buffer;
 static size_t getFilesRec_at_total_length;
 static bool getFilesRec_at_safe;
 MAKE_REGEX_VARS(getFilesRec_at);
@@ -45,7 +45,7 @@ static int get_files_recursive_callback(const char *fpath, const struct stat *sb
 			res = res < 0 ? true : false;
 		}
 		if (res >0)  {
-			string_array_add(file_name_buffer, fpath);
+			arraylist_string_add(file_name_buffer, fpath);
 			getFilesRec_at_total_length += strlen(fpath);
 			
 		}
@@ -59,7 +59,7 @@ StringsPlusMeta* get_files_recursive(char *dir, char *regex, bool safe) {
 	
 	// Sets up vars
 	MAKE_REGEX_PREMADE_VARS(getFilesRec_at, regex,PCRE_CASELESS)
-	file_name_buffer = string_array_new(16);
+	file_name_buffer = new_arraylist(16);
 	getFilesRec_at_total_length = 0;
 	getFilesRec_at_safe = safe;
 	
@@ -77,7 +77,7 @@ StringsPlusMeta* get_files_recursive(char *dir, char *regex, bool safe) {
 	
 	StringsPlusMeta spm =
 	{
-		.str_arr      = file_name_buffer->arr,
+		.str_arr      = (char**) file_name_buffer->arr,
 		.length       = file_name_buffer->index,
 		.total_length = getFilesRec_at_total_length
 	};

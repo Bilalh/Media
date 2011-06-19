@@ -13,6 +13,8 @@
 #include <include/colours.h>
 #include <include/time.def>
 #include <include/colours.h>
+#include <include/uthash.h>
+
 
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
@@ -189,9 +191,117 @@ void set_movie(char *series){
 	
 }
 
+#include <include/string_array.h>
 
+typedef struct {
+	char *full;
+	long   num;
+} Ep;
+
+typedef struct {
+	char        *series;
+	ArrayList   *eps;
+	UT_hash_handle hh;
+} Eps;
+
+
+static inline int longcmp(long a, long b) {
+	return  a > b ? 1 : (a < b ? -1 : 0) ;
+}
 
 void show_menu(char **filenames, size_t *length, bool free_unused){
+	
+	size_t file_num = *length;
+	Eps* hash = NULL, *h;
+	
+	for(size_t i = 0;  i < file_num; i++){
+		
+	
+		char *s = basename(filenames[i]);
+		
+		// Spilt the name and the ep num
+		char **ans = ep_num(s);
+		if (ans[0] == NULL){
+			efprintf("Number not found for file '%s'\n", filenames[i]);
+			exit(44);
+		}
+		
+		EP_GET_NAME_M(ans, name, s);
+		EP_GET_NUMBER(ans,num);
+		
+		// Check if it in the hash
+		HASH_FIND_STR(hash, name, h);
+	
+		
+		if (h == NULL){ // add it 
+			h = (Eps*) malloc(sizeof(Eps));
+			h->eps = new_arraylist((int)file_num/2);
+			h->series = name;
+			HASH_ADD_KEYPTR( hh, hash, h->series, (int) strlen(h->series), h );
+		}
+		
+		// add to the end of list 
+		Ep *ep = malloc(sizeof(Ep));
+		ep->full = filenames[i];
+		ep->num  = num;
+		arraylist_add(h->eps, ep);
+		
+	}
+	
+	bool ordered = true;
+	int index = 0;
+	for(Eps *e=hash; e != NULL; e=e->hh.next, ++index) {
+		
+//		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
+//			^(const void *a, const void *b){
+//				const Ep *ea = *((Ep**)a), *eb = *((Ep**)b);
+////				dprintf("%ld %ld res: %d\n", ea->num, eb->num, longcmp( ea->num, eb->num ) );
+//				return longcmp( ea->num , eb->num );
+//			}
+//		);
+		
+		printf("%-2d :", index);
+		
+		if (ordered){
+			printf("%4ld-%-4ld",((Ep*) e->eps->arr[0])->num, ((Ep*) e->eps->arr[e->eps->index-1])->num   );
+			ordered = false;
+		}else{
+			const int min =  e->eps->index < 3 ? e->eps->index :3;
+			for(int i = 0; i<min;i++){
+				printf("%2ld ", ((Ep*) e->eps->arr[i])->num );
+			}	
+		}
+		
+		printf(" %s\n", e->series);
+    }
+	
+	int res = -1;
+	const unsigned len = HASH_COUNT(hash);
+	while (res < 0 || res >=len){
+		printf("%s [%d,%zu]\n", "Choose an Episode to watch in", 0, len-1);
+		
+		// use readline and regex for opts like  3:3
+		scanf("%d", &res);
+		char f_buff[4096];
+		fgets(f_buff, 4096, stdin);
+	}
+	
+	// use a array indexing index to series then use that to select the right series
+	Eps *selected = hash;
+
+	int j;
+	file_num = selected->eps->index;
+	for(j = 0; j <file_num;j++){
+		filenames[j] = ((Ep*) selected->eps->arr[j])->full;
+	}
+	filenames[j] = '\0';
+	
+	*length = file_num;
+}
+
+
+
+void show_menu2(char **filenames, size_t *length, bool free_unused){
 	
 	sqlite3 *db;
 	int result;

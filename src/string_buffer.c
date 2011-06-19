@@ -7,14 +7,14 @@
 #include <include/string_buffer.h>
 #include <include/debug.h>
 
-String *string_new(int length){
+String *string_new(size_t length){
 	if (length <= 0) length = 1;
 	String *s = malloc(sizeof(String));
 	new_string(s,length);
 	return s;
 }
 
-void new_string(String *s, int length ){
+void new_string(String *s, size_t length ){
 	assert(s);
 	if (length <= 0) length = 1;
 	s->str    = malloc(sizeof(char) * length);
@@ -45,7 +45,7 @@ void string_add(String *s, char *str, bool add_space_before) {
 
 // assumes the s->str is assigned by malloc
 // adds a space before append the string
-void string_add_m(String *s, bool add_space, int length, ...){
+void string_add_m(String *s, bool add_space, size_t length, ...){
 	assert(s);
 	// Sets up the variable argument list
 	va_list args; 
@@ -61,7 +61,7 @@ void string_add_m(String *s, bool add_space, int length, ...){
 }
 
 
-int string_sprintf(String *s, int length,  const char *fmt,  ... ){
+int string_sprintf(String *s, size_t length,  const char *fmt,  ... ){
 	assert(s); assert(fmt);
 	va_list args;
 	va_start(args, fmt);

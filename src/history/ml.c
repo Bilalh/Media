@@ -423,7 +423,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 static void update_fin(MLOpts *opts){
 
 	if (sql_commands == NULL){
-		const int len = 53 + strlen(opts->title) + 1;
+		const size_t len = 53 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -436,7 +436,7 @@ static void update_fin(MLOpts *opts){
 static void update_end_date_fin(MLOpts *opts, const char *date){
 
 	if (sql_commands == NULL){
-		const int len = 67 + 20 + strlen(opts->title) + 1;
+		const size_t len = 67 + 20 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -450,7 +450,7 @@ static void update_end_date_fin(MLOpts *opts, const char *date){
 static void update_updated(MLOpts *opts){
 	
 	if (sql_commands == NULL){
-		const int len = 54 + strlen(opts->title) + 1;
+		const size_t len = 54 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -463,7 +463,7 @@ static void update_updated(MLOpts *opts){
 static void update_id_total(MLOpts *opts){
 	
 	if (sql_commands == NULL){
-		const int len = 75 + strlen(opts->title) + 1;
+		const size_t len = 75 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -476,7 +476,7 @@ static void update_id_total(MLOpts *opts){
 
 static void update_id(MLOpts *opts){
 	if (sql_commands == NULL){
-		const int len = 63 + strlen(opts->title) + 1;
+		const size_t len = 63 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -490,7 +490,7 @@ static void update_id(MLOpts *opts){
 static void update_total(MLOpts *opts){
 	
 	if (sql_commands == NULL){
-		const int len = 67 + strlen(opts->title) + 1;
+		const size_t len = 67 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	
@@ -504,7 +504,7 @@ static void update_total(MLOpts *opts){
 static void update_total_only(MLOpts *opts){
 	
 	if (sql_commands == NULL){
-		const int len = 53 + strlen(opts->title) + 1;
+		const size_t len = 53 + strlen(opts->title) + 1;
 		sql_commands = string_new(len);
 	}
 	

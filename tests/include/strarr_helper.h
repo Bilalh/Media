@@ -7,6 +7,6 @@
 #include <include/string_util.h>
 
 
-bool strarr_test_start ( char *name, StringArray *actual, char **expected, int length );
+bool strarr_test_start ( char *name, ArrayList *actual, char **expected, int length );
 
 #endif

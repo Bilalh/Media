@@ -6,11 +6,11 @@
 	//printf("%s%-14s: '%s'\n", ERROR_SEP, "expected", exp );\
 	//printf("%s%-14s: '%s'\n", ERROR_SEP, "act->str", actual->str);
 
-bool strarr_test_start ( char *name, StringArray *actualA, char **expected, int elen ){
+bool strarr_test_start ( char *name, ArrayList *actualA, char **expected, int elen ){
 	
 	int error;
 	int alen = actualA->index;
-	char **actual = actualA->arr;
+	char **actual = (char**) actualA->arr;
 	
 	if ( alen != elen ) goto fail;
 	

@@ -2,10 +2,10 @@
 #define STRING_ARRAY_HEAD 
 
 typedef struct {
-	char **arr;
+	void **arr;
 	int  length;
 	int  index;
-} StringArray;
+} ArrayList;
 
 /**
  * @brief Creates a New Array of Strings
@@ -13,8 +13,8 @@ typedef struct {
  * @param length The starting length
  * @return  a pointer to a StringArray
 **/
-StringArray *string_array_new(int length);
-void new_string_array(StringArray *sa, int length );
+ArrayList *new_arraylist(int length);
+void arraylist_init(ArrayList *sa, int length );
 
 /**
  * @brief Adds a string to the array
@@ -22,7 +22,9 @@ void new_string_array(StringArray *sa, int length );
  * @param sa The string object
  * @param str The string that will be copied to the StringArray
 **/
-void string_array_add(StringArray *sa, const char *str);
+void arraylist_string_add(ArrayList *sa, const char *str);
+
+void arraylist_add(ArrayList *sa, void * const ptr);
 
 
 #endif

@@ -75,6 +75,11 @@ char **filter_files(char **names, unsigned long *length, bool free_unused, bool 
 	strncpy(var, orginal_string, ep_char[EP_NUM_INDEX(ep_char)] - orginal_string);\
 	var[ep_char[EP_NUM_INDEX(ep_char)] - orginal_string] = '\0';
 
+#define EP_GET_NAME_M(ep_char, var, orginal_string)\
+	char *var = malloc(ep_char[EP_NUM_INDEX(ep_char)] - orginal_string + 1); \
+	strncpy(var, orginal_string, ep_char[EP_NUM_INDEX(ep_char)] - orginal_string);\
+	var[ep_char[EP_NUM_INDEX(ep_char)] - orginal_string] = '\0';
+
 #define EP_NUM_INDEX(ep_num_char) (ep_num_char[1] != NULL ? 1 : 0)
 
 

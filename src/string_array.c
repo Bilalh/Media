@@ -5,15 +5,15 @@
 #include <include/string_array.h>
 
 
-StringArray *string_array_new(int length){
+ArrayList *new_arraylist(int length){
 	
 	if (length <= 0) length = 16;
-	StringArray *sa = malloc(sizeof(StringArray));
-	new_string_array(sa,length);
+	ArrayList *sa = malloc(sizeof(ArrayList));
+	arraylist_init(sa,length);
 	return sa;
 }
 
-void new_string_array(StringArray *sa, int length ){
+void arraylist_init(ArrayList *sa, int length ){
 	assert(sa);
 	if (length <= 0) length = 16;
 	sa->arr    = malloc(sizeof(char*) * length);
@@ -21,7 +21,12 @@ void new_string_array(StringArray *sa, int length ){
 	sa->index  = 0;
 }
 
-void string_array_add(StringArray *sa, const char *str){
+void arraylist_string_add(ArrayList *sa, const char *str){
+	arraylist_add(sa,strdup(str));
+}	
+
+
+void arraylist_add(ArrayList *sa, void *const ptr){
 	assert(sa);
 	
 	if (sa->index + 1 == sa->length){
@@ -29,5 +34,5 @@ void string_array_add(StringArray *sa, const char *str){
 		sa->arr = realloc(sa->arr, sizeof(char*) * sa->length);
 	}
 	
-	sa->arr[sa->index++] = strdup(str);
-}
+	sa->arr[sa->index++] = ptr;
+}	

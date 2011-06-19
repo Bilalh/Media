@@ -119,7 +119,9 @@ char **filter_files(char **names, unsigned long *length, bool free_unused, bool 
 
 		sudprintf("%s %ld\n", name, num );
 		HASH_FIND_STR(hash, name, h);
+		
 		// add the file to the hash if it is not there
+		
 		if ( h == NULL ) {
 			h = (Newest*) malloc(sizeof(Newest));
 			h->full = full_path; //names[i];

@@ -8,7 +8,7 @@ StrarrVar
 
 // Setup that is done before each test
 #define StrarrBefore \
-	StringArray *actual;\
+	ArrayList *actual;\
 	int  length;\
 	char **expected = spilt_string_m(_name, &length);\
 	
@@ -25,30 +25,30 @@ StrarrSetup
 Sections {
 Section("Basic Features"){
 	StrarrTest("a b", {
-		actual   = string_array_new(2);
-		string_array_add(actual, "a");
-		string_array_add(actual, "b");
+		actual   = new_arraylist(2);
+		arraylist_string_add(actual, "a");
+		arraylist_string_add(actual, "b");
 		
 	})
 	StrarrTest("a b c",{
-		actual   = string_array_new(2);
-		string_array_add(actual, "a");
-		string_array_add(actual, "b");
-		string_array_add(actual, "c");
+		actual   = new_arraylist(2);
+		arraylist_string_add(actual, "a");
+		arraylist_string_add(actual, "b");
+		arraylist_string_add(actual, "c");
 	})
 	StrarrTest("das dasd sajfdsiof jdsiof dsfoijds fiodsj fods fjdsoifj dsoig ffdsg fd",{
-		actual   = string_array_new(3);
-		string_array_add(actual, "das");
-		string_array_add(actual, "dasd");
-		string_array_add(actual, "sajfdsiof");
-		string_array_add(actual, "jdsiof");
-		string_array_add(actual, "dsfoijds");
-		string_array_add(actual, "fiodsj");
-		string_array_add(actual, "fods");
-		string_array_add(actual, "fjdsoifj");
-		string_array_add(actual, "dsoig");
-		string_array_add(actual, "ffdsg");
-		string_array_add(actual, "fd");
+		actual   = new_arraylist(3);
+		arraylist_string_add(actual, "das");
+		arraylist_string_add(actual, "dasd");
+		arraylist_string_add(actual, "sajfdsiof");
+		arraylist_string_add(actual, "jdsiof");
+		arraylist_string_add(actual, "dsfoijds");
+		arraylist_string_add(actual, "fiodsj");
+		arraylist_string_add(actual, "fods");
+		arraylist_string_add(actual, "fjdsoifj");
+		arraylist_string_add(actual, "dsoig");
+		arraylist_string_add(actual, "ffdsg");
+		arraylist_string_add(actual, "fd");
 	})
 }StrarrEndSection
 
