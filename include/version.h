@@ -1,3 +1,3 @@
 #ifndef MEDIA_VERION_NUMBER
-#define MEDIA_VERION_NUMBER "2-26-g9353c5e"
+#define MEDIA_VERION_NUMBER ""
 #endif

@@ -15,7 +15,6 @@
 #include <include/colours.h>
 #include <include/uthash.h>
 
-
 static int print_latest_callback (void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns);
@@ -193,6 +192,7 @@ void set_movie(char *series){
 
 #include <include/string_array.h>
 
+
 typedef struct {
 	char *full;
 	long   num;
@@ -208,6 +208,8 @@ typedef struct {
 static inline int longcmp(long a, long b) {
 	return  a > b ? 1 : (a < b ? -1 : 0) ;
 }
+
+//FIXME move menu to own file
 
 void show_menu(char **filenames, size_t *length, bool free_unused){
 	
