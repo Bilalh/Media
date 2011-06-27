@@ -75,6 +75,13 @@ char **filter_files(char **names, unsigned long *length, bool free_unused, bool 
 	strncpy(var, orginal_string, ep_char[EP_NUM_INDEX(ep_char)] - orginal_string);\
 	var[ep_char[EP_NUM_INDEX(ep_char)] - orginal_string] = '\0';
 
+/**
+ * @brief Places the name in var that malloc'ed
+ *
+ * @param ep_num_char char** returned by ep_num
+ * @param var Name of the variable
+ * @param orginal_string The string 
+ **/
 #define EP_GET_NAME_M(ep_char, var, orginal_string)\
 	char *var = malloc(ep_char[EP_NUM_INDEX(ep_char)] - orginal_string + 1); \
 	strncpy(var, orginal_string, ep_char[EP_NUM_INDEX(ep_char)] - orginal_string);\

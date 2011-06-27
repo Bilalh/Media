@@ -18,6 +18,7 @@
 #include <include/string_util.h>
 #include <include/sub_dirs.h>
 #include <include/time_regex.h>
+#include <include/media_menu.h>
 
 #include <prefs.h>
 

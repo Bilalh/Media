@@ -44,6 +44,8 @@
 		92A8D47113ABEC6F00AF0037 /* option_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D213ABE6DF00AF0037 /* option_parser.c */; };
 		92A8D47213ABEC6F00AF0037 /* players.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D313ABE6DF00AF0037 /* players.c */; };
 		92A8D47313ABEC6F00AF0037 /* playlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D413ABE6DF00AF0037 /* playlist.c */; };
+		92F53F1313B7CD5700658B76 /* media_menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 92F53F1113B7CD5700658B76 /* media_menu.c */; };
+		92F53F1413B7CD5700658B76 /* media_menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 92F53F1113B7CD5700658B76 /* media_menu.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -217,6 +219,8 @@
 		92A8D41713ABE6DF00AF0037 /* block_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = block_test.c; sourceTree = "<group>"; };
 		92A8D41813ABE6DF00AF0037 /* func.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = func.c; sourceTree = "<group>"; };
 		92A8D41913ABE6DF00AF0037 /* text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
+		92F53F1113B7CD5700658B76 /* media_menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = media_menu.c; sourceTree = "<group>"; };
+		92F53F1213B7CD5700658B76 /* media_menu.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = media_menu.h; path = include/media_menu.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,7 @@
 		92A8D38513ABE6DF00AF0037 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				92F53F1213B7CD5700658B76 /* media_menu.h */,
 				92A8D38613ABE6DF00AF0037 /* colours.h */,
 				92A8D38713ABE6DF00AF0037 /* debug.h */,
 				92A8D38813ABE6DF00AF0037 /* history.h */,
@@ -349,6 +354,7 @@
 				92A8D3EA13ABE6DF00AF0037 /* string_util.c */,
 				92A8D3EB13ABE6DF00AF0037 /* sub_dirs.c */,
 				92A8D3EC13ABE6DF00AF0037 /* time_util.c */,
+				92F53F1113B7CD5700658B76 /* media_menu.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				92A8D46B13ABEC5C00AF0037 /* string_util.c in Sources */,
 				92A8D46C13ABEC5C00AF0037 /* sub_dirs.c in Sources */,
 				92A8D46D13ABEC5C00AF0037 /* time_util.c in Sources */,
+				92F53F1313B7CD5700658B76 /* media_menu.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +631,7 @@
 				92A13A7A13AD1692005B067A /* strutil_test.c in Sources */,
 				92A13A7B13AD1692005B067A /* time_helper.c in Sources */,
 				92A13A7C13AD1692005B067A /* time_test.c in Sources */,
+				92F53F1413B7CD5700658B76 /* media_menu.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,6 +34,8 @@
 #define PREFS_COLOUR
 
 
+#define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
+
 // paths for --ax and --op,  mainly for testing
 #define PREFS_AX "/Users/bilalh/Movies/.Movie/divx"
 #define PREFS_OP "/Users/bilalh/Movies/.Movie/OpeningP"
