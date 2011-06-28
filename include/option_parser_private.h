@@ -169,7 +169,7 @@ const Element H_playlist[] ={
 		}\
 	}
 	MAKE_PLAYLISTT("m3u"   ,'3', F_M3U,   "Outputs file as a m3u playlist"),
-	MAKE_PLAYLISTT("plist" ,'x', F_PLIST, "Outputs file as a plist"),
+	MAKE_PLAYLISTT("plist" ,291, F_PLIST, "Outputs file as a plist"),
 	MAKE_PLAYLISTT("pls"   ,'U', F_PLS,   "Outputs file as a pls playlist"),
 	MAKE_PLAYLISTT("xspf"  ,'X', F_XSPF,  "Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
@@ -481,12 +481,13 @@ const Element H_output[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "only-menu", .val = 290, .has_arg = no_argument}, 
+		.opt   = {.name =  "only-menu", .val = 'x', .has_arg = no_argument}, 
 		.help  = "Shows the menu then exits",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
-			ma->only_show_menu = TRUTH_STATE_l(ch);
+			ma->only_show_menu = TRUTH_STATE(ch);
 			if (ma->only_show_menu){
+				ma->menu = true;
 				ma->dot_default = true;
 			}
 		}
