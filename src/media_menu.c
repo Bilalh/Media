@@ -72,7 +72,6 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 		
 	}
 	
-	bool ordered = true;
 	int index = 0;
 	const unsigned len = HASH_COUNT(hash);
 	Eps *eps_ptr[len];
@@ -80,38 +79,51 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 	
 	for(Eps *e=hash; e != NULL; e=e->hh.next, ++index) {
 		
+		// uses a array indexing index to series then use that to select the right series
 		eps_ptr[index] =  e;
-		printf("%-2d :", index);
+		bool ordered = true;
+		printf( SSS("%-2d") " : N: ", COLOUR(index,GREEN));
 		
-		//		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
-		//			^(const void *a, const void *b){
-		//				const Ep *ea = *((Ep**)a), *eb = *((Ep**)b);
-		////				dprintf("%ld %ld res: %d\n", ea->num, eb->num, longcmp( ea->num, eb->num ) );
-		//				return longcmp( ea->num , eb->num );
-		//			}
-		//		);
+		
+		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
+				^(const void *a, const void *b){
+					const Ep *ea = *((Ep**)a), *eb = *((Ep**)b);
+					mmprintf("%ld %ld res: %d\n", ea->num, eb->num, longcmp( ea->num, eb->num ) );
+					return longcmp( ea->num , eb->num );
+				}
+				);
+		
+		
+		if (e->eps->index > 1){
+			for(int i = 0; i<e->eps->index-1;i++){
+				if (EPS_ARR(e,i+1)->num != 1 + EPS_ARR(e,i)->num){
+					ordered = false;
+					break;
+				}
+			}
+			
+		}
 		
 		if (ordered && e->eps->index > 1 ){
-			printf("%4ld-%-4ld", EPS_ARR(e,0)->num, EPS_ARR(e,e->eps->index-1)->num   );
-			ordered = false;
+			printf(SSS("%4ld") SSS("-%-4ld"), 
+				   COLOUR(EPS_ARR(e,0)->num, BLUE), COLOUR(EPS_ARR(e,e->eps->index-1)->num,BLUE)
+				   );
+		}else if (e->eps->index == 1){
+			const int extra = (3-1)*3;
+			printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,0)->num, YELLOW), extra,"" );
 		}else{
 			const int min =  e->eps->index < 3 ? e->eps->index :3;
-			for(int i = 0; i<min;i++){
-				printf("%2ld ", EPS_ARR(e,i)->num );
-			}
-			// line up
 			const int extra = (3-min)*3;
-			for(int i = 0; i<extra;i++){
-				putchar(' ');
+			for(int i = 0; i<min;i++){
+				printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,i)->num, RED), extra,"" );
 			}
 		}
 		
 		printf(" %s\n", e->series);
     }
-	
-	int res = -1;
 
-	while (res < 0 || res >=len){
+	int res = -1;
+		while (res < 0 || res >=len){
 		printf("%s [%d,%u]\n", "Choose an Episode to watch in", 0, len-1);
 		
 		// use readline and regex for opts like  3:3
@@ -120,7 +132,6 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 		fgets(f_buff, 4096, stdin);
 	}
 	
-	// use a array indexing index to series then use that to select the right series
 	Eps *selected = eps_ptr[res];
 	
 	int j;
