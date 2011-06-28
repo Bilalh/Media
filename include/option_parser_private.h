@@ -13,6 +13,8 @@
 #include "colours.h"
 #include "../prefs.h"
 
+#include "debug.h"
+
 typedef void (^VoidBlock)();
 typedef struct{
 	const struct option opt;
@@ -27,6 +29,8 @@ typedef struct {
 	const int length;
 	const Element *links;
 } HelpLink;
+
+// 282 unused
 
 // uses val s > 256 && < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
@@ -348,17 +352,17 @@ const Element H_mplayer[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "screen", .val = 282 , .has_arg = required_argument}, 
+		.opt   = {.name =  "screen", .val = '#' , .has_arg = required_argument}, 
 		.help  = "Puts the video on on the chosen screen (numbered from 0)",
 		.arg   = "num", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			int a = -1, res; char temp[1];
 			res = sscanf(arg, "%8i%1s",&a,temp);
 			if (res != 1 && (a < 0 ||  a > 3) ){
-				printf("Invalid num \n");
+				efprintf("Invalid num \n");
 				exit(1);
 			}else{
-				printf("%s\n", arg);
+				dprintf("%s\n", arg);
 				string_push(&ma->prefix_args, "-vo corevideo:device_id=");
 				string_append(&ma->prefix_args, arg);
 			}
@@ -426,7 +430,7 @@ const Element H_History[]={
 	},
 	
 	{  
-		.opt   = {.name =  "movie", .val = 287, .has_arg = no_argument}, 
+		.opt   = {.name =  "movie", .val = '~', .has_arg = no_argument}, 
 		.help  = "Set the total to 1 and set the files to finished",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {

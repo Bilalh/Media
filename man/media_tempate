@@ -1,9 +1,9 @@
-.TH MEDIA 7 "R216" "Tue, December 30, 2008" 
+.TH MEDIA 7 "R216(updated to R2-36-gf87b117)" "Tue, December 30, 2008" 
 .SH NAME
 .B media
 \-  Finds, Plays and keeps track of media files
 .SH SYNOPSIS
-media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
+media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}_@%^#+=~;]
 .br
 .SH DESCRIPTION
 Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
@@ -41,7 +41,7 @@ Uses shortcuts from the hash, on by default
 
 
 
-
+a
 .br
 .SH EXAMPLES
 

@@ -3,7 +3,7 @@
 .B media
 \-  Finds, Plays and keeps track of media files
 .SH SYNOPSIS
-media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
+media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}_@%^#+=~;]
 .br
 .SH DESCRIPTION
 Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
@@ -24,8 +24,6 @@ Use -h,[letters] for details of the options(s)
 .br
 Most -- options have a negation in form --no , --no-fs for --fs for example   
 .br 
-
-
 
 
 .I 0  Output
@@ -91,7 +89,7 @@ Enable hard frame dropping
 Adds profile 
 
 .TP 0.5i
-.BR "   ", "  --screen  {num}     " 
+.BR "-# ", "  --screen  {num}     " 
 Puts the video on on the chosen screen (numbered from 0)
 
 .I 2  Filepath
@@ -176,7 +174,7 @@ Label the watched episodes (default orange  )
 Set the score (0 to not set)
 
 .TP 0.5i
-.BR "   ", "  --[no-]movie        " 
+.BR "-~ ", "  --[no-]movie        " 
 Set the total to 1 and set the files to finished
 
 .I 5  Playlist
@@ -477,7 +475,7 @@ Places the player at the bottom centre
 Places the player at the centre
 
 
-
+a
 .br
 .SH EXAMPLES
 
@@ -558,7 +556,7 @@ IF using sub directories (-s) and -m -o  it might complain about a malloc error,
 .SH VERSION
 This documentation describes
 .B media
-version R216 (options updated to R2-36-gf87b117 )
+version R216 (options updated to R2-37-g91744a9 )
 .SH AUTHOR
 .br
 .B Bilal Hussain

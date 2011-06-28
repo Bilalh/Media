@@ -184,7 +184,7 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: 
-	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- install_man_pages install_media_aliases}, ""'
+	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- sudo install_man_pages install_media_aliases}, ""'
 
 version:
 	[ -d ../.git ] && ./make_version.sh
