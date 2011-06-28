@@ -1,6 +1,4 @@
 #!/bin/bash
-# Use MEDIA_BINARY to set media location if not in the $PATH
-
 function mediah(){
 	hashfile="$HOME/Library/Application Support/Media/zzhash"
 	dir="$1";
@@ -26,7 +24,7 @@ function mediaf(){
 		extra='--no-hash'
 	fi
 
-	mediah "${dir}" "${search}" ${extra} --audio --out --mplayer $*
+	mediah "${dir}" "${search}" --dot-default ${extra} --audio --out --mplayer $*
 
 }
 
@@ -36,9 +34,10 @@ alias   ay='_ax --mplayer'
 alias   ml='ay --last'
 alias  mll='ml --none --dot-default'
 alias  mlg='ml --dot-default --menu --top '
-alias  mw='ax --un-watched --first '
-alias mwg='mw --menu --top --history --mplayer'
-alias mgw='mwg'
+alias   mw='ay --un-watched --first '
+alias  mww='mw --none --dot-default ' 
+alias  mwg='mw --menu --top --history'
+alias  mgw='mwg'
 alias mlwg='mwg'
 
 alias   op='mediah --op --out --mplayer'
@@ -78,3 +77,11 @@ alias mu="ml -u"
 alias mlu="mll -u"
 alias opu='op -u'
 alias oppu='opp -u'
+
+function media_binary_here(){
+	MEDIA_BINARY=`pwd`/media
+}
+
+function  media_binary_clear() {
+	unset MEDIA_BINARY
+}

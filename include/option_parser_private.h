@@ -486,6 +486,9 @@ const Element H_output[] ={
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->only_show_menu = TRUTH_STATE_l(ch);
+			if (ma->only_show_menu){
+				ma->dot_default = true;
+			}
 		}
 	},
 };
