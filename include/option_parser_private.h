@@ -480,6 +480,14 @@ const Element H_output[] ={
 			}
 		}
 	},
+	{  
+		.opt   = {.name =  "only-menu", .val = 290, .has_arg = no_argument}, 
+		.help  = "Shows the menu then exits",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->only_show_menu = TRUTH_STATE_l(ch);
+		}
+	},
 };
 
 const Element H_other[] ={

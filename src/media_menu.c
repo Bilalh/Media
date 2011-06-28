@@ -35,7 +35,22 @@ static inline int longcmp(long a, long b) {
 
 // prints each series in the hash, also stores a pointer 
 // for each series indexed by the order printed in eps_ptr
-static void print_menu(Eps** eps_ptr, Eps *hash) {
+static void print_menu(Eps** eps_ptr, Eps *hash ) {
+	
+	sqlite3 *db;
+	int result;
+	
+	result = sqlite3_open(DATABASE, &db);
+	if( result ) {
+		efprintf("show_menu failed: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		exit(23);
+	}
+	
+	sqlite3_stmt *statement_h;
+	const char *query_h = "select current from SeriesData where Title = ?";
+	sqlite3_prepare_v2(db, query_h, (int) strlen(query_h), &statement_h, NULL);
+	
 	int index =0;
 	// Prints each series of a separate row
 	for(Eps *e=hash; e != NULL; e=e->hh.next, ++index) {
@@ -43,8 +58,6 @@ static void print_menu(Eps** eps_ptr, Eps *hash) {
 		// uses a array indexing index to series then use that to select the right series
 		eps_ptr[index] =  e;
 		bool ordered = true;
-		printf( SSS("%-2d") " : N: ", COLOUR(index,GREEN));
-		
 		
 		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
 				^(const void *a, const void *b){
@@ -65,13 +78,37 @@ static void print_menu(Eps** eps_ptr, Eps *hash) {
 			
 		}
 		
+		sqlite3_bind_text(statement_h, 1, e->series, -1, SQLITE_TRANSIENT);
+		result = sqlite3_step(statement_h);
+		mmprintf("r:%i Row:%i Ok:%i done:%i \n", result, SQLITE_ROW, SQLITE_OK, SQLITE_DONE );
+		
+		int current =-1;
+		if (result == SQLITE_ROW||  result == SQLITE_OK  || result == SQLITE_DONE){
+			
+			current = sqlite3_column_int(statement_h, 0);
+			mmprintf("current:%d\n",current );			
+			
+		}else{
+			efprintf(  "SQL error %s : %s\n", e->series, sqlite3_errmsg(db));
+			exit(12);
+		}
+		
+			
+		// Printing
+		
+		printf( SSS("%-2d") " :", COLOUR(index,GREEN));
+		printf(" P: " SSS("%-2d"), COLOUR(current,WHITE));
+		printf(" N: ");
+		
 		if (ordered && e->eps->index > 1 ){ // Range of eps
 			printf(SSS("%4ld") SSS("-%-4ld"), 
 				   COLOUR(EPS_ARR(e,0)->num, BLUE), COLOUR(EPS_ARR(e,e->eps->index-1)->num,BLUE)
 				   );
+			
 		}else if (e->eps->index == 1){ // single ep
 			const int extra = (3-1)*3;
 			printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,0)->num, YELLOW), extra,"" );
+			
 		}else{ // range with eps missing (only shows the fist three)	
 			const int min =  e->eps->index < 3 ? e->eps->index :3;
 			const int extra = (3-min)*3;
@@ -81,12 +118,15 @@ static void print_menu(Eps** eps_ptr, Eps *hash) {
 		}
 		
 		printf(" %s\n", e->series);
+		result = sqlite3_reset(statement_h);
     }
 
+	sqlite3_finalize(statement_h);
+	sqlite3_close(db);
 }
 
 // shows the menu
-void show_menu(char **filenames, size_t *length, bool free_unused){
+void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma){
 	
 	size_t file_num = *length;
 	Eps* hash = NULL, *h;
@@ -128,17 +168,34 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 	Eps *eps_ptr[len];
 	print_menu(eps_ptr,hash);
 
+	if (ma->only_show_menu){
+		exit(0);
+	}
+	
 	int res = -1, num = -1, num_scanned = -1;
-		while ( res < 0 || res >=len || 
+	char ch;
+	while ( res < 0 || res >=len || 
 			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
 		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
 			   "Use n:m to select multiple episodes ");
 		
 		// use readline and regex for opts like  3:3
-		num_scanned = scanf("%d:%d", &res,&num);
+		num_scanned = scanf("%d:%d:%c", &res,&num, &ch);
 		char f_buff[4096];
 		fgets(f_buff, 4096, stdin);
-		printf("n %d\n", num_scanned);
+	}
+
+	// allows :f at the end to allow going to fullscreen
+	if (num_scanned == 3){
+		switch (ch){
+			case 'f': string_push_m(&ma->prefix_args,2,"-fs", "-aspect 16:10");
+				break;
+			case '{':
+				ma->player = P_MPLAYER_GUI;
+				ma->afloat = false;
+				ma->all_spaces = SPACES_NONE;
+				break;
+		}
 	}
 	
 	// the select series
@@ -151,15 +208,12 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 		filenames[j] = EPS_ARR(selected,j)->full;
 	}
 	
-	if(free_unused){
-		for(int i = j; i<file_num;++i){
-			free(filenames[i]);
-		}
-	}
+	//TODO free_unused
 	
 	filenames[j] = '\0';
 	*length = number;
 }
+
 
 
 void old_show_menu(char **filenames, size_t *length, bool free_unused){

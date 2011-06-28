@@ -25,7 +25,7 @@
 static void child_options(const MediaArgs *ma,char **s_arr,char *path,size_t file_num);
 static void print_files(const MediaArgs *ma,char **s_arr, size_t file_num);
 
-void media(char *path, char **args, int argc, const MediaArgs *ma) {
+void media(char *path, char **args, int argc, MediaArgs *ma) {
 	
 	assert(path); assert(ma); assert(args);
 	
@@ -107,7 +107,7 @@ void media(char *path, char **args, int argc, const MediaArgs *ma) {
 	
 	// shows menu
 	if (ma->menu){
-		show_menu(s_arr, &file_num,true);
+		show_menu(s_arr, &file_num,true,ma);
 	}
 	
 	if(ma->pl_output & PL_STDOUT){

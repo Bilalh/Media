@@ -371,6 +371,8 @@ void print_media_args(MediaArgs *ma) {
 	print_args("find_unwatched", truth(ma->find_unwatched));
 	print_args("oldest_only", truth(ma->oldest_only));
 	
+	print_args("only_show_menu",  truth(ma->only_show_menu));
+
 	
 #undef truth
 #undef nullcheck

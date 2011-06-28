@@ -89,6 +89,9 @@ typedef struct {
 
 	bool       find_unwatched; // DONE
 	bool       oldest_only;    // DONE
+
+	bool       only_show_menu;    // DONE
+
 	
 } MediaArgs;
 
