@@ -30,7 +30,6 @@ typedef struct {
 	const Element *links;
 } HelpLink;
 
-// 282 unused
 
 // uses val s > 256 && < MAX_OPT_BLOCKS for long only options
 #define LONG_OPT_START_VALUE 257
@@ -556,6 +555,15 @@ const Element H_other[] ={
 	},
 	{  
 		.opt   = {.name =  "help", .val = 'h', .has_arg = optional_argument}, 
+		.help  = "Displays the help.",
+		.arg   = "part", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			print_help(arg);
+			exit(0);
+		}
+	},
+	{  
+		.opt   = {.name =  "man", .val = 282, .has_arg = optional_argument}, 
 		.help  = "Displays the help.",
 		.arg   = "part", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
