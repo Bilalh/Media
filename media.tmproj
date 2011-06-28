@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/examples/mplayer_fork_input.c</string>
+	<string>include/option_parser_private.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -38,14 +38,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>485</integer>
+				<integer>489</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>453</integer>
+			<integer>464</integer>
 		</dict>
 		<key>src/examples/mplayer_fork_input.c</key>
 		<dict>
@@ -91,11 +91,26 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
+		<key>src/media_menu.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>168</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>144</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>src/examples/mplayer_fork_input.c</string>
 		<string>include/option_parser_private.h</string>
+		<string>src/media_menu.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
