@@ -4,6 +4,7 @@
 
 void show_menu(char **filenames, size_t *length, bool free_unused);
 
+void old_show_menu(char **filenames, size_t *length, bool free_unused);
 
 #ifdef MMDEBUG
 #define mmprintf(fmt,...) dprintf(fmt, ...) 

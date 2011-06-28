@@ -33,13 +33,65 @@ static inline int longcmp(long a, long b) {
 }
 
 
+// prints each series in the hash, also stores a pointer 
+// for each series indexed by the order printed in eps_ptr
+static void print_menu(Eps** eps_ptr, Eps *hash) {
+	int index =0;
+	// Prints each series of a separate row
+	for(Eps *e=hash; e != NULL; e=e->hh.next, ++index) {
+		
+		// uses a array indexing index to series then use that to select the right series
+		eps_ptr[index] =  e;
+		bool ordered = true;
+		printf( SSS("%-2d") " : N: ", COLOUR(index,GREEN));
+		
+		
+		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
+				^(const void *a, const void *b){
+					const Ep *ea = *((Ep**)a), *eb = *((Ep**)b);
+					mmprintf("%ld %ld res: %d\n", ea->num, eb->num, longcmp( ea->num, eb->num ) );
+					return longcmp( ea->num , eb->num );
+				}
+				);
+		
+		
+		if (e->eps->index > 1){
+			for(int i = 0; i<e->eps->index-1;i++){
+				if (EPS_ARR(e,i+1)->num != 1 + EPS_ARR(e,i)->num){
+					ordered = false;
+					break;
+				}
+			}
+			
+		}
+		
+		if (ordered && e->eps->index > 1 ){ // Range of eps
+			printf(SSS("%4ld") SSS("-%-4ld"), 
+				   COLOUR(EPS_ARR(e,0)->num, BLUE), COLOUR(EPS_ARR(e,e->eps->index-1)->num,BLUE)
+				   );
+		}else if (e->eps->index == 1){ // single ep
+			const int extra = (3-1)*3;
+			printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,0)->num, YELLOW), extra,"" );
+		}else{ // range with eps missing (only shows the fist three)	
+			const int min =  e->eps->index < 3 ? e->eps->index :3;
+			const int extra = (3-min)*3;
+			for(int i = 0; i<min;i++){
+				printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,i)->num, RED), extra,"" );
+			}
+		}
+		
+		printf(" %s\n", e->series);
+    }
+
+}
+
+// shows the menu
 void show_menu(char **filenames, size_t *length, bool free_unused){
 	
 	size_t file_num = *length;
 	Eps* hash = NULL, *h;
 	
 	for(size_t i = 0;  i < file_num; i++){
-		
 		
 		char *s = basename(filenames[i]);
 		
@@ -72,81 +124,45 @@ void show_menu(char **filenames, size_t *length, bool free_unused){
 		
 	}
 	
-	int index = 0;
-	const unsigned len = HASH_COUNT(hash);
+	const unsigned len = HASH_COUNT(hash);	
 	Eps *eps_ptr[len];
-	
-	
-	for(Eps *e=hash; e != NULL; e=e->hh.next, ++index) {
-		
-		// uses a array indexing index to series then use that to select the right series
-		eps_ptr[index] =  e;
-		bool ordered = true;
-		printf( SSS("%-2d") " : N: ", COLOUR(index,GREEN));
-		
-		
-		qsort_b(e->eps->arr, e->eps->index, sizeof(size_t),
-				^(const void *a, const void *b){
-					const Ep *ea = *((Ep**)a), *eb = *((Ep**)b);
-					mmprintf("%ld %ld res: %d\n", ea->num, eb->num, longcmp( ea->num, eb->num ) );
-					return longcmp( ea->num , eb->num );
-				}
-				);
-		
-		
-		if (e->eps->index > 1){
-			for(int i = 0; i<e->eps->index-1;i++){
-				if (EPS_ARR(e,i+1)->num != 1 + EPS_ARR(e,i)->num){
-					ordered = false;
-					break;
-				}
-			}
-			
-		}
-		
-		if (ordered && e->eps->index > 1 ){
-			printf(SSS("%4ld") SSS("-%-4ld"), 
-				   COLOUR(EPS_ARR(e,0)->num, BLUE), COLOUR(EPS_ARR(e,e->eps->index-1)->num,BLUE)
-				   );
-		}else if (e->eps->index == 1){
-			const int extra = (3-1)*3;
-			printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,0)->num, YELLOW), extra,"" );
-		}else{
-			const int min =  e->eps->index < 3 ? e->eps->index :3;
-			const int extra = (3-min)*3;
-			for(int i = 0; i<min;i++){
-				printf(SSS("%2ld") " %*s", COLOUR(EPS_ARR(e,i)->num, RED), extra,"" );
-			}
-		}
-		
-		printf(" %s\n", e->series);
-    }
+	print_menu(eps_ptr,hash);
 
-	int res = -1;
-		while (res < 0 || res >=len){
-		printf("%s [%d,%u]\n", "Choose an Episode to watch in", 0, len-1);
+	int res = -1, num = -1, num_scanned = -1;
+		while ( res < 0 || res >=len || 
+			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
+		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
+			   "Use n:m to select multiple episodes ");
 		
 		// use readline and regex for opts like  3:3
-		scanf("%d", &res);
+		num_scanned = scanf("%d:%d", &res,&num);
 		char f_buff[4096];
 		fgets(f_buff, 4096, stdin);
+		printf("n %d\n", num_scanned);
 	}
 	
+	// the select series
 	Eps *selected = eps_ptr[res];
 	
 	int j;
+	const int number =  num_scanned >=2 ? num : 1 ;
 	file_num = selected->eps->index;
-	for(j = 0; j <file_num;j++){
-		filenames[j] = ((Ep*) selected->eps->arr[j])->full;
+	for(j = 0; j <number;j++){
+		filenames[j] = EPS_ARR(selected,j)->full;
 	}
+	
+	if(free_unused){
+		for(int i = j; i<file_num;++i){
+			free(filenames[i]);
+		}
+	}
+	
 	filenames[j] = '\0';
-		
-	*length = file_num;
+	*length = number;
 }
 
 
-
-void show_menu2(char **filenames, size_t *length, bool free_unused){
+void old_show_menu(char **filenames, size_t *length, bool free_unused){
 	
 	sqlite3 *db;
 	int result;
