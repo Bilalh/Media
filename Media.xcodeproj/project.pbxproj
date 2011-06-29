@@ -44,6 +44,10 @@
 		92A8D47113ABEC6F00AF0037 /* option_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D213ABE6DF00AF0037 /* option_parser.c */; };
 		92A8D47213ABEC6F00AF0037 /* players.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D313ABE6DF00AF0037 /* players.c */; };
 		92A8D47313ABEC6F00AF0037 /* playlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3D413ABE6DF00AF0037 /* playlist.c */; };
+		92E67DD513BB808600C9EE7D /* history.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3CB13ABE6DF00AF0037 /* history.c */; };
+		92E67DDD13BB808600C9EE7D /* string_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3EA13ABE6DF00AF0037 /* string_util.c */; };
+		92E67DDF13BB808600C9EE7D /* time_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3EC13ABE6DF00AF0037 /* time_util.c */; };
+		92E67DE813BB821900C9EE7D /* ongoing_main.c in Sources */ = {isa = PBXBuildFile; fileRef = 92A8D3B413ABE6DF00AF0037 /* ongoing_main.c */; };
 		92F53F1313B7CD5700658B76 /* media_menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 92F53F1113B7CD5700658B76 /* media_menu.c */; };
 		92F53F1413B7CD5700658B76 /* media_menu.c in Sources */ = {isa = PBXBuildFile; fileRef = 92F53F1113B7CD5700658B76 /* media_menu.c */; };
 /* End PBXBuildFile section */
@@ -59,6 +63,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		92A139FA13AD150E005B067A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		92E67DE213BB808600C9EE7D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -219,6 +232,7 @@
 		92A8D41713ABE6DF00AF0037 /* block_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = block_test.c; sourceTree = "<group>"; };
 		92A8D41813ABE6DF00AF0037 /* func.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = func.c; sourceTree = "<group>"; };
 		92A8D41913ABE6DF00AF0037 /* text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
+		92E67DE613BB808600C9EE7D /* Media copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Media copy"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F53F1113B7CD5700658B76 /* media_menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = media_menu.c; sourceTree = "<group>"; };
 		92F53F1213B7CD5700658B76 /* media_menu.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = media_menu.h; path = include/media_menu.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -232,6 +246,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		92A139F913AD150E005B067A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92E67DE113BB808600C9EE7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,6 +286,7 @@
 			children = (
 				9258686A13ABE5DD00FF415A /* Media */,
 				92A139FE13AD150E005B067A /* Media copy */,
+				92E67DE613BB808600C9EE7D /* Media copy */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -555,6 +577,23 @@
 			productReference = 92A139FE13AD150E005B067A /* Media copy */;
 			productType = "com.apple.product-type.tool";
 		};
+		92E67DD213BB808600C9EE7D /* Ongoing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92E67DE313BB808600C9EE7D /* Build configuration list for PBXNativeTarget "Ongoing" */;
+			buildPhases = (
+				92E67DD313BB808600C9EE7D /* Sources */,
+				92E67DE113BB808600C9EE7D /* Frameworks */,
+				92E67DE213BB808600C9EE7D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ongoing;
+			productName = Media;
+			productReference = 92E67DE613BB808600C9EE7D /* Media copy */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -577,6 +616,7 @@
 			targets = (
 				9258686913ABE5DD00FF415A /* Media */,
 				92A139EB13AD150E005B067A /* Everything */,
+				92E67DD213BB808600C9EE7D /* Ongoing */,
 			);
 		};
 /* End PBXProject section */
@@ -632,6 +672,17 @@
 				92A13A7B13AD1692005B067A /* time_helper.c in Sources */,
 				92A13A7C13AD1692005B067A /* time_test.c in Sources */,
 				92F53F1413B7CD5700658B76 /* media_menu.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92E67DD313BB808600C9EE7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92E67DE813BB821900C9EE7D /* ongoing_main.c in Sources */,
+				92E67DD513BB808600C9EE7D /* history.c in Sources */,
+				92E67DDD13BB808600C9EE7D /* string_util.c in Sources */,
+				92E67DDF13BB808600C9EE7D /* time_util.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +799,45 @@
 			};
 			name = Release;
 		};
+		92E67DE413BB808600C9EE7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				"OTHER_CFLAGS[arch=*]" = (
+					"-I${PROJECT_DIR}",
+					"-I${PROJECT_DIR}/src",
+					"-I${PROJECT_DIR}/include",
+					"-I/usr/local/include",
+					"-I/usr/include/libxml2",
+					"-DXCODE_DEBUG",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-lsqlite3",
+					"-lxml2",
+					"-lcurl",
+					"-lpcre",
+					"-lreadline",
+				);
+				PRODUCT_NAME = "Media copy";
+			};
+			name = Debug;
+		};
+		92E67DE513BB808600C9EE7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				PRODUCT_NAME = "Media copy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -774,6 +864,15 @@
 			buildConfigurations = (
 				92A139FC13AD150E005B067A /* Debug */,
 				92A139FD13AD150E005B067A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		92E67DE313BB808600C9EE7D /* Build configuration list for PBXNativeTarget "Ongoing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92E67DE413BB808600C9EE7D /* Debug */,
+				92E67DE513BB808600C9EE7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <libgen.h>
 #include <assert.h>
+#include <sys/ioctl.h>
 
 #include <sqlite3.h>
 #include <libxml/tree.h>
@@ -436,6 +437,15 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	const char *current = argv[1];
 	const char* total   = argv[2] ? argv[2] : "?";
 	
+	const int rest_length = 37;
+	
+	struct ttysize ts; 
+	ioctl(0, TIOCGSIZE, &ts);
+	
+	int title_length = ts.ts_cols - rest_length;
+	if      (title_length >= PREFS_MAX_TITLE_LENGTH) title_length = PREFS_MAX_TITLE_LENGTH;
+	else if (title_length <= PREFS_MIN_TITLE_LENGTH) title_length = PREFS_MIN_TITLE_LENGTH;
+	 
 	
 	// Makes the date
 	struct tm tm = {}; char date[COLOUR_TIME_LENGTH];
@@ -445,8 +455,9 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	strftime(date, COLOUR_TIME_LENGTH, COLOUR_TIME_STRING, &tm);
 	
 	// prints the data 
-	printf("%-42s " SSS("%3s") "/" SSS("%-3s") " %17s\n", 
-		title, COLOUR(current,BLUE) , COLOUR(total,RED) , date
+	printf("%-*s " SSS("%3s") "/" SSS("%-3s") " %28s\n", 
+		   title_length,title, 
+		   COLOUR(current,BLUE) , COLOUR(total,RED) , date
 	);
 
 	return 0;

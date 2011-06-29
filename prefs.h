@@ -30,7 +30,7 @@
 // comment to disable.  Replaces all (the char (default ^)) with | to save '' the args 
 #define PREFS_SECOND_BAR '@'
 
-// comment to get rid of colour
+// comment to get rid of COLOUR
 #define PREFS_COLOUR
 
 
@@ -40,5 +40,8 @@
 #define PREFS_AX "/Users/bilalh/Movies/.Movie/divx"
 #define PREFS_OP "/Users/bilalh/Movies/.Movie/OpeningP"
 
+// lengths for tiles in ongoing
+#define PREFS_MIN_TITLE_LENGTH 42
+#define PREFS_MAX_TITLE_LENGTH 60
 
 #endif
