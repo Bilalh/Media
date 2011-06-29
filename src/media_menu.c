@@ -212,9 +212,9 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 	while ( res < 0 || res >=len || 
 			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
 		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
-			   "Use n:m to select multiple episodes ");
+			   "Use n.m to select multiple episodes ");
 		
-		num_scanned = scanf("%d %d %c %c", &res,&num, &ch, &ch2);
+		num_scanned = scanf("%d.%d.%c.%c", &res,&num, &ch, &ch2);
 		char f_buff[4096];
 		fgets(f_buff, 4096, stdin);
 	}
@@ -222,7 +222,8 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 	// allows :f at the end to allow going to fullscreen
 	if (num_scanned == 3){
 		process_options(ma,ch);
-	}else if(num_scanned ==4){
+	}
+	else if(num_scanned ==4){
 		process_options(ma,ch);
 		process_options(ma,ch2);
 	}
@@ -316,3 +317,4 @@ void old_show_menu(char **filenames, size_t *length, bool free_unused){
 	file_num = 1;
 	*length = file_num;
 }
+
