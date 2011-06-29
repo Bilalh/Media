@@ -321,13 +321,13 @@ void sql_exec_array (int argc, char **argv, SqlCallback callback ) {
 void print_latest(char *num){
 	assert(num);
 	
-	char buff[200 + strlen(num)*2];
+	char buff[202 + strlen(num)*2];
 	sprintf(buff, 
 		"SELECT Title, Current, Total, Date, Finished, Rewatching, Dropped"
 		" FROM SeriesData"
 		" WHERE("
 		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
-		"	AND Finished = 0 AND (Skip = 0 OR Dropped = 0)"
+		"	AND Finished = 0 AND (Skip = 0 AND Dropped = 0)"
 		")",
 		num
 	);
@@ -343,7 +343,7 @@ void print_latest_with_finished(char *num){
 		" FROM SeriesData"
 		" WHERE("
 		"	strftime('%%s',Date) > strftime('%%s', 'now','-%s day','localtime')"
-		"	AND (Skip = 0 OR Dropped = 0)"
+		"	AND (Dropped = 0)"
 		")",
 		num
 	);

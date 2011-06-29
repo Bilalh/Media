@@ -6,7 +6,7 @@ begin
 titles = `$HOME/bin/get_titles.sh`.split("\n").sort
 titles.each_with_index do |e, i|
 	e.strip!
-	say("<%= color('#{'%-2s' % i }', BLUE) %> #{'%-2s' %  `$HOME/scripts/get_number.sh \"#{e}\"`.strip} #{e}")
+	say("<%= color('#{'%-2s' % i }', BLUE) %> #{'%-2s' %  `$HOME/bin/get_number.sh \"#{e}\"`.strip} #{e}")
 end
 
 num   = ask("Number? ", Integer) { |q| q.in = 0..titles.length }
