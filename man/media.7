@@ -3,7 +3,7 @@
 .B media
 \-  Finds, Plays and keeps track of media files
 .SH SYNOPSIS
-media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
+media start_path [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}_@%^#+=~;]
 .br
 .SH DESCRIPTION
 Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
@@ -18,17 +18,12 @@ as shown above abbreviation are expended in ORs.
 .SH OPTIONS
 To see options use media -h to see all options
 .br
-For coloured options use media -h | less -R
-.br
 Use -h[num] for a section
 .br
 Use -h,[letters] for details of the options(s)
 .br
 Most -- options have a negation in form --no , --no-fs for --fs for example   
 .br 
-
-
-
 
 
 .I 0  Output
@@ -49,6 +44,10 @@ Colours the episodes numbers (default blue)
 .TP 0.5i
 .BR "-g ", "  --[no-]menu         " 
 Uses a menu to select the file
+
+.TP 0.5i
+.BR "-x ", "  --[no-]only-menu    " 
+Shows the menu then exits
 
 .I 1  Mplayer
 .BR
@@ -90,7 +89,7 @@ Enable hard frame dropping
 Adds profile 
 
 .TP 0.5i
-.BR "   ", "  --screen  {num}     " 
+.BR "-# ", "  --screen  {num}     " 
 Puts the video on on the chosen screen (numbered from 0)
 
 .I 2  Filepath
@@ -175,7 +174,7 @@ Label the watched episodes (default orange  )
 Set the score (0 to not set)
 
 .TP 0.5i
-.BR "   ", "  --[no-]movie        " 
+.BR "-~ ", "  --[no-]movie        " 
 Set the total to 1 and set the files to finished
 
 .I 5  Playlist
@@ -186,7 +185,7 @@ Set the total to 1 and set the files to finished
 Outputs file as a m3u playlist. Also sets sub_dirs
 
 .TP 0.5i
-.BR "-x ", "  --[no-]plist        " 
+.BR "   ", "  --[no-]plist        " 
 Outputs file as a plist. Also sets sub_dirs
 
 .TP 0.5i
@@ -232,15 +231,23 @@ Displays videos as well.
 Choose the latest file of each series
 
 .TP 0.5i
-.BR "-w ", "  --sep     {num}     " 
+.BR "-w ", "  --[no-]first        " 
+Choose the oldest file of each series
+
+.TP 0.5i
+.BR "-+ ", "  --[no-]un-watched   " 
+Choose the latest un-watched file of each series
+
+.TP 0.5i
+.BR "-_ ", "  --sep     {num}     " 
 Use {num} as the separator between episodes
 
 .TP 0.5i
-.BR "-: ", "  --[no-]nicerandom   " 
+.BR "-: ", "  --[no-]nice-random  " 
 Sets random in niceplayer
 
 .TP 0.5i
-.BR "-Y ", "  --[no-]nicereapeat  " 
+.BR "-Y ", "  --[no-]nice-reapeat " 
 Sets repeat in niceplayer
 
 .TP 0.5i
@@ -307,7 +314,7 @@ Set mplayer prefix options, can be used multiple times
 Set mplayer postfix options, can be used multiple times
 
 .TP 0.5i
-.BR "-_ ", "  --quick             " 
+.BR "-* ", "  --quick             " 
 --framedrop and --fast
 
 .TP 0.5i
@@ -345,6 +352,14 @@ The start time
 .TP 0.5i
 .BR "   ", "  --end     {hh:mm:ss}" 
 The end time relative to the start time 
+
+.TP 0.5i
+.BR "   ", "  --[no-]tt           " 
+afloat and 360p. and top right
+
+.TP 0.5i
+.BR "   ", "  --[no-]ontop        " 
+adds -ontop
 
 .I 9  Mplayer aspect
 .BR
@@ -460,9 +475,7 @@ Places the player at the bottom centre
 Places the player at the centre
 
 
-
-
-
+a
 .br
 .SH EXAMPLES
 
@@ -543,7 +556,7 @@ IF using sub directories (-s) and -m -o  it might complain about a malloc error,
 .SH VERSION
 This documentation describes
 .B media
-version R216
+version R216 (options updated to R2-37-g91744a9 )
 .SH AUTHOR
 .br
 .B Bilal Hussain

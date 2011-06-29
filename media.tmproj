@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/media.c</string>
+	<string>include/option_parser_private.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -33,19 +33,33 @@
 	<integer>216</integer>
 	<key>metaData</key>
 	<dict>
+		<key>include/option_parser_private.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>489</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>464</integer>
+		</dict>
 		<key>src/examples/mplayer_fork_input.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>41</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>0</integer>
 		</dict>
 		<key>src/examples/read.c</key>
 		<dict>
@@ -77,41 +91,26 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/media.c</key>
+		<key>src/media_menu.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>130</integer>
+				<integer>168</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>114</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>130</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>130</integer>
-			</dict>
+			<integer>144</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>src/examples/mplayer_fork_input.c</string>
-		<string>src/media.c</string>
+		<string>include/option_parser_private.h</string>
+		<string>src/media_menu.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
