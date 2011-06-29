@@ -42,6 +42,6 @@
 
 // lengths for tiles in ongoing
 #define PREFS_MIN_TITLE_LENGTH 42
-#define PREFS_MAX_TITLE_LENGTH 60
+#define PREFS_MAX_TITLE_LENGTH 55
 
 #endif

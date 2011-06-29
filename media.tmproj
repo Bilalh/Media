@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>include/option_parser_private.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -33,34 +31,6 @@
 	<integer>216</integer>
 	<key>metaData</key>
 	<dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>489</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>464</integer>
-		</dict>
-		<key>src/examples/mplayer_fork_input.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>src/examples/read.c</key>
 		<dict>
 			<key>caret</key>
@@ -91,27 +61,7 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/media_menu.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>168</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>144</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/examples/mplayer_fork_input.c</string>
-		<string>include/option_parser_private.h</string>
-		<string>src/media_menu.c</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -142,7 +92,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -151,6 +101,20 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>build</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>man</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>src</key>
 				<dict>
 					<key>isExpanded</key>
@@ -170,6 +134,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{228, 122}, {991, 756}}</string>
+	<string>{{228, 127}, {1137, 751}}</string>
 </dict>
 </plist>
