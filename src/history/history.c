@@ -22,6 +22,7 @@ static int print_latest_callback (void *unused, int argc, char **argv, char **co
 static int print_ongoing_callback(void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv, char **columns);
 static int print_ongoing_data_callback(void *unused, int argc, char **argv, char **columns);
+static int get_title_length(int minus);
 
 bool updateHistory(char **filenames, Status status, int sep) {
 	assert(filenames);
@@ -393,10 +394,10 @@ static int print_latest_callback(void *unused, int argc, char **argv, char **col
 	tm = *localtime(&temp);
 	strftime(date, COLOUR_TIME_LENGTH, COLOUR_TIME_STRING, &tm);
 	
-	const int  length = 40;
-	// prints the data 
-	printf("%s%-*s " SSS("%3s") "/" SSS("%-3s") " %17s\n", 
-		status, length, title, 
+	const int rest_length = 39;
+	const int title_length = get_title_length(rest_length);
+	printf("%s%-*s " SSS("%3s") "/" SSS("%-3s") " %28s\n", 
+		status, title_length, title, 
 		COLOUR(current,BLUE) , COLOUR(total,RED) , date
 	);
 
@@ -438,14 +439,7 @@ static int print_ongoing_callback(void *unused, int argc, char **argv, char **co
 	const char* total   = argv[2] ? argv[2] : "?";
 	
 	const int rest_length = 37;
-	
-	struct ttysize ts; 
-	ioctl(0, TIOCGSIZE, &ts);
-	
-	int title_length = ts.ts_cols - rest_length;
-	if      (title_length >= PREFS_MAX_TITLE_LENGTH) title_length = PREFS_MAX_TITLE_LENGTH;
-	else if (title_length <= PREFS_MIN_TITLE_LENGTH) title_length = PREFS_MIN_TITLE_LENGTH;
-	 
+	int title_length = get_title_length(rest_length);
 	
 	// Makes the date
 	struct tm tm = {}; char date[COLOUR_TIME_LENGTH];
@@ -486,4 +480,14 @@ static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv,
 	return 0;
 }
 
-
+static int get_title_length(int minus){
+	struct ttysize ts; 
+	ioctl(0, TIOCGSIZE, &ts);
+	
+	int title_length = ts.ts_cols - minus;
+	
+	if      (title_length >= PREFS_MAX_TITLE_LENGTH) title_length = PREFS_MAX_TITLE_LENGTH;
+	else if (title_length <= PREFS_MIN_TITLE_LENGTH) title_length = PREFS_MIN_TITLE_LENGTH;
+	
+	return title_length;
+}
