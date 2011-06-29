@@ -125,6 +125,41 @@ static void print_menu(Eps** eps_ptr, Eps *hash ) {
 	sqlite3_close(db);
 }
 
+static void process_options(MediaArgs *ma,char ch) {
+  switch (ch){
+			case 'f': string_push_m(&ma->prefix_args,2,"-fs", "-aspect 16:10");
+				break;
+			case '{':
+				ma->player = P_MPLAYER_GUI;
+				ma->afloat = false;
+				ma->all_spaces = SPACES_NONE;
+				break;
+			case '[': 
+				ma->write_history =true;
+				break;
+			case 't':
+				string_push_m(&ma->prefix_args, 5, 
+							  "-noontop", 
+							  "-nofs",
+							  "-geometry 0:0",
+							  "-xy 480",
+							  "-subfont-text-scale 4"
+							  );
+				ma->afloat = true;
+				break;
+			case 'y':
+				string_push_m(&ma->prefix_args, 5, 
+							  "-noontop", 
+							  "-nofs",
+							  "-geometry 100%:0%",
+							  "-xy 480",
+							  "-subfont-text-scale 4"
+							  );
+				ma->afloat = true;
+				break;
+		}
+
+}
 // shows the menu
 void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma){
 	
@@ -173,29 +208,23 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 	}
 	
 	int res = -1, num = -1, num_scanned = -1;
-	char ch;
+	char ch, ch2;
 	while ( res < 0 || res >=len || 
 			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
 		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
 			   "Use n:m to select multiple episodes ");
 		
-		// use readline and regex for opts like  3:3
-		num_scanned = scanf("%d:%d:%c", &res,&num, &ch);
+		num_scanned = scanf("%d %d %c %c", &res,&num, &ch, &ch2);
 		char f_buff[4096];
 		fgets(f_buff, 4096, stdin);
 	}
 
 	// allows :f at the end to allow going to fullscreen
 	if (num_scanned == 3){
-		switch (ch){
-			case 'f': string_push_m(&ma->prefix_args,2,"-fs", "-aspect 16:10");
-				break;
-			case '{':
-				ma->player = P_MPLAYER_GUI;
-				ma->afloat = false;
-				ma->all_spaces = SPACES_NONE;
-				break;
-		}
+		process_options(ma,ch);
+	}else if(num_scanned ==4){
+		process_options(ma,ch);
+		process_options(ma,ch2);
 	}
 	
 	// the select series
