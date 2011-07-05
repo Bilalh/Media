@@ -125,7 +125,7 @@ static void print_menu(Eps** eps_ptr, Eps *hash ) {
 	sqlite3_close(db);
 }
 
-static void process_options(MediaArgs *ma,char ch) {
+static void process_options(MediaArgs *ma,char ch, char ch2) {
   switch (ch){
 			case 'f': string_push_m(&ma->prefix_args,2,"-fs", "-aspect 16:10");
 				break;
@@ -137,6 +137,14 @@ static void process_options(MediaArgs *ma,char ch) {
 			case '[': 
 				ma->write_history =true;
 				break;
+			case '@':
+			case 's':
+				if (ch2 != 'x'){
+					int score = (ch2-48); // converts to int 
+					ma->score = score;
+				}
+				break;
+				
 			case 't':
 				string_push_m(&ma->prefix_args, 5, 
 							  "-noontop", 
@@ -208,11 +216,11 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 	}
 	
 	int res = -1, num = -1, num_scanned = -1;
-	char ch, ch2;
+	char ch = 'x', ch2 = 'x';
 	while ( res < 0 || res >=len || 
 			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
 		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
-			   "Use n.m to select multiple episodes ");
+			   "Use n.m to select multiple episodes, can use .[ft{[@] ");
 		
 		num_scanned = scanf("%d.%d.%c.%c", &res,&num, &ch, &ch2);
 		char f_buff[4096];
@@ -221,11 +229,10 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 
 	// allows :f at the end to allow going to fullscreen
 	if (num_scanned == 3){
-		process_options(ma,ch);
-	}
-	else if(num_scanned ==4){
-		process_options(ma,ch);
-		process_options(ma,ch2);
+		process_options(ma,ch,ch2);
+	}else if(num_scanned ==4){
+		process_options(ma,ch, ch2);
+		process_options(ma,ch2,'\0');
 	}
 	
 	// the select series

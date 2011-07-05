@@ -84,7 +84,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				sqlite3_bind_int(statement_si_su, 1, 1);
 				sqlite3_bind_int(statement_si_su, 2, 1);
 				result = sqlite3_step(statement_si_su);
-				printf("su r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				hdprintf("su r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
@@ -99,7 +99,7 @@ bool updateHistory(char **filenames, Status status, int sep) {
 				sqlite3_bind_text(statement_si_u, 2, s, -1, SQLITE_TRANSIENT);
 				sqlite3_bind_int(statement_si_u, 1, 1);
 				result = sqlite3_step(statement_si_u);
-				printf("up r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
+				hdprintf("up r:%i Ok:%i done:%i \n", result, SQLITE_OK, SQLITE_DONE );
 				if( !(result == SQLITE_OK  || result == SQLITE_DONE) ) {
 					efprintf( "SQL error %s : %s\n", *filenames, sqlite3_errmsg(db));
 				}
