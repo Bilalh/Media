@@ -19,10 +19,10 @@
 	"Haruhi|Mai-(Otome|Hime)|K-on|Kaichou wa|Hime Chen! Otogi|gundam 00 S2 op 2|Rave|" \
 	"aw.mp4|Ar tonelico|11 eyes|Disgaea 3|Kampfer|To ?aru Majutsu no Index|Princess |" \
 	"Nogizaka Haruka|So ?ra ?no ?Wo ?to|Saki ed|moon|Myself;|Shining Tears|Azumanga|"  \
+	"fantasy|Kidou Tenshi|hack sign| English|Lucky Star|Musume|Ore no Imouto.*full|"   \
 	"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|Starry Heavens|"     \
-	"Gundam Seed Destiny|Shugo Chara|EX OVA|Atelier Totori op 1|frontier|Precure|"     \
-	"fantasy|Kidou Tenshi|hack sign| English|than BLACK|Luminous|Lucky Star|Musume|"   \
-	"Agape"
+	"Gundam Seed Destiny|Shugo Chara|EX OVA|frontier|Precure|Luminous|than BLACK|"     \
+	"Agape|Anata no Oto"
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 

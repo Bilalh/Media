@@ -869,6 +869,22 @@ const Element H_mplayer_extra[] = {
 			}
 		}
 	},
+	{  
+		.opt   = {.name =  "input", .val = 274, .has_arg = required_argument}, 
+		.help  = "Configures mplayer input. Paths are relative to ~/.mplayer/",
+		.arg   = "Command", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 2, "-input", arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "conf", .val = 275, .has_arg = required_argument}, 
+		.help  = "The input file to use, ~/.mplayer/ if not a full path",
+		.arg   = "", .neg = false,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_append_m(&ma->prefix_args, 2, " -input conf=", arg);
+		}
+	},
 	
 };
 

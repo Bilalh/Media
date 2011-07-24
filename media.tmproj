@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/history/history.c</string>
+	<string>include/string_util.h</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -33,14 +33,44 @@
 	<integer>216</integer>
 	<key>metaData</key>
 	<dict>
-		<key>src/app/latest_f_main.c</key>
+		<key>Readme</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>60</integer>
 				<key>line</key>
-				<integer>21</integer>
+				<integer>23</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>60</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+		</dict>
+		<key>include/string_util.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>36</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -55,20 +85,6 @@
 				<integer>0</integer>
 				<key>line</key>
 				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/app/ml_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>22</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -105,57 +121,72 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/history/history.c</key>
+		<key>src/make_man_options.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>388</integer>
+				<integer>32</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>368</integer>
+			<integer>14</integer>
 		</dict>
-		<key>src/history/ml.c</key>
+		<key>src/media.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>59</integer>
 				<key>line</key>
-				<integer>292</integer>
+				<integer>127</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>279</integer>
+			<integer>217</integer>
 		</dict>
-		<key>src/scripts/history_copy.rb</key>
+		<key>src/media_menu.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>65</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>187</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>170</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>187</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>187</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/scripts/history_copy.rb</string>
-		<string>src/app/ml_main.c</string>
-		<string>src/app/latest_f_main.c</string>
-		<string>src/history/history.c</string>
-		<string>src/app/latest_fs_main.c</string>
-		<string>src/history/ml.c</string>
+		<string>Readme</string>
+		<string>src/media.c</string>
+		<string>src/media_menu.c</string>
+		<string>include/string_util.h</string>
+		<string>src/make_man_options.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -216,13 +247,6 @@
 					<true/>
 					<key>subItems</key>
 					<dict>
-						<key>app</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
 						<key>history</key>
 						<dict>
 							<key>isExpanded</key>
@@ -236,6 +260,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{81, 94}, {1137, 751}}</string>
+	<string>{{34, 86}, {1003, 792}}</string>
 </dict>
 </plist>

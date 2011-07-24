@@ -220,9 +220,9 @@ void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma
 	while ( res < 0 || res >=len || 
 			   (num_scanned >=2 && (num > eps_ptr[res]->eps->index || num <= 0)  ) ){
 		printf("%s [%d,%u]\n%s\n", "Choose an Episode to watch in", 0, len-1,
-			   "Use n.m to select multiple episodes, can use .[ft{[@] ");
+			   "Use n,m to select multiple episodes, can use ,[ft{[@] ");
 		
-		num_scanned = scanf("%d.%d.%c.%c", &res,&num, &ch, &ch2);
+		num_scanned = scanf("%d,%d,%c,%c", &res,&num, &ch, &ch2);
 		char f_buff[4096];
 		fgets(f_buff, 4096, stdin);
 	}
