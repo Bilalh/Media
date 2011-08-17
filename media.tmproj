@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/string_util.h</string>
+	<string>build/Makefile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -63,19 +63,93 @@
 				<integer>23</integer>
 			</dict>
 		</dict>
+		<key>build/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>5</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>15</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+		</dict>
+		<key>include/string_buffer.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>58</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>27</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>58</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>58</integer>
+			</dict>
+		</dict>
 		<key>include/string_util.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>36</integer>
+				<integer>31</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>43</integer>
+		</dict>
+		<key>prefs.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>4</integer>
 		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
@@ -154,30 +228,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>187</integer>
+				<integer>173</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>170</integer>
-			<key>selectFrom</key>
+			<integer>162</integer>
+		</dict>
+		<key>src/string_buffer.c</key>
+		<dict>
+			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>45</integer>
 				<key>line</key>
-				<integer>187</integer>
+				<integer>32</integer>
 			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>187</integer>
-			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -185,7 +257,11 @@
 		<string>Readme</string>
 		<string>src/media.c</string>
 		<string>src/media_menu.c</string>
+		<string>prefs.h</string>
+		<string>build/Makefile</string>
 		<string>include/string_util.h</string>
+		<string>include/string_buffer.h</string>
+		<string>src/string_buffer.c</string>
 		<string>src/make_man_options.c</string>
 	</array>
 	<key>shellVariables</key>
@@ -218,7 +294,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -227,6 +303,13 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>build</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>doc</key>
 				<dict>
 					<key>isExpanded</key>
@@ -260,6 +343,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{34, 86}, {1003, 792}}</string>
+	<string>{{34, 78}, {889, 800}}</string>
 </dict>
 </plist>
