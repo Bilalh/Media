@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>216</integer>
+	<integer>128</integer>
 	<key>metaData</key>
 	<dict>
 		<key>Readme</key>
@@ -68,30 +68,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>32</integer>
+				<integer>98</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
+			<integer>65</integer>
 		</dict>
 		<key>include/string_buffer.h</key>
 		<dict>
@@ -303,21 +287,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>doc</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>man</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -330,7 +300,7 @@
 					<true/>
 					<key>subItems</key>
 					<dict>
-						<key>history</key>
+						<key>scripts</key>
 						<dict>
 							<key>isExpanded</key>
 							<true/>

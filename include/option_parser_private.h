@@ -879,8 +879,8 @@ const Element H_mplayer_extra[] = {
 	},
 	{  
 		.opt   = {.name =  "conf", .val = 275, .has_arg = required_argument}, 
-		.help  = "The input file to use, ~/.mplayer/ if not a full path",
-		.arg   = "", .neg = false,
+		.help  = "The input file to use, relative to ~/.mplayer/ if not a full path",
+		.arg   = "file", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_append_m(&ma->prefix_args, 2, " -input conf=", arg);
 		}
