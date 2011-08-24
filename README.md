@@ -1,35 +1,40 @@
-Media
+Meida {#readmeTitle}
 =====
-Media is used to play video and/or audio files, provide a nice interface to mplayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
+Media is used to play video and/or audio files, provide a nice interface to MPlayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
+{#description}
 
-There also other binaries see the `man` pages in man for details 
+Usage
+-----
+Usage media start_path [args]
 
-installing 
-----------
-By default the program install to `~/bin` and the database is created in `~/Library/Application Support/Media/`
+	 args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
+	 Use -h for help Use -h[num] for a section in the help
+	 Use -h,{letters} for details of the arg(s)
+	
+See the man pages or `media -h` for more details.
 
-from `build`
-<code>
-	make
-	make install
-	make create_database
-</code>
-
-if you want to install the man pages
-<code>
-	sudo make install\_man\_pages
-</code>
-
-if you want to install the media alias & functions
-<code>
-	make install\_media\_alias
-</code>
-then add `. bin/media.sh` to your `.bashrc`
-
-requirements
-----------
+Prerequisites
+-------------
 * sqlite3
-* libxml
-* libcurl
 * pcre
-* linux has lots extra requirements see Readme
+* libcurl (for mylist)
+* libxml  (for mylist and playlists)
+* linux has lots extra requirements see Readm
+
+Install 
+-------
+* Put the scripts in your `$PATH`
+	
+		make dist
+		make install
+		make create_database
+		-Optional-
+		(might need sudo)
+		make install_man_pages
+		make install_media_aliases
+
+* Note the xcode project is **only** for **debugging** not building 
+
+Issues
+------
+See man pages
