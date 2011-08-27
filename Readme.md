@@ -5,7 +5,7 @@ Media is used to play video and/or audio files, provide a nice interface to MPla
 
 Usage
 -----
-Usage media start_path [args]
+Usage `media start_path [args]`
 
 	 args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]
 	 Use -h for help Use -h[num] for a section in the help
