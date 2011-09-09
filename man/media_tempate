@@ -1,4 +1,4 @@
-.TH MEDIA 7 "R216(updated to R2-55-gf7ae6f7)" "Tue, December 30, 2008" 
+.TH MEDIA 7 "R216(updated to R2-56-g0a44d1f)" "Tue, December 30, 2008" 
 .SH NAME
 .B media
 \-  Finds, Plays and keeps track of media files
@@ -122,7 +122,7 @@ IF using sub directories (-s) and -m -o  it might complain about a malloc error,
 .SH VERSION
 This documentation describes
 .B media
-version R216 (options updated to R2-55-gf7ae6f7 )
+version R216 (options updated to R2-56-g0a44d1f )
 .SH AUTHOR
 .br
 .B Bilal Hussain
