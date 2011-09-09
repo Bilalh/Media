@@ -159,7 +159,7 @@ install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
 	
 install_mplayer_options:
-	cp -r ${config_src}/mplayer ~/ 
+	cp -r ${config_src}/mplayer/* ~/.mplayer/
 		
 create_database:
 	mkdir -p ${SUPPORT_DIR} && touch ${SUPPORT_DIR}/zzhash && cat ${script_src}/media.sql | sqlite3  ${SUPPORT_DIR}/media.db
