@@ -154,6 +154,11 @@ list_tests:
 #needs sudo
 install_man_pages:
 	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/
+	ln -fs ${MAN_DST}/nums.7 ${MAN_DST}/numss.7
+	ln -fs ${MAN_DST}/nums.7 ${MAN_DST}/numsf.7
+	ln -fs ${MAN_DST}/ongoing.7 ${MAN_DST}/ongoingnc.7
+	
+
 	
 install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
