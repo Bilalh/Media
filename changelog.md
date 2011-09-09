@@ -7,4 +7,4 @@ Fri 09 Sep 2011
 * Added `--tbr`, `--font-scale` and `--brd` see `media -h` or man pages for details
 * mplayer config files 
 * updated man pages 
-* refactoring
+* refactoring 

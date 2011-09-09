@@ -153,7 +153,7 @@ list_tests:
 
 #needs sudo
 install_man_pages:
-	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/.
+	mkdir -p ${MAN_DST} && cp ../man/*.7 ${MAN_DST}/
 	
 install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.

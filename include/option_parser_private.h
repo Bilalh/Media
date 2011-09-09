@@ -51,7 +51,7 @@ typedef struct {
 const Element H_filetype[] ={
 
 	{  
-		.opt   = {.name =  "all", .val = 'x', .has_arg = no_argument}, 
+		.opt   = {.name =  "all", .val = 'X', .has_arg = no_argument}, 
 		.help  = "Display all files.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->types = T_NONE;
@@ -908,6 +908,7 @@ const Element H_mplayer_extra[] = {
 	{  
 		.opt   = {.name =  "font-scale", .val = 'u', .has_arg = required_argument}, 
 		.help  = "Specify the font scaling",
+		.arg   = "scale", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_push_m(&ma->prefix_args, 2, "-ass -ass-font-scale", arg);
 		}
