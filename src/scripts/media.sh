@@ -72,11 +72,11 @@ function hadd() {
 
 alias mdb='open -a base ~/Library/Application\ Support/Media/Media.db'
 
-alias au="ax -u"
-alias mu="ml -u"
-alias mlu="mll -u"
-alias opu='op -u'
-alias oppu='opp -u'
+alias au="ax -U"
+alias mu="ml -U"
+alias mlu="mll -U"
+alias opu='op -U'
+alias oppu='opp -U'
 
 function media_binary_here(){
 	MEDIA_BINARY=`pwd`/media

@@ -3,9 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>man/media.7</string>
+	<string>build/Makefile</string>
 	<key>documents</key>
 	<array>
+		<dict>
+			<key>filename</key>
+			<string>changelog.md</string>
+			<key>lastUsed</key>
+			<date>2011-09-09T17:44:29Z</date>
+		</dict>
 		<dict>
 			<key>expanded</key>
 			<true/>
@@ -19,12 +25,6 @@
 			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>changelog.md</string>
-			<key>lastUsed</key>
-			<date>2011-09-09T16:46:16Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -55,70 +55,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>build/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>161</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>98</integer>
+		</dict>
 		<key>changelog.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>859</integer>
-		</dict>
-		<key>man/histw.7</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
 				<integer>10</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>man/media.7</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
 				<key>line</key>
-				<integer>563</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>550</integer>
-		</dict>
-		<key>man/ml.7</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>5</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -215,10 +173,7 @@
 	<key>openDocuments</key>
 	<array>
 		<string>Readme.md</string>
-		<string>include/option_parser_private.h</string>
-		<string>man/ml.7</string>
-		<string>man/histw.7</string>
-		<string>man/media.7</string>
+		<string>build/Makefile</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
