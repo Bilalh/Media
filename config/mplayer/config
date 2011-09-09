@@ -1,18 +1,15 @@
-#put in .mplayer
-
 # Audio Japanese Subs English use fonts for default
 slang=eng
 alang=jpn,jp
 embeddedfonts=yes
-vf-add=screenshot # allows screen shots 
-subfont-osd-scale=3
-subfont-text-scale=6
-double=yes
 ass=yes # For ssa subtitles
-# quiet=yes        
+vf-add=screenshot # allows screen shots 
+#subfont-osd-scale=3
+fontconfig=yes 
+double=yes
+#quiet=yes        
 really-quiet=yes   
 volume=10
-
 #converts 5 ch flac to 2 ch
 # af-pan=2:1:0:0:1:1:0:0:1:0.5:0.5:1:1
 
@@ -46,18 +43,13 @@ noontop=yes
 #vf=scale=480:320 bad since it does not scale well
 geometry=0:0
 xy=480
-subfont-text-scale=4
-
-
-
-
+subfont-text-scale=1
 
 
 [fss]
 profile-desc="Fullscreen 16:10 aspect and bigger OSD on second screen"
 vo=corevideo:device_id=1
 aspect=16:10
-subfont-text-scale=5
 fs=yes
 volume=15
 
@@ -65,7 +57,6 @@ volume=15
 profile-desc="Fullscreen 16:10 aspect and bigger OSD on second screen looped"
 vo=corevideo:device_id=1
 aspect=16:10
-subfont-text-scale=4
 fs=yes
 loop=0
 volume=15
@@ -74,7 +65,6 @@ volume=15
 profile-desc="Fullscreen 16:10 aspect and bigger OSD on first screen looped"
 vo=corevideo:device_id=0
 aspect=16:10
-subfont-text-scale=5
 fs=yes
 loop=0
 volume=15
@@ -163,16 +153,11 @@ aspect=16:10
 [10]
 aspect=16:10
 
-
-
-
-
 [fsi]
 profile-desc="Fullscreen 16:10 aspect and bigger OSD with inverse"
 vf=eq2=1.0:-0.8
 brightness=-20
 aspect=16:10
-subfont-text-scale=5
 fs=yes
 loop=0
 volume=15

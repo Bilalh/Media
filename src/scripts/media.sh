@@ -1,6 +1,6 @@
 #!/bin/bash
 function mediah(){
-	hashfile="$HOME/Library/Application Support/Media/zzhash"
+	hashfile=${HASHFILE:-$HOME/Library/Application Support/Media/zzhash}	
 	dir="$1";
 	shift;
 	MEDIA=${MEDIA_BINARY:-media}
@@ -28,27 +28,28 @@ function mediaf(){
 
 }
 
-alias  _ax='mediah --ax --out --colour-ep --label-watched'
+alias  _ax='mediah --ax --out --colour-ep --label-watched --conf input_no_enter.conf'
 alias   ax='_ax --dot-default'
 alias   ay='_ax --mplayer'
 alias   ml='ay --last'
 alias  mll='ml --none --dot-default'
-alias  mlg='ml --dot-default --menu --top '
 alias   mw='ay --un-watched --first '
 alias  mww='mw --none --dot-default ' 
-alias  mwg='mw --menu --top --history'
-alias  mgw='mwg'
-alias mlwg='mwg'
+alias  mwg='ay --un-watched  --menu --top --history'
+alias   ag='ay --menu'
+alias   mx='ax --only-menu'
 
 alias   op='mediah --op --out --mplayer'
 alias  opp='op --none --dot-default'
-alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default"
-alias opr1='opr -f -E -vo -E corevideo:device_id=1'
+alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default --conf input_next_on_click.conf"
+alias oprs='opr -sps -k0W1440'
 
 alias shash='shash "$HOME/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'
 alias on='ongoing'
 alias onm='histm'
+
+alias last_eps='media . . --last -o | sort | uniq'
 
 function hget () {
 	shash "$1"
@@ -56,8 +57,7 @@ function hget () {
 }
 
 function hadd() {
-	
-	hashfile="$HOME/Library/Application Support/Media/zzhash"
+	hashfile=${HASHFILE:-$HOME/Library/Application Support/Media/zzhash}	
 	
 	if [ $#  -ne 2  ]; then
 		echo "hadd key val"
@@ -85,3 +85,5 @@ function media_binary_here(){
 function  media_binary_clear() {
 	unset MEDIA_BINARY
 }
+
+

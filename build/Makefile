@@ -19,7 +19,7 @@ flags          = ${CFLAGS} ${includes} -I../src -I../
 includes       = -I/usr/include/libxml2 ${EXTRA_INCLUDES}
 libs           = -lsqlite3 -lxml2  -lcurl -lpcre -lreadline
 script_src     = ../src/scripts
-
+config_src     = ../config
 
                            ### Includes ###
 vpath %.c ../src 
@@ -158,6 +158,9 @@ install_man_pages:
 install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
 	
+install_mplayer_options:
+	cp -r ${config_src}/mplayer ~/ 
+		
 create_database:
 	mkdir -p ${SUPPORT_DIR} && touch ${SUPPORT_DIR}/zzhash && cat ${script_src}/media.sql | sqlite3  ${SUPPORT_DIR}/media.db
 
@@ -184,7 +187,7 @@ oclean:
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
 
 help: 
-	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- sudo install_man_pages install_media_aliases}, ""'
+	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- sudo install_man_pages install_mplayer_options install_media_aliases}, ""'
 
 version:
 	[ -d ../.git ] && ./make_version.sh

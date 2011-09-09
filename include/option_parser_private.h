@@ -51,7 +51,7 @@ typedef struct {
 const Element H_filetype[] ={
 
 	{  
-		.opt   = {.name =  "all", .val = 260, .has_arg = no_argument}, 
+		.opt   = {.name =  "all", .val = 'x', .has_arg = no_argument}, 
 		.help  = "Display all files.",
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->types = T_NONE;
@@ -173,8 +173,8 @@ const Element H_playlist[] ={
 	}
 	MAKE_PLAYLISTT("m3u"   ,'3', F_M3U,   "Outputs file as a m3u playlist"),
 	MAKE_PLAYLISTT("plist" ,291, F_PLIST, "Outputs file as a plist"),
-	MAKE_PLAYLISTT("pls"   ,'U', F_PLS,   "Outputs file as a pls playlist"),
-	MAKE_PLAYLISTT("xspf"  ,'X', F_XSPF,  "Outputs file as a xspf playlist"),
+	MAKE_PLAYLISTT("pls"   ,292, F_PLS,   "Outputs file as a pls playlist"),
+	MAKE_PLAYLISTT("xspf"  ,293, F_XSPF,  "Outputs file as a xspf playlist"),
 	#undef MAKE_PLAYLISTT
 	
 	{  
@@ -586,7 +586,7 @@ const Element H_other[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "safe", .val = 'u', .has_arg = no_argument}, 
+		.opt   = {.name =  "safe", .val = 'U', .has_arg = no_argument}, 
 		.help  = "For testing use file that are know to work",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -858,6 +858,26 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
+		.opt   = {.name =  "tbr", .val = 290, .has_arg = no_argument}, 
+		.help  = "afloat and 360p. and bottom right",
+		.arg   = "", .neg = true, 
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			if (TRUTH_STATE_l(ch)){
+				string_push_m(&ma->prefix_args, 5, 
+					"-noontop", 
+					"-nofs",
+					"-geometry 100%:84%",
+					"-xy 480",
+					"-subfont-text-scale 4"
+				);
+				ma->afloat = true;
+			}else{
+				string_push(&ma->prefix_args, "-xy 1");
+				ma->afloat = false;
+			}
+		}
+	},
+	{  
 		.opt   = {.name =  "ontop", .val =289 , .has_arg = no_argument}, 
 		.help  = "adds -ontop",
 		.arg   = "", .neg = true,
@@ -883,6 +903,13 @@ const Element H_mplayer_extra[] = {
 		.arg   = "file", .neg = false,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			string_append_m(&ma->prefix_args, 2, " -input conf=", arg);
+		}
+	},
+	{  
+		.opt   = {.name =  "font-scale", .val = 'u', .has_arg = required_argument}, 
+		.help  = "Specify the font scaling",
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			string_push_m(&ma->prefix_args, 2, "-ass -ass-font-scale", arg);
 		}
 	},
 	
@@ -997,7 +1024,8 @@ const Element H_mplayer_geom[] = {
 	M_GEO("rc", '8', "-geometry 100%:50%","Places the player at the right centre"),
 	M_GEO("tc", '7', "-geometry 50%:0%"  ,"Places the player at the top centre"),
 	M_GEO("bc", '6', "-geometry 50%:93%" ,"Places the player at the bottom centre"),
-	M_GEO("cc", 281, "-geometry 43%:50%" ,"Places the player at the centre")
+	M_GEO("cc", 281, "-geometry 43%:50%" ,"Places the player at the centre"),
+	M_GEO("brd",287, "-geometry 100%:83%","Places the player at the bottom right above the dock"),
 	#undef M_GEO
 };
 

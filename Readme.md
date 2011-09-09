@@ -19,11 +19,11 @@ Prerequisites
 * pcre
 * libcurl (for mylist)
 * libxml  (for mylist and playlists)
-* linux has lots extra requirements see Readm
+* linux has lots extra requirements see Readme
 
 Install 
 -------
-* Put the scripts in your `$PATH`
+* Put the scripts in your `$PATH` e.g `export PATH=$PATH:/${HOME}/bin` for default settings
 	
 		make dist
 		make install
@@ -31,6 +31,7 @@ Install
 		-Optional-
 		(might need sudo)
 		make install_man_pages
+		make install_mplayer_options
 		make install_media_aliases
 
 * Note the xcode project is **only** for **debugging** not building 
