@@ -63,7 +63,10 @@ static char *make_command(const char *bin_path, char **filenames, size_t num_of_
 	assert(postfix_args); assert(filepath); 
 	
 	// discards output.
-	const char *rid   = background ? "&> /dev/null &" :"&> /dev/null"; 
+	// const char *rid   = background ? "&> /dev/null &" :"&> /dev/null"; 
+
+	const char *rid   = background ? "&" :""; 
+
 
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
