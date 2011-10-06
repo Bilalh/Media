@@ -76,17 +76,17 @@ static char *make_command(const char *bin_path, char **filenames, size_t num_of_
 	size_t m_len        = strlen(bin_path);
 	size_t space_quotes = num_of_files * 3; // for space and 2""
 
-	//CHECK 1 from (8 for mplayer)
+	//CHECK 1 from (8 for mplayer)  3 for  '-- '
 	char *m_args = malloc(sizeof(char)* 
 			   (total_length + 
 			    strlen(prefix_args) + strlen(postfix_args) + 
 			    index + rid_len + m_len +
-			    space_quotes  + 1
+			    space_quotes  + 1 + 3
 			   ));
 
-	sprintf(m_args, "cd %s; %s %s ", filepath, bin_path, prefix_args);
+	sprintf(m_args, "cd %s; %s %s -- ", filepath, bin_path, prefix_args);
 	// 3 for cd 2 for ; 1 for  .
-	index += 3 + 2 + (+ 1 + m_len) + strlen(prefix_args) + 1;
+	index += 3 + 2 + (+ 1 + m_len) + strlen(prefix_args) + 1 + 3;
 
 	// append filenames
 	while (*filenames != NULL) {

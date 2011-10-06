@@ -247,7 +247,6 @@ static void child_options(const MediaArgs *ma,char **s_arr,char *path,size_t fil
 			set_movie(s_arr[i]);
 		}
 	}
-	
 }
 
 
