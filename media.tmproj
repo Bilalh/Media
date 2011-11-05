@@ -2,16 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>include/option_parser_private.h</string>
 	<key>documents</key>
 	<array>
-		<dict>
-			<key>filename</key>
-			<string>changelog.md</string>
-			<key>lastUsed</key>
-			<date>2011-09-22T13:16:26Z</date>
-		</dict>
 		<dict>
 			<key>expanded</key>
 			<true/>
@@ -26,6 +18,12 @@
 		</dict>
 		<dict>
 			<key>filename</key>
+			<string>changelog.md</string>
+			<key>lastUsed</key>
+			<date>2011-09-22T13:16:26Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
 			<string>../../../Library/Application Support/Media/Media.db</string>
 		</dict>
 		<dict>
@@ -36,39 +34,9 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>189</integer>
+	<integer>243</integer>
 	<key>metaData</key>
 	<dict>
-		<key>build/Makefile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>159</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-		</dict>
 		<key>changelog.md</key>
 		<dict>
 			<key>caret</key>
@@ -82,36 +50,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>776</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>738</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
-				<key>line</key>
-				<integer>776</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>43</integer>
-				<key>line</key>
-				<integer>776</integer>
-			</dict>
 		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
@@ -157,20 +95,6 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/media.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>2</integer>
-				<key>line</key>
-				<integer>248</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>208</integer>
-		</dict>
 		<key>src/media_menu.c</key>
 		<dict>
 			<key>caret</key>
@@ -185,28 +109,7 @@
 			<key>firstVisibleLine</key>
 			<integer>162</integer>
 		</dict>
-		<key>src/players.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>17</integer>
-		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/media.c</string>
-		<string>build/Makefile</string>
-		<string>src/players.c</string>
-		<string>include/option_parser_private.h</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -237,7 +140,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -246,7 +149,21 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
+				<key>man</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
 				<key>src</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict/>
+				</dict>
+				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
@@ -257,6 +174,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{464, 73}, {976, 805}}</string>
+	<string>{{125, 96}, {1085, 782}}</string>
 </dict>
 </plist>

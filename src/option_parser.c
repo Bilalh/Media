@@ -16,7 +16,7 @@ static Element *Element_ptr[128];
 static void sub_print_help(const Element *ele);
 
 #define OPT_MEDIA_ARGS_HELP \
-" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^=]\n"
+" args: [-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ,0123456789:/[]{}@%^*+=]\n"
 
 
 // creates a new MediaArgs with the default values. 
