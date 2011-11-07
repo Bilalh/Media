@@ -245,7 +245,15 @@ const Element H_player[] ={
 	},
 	{  
 		.opt   = {.name =  "background", .val = '^', .has_arg = no_argument}, 
-		.help  = "background the player",
+		.help  = "background (&) the player",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->background = TRUTH_VALUE(ch);
+		}
+	},
+	{  
+		.opt   = {.name =  "amp", .val = '&', .has_arg = no_argument}, 
+		.help  = "background (&) the player",
 		.arg   = "", .neg = true,
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			ma->background = TRUTH_VALUE(ch);

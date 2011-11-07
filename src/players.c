@@ -63,7 +63,8 @@ static char *make_command(const char *bin_path, char **filenames, size_t num_of_
 	// const char *rid   = background ? "&> /dev/null &" :"&> /dev/null"; 
 
 	const char *rid   = background ? "&" :""; 
-	const char *out   = output_file ? "2>&1  | tee ~/.mplayer/output" : "";
+	const char *out   = output_file ? (!background ? " 2>&1  | tee ~/.mplayer/output | grep '# '"\
+	 								: "2>/dev/null | tee ~/.mplayer/output &>/dev/null" ) : "";
 
 	if (prefix_args  == NULL) prefix_args  = "";
 	if (postfix_args == NULL) postfix_args = "";
@@ -101,13 +102,13 @@ static char *make_command(const char *bin_path, char **filenames, size_t num_of_
 	strcpy(&m_args[index], postfix_args);
 	index += strlen(postfix_args);
 
-	strcpy(&m_args[index], rid);
-	index += rid_len;
-	
 	if (output_file){
 		strcpy(&m_args[index], out);
 		index += out_len;
 	}
+
+	strcpy(&m_args[index], rid);
+	index += rid_len;
 
 
 	m_args[index] = '\0';

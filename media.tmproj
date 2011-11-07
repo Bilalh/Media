@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/sub_dirs.c</string>
+	<string>src/players.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -39,6 +39,20 @@
 	<integer>243</integer>
 	<key>metaData</key>
 	<dict>
+		<key>build/Makefile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>21</integer>
+				<key>line</key>
+				<integer>43</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
+		</dict>
 		<key>changelog.md</key>
 		<dict>
 			<key>caret</key>
@@ -52,6 +66,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>include/option_parser_private.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>31</integer>
+				<key>line</key>
+				<integer>544</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>522</integer>
 		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
@@ -97,68 +125,88 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/media_menu.c</key>
+		<key>src/media.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>27</integer>
+				<integer>109</integer>
 				<key>line</key>
-				<integer>173</integer>
+				<integer>127</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>162</integer>
+			<integer>103</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>112</integer>
+				<key>line</key>
+				<integer>127</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>109</integer>
+				<key>line</key>
+				<integer>127</integer>
+			</dict>
 		</dict>
 		<key>src/option_parser.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>17</integer>
+				<integer>375</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>336</integer>
 		</dict>
-		<key>src/sub_dirs.c</key>
+		<key>src/players.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>86</integer>
+				<integer>103</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>108</integer>
-		</dict>
-		<key>tests/strutil_helper.c</key>
-		<dict>
-			<key>caret</key>
+			<integer>76</integer>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>18</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>104</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>103</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>src/option_parser.c</string>
-		<string>tests/strutil_helper.c</string>
-		<string>src/sub_dirs.c</string>
+		<string>include/option_parser_private.h</string>
+		<string>src/players.c</string>
+		<string>build/Makefile</string>
+		<string>src/media.c</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -199,17 +247,32 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>src</key>
+				<key>build</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
 					<key>subItems</key>
 					<dict/>
 				</dict>
+				<key>src</key>
+				<dict>
+					<key>isExpanded</key>
+					<true/>
+					<key>subItems</key>
+					<dict>
+						<key>scripts</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
+					</dict>
+				</dict>
 			</dict>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{125, 96}, {1085, 782}}</string>
+	<string>{{35, 69}, {1085, 782}}</string>
 </dict>
 </plist>
