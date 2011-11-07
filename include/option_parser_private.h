@@ -538,6 +538,14 @@ const Element H_other[] ={
 		}
 	},
 	{  
+		.opt   = {.name =  "tee", .val = 294, .has_arg = no_argument}, 
+		.help  = "Tees the output to ~/.mplayer/output",
+		.arg   = "", .neg = true,
+		.block = ^(MediaArgs *ma, int ch, char *arg ) {
+			ma->tee = TRUTH_VALUE_l(ch);
+		}
+	},
+	{  
 		.opt   = {.name =  "nice-random", .val = ':', .has_arg = no_argument}, 
 		.help  = "Sets random in niceplayer",
 		.arg   = "", .neg = true, 

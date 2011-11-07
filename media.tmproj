@@ -2,8 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>src/sub_dirs.c</string>
 	<key>documents</key>
 	<array>
+		<dict>
+			<key>filename</key>
+			<string>changelog.md</string>
+			<key>lastUsed</key>
+			<date>2011-09-22T13:16:26Z</date>
+		</dict>
 		<dict>
 			<key>expanded</key>
 			<true/>
@@ -15,12 +23,6 @@
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
 			<key>sourceDirectory</key>
 			<string></string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>changelog.md</string>
-			<key>lastUsed</key>
-			<date>2011-09-22T13:16:26Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -109,7 +111,55 @@
 			<key>firstVisibleLine</key>
 			<integer>162</integer>
 		</dict>
+		<key>src/option_parser.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>src/sub_dirs.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>86</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>108</integer>
+		</dict>
+		<key>tests/strutil_helper.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>35</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>src/option_parser.c</string>
+		<string>tests/strutil_helper.c</string>
+		<string>src/sub_dirs.c</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -149,21 +199,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>man</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
 				<key>src</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>tests</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>

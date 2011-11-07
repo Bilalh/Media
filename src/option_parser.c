@@ -75,7 +75,8 @@ MediaArgs *new_media_args() {
 		.menu           = false,
 		.total          = 0,
 		.find_unwatched = false,
-		.oldest_only    = false
+		.oldest_only    = false,
+		.tee            = false
 	};
 	
 	m.prefix_args.str    = malloc(sizeof(char) * m.prefix_args.length);
@@ -372,7 +373,8 @@ void print_media_args(MediaArgs *ma) {
 	print_args("oldest_only", truth(ma->oldest_only));
 	
 	print_args("only_show_menu",  truth(ma->only_show_menu));
-
+	print_args("tee",             truth(ma->tee));
+	
 	
 #undef truth
 #undef nullcheck

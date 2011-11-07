@@ -125,7 +125,7 @@ void media(char *path, char **args, int argc, MediaArgs *ma) {
 	if ( pid != 0 ){ // parent
 		switch (ma->player){
 			case P_MPLAYER: 
-				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, path,ma->background);
+				mplayer(s_arr,file_num, total_length, ma->prefix_args.str, ma->postfix_args.str, path,ma->background,ma->tee);
 				break;
 			case P_MPLAYER_GUI:
 				mplayer_gui(s_arr,file_num, total_length, path);
