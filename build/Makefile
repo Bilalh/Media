@@ -41,12 +41,12 @@ to_bin:
 
                            ### Objects ###
 
-objs       = media ml nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
+objs       = media mal nums numsf numss ongoing hista hists shash set_id ongoingnc ongoingdata
 examples   = optt hashe2 subdir_test colours2 mplayer_fork_input
 c_scripts  = make_man_options 
 
 media_req    = app/media_main.o media.o players.o media_menu.o ${opt_req} ${hist_req} ${play_req} ${strutil_req} ${sub_dirs_req}
-ml_req      = app/ml_main.o ${mlt_req} ${hist_req}
+mal_req      = app/ml_main.o ${mlt_req} ${hist_req}
 sub_dirs_req = sub_dirs.o ${strutil_req} ${strarr_req}
 
 nums_req        = app/latest_main.o ${hist_req} 

@@ -4,7 +4,7 @@ function mediah(){
 	dir="$1";
 	shift;
 	MEDIA=${MEDIA_BINARY:-media}
-	${MEDIA} "$dir" --hashlocation "${hashfile}" $*
+	${MEDIA} "$dir" --hashlocation "${hashfile}" -E -input -E file=~/.mplayer/pipe $*
 }
 
 alias mg='mediaf'
@@ -28,21 +28,30 @@ function mediaf(){
 
 }
 
-alias  _ax='mediah --ax --out --colour-ep --label-watched --conf input_no_enter.conf'
+alias  _ax='mediah --ax --out --colour-ep --label-watched --conf input_no_enter.conf -E -really-quiet'
 alias   ax='_ax --dot-default'
 alias   ay='_ax --mplayer'
 alias   ml='ay --last'
+alias  mls='ml -sps -0W1440'
 alias  mll='ml --none --dot-default'
 alias   mw='ay --un-watched --first '
 alias  mww='mw --none --dot-default ' 
 alias  mwg='ay --un-watched  --menu --top --history'
+alias mwgs='mwg -sps -0W1440'
 alias   ag='ay --menu'
 alias   mx='ax --only-menu'
 
-alias   op='mediah --op --out --mplayer'
-alias  opp='op --none --dot-default'
-alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default --conf input_next_on_click.conf"
-alias oprs='opr -sps -k0W1440'
+alias  _op='mediah --op --out --mplayer'
+alias  opp='_op --none --dot-default'
+alias  opr="op --top --169 --rnd --framedrop --fast --no-out --dot-default --conf input_with_last_fm.conf"
+alias oprs='opr -fs#1 -0W1440'
+alias oprf='opr -fs#0 -0W1920'
+function op(){
+	#if ( ! ps | grep last_fm_scrobble_on_mplayer_playedd_50 > /dev/null); then echo ; else last_fm_scrobble_on_mplayer_played_50 &; fi
+	killall last_fm_scrobble_on_mplayer_played_50 &> /dev/null
+	last_fm_scrobble_on_mplayer_played_50 &
+	_op --tee $* | grep '^# '  
+}
 
 alias shash='shash "$HOME/Library/Application Support/Media/zzhash"'
 alias numsfs='numss'
@@ -85,5 +94,3 @@ function media_binary_here(){
 function  media_binary_clear() {
 	unset MEDIA_BINARY
 }
-
-
