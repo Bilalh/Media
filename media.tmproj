@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/players.c</string>
+	<string>changelog.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>changelog.md</string>
 			<key>lastUsed</key>
-			<date>2011-09-22T13:16:26Z</date>
+			<date>2011-11-08T00:28:49Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -58,28 +60,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>14</integer>
 				<key>line</key>
-				<integer>7</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>include/option_parser_private.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>31</integer>
-				<key>line</key>
-				<integer>544</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>522</integer>
 		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
@@ -176,34 +164,18 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>103</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>76</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>104</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>103</integer>
-			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>src/option_parser.c</string>
-		<string>include/option_parser_private.h</string>
+		<string>changelog.md</string>
 		<string>src/players.c</string>
 		<string>build/Makefile</string>
 		<string>src/media.c</string>
@@ -247,7 +219,7 @@
 			<true/>
 			<key>subItems</key>
 			<dict>
-				<key>build</key>
+				<key>include</key>
 				<dict>
 					<key>isExpanded</key>
 					<true/>
