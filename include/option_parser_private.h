@@ -186,7 +186,7 @@ const Element H_playlist[] ={
 		}
 	},
 	{  
-		.opt   = {.name =  "shuffle", .val = 'Y', .has_arg = no_argument}, 
+		.opt   = {.name =  "shuffle", .val = 296, .has_arg = no_argument}, 
 		.help  = "Shuffles the playlist",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
@@ -874,17 +874,18 @@ const Element H_mplayer_extra[] = {
 		}
 	},
 	{  
-		.opt   = {.name =  "tt^", .val = 295, .has_arg = no_argument}, 
+		.opt   = {.name =  "ttk^", .val = 'Y', .has_arg = no_argument}, 
 		.help  = "afloat and 360p. and top right and background",
 		.arg   = "", .neg = true, 
 		.block = ^(MediaArgs *ma, int ch, char *arg ) {
 			if (TRUTH_STATE_l(ch)){
-				string_push_m(&ma->prefix_args, 5, 
+				string_push_m(&ma->prefix_args, 6, 
 					"-noontop", 
 					"-nofs",
 					"-geometry 100%:0%",
 					"-xy 480",
-					"-subfont-text-scale 4"
+					"-subfont-text-scale 4",
+					"-loop 0"
 				);
 				ma->afloat = true;
 				ma->background = true;
