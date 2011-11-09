@@ -1,4 +1,4 @@
-.TH MEDIA 7 "R216(updated to R2-56-g0a44d1f)" "Tue, December 30, 2008" 
+.TH MEDIA 7 "R216(updated to R2-68-g288823c)" "Tue, December 30, 2008" 
 .SH NAME
 .B media
 \-  Finds, Plays and keeps track of media files
@@ -151,7 +151,11 @@ Plays the files using vlc.
 
 .TP 0.5i
 .BR "-^ ", "  --[no-]background   " 
-background the player
+background (&) the player
+
+.TP 0.5i
+.BR "-& ", "  --[no-]amp          " 
+background (&) the player
 
 .I 4  History
 .BR
@@ -204,7 +208,7 @@ Outputs file as a xspf playlist. Also sets sub_dirs
 The filename of the playlist
 
 .TP 0.5i
-.BR "-y ", "  --[no-]shuffle      " 
+.BR "   ", "  --[no-]shuffle      " 
 Shuffles the playlist
 
 .TP 0.5i
@@ -215,7 +219,7 @@ Reverses the playlist
 .BR
 
 .TP 0.5i
-.BR "-x ", "  --all               " 
+.BR "-X ", "  --all               " 
 Display all files.
 
 .TP 0.5i
@@ -246,11 +250,15 @@ Choose the latest un-watched file of each series
 Use {num} as the separator between episodes
 
 .TP 0.5i
+.BR "   ", "  --[no-]tee          " 
+Tees the output to ~/.mplayer/output
+
+.TP 0.5i
 .BR "-: ", "  --[no-]nice-random  " 
 Sets random in niceplayer
 
 .TP 0.5i
-.BR "-Y ", "  --[no-]nice-reapeat " 
+.BR "   ", "  --[no-]nice-reapeat " 
 Sets repeat in niceplayer
 
 .TP 0.5i
@@ -361,8 +369,12 @@ The start time
 The end time relative to the start time 
 
 .TP 0.5i
-.BR "   ", "  --[no-]tt           " 
+.BR "-y ", "  --[no-]tt           " 
 afloat and 360p. and top right
+
+.TP 0.5i
+.BR "-Y ", "  --[no-]ttk^         " 
+afloat and 360p. and top right and background
 
 .TP 0.5i
 .BR "   ", "  --[no-]tbr          " 
@@ -584,7 +596,7 @@ IF using sub directories (-s) and -m -o  it might complain about a malloc error,
 .SH VERSION
 This documentation describes
 .B media
-version R216 (options updated to R2-56-g0a44d1f )
+version R216 (options updated to R2-68-g288823cf )
 .SH AUTHOR
 .br
 .B Bilal Hussain
