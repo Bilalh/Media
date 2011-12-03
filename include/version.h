@@ -1,0 +1,3 @@
+#ifndef MEDIA_VERION_NUMBER
+#define MEDIA_VERION_NUMBER "2-70-g8c62074"
+#endif
