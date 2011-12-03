@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>include/option_parser_private.h</string>
+	<string>build/Makefile</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -44,14 +44,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>43</integer>
+				<integer>18</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>33</integer>
+			<integer>1</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
 		</dict>
 		<key>changelog.md</key>
 		<dict>
@@ -72,14 +88,74 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>852</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>742</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>852</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
 				<integer>47</integer>
 				<key>line</key>
-				<integer>564</integer>
+				<integer>852</integer>
+			</dict>
+		</dict>
+		<key>man/media.7</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>544</integer>
+			<integer>0</integer>
+		</dict>
+		<key>man/media_tempate</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>47</integer>
+				<key>line</key>
+				<integer>124</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>89</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>129</integer>
+			</dict>
 		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
@@ -125,72 +201,43 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/media.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>109</integer>
-				<key>line</key>
-				<integer>127</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>103</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>112</integer>
-				<key>line</key>
-				<integer>127</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>109</integer>
-				<key>line</key>
-				<integer>127</integer>
-			</dict>
-		</dict>
 		<key>src/option_parser.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>42</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>375</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>336</integer>
+			<integer>0</integer>
 		</dict>
-		<key>src/players.c</key>
+		<key>tests/tests.mk</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>76</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/option_parser.c</string>
+		<string>man/media_tempate</string>
 		<string>include/option_parser_private.h</string>
-		<string>src/players.c</string>
 		<string>build/Makefile</string>
-		<string>src/media.c</string>
+		<string>tests/tests.mk</string>
+		<string>src/option_parser.c</string>
+		<string>man/media.7</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -221,8 +268,6 @@
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<false/>
-	<key>showFileHierarchyPanel</key>
-	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -230,33 +275,10 @@
 			<key>isExpanded</key>
 			<true/>
 			<key>subItems</key>
-			<dict>
-				<key>include</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict/>
-				</dict>
-				<key>src</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict>
-						<key>scripts</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
-				</dict>
-			</dict>
+			<dict/>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{35, 69}, {1085, 782}}</string>
+	<string>{{162, 95}, {1085, 782}}</string>
 </dict>
 </plist>

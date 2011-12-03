@@ -73,7 +73,7 @@ mplayer_fork_input_req = examples/mplayer_fork_input.o
 make_man_options_req   = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
-scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript
+scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb
 
 scripts                   = histm gf setLabel setLabelByNumber histc
 histm_location            = history_add_menu.rb
