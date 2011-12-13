@@ -23,7 +23,7 @@
 	"fantasy|Kidou Tenshi|hack sign| English|Lucky Star|Musume|Ore no Imouto.*full|"   \
 	"Kiddy Girl-and|Turn a moon|Dragonaut The Resonance|Sakuranbo|frontier|Precure|"   \
 	"Gundam Seed Destiny|Shugo Chara|EX OVA|Luminous|than BLACK|Agape|Anata no Oto|"   \
-	"Rave|no Miko|"
+	"Rave|no Miko"
 
 static int get_files_recursive_callback(const char *fpath, const struct stat *sb, int typeflag);
 
