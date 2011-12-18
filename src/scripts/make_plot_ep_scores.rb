@@ -3,7 +3,10 @@
 DB = File.expand_path "/Users/bilalh/Library/Application Support/Media/Media.db"
 SQL = <<-SQL
 Select si.Total, si.Score From SeriesData si 
-Where si.Score IS NOT NULL And si.Score > 0 And si.Total IS NOT NULL 
+Where si.Score IS NOT NULL 
+	And si.Score > 0 
+	And si.Total IS NOT NULL 
+--	And si.Total <52
 Order by si.Total
 SQL
 
