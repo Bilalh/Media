@@ -1,6 +1,8 @@
 #!/usr/bin/Rscript
 #  Plot the real time vs Time 
-times<-read.table("days", header=FALSE)
+times<-read.table("plot_days", header=FALSE)
 names(times) <-c("days", "watched")
 attach(times)
-plot(days,watched, main="Episodez watched per Day", xlab="Day", ylab ="Episodes Watched")
+pdf(file='plot_days.pdf')
+plot(days,watched, main="Episodes watched per Day", xlab="Day", ylab ="Episodes Watched")
+

@@ -1,5 +1,5 @@
 #!/bin/bash
-# prints the commands used with the libs gcc and -L shortened
+# prints the commands used without the libs gcc and -L shortened
 
 if [ "$1" = "clear" ]; then
 	export CLEARNNN="clear && "

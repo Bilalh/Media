@@ -24,10 +24,11 @@ config_src     = ../config
                            ### Includes ###
 vpath %.c ../src 
 vpath %.h ../
+# unused ?
 vpath %.sh %.rb %.r %.py %.pl %.applescript ../src/scripts
+
 # Rules for tests and requiments
 include ../tests/tests.mk
-
 
                            ### Distribution ###
 dist: CFLAGS = -O2 -Wall 
@@ -68,12 +69,13 @@ hashe2_req      = examples/hashe2.o
 colours2_req    = examples/colours2.o
 subdir_test_req = ${sub_dirs_req}
 
-mplayer_fork_input:libs+=-lreadline
+mplayer_fork_input: libs+=-lreadline
 mplayer_fork_input_req = examples/mplayer_fork_input.o
 make_man_options_req   = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
-scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb
+
+scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb 
 
 scripts                   = histm gf setLabel setLabelByNumber histc
 histm_location            = history_add_menu.rb
@@ -83,6 +85,7 @@ setLabelByNumber_location = set_label_by_number.applescript
 histc_location            = history_copy.rb
 
                            ### Objects rules ###
+
 # makes name : ${name_req}
 $(foreach name,${objs} ${examples} ${c_scripts} ,$(eval ${name}:${${name}_req}))
 
@@ -112,6 +115,7 @@ to_scripts:
 	chmod +x ${SCRIPT_DST}/histwc;
 
                            ### Help ###
+
 list_objs:
 	@${PERL} -e 'print join "\n", qw{${objs}}, ""'
 
@@ -134,6 +138,7 @@ list_all:
 	@${PERL} -e 'print join "\n", qw{plot create_database install_man_pages install_media_aliases}, ""'
 
                            ### Tests ###
+
 run_tests: all_tests
 	./all_tests
 
@@ -169,27 +174,28 @@ install_mplayer_options:
 create_database:
 	mkdir -p ${SUPPORT_DIR} && touch ${SUPPORT_DIR}/zzhash && cat ${script_src}/media.sql | sqlite3  ${SUPPORT_DIR}/media.db
 
-	                           ### Scripts rules ###
-temp_files   = years days
-result_files = years.pdf days.pdf
+	                           ### Plot rules ###
 
-plot:
-	../src/scripts/make_plot_years.rb > years
-	../src/scripts/make_plot_days.rb > days
-	../src/scripts/make_plot_years.r          && \
-	mv Rplots.pdf years.pdf                   && \
-	../src/scripts/make_plot_days.r           && \
-	mv Rplots.pdf days.pdf
+plot_temp_files   = plot_years plot_days 
+plot_files = plot_years.pdf plot_days.pdf
 
-                           ### util ###
+plot: ${plot_files}
+
+plot_%.pdf: plot_%
+	../src/scripts/make_$^.r 
+	
+plot_%: ../src/scripts/make_plot_%.rb
+	../src/scripts/make_$@.rb > "$@"	
+
+                               ### Util ###
 %.o: %.c
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${c_scripts} ${temp_files} ${result_files} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${c_scripts} ${plot_temp_files} ${plot_files} *~
                                        
 oclean:                                
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${temp_files} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${plot_temp_files} *~
 
 help: 
 	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- sudo install_man_pages install_mplayer_options install_media_aliases}, ""'
