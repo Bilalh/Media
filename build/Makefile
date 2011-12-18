@@ -176,7 +176,7 @@ create_database:
 
 	                           ### Plot rules ###
 
-plot_files        = plot_years.pdf plot_days.pdf plot_ep_scores.pdf
+plot_files        = plot_years.pdf plot_ep_scores.pdf plot_days.pdf
 plot_temp_files   = $(basename ${plot_files})
 
 

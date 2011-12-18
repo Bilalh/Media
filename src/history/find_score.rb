@@ -28,7 +28,7 @@ doc.find("//anime").each do |an|
 	end
 	
 	if start_date != "0000-00-00" then
-		db.execute( 'Update OldSeries Set StartDate = ? where title = ?', start_date+ " 00:00:00", title)
+		db.execute( 'Update OldSeries Set StartDate = ? where title = ?', start_date + " 00:00:00", title)
 	end 
 	if end_date != "0000-00-00" then
 		db.execute( 'Update OldSeries Set EndDate = ? where title = ?', end_date + " 00:00:00", title)
