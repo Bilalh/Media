@@ -176,14 +176,15 @@ create_database:
 
 	                           ### Plot rules ###
 
-plot_temp_files   = plot_years plot_days 
-plot_files = plot_years.pdf plot_days.pdf
+plot_files        = plot_years.pdf plot_days.pdf plot_ep_scores.pdf
+plot_temp_files   = $(basename ${plot_files})
+
 
 plot: ${plot_files}
 
 plot_%.pdf: plot_%
 	../src/scripts/make_$^.r 
-	
+
 plot_%: ../src/scripts/make_plot_%.rb
 	../src/scripts/make_$@.rb > "$@"	
 

@@ -1,5 +1,4 @@
 *.o
-Makefile
 hista
 hists
 mal
@@ -26,3 +25,4 @@ colours2
 all_tests
 mplayer_fork_input
 make_man_options
+*.pdf
