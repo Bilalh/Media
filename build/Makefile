@@ -20,7 +20,7 @@ includes       = -I/usr/include/libxml2 ${EXTRA_INCLUDES}
 libs           = -lsqlite3 -lxml2  -lcurl -lpcre -lreadline
 script_src     = ../src/scripts
 config_src     = ../config
-
+plot_src       = ../src/plot
                            ### Includes ###
 vpath %.c ../src 
 vpath %.h ../
@@ -176,17 +176,18 @@ create_database:
 
 	                           ### Plot rules ###
 
-plot_files        = plot_years.pdf plot_ep_scores.pdf plot_days.pdf
-plot_temp_files   = $(basename ${plot_files})
-
+# list of plot to be made
+# plot_files        = plot_years.pdf plot_ep_scores.pdf plot_days.pdf 
+plot_files        = $(subst make_,,$(patsubst %.r,%.pdf,$(notdir $(wildcard ${plot_src}/*.r))))
+plot_temp_files   =  $(addprefix data_, $(basename ${plot_files}))
 
 plot: ${plot_files}
 
-plot_%.pdf: plot_%
-	../src/scripts/make_$^.r 
+plot_%.pdf: data_plot_%
+	${plot_src}/make_$(basename $@).r 
 
-plot_%: ../src/scripts/make_plot_%.rb
-	../src/scripts/make_$@.rb > "$@"	
+data_plot_%: ${plot_src}/make_plot_%.rb
+	$^ > "$@"	
 
                                ### Util ###
 %.o: %.c
@@ -205,3 +206,35 @@ version:
 	[ -d ../.git ] && ./make_version.sh
 	
 	
+# Syntax
+# http://www.gnu.org/s/hello/manual/make/Automatic-Variables.html
+
+# $^
+# The names of all the prerequisites, with spaces between them. For prerequisites which are archive members, only the
+# named member is used (see Archives). A target has only one prerequisite on each other file it depends on, no matter
+# how many times each file is listed as a prerequisite. So if you list a prerequisite more than once for a target, the
+# value of $^ contains just one copy of the name. This list does not contain any of the order-only prerequisites; for
+# those see the ‘$|’ variable, below.
+
+# $?
+# The names of all the prerequisites that are newer than the target, with spaces between them. For prerequisites
+# which are archive members, only the named member is used (see Archives).
+
+# $(@F)
+# The file-within-directory part of the file name of the target. If the value of ‘$@’ is dir/foo.o then ‘$(@F)’ is
+# foo.o. ‘$(@F)’ is equivalent to ‘$(notdir $@)’.
+
+
+# $+
+# This is like ‘$^’, but prerequisites listed more than once are duplicated in the order they were listed in the
+# makefile. This is primarily useful for use in linking commands where it is meaningful to repeat library file names
+# in a particular order.
+
+# $@
+# The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive
+# file. In a pattern rule that has multiple targets (see Introduction to Pattern Rules), ‘$@’ is the name of
+# whichever target caused the rule's recipe to be run.
+
+# $%
+# The target member name, when the target is an archive member. See Archives. For example, if the target is
+# foo.a(bar.o) then ‘$%’ is bar.o and ‘$@’ is foo.a. ‘$%’ is empty when the target is not an archive member.
