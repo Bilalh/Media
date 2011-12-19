@@ -5,13 +5,14 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 require 'net/http'
+require 'htmlentities'
 
 #  Convert from under_scores to CamelCase
 class String
 	
 	def inter_camelcase
 	  str = dup
-	  str.gsub!(/\/(.?)/){ "::#{$1.upcase}" }  # NOT SO SURE ABOUT THIS
+	  str.gsub!(/\/(.?)/){ "::#{$1.upcase}" }  # not so sure about this
 	  str.gsub!(/(?:_+|-+)([a-z])/){ $1.upcase }
 	  str
 	end
@@ -33,7 +34,6 @@ def mal_search(id)
    data = resp.body
 
    # we convert the returned JSON data to native Ruby
-   # data structure - a hash
    result = JSON.parse(data)
 
    # if the hash has 'Error' as a key, we raise an error
@@ -53,6 +53,7 @@ def make_table(_keys)
 	SQL
 end
 
+coder = HTMLEntities.new
 db = SQLite3::Database.new( File.expand_path"~/Library/Application Support/Media/Media.db" )
 
 ids = []
@@ -66,7 +67,8 @@ ids.each do |row|
 	set_row = ->(val) { row[val] =  doc.css("anime #{val.to_s}").text }
 	
 	# data = mal_search(row["id"])
-	data = mal_search(4472)
+	# data = mal_search(4472)
+	data = mal_search(444)
 		
 	xml = `curl -u bhterra:bhterramai\#  "http://myanimelist.net/api/anime/search.xml?q=#{data["title"]}"`
 	doc = Nokogiri::HTML(xml)
@@ -74,22 +76,43 @@ ids.each do |row|
 	data["year"]         = date[/(\d{4}).*/,1]
 	data["startAirDate"] = doc.css("anime start_date")[0].text
 	data["endAirDate"]   = doc.css("anime end_date")[0].text
+	
 	data["english"]      = data["other_titles"]["english"][0] if data["other_titles"]["english"]
 	data["japanese"]     = data["other_titles"]["japanese"][0] if data["other_titles"]["japanese"]
+	
+	#  decode html
+	["english","japanese","title"].each do |e|
+		data[e] = coder.decode data[e]  if  data[e]
+	end
+	
 	row.merge! data
 	puts row
-	# p row.keys
-	# break
+	break
 end
 
 
-useless = ["watched_episodes", "watched_status", "score", ]
-now     = ["tags", "genres","other_titles" ]
-later   = [ "sequels", "manga_adaptations", "prequels", "side_stories"]
+useless   = ["watched_episodes", "watched_status", "score", ]
+extra     = ["tags", "genres" ]
+relations = ["sequels", "prequels", "side_stories"]
+later     = ["other_titles", "manga_adaptations"]
 
-	
+TagQuery = <<-SQL
+	Insert Into MalTags(SeriesId, Tag)
+	Values(?, ?)
+SQL
+
+GenreQuery = <<-SQL
+	Insert Into MalGenres(SeriesId, Genre)
+	Values(?, ?)
+SQL
+
+RelationQuery = <<-SQL
+	Insert Into MalRelation(SeriesId, RelationType, RelationId, RelationUrl, RelationTitle)
+	Values(?, ?, ?, ?, ?)
+SQL
+
 ids.each do |h|
-	_keys  = h.keys - now - useless -  later;
+	_keys  = h.keys - extra - relations - useless -  later;
 	# puts make_table _keys ;exit
 	
 	keys   = _keys.map{ |x| x.upper_camelcase }
@@ -101,8 +124,31 @@ ids.each do |h|
 	Values( #{qs})
 	SQL
 	
-	puts query
-	p db.execute(query, values.map { |e| check e } )
+	db.execute(query, values.map { |e| check e } )
 
-	# break
+
+	tableQuery = ->(field,query) do
+		if check h[field] then
+			h[field].each do |value|
+				db.execute(query, h["id"], coder.decode(value))
+			end
+		end
+	end
+	
+	tableQuery["tags", TagQuery]
+	tableQuery["genres", GenreQuery]
+	
+	relationsQuery = ->(field, id="anime_id") do
+		if check h[field] then
+			h[field].each do |hash|
+				db.execute(RelationQuery, h["id"], field, 
+					hash[id],hash["url"], coder.decode(hash["title"]) )
+			end
+		end
+	end
+	
+	relations.each { |field| relationsQuery[field] }
+	relationsQuery["manga_adaptations", "manga_id"] 
+	
+	break
 end
