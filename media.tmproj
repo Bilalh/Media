@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/plot/make_plot_years_scores.r</string>
+	<string>src/history/get_mal_data.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -185,6 +185,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>src/history/get_mal_data.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>158</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>142</integer>
+		</dict>
 		<key>src/history/make_history.rb</key>
 		<dict>
 			<key>caret</key>
@@ -227,34 +241,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>src/plot/make_plot_years_scores.r</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/plot/make_plot_years_scores.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>28</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>src/string_array.c</key>
 		<dict>
 			<key>caret</key>
@@ -272,8 +258,7 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/plot/make_plot_years_scores.r</string>
-		<string>src/plot/make_plot_years_scores.rb</string>
+		<string>src/history/get_mal_data.rb</string>
 	</array>
 	<key>shellVariables</key>
 	<array>

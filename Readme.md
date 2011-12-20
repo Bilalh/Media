@@ -1,4 +1,4 @@
-Meida {#readmeTitle}
+Media {#readmeTitle}
 =====
 Media is used to play video and/or audio files, provide a nice interface to MPlayer and keep track of which episodes of series has been watched. It has a options to show only the latest or unwatched files and update mylist
 {#description}
@@ -23,7 +23,7 @@ Prerequisites
 
 Install 
 -------
-* Put the scripts in your `$PATH` e.g `export PATH=$PATH:/${HOME}/bin` for default settings
+* Put the scripts in your `$PATH` e.g `export PATH=$PATH:~/${HOME}/bin` for default settings
 	
 		make dist
 		make install
@@ -36,6 +36,10 @@ Install
 
 * Note the xcode project is **only** for **debugging** not building 
 
+Plots
+-----
+If use `media` to keep track of which episodes of series has been watched, then you can made nice plots using `make plot`
+
 Issues
 ------
 See man pages
@@ -46,4 +50,4 @@ Licence
 
 Authors
 -------
-* Bilal Hussain
+* Bilal Syed Hussain

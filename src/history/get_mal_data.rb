@@ -10,6 +10,7 @@ require 'json'
 require 'net/http'
 require 'htmlentities'
 require "yaml"
+require "cgi"
 
 #  Convert from under_scores to CamelCase
 class String
@@ -64,20 +65,25 @@ def get_data(db)
 	db.execute( 'Select * from AllSeries where Id Is Not NULL').each do |row|
 		ids << {"id" =>row["Id"], "realTitle" =>row["Title"]};
 	end
-
+	# ids << {"id" =>"7059" }
+	
 	ids.each do |row|
 		puts "Getting #{row["id"]}"
 	
 		data = mal_search(row["id"])
 		# data = mal_search(4472)
-		# data = mal_search(444)
+		# data = mal_seaarch(444)
+		puts "Got #{data["id"]} #{data["title"]}\n"
+	
+		title = coder.decode data["title"]
+		xml   = `curl -u bhterra:bhterramai\#  "http://myanimelist.net/api/anime/search.xml?q=#{CGI::escape title}"`
+		doc   = Nokogiri::HTML(xml)
+ 		anime = doc.xpath("//anime/entry[id=#{row["id"]}]")
 		
-		xml = `curl -u bhterra:bhterramai\#  "http://myanimelist.net/api/anime/search.xml?q=#{data["title"]}"`
-		doc = Nokogiri::HTML(xml)
-		date                 = doc.css("anime start_date")[0].text
+		date                 = anime.css("start_date")[0].text
 		data["year"]         = date[/(\d{4}).*/,1]
-		data["startAirDate"] = doc.css("anime start_date")[0].text
-		data["endAirDate"]   = doc.css("anime end_date")[0].text
+		data["startAirDate"] = date
+		data["endAirDate"]   = anime.css("end_date")[0].text
 	
 		# puts data
 		data["english"]      = data["other_titles"]["english"][0] if data["other_titles"]["english"]
@@ -89,7 +95,8 @@ def get_data(db)
 		end
 	
 		row.merge! data
-		puts "Got #{row["id"]} #{row["title"]}\n"
+		puts "Got #{row["id"]} #{row["title"]} - #{row["year"]}\n"
+		# exit
 	end
 	return ids
 end
