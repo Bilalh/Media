@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/history/get_mal_data.rb</string>
+	<string>src/plot/make_plot_years_scores.r</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>243</integer>
+	<integer>240</integer>
 	<key>metaData</key>
 	<dict>
 		<key>changelog.md</key>
@@ -176,44 +176,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>111</integer>
+				<integer>3</integer>
 				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>98</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>111</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-		</dict>
-		<key>src/history/get_mal_data.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>112</integer>
+				<integer>21</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>103</integer>
+			<integer>0</integer>
 		</dict>
 		<key>src/history/make_history.rb</key>
 		<dict>
@@ -257,6 +227,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>src/plot/make_plot_years_scores.r</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>src/plot/make_plot_years_scores.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>28</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/string_array.c</key>
 		<dict>
 			<key>caret</key>
@@ -274,11 +272,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/history/make_history.rb</string>
-		<string>src/string_array.c</string>
-		<string>src/history/get_mal_data.rb</string>
-		<string>src/history/mal.yaml</string>
-		<string>src/history/add_missing.rb</string>
+		<string>src/plot/make_plot_years_scores.r</string>
+		<string>src/plot/make_plot_years_scores.rb</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -339,7 +334,7 @@
 							<key>subItems</key>
 							<dict/>
 						</dict>
-						<key>scripts</key>
+						<key>plot</key>
 						<dict>
 							<key>isExpanded</key>
 							<true/>
@@ -352,6 +347,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{260, 113}, {814, 765}}</string>
+	<string>{{328, 101}, {1060, 772}}</string>
 </dict>
 </plist>
