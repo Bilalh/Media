@@ -24,7 +24,7 @@ end
 
 data.sort!
 
-puts data[0][0]..data[-1][0]
+# puts data[0][0]..data[-1][0]
 
 puts %w{Movie Music ONA OVA Special TV}.join "\t"
 puts data.map { |e|  e[1..-1].join "\t" }.join "\n"

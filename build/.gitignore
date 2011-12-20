@@ -26,3 +26,4 @@ all_tests
 mplayer_fork_input
 make_man_options
 *.pdf
+data_plot*

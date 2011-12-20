@@ -1,19 +1,20 @@
 #!/usr/bin/Rscript
 name="plot_years_types"
 
-# times<-read.table(paste("data_", name, sep=""), header=FALSE)
-# names(times) <-c("scores", "counts")
-# attach(times)
+data<-read.table(paste("data_", name, sep=""), header=T, sep="\t")
+# names(data) <-c("scores", "counts")
+# attach(data)
 # 
-# pdf(file=paste(name, ".pdf", sep="") )
-# 
-# barplot(counts,
-# 	names.arg=scores,
-# 	xlab="Year",  
-# 	ylab="Count",
-# 	main="Distribution  of Years",
-# 	col=rainbow(length(scores))
-# )
+pdf(file=paste(name, ".pdf", sep="") )
+
+colours=terrain.colors(6)
+barplot(t(data),
+	xlab="Year",  
+	ylab="Count",
+	main="Distribution  of Types by Year",
+	col=colours,
+)
+legend("topleft", names(data), cex=0.6, fill=colours)
 
 # pdf(file=paste(name, "_chart.pdf", sep=""))
 # 
@@ -25,4 +26,3 @@ name="plot_years_types"
 # 	col=colours
 # )
 # 
-# legend(0.8,1.0, scores, cex=0.7, fill=colours)
