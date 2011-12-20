@@ -2,11 +2,9 @@
 
 DB = File.expand_path "~/Library/Application Support/Media/Media.db"
 SQL = <<-SQL
-Select Total, Score From AllSeries si 
-Where Score IS NOT NULL 
-	And Score > 0 
-	And Total IS NOT NULL 
-	And Total < 150
-Order by Total
+	Select d.Type, count(d.Type) as Count
+	from AllSeries a 
+	Join MalData d  on a.Id = d.Id
+	group by d.Type
 SQL
 puts `sqlite3 "#{DB}" '#{SQL};' | sed 's/|/ /'`

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -wKU
 
-DB = File.expand_path "/Users/bilalh/Library/Application Support/Media/Media.db"
+DB = File.expand_path "~/Library/Application Support/Media/Media.db"
 SQL = <<-SQL
 	Select Score, count(Score) as Count
 	From AllSeries

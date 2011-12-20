@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby19 -KU
+
+#  Gets Mal data
+
 # require "rubygems"
 require 'sqlite3'
 require 'nokogiri'
@@ -168,8 +171,8 @@ end
 
 
 db    = SQLite3::Database.new( File.expand_path"~/Library/Application Support/Media/Media.db" )
-# ids   = get_data(db)
-# open('mal.yaml', 'w') { |f| YAML.dump(ids, f) }
-ids = {}
-open('mal.yaml', 'r') { |f| ids = YAML.load(f) }
+ids   = get_data(db)
+open('mal.yaml', 'w') { |f| YAML.dump(ids, f) }
+# ids = {}
+# open('mal.yaml', 'r') { |f| ids = YAML.load(f) }
 update_database(db, ids)

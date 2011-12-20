@@ -12,15 +12,3 @@ barplot(counts,
 	main="Distribution  of Number Episodes",
 	col=rainbow(length(scores))
 )
-
-pdf(file='plot_avg_ep_chart.pdf')
-
-colours = rainbow(length(scores))
-
-pie(counts,
-	labels=counts,
-	main="Distribution  of Number Episodes",
-	col=colours
-)
-
-legend(0.8,1.0, scores, cex=0.7, fill=colours)

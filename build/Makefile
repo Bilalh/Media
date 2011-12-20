@@ -182,6 +182,7 @@ plot_files        = $(subst make_,,$(patsubst %.r,%.pdf,$(notdir $(wildcard ${pl
 plot_temp_files   =  $(addprefix data_, $(basename ${plot_files}))
 
 plot: ${plot_files}
+pplot: pclean ${plot_files}
 
 plot_%.pdf: data_plot_%
 	${plot_src}/make_$(basename $@).r 
@@ -189,15 +190,20 @@ plot_%.pdf: data_plot_%
 data_plot_%: ${plot_src}/make_plot_%.rb
 	$^ > "$@"	
 
+.PRECIOUS: data_plot_%
+
                                ### Util ###
 %.o: %.c
 	${compile} ${flags} -c $^ -o ${@F}
 
 clean:
-	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${c_scripts} ${plot_temp_files} ${plot_files} *~
+	rm -f *.o *.out test_* *_wrapper.c all_tests ${objs} ${examples} ${c_scripts} ${plot_temp_files} ${plot_files} plot*_chart.pdf plot*_small.pdf *~
                                        
 oclean:                                
 	rm -f *.o *.out test_* *_wrapper.c all_tests ${examples} ${c_scripts} ${plot_temp_files} *~
+
+pclean:
+	rm -f ${plot_files} plot*_chart.pdf plot*_small.pdf *~
 
 help: 
 	@${PERL} -e 'print join "\n", qw{dist install create_database -Optional- sudo install_man_pages install_mplayer_options install_media_aliases}, ""'

@@ -1,9 +1,28 @@
 #!/usr/bin/Rscript
-times<-read.table("data_plot_years", header=FALSE)
-names(times) <-c("month", "watched")
+name="plot_years"
+
+times<-read.table(paste("data_", name, sep=""), header=FALSE)
+names(times) <-c("scores", "counts")
 attach(times)
 
-pdf(file='plot_years.pdf')
+pdf(file=paste(name, ".pdf", sep="") )
 
-plot(month,watched, main="Episodes Watched on each Month of the Year", xlab="Months", ylab ="Episodes Watched")
-abline(lm(watched~month), col="blue")
+barplot(counts,
+	names.arg=scores,
+	xlab="Year",  
+	ylab="Count",
+	main="Distribution  of Years",
+	col=rainbow(length(scores))
+)
+
+# pdf(file=paste(name, "_chart.pdf", sep=""))
+# 
+# colours = rainbow(length(scores))
+# 
+# pie(counts,
+# 	labels=counts,
+# 	main="Distribution of Years",
+# 	col=colours
+# )
+# 
+# legend(0.8,1.0, scores, cex=0.7, fill=colours)

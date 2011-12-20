@@ -1,25 +1,27 @@
 #!/usr/bin/Rscript
-times<-read.table("data_plot_avg_scores", header=FALSE)
+name="plot_types"
+
+times<-read.table(paste("data_", name, sep=""), header=FALSE)
 names(times) <-c("scores", "counts")
 attach(times)
 
-pdf(file='plot_avg_scores.pdf')
+pdf(file=paste(name, ".pdf", sep="") )
 
 barplot(counts,
 	names.arg=scores,
-	xlab="Score",  
+	xlab="Year",  
 	ylab="Count",
-	main="Distribution  of Scores",
+	main="Distribution  of Types",
 	col=rainbow(length(scores))
 )
 
-pdf(file='plot_avg_scores_chart.pdf')
+pdf(file=paste(name, "_chart.pdf", sep=""))
 
 colours = rainbow(length(scores))
 
 pie(counts,
 	labels=counts,
-	main="Distribution  of Scores",
+	main="Distribution of Types",
 	col=colours
 )
 
