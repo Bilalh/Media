@@ -5,7 +5,7 @@ data<-read.table(paste("data_", name, sep=""), header=T, sep="\t")
 # names(data) <-c("scores", "counts")
 # attach(data)
 # 
-pdf(file=paste(name, ".pdf", sep="") )
+pdf(width=15, height=10,file=paste(name, ".pdf", sep="") )
 
 colours=terrain.colors(6)
 barplot(t(data),

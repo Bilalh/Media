@@ -5,7 +5,7 @@ times<-read.table(paste("data_", name, sep=""), header=FALSE)
 names(times) <-c("scores", "counts")
 attach(times)
 
-pdf(file=paste(name, ".pdf", sep="") )
+pdf(width=15, height=10,file=paste(name, ".pdf", sep="") )
 
 barplot(counts,
 	names.arg=scores,

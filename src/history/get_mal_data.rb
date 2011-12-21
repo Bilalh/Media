@@ -30,7 +30,7 @@ end
 
 
 def check(value)
-	if !value || value == "" || value == [] || value == {} then "NULL" else value  end
+	if !value || value == "" || value == [] || value == {} then nil else value  end
 end
 
 def mal_search(id)
