@@ -23,7 +23,7 @@ Prerequisites
 
 Install 
 -------
-* Put the scripts in your `$PATH` e.g `export PATH=$PATH:~/${HOME}/bin` for default settings
+* Put the scripts in your `$PATH` e.g `export PATH=$PATH:${HOME}/bin` for default settings
 	
 		make dist
 		make install
