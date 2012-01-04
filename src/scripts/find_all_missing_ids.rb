@@ -8,7 +8,7 @@ DB = SQLite3::Database.new( File.expand_path"~/Library/Application Support/Media
 Query = <<-SQL
 Select si.Title
 From SeriesInfo si 
-where si.IsAnime = 1 and  ((si.Total ISNULL  and (si.Dropped = 0 or si.ID isNULL) ) or (si.ID isNULL and si.Dropped = 0))
+where si.IsAnime = 1 and  ( (si.Total ISNULL  and (si.Dropped = 0 or si.ID isNULL) ) or (si.ID isNULL and si.Dropped = 0) )
 SQL
 
 rows =  DB.execute Query

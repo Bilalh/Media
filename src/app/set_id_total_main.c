@@ -15,7 +15,7 @@ int get_date_callback(void *unused, int argc, char **argv, char **columns){
 int main (int argc, char const *argv[]) {
 	
 	if (argc > 5 || argc < 3){
-		printf("%s\n", "set_id series id [total] [finished]");
+		printf("%s\n", "set_id series id [total] [series_score]");
 		exit(0);
 	}
 	
@@ -33,8 +33,8 @@ int main (int argc, char const *argv[]) {
 		char *sql_date = sqlite3_mprintf("Select date from SeriesInfo  Where Title =%Q", argv[1]);
 		sql_exec(sql_date, get_date_callback);
 		
-		sql = sqlite3_mprintf("Update SeriesInfo Set id = %s, total = %s, endDate = %Q, finished = 1  Where Title =%Q",
-			argv[2], argv[3],date,  argv[1]);
+		sql = sqlite3_mprintf("Update SeriesInfo Set id = %s, total = %s, endDate = %Q, finished = 1, Score =%s  Where Title =%Q",
+			argv[2], argv[3],date, argv[4],  argv[1]);
 	}
 	
 	printf("%s\n", sql);
