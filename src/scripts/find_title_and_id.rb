@@ -4,9 +4,9 @@ require "text"
 
 def find_name_and_id(name)
 
-	white = Text::WhiteSimilarity.new
-
+	# makes out by `sqlite3 mal.db  'select Synonym, Id, Total  from AllSynonyms' > out`
 	lines =IO.readlines File.expand_path '~/Library/Application Support/Media/out'
+	white = Text::WhiteSimilarity.new
 
 	results = []
 	lines.each do |e|
