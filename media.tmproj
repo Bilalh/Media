@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>src/scripts/onRewatchedFinished.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -163,6 +165,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>src/scripts/media.sql</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>359</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>335</integer>
+		</dict>
+		<key>src/scripts/onRewatchedFinished.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>20</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/string_array.c</key>
 		<dict>
 			<key>caret</key>
@@ -178,6 +208,11 @@
 			<integer>0</integer>
 		</dict>
 	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>src/scripts/onRewatchedFinished.rb</string>
+		<string>src/scripts/media.sql</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -208,7 +243,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<true/>
+	<false/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -243,6 +278,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{250, 106}, {1060, 772}}</string>
+	<string>{{48, 103}, {1070, 775}}</string>
 </dict>
 </plist>
