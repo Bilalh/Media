@@ -21,7 +21,7 @@ sqlite3
 
 
 #make lines
-wc `ls * */* */*/* | grep -v "lines$"`  2>/dev/null | pbcopy
+ wc `ls * */* */*/* | grep -Pv "lines$|pdf|xcodeproj|ttf|mal.yaml"`  2>/dev/null | pbcopy
 
 # testings
 if ( make run_tests ); then make dist; fi

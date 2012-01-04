@@ -75,7 +75,7 @@ make_man_options_req   = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
 
-scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb 
+scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb find_title_and_id.rb
 
 scripts                   = histm gf setLabel setLabelByNumber histc
 histm_location            = history_add_menu.rb
