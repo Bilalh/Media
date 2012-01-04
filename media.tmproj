@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>249</integer>
+	<integer>271</integer>
 	<key>metaData</key>
 	<dict>
 		<key>include/option_parser_private.h</key>
@@ -149,34 +149,6 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/history/make_history.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/history/mal.yaml</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>6407</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>6391</integer>
-		</dict>
 		<key>src/option_parser.c</key>
 		<dict>
 			<key>caret</key>
@@ -236,7 +208,7 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>showFileHierarchyPanel</key>
-	<false/>
+	<true/>
 	<key>treeState</key>
 	<dict>
 		<key>media</key>
@@ -251,6 +223,13 @@
 					<true/>
 					<key>subItems</key>
 					<dict>
+						<key>history</key>
+						<dict>
+							<key>isExpanded</key>
+							<true/>
+							<key>subItems</key>
+							<dict/>
+						</dict>
 						<key>scripts</key>
 						<dict>
 							<key>isExpanded</key>
@@ -264,6 +243,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{72, 92}, {1060, 772}}</string>
+	<string>{{310, 88}, {1060, 772}}</string>
 </dict>
 </plist>

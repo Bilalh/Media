@@ -8,12 +8,12 @@ DB = SQLite3::Database.new( File.expand_path"~/Library/Application Support/Media
 Query = <<-SQL
 Select si.Title
 From SeriesInfo si 
-where si.Total ISNULL or (si.ID isNULL and si.Finished = 0)
+where si.IsAnime = 1 and  ((si.Total ISNULL  and (si.Dropped = 0 or si.ID isNULL) ) or (si.ID isNULL and si.Dropped = 0))
 SQL
 
 rows =  DB.execute Query
 
 rows.each do |row|
 	puts "\n*** #{row[0]} ***\n"
-	find_name_and_id row[0]
+	find_name_and_id row[0], true
 end
