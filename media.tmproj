@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/scripts/find_title_and_id.rb</string>
+	<string>src/history/ml.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,9 +30,23 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>271</integer>
+	<integer>85</integer>
 	<key>metaData</key>
 	<dict>
+		<key>include/colours.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
+		</dict>
 		<key>include/option_parser_private.h</key>
 		<dict>
 			<key>caret</key>
@@ -151,6 +165,20 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
+		<key>src/history/ml.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>457</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>505</integer>
+		</dict>
 		<key>src/option_parser.c</key>
 		<dict>
 			<key>caret</key>
@@ -164,34 +192,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>src/scripts/find_all_missing_ids.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>35</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/scripts/find_title_and_id.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>70</integer>
-				<key>line</key>
-				<integer>44</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>9</integer>
 		</dict>
 		<key>src/scripts/media.sql</key>
 		<dict>
@@ -224,9 +224,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/scripts/find_all_missing_ids.rb</string>
-		<string>src/scripts/find_title_and_id.rb</string>
-		<string>src/scripts/media.sql</string>
+		<string>src/history/ml.c</string>
+		<string>include/colours.h</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -293,6 +292,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{232, 103}, {1070, 775}}</string>
+	<string>{{-11, 98}, {946, 780}}</string>
 </dict>
 </plist>
