@@ -377,15 +377,25 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 					update_total_only(&opts);	
 				}
 			} 
-			if (*opts.total == '\0' ||  *opts.total == '\0'){
-				printf("%-36s %s\n",opts.title, COLOURJ("id &| total not found",BOLD_RED));
-			}
 			
+			have_total = have_id = true;
+			if (*opts.total == '\0' &&  *opts.id == '\0'){
+				printf("%-36s %s\n",opts.title, COLOURJ("id & total not found",BOLD_RED));
+				have_total = have_id = false;
+			}else if (*opts.total == '\0'){
+				printf("%-36s %s\n",opts.title, COLOURJ("total not found",BOLD_RED));
+				have_total = false;
+			}else if (*opts.id == '\0'){
+				printf("%-36s %s\n",opts.title, COLOURJ("id not found",BOLD_RED));
+				have_id = false;
+			}
 		}
-	}else{
+	}
+	if (have_id){
 		update_anime = true;
 		update_updated(&opts);
 	}
+	
 	dprintf("%12s: '%s'\n", "title", opts.title);
 	dprintf("%12s: '%s'\n", "id", opts.id);
 	dprintf("%12s: '%s'\n", "episodes", opts.episodes);
@@ -411,7 +421,7 @@ int update_new(void *unused, int argc, char **argv, char **columns) {
 	dprintf("%12s: '%s'\n\n", "date_finish", opts.date_finish);
 	dprintf("%12s: '%s'\n\n", "score", opts.score);
 	
-	
+	dprintf("update_anime %d:\n",have_id );
 	if (update_anime){
 		add_anime(&opts);
 		printf("%-36s " SSS("%s") "\n",opts.title, COLOUR(update_anime2(&opts),BLUE) );
