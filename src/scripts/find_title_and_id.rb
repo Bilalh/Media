@@ -13,7 +13,16 @@ def shellescape(str)
     return %{'#{str}'}
 end
 
-def find_name_and_id(name, showSQL=false)
+def c(s,colour=false)
+	if colour then 
+		require "Rainbow"
+		s.color(:blue) 
+	else
+		s
+	end
+end
+
+def find_name_and_id(name, showSQL=false, colour=false)
 
 	# makes out by `sqlite3 mal.db  'select Synonym, Id, Total  from AllSynonyms' > out`
 	lines =IO.readlines File.expand_path '~/Library/Application Support/Media/out'
@@ -29,8 +38,11 @@ def find_name_and_id(name, showSQL=false)
 		line[0].include? short_name or
 		results << line if white.similarity(name, line[0])  > 0.6
 	end
+	
+	
+	
 	results.each do |e|
-		puts "#{ "id:%-5d total:%-3d" % [e[1] || -1,  e[2] || -1]} #{e[0]}"
+		puts "#{ "id:%-5d total:%-3d" % [e[1] || -1,  e[2] || -1]} #{c e[0], colour}"
 		puts "\tset_id #{shellescape name} #{e[1] || ""} #{e[2]|| ""}" if showSQL
 	end	
 end

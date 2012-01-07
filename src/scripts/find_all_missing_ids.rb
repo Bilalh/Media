@@ -15,5 +15,5 @@ rows =  DB.execute Query
 
 rows.each do |row|
 	puts "\n*** #{row[0]} ***\n"
-	find_name_and_id row[0], true
+	find_name_and_id row[0], true,true
 end
