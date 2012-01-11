@@ -28,15 +28,18 @@ def find_name_and_id(name, showSQL=false, colour=false)
 	lines =IO.readlines File.expand_path '~/Library/Application Support/Media/out'
 	white = Text::WhiteSimilarity.new
 
+	name = name.downcase
 	results = []
 	lines.each do |e|
 		e.strip!
-		line = e.split '|'
+		line = e.downcase.split '|'
 		short_name = name.gsub(/\s+(ova|specials?|ona|oneshot|)/i, ' ')
 
-		line[0].include? name or 
-		line[0].include? short_name or
-		results << line if white.similarity(name, line[0])  > 0.6
+		if line[0].include? name or line[0].include? short_name then
+			results <<  e.split( '|' )
+		elsif (sim = white.similarity(name, line[0]))  > 0.6 then
+			results <<  e.split('|')
+		end
 	end
 	
 	

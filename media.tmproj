@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/history/ml.c</string>
+	<string>src/scripts/media.sql</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>85</integer>
+	<integer>297</integer>
 	<key>metaData</key>
 	<dict>
 		<key>include/colours.h</key>
@@ -193,19 +193,33 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>src/scripts/media.sh</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/scripts/media.sql</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>359</integer>
+				<integer>57</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>335</integer>
+			<integer>153</integer>
 		</dict>
 		<key>src/string_array.c</key>
 		<dict>
@@ -225,6 +239,8 @@
 	<key>openDocuments</key>
 	<array>
 		<string>src/history/ml.c</string>
+		<string>src/scripts/media.sh</string>
+		<string>src/scripts/media.sql</string>
 		<string>include/colours.h</string>
 	</array>
 	<key>shellVariables</key>
@@ -292,6 +308,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{-11, 98}, {946, 780}}</string>
+	<string>{{0, 98}, {946, 780}}</string>
 </dict>
 </plist>
