@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>currentDocument</key>
+	<string>src/scripts/find_title_and_id.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -28,7 +30,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>206</integer>
+	<integer>324</integer>
 	<key>metaData</key>
 	<dict>
 		<key>include/option_parser_private.h</key>
@@ -149,6 +151,34 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
+		<key>src/scripts/find_all_missing_ids.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>src/scripts/find_title_and_id.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>29</integer>
+				<key>line</key>
+				<integer>38</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>16</integer>
+		</dict>
 		<key>src/string_array.c</key>
 		<dict>
 			<key>caret</key>
@@ -164,6 +194,11 @@
 			<integer>0</integer>
 		</dict>
 	</dict>
+	<key>openDocuments</key>
+	<array>
+		<string>src/scripts/find_all_missing_ids.rb</string>
+		<string>src/scripts/find_title_and_id.rb</string>
+	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -209,7 +244,7 @@
 					<true/>
 					<key>subItems</key>
 					<dict>
-						<key>history</key>
+						<key>scripts</key>
 						<dict>
 							<key>isExpanded</key>
 							<true/>
@@ -222,6 +257,6 @@
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{474, 98}, {946, 780}}</string>
+	<string>{{611, 89}, {826, 784}}</string>
 </dict>
 </plist>

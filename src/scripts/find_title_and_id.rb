@@ -29,14 +29,14 @@ def cn(float,colour=false)
 	if colour then 
 		require "Rainbow"
 		case p
-		when 0...60
-			s
-		when 60...78
-			s.color(:red)
-		when 78...90
-			s.color(:green)
+		when 0...70
+			s.bright
+		when 70...80
+			s.color(:red).bright
+		when 80...90
+			s.color(:green).bright
 		when 90..100
-			s.color(:yellow).underline
+			s.color(:yellow).underline.bright
 		end
 		
 	else
