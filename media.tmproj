@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/scripts/media.sql</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,23 +28,9 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>297</integer>
+	<integer>206</integer>
 	<key>metaData</key>
 	<dict>
-		<key>include/colours.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1</integer>
-		</dict>
 		<key>include/option_parser_private.h</key>
 		<dict>
 			<key>caret</key>
@@ -165,62 +149,6 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/history/ml.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>457</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>505</integer>
-		</dict>
-		<key>src/option_parser.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/scripts/media.sh</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/scripts/media.sql</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>38</integer>
-				<key>line</key>
-				<integer>57</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>153</integer>
-		</dict>
 		<key>src/string_array.c</key>
 		<dict>
 			<key>caret</key>
@@ -236,13 +164,6 @@
 			<integer>0</integer>
 		</dict>
 	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>src/history/ml.c</string>
-		<string>src/scripts/media.sh</string>
-		<string>src/scripts/media.sql</string>
-		<string>include/colours.h</string>
-	</array>
 	<key>shellVariables</key>
 	<array>
 		<dict>
@@ -295,19 +216,12 @@
 							<key>subItems</key>
 							<dict/>
 						</dict>
-						<key>scripts</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
 					</dict>
 				</dict>
 			</dict>
 		</dict>
 	</dict>
 	<key>windowFrame</key>
-	<string>{{0, 98}, {946, 780}}</string>
+	<string>{{474, 98}, {946, 780}}</string>
 </dict>
 </plist>

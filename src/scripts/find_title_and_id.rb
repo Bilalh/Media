@@ -22,6 +22,29 @@ def c(s,colour=false)
 	end
 end
 
+def cn(float,colour=false)
+	
+	s = "%3.0f%%" % (p=float*100)
+	
+	if colour then 
+		require "Rainbow"
+		case p
+		when 0...60
+			s
+		when 60...78
+			s.color(:red)
+		when 78...90
+			s.color(:green)
+		when 90..100
+			s.color(:yellow).underline
+		end
+		
+	else
+		s
+	end
+	
+end
+
 def find_name_and_id(name, showSQL=false, colour=false)
 
 	# makes out by `sqlite3 mal.db  'select Synonym, Id, Total  from AllSynonyms' > out`
@@ -36,17 +59,17 @@ def find_name_and_id(name, showSQL=false, colour=false)
 		short_name = title.gsub(/\s+(ova|specials?|ona|oneshot|)/i, ' ')
 
 		if line[0].include? title or line[0].include? short_name then
-			results <<  e.split( '|' )
+			results <<  [1] + e.split( '|' )
 		elsif (sim = white.similarity(title, line[0]))  > 0.6 then
-			results <<  e.split('|')
+			results <<  [sim]  + e.split('|')
 		end
 	end
 	
 	
 	
 	results.each do |e|
-		puts "#{ "id:%-5d total:%-3d" % [e[1] || -1,  e[2] || -1]} #{c e[0], colour}"
-		puts "\tset_id #{shellescape name} #{e[1] || ""} #{e[2]|| ""}" if showSQL
+		puts "#{ "%s id:%-5d total:%-3d" % [cn(e[0], colour), e[2] || -1,  e[3] || -1]} #{c e[1], colour}"
+		puts "\tset_id #{shellescape name} #{e[2] || ""} #{e[3]|| ""}" if showSQL
 	end	
 end
 

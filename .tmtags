@@ -7,6 +7,7 @@
 .DEFAULT_GOAL	build/Makefile	/^.DEFAULT_GOAL := dist$/;"	macro	line:7
 ALLL_TESTS_HEAD	tests/include/all_tests.h	/^#define ALLL_TESTS_HEAD /;"	macro	line:2
 ASCII	include/option_parser_private.h	/^#define ASCII /;"	macro	line:40
+AllSeries	src/scripts/media.sql	/^CREATE VIEW AllSeries As $/;"	view	line:212
 AllSeries.UpdateAllSeries	src/unused/updateviews.sql	/^CREATE TRIGGER UpdateAllSeries $/;"	trigger	line:3
 Array	tests/make_test_files.rb	/^class Array$/;"	class	line:6
 ArrayList	include/string_array.h	/^} ArrayList;$/;"	typedef	line:8
@@ -72,7 +73,7 @@ DECLTYPE	include/uthash.h	/^#define DECLTYPE(/;"	macro	line:42
 DECLTYPE_ASSIGN	include/uthash.h	/^#define DECLTYPE_ASSIGN(/;"	macro	line:46
 DECLTYPE_ASSIGN	include/uthash.h	/^#define DECLTYPE_ASSIGN(/;"	macro	line:52
 DIRENT	src/sub_dirs.c	/^#define DIRENT(/;"	macro	line:17
-DroppedSeries	src/scripts/media.sql	/^CREATE VIEW DroppedSeries As$/;"	view	line:127
+DroppedSeries	src/scripts/media.sql	/^CREATE VIEW DroppedSeries As$/;"	view	line:225
 ELMT_FROM_HH	include/uthash.h	/^#define ELMT_FROM_HH(/;"	macro	line:80
 EPS_ARR	src/media_menu.c	/^#define EPS_ARR(/;"	macro	line:17
 EP_GET_NAME	include/string_util.h	/^#define EP_GET_NAME(/;"	macro	line:73
@@ -97,7 +98,7 @@ F_NONE	include/media_args.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS
 F_PLIST	include/media_args.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:7
 F_PLS	include/media_args.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:7
 F_XSPF	include/media_args.h	/^	F_NONE = 0x0, F_M3U = 0x1 , F_PLIST = 0x2 , F_PLS = 0x4 , F_XSPF = 0x8$/;"	enumerator	line:7
-FinishedSeries	src/scripts/media.sql	/^CREATE VIEW FinishedSeries As$/;"	view	line:143
+FinishedSeries	src/scripts/media.sql	/^CREATE VIEW FinishedSeries As$/;"	view	line:241
 GET_FILES_REC_SAFE_REGEX	src/sub_dirs.c	/^#define GET_FILES_REC_SAFE_REGEX /;"	macro	line:19
 GREEN	include/colours.h	/^#define GREEN /;"	macro	line:9
 GREEN	include/no_colours.h	/^#define GREEN /;"	macro	line:23
@@ -178,22 +179,22 @@ H_output	include/option_parser_private.h	/^const Element H_output[] ={$/;"	varia
 H_player	include/option_parser_private.h	/^const Element H_player[] ={$/;"	variable	line:207
 H_playlist	include/option_parser_private.h	/^const Element H_playlist[] ={$/;"	variable	line:155
 HelpLink	include/option_parser_private.h	/^} HelpLink;$/;"	typedef	line:31
-History	src/scripts/media.sql	/^CREATE TABLE History ($/;"	table	line:1
-History.A01_OnSeriesFinished	src/scripts/media.sql	/^CREATE TRIGGER A01_OnSeriesFinished AFTER INSERT ON History WHEN$/;"	trigger	line:213
-History.A11_OnSeriesRewatch	src/scripts/media.sql	/^CREATE TRIGGER A11_OnSeriesRewatch AFTER INSERT ON History WHEN$/;"	trigger	line:226
-History.A22_SetUpdated	src/scripts/media.sql	/^CREATE TRIGGER A22_SetUpdated AFTER INSERT ON History WHEN$/;"	trigger	line:242
-History.A41_UpdateSeriesInfoUpdatesOnRewatch	src/scripts/media.sql	/^CREATE TRIGGER A41_UpdateSeriesInfoUpdatesOnRewatch AFTER INSERT ON History WHEN$/;"	trigger	line:252
-History.A45_OnSeriesRewatchFinish	src/scripts/media.sql	/^CREATE TRIGGER A45_OnSeriesRewatchFinish AFTER INSERT ON History WHEN$/;"	trigger	line:262
-History.AddSeriesInfo	src/scripts/media.sql	/^CREATE TRIGGER AddSeriesInfo AFTER INSERT ON History WHEN$/;"	trigger	line:282
-History.Date	src/scripts/media.sql	/^CREATE TABLE History ($/;"	field	line:1
-History.Number	src/scripts/media.sql	/^Series TEXT NOT NULL ON CONFLICT ROLLBACK ,$/;"	field	line:3
-History.Series	src/scripts/media.sql	/^Date TEXT UNIQUE ON CONFLICT ROLLBACK NOT NULL ON CONFLICT ROLLBACK PRIMARY KEY ON CONFLICT ROLLBACK ,$/;"	field	line:2
-History.UpdateSeriesInfoUpdates	src/scripts/media.sql	/^CREATE TRIGGER UpdateSeriesInfoUpdates AFTER INSERT ON History WHEN$/;"	trigger	line:309
-History.ValidateAddition	src/scripts/media.sql	/^CREATE TRIGGER ValidateAddition BEFORE INSERT ON History$/;"	trigger	line:320
-History.ValidateDate	src/scripts/media.sql	/^CREATE TRIGGER ValidateDate BEFORE INSERT ON History$/;"	trigger	line:336
-History.ValidateEpNum	src/scripts/media.sql	/^CREATE TRIGGER ValidateEpNum BEFORE INSERT ON History WHEN$/;"	trigger	line:345
-History.ValidateEpNum2	src/scripts/media.sql	/^CREATE TRIGGER ValidateEpNum2 BEFORE INSERT ON History WHEN$/;"	trigger	line:356
-History.ValidateTitle	src/scripts/media.sql	/^CREATE TRIGGER ValidateTitle BEFORE INSERT ON History$/;"	trigger	line:368
+History	src/scripts/media.sql	/^CREATE TABLE "History" ($/;"	table	line:1
+History.A01_OnSeriesFinished	src/scripts/media.sql	/^CREATE TRIGGER A01_OnSeriesFinished AFTER INSERT ON History WHEN$/;"	trigger	line:423
+History.A11_OnSeriesRewatch	src/scripts/media.sql	/^CREATE TRIGGER A11_OnSeriesRewatch AFTER INSERT ON History WHEN$/;"	trigger	line:436
+History.A22_SetUpdated	src/scripts/media.sql	/^CREATE TRIGGER A22_SetUpdated AFTER INSERT ON History WHEN$/;"	trigger	line:452
+History.A41_UpdateSeriesInfoUpdatesOnRewatch	src/scripts/media.sql	/^CREATE TRIGGER A41_UpdateSeriesInfoUpdatesOnRewatch AFTER INSERT ON History WHEN$/;"	trigger	line:462
+History.A45_OnSeriesRewatchFinish	src/scripts/media.sql	/^CREATE TRIGGER A45_OnSeriesRewatchFinish AFTER INSERT ON History WHEN$/;"	trigger	line:472
+History.AddSeriesInfo	src/scripts/media.sql	/^CREATE TRIGGER AddSeriesInfo AFTER INSERT ON History WHEN$/;"	trigger	line:492
+History.Date	src/scripts/media.sql	/^CREATE TABLE "History" ($/;"	field	line:1
+History.Number	src/scripts/media.sql	/^"Series" TEXT NOT NULL ON CONFLICT ROLLBACK CHECK (length(Series) >=1),$/;"	field	line:3
+History.Series	src/scripts/media.sql	/^"Date" TEXT UNIQUE ON CONFLICT ROLLBACK NOT NULL ON CONFLICT ROLLBACK PRIMARY KEY ON CONFLICT ROLLBACK CHECK (like('____-__-__ __:__:__',Date)),$/;"	field	line:2
+History.UpdateSeriesInfoUpdates	src/scripts/media.sql	/^CREATE TRIGGER UpdateSeriesInfoUpdates AFTER INSERT ON History WHEN$/;"	trigger	line:519
+History.ValidateAddition	src/scripts/media.sql	/^CREATE TRIGGER ValidateAddition BEFORE INSERT ON History$/;"	trigger	line:530
+History.ValidateDate	src/scripts/media.sql	/^CREATE TRIGGER ValidateDate BEFORE INSERT ON History$/;"	trigger	line:546
+History.ValidateEpNum	src/scripts/media.sql	/^CREATE TRIGGER ValidateEpNum BEFORE INSERT ON History WHEN$/;"	trigger	line:555
+History.ValidateEpNum2	src/scripts/media.sql	/^CREATE TRIGGER ValidateEpNum2 BEFORE INSERT ON History WHEN$/;"	trigger	line:566
+History.ValidateTitle	src/scripts/media.sql	/^CREATE TRIGGER ValidateTitle BEFORE INSERT ON History$/;"	trigger	line:578
 Ids	src/history/link_media_to_ids.sql	/^Create Table temp.Ids (Id Integer);$/;"	table	line:4
 Ids.Id	src/history/link_media_to_ids.sql	/^Create Table temp.Ids (Id Integer);$/;"	field	line:4
 LINE_LENGTH	tests/include/tests.h	/^#define LINE_LENGTH /;"	macro	line:19
@@ -242,6 +243,45 @@ MakeMain	tests/include/tests.h	/^#define MakeMain(/;"	macro	line:185
 MakeTest	tests/include/tests.h	/^#define MakeTest(/;"	macro	line:161
 MakeTestResult	tests/include/tests.h	/^#define MakeTestResult(/;"	macro	line:118
 MakeVar	tests/include/tests.h	/^#define MakeVar(/;"	macro	line:97
+MalData	src/scripts/media.sql	/^CREATE TABLE "MalData" ($/;"	table	line:6
+MalData.Classification	src/scripts/media.sql	/^"ListedAnimeId" TEXT,$/;"	field	line:11
+MalData.EndAirDate	src/scripts/media.sql	/^"StartAirDate" TEXT,$/;"	field	line:22
+MalData.English	src/scripts/media.sql	/^"EndAirDate" TEXT,$/;"	field	line:23
+MalData.Episodes	src/scripts/media.sql	/^"PopularityRank" INTEGER,$/;"	field	line:18
+MalData.FavoritedCount	src/scripts/media.sql	/^"Rank" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:15
+MalData.Id	src/scripts/media.sql	/^CREATE TABLE "MalData" ($/;"	field	line:6
+MalData.ImageUrl	src/scripts/media.sql	/^"Status" TEXT,$/;"	field	line:8
+MalData.Japanese	src/scripts/media.sql	/^"English" TEXT,$/;"	field	line:24
+MalData.ListedAnimeId	src/scripts/media.sql	/^"Type" TEXT,$/;"	field	line:10
+MalData.MembersCount	src/scripts/media.sql	/^"MembersScore" INTEGER,$/;"	field	line:13
+MalData.MembersScore	src/scripts/media.sql	/^"Classification" TEXT,$/;"	field	line:12
+MalData.PopularityRank	src/scripts/media.sql	/^"Title" TEXT NOT NULL UNIQUE,$/;"	field	line:17
+MalData.Rank	src/scripts/media.sql	/^"MembersCount" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:14
+MalData.StartAirDate	src/scripts/media.sql	/^"Year" INTEGER,$/;"	field	line:21
+MalData.Status	src/scripts/media.sql	/^"Id" INTEGER PRIMARY KEY UNIQUE NOT NULL,$/;"	field	line:7
+MalData.Synopsis	src/scripts/media.sql	/^"Episodes" INTEGER,$/;"	field	line:19
+MalData.Title	src/scripts/media.sql	/^"FavoritedCount" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:16
+MalData.Type	src/scripts/media.sql	/^"ImageUrl" TEXT,$/;"	field	line:9
+MalData.Year	src/scripts/media.sql	/^"Synopsis" TEXT,$/;"	field	line:20
+MalGenres	src/scripts/media.sql	/^CREATE TABLE "MalGenres" ($/;"	table	line:27
+MalGenres.Genre	src/scripts/media.sql	/^"SeriesId" INTEGER NOT NULL,$/;"	field	line:29
+MalGenres.Id	src/scripts/media.sql	/^CREATE TABLE "MalGenres" ($/;"	field	line:27
+MalGenres.SeriesId	src/scripts/media.sql	/^"Id" INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE,$/;"	field	line:28
+MalRelation	src/scripts/media.sql	/^CREATE TABLE "MalRelation" ($/;"	table	line:32
+MalRelation.Id	src/scripts/media.sql	/^CREATE TABLE "MalRelation" ($/;"	field	line:32
+MalRelation.RelationId	src/scripts/media.sql	/^"RelationType" TEXT NOT NULL,$/;"	field	line:35
+MalRelation.RelationTitle	src/scripts/media.sql	/^"RelationUrl" TEXT NOT NULL,$/;"	field	line:37
+MalRelation.RelationType	src/scripts/media.sql	/^"SeriesId" TEXT NOT NULL,$/;"	field	line:34
+MalRelation.RelationUrl	src/scripts/media.sql	/^"RelationId" INTEGER NOT NULL,$/;"	field	line:36
+MalRelation.SeriesId	src/scripts/media.sql	/^"Id" INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE,$/;"	field	line:33
+MalSynonyms	src/scripts/media.sql	/^CREATE TABLE "MalSynonyms" ($/;"	table	line:40
+MalSynonyms.Id	src/scripts/media.sql	/^CREATE TABLE "MalSynonyms" ($/;"	field	line:40
+MalSynonyms.SeriesId	src/scripts/media.sql	/^"Id" INTEGER PRIMARY KEY ASC AUTOINCREMENT UNIQUE NOT NULL,$/;"	field	line:41
+MalSynonyms.Synonym	src/scripts/media.sql	/^"SeriesId" INTEGER NOT NULL,$/;"	field	line:42
+MalTags	src/scripts/media.sql	/^CREATE TABLE "MalTags" ($/;"	table	line:45
+MalTags.Id	src/scripts/media.sql	/^CREATE TABLE "MalTags" ($/;"	field	line:45
+MalTags.SeriesId	src/scripts/media.sql	/^"Id" INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL UNIQUE,$/;"	field	line:46
+MalTags.Tag	src/scripts/media.sql	/^"SeriesId" INTEGER NOT NULL,$/;"	field	line:47
 Mapping	include/string_util.h	/^} Mapping;$/;"	typedef	line:183
 Mapping	src/examples/ftest.c	/^} Mapping;$/;"	typedef	line:13
 Mapping	src/examples/hashe2.c	/^} Mapping;$/;"	typedef	line:12
@@ -260,10 +300,21 @@ OPT_MEDIA_ARGS_HELP	src/option_parser.c	/^#define OPT_MEDIA_ARGS_HELP /;"	macro	
 OPT_NUM_SECTION	tests/include/opt_test.h	/^static int OPT_NUM_SECTION = 0; $/;"	variable	line:8
 OPT_PRIVATE_HEADD	include/option_parser_private.h	/^#define OPT_PRIVATE_HEADD$/;"	macro	line:2
 OPT_TEST_HEADER	tests/include/opt_test.h	/^#define OPT_TEST_HEADER$/;"	macro	line:2
-OldSeries	src/scripts/media.sql	/^CREATE TABLE OldSeries ($/;"	table	line:6
-OldSeries.Title	src/scripts/media.sql	/^CREATE TABLE OldSeries ($/;"	field	line:6
-OldSeries.Total	src/scripts/media.sql	/^Title TEXT PRIMARY KEY UNIQUE ,$/;"	field	line:7
-OngoingSeries	src/scripts/media.sql	/^CREATE VIEW OngoingSeries As$/;"	view	line:156
+OldSeries	src/scripts/media.sql	/^CREATE TABLE "OldSeries" ($/;"	table	line:50
+OldSeries.Current	src/scripts/media.sql	/^"Title" TEXT PRIMARY KEY UNIQUE NOT NULL,$/;"	field	line:51
+OldSeries.Date	src/scripts/media.sql	/^"Dropped" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:61
+OldSeries.Dropped	src/scripts/media.sql	/^"Skip" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:60
+OldSeries.EndDate	src/scripts/media.sql	/^"StartDate" TEXT,$/;"	field	line:56
+OldSeries.Finished	src/scripts/media.sql	/^"EndDate" TEXT,$/;"	field	line:57
+OldSeries.Id	src/scripts/media.sql	/^"Score" INTEGER,$/;"	field	line:54
+OldSeries.Score	src/scripts/media.sql	/^"Total" INTEGER,$/;"	field	line:53
+OldSeries.Skip	src/scripts/media.sql	/^"Updated" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:59
+OldSeries.StartDate	src/scripts/media.sql	/^"Id" INTEGER,$/;"	field	line:55
+OldSeries.Title	src/scripts/media.sql	/^CREATE TABLE "OldSeries" ($/;"	field	line:50
+OldSeries.Total	src/scripts/media.sql	/^"Current" INTEGER NOT NULL DEFAULT 1,$/;"	field	line:52
+OldSeries.Updated	src/scripts/media.sql	/^"Finished" INTEGER NOT NULL DEFAULT 0,$/;"	field	line:58
+OngoingSeries	src/scripts/media.sql	/^CREATE VIEW OngoingSeries As$/;"	view	line:254
+OnlyOldSeries	src/scripts/media.sql	/^CREATE VIEW OnlyOldSeries As$/;"	view	line:181
 OptAdd	tests/include/opt_test.h	/^#define OptAdd(/;"	macro	line:13
 OptAfter	tests/opt_test.c	/^#define OptAfter(/;"	macro	line:14
 OptBefore	tests/opt_test.c	/^#define OptBefore /;"	macro	line:10
@@ -341,8 +392,8 @@ RESET	include/colours.h	/^#define RESET /;"	macro	line:6
 RESET	include/no_colours.h	/^#define RESET /;"	macro	line:20
 RESET	include/no_colours.h	/^#undef RESET /;"	macro	line:1
 RESET	src/examples/colours_exp.c	/^#define RESET /;"	macro	line:6
-Recent	src/scripts/media.sql	/^CREATE VIEW Recent As$/;"	view	line:172
-Rewatching	src/scripts/media.sql	/^CREATE VIEW Rewatching As$/;"	view	line:184
+Recent	src/scripts/media.sql	/^CREATE VIEW Recent As$/;"	view	line:185
+Rewatching	src/scripts/media.sql	/^CREATE VIEW Rewatching As$/;"	view	line:197
 SATURDAY	include/time_util.h	/^enum{ SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};$/;"	enumerator	line:21
 SCRIPT_DST	build/Makefile	/^SCRIPT_DST     = ${HOME}\/bin$/;"	macro	line:11
 SEP	tests/include/tests.h	/^#define SEP /;"	macro	line:142
@@ -383,6 +434,8 @@ S_NONE	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPD
 S_SKIP	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
 S_SKIP_UPDATED	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
 S_UPDATED	include/media_args.h	/^	S_NONE, S_SKIP = 0x1, S_UPDATED = 0x2, S_SKIP_UPDATED = 0x3$/;"	enumerator	line:23
+Scores	src/scripts/media.sql	/^CREATE VIEW Scores as$/;"	view	line:271
+ScoresByYear	src/scripts/media.sql	/^CREATE VIEW ScoresByYear AS$/;"	view	line:276
 Section	tests/include/opt_test.h	/^#define Section(/;"	macro	line:12
 Section	tests/include/opt_test.h	/^#undef  Section$/;"	macro	line:11
 Section	tests/include/strarr_test.h	/^#define Section(/;"	macro	line:11
@@ -397,25 +450,26 @@ Section	tests/include/time_test.h	/^#define Section(/;"	macro	line:11
 Section	tests/include/time_test.h	/^#undef  Section$/;"	macro	line:10
 SectionEnd	tests/include/tests.h	/^#define SectionEnd /;"	macro	line:90
 Sections	tests/include/tests.h	/^#define Sections /;"	macro	line:94
-SeriesData	src/scripts/media.sql	/^CREATE VIEW SeriesData as$/;"	view	line:32
-SeriesInfo	src/scripts/media.sql	/^CREATE TABLE "SeriesInfo" ($/;"	table	line:9
-SeriesInfo.Current	src/scripts/media.sql	/^"Title" TEXT PRIMARY KEY NOT NULL DEFAULT NULL,$/;"	field	line:10
-SeriesInfo.Date	src/scripts/media.sql	/^"Current" INTEGER NOT NULL DEFAULT NULL,$/;"	field	line:11
-SeriesInfo.Dropped	src/scripts/media.sql	/^"Score" INTEGER DEFAULT NULL,$/;"	field	line:20
-SeriesInfo.EndDate	src/scripts/media.sql	/^"StartDate" Text NOT NULL DEFAULT NULL,$/;"	field	line:13
-SeriesInfo.Finished	src/scripts/media.sql	/^"Total" INTEGER DEFAULT NULL,$/;"	field	line:15
-SeriesInfo.Id	src/scripts/media.sql	/^"Finished" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:16
-SeriesInfo.OnSeriesFinishedOnUpdate	src/scripts/media.sql	/^CREATE TRIGGER OnSeriesFinishedOnUpdate AFTER UPDATE ON SeriesInfo WHEN$/;"	trigger	line:290
-SeriesInfo.Rewatching	src/scripts/media.sql	/^"Dropped" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:21
-SeriesInfo.RewatchingCurrent	src/scripts/media.sql	/^"Rewatching" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:22
-SeriesInfo.RewatchingDate	src/scripts/media.sql	/^"RewatchingCurrent" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:23
-SeriesInfo.RewatchingStart	src/scripts/media.sql	/^"RewatchingDate" TEXT DEFAULT NULL,$/;"	field	line:24
-SeriesInfo.Score	src/scripts/media.sql	/^"Skip" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:19
-SeriesInfo.Skip	src/scripts/media.sql	/^"Updated" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:18
-SeriesInfo.StartDate	src/scripts/media.sql	/^"Date" Text NOT NULL DEFAULT NULL,$/;"	field	line:12
-SeriesInfo.Title	src/scripts/media.sql	/^CREATE TABLE "SeriesInfo" ($/;"	field	line:9
-SeriesInfo.Total	src/scripts/media.sql	/^"EndDate" Text DEFAULT NULL,$/;"	field	line:14
-SeriesInfo.Updated	src/scripts/media.sql	/^"Id" INTEGER DEFAULT NULL,$/;"	field	line:17
+SeriesData	src/scripts/media.sql	/^CREATE VIEW SeriesData as$/;"	view	line:89
+SeriesInfo	src/scripts/media.sql	/^CREATE TABLE "SeriesInfo" ($/;"	table	line:64
+SeriesInfo.Current	src/scripts/media.sql	/^"Title" TEXT PRIMARY KEY NOT NULL DEFAULT NULL UNIQUE CHECK (Length(Title) >= 1),$/;"	field	line:65
+SeriesInfo.Date	src/scripts/media.sql	/^"Current" INTEGER NOT NULL DEFAULT NULL CHECK ((Current >= 0) or (Total is not NULL and Current <= Total)),$/;"	field	line:66
+SeriesInfo.Dropped	src/scripts/media.sql	/^"Score" INTEGER DEFAULT NULL CHECK (Score > 0 and Score <= 10 ),$/;"	field	line:75
+SeriesInfo.EndDate	src/scripts/media.sql	/^"StartDate" Text NOT NULL DEFAULT NULL CHECK (like('____-__-__ __:__:__',StartDate)),$/;"	field	line:68
+SeriesInfo.Finished	src/scripts/media.sql	/^"Total" INTEGER DEFAULT NULL CHECK (Total is NULL or Total >0 ),$/;"	field	line:70
+SeriesInfo.Id	src/scripts/media.sql	/^"Finished" INTEGER NOT NULL DEFAULT '0' CHECK (Finished in (0,1)),$/;"	field	line:71
+SeriesInfo.IsAnime	src/scripts/media.sql	/^"RewatchingStart" TEXT DEFAULT NULL CHECK (RewatchingStart is NULL or like('____-__-__ __:__:__',RewatchingStart)),$/;"	field	line:80
+SeriesInfo.OnSeriesFinishedOnUpdate	src/scripts/media.sql	/^CREATE TRIGGER OnSeriesFinishedOnUpdate AFTER UPDATE ON SeriesInfo WHEN$/;"	trigger	line:500
+SeriesInfo.Rewatching	src/scripts/media.sql	/^"Dropped" INTEGER NOT NULL DEFAULT '0' CHECK (Dropped in(0,1)),$/;"	field	line:76
+SeriesInfo.RewatchingCurrent	src/scripts/media.sql	/^"Rewatching" INTEGER NOT NULL DEFAULT '0' CHECK (Rewatching in (0,1)),$/;"	field	line:77
+SeriesInfo.RewatchingDate	src/scripts/media.sql	/^"RewatchingCurrent" INTEGER NOT NULL DEFAULT '0',$/;"	field	line:78
+SeriesInfo.RewatchingStart	src/scripts/media.sql	/^"RewatchingDate" TEXT DEFAULT NULL CHECK (RewatchingDate is NULL or like('____-__-__ __:__:__',RewatchingDate)),$/;"	field	line:79
+SeriesInfo.Score	src/scripts/media.sql	/^"Skip" INTEGER NOT NULL DEFAULT '0' CHECK (Skip in (0,1)),$/;"	field	line:74
+SeriesInfo.Skip	src/scripts/media.sql	/^"Updated" INTEGER NOT NULL DEFAULT '0' CHECK (Updated in (0,1)),$/;"	field	line:73
+SeriesInfo.StartDate	src/scripts/media.sql	/^"Date" Text NOT NULL DEFAULT NULL CHECK (like('____-__-__ __:__:__',Date)),$/;"	field	line:67
+SeriesInfo.Title	src/scripts/media.sql	/^CREATE TABLE "SeriesInfo" ($/;"	field	line:64
+SeriesInfo.Total	src/scripts/media.sql	/^"EndDate" Text DEFAULT NULL CHECK (EndDate is NULL or like('____-__-__ __:__:__',EndDate)),$/;"	field	line:69
+SeriesInfo.Updated	src/scripts/media.sql	/^"Id" INTEGER DEFAULT NULL CHECK (Id is NULL or Id >= 0),$/;"	field	line:72
 Spaces	include/media_args.h	/^} Spaces;$/;"	typedef	line:32
 SpiltData	include/string_util.h	/^} SpiltData;$/;"	typedef	line:176
 SqlCallback	include/history.h	/^typedef int (*SqlCallback)(void *unused, int argc, char **argv, char **columns);$/;"	typedef	line:20
@@ -509,7 +563,9 @@ TimeResults	tests/include/time_test.h	/^#define TimeResults /;"	macro	line:17
 TimeSetup	tests/include/time_test.h	/^#define TimeSetup\\/;"	macro	line:20
 TimeTest	tests/include/time_test.h	/^#define TimeTest(/;"	macro	line:29
 TimeVar	tests/include/time_test.h	/^#define TimeVar /;"	macro	line:13
+ToLink	src/scripts/media.sql	/^CREATE VIEW ToLink as $/;"	view	line:353
 Types	include/media_args.h	/^} Types;$/;"	typedef	line:20
+TypesByYear	src/scripts/media.sql	/^CREATE VIEW TypesByYear as$/;"	view	line:357
 USAGE	src/app/history_add_main.c	/^#define USAGE /;"	macro	line:14
 USAGE	src/app/set_score_main.c	/^#define USAGE /;"	macro	line:11
 UTHASH_H	include/uthash.h	/^#define UTHASH_H /;"	macro	line:25
@@ -527,12 +583,12 @@ WHITE	include/colours.h	/^#define WHITE /;"	macro	line:14
 WHITE	include/no_colours.h	/^#define WHITE /;"	macro	line:28
 WHITE	include/no_colours.h	/^#undef WHITE /;"	macro	line:9
 WHITE	src/examples/colours_exp.c	/^#define WHITE /;"	macro	line:14
-Watched	src/scripts/media.sql	/^CREATE TABLE "Watched" ($/;"	table	line:26
-Watched.DateFinished	src/scripts/media.sql	/^"DateStarted" TEXT NOT NULL DEFAULT NULL,$/;"	field	line:29
-Watched.DateStarted	src/scripts/media.sql	/^"Series" TEXT NOT NULL DEFAULT NULL,$/;"	field	line:28
-Watched.Series	src/scripts/media.sql	/^"id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL DEFAULT NULL,$/;"	field	line:27
-Watched.id	src/scripts/media.sql	/^CREATE TABLE "Watched" ($/;"	field	line:26
-WatchedSeriesDates	src/scripts/media.sql	/^CREATE VIEW WatchedSeriesDates As$/;"	view	line:200
+Watched	src/scripts/media.sql	/^CREATE TABLE "Watched" ($/;"	table	line:83
+Watched.DateFinished	src/scripts/media.sql	/^"DateStarted" TEXT NOT NULL DEFAULT NULL CHECK (like('____-__-__ __:__:__',DateStarted)),$/;"	field	line:86
+Watched.DateStarted	src/scripts/media.sql	/^"Series" TEXT NOT NULL DEFAULT NULL CHECK (Length(Series) >= 1),$/;"	field	line:85
+Watched.Series	src/scripts/media.sql	/^"id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL DEFAULT NULL CHECK (id >=0),$/;"	field	line:84
+Watched.id	src/scripts/media.sql	/^CREATE TABLE "Watched" ($/;"	field	line:83
+WatchedSeriesDates	src/scripts/media.sql	/^CREATE VIEW WatchedSeriesDates As$/;"	view	line:409
 YELLOW	include/colours.h	/^#define YELLOW /;"	macro	line:10
 YELLOW	include/no_colours.h	/^#define YELLOW /;"	macro	line:24
 YELLOW	include/no_colours.h	/^#undef YELLOW /;"	macro	line:5
@@ -865,7 +921,7 @@ score	include/media_args.h	/^	int        score;         \/\/ DONE$/;"	member	lin
 score	include/ml.h	/^	char      score[3];       \/\/\/ 1 - 10$/;"	member	line:25
 script_src	build/Makefile	/^script_src     = ..\/src\/scripts$/;"	macro	line:21
 scripts	build/Makefile	/^scripts                   = histm gf setLabel setLabelByNumber histc$/;"	macro	line:80
-scripts_keep_name	build/Makefile	/^scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb find_title_and_id.rb find_all_missing_ids.rb$/;"	macro	line:78
+scripts_keep_name	build/Makefile	/^scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb find_title_and_id.rb find_all_missing_ids.rb find_missing_scores.rb$/;"	macro	line:78
 selected_color	src/examples/colours_exp.c	/^static int selected_color = 0;$/;"	variable	line:24
 sep	include/media_args.h	/^	int     sep;           \/\/ DONE$/;"	member	line:65
 series	src/media_menu.c	/^	char        *series;$/;"	member	line:25
@@ -876,6 +932,7 @@ set_movie	src/history/history.c	/^void set_movie(char *series){$/;"	function	lin
 set_score	src/history/history.c	/^void set_score(char *series, int score){$/;"	function	line:133
 set_total	src/history/history.c	/^void set_total(char *series, int total){$/;"	function	line:154
 shash_req	build/Makefile	/^shash_req = app\/hash_lookup.o ${strutil_req}$/;"	macro	line:64
+shellescape	src/scripts/find_missing_scores.rb	/^def shellescape(str)$/;"	method	line:5
 shellescape	src/scripts/find_title_and_id.rb	/^def shellescape(str)$/;"	method	line:5
 show_menu	src/media_menu.c	/^void show_menu(char **filenames, size_t *length, bool free_unused, MediaArgs *ma){$/;"	function	line:172
 shuffle	src/string_util.c	/^void shuffle(void **array, size_t n) {$/;"	function	line:424
