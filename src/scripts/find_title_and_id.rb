@@ -45,7 +45,7 @@ def cn(float,colour=false)
 	
 end
 
-def find_name_and_id(name, showSQL=false, colour=false)
+def find_name_and_id(name, showSQL=false, colour=false, limit=0.6)
 
 	# makes out by `sqlite3 mal.db  'select Synonym, Id, Total  from AllSynonyms' > out`
 	lines =IO.readlines File.expand_path '~/Library/Application Support/Media/out'
@@ -60,7 +60,7 @@ def find_name_and_id(name, showSQL=false, colour=false)
 
 		if line[0].include? title or line[0].include? short_name then
 			results <<  [1] + e.split( '|' )
-		elsif (sim = white.similarity(title, line[0]))  > 0.6 then
+		elsif (sim = white.similarity(title, line[0]))  >= limit then
 			results <<  [sim]  + e.split('|')
 		end
 	end
