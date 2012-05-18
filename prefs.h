@@ -1,11 +1,20 @@
 #ifndef PREFERENCES_HEADER_MEDIA_
 #define PREFERENCES_HEADER_MEDIA_
 
-// Binaries paths
-#define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer2.mpBinaries/Contents/MacOS/mplayer2\""
-#define PREFS_MPLAYER_BINARY_UN_Q "/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer2.mpBinaries/Contents/MacOS/mplayer2" 
 
-#define PREFS_MPLAYER_APP_NAME  "\"mplayer2.mpBinaries\""
+// Binaries paths for mplayer2-cli http://code.google.com/p/mplayerosx-builds/downloads/list
+#define PREFS_MPLAYER_BINARY      "\"/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2\""
+#define PREFS_MPLAYER_BINARY_UN_Q "/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2"
+#define PREFS_MPLAYER_APP_NAME  "\"mplayer2-cli\""
+
+// Binaries paths for mplayer2 using MPlayer OSX Extended http://code.google.com/p/mplayerosx-builds/downloads/list
+// #define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-git.mpBinaries/Contents/MacOS/mplayer2\""
+// #define PREFS_MPLAYER_BINARY_UN_Q "/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-git.mpBinaries/Contents/MacOS/mplayer2" 
+// #define PREFS_MPLAYER_APP_NAME  "\"mplayer2.mpBinaries\""
+
+
+
+
 #define PREFS_VLC_BINARY        "\"/Applications/VLC.app/Contents/MacOS/VLC\""
 
 // Nmae of Mplayer GUI app 
