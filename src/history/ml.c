@@ -175,7 +175,7 @@ char *delete_anime (int id) {
 
 void get_id_and_total(char *xml, MLOpts *opts) {
 	if (xml == NULL || *xml == '\0'){
-		efprintf("%s\n", "XMl null or empty");
+		dprintf("%s\n", "XMl null or empty");
 		return;
 	}
 	

@@ -162,15 +162,15 @@ install_man_pages:
 	ln -fs ${MAN_DST}/nums.7 ${MAN_DST}/numss.7
 	ln -fs ${MAN_DST}/nums.7 ${MAN_DST}/numsf.7
 	ln -fs ${MAN_DST}/ongoing.7 ${MAN_DST}/ongoingnc.7
-	
 
-	
+
+
 install_media_aliases:
 	mkdir -p ${SCRIPT_DST} && cp ../src/scripts/media.sh  ${SCRIPT_DST}/.
-	
+
 install_mplayer_options:
 	cp -r ${config_src}/mplayer/* ~/.mplayer/
-		
+
 create_database:
 	mkdir -p ${SUPPORT_DIR} && touch ${SUPPORT_DIR}/zzhash && cat ${script_src}/media.sql | sqlite3  ${SUPPORT_DIR}/media.db
 
@@ -210,21 +210,21 @@ help:
 
 version:
 	[ -d ../.git ] && ./make_version.sh
-	
-	
+
+
 # Syntax
 # http://www.gnu.org/s/hello/manual/make/Automatic-Variables.html
 
 # $^
 # The names of all the prerequisites, with spaces between them. For prerequisites which are archive members, only the
-# named member is used (see Archives). A target has only one prerequisite on each other file it depends on, no matter
-# how many times each file is listed as a prerequisite. So if you list a prerequisite more than once for a target, the
-# value of $^ contains just one copy of the name. This list does not contain any of the order-only prerequisites; for
+# named member is used. A target has only one prerequisite on each other file it depends on, no matter how many times 
+# each file is listed as a prerequisite. So if you list a prerequisite more than once for a target, the value of $^ 
+# contains just one copy of the name. This list does not contain any of the order-only prerequisites; for
 # those see the ‘$|’ variable, below.
 
 # $?
 # The names of all the prerequisites that are newer than the target, with spaces between them. For prerequisites
-# which are archive members, only the named member is used (see Archives).
+# which are archive members, only the named member is used..
 
 # $(@F)
 # The file-within-directory part of the file name of the target. If the value of ‘$@’ is dir/foo.o then ‘$(@F)’ is
@@ -238,8 +238,7 @@ version:
 
 # $@
 # The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive
-# file. In a pattern rule that has multiple targets (see Introduction to Pattern Rules), ‘$@’ is the name of
-# whichever target caused the rule's recipe to be run.
+# file. In a pattern rule that has multiple targets , ‘$@’ is the name of whichever target caused the rule's recipe to be run.
 
 # $%
 # The target member name, when the target is an archive member. See Archives. For example, if the target is
