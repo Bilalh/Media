@@ -40,12 +40,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>164</integer>
+				<integer>97</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>150</integer>
+			<integer>205</integer>
 		</dict>
 		<key>include/option_parser_private.h</key>
 		<dict>
@@ -135,20 +135,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>src/app/ongoing_no_colour_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>9</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>src/examples/read.c</key>
 		<dict>
 			<key>caret</key>
@@ -186,12 +172,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>406</integer>
+				<integer>405</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>384</integer>
+			<integer>389</integer>
 		</dict>
 		<key>src/string_array.c</key>
 		<dict>
@@ -210,9 +196,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>build/Makefile</string>
-		<string>src/app/ongoing_no_colour_main.c</string>
 		<string>src/history/history.c</string>
+		<string>build/Makefile</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -243,33 +228,7 @@
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
-	<key>treeState</key>
-	<dict>
-		<key>media</key>
-		<dict>
-			<key>isExpanded</key>
-			<true/>
-			<key>subItems</key>
-			<dict>
-				<key>src</key>
-				<dict>
-					<key>isExpanded</key>
-					<true/>
-					<key>subItems</key>
-					<dict>
-						<key>app</key>
-						<dict>
-							<key>isExpanded</key>
-							<true/>
-							<key>subItems</key>
-							<dict/>
-						</dict>
-					</dict>
-				</dict>
-			</dict>
-		</dict>
-	</dict>
 	<key>windowFrame</key>
-	<string>{{311, 78}, {1013, 800}}</string>
+	<string>{{347, 97}, {822, 800}}</string>
 </dict>
 </plist>

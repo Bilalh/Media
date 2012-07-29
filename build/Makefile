@@ -31,8 +31,10 @@ vpath %.sh %.rb %.r %.py %.pl %.applescript ../src/scripts
 include ../tests/tests.mk
 
                            ### Distribution ###
+dist_: clean dist oclean
+
 dist: CFLAGS = -O2 -Wall 
-dist: clean version all oclean
+dist: version all
 
 install: to_bin to_scripts
 
@@ -75,7 +77,7 @@ make_man_options_req   = make_man_options.o ${string_req} ${strutil_req}
 
                            ### Scripts ###
 
-scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb find_title_and_id.rb find_all_missing_ids.rb find_missing_scores.rb
+scripts_keep_name = get_number.sh get_titles.sh hide_extension.applescript onRewatchedFinished.rb find_title_and_id.rb find_all_missing_ids.rb find_missing_scores.rb media_get_num.rb
 
 scripts                   = histm gf setLabel setLabelByNumber histc
 histm_location            = history_add_menu.rb
@@ -93,7 +95,7 @@ $(foreach name,${objs} ${examples} ${c_scripts} ,$(eval ${name}:${${name}_req}))
 ${scripts}:
 	cp "${script_src}/${${@}_location}" "${SCRIPT_DST}/$@"; \
 	chmod +x "${SCRIPT_DST}/$@";
-	
+
 ${scripts_keep_name}:
 	cp "${script_src}/$@" "${SCRIPT_DST}/$@"; \
 	chmod +x "${SCRIPT_DST}/$@";

@@ -44,6 +44,8 @@ Issues
 ------
 See man pages
 
+* `hista` dates are specified in UTC *not* the user's current timezone, which might be confusing.
+
 Licence
 -------
 [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/ "Full details")

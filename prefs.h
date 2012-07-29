@@ -2,16 +2,17 @@
 #define PREFERENCES_HEADER_MEDIA_
 
 
-// Binaries paths for mplayer2-cli http://code.google.com/p/mplayerosx-builds/downloads/list
-#define PREFS_MPLAYER_BINARY      "\"/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2\""
-#define PREFS_MPLAYER_BINARY_UN_Q "/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2"
-#define PREFS_MPLAYER_APP_NAME  "\"mplayer2-cli\""
 
 // Binaries paths for mplayer2 using MPlayer OSX Extended http://code.google.com/p/mplayerosx-builds/downloads/list
-// #define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-git.mpBinaries/Contents/MacOS/mplayer2\""
-// #define PREFS_MPLAYER_BINARY_UN_Q "/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer-git.mpBinaries/Contents/MacOS/mplayer2" 
-// #define PREFS_MPLAYER_APP_NAME  "\"mplayer2.mpBinaries\""
+#define PREFS_MPLAYER_BINARY    "\"/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer2.mpBinaries/Contents/MacOS/mplayer2\""
+#define PREFS_MPLAYER_BINARY_UN_Q "/Users/bilalh/Library/Application Support/MPlayer OSX Extended/Binaries/mplayer2.mpBinaries/Contents/MacOS/mplayer2" 
+#define PREFS_MPLAYER_APP_NAME  "\"mplayer2.mpBinaries\""
 
+
+// Binaries paths for mplayer2-cli http://code.google.com/p/mplayerosx-builds/downloads/list
+// #define PREFS_MPLAYER_BINARY      "\"/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2\""
+// #define PREFS_MPLAYER_BINARY_UN_Q "/Applications/mplayer2-cli.app/Contents/MacOS/mplayer2"
+// #define PREFS_MPLAYER_APP_NAME  "\"mplayer2-cli\""
 
 
 
@@ -46,8 +47,8 @@
 #define DATABASE "/Users/bilalh/Library/Application Support/Media/Media.db"
 
 // paths for --ax and --op,  mainly for testing
-#define PREFS_AX "/Users/bilalh/Movies/.Movie/divx"
-#define PREFS_OP "/Users/bilalh/Movies/.Movie/OpeningP"
+#define PREFS_AX "/Users/bilalh/Movies/.Movies/Anime"
+#define PREFS_OP "/Users/bilalh/Movies/.Movies/OpeningP"
 
 // lengths for tiles in ongoing
 #define PREFS_MIN_TITLE_LENGTH 42
