@@ -22,7 +22,7 @@ int main (int argc, char  *argv[]) {
 	
 	MAL_USER_PASS = argv[1];
 	sql_exec("SELECT Title, Id, Current, Total, StartDate, EndDate, Finished, Date, Score"
-	         " FROM SeriesData WHERE (updated == 0 AND skip == 0 AND Rewatching =0 )", 
+	         " FROM SeriesData WHERE (updated == 0 AND skip == 0 AND Rewatching = 0 AND IsAnime = 1 )", 
 			 update_new);
 	 if (sql_commands){
 		dprintf("%s\n", sql_commands->str);
