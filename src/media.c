@@ -204,19 +204,19 @@ static void child_options(const MediaArgs *ma,char **s_arr,char *path,size_t fil
 		
 	if (ma->player != P_NONE){
 		if ( ma->afloat && ma->all_spaces == SPACES_MANUAL ){
-			sleep(1);
+			sleep(2);
 			system("osascript " all_afloat all_spaces_manual " -e 'end tell'");
 		}else if (ma->afloat && ma->all_spaces == SPACES_AUTO ){
-			sleep(1);
+			sleep(2);
 			system("osascript " all_afloat all_spaces_auto);
 		}else if (ma->afloat){
-			sleep(1);
+			sleep(2);
 			system("osascript " all_afloat);
 		}else if (ma->all_spaces== SPACES_MANUAL){
-			sleep(1);
+			sleep(2);
 			system("osascript " all_spaces_manual);
 		}else if (ma->all_spaces== SPACES_AUTO){
-			sleep(1);
+			sleep(2);
 			system("osascript " all_spaces_auto);
 		}
 	}
