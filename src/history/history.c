@@ -24,6 +24,8 @@ static int print_ongoing_callback_no_colour(void *unused, int argc, char **argv,
 static int print_ongoing_data_callback(void *unused, int argc, char **argv, char **columns);
 static int get_title_length(int minus);
 
+//TODO make marco for replace(ltrim(?),':','/')
+
 bool updateHistory(char **filenames, Status status, int sep) {
 	assert(filenames);
 	sqlite3 *db;
@@ -37,10 +39,10 @@ bool updateHistory(char **filenames, Status status, int sep) {
 	}
 
 	sqlite3_stmt *statement_h, *statement_si_u, *statement_si_s, *statement_si_su;
-	const char *query_h     = "Insert Into History(Series,Number,Date) Values(?, ? ,?)";
-	const char *query_si_u  = "UPDATE SeriesInfo SET Updated =? Where Title = ?";
-	const char *query_si_s  = "UPDATE SeriesInfo SET Skip = ? Where Title = ?";
-	const char *query_si_su = "UPDATE SeriesInfo SET Skip = ?, Updated = ? Where Title = ?";
+	const char *query_h     = "Insert Into History(Series,Number,Date) Values(replace(ltrim(?),':','/'), ? ,?)";
+	const char *query_si_u  = "UPDATE SeriesInfo SET Updated =? Where Title = replace(ltrim(?),':','/')";
+	const char *query_si_s  = "UPDATE SeriesInfo SET Skip = ? Where Title = replace(ltrim(?),':','/')";
+	const char *query_si_su = "UPDATE SeriesInfo SET Skip = ?, Updated = ? Where Title = replace(ltrim(?),':','/')";
 
 	bool si_u = false, si_s = false, si_su = false;
 
@@ -211,7 +213,7 @@ char** find_unwatched(char **filenames, size_t *length, bool free_unused) {
 	}
 
 	sqlite3_stmt *statement_h;
-	const char *query_h = "select current from SeriesData where Title = ?";
+	const char *query_h = "select current from SeriesData where Title = replace(ltrim(?),':','/')";
 	sqlite3_prepare_v2(db, query_h, (int) strlen(query_h), &statement_h, NULL);
 
 	while(*filenames != NULL) {

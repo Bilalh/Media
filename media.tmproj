@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>src/app/ml_main.c</string>
+	<string>src/media.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -33,19 +33,19 @@
 	<integer>223</integer>
 	<key>metaData</key>
 	<dict>
-		<key>build/Makefile</key>
+		<key>TODO.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>97</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>77</integer>
+			<integer>0</integer>
 		</dict>
 		<key>include/option_parser_private.h</key>
 		<dict>
@@ -121,6 +121,20 @@
 				<integer>129</integer>
 			</dict>
 		</dict>
+		<key>prefs.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>src/app/latest_fs_main.c</key>
 		<dict>
 			<key>caret</key>
@@ -129,20 +143,6 @@
 				<integer>0</integer>
 				<key>line</key>
 				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/app/ml_main.c</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>96</integer>
-				<key>line</key>
-				<integer>24</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -179,19 +179,19 @@
 				<integer>9</integer>
 			</dict>
 		</dict>
-		<key>src/history/history.c</key>
+		<key>src/media.c</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>405</integer>
+				<integer>189</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>389</integer>
+			<integer>19</integer>
 		</dict>
 		<key>src/string_array.c</key>
 		<dict>
@@ -210,9 +210,9 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>src/history/history.c</string>
-		<string>build/Makefile</string>
-		<string>src/app/ml_main.c</string>
+		<string>src/media.c</string>
+		<string>prefs.h</string>
+		<string>TODO.md</string>
 	</array>
 	<key>shellVariables</key>
 	<array>
@@ -242,8 +242,8 @@
 		</dict>
 	</array>
 	<key>showFileHierarchyDrawer</key>
-	<true/>
+	<false/>
 	<key>windowFrame</key>
-	<string>{{347, 78}, {822, 800}}</string>
+	<string>{{236, 78}, {822, 800}}</string>
 </dict>
 </plist>
